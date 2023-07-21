@@ -2537,6 +2537,7 @@ void P00_02(UWORD prx, UWORD prvalue)
                 updatepr(BRK_STOPDT,25);   //02-30=0.025
                 updatepr(MCDELAY_RUN,25);  //02-31=0.025
                 updatepr(MCDELAY_STOP,25); //02-32=0.025
+				updatepr(LS_Method,0);	   //02-40=0
                 updatepr(AFM1,2);          //03-17=2
                 updatepr(AFM2,3);          //03-20=3
                 updatepr(RSQ_SPD,16);      //04-16=0.16
@@ -4677,17 +4678,17 @@ void P04_50(UWORD prx, UWORD prvalue){
 		//adjust floor position,Henry,2019/01/07
     //if(pr[FLOOR_PAGE]==3){
     if((pr[FLOOR_PAGE]==4)||(pr[FLOOR_PAGE]==5)||(pr[FLOOR_PAGE]==6)){ //[adjust floor position,Henry,2019/01/07]
-        // ³o­Ó¼gªk ¥Î¨Ó­­¨î·L½Õ¤j¤p----7/6/2018
+        // ï¿½oï¿½Ó¼gï¿½k ï¿½Î¨Ó­ï¿½ï¿½ï¿½Lï¿½Õ¤jï¿½p----7/6/2018
         if(DLC_ulPgBrd !=0){
             //mod pulse to mm [
             //get brd's length mm
-    	    //ulBrdLen = U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	        //ulBrdLen = ulBrdLen/10;//get borad's length								// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	        ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+    	    //ulBrdLen = U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	        //ulBrdLen = ulBrdLen/10;//get borad's length								// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	        ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
 	        if(DLC_ulPgSen && (DLC_ulPgSen<DLC_ulPgBrd)){
-                //ulSenLen = U32xU32divU32((DLC_ulPgSen>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	            //ulSenLen = ulBrdLen/10;//get sensors distance							// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	            ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+                //ulSenLen = U32xU32divU32((DLC_ulPgSen>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	            //ulSenLen = ulBrdLen/10;//get sensors distance							// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	            ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
             }
             else
                 ulSenLen = 0;            
