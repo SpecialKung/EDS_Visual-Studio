@@ -1330,7 +1330,7 @@ void DLC_Algorithm(void){
 	else if(DLC_btCANOff){
 		DLC_ubMode = MODE_NULL;
 		
-		if((DLC_ubDIR = DIR_UP) || (DLC_ubDIR = DIR_DN)){
+		if((DLC_ubDIR == DIR_UP) || (DLC_ubDIR == DIR_DN)){
 			if(DLC_btSpdL == 1){
 				DLC_ubtra = 0x09;
 				DLC_ulCurSpd = Spd_Linear(pr[LEV_SPD]*10, pr[JOGACC], pr[JOGDEC]);

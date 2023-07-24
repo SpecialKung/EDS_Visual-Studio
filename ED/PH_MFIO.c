@@ -2459,7 +2459,7 @@ UWORD mfo_abv_PGspa(UWORD pin,UWORD k){      // #16698 PG speed Above Speed Area
 
     if (ABV_PGSPDA==1)
     {
-        // Rationa l351466, Special.Kung, 2023/07/10
+        // Rational351466, Special.Kung, 2023/07/10
         if(Error == 0)
         {
             Error = PGF3_ERR;
