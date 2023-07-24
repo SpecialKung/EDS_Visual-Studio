@@ -304,9 +304,9 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 02-37 BRK_CHKTQR   */  RLD|DOT0,                       0,              1,              0,
 /* 02-38 SCDELAY_RUN  */  RLD|WRUN|DOT3,                 10,          65000,            200,
 /* 02-39 SCDELAY_STOP */  RLD|WRUN|DOT3,                 10,          65000,            200,
-/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              0,    //#15977, LULD detect, James, 2021/04/01
+/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              2,    //#15977, LULD detect, James, 2021/04/01
 /* 02-41 LS_OPEN_TIME */  RLD|WRUN|DOT1,                  0,            100,             30,    //#15977, LULD detect, James, 2021/04/01
-/* 02-42 LS_SHORT_TIME*/  RLD|WRUN|DOT1, 				  0, 		    100, 			 30,    //#15977, LULD detect, James, 2021/04/01
+/* 02-42 LS_SHORT_TIME*/  RLD|WRUN|DOT1, 	          0,	        100,		 30,    //#15977, LULD detect, James, 2021/04/01
 /* 02-43 SpdAgree_B   */  CHG|RLD|WRUN|DOT2,              0,           MAXF,            200,    // 202 02-40   Band of Speed Agree Function #18572 
 /* 02-44 STO_SHORT_T  */  RLD|WRUN|DOT1,                  0,            100,             10,    //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
 /* 02-45 Sensor819    */  RLD|DOT0,                       0,              4,              0,    //[Artemis Add Sensor819 Function/Special/2022/06/06]
@@ -364,13 +364,13 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 04-16 RSQ_SPD      */  RLD|DOT2,                       1,             50,             10,    //[DLC, Bernie, 2014/10/06]
 /* 04-17 LEV_SPD      */  RLD|DOT2,                       1,             50,              3,    
 /* 04-18 AH_SPD       */  RLD|DOT2,                       1,             50,             50,
-/* 04-19 ROPE_CMP	  */  RLD|DOT0, 					  0,		    100, 			  0,    //GFC Rope compensation, 2021/03/30		// Mitong 20220513 new
+/* 04-19 ROPE_CMP     */  RLD|DOT0, 		          0,		100, 	          0,    //GFC Rope compensation, 2021/03/30		// Mitong 20220513 new
 /* 04-20 TABST0_STATUS*/  READ|DOT0,                      0,          65535,              0, 
 /* 04-21 TABST1_STATUS*/  READ|DOT0,                      0,          65535,              0,   
 /* 04-22 MAX_FLOOR    */  RLD|DOT0,                       1,             75,              8,  
 /* 04-23 LEV_CUR      */  RLD|DOT0,                       0,             75,              0, 
 /* 04-24 PG_RST_MODE  */  RLD|DOT0,                       0,            100,            100,
-/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+/* 04-25 DelayCmp     */  RLD|DOT3, 		          0,	      10000,	          3,    // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
 /* 04-26 LAND_DLY_TIME*/  RLD|DOT0,                       0,           3000,            500,   
 /* 04-27 LEV_LEN      */  READ|RLD|DOT0,                  0,            800,            215,
 /* 04-28 INV_POS_H    */  READ|RLD|DOT0,                  0,          65535,              0,   
@@ -385,15 +385,15 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 04-37 PDO_TYPE     */  RLD|DOT0,                       0,              3,              0,
 /* 04-38 DS_LEN       */  RLD|DOT0,                       0,           2000,              0,
 /* 04-39 RATIO        */  RLD|DOT0,                      30,            100,            100,    //[ADCO EPS Modify] 
-/* 04-40 DisDly 	  */  RLD|SIGN|DOT0,			    -30,		     30,			  0,    //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
+/* 04-40 DisDly       */  RLD|SIGN|DOT0,	        -30,		 30,		  0,    //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
 /* 04-41 EST_STATUS   */  READ|DOT0,                      0,          65535,              0,
 /* 04-42 EST_COUNT    */  READ|DOT0,                      0,          65535,              0, 
 /* 04-43 TABST0_COUNT */  READ|DOT0,                      0,          65535,              0, 
 /* 04-44 TABST1_COUNT */  READ|DOT0,                      0,          65535,              0, 
-/* 04-45 DD1_Vlim	  */  RLD|DOT2,						  0,		   9999,			  0,    //Artemis speed limit, James, 20200220
-/* 04-46 DD2_Vlim	  */  RLD|DOT2,						  0,		   9999,			  0,    //Artemis speed limit, James, 20200220
-/* 04-47 DD3_Vlim	  */  RLD|DOT2,						  0,		   9999,			  0,    //Artemis speed limit, James, 20200220
-/* 04-48 DD4_Vlim	  */  RLD|DOT2,						  0,		   9999,			  0,    //Artemis speed limit, James, 20200220
+/* 04-45 DD1_Vlim     */  RLD|DOT2,			  0,	       9999,	          0,    //Artemis speed limit, James, 20200220
+/* 04-46 DD2_Vlim     */  RLD|DOT2,			  0,	       9999,		  0,    //Artemis speed limit, James, 20200220
+/* 04-47 DD3_Vlim     */  RLD|DOT2,			  0,	       9999,	          0,    //Artemis speed limit, James, 20200220
+/* 04-48 DD4_Vlim     */  RLD|DOT2,			  0,	       9999,		  0,    //Artemis speed limit, James, 20200220
 /* 04-49 USER_PAGE    */  RLD|DOT0,                       0,              6,              0,    //adjust floor position,Henry,2019/01/07
 
 // DLC position offset, Henry
@@ -528,7 +528,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 #if Artemis_ENABLE//04-36 //Enable for Artemis
 /* 06-49 STO_LOCK     */  WRUN|RLD|DOT0|DPH,              0,         0x000F,              0,
 #else
-/* 06-49 STO_LOCK	  */  WRUN|RLD|DOT0|DPH,			  0,		 0x0007,			  0,
+/* 06-49 STO_LOCK     */  WRUN|RLD|DOT0|DPH,		  0,	     0x0007,		  0,
 #endif
 /* 06-50 REST_SLT     */  RLD|WRUN|DOT0,                  0,              1,              0,    //[Add auto restart after fault, Bernie, 06/06/12]
 /* 06-51 RESTCNT      */  RLD|WRUN|DOT0,                  0,             10,              0,
@@ -553,13 +553,13 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 06-70 EPS_DIR      */  READ,                           0,              1,              0,   //[Service time function, Bernie, 2017/03/14]
 /* 06-71 EPS_MO_DELAY */  CHG|DOT1|RLD|WRUN,              0,            100,             10,   //[Service time function, Bernie, 2017/03/14]
 /* 06-72 EPS_MO_OFF   */  RLD|DOT1,                       0,            600,             30,   //[Service time function, Bernie, 2017/03/14]
-/* 06-73 IR_COUNT_H   */  READ|DOT0, 					  0,		  60000,			  0,
-/* 06-74 IR_COUNT_L   */  READ|DOT0, 					  0,		   9999,			  0,
-/* 06-75 IR_TCOUNT_H  */  READ|DOT0, 					  0,		     20,			  0,
-/* 06-76 IR_TCOUNT_L  */  READ|DOT0, 					  0,		   9999,			  0,
-/* 06-77 IR_RESETC    */  READ|DOT0, 					  0,		    100,			  0,
+/* 06-73 IR_COUNT_H   */  READ|DOT0, 			  0,	      60000,		  0,
+/* 06-74 IR_COUNT_L   */  READ|DOT0, 			  0,	       9999,		  0,
+/* 06-75 IR_TCOUNT_H  */  READ|DOT0, 			  0,		 20,		  0,
+/* 06-76 IR_TCOUNT_L  */  READ|DOT0, 			  0,	       9999,		  0,
+/* 06-77 IR_RESETC    */  READ|DOT0, 			  0,		100,		  0,
 /* 06-78 IR_LIFE      */  DOT2,                           0,          20000,            200,
-/* 06-79 IR_ENABLE    */  DOT0,       			          0,		      2,			  0,
+/* 06-79 IR_ENABLE    */  DOT0,       			  0,		  2,		  0,
 /* 06-80 FOUT_REC1    */  CHG|READ|DOT2,                  0,          65535,              0,
 /* 06-81 DCBUS_REC1   */  READ|DOT1,                      0,          65535,              0,
 /* 06-82 ISUM_REC1    */  READ|DOT2,                      0,          65535,              0,
@@ -583,7 +583,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 
 /*--------      GROUP 07        --------*/
 /* 07-00 DCBRK4V      */  RLD|WRUN|V440|DOT1,          7000,           9000,           7600,
-/* 07-01 DCBRK_BAND	  */  RLD|WRUN|V440|DOT1,	          0,		   1000,		      0,    // [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]
+/* 07-01 DCBRK_BAND	  */  RLD|WRUN|V440|DOT1,	  0,	       1000,		  0,    // [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]
 /* 07-02 DCICL        */  RLD|WRUN|DOT0,                  0,            100,              0,
 /* 07-03 DCISTA       */  RLD|WRUN|DOT1,                  0,            600,              7,
 /* 07-04 DCISTP       */  RLD|WRUN|DOT1,                  0,            600,              7,
@@ -653,7 +653,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 09-11 DLC_MODE1    */  RLD|DOT0|DPH,                   0,          65535,              0,    // 3XX 09-11 RD Function
 /* 09-12 DLC_MODE2    */  READ|RLD|DOT0|DPH,              0,          65535,              0,    // 3XX 09-12 DLC Mode
 /* 09-13 DLC_MODE3    */  READ|RLD|DOT0|DPH,              0,          65535,              0,
-/* 09-14 CANPDOTXTIME */  RLD|DOT0,		            	  0,		  65535,		      0,    //CANPDOTXTIME--aevin 6/12/2017
+/* 09-14 CANPDOTXTIME */  RLD|DOT0,		          0,	      65535,		  0,    //CANPDOTXTIME--aevin 6/12/2017
 
 /*--------      GROUP 10     -----------*/
 /* 10-00 PG_TYPE      */  RLD|DOT0,                       0,              6,              0,
@@ -687,7 +687,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 10-28 ZASRKI_P     */  RLD|WRUN|DOT3,                  0,          10000,            100,
 /* 10-29 FREQ_DIV     */  RLD|WRUN|DOT0,                  0,             31,              0,    //[Modify PG Type Define, Bernie, 12/05/2011]
 /* 10-30 PG_DIV_MODE  */  RLD|WRUN|DOT0|DPH,              0,              8,              0,    //[Modify PG Type Define, Bernie, 12/05/2011]
-/* 10-31 PG_C_TYPE	  */  RLD|WRUN|DOT0|DPH,			  0,		  65535,			  0,    //0x0400 3XX 10-31   Encoder C+/C- exchange	  //[change parameter to normal group, Bernie, 2014/02/14]
+/* 10-31 PG_C_TYPE    */  RLD|WRUN|DOT0|DPH,	          0,	      65535,		  0,    //0x0400 3XX 10-31   Encoder C+/C- exchange	  //[change parameter to normal group, Bernie, 2014/02/14]
 /* 10-32 OVER_ACC_LEVEL*/ RLD|WRUN|DOT1,                  0,            200,              0,    //[Over Acceleration protection function, Bernie, 2017/02/13]
 /* 10-33 OVER_ACC_TIME*/  RLD|DOT2,                       1,            500,              5,    //[Over Acceleration protection function, Bernie, 2017/02/13]
 /* 10-34 OVER_ACC_SET */  RLD|DOT0,                       0,              1,              0,
@@ -717,9 +717,9 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 11-20 PWM_MODE     */      WRUN|DOT0,                  0,          65535,              0,
 /* 11-21 LPF_LC01DISP */  RLD|WRUN|DOT3,                  1,          65535,            500,
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-/* 11-21 Lift_SPD_RPM */  READ|DOT0, 		        	  0, 		  65535, 			  0,
+/* 11-21 Lift_SPD_RPM */  READ|DOT0, 		          0, 	      65535, 		  0,
 #endif
-/* 11-22 Client_Mode  */  RLD|  DOT0,                    0,           65535,              0,
+/* 11-22 Client_Mode  */  RLD|  DOT0,                     0,          65535,              0,
 
 /*--------    GROUP 12    --------*/
 /* 12-00 UMAP_ADD0    */  RLD|WRUN|DOT0,                  0,           9999,            616,
