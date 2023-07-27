@@ -5804,13 +5804,15 @@ void main(void)
         }
         else
         {
-            // Rational351466, Special.Kung, 2023/07/10
-            /*
-            if(Error == 0)
-            {
-                Error = PGF3_ERR;
-            }
+            // Rationa l351466, Special.Kung, 2023/07/10
+            /*															//[Special.Kung, 2023/07/10]
+            if(Error == 0)												//[Special.Kung, 2023/07/10]
+            {															//[Special.Kung, 2023/07/10]
+                Error = PGF3_ERR;										//[Special.Kung, 2023/07/10]
+            }															//[Special.Kung, 2023/07/10]
             */
+			// Rationa l351466, Special.Kung, 2023/07/10
+			
             ABV_PGSPDA = 1;
         }
 // ]

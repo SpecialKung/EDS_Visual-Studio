@@ -59,14 +59,14 @@ typedef struct{
 #define PROGKEY         8
 #define RECENT_KEY     19 //[add RecentPG,Lyabryan,2020/03/14]
 /*---------- LED EQUATION ---------------
-        ___6 ___
-       |             |
-    5 |             | 7
+        ___6___
+       |       |
+     5 |       | 7
        |___4___|
-       |             |
-    1 |             | 3
+       |       |
+     1 |       | 3
        |___2___|   o
-                             0
+                   0
                                        */
 #define _Ubar	0x4e    //.EQU    0101 0011B    ;u_
 #define _Z		0x44	//.EQU    0001 0001B    ;Z
