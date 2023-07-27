@@ -311,6 +311,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 02-44 STO_SHORT_T  */  RLD|WRUN|DOT1,                  0,            100,             10,    //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
 /* 02-45 Sensor819    */  RLD|DOT0,                       0,              4,              0,    //[Artemis Add Sensor819 Function/Special/2022/06/06]
 /* 02-46 Lift_SPD     */  CHG|RLD|WRUN|DOT2,             10,            400,             80,    //[Artemis Add Sensor819 Function/Special/2022/06/06]
+/* 02-47 FWDREV_CNT    */  READ|DOT0,                      0,          65535,              0,    //[Ratioanal 271718, Special.Kung, 2023/05/02]
 
 
 /*--------      GROUP 03        --------*/

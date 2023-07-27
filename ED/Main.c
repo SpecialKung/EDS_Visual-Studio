@@ -2220,7 +2220,8 @@ SWORD AUI2Calculate(void)
 }
 
 //[Sibocom exist FWD/REV Warn, Jason, 2019/10/07]
-void mfi_FwdRevWarn(void){
+void mfi_FwdRevWarn(void)
+{
 	if((WarnCode == 0)&&(Error == 0)){
 		WarnCode = FWDREV_WARN;
 	}
@@ -2280,8 +2281,16 @@ void mi_speed(void)
     C21xx[0x19] &=  0xfcfb; 
 	
     if (pr[CTRLM]!=TQCPG)
-    {    // Speed control mode   //6a17j mask
-		if (speed==0)
+    {    
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+        if(FWDREV_Enable1)                              //[Special.Kung, 2023/05/02]
+        {                                               //[Special.Kung, 2023/05/02]
+            fkey.uw.hi = 0;                             //[Special.Kung, 2023/05/02]
+        }                                               //[Special.Kung, 2023/05/02]
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+
+        // Speed control mode   //6a17j mask
+        else if(speed==0)
         {
 			if (CMDJOG == 1)
             {    
