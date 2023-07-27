@@ -1409,7 +1409,8 @@ void decelerate(void)
                 ftemp.uw.low = 0;
             }
             else{                
-                if(IODLC_CRPLS_SW&&(pr[SOFC]==3)&&((pr[IODEN]&0x0002)==0x0002)&&pr[IODDE]!=0){ // [IODLC, Lyabryan, 2016/11/11]
+                //if(IODLC_CRPLS_SW&&(pr[SOFC]==3)&&((pr[IODEN]&0x0002)==0x0002)&&pr[IODDE]!=0){	//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+                if(IODLC_CRPLS_SW && (pr[SOFC]==3) && btIODLC_Ena && (pr[IODDE]!=0)){				//Task 268622 IO Direct Landing	//Mitong 20230221 new	
                     IODLC_CRPLS();
                     ScurveDec_CRIPLS();
                 }
@@ -3502,6 +3503,142 @@ void TimeBase_1ms(void)
         Stop_Execute();
     }// end of STOP function
     /*============End of STOP command ===========================================================*/
+
+	//Task 268622 IO Direct Landing	//Mitong 20230221 add  ----------------------------------------------------------------------------------
+	uwPrIODEN.uw = pr[IODEN];
+	btIODLC_Ena = btIODLC_M12 || btIODLC_M3 || btIODLC_M4;
+	if(btIODLC_Ena)
+	{
+		if(fcmd.uw.hi >= pr[IODLC_TRIG_SPEED])	
+		{
+			ubIODLC_TrigSpeedCnt++;
+			if(ubIODLC_TrigSpeedCnt > 100)
+			{
+				btIODLC_TrigSpeed = 1;	//速度超過01-44(端子直停觸發速度)
+			}
+		}
+		else
+		{
+			ubIODLC_TrigSpeedCnt = 0;
+		}
+
+		btIODLC_WARN1 = 0;
+		btIODLC_WARN2 = 0;
+		btIODLC_WARN3 = 0;
+		btIODLC_WARN6 = 0;
+		if(  (btIODLC_M12 && (btIODLC_M3 || btIODLC_M4))  ||  (btIODLC_M3 && btIODLC_M4)  )
+		{	
+			btIODLC_WARN1 = 1;	//重複開啟不同的直停功能
+		}
+		else if(pr[IODDE] == 0)
+		{
+			btIODLC_WARN2 = 1;	//開啟直停功能,沒有設定01-36(端子直接停靠減速距離)
+		}
+		else if((btIODLC_M3 || btIODLC_M4) && (pr[IODLC_TRIG_SPEED] == 0))
+		{
+			btIODLC_WARN3 = 1;	//開啟直停3 4功能,沒有設定01-44(端子直停觸發速度)
+		}
+		else if(btIODLC_M3)
+		{
+			if(btIODLC_TrigSpeed && (btIODLC_CRPLS1 || btIODLC_CRPLS2))
+    		{    
+    			if(!IODLC_CRPLS_SW && (uwIODLC_CRPLS_Cnt > 1500) && (IODLC_ubArea_status == AreaDec))
+				/* (uwIODLC_CRPLS_Cnt > 1500) MI 53 60 都沒有動作超過1.5sec,確保減速距離超過一個樓層時,不會發生誤偵測 btIODLC_WARN4 */
+				{
+					btIODLC_WARN4 = 1;	//開啟直停3功能,在定減速斷觸發MI53 60,正常應該在S4段才能觸發MI 53,
+										//此要求在防止減速距離超過一個樓層時,減速中速度還很快時MI 53 60動作,觸發直停功能
+				}
+				
+    			if(IODLC_ubArea_status == AreaS4)
+    			{
+					IODLC_CRPLS_SW = 1;	//觸發直停功能
+    			}	
+	       	}
+
+			if(!btIODLC_CRPLS1_HavSet && !btIODLC_CRPLS2_HavSet)
+			{
+				btIODLC_WARN6 = 1;		//開啟直停3功能,沒有設定MI 53 60
+			}
+		}
+		else if(btIODLC_M4)
+		{
+			if(btIODLC_TrigSpeed && (speed == 0))
+    		{
+				if(!IODLC_CRPLS_SW && !btIODLC_S4OffDelay)
+				{
+					btIODLC_WARN5 = 1;	//開啟直停4功能,在非S4段下零段速,
+										//此要求在防止減速距離超過一個樓層時,減速中速度還很快時,上位機碰到平層開關就下零段速,觸發直停功能
+				}
+				if((IODLC_ubArea_status == AreaS4) || btIODLC_S4OffDelay)
+				{
+					IODLC_CRPLS_SW = 1;	//觸發直停功能,IODLC_CRPLS_SW令其On是乎不會立刻On,表示有其他地方有令其Off的程式
+				}
+	       	}
+			
+			
+			if(IODLC_ubArea_status == AreaS4)
+			{
+				btIODLC_S4OffDelay = 1;	//IODLC_CRPLS_SW(直停) On後,原S4中會變成S4 S3交替,所以才做 Off Delay
+				ubIODLC_AreaS4_Cnt = 0;
+			}
+			else
+			{
+				if(ubIODLC_AreaS4_Cnt <= 10)
+				{
+					ubIODLC_AreaS4_Cnt++;
+				}
+				else
+				{
+					btIODLC_S4OffDelay = 0;
+				}
+			} 
+		}
+
+		if(btIODLC_CRPLS1 || btIODLC_CRPLS2)
+		{
+			uwIODLC_CRPLS_Cnt = 0;
+		}
+		else
+		{
+			if(uwIODLC_CRPLS_Cnt < 65535)
+			{
+				uwIODLC_CRPLS_Cnt++;
+			}
+		}
+	}
+	else
+	{
+		ubIODLC_WARN.ub = 0;
+		ubIODLC_TrigSpeedCnt = 0;
+		IODLC_CRPLS_flag.uw = 0;
+		IODLC_control_flag.uw = 0;
+		IODLC_control_flag2.ub = 0;
+	}
+	//
+	if(ubIODLC_WARN.ub != 0)
+	{
+		if(WarnCode == 0)
+		{
+			WarnCode = IODLC_WARN;	
+		}
+	}
+	if(WarnCode == IODLC_WARN)
+	{
+		if(uwIODLC_WarnCnt < 65535)
+		{
+			uwIODLC_WarnCnt++;
+		}
+		if((uwIODLC_WarnCnt > 10000) && !btIODLC_WARN1 && !btIODLC_WARN2 && !btIODLC_WARN3 && !btIODLC_WARN6)	//使警告碼最少顯示10秒
+		{
+			WarnCode = 0;
+			ubIODLC_WARN.ub = 0;
+		}	
+	}
+	else
+	{
+		uwIODLC_WarnCnt = 0;
+	}
+	// -------------------------------------------------------------------------------------------------------------------------------
 
   // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
   if (RUNNING == RUN){

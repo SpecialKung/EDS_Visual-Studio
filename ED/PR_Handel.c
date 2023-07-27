@@ -29,390 +29,463 @@ History:
 /*--------      The parameter table for functionality        --------*/
 void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 /*---- GROUP 15---------------------------------------*/
-		P15_00	,	//	0	15-00	Debug Flag 1
-		updatepr,	//	1	15-01	DBC CHANGE FREQ
-		P15_02	,	//	2	15-02	efficiency of Motor
-		updatepr,	//	3	15-03	DC_ZSEARCH		
-		P15_02	,	//	4	15-04	AD value at Rated Current
-		updatepr,	//	5	15-05	Id*,Iq* LPF
-		fnone	,	//	6	15-06	Only for Factory 1
-		fnone	,	//	7	15-07	Only for Factory 2
-		fnone	,	//	8	15-08	Only for Factory 3
-		fnone	,	//	9	15-09	Only for Factory 4
-		fnone   ,	//	10	15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM   //[move parameter to 11-20, Bernie, 2017/02/16]
-		updatepr,	//	11	15-11	Skip DeadTime
-		P15_12	,	//	12	15-12	DCBUS 210.0 VDC ad value
-		P15_12	,	//	13	15-13	DCBUS 310.0 VDC ad value
-		P15_12	,	//	14	15-14	DCBUS 390.0 VDC ad value
-		updatepr,	//	15	15-15	Torque control Kp
-		updatepr,	//	16	15-16	Torque Control Ki
-		updatepr,	//	17	15-17	Flux Control Kp
-		updatepr,	//	18	15-18	Flux Control Ki
-		updatepr,	//	19	15-19	Speed slop Control Kp gain
-		updatepr,	//	20	15-20	Speed slop Control Ki gain
-		updatepr,	//	21	15-21	Control Selection
-		updatepr,	//	22	15-22	Test Source Value Amplitude
-		LPFGain	,	//	23	15-23	High Speed Low pass Filter Gain
-		LPFGain	,	//	24	15-24	Low Speed Low pass filter Gain
-		updatepr,	//	25	15-25	Test Source Value Bias
-		LPFGain	,	//	26	15-26	Estimate J Low pass Filter Gain
-		updatepr,	//	27	15-27	Calibration current REF
-		updatepr,	//	28	15-28	Calibration P
-		updatepr,	//	29	15-29	Calibration I
-		updatepr,	//	30	15-30	Auto tuning DC test Kp gain
-		updatepr,	//	31	15-31	Auto Tuning DC test Ki gain
-		updatepr,	//	32	15-32	Auto tuning High Freq. Lock test Kp gain
-		LPFGain ,	//	33	15-33	Dcbus Low Pass Gain
-		P15_34	,	//	34	15-34	Select Zero Speed
-		updatepr,	//	35	15-35	No Load Boost Gain
-		updatepr,	//	36	15-36	Acceleration AKP
-		updatepr,	//	37	15-37	Acceleration AKI
-		updatepr,	//	38	15-38	Current Loop BandWidth
-		updatepr,	//	39	15-39	DBC Leading 2
-		updatepr,	//	40	15-40	DBC Ratio 2 with close loop
-		P15_41  ,	//	41	15-41	DBC Coef.
-		P15_42  ,	//	42	15-42	DBC Dcbus Coef.
-		updatepr,	//	43	15-43	DBC leading 1
-		updatepr,	//	44	15-44	DBC Linear Ratio 1
-		updatepr,	//	45	15-45	DBC MODE
-		updatepr,	//	46	15-46	magnitization inductance 1
-		updatepr,	//	47	15-47	main flux linkage 1
-		updatepr,	//	48	15-48	magnitization inductance 2
-		updatepr,	//	49	15-49	main flux linkage 2
-		updatepr,	//	50	15-50	magnitization inductance 3
-		updatepr,	//	51	15-51	main flux linkage 3
-		updatepr,	//	52	15-52	magnitization inductance 4
-		updatepr,	//	53	15-53	main flux linkage 4
-		updatepr,	//	54	15-54	magnitization inductance 5
-		updatepr,	//	55	15-55	main flux linkage 5
-		updatepr,	//	56	15-56	magnitization inductance 6
-		updatepr,	//	57	15-57	main flux linkage 6
-		updatepr,	//	58	15-58	magnitization inductance 7
-		LPFGain	,	//	59	15-59	Current Zero Low Pass Gain
-		LPFGain	,	//	60	15-60	cos(TB1_uwPhi) low pass gain
-		fnone  	,	//	61	15-61	reserved  //Datecode para change, Henry, 2016/07/20
-		updatepr,	//	62	15-62	calibration for AUI ZeroPoint (0V)
-		updatepr,	//	63	15-63	calibration for AUI max (+10V)
-		updatepr,	//	64	15-64	calibration for AUI min (-10V)
-		updatepr,	//	65	15-65	calibration for ACI max (20mA)
-		updatepr,	//	66	15-66	calibration for ACI mid (12mA)
-		updatepr,	//	67	15-67	calibration for ACI min (4mA)
-		updatepr,	//	68	15-68	calibration for AVI max (+10V)
-		updatepr,	//	69	15-69	calibration for AVI mid (+5V)
-		updatepr,	//	70	15-70	calibration for AVI min (0V)
-		updatepr,	//	71	15-71	Deceleration DKP
-		updatepr,	//	72	15-72	Deceleration DKI
-		updatepr,	//	73	15-73	more volt. comp. below this freq.
-		updatepr,	//	74	15-74	PGLOSS Detect Counter
-		updatepr,	//	75	15-75	Main Frequency
-		updatepr,	//	76	15-76	Power On Counter
-		updatepr,	//	77	15-77   GFF Maximum Value Record, Jerry Yu, 2019/11/11
-		fnone   ,	//	78	15-78	BLD Version  //[BootLoader Version, Special.Kung, 2022/10/31] 
+		P15_00	,	//15-00	    Debug Flag 1
+		updatepr,	//15-01	    DBC CHANGE FREQ
+		P15_02	,	//15-02	    efficiency of Motor
+		updatepr,	//15-03	    DC_ZSEARCH		
+		P15_02	,	//15-04	    AD value at Rated Current
+		updatepr,	//15-05	    Id*,Iq* LPF
+		fnone	,	//15-06	    Only for Factory 1
+		fnone	,	//15-07	    Only for Factory 2
+		fnone	,	//15-08	    Only for Factory 3
+		fnone	,	//15-09	    Only for Factory 4
+		fnone   ,	//15-10	    PWM MODE, 0=SVPWM+DPWM,1=SVPWM   //[move parameter to 11-20, Bernie, 2017/02/16]
+		updatepr,	//15-11	    Skip DeadTime
+		P15_12	,	//15-12	    DCBUS 210.0 VDC ad value
+		P15_12	,	//15-13	    DCBUS 310.0 VDC ad value
+		P15_12	,	//15-14	    DCBUS 390.0 VDC ad value
+		updatepr,	//15-15	    Torque control Kp
+		updatepr,	//15-16	    Torque Control Ki
+		updatepr,	//15-17	    Flux Control Kp
+		updatepr,	//15-18	    Flux Control Ki
+		updatepr,	//15-19	    Speed slop Control Kp gain
+		updatepr,	//15-20	    Speed slop Control Ki gain
+		updatepr,	//15-21	    Control Selection
+		updatepr,	//15-22	    Test Source Value Amplitude
+		LPFGain	,	//15-23	    High Speed Low pass Filter Gain
+		LPFGain	,	//15-24	    Low Speed Low pass filter Gain
+		updatepr,	//15-25	    Test Source Value Bias
+		LPFGain	,	//15-26	    Estimate J Low pass Filter Gain
+		updatepr,	//15-27	    Calibration current REF
+		updatepr,	//15-28	    Calibration P
+		updatepr,	//15-29	    Calibration I
+		updatepr,	//15-30	    Auto tuning DC test Kp gain
+		updatepr,	//15-31	    Auto Tuning DC test Ki gain
+		updatepr,	//15-32	    Auto tuning High Freq. Lock test Kp gain
+		LPFGain ,	//15-33	    Dcbus Low Pass Gain
+		P15_34	,	//15-34	    Select Zero Speed
+		updatepr,	//15-35	    No Load Boost Gain
+		updatepr,	//15-36	    Acceleration AKP
+		updatepr,	//15-37	    Acceleration AKI
+		updatepr,	//15-38	    Current Loop BandWidth
+		updatepr,	//15-39	    DBC Leading 2
+		updatepr,	//15-40	    DBC Ratio 2 with close loop
+		P15_41  ,	//15-41	    DBC Coef.
+		P15_42  ,	//15-42	    DBC Dcbus Coef.
+		updatepr,	//15-43	    DBC leading 1
+		updatepr,	//15-44	    DBC Linear Ratio 1
+		updatepr,	//15-45	    DBC MODE
+		updatepr,	//15-46	    magnitization inductance 1
+		updatepr,	//15-47	    main flux linkage 1
+		updatepr,	//15-48	    magnitization inductance 2
+		updatepr,	//15-49	    main flux linkage 2
+		updatepr,	//15-50	    magnitization inductance 3
+		updatepr,	//15-51	    main flux linkage 3
+		updatepr,	//15-52	    magnitization inductance 4
+		updatepr,	//15-53	    main flux linkage 4
+		updatepr,	//15-54	    magnitization inductance 5
+		updatepr,	//15-55	    main flux linkage 5
+		updatepr,	//15-56	    magnitization inductance 6
+		updatepr,	//15-57	    main flux linkage 6
+		updatepr,	//15-58	    magnitization inductance 7
+		LPFGain	,	//15-59	    Current Zero Low Pass Gain
+		LPFGain	,	//15-60	    cos(TB1_uwPhi) low pass gain
+		fnone  	,	//15-61	    reserved  //Datecode para change, Henry, 2016/07/20
+		updatepr,	//15-62	    calibration for AUI ZeroPoint (0V)
+		updatepr,	//15-63	    calibration for AUI max (+10V)
+		updatepr,	//15-64	    calibration for AUI min (-10V)
+		updatepr,	//15-65	    calibration for ACI max (20mA)
+		updatepr,	//15-66	    calibration for ACI mid (12mA)
+		updatepr,	//15-67	    calibration for ACI min (4mA)
+		updatepr,	//15-68	    calibration for AVI max (+10V)
+		updatepr,	//15-69	    calibration for AVI mid (+5V)
+		updatepr,	//15-70	    calibration for AVI min (0V)
+		updatepr,	//15-71	    Deceleration DKP
+		updatepr,	//15-72	    Deceleration DKI
+		updatepr,	//15-73	    more volt. comp. below this freq.
+		updatepr,	//15-74	    PGLOSS Detect Counter
+		updatepr,	//15-75	    Main Frequency
+		updatepr,	//15-76	    Power On Counter
+		updatepr,	//15-77     GFF Maximum Value Record, Jerry Yu, 2019/11/11
+		fnone   ,	//15-78	    BLD Version  //[BootLoader Version, Special.Kung, 2022/10/31] 
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-		updatepr,   //  79  15-79
+		updatepr,   //15-79
 #else
-		fnone   ,   //  79  15-79
+		fnone   ,   //15-79
 #endif
-		updatepr,   //  80  15-80
-		updatepr,   //  81  15-81
-		updatepr,   //  82  15-82
-		fnone   ,   //  83  15-83   BLD DataCode //[BootLoader DataCode, Special.Kung, 2022/10/31]
-		updatepr,	//	84	15-84	calibration for AUI ZeroPoint (0V)
-		updatepr,	//	85	15-85	calibration for AUI max (+2V)
-		updatepr,	//	86	15-86	calibration for AUI min (-2V)
-		P15_87  ,	//	87	15-87	calibration for AUI max (+10V)
-		P15_87  ,	//	88	15-88	calibration for AUI min (-10V)
-		P15_87  ,	//	89	15-89	calibration for AUI max (+10V)
-		P15_87  ,	//	90	15-90	calibration for AUI min (-10V)
-		updatepr,	//	91	15-91	minimun pulse 
-		updatepr,	//	92	15-92	D Frame Fan control
-		updatepr,	//  93  15-93   Z phase UVW Section when pr[PG_TYPE]=ABZ_UVW, add by dino, 10/29/2007
-		fnone   ,   //  94
-		updatepr,	//	95 	15-95	record PG COUNTER at driver LV
-		flashpr ,	//	96	15-96	AFM max. value
-		flashpr ,	//	97	15-97	AFM min. value
-		updatepr,	//	98	15-98	Softstart Delay Time
-		P15_99	,	//	99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023     
-		updatepr,   //  100 15-100
-		updatepr,   //  101 15-101
-		updatepr,   //  102
-		updatepr,   //  103
-		fnone   ,   //  104
-		fnone  	,	//	105
-		updatepr,	//	106 15-106  CAN_CTRL  //[CAN Control, Sampo, 09/15/2010]
-		updatepr,	//	107 15-107  CAN_FAULT //[CAN Control, Sampo, 09/15/2010]
-		P15_108 ,	//	108
-		updatepr,	//	109
-		updatepr,	//	110
-		updatepr,	//	111 15-111	WDT_DIV	//[ICT WDT test, Bernie, 08/16/2011]
-	    updatepr,	//	112 15-112      AFM1 PWM 10 setting  
-		updatepr,	//	113 15-113	AFM1 PWM 0 count setting  
-		updatepr,	//	114 15-114	AFM1 PWM -10  setting  
-		updatepr,	//	115 15-115      AFM2 PWM 10 setting  
-		updatepr,	//	116 15-116	AFM2 PWM 0 count setting  
-		updatepr,	//	117 15-117	AFM2 PWM -10  setting  
-		P11_18  ,	//	118 15-118     The switch of Protect finction    //[The switch of Protect finction, Bernie, 2015/05/21]
-		updatepr,	//	119                                                           //[Output Phase Loss 2, Sampo, 2015/05/21]
-		updatepr,	//	120
-		updatepr,	//	121 15-121  The Gain value of Protect finction     //[Output Phase Loss 2, Sampo, 2015/05/21]
-		updatepr,	//	122
-		updatepr,	//	123 15-123  MBF record after power off
-		updatepr,	//	124         //[add for UL EoL Verification,Bernie, 2013/04/22]
-		updatepr,	//	125         //[add for UL EoL Verification,Bernie, 2013/04/22]
-		updatepr,	//	126
-		fnone   ,	//	127
+		updatepr,   //15-80
+		updatepr,   //15-81
+		updatepr,   //15-82
+		fnone   ,   //15-83     BLD DataCode //[BootLoader DataCode, Special.Kung, 2022/10/31]
+		updatepr,	//15-84	    calibration for AUI ZeroPoint (0V)
+		updatepr,	//15-85	    calibration for AUI max (+2V)
+		updatepr,	//15-86	    calibration for AUI min (-2V)
+		P15_87  ,	//15-87	    calibration for AUI max (+10V)
+		P15_87  ,	//15-88	    calibration for AUI min (-10V)
+		P15_87  ,	//15-89	    calibration for AUI max (+10V)
+		P15_87  ,	//15-90	    calibration for AUI min (-10V)
+		updatepr,	//15-91	    minimun pulse 
+		updatepr,	//15-92	    D Frame Fan control
+		updatepr,	//15-93     Z phase UVW Section when pr[PG_TYPE]=ABZ_UVW, add by dino, 10/29/2007
+		fnone   ,   //15-94
+		updatepr,	//15-95	    record PG COUNTER at driver LV
+		flashpr ,	//15-96	    AFM max. value
+		flashpr ,	//15-97	    AFM min. value
+		updatepr,	//15-98	    Softstart Delay Time
+		P15_99	,	//15-99   
+		updatepr,   //15-100
+		updatepr,   //15-101
+		updatepr,   //15-102
+		updatepr,   //15-103
+		fnone   ,   //15-104
+		fnone  	,	//15-105
+		updatepr,	//15-106    CAN_CTRL  //[CAN Control, Sampo, 09/15/2010]
+		updatepr,	//15-107    CAN_FAULT //[CAN Control, Sampo, 09/15/2010]
+		P15_108 ,	//15-108
+		updatepr,	//15-109
+		updatepr,	//15-110
+		updatepr,	//15-111	WDT_DIV	//[ICT WDT test, Bernie, 08/16/2011]
+	    updatepr,	//15-112    AFM1 PWM 10 setting  
+		updatepr,	//15-113	AFM1 PWM 0 count setting  
+		updatepr,	//15-114	AFM1 PWM -10  setting  
+		updatepr,	//15-115    AFM2 PWM 10 setting  
+		updatepr,	//15-116	AFM2 PWM 0 count setting  
+		updatepr,	//15-117	AFM2 PWM -10  setting  
+		P11_18  ,	//15-118    The switch of Protect finction    //[The switch of Protect finction, Bernie, 2015/05/21]
+		updatepr,	//15-119    //[Output Phase Loss 2, Sampo, 2015/05/21]
+		updatepr,	//15-120
+		updatepr,	//15-121    The Gain value of Protect finction     //[Output Phase Loss 2, Sampo, 2015/05/21]
+		updatepr,	//15-122
+		updatepr,	//15-123    MBF record after power off
+		updatepr,	//15-124    //[add for UL EoL Verification,Bernie, 2013/04/22]
+		updatepr,	//15-125    //[add for UL EoL Verification,Bernie, 2013/04/22]
+		updatepr,	//15-126
+		fnone   ,	//15-127    RESERVE
+		fnone   ,	//15-128    RESERVE
+		fnone   ,	//15-129    RESERVE
 
 /*---- GROUP 00---------------------------------------*/
-		P00_00	,	//	128	00-00	Model Type of Drive
-		fnone	,	//	129	00-01	Rated Current
-		P00_02	,	//	130	00-02	Parameter Reset
-		P00_03	,	//	131	00-03	Start up Display
-		P00_03	,	//	132	00-04	User Display
-		P00_05	,	//	133	00-05	User Coefficient
-		fnone	,	//	134	00-06	Software Version
-		P00_07	,	//	135	00-07	Password Input
-		P00_08	,	//	136	00-08	Password Input
-		P00_09  ,	//	137	00-09	Control Methods
-		updatepr,	//	138	00-10   Velocity Unit Select
-		updatepr,	//	138	00-11   Change Output Direction, Added by sampo, 06/11/2009  // Delete CHGDIR Function, DINO, 08/02/2010
-		P00_12	,	//	140	00-12	Carry Frequency
-		updatepr,	//	141	00-13	AVR
-		P00_14	,	//	142	00-14	Source of Freq. Command
-		updatepr,	//	143	00-15	Source of Oper. Command
+		P00_00	,	//00-00	    Model Type of Drive
+		fnone	,	//00-01	    Rated Current
+		P00_02	,	//00-02	    Parameter Reset
+		P00_03	,	//00-03	    Start up Display
+		P00_03	,	//00-04	    User Display
+		P00_05	,	//00-05	    User Coefficient
+		fnone	,	//00-06	    Software Version
+		P00_07	,	//00-07	    Password Input
+		P00_08	,	//00-08	    Password Input
+		P00_09  ,	//00-09	    Control Methods
+		updatepr,	//00-10     Velocity Unit Select
+		updatepr,	//00-11     Change Output Direction, Added by sampo, 06/11/2009  // Delete CHGDIR Function, DINO, 08/02/2010
+		P00_12	,	//00-12	    Carry Frequency
+		updatepr,	//00-13	    AVR
+		P00_14	,	//00-14	    Source of Freq. Command
+		updatepr,	//00-15	    Source of Oper. Command
+
+        fnone   ,	//00-16     RESERVE
+        fnone   ,   //00-17     RESERVE
+        fnone   ,	//00-18     RESERVE
+        fnone   ,	//00-19     RESERVE
 
 /*---- GROUP 01---------------------------------------*/
-		P01_00	,	//	144	01-00	Max Output Freq.
-		P01_01	,	//	145	01-01	Motor Base Frequency 1
-		P01_02	,	//	146	01-02	Max Output Voltage
-		updatepr,	//	147	01-03	Mid Output Freq.1
-		updatepr,	//	148	01-04	Mid Output Voltage 1
-		updatepr,	//	149	01-05	Mid Output Freq.2
-		updatepr,	//	150	01-06	Mid Output Voltage 2
-		P01_07	,	//	151	01-07	Min Output Freq.
-		updatepr,	//	152	01-08	Min Output Voltage
-		P01_07  ,	//	153	01-09	Start Frequency
-		P01_10	,	//	154	01-10	Upper Bound Freq.
-		P01_10	,	//	155	01-11	Lower Bound Freq.
-		P01_10	,	//	156	01-12	1st Acceleration time
-		P01_10	,	//	157	01-13	1st Deceleration time
-		P01_10	,	//	158	01-14	2nd Acceleration time
-		P01_10	,	//	159	01-15	2nd Deceleration time
-		P01_10	,	//	160	01-16	3rd Acceleration time
-		P01_10	,	//	161	01-17	3rd Deceleration time
-		P01_10	,	//	162	01-18	4th Acceleration time
-		P01_10	,	//	163	01-19	4th Deceleration time
-		P01_10	,	//	164	01-20	JOG Acceleration time
-		P01_10	,	//	165	01-21	JOG Deceleration time
-		P01_10	,	//	166	01-22	JOG Frequency
-		updatepr,	//	167	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4
-		updatepr,	//	168	01-24	S curve Accel time 1
-		updatepr,	//	169	01-25	S curve Accel time 2
-		updatepr,	//	170	01-26	S curve Decel time 1
-		updatepr,	//	171	01-27	S curve Decel time 2
-		updatepr,	//	172	01-28	Select Zero Speed	
-		updatepr,	//	173	01-29	Landing Speed
-		updatepr,	//	174	01-30	S curve Decel time 3
-		P01_10	,	//	175	01-31	Stop Deceleration time
-        updatepr,   //  176 01-32   FSD
-        P01_33  ,   //  176 01-33   IODHT IO direct hold time
-        P01_33  ,   //  176 01-34   IODLT IO direct landing time
-        P01_33  ,   //  176 01-35   CRPLS_Jlim IO direct Jerk limit
-        P01_33  ,   //  176 01-36   IODLT IO direct DistancE
-        fnone   ,   //  176 01-37   IODLT IO direct DistancE reference
-        updatepr,   //  174 01-38   IODLC ENABLE
-        updatepr,   //  174 01-39   ETS Function //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
-        P01_10,     //  175 01-40   ESD Function //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
+		P01_00	,	//01-00	    Max Output Freq.
+		P01_01	,	//01-01	    Motor Base Frequency 1
+		P01_02	,	//01-02	    Max Output Voltage
+		updatepr,	//01-03	    Mid Output Freq.1
+		updatepr,	//01-04	    Mid Output Voltage 1
+		updatepr,	//01-05	    Mid Output Freq.2
+		updatepr,	//01-06	    Mid Output Voltage 2
+		P01_07	,	//01-07	    Min Output Freq.
+		updatepr,	//01-08	    Min Output Voltage
+		P01_07  ,	//01-09	    Start Frequency
+		P01_10	,	//01-10	    Upper Bound Freq.
+		P01_10	,	//01-11	    Lower Bound Freq.
+		P01_10	,	//01-12	    1st Acceleration time
+		P01_10	,	//01-13	    1st Deceleration time
+		P01_10	,	//01-14	    2nd Acceleration time
+		P01_10	,	//01-15	    2nd Deceleration time
+		P01_10	,	//01-16	    3rd Acceleration time
+		P01_10	,	//01-17	    3rd Deceleration time
+		P01_10	,	//01-18	    4th Acceleration time
+		P01_10	,	//01-19	    4th Deceleration time
+		P01_10	,	//01-20	    JOG Acceleration time
+		P01_10	,	//01-21	    JOG Deceleration time
+		P01_10	,	//01-22	    JOG Frequency
+		updatepr,	//01-23	    Transition Frequency ACC1/DEC1 to ACC4/DEC4
+		updatepr,	//01-24	    S curve Accel time 1
+		updatepr,	//01-25	    S curve Accel time 2
+		updatepr,	//01-26	    S curve Decel time 1
+		updatepr,	//01-27	    S curve Decel time 2
+		updatepr,	//01-28	    Select Zero Speed	
+		updatepr,	//01-29	    Landing Speed
+		updatepr,	//01-30	    S curve Decel time 3
+		P01_10	,	//01-31	    Stop Deceleration time
+        updatepr,   //01-32     FSD
+        P01_33  ,   //01-33     IODHT IO direct hold time
+        P01_33  ,   //01-34     IODLT IO direct landing time
+        P01_33  ,   //01-35     CRPLS_Jlim IO direct Jerk limit
+        P01_33  ,   //01-36     IODLT IO direct DistancE
+        fnone   ,   //01-37     IODLT IO direct DistancE reference
+        updatepr,   //01-38     IODLC ENABLE
+        updatepr,   //01-39     ETS Function //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
+        P01_10,     //01-40     ESD Function //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
         P01_10  ,   //  286 03-83   SIBO_DECEMY  
         updatepr  ,   //  289 03-84   SIBO_S3EMY  
         updatepr  ,   //  290 03-85   SIBO_S4EMY  
-#endif
+#else
+        fnone   ,	//01-41     RESERVE
+        fnone   ,   //01-42     RESERVE
+        fnone   ,	//01-43     RESERVE
+#endif        
+        updatepr,	//01-44     MI direct stop trigger speed	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+        fnone   ,	//01-45     RESERVE
+        fnone   ,   //01-46     RESERVE
+        fnone   ,	//01-47     RESERVE
+        fnone   ,	//01-48     RESERVE
+        fnone   ,	//01-49     RESERVE
+        
 /*---- GROUP 02---------------------------------------*/
-		P02_00	,	//	176	02-00	2/3 wire control
-		P02_01	,	//	177	02-01	Multi-Function Input 1
-		P02_02	,	//	178	02-02	Multi-Function Input 2
-		P02_02	,	//	179	02-03	Multi-Function Input 3
-		P02_02	,	//	180	02-04	Multi-Function Input 4
-		P02_02	,	//	181	02-05	Multi-Function Input 5
-		P02_02	,	//	182	02-06	Multi-Function Input 6
-		P02_02	,	//	183	02-07	Multi-Function Input 7
-		P02_02	,	//	184	02-08	Multi-Function Input 8
-		updatepr,	//	185	02-09	Digital in response time
-		flashpr	,	//	186	02-10	Multi-Function Input Inverse
-		P02_11,   	//	187	02-11	Multi-Function Relay 1
-		P02_11,	    //	188	02-12	Multi-Function Relay 2
-		P02_11,  	//	189	02-13	Multi-Function Output 1
-		P02_11,	    //	190	02-14	Multi-Function Output 2
-		P02_11,	    //	191	02-15	Multi-Function Output 3
-		P02_11,	    //	192	02-16	Multi-Function Output 4
-		P02_11,	    //	193	02-17	Multi-Function Output 5
-		P02_11,	    //	194	02-18	Multi-Function Output 6
-		P02_11,	    //	195	02-19	Multi-Function Output 7
-		P02_11,	    //	196	02-20	Multi-Function Output 8
-		fnone,	    //	197	02-21	Multi-Function Output 9
-		fnone,	    //	198	02-22	Multi-Function Output 10
-		flashpr	,	//	199	02-23	Multi-Function Output inverse
-		updatepr,	//	200	02-24	Sequence start mode
-		updatepr,	//	201	02-25	Desired Frequency 1
-		updatepr,	//	202	02-26	Band of Desired Frequency 1
-		updatepr,	//	203	02-27	Desired Frequency 2
-		updatepr,	//	204	02-28	Band of Desired Frequency 2
-		updatepr,	//	205	02-29	Brake Delay Timer Run 
-		updatepr,	//	206	02-30	Brake Delay Timer Stop 
-		updatepr,	//	207	02-31	Mech Contact Delay Timer Run
-		updatepr,	//	208	02-32	Mech Contact Delay Timer STOP
-		P02_33	,	//	209	02-33	Isum Current Output Detect
-		updatepr,	//	210	02-34	Speed Area
-		updatepr,	//	211	02-35	Mechanical Brake Checking Time
-		updatepr,	//	212	02-36	Magnetic Contactor Checking Time
-		updatepr,	//	213	02-37	Mechanical Brake Checking Current Enable
-		updatepr,   //	2xx 02-38       Star Contactor delay time when driver run     //[Star contactor function, Bernie, 2017/03/22]
-		updatepr,   //	2xx 02-39       Star Contactor delay time when driver stop   //[Star contactor function, Bernie, 2017/03/22]
-		updatepr,	//	2xx 02-40	LU/LD error  Selection	  //#15977, LULD detect, James, 2021/04/01
-		updatepr,	//	2xx 02-41	LD/LD OPEN Detect Time    //#15977, LULD detect, James, 2021/04/01
-	    updatepr,	//	2xx 02-42	LD/LD SHORT Detect Time	  //#15977, LULD detect, James, 2021/04/01
-		updatepr,	//	202 02-43	Band of Speed Agree Function //#18572   
-		updatepr,   //	218 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
-		updatepr,	//  2xx 02-45	//[Artemis Add Sensor819 Function/Special/2022/06/06]
-		updatepr,	//  2xx 02-46 //[Artemis Add Sensor819 Function/Special/2022/06/06]
+		P02_00	,	//02-00	    2/3 wire control
+		P02_01	,	//02-01	    Multi-Function Input 1
+		P02_02	,	//02-02	    Multi-Function Input 2
+		P02_02	,	//02-03	    Multi-Function Input 3
+		P02_02	,	//02-04	    Multi-Function Input 4
+		P02_02	,	//02-05	    Multi-Function Input 5
+		P02_02	,	//02-06	    Multi-Function Input 6
+		P02_02	,	//02-07	    Multi-Function Input 7
+		P02_02	,	//02-08	    Multi-Function Input 8
+		updatepr,	//02-09	    Digital in response time
+		flashpr	,	//02-10	    Multi-Function Input Inverse
+		P02_11  ,   //02-11	    Multi-Function Relay 1
+		P02_11  ,	//02-12	    Multi-Function Relay 2
+		P02_11  ,  	//02-13	    Multi-Function Output 1
+		P02_11  ,	//02-14	    Multi-Function Output 2
+		P02_11  ,	//02-15     Multi-Function Output 3
+		P02_11  ,	//02-16 	Multi-Function Output 4
+		P02_11  ,	//02-17	    Multi-Function Output 5
+		P02_11  ,	//02-18	    Multi-Function Output 6
+		P02_11  ,	//02-19	    Multi-Function Output 7
+		P02_11  ,	//02-20	    Multi-Function Output 8
+		fnone   ,	//02-21	    Multi-Function Output 9
+		fnone   ,	//02-22	    Multi-Function Output 10
+		flashpr	,	//02-23	    Multi-Function Output inverse
+		updatepr,	//02-24	    Sequence start mode
+		updatepr,	//02-25	    Desired Frequency 1
+		updatepr,	//02-26	    Band of Desired Frequency 1
+		updatepr,	//02-27	    Desired Frequency 2
+		updatepr,	//02-28	    Band of Desired Frequency 2
+		updatepr,	//02-29	    Brake Delay Timer Run 
+		updatepr,	//02-30	    Brake Delay Timer Stop 
+		updatepr,	//02-31	    Mech Contact Delay Timer Run
+		updatepr,	//02-32	    Mech Contact Delay Timer STOP
+		P02_33	,	//02-33	    Isum Current Output Detect
+		updatepr,	//02-34	    Speed Area
+		updatepr,	//02-35	    Mechanical Brake Checking Time
+		updatepr,	//02-36	    Magnetic Contactor Checking Time
+		updatepr,	//02-37	    Mechanical Brake Checking Current Enable
+		updatepr,   //02-38     Star Contactor delay time when driver run     //[Star contactor function, Bernie, 2017/03/22]
+		updatepr,   //02-39     Star Contactor delay time when driver stop   //[Star contactor function, Bernie, 2017/03/22]
+		updatepr,	//02-40	    LU/LD error  Selection	  //#15977, LULD detect, James, 2021/04/01
+		updatepr,	//02-41	    LD/LD OPEN Detect Time    //#15977, LULD detect, James, 2021/04/01
+	    updatepr,	//02-42	    LD/LD SHORT Detect Time	  //#15977, LULD detect, James, 2021/04/01
+		updatepr,	//02-43	    Band of Speed Agree Function //#18572   
+		updatepr,   //02-44     STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
+		updatepr,	//02-45	    //[Artemis Add Sensor819 Function/Special/2022/06/06]
+		updatepr,	//02-46     //[Artemis Add Sensor819 Function/Special/2022/06/06]
+
+        fnone   ,	//02-47     RESERVE
+        fnone   ,	//02-48     RESERVE
+        fnone   ,	//02-49     RESERVE
+        fnone   ,	//02-50     RESERVE
+        fnone   ,	//02-51     RESERVE
+        fnone   ,   //02-52     RESERVE
+        fnone   ,	//02-53     RESERVE
+        fnone   ,	//02-54     RESERVE
+        fnone   ,	//02-55     RESERVE
+        fnone   ,   //02-56     RESERVE
+        fnone   ,	//02-57     RESERVE
+        fnone   ,	//02-58     RESERVE
+        fnone   ,	//02-59     RESERVE
+        fnone   ,	//02-60     RESERVE
+        fnone   ,	//02-61     RESERVE
+        fnone   ,   //02-62     RESERVE
+        fnone   ,	//02-63     RESERVE
+        fnone   ,	//02-64     RESERVE
+        fnone   ,	//02-65     RESERVE
+        fnone   ,   //02-66     RESERVE
+        fnone   ,	//02-67     RESERVE
+        fnone   ,	//02-68     RESERVE
+        fnone   ,	//02-69     RESERVE
+        fnone   ,	//02-70     RESERVE
+        fnone   ,	//02-71     RESERVE
+        fnone   ,   //02-72     RESERVE
+        fnone   ,	//02-73     RESERVE
+        fnone   ,	//02-74     RESERVE
+        fnone   ,	//02-75     RESERVE
+        fnone   ,   //02-76     RESERVE
+        fnone   ,	//02-77     RESERVE
+        fnone   ,	//02-78     RESERVE
+        fnone   ,	//02-79     RESERVE
+        fnone   ,	//02-80     RESERVE
+        fnone   ,	//02-81     RESERVE
+        fnone   ,   //02-82     RESERVE
+        fnone   ,	//02-83     RESERVE
+        fnone   ,	//02-84     RESERVE
+        fnone   ,	//02-85     RESERVE
+        fnone   ,   //02-86     RESERVE
+        fnone   ,	//02-87     RESERVE
+        fnone   ,	//02-88     RESERVE
+        fnone   ,	//02-89     RESERVE
+        fnone   ,	//02-90     RESERVE
+        fnone   ,	//02-91     RESERVE
+        fnone   ,   //02-92     RESERVE
+        fnone   ,	//02-93     RESERVE
+        fnone   ,	//02-94     RESERVE
+        fnone   ,	//02-95     RESERVE
+        fnone   ,   //02-96     RESERVE
+        fnone   ,	//02-97     RESERVE
+        fnone   ,	//02-98     RESERVE
+        fnone   ,	//02-99     RESERVE
+
 /*---- GROUP 03---------------------------------------*/
-		updatepr,	//	214  03-00	AVI selection
-		updatepr,	//	215  03-01	ACI selection
-		updatepr,	//	216  03-02	AUI selection
-		updatepr,	//	217  03-03	AVI input Bias
-		updatepr,	//	218  03-04	ACI input Bias
-		updatepr,	//	219  03-05	AUI input Bias
-		updatepr,	//	220  03-06	AVI input Polarity
-		updatepr,	//	221  03-07	ACI input Polarity
-		updatepr,	//	222  03-08	AUI input Polarity
-		updatepr,	//	223  03-09	AVI input Gain
-		updatepr,	//	224  03-10	ACI input Gain
-		updatepr,	//	225  03-11	AUI input Gain
-		LPFGain	,	//	226  03-12	Low pass filter of Analong input
-		LPFGain	,	//	227  03-13	Low pass filter of Analong input
-		LPFGain ,	//	228  03-14	Low pass filter of Analong input
-		P03_15  ,	//	229  03-15	Loss of ACI
-		flashpr ,	//	230  03-16	AD Calibration Flag
-		updatepr,	//	231  03-17	Analog Output 1 Setting
-		updatepr,	//	232  03-18	Analog Output 1 Gain
-		updatepr,	//	233  03-19	AO1 in minus value
-		updatepr,	//	234  03-20	Analog Output 1 Setting
-		updatepr,	//	235  03-21	Analog Output 1 Gain
-		updatepr,	//	236  03-22	AO1 in minus value
-		updatepr,	//	237  03-23	AUI1 Input Polar
-		updatepr,	//	238  03-24	AUI2 Input Polar
-		//updatepr,	//	2XX  03-25      AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-		//updatepr,	//	2XX  03-26	AUI2 Communciate
+		updatepr,	//03-00	    AVI selection
+		updatepr,	//03-01	    ACI selection
+		updatepr,	//03-02	    AUI selection
+		updatepr,	//03-03	    AVI input Bias
+		updatepr,	//03-04	    ACI input Bias
+		updatepr,	//03-05	    AUI input Bias
+		updatepr,	//03-06	    AVI input Polarity
+		updatepr,	//03-07	    ACI input Polarity
+		updatepr,	//03-08	    AUI input Polarity
+		updatepr,	//03-09	    AVI input Gain
+		updatepr,	//03-10	    ACI input Gain
+		updatepr,	//03-11	    AUI input Gain
+		LPFGain	,	//03-12	    Low pass filter of Analong input
+		LPFGain	,	//03-13	    Low pass filter of Analong input
+		LPFGain ,	//03-14	    Low pass filter of Analong input
+		P03_15  ,	//03-15	    Loss of ACI
+		flashpr ,	//03-16	    AD Calibration Flag
+		updatepr,	//03-17	    Analog Output 1 Setting
+		updatepr,	//03-18	    Analog Output 1 Gain
+		updatepr,	//03-19	    AO1 in minus value
+		updatepr,	//03-20	    Analog Output 1 Setting
+		updatepr,	//03-21	    Analog Output 1 Gain
+		updatepr,	//03-22	    AO1 in minus value
+		updatepr,	//03-23	    AUI1 Input Polar
+		updatepr,	//03-24	    AUI2 Input Polar
+		//updatepr,	//03-25     AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+		//updatepr,	//03-26	    AUI2 Communciate
         
 /*---- GROUP 04-------------------------------------*/
-        updatepr, //  239  04-00  Multi-Speed 0
-        updatepr, //  240  04-01  Multi-Speed 1
-        P01_33  , //  241  04-02  Multi-Speed 2 // [IODLC, Lyabryan, 2016/11/11]
-        updatepr, //  242  04-03  Multi-Speed 3
-        updatepr, //  243  04-04  Multi-Speed 4
-        updatepr, //  244  04-05  Multi-Speed 5
-        updatepr, //  245  04-06  Multi-Speed 6
-        updatepr, //  246  04-07  Multi-Speed 7
-        updatepr, //  247  04-08  Multi-Speed 8
-        updatepr, //  248  04-09  Multi-Speed 9
-        updatepr, //  249  04-10  Multi-Speed 10
-        updatepr, //  250  04-11  Multi-Speed 11
-        updatepr, //  251  04-12  Multi-Speed 12
-        updatepr, //  252  04-13  Multi-Speed 13
-        updatepr, //  253  04-14  Multi-Speed 14
-        updatepr, //  254  04-15  Multi-Speed 15     
+        updatepr,   //04-00     Multi-Speed 0
+        updatepr,   //04-01     Multi-Speed 1
+        P01_33  ,   //04-02     Multi-Speed 2 // [IODLC, Lyabryan, 2016/11/11]
+        updatepr,   //04-03     Multi-Speed 3
+        updatepr,   //04-04     Multi-Speed 4
+        updatepr,   //04-05     Multi-Speed 5
+        updatepr,   //04-06     Multi-Speed 6
+        updatepr,   //04-07     Multi-Speed 7
+        updatepr,   //04-08     Multi-Speed 8
+        updatepr,   //04-09     Multi-Speed 9
+        updatepr,   //04-10     Multi-Speed 10
+        updatepr,   //04-11     Multi-Speed 11
+        updatepr,   //04-12     Multi-Speed 12
+        updatepr,   //04-13     Multi-Speed 13
+        updatepr,   //04-14     Multi-Speed 14
+        updatepr,   //04-15     Multi-Speed 15     
         
-        updatepr, //  2XX 04-16   DLC Acceleration    //[DLC, Bernie, 2014/10/06] 
-        updatepr, //  2XX 04-17   DLC Deceleration                   
-        updatepr, //  2XX 04-18   Rescue Speed                                           
-        updatepr, //  2XX 04-19   GFC Rope compensation, 2021/03/30                                
-        updatepr, //  2XX 04-20   Re-Leveling Speed                                      
-        updatepr, //  2XX 04-21   Forced Stop2 Deceleration (FSD)                                      
-        updatepr, //  2XX 04-22                                          
-        P04_23,   //  2XX 04-23   current lev   // mod cur lev writable, v0.03               
-        updatepr, //  2XX 04-24                                                      
-        updatepr, //  2XX 04-25   Landing Tolerance Delay Time                         
-        updatepr, //  2XX 04-26   Leveling Plank Length                                
-        updatepr, //  2XX 04-27   Maximum Floor                                        
-        updatepr, //  2XX 04-28   Minimum Floor                                        
-        updatepr, //  2XX 04-29   Inverter Target Floor 
-        updatepr, //  2XX 04-30   RESERVE
-        updatepr, //  2XX 04-31   RESERVE
-        updatepr, //  2XX 04-32   RESERVE
-        updatepr, //  2XX 04-33   RESERVE
+        updatepr,   //04-16     DLC Acceleration    //[DLC, Bernie, 2014/10/06] 
+        updatepr,   //04-17     DLC Deceleration                   
+        updatepr,   //04-18     Rescue Speed                                           
+        updatepr,   //04-19     GFC Rope compensation, 2021/03/30                                
+        updatepr,   //04-20     Re-Leveling Speed                                      
+        updatepr,   //04-21     Forced Stop2 Deceleration (FSD)                                      
+        updatepr,   //04-22                                          
+        P04_23  ,   //04-23     current lev   // mod cur lev writable, v0.03               
+        updatepr,   //04-24                                                      
+        updatepr,   //04-25     Landing Tolerance Delay Time                         
+        updatepr,   //04-26     Leveling Plank Length                                
+        updatepr,   //04-27     Maximum Floor                                        
+        updatepr,   //04-28     Minimum Floor                                        
+        updatepr,   //04-29     Inverter Target Floor 
+        updatepr,   //04-30     RESERVE
+        updatepr,   //04-31     RESERVE
+        updatepr,   //04-32     RESERVE
+        updatepr,   //04-33     RESERVE
          
-        updatepr, //  2XX 04-34   RESERVE
-        updatepr, //  2XX 04-35   RESERVE
-        updatepr, //  2XX 04-36   RESERVE
-        updatepr, //  2XX 04-37   RESERVE
-        updatepr, //  2XX 04-38   RESERVE
-        updatepr, //  2XX 04-39   RESERVE
-        updatepr, //  2XX 04-40   DelayCmp//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
-        updatepr, //  2XX 04-41   RESERVE
-        updatepr, //  2XX 04-42   RESERVE
-        updatepr, //  2XX 04-43   RESERVE
-        updatepr, //  2XX 04-44   RESERVE
-        //P04_45, //  2XX 04-45   RESERVE //jerk adj,Henry
-        updatepr, //  2XX 04-45   DD1_Vlim //Artemis speed limit, James, 20200220
-        updatepr, //  2XX 04-46   DD2_Vlim //Artemis speed limit, James, 20200220
-        updatepr, //  2XX 04-47   DD3_Vlim //Artemis speed limit, James, 20200220
-        updatepr, //  2XX 04-48   DD4_Vlim //Artemis speed limit, James, 20200220
+        updatepr,   //04-34     RESERVE
+        updatepr,   //04-35     RESERVE
+        updatepr,   //04-36     RESERVE
+        updatepr,   //04-37     RESERVE
+        updatepr,   //04-38     RESERVE
+        updatepr,   //04-39     RESERVE
+        updatepr,   //04-40     DelayCmp//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
+        updatepr,   //04-41     RESERVE
+        updatepr,   //04-42     RESERVE
+        updatepr,   //04-43     RESERVE
+        updatepr,   //04-44     RESERVE
+
+        updatepr,   //04-45     DD1_Vlim //Artemis speed limit, James, 20200220
+        updatepr,   //04-46     DD2_Vlim //Artemis speed limit, James, 20200220
+        updatepr,   //04-47     DD3_Vlim //Artemis speed limit, James, 20200220
+        updatepr,   //04-48     DD4_Vlim //Artemis speed limit, James, 20200220
         
-        P04_49, //  2XX 04-49   User page
+        P04_49  ,   //04-49     User page
         
         // DLC position offset, Henry
         //#if DLCPOS     
-        #if 1       //[adjust floor position adjust,Aevin,2018/06/19]
-        P04_50, //  2XX 04-50   1Floor Position H                                  
-        P04_50, //  2XX 04-51   1Floor Position L                                  
-        P04_50, //  2XX 04-52   2Floor Position H                                  
-        P04_50, //  2XX 04-53   2Floor Position L                                  
-        P04_50, //  2XX 04-54   3Floor Position H                                  
-        P04_50, //  2XX 04-55   3Floor Position L                                  
-        P04_50, //  2XX 04-56   4Floor Position H                                  
-        P04_50, //  2XX 04-57   4Floor Position L                                  
-        P04_50, //  2XX 04-58   5Floor Position H                                  
-        P04_50, //  2XX 04-59   5Floor Position L                                  
-        P04_50, //  2XX 04-60   6Floor Position H                                  
-        P04_50, //  2XX 04-61   6Floor Position L                                  
-        P04_50, //  2XX 04-62   7Floor Position H                                  
-        P04_50, //  2XX 04-63   7Floor Position L                                  
-        P04_50, //  2XX 04-64   8Floor Position H                                  
-        P04_50, //  2XX 04-65   8Floor Position L                                  
-        P04_50, //  2XX 04-66   9Floor Position H                                  
-        P04_50, //  2XX 04-67   9Floor Position L                                  
-        P04_50, //  2XX 04-68   10Floor Position H                                 
-        P04_50, //  2XX 04-69   10Floor Position L                                 
-        P04_50, //  2XX 04-70   11Floor Position H                                 
-        P04_50, //  2XX 04-71   11Floor Position L                                 
-        P04_50, //  2XX 04-72   12Floor Position H                                 
-        P04_50, //  2XX 04-73   12Floor Position L                                 
-        P04_50, //  2XX 04-74   13Floor Position H                                 
-        P04_50, //  2XX 04-75   13Floor Position L                                 
-        P04_50, //  2XX 04-76   14Floor Position H                                 
-        P04_50, //  2XX 04-77   14Floor Position L                                 
-        P04_50, //  2XX 04-78   15Floor Position H                                 
-        P04_50, //  2XX 04-79   15Floor Position L                                 
-        P04_50, //  2XX 04-80   16Floor Position H                                 
-        P04_50, //  2XX 04-81   16Floor Position L                                 
-        P04_50, //  2XX 04-82   17Floor Position H                                 
-        P04_50, //  2XX 04-83   17Floor Position L                                 
-        P04_50, //  2XX 04-84   18Floor Position H                                 
-        P04_50, //  2XX 04-85   18Floor Position L                                 
-        P04_50, //  2XX 04-86   19Floor Position H                                 
-        P04_50, //  2XX 04-87   19Floor Position L                                 
-        P04_50, //  2XX 04-88   20Floor Position H                                 
-        P04_50, //  2XX 04-89   20Floor Position L                                 
-        P04_50, //  2XX 04-90   21Floor Position H                                 
-        P04_50, //  2XX 04-91   21Floor Position L                                 
-        P04_50, //  2XX 04-92   22Floor Position H                                 
-        P04_50, //  2XX 04-93   22Floor Position L                                 
-        P04_50, //  2XX 04-94   23Floor Position H                                 
-        P04_50, //  2XX 04-95   23Floor Position L                                 
-        P04_50, //  2XX 04-96   24Floor Position H                                 
-        P04_50, //  2XX 04-97   24Floor Position L                                 
-        P04_50, //  2XX 04-98   25Floor Position H                                 
-        P04_50, //  2XX 04-99   25Floor Position L                           
+        #if 1       //          [adjust floor position adjust,Aevin,2018/06/19]
+        P04_50  ,   //04-50     1Floor Position H                                  
+        P04_50  ,   //04-51     1Floor Position L                                  
+        P04_50  ,   //04-52     2Floor Position H                                  
+        P04_50  ,   //04-53     2Floor Position L                                  
+        P04_50  ,   //04-54     3Floor Position H                                  
+        P04_50  ,   //04-55     3Floor Position L                                  
+        P04_50  ,   //04-56     4Floor Position H                                  
+        P04_50  ,   //04-57     4Floor Position L                                  
+        P04_50  ,   //04-58     5Floor Position H                                  
+        P04_50  ,   //04-59     5Floor Position L                                  
+        P04_50  ,   //04-60     6Floor Position H                                  
+        P04_50  ,   //04-61     6Floor Position L                                  
+        P04_50  ,   //04-62     7Floor Position H                                  
+        P04_50  ,   //04-63     7Floor Position L                                  
+        P04_50  ,   //04-64     8Floor Position H                                  
+        P04_50  ,   //04-65     8Floor Position L                                  
+        P04_50  ,   //04-66     9Floor Position H                                  
+        P04_50  ,   //04-67     9Floor Position L                                  
+        P04_50  ,   //04-68     10Floor Position H                                 
+        P04_50  ,   //04-69     10Floor Position L                                 
+        P04_50  ,   //04-70     11Floor Position H                                 
+        P04_50  ,   //04-71     11Floor Position L                                 
+        P04_50  ,   //04-72     12Floor Position H                                 
+        P04_50  ,   //04-73     12Floor Position L                                 
+        P04_50  ,   //04-74     13Floor Position H                                 
+        P04_50  ,   //04-75     13Floor Position L                                 
+        P04_50  ,   //04-76     14Floor Position H                                 
+        P04_50  ,   //04-77     14Floor Position L                                 
+        P04_50  ,   //04-78     15Floor Position H                                 
+        P04_50  ,   //04-79     15Floor Position L                                 
+        P04_50  ,   //04-80     16Floor Position H                                 
+        P04_50  ,   //04-81     16Floor Position L                                 
+        P04_50  ,   //04-82     17Floor Position H                                 
+        P04_50  ,   //04-83     17Floor Position L                                 
+        P04_50  ,   //04-84     18Floor Position H                                 
+        P04_50  ,   //04-85     18Floor Position L                                 
+        P04_50  ,   //04-86     19Floor Position H                                 
+        P04_50  ,   //04-87     19Floor Position L                                 
+        P04_50  ,   //04-88     20Floor Position H                                 
+        P04_50  ,   //04-89     20Floor Position L                                 
+        P04_50  ,   //04-90     21Floor Position H                                 
+        P04_50  ,   //04-91     21Floor Position L                                 
+        P04_50  ,   //04-92     22Floor Position H                                 
+        P04_50  ,   //04-93     22Floor Position L                                 
+        P04_50  ,   //04-94     23Floor Position H                                 
+        P04_50  ,   //04-95     23Floor Position L                                 
+        P04_50  ,   //04-96     24Floor Position H                                 
+        P04_50  ,   //04-97     24Floor Position L                                 
+        P04_50  ,   //04-98     25Floor Position H                                 
+        P04_50  ,   //04-99     25Floor Position L                           
         #else
         updatepr, //  2XX 04-50   1Floor Position H                                  
         updatepr, //  2XX 04-51   1Floor Position L                                  
@@ -467,631 +540,695 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
         #endif   
                       
 /*---- GROUP 05-------------------------------------*/
-		P05_00	,	//	255  05-00	Motor Auto-Tuning
-		P05_01	,	//	256  05-01	Motor 1 rated Current
-		P05_02	,	//	257  05-02	Motor 1 Rated Power
-		P05_03	,	//	258  05-03	Motor 1 Rated RPM
-		P05_04	,	//	259  05-04	Motor 1 pole No.
-		P05_05	,	//	260  05-05	Motor 1 No-Load Current
-		P05_06	,	//	261  05-06	Motor 1 Rs
-		P05_07	,	//	262  05-07	Motor 1 Rr
-		P05_08	,	//	263  05-08	Motor 1 Lm
-		P05_09	,	//	264  05-09	Motor 1 Lx
-		LPFGain	,	//	265  05-10	Vector Voltage Filter
-		LPFGain	,	//	266  05-11	Vector Slip Filter
-		updatepr,	//	267  05-12	Torque Compensation Gain
-		P15_02	,	//	268  05-13	Slip Compensation Gain
-		updatepr,	//	269  05-14	Slip Deviation level
-		updatepr,	//	270  05-15	Slip Deviation Detect Time
-		updatepr,	//	271  05-16	Over Slip treatment
-		updatepr,	//	272  05-17	Coeff for hunting disable
-		P05_18	,	//	273  05-18	Accumulative Motor Operation Min
-		P05_18	,	//	274  05-19	Accumulative Motor Operation Day
-		updatepr,	//	275  05-20	Coreloss % of output Power
-		updatepr,	//	276  05-21	Power On Min
-		updatepr,	//	277  05-22	Power On Day		
-        updatepr,   //  2XX  05-23  Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
-        updatepr,   //  123
+		P05_00	,   //05-00	    Motor Auto-Tuning
+		P05_01	,	//05-01	    Motor 1 rated Current
+		P05_02	,	//05-02	    Motor 1 Rated Power
+		P05_03	,	//05-03	    Motor 1 Rated RPM
+		P05_04	,	//05-04	    Motor 1 pole No.
+		P05_05	,	//05-05	    Motor 1 No-Load Current
+		P05_06	,	//05-06	    Motor 1 Rs
+		P05_07	,	//05-07	    Motor 1 Rr
+		P05_08	,	//05-08	    Motor 1 Lm
+		P05_09	,	//05-09	    Motor 1 Lx
+		LPFGain	,	//05-10	    Vector Voltage Filter
+		LPFGain	,	//05-11	    Vector Slip Filter
+		updatepr,	//05-12	    Torque Compensation Gain
+		P15_02	,	//05-13	    Slip Compensation Gain
+		updatepr,	//05-14	    Slip Deviation level
+		updatepr,	//05-15	    Slip Deviation Detect Time
+		updatepr,	//05-16	    Over Slip treatment
+		updatepr,	//05-17	    Coeff for hunting disable
+		P05_18	,	//05-18	    Accumulative Motor Operation Min
+		P05_18	,	//05-19	    Accumulative Motor Operation Day
+		updatepr,	//05-20	    Coreloss % of output Power
+		updatepr,	//05-21	    Power On Min
+		updatepr,	//05-22	    Power On Day		
+        updatepr,   //05-23     Generator Slip Compensation percent     //[slip compensation function, Bernie, 2012/06/20]
+        updatepr,   //05-24     Generator Slip Compensation percent     //[slip compensation function, Bernie, 2012/06/20]
         
 /*---- GROUP 06-------------------------------------*/
-		P06_00	,	//    278   06-00	Low voltage level
-		updatepr,	//    279   06-01	Phase loss
-		updatepr,	//    280   06-02	OC stall during Accel
-		updatepr,	//    281   06-03	OC stall during Decel
-		updatepr,	//    282   06-04	Stall preventation Accel/Decel time selection
-		updatepr,	//    283   06-05	Over-Torque 1 Selection
-		updatepr,	//    284   06-06	Over-Torque 1 level
-		updatepr,	//    285   06-07	Over-Torque 1 Time
-		updatepr,	//    286   06-08	Over-Torque 2 Selection
-		updatepr,	//    287   06-09	Over-Torque 2 level
-		updatepr,	//    288   06-10	Over-Torque 2 Time
-		updatepr,	//    289   06-11	Current Limit
-		updatepr,	//    290   06-12	Thermal Relay 1 Selection
-		updatepr,	//    291   06-13	Thermal Relay 1 Time
-		updatepr,	//    292   06-14	OH Warning Level
-		updatepr,	//    293   06-15	Stall preventation Limit Level
-		P06_16	,	//    294   06-16	1st Fault Record
-		P06_17	,	//    295   06-17	2nd Fault Record
-		P06_17	,	//    296   06-18	3rd Fault Record
-		P06_17	,	//    297   06-19	4th Fault Record
-		P06_17	,	//    298   06-20	5th Fault Record
-		P06_17	,	//    299   06-21	6th Fault Record
-		updatepr,	//    300   06-22	Fault Option 1
-		updatepr,	//    301   06-23	Fault Option 2
-		updatepr,	//    302   06-24	Fault Option 3
-		updatepr,	//    303   06-25	Fault Option 4
-		updatepr,	//    304   06-26	PTC over Treatments
-		updatepr,	//    305   06-27	PTC Level
-		LPFGain ,	//    306   06-28	PTC Detect Filter time
-		P06_00	,	//    307   06-29	EPS voltage level
-		updatepr,	//    308   06-30	Fault Option Mode
-		updatepr,	//    309   06-31	Motor Phase Detection Mode, Add by DINO, 05/12/2009
-		fnone  	,	//    310   06-32	1st Fault Time(MIN)
-		fnone  	,	//    311   06-33	1st Fault Time(DAY)
-		fnone  	,	//    312   06-34	2nd Fault Time(MIN)
-		fnone  	,	//    313   06-35	2nd Fault Time(DAY)
-		fnone  	,	//    314   06-36	3rd Fault Time(MIN)
-		fnone  	,	//    315   06-37	3rd Fault Time(DAY)
-		fnone  	,	//    316   06-38	4th Fault Time(MIN)
-		fnone  	,	//    317   06-39	4th Fault Time(DAY)
-		fnone  	,	//    318   06-40	5th Fault Time(MIN)
-		fnone  	,	//    319   06-41	5th Fault Time(DAY)
-		fnone  	,	//    320   06-42	6th Fault Time(MIN)
-		fnone  	,	//    321   06-43	6th Fault Time(DAY)
-		updatepr,	//    322   06-44	EPS Frequency
-		updatepr,	//    323   06-45	LV Option
-		P06_46,	    //    324   06-46	EPS Option
-		updatepr,	//    325   06-47   Generation Operation Deteced Time
-		P06_00,		//    326   06-48	UPS Capacity (0.1KVA)
-		updatepr,   //    3xx   06-49   STO Lock selection     //[Safty function, Bernie]
-		updatepr,   //    3xx   06-50	Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
-		P06_51,     //    3xx   06-51	Auto restart times after fault
-		P06_52,     //    3xx   06-52   Auto restart interval
-		fnone	,   //    99    06-53   Fkey Record     
-		updatepr,	//    94    06-54   Fcmd Record, add by dino, 10/31/2007
-        updatepr,   //    82    06-55   Isum Record
-        updatepr,	//    79    06-56   Fout Record
-        updatepr,	//    80    06-57   Vout Record
-		updatepr,	//    81    06-58   Dcbus Record
-		fnone	,	//    100   06-59   Power Record      
-		fnone  	,	//    101   06-60   Torque Record  
-		updatepr,	//    83    06-61   IGBT Temperature Record
-		fnone  	,	//    102   06-62   MFI State Record  
-		fnone  	,	//    103   06-63   MFO State Record  
-		fnone  	,	//    104   06-64   Drive State Record
-        updatepr,   //    3xx   06-65   Current limitation for UCMP function             //[UCMP function, Bernie, 2016/06/14]
-        updatepr,   //    3xx   06-66   Service time count                                  //[Service time function, Bernie, 2017/03/14]
-        P06_67  ,   //    3xx   06-67   Service time function Enable                      //[Service time function, Bernie, 2017/03/14]
-        updatepr,   //    103   06-68   MFO State Record   //[EPS autodetect dir,Lyabryan,2018/07/02]
-        fnone   ,   //    104   06-69   Drive State Record //[EPS autodetect dir,Lyabryan,2018/07/02]
-        fnone   ,   //    103   06-70   MFO State Record   //[EPS autodetect dir,Lyabryan,2018/07/02]
-        updatepr,   //    104   06-71   Drive State Record //[EPS MO Output,Lyabryan,2018/06/19]
-        updatepr,   //    104   06-72   Drive State Record //[EPS MO Output,Lyabryan,2018/06/19]
-		//[ //[Running Dir Count,Special,2018/08/17]
-        fnone   ,   //    3xx   06-73   
-        fnone   ,   //    3xx   06-74   
-        fnone   ,   //    103   06-75   
-        fnone   ,   //    104   06-76   
-        fnone   ,   //    103   06-77   
-        updatepr,   //    104   06-78   
-        P06_79  ,   //    104   06-79  
-        //] //[Running Dir Count,Special,2018/08/17]
-        fnone    , //    104   06-80
-        fnone    ,//    104   06-81
-        fnone    ,//    104   06-82
-        fnone    ,//    104   06-83
-        fnone    ,//    104   06-84
-        fnone    ,//    104   06-85
-        fnone    ,//    104   06-86
-        fnone    ,//    104   06-87
-        fnone    ,//    104   06-88
-        fnone    ,//    104   06-89
-        fnone    ,//    104   06-90
-        fnone    ,//    104   06-91
-        fnone    ,//    104   06-92
-        fnone    ,//    104   06-93
-        fnone    ,//    104   06-94
-        fnone    ,//    104   06-95
-        fnone    ,//    104   06-96
-        fnone    ,//    104   06-97
-        fnone    ,//    104   06-98
-        fnone    ,//    104   06-99
+		P06_00	,	//06-00	    Low voltage level
+		updatepr,	//06-01	    Phase loss
+		updatepr,	//06-02	    OC stall during Accel
+		updatepr,	//06-03	    OC stall during Decel
+		updatepr,	//06-04	    Stall preventation Accel/Decel time selection
+		updatepr,	//06-05	    Over-Torque 1 Selection
+		updatepr,	//06-06	    Over-Torque 1 level
+		updatepr,	//06-07	    Over-Torque 1 Time
+		updatepr,	//06-08	    Over-Torque 2 Selection
+		updatepr,	//06-09	    Over-Torque 2 level
+		updatepr,	//06-10	    Over-Torque 2 Time
+		updatepr,	//06-11	    Current Limit
+		updatepr,	//06-12	    Thermal Relay 1 Selection
+		updatepr,	//06-13	    Thermal Relay 1 Time
+		updatepr,	//06-14	    OH Warning Level
+		updatepr,	//06-15	    Stall preventation Limit Level
+		P06_16	,	//06-16	    1st Fault Record
+		P06_17	,	//06-17	    2nd Fault Record
+		P06_17	,	//06-18	    3rd Fault Record
+		P06_17	,	//06-19	    4th Fault Record
+		P06_17	,	//06-20	    5th Fault Record
+		P06_17	,	//06-21	    6th Fault Record
+		updatepr,	//06-22	    Fault Option 1
+		updatepr,	//06-23	    Fault Option 2
+		updatepr,	//06-24	    Fault Option 3
+		updatepr,	//06-25	    Fault Option 4
+		updatepr,	//06-26	    PTC over Treatments
+		updatepr,	//06-27	    PTC Level
+		LPFGain ,	//06-28	    PTC Detect Filter time
+		P06_00	,	//06-29	    EPS voltage level
+		updatepr,	//06-30	    Fault Option Mode
+		updatepr,	//06-31	    Motor Phase Detection Mode, Add by DINO, 05/12/2009
+		fnone  	,	//06-32	    1st Fault Time(MIN)
+		fnone  	,	//06-33	    1st Fault Time(DAY)
+		fnone  	,	//06-34	    2nd Fault Time(MIN)
+		fnone  	,	//06-35	    2nd Fault Time(DAY)
+		fnone  	,	//06-36	    3rd Fault Time(MIN)
+		fnone  	,	//06-37	    3rd Fault Time(DAY)
+		fnone  	,	//06-38	    4th Fault Time(MIN)
+		fnone  	,	//06-39	    4th Fault Time(DAY)
+		fnone  	,	//06-40	    5th Fault Time(MIN)
+		fnone  	,	//06-41	    5th Fault Time(DAY)
+		fnone  	,	//06-42	    6th Fault Time(MIN)
+		fnone  	,	//06-43	    6th Fault Time(DAY)
+		updatepr,	//06-44	    EPS Frequency
+		updatepr,	//06-45	    LV Option
+		P06_46  ,	//06-46	    EPS Option
+		updatepr,	//06-47     Generation Operation Deteced Time
+		P06_00  ,   //06-48	    UPS Capacity (0.1KVA)
+		updatepr,   //06-49     STO Lock selection     //[Safty function, Bernie]
+		updatepr,   //06-50	    Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
+		P06_51  ,   //06-51	    Auto restart times after fault
+		P06_52  ,   //06-52     Auto restart interval
+		fnone	,   //06-53     Fkey Record     
+		updatepr,	//06-54     Fcmd Record, add by dino, 10/31/2007
+        updatepr,   //06-55     Isum Record
+        updatepr,	//06-56     Fout Record
+        updatepr,	//06-57     Vout Record
+		updatepr,	//06-58     Dcbus Record
+		fnone	,	//06-59     Power Record      
+		fnone  	,	//06-60     Torque Record  
+		updatepr,	//06-61     IGBT Temperature Record
+		fnone  	,	//06-62     MFI State Record  
+		fnone  	,	//06-63     MFO State Record  
+		fnone  	,	//06-64     Drive State Record
+        updatepr,   //06-65     Current limitation for UCMP function             //[UCMP function, Bernie, 2016/06/14]
+        updatepr,   //06-66     Service time count                               //[Service time function, Bernie, 2017/03/14]
+        P06_67  ,   //06-67     Service time function Enable                     //[Service time function, Bernie, 2017/03/14]
+        updatepr,   //06-68     MFO State Record   //[EPS autodetect dir,Lyabryan,2018/07/02]
+        fnone   ,   //06-69     Drive State Record //[EPS autodetect dir,Lyabryan,2018/07/02]
+        fnone   ,   //06-70     MFO State Record   //[EPS autodetect dir,Lyabryan,2018/07/02]
+        updatepr,   //06-71     Drive State Record //[EPS MO Output,Lyabryan,2018/06/19]
+        updatepr,   //06-72     Drive State Record //[EPS MO Output,Lyabryan,2018/06/19]
+//[Running Dir Count,Special,2018/08/17]
+        fnone   ,   //06-73     Running direction count high
+        fnone   ,   //06-74     Running direction count low
+        fnone   ,   //06-75     Temp running direction count high
+        fnone   ,   //06-76     Temp running direction count low
+        fnone   ,   //06-77     Temp running reset count 
+        updatepr,   //06-78     Running life 
+        P06_79  ,   //06-79     Running function
+//[Running Dir Count,Special,2018/08/17]
+        fnone   ,   //06-80     increase FOUT error record1
+        fnone   ,   //06-81     increase DCBUS error record1
+        fnone   ,   //06-82     increase ISUM error record1
+        fnone   ,   //06-83     increase TH_TEMP error record1
+        fnone   ,   //06-84     increase FOUT error record2
+        fnone   ,   //06-85     increase DCBUS error record2
+        fnone   ,   //06-86     increase ISUM error record2
+        fnone   ,   //06-87     increase TH_TEMP error record2
+        fnone   ,   //06-88     increase FOUT error record3
+        fnone   ,   //06-89     increase DCBUS error record3
+        fnone   ,   //06-90     increase ISUM error record3
+        fnone   ,   //06-91     increase TH_TEMP error record3
+        fnone   ,   //06-92     increase FOUT error record4
+        fnone   ,   //06-93     increase DCBUS error record4
+        fnone   ,   //06-94     increase ISUM error record4
+        fnone   ,   //06-95     increase TH_TEMP error record4
+        fnone   ,   //06-96     increase FOUT error record5
+        fnone   ,   //06-97     increase DCBUS error record5
+        fnone   ,   //06-98     increase ISUM error record5
+        fnone   ,   //06-99     increase TH_TEMP error record5
+        
 /*---- GROUP 07-------------------------------------*/
-		P07_00  ,	//	327    07-00	SW Braking Level
-		P07_00  ,	//	328    07-01	// [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]  
-		updatepr,	//	329    07-02	DCI Current Level
-		updatepr,	//	330    07-03	DCI Time at Start 
-		updatepr,	//	331    07-04	DCI Time at STOP
-		updatepr,	//	332    07-05	DCI Freq. At start
-		updatepr,	//	333    07-06	DCI KI
-		updatepr,	//	334    07-07	Gear wait time when acceleration
-		updatepr,	//	335    07-08	Gear wait frequency when acceleration
-		updatepr,	//	336    07-09	Gear wait time when deceleration
-		updatepr,	//	337    07-10	Gear wait frequency when deceleration
-		updatepr,	//	338    07-11	Fan Control
-		P07_12	,	//	339    07-12	TQC Reference from RS485
-		updatepr,	//	340    07-13	Source of Torque Command
-		P07_14	,	//	341    07-14	Torque max. level
-		LPFGain	,	//	342    07-15	Torque command filter
-		updatepr,	//	343    07-16	Speed Limit selection
-		P07_17	,	//	344    07-17	Torque mode positive speed limit
-		P07_17	,	//	345    07-18	Torque mode negative speed limit
-		updatepr,	//	346    07-19	Torque offset selection
-		updatepr,	//	347    07-20	Torque offset setting level
-		//P07_21	,	//	348    07-21	Torque offset setting level High
-		//P07_21	,	//	349    07-22	Torque offset setting level Middle
-		//P07_21	,	//	350    07-23	Torque offset setting level Low
-        updatepr,   //  348    07-21    Torque offset setting level High
-        updatepr,   //  349    07-22    Torque offset setting level Middle
-        updatepr,   //  350    07-23    Torque offset setting level Low
-		updatepr,	//	351    07-24	FWD Motoring Tq Limit
-		updatepr,	//	352    07-25	FWD Regeneration Tq Limit
-		updatepr,	//	353    07-26	REV Motoring Tq Limit
-		updatepr,	//	354    07-27	REV Regeneration Tq Limit
-		updatepr,	//	355    07-28	Emergency Stop & Forced Stop selection
-		updatepr,	//	356    07-29	Torque Decrease Time
-		updatepr,   //  356    07-30    STOP DC Inject Level          //[DCI Level when stop, Bernie, 05/21/2012]
-		updatepr,   //  356    07-31    //BTT100                //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-		updatepr,   //  356    07-32    //BTTx Detect           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-		updatepr,   //  356    07-33    //BTTx Distance         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-		updatepr,   //  356    07-34    //BTTx Detect Step      //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-		updatepr,   //  356    07-35    //BTTx Fail Torq        //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-		updatepr,   //  356    07-36    //BTTx Min Torq         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-        updatepr,   //  356    07-37    //BTTx Min Torq         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		P07_00  ,	//07-00	    SW Braking Level
+		P07_00  ,	//07-01	    // [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]  
+		updatepr,	//07-02	    DCI Current Level
+		updatepr,	//07-03	    DCI Time at Start 
+		updatepr,	//07-04	    DCI Time at STOP
+		updatepr,	//07-05	    DCI Freq. At start
+		updatepr,	//07-06	    DCI KI
+		updatepr,	//07-07	    Gear wait time when acceleration
+		updatepr,	//07-08	    Gear wait frequency when acceleration
+		updatepr,	//07-09	    Gear wait time when deceleration
+		updatepr,	//07-10	    Gear wait frequency when deceleration
+		updatepr,	//07-11	    Fan Control
+		P07_12	,	//07-12	    TQC Reference from RS485
+		updatepr,	//07-13	    Source of Torque Command
+		P07_14	,	//07-14	    Torque max. level
+		LPFGain	,	//07-15	    Torque command filter
+		updatepr,	//07-16	    Speed Limit selection
+		P07_17	,	//07-17	    Torque mode positive speed limit
+		P07_17	,	//07-18	    Torque mode negative speed limit
+		updatepr,	//07-19	    Torque offset selection
+		updatepr,	//07-20	    Torque offset setting level
+		//P07_21  ,	//07-21	    Torque offset setting level High
+		//P07_21  ,	//07-22	    Torque offset setting level Middle
+		//P07_21  ,	//07-23	    Torque offset setting level Low
+        updatepr,   //07-21     Torque offset setting level High
+        updatepr,   //07-22     Torque offset setting level Middle
+        updatepr,   //07-23     Torque offset setting level Low
+		updatepr,	//07-24	    FWD Motoring Tq Limit
+		updatepr,	//07-25	    FWD Regeneration Tq Limit
+		updatepr,	//07-26	    REV Motoring Tq Limit
+		updatepr,	//07-27	    REV Regeneration Tq Limit
+		updatepr,	//07-28	    Emergency Stop & Forced Stop selection
+		updatepr,	//07-29	    Torque Decrease Time
+		updatepr,   //07-30     STOP DC Inject Level  //[DCI Level when stop, Bernie, 05/21/2012]
+		updatepr,   //07-31     BTT100                //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		updatepr,   //07-32     BTTx Detect           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		updatepr,   //07-33     BTTx Distance         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		updatepr,   //07-34     BTTx Detect Step      //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		updatepr,   //07-35     BTTx Fail Torq        //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+		updatepr,   //07-36     BTTx Min Torq         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+        updatepr,   //07-37     BTTx Min Torq         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+
+        fnone   ,   //07-38     RESERVE
+        fnone   ,   //07-39     RESERVE
+        fnone   ,   //07-40     RESERVE
+        fnone   ,   //07-41     RESERVE
+        fnone   ,   //07-42     RESERVE
+        fnone   ,   //07-43     RESERVE
+        fnone   ,   //07-44     RESERVE
+        fnone   ,   //07-45     RESERVE
+        fnone   ,   //07-46     RESERVE
+        fnone   ,   //07-47     RESERVE
+        fnone   ,   //07-48     RESERVE
+        fnone   ,   //07-49     RESERVE
+        fnone   ,   //07-50     RESERVE
+        fnone   ,   //07-51     RESERVE
+        fnone   ,   //07-52     RESERVE
+        fnone   ,   //07-53     RESERVE
+        fnone   ,   //07-54     RESERVE
+        fnone   ,   //07-55     RESERVE
+        fnone   ,   //07-56     RESERVE
+        fnone   ,   //07-57     RESERVE
+        fnone   ,   //07-58     RESERVE
+        fnone   ,   //07-59     RESERVE
+        fnone   ,   //07-60     RESERVE
+        fnone   ,   //07-61     RESERVE
+        fnone   ,   //07-62     RESERVE
+        fnone   ,   //07-63     RESERVE
+        fnone   ,   //07-64     RESERVE
+        fnone   ,   //07-65     RESERVE
+        fnone   ,   //07-66     RESERVE
+        fnone   ,   //07-67     RESERVE
+        fnone   ,   //07-68     RESERVE
+        fnone   ,   //07-69     RESERVE
+        fnone   ,   //07-70     RESERVE
+        fnone   ,   //07-71     RESERVE
+        fnone   ,   //07-72     RESERVE
+        fnone   ,   //07-73     RESERVE
+        fnone   ,   //07-74     RESERVE
+        fnone   ,   //07-75     RESERVE
+        fnone   ,   //07-76     RESERVE
+        fnone   ,   //07-77     RESERVE
+        fnone   ,   //07-78     RESERVE
+        fnone   ,   //07-79     RESERVE
+        fnone   ,   //07-80     RESERVE
+        fnone   ,   //07-81     RESERVE
+        fnone   ,   //07-82     RESERVE
+        fnone   ,   //07-83     RESERVE
+        fnone   ,   //07-84     RESERVE
+        fnone   ,   //07-85     RESERVE
+        fnone   ,   //07-86     RESERVE
+        fnone   ,   //07-87     RESERVE
+        fnone   ,   //07-88     RESERVE
+        fnone   ,   //07-89     RESERVE
+        fnone   ,   //07-90     RESERVE
+        fnone   ,   //07-91     RESERVE
+        fnone   ,   //07-92     RESERVE
+        fnone   ,   //07-93     RESERVE
+        fnone   ,   //07-94     RESERVE
+        fnone   ,   //07-95     RESERVE
+        fnone   ,   //07-96     RESERVE
+        fnone   ,   //07-97     RESERVE
+        fnone   ,   //07-98     RESERVE
+        fnone   ,   //07-99     RESERVE
         
 /*---- GROUP 08-------------------------------------*/
-		P08_00	,	//	357    08-00	PMotor Auto-Tuning
-		P08_01	,	//	358    08-01	PMotor rated Current
-		P08_02	,	//	359    08-02	PMotor Rated Power
-		P08_03	,	//	360    08-03	PMotor Rated RPM
-		P08_04	,	//	361    08-04	PMotor pole No.
-		P08_05	,	//	362    08-05	PMotor Rs
-		P08_06	,	//	363    08-06	PMotor Ld
-		P08_06	,	//	364    08-07	PMotor Lq
-		P08_01	,	//	365    08-08	PMotor Bemf coff
-		P08_09	,	//	366    08-09	PM_VECTOR
-		P08_10	,	//	367    08-10	StandStill Tune
+		P08_00	,	//08-00	    PMotor Auto-Tuning
+		P08_01	,	//08-01	    PMotor rated Current
+		P08_02	,	//08-02	    PMotor Rated Power
+		P08_03	,	//08-03	    PMotor Rated RPM
+		P08_04	,	//08-04	    PMotor pole No.
+		P08_05	,	//08-05	    PMotor Rs
+		P08_06	,	//08-06	    PMotor Ld
+		P08_06	,	//08-07	    PMotor Lq
+		P08_01	,	//08-08	    PMotor Bemf coff
+		P08_09	,	//08-09	    PM_VECTOR
+		P08_10	,	//08-10	    StandStill Tune
 
 /*---- GROUP 09--------------------------------------*/
-		updatepr,	//	368    09-00	Comm Address
-		P09_07	,	//	369    09-01	Tranmission speed
-		updatepr,	//	370    09-02	Comm fault Treatment
-		updatepr,	//	371    09-03	Comm Time out
-		P09_07  ,	//	372    09-04	Comm Protocol
-		updatepr,	//	373    09-05	ASC remote Response Delay Time, 1=100us
-		P14_137 ,	//	3XX    09-06    CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
-		updatepr,	//	3XX    09-07    CAN Communiction Timeout	 //[claer state when Error occur ,Bernie, 2015/05/12
-		P14_138 ,	//	3XX    09-08    CAN PDO Handshaking Period //[claer state when Error occur ,Bernie, 2015/05/12
-		updatepr,   //    3XX    09-09    Elevator Control Identification Code
-        updatepr,   //    3XX    09-10    Factory Function
-        updatepr,   //    3XX    09-11    RD Function
-        updatepr,   //    3XX    09-12    DLC Mode
-        updatepr,   //    3XX    09-13    
-	    P09_14,	    //	  3XX	 09-14	
+		updatepr,	//09-00	    Comm Address
+		P09_07	,	//09-01	    Tranmission speed
+		updatepr,	//09-02	    Comm fault Treatment
+		updatepr,	//09-03	    Comm Time out
+		P09_07  ,	//09-04	    Comm Protocol
+		updatepr,	//09-05	    ASC remote Response Delay Time, 1=100us
+		P14_137 ,	//09-06     CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
+		updatepr,	//09-07     CAN Communiction Timeout	 //[claer state when Error occur ,Bernie, 2015/05/12
+		P14_138 ,	//09-08     CAN PDO Handshaking Period //[claer state when Error occur ,Bernie, 2015/05/12
+		updatepr,   //09-09     Elevator Control Identification Code
+        updatepr,   //09-10     Factory Function
+        updatepr,   //09-11     RD Function
+        updatepr,   //09-12     DLC Mode
+        updatepr,   //09-13    
+	    P09_14  ,	//09-14	
 
 /*---- GROUP 10---------------------------------------*/
-		P10_01	,	//	374    10-00	PG TYPE
-		P10_01	,	//	375    10-01	Encoder pulses
-		P10_01	,	//	376    10-02	PG input setting
-		P10_03	,	//	377    10-03	PG fbk fault treatment
-		P10_01	,	//	378    10-04	PG fbk Error Detection Time
-		P10_01	,	//	379    10-05	PG fbk overspeed detection level
-		updatepr,	//	380    10-06	Over speed Detection Time
-		P10_01	,	//	381    10-07	PG fbk speed deviation level
-		updatepr,	//	382    10-08	Deviation Detect Time
-		updatepr,	//	383    10-09	Operation at overspeed
-		updatepr,	//  384    10-10   Hall Input Types
-		updatepr,	//	385    10-11	KP gain of ASR in Zero speed
-		updatepr,	//	386    10-12	Ki gain of ASR in Zero speed
-		updatepr,	//	387    10-13	ASR P Gain 1
-		updatepr,	//	388    10-14	ASR I Gain 1
-		updatepr,	//	389    10-15	ASR P Gain 2
-		updatepr,	//	390    10-16	ASR I Gain 2
-		P10_17	,	//	391    10-17	ASR1/ASR2 switch freq
-		updatepr,	//	392    10-18	Primary LowPass filter Gain
-		updatepr,	//  393    10-19 PPI P Gain
-		P10_17	,	//	394    10-20 SPI1 Band
-		updatepr,	//	395    10-21 SPI2 Band
-		updatepr,	//	396    10-22	Primary LowPass filter Gain
-		LPFGain,	//  397    10-23 PPI LPF Gain, Add by DINO, 07/28/2010
-		updatepr,	//	398    10-24 Source of position control, add by dino, 06/30/2008
-		updatepr,	//	399    10-25	KP gain of ASR in Zero speed of Landing, DINO, 08/02/2010
-		updatepr,	//	400    10-26	Ki gain of ASR in Zero speed of Landing, DINO, 08/02/2010
-		updatepr,	//	401    10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-		updatepr,	//	402    10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-        updatepr,   //    4xx    10-29     PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-        updatepr,   //    4xx    10-30     PG Card Mode setting                      //[Modify PG Type Define, Bernie, 12/05/2011]
-        updatepr,   //[change parameter to normal group, Bernie, 2014/02/14]
-        P10_32,     //    3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-        P10_33,     //    3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-        updatepr,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+		P10_01	,	//10-00	    PG TYPE
+		P10_01	,	//10-01	    Encoder pulses
+		P10_01	,	//10-02	    PG input setting
+		P10_03	,	//10-03	    PG fbk fault treatment
+		P10_01	,	//10-04	    PG fbk Error Detection Time
+		P10_01	,	//10-05	    PG fbk overspeed detection level
+		updatepr,	//10-06	    Over speed Detection Time
+		P10_01	,	//10-07	    PG fbk speed deviation level
+		updatepr,	//10-08	    Deviation Detect Time
+		updatepr,	//10-09	    Operation at overspeed
+		updatepr,	//10-10     Hall Input Types
+		updatepr,	//10-11	    KP gain of ASR in Zero speed
+		updatepr,	//10-12	    Ki gain of ASR in Zero speed
+		updatepr,	//10-13	    ASR P Gain 1
+		updatepr,	//10-14	    ASR I Gain 1
+		updatepr,	//10-15	    ASR P Gain 2
+		updatepr,	//10-16	    ASR I Gain 2
+		P10_17	,	//10-17	    ASR1/ASR2 switch freq
+		updatepr,	//10-18	    Primary LowPass filter Gain
+		updatepr,	//10-19     PPI P Gain
+		P10_17	,	//10-20     SPI1 Band
+		updatepr,	//10-21     SPI2 Band
+		updatepr,	//10-22	    Primary LowPass filter Gain
+		LPFGain ,	//10-23     PPI LPF Gain, Add by DINO, 07/28/2010
+		updatepr,	//10-24     Source of position control, add by dino, 06/30/2008
+		updatepr,	//10-25	    KP gain of ASR in Zero speed of Landing, DINO, 08/02/2010
+		updatepr,	//10-26	    Ki gain of ASR in Zero speed of Landing, DINO, 08/02/2010
+		updatepr,	//10-27	    KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+		updatepr,	//10-28	    Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+        updatepr,   //10-29     PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+        updatepr,   //10-30     PG Card Mode setting                      //[Modify PG Type Define, Bernie, 12/05/2011]
+        updatepr,   //10-31     [change parameter to normal group, Bernie, 2014/02/14]
+        P10_32  ,   //10-32     Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+        P10_33  ,   //10-33     Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+        updatepr,   //10-34     Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
 
 /*---- GROUP 11---------------------------------------*/
-		updatepr,	//	401    11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo
-		P11_02	,	//	402    11-01	Lift operation speed
-		P11_02	,	//	403    11-02	SHEAVE_D
-		P11_05	,	//	404    11-03	Gear Ratio
-		P11_05  ,	//	405    11-04	Suspension	Ratio
-		P11_05	,	//	406    11-05	JM_PERCENT
-		updatepr,	//	407    11-06	Zero Speed Loop BandWidth
-		updatepr,	//	408    11-07	Speed Loop BandWidth1
-		updatepr,	//	409    11-08	Speed Loop BandWidth2
-		updatepr,	//	410    11-09	PDFFKr
-		updatepr,	//	411    11-10	SPDFFDGain
-		P11_11	,	//	412    11-11	Netch filter deep(db)
-		P11_11	,	//	413    11-12	Netch filter frequency
-		LPFGain	,	//	414    11-13	Low Pass Filter for display
-		P11_05	,	//	415    11-14	ACC Max current
-		P11_05	,	//	416    11-15	Max meter per Sec
-		P11_16	,	//	417    11-16	DATA_SEL
-		updatepr,	//	418    11-17	SHOW_DATA
-		P11_18  ,	//	419    11-18	Protect Bit
-		updatepr,	//	420    11-19	Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
-		updatepr,   //  4XX    11-20    PWM MODE, 0=SVPWM+DPWM,1=SVPWM   //[move parameter to 11-20, Bernie, 2017/02/16]
-		LPFGain	,	//	414    11-21	Low Pass Filter for LC01
+		updatepr,	//11-00	    system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo
+		P11_02	,	//11-01	    Lift operation speed
+		P11_02	,	//11-02	    SHEAVE_D
+		P11_05	,	//11-03	    Gear Ratio
+		P11_05  ,	//11-04	    Suspension	Ratio
+		P11_05	,	//11-05	    JM_PERCENT
+		updatepr,	//11-06	    Zero Speed Loop BandWidth
+		updatepr,	//11-07	    Speed Loop BandWidth1
+		updatepr,	//11-08	    Speed Loop BandWidth2
+		updatepr,	//11-09	    PDFFKr
+		updatepr,	//11-10	    SPDFFDGain
+		P11_11	,	//11-11	    Netch filter deep(db)
+		P11_11	,	//11-12	    Netch filter frequency
+		LPFGain	,	//11-13	    Low Pass Filter for display
+		P11_05	,	//11-14	    ACC Max current
+		P11_05	,	//11-15	    Max meter per Sec
+		P11_16	,	//11-16	    DATA_SEL
+		updatepr,	//11-17	    SHOW_DATA
+		P11_18  ,	//11-18	    Protect Bit
+		updatepr,	//11-19	    Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
+		updatepr,   //11-20     PWM MODE, 0=SVPWM+DPWM,1=SVPWM   //[move parameter to 11-20, Bernie, 2017/02/16]
+		LPFGain	,	//11-21     Low Pass Filter for LC01
+		updatepr,	//11-22 	Save Customer bit
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 		fnone   ,   //  4XX    11-21    lift spd cmd for Sibocom, Jason, 2019/12/31
 #endif
-        updatepr,	//	421    12-00	user define address	00
 /*---- GROUP 12 --------------------------------------*/
-		updatepr,	//	421    12-00	user define address	00
-		updatepr,	//	422    12-01	user define address 01
-		updatepr,	//	423    12-02	user define address 02
-		updatepr,	//	424    12-03	user define address 03
-		updatepr,	//	425    12-04	user define address 04
-		updatepr,	//	426    12-05	user define address 05
-		updatepr,	//	427    12-06	user define address 06
-		updatepr,	//	428    12-07	user define address 07
-		updatepr,	//	429    12-08	user define address 08
-		updatepr,	//	430    12-09	user define address 09
-		updatepr,	//	431    12-10	user define address 10
-		updatepr,	//	432    12-11	user define address	11
-		updatepr,	//	433    12-12	user define address 12
-		updatepr,	//	434    12-13	user define address 13
-		updatepr,	//	435    12-14	user define address 14
-		updatepr,	//	436    12-15	user define address 15
-		updatepr,	//	437    12-16	user define address 16
-		updatepr,	//	438    12-17	user define address 17
-		updatepr,	//	439    12-18	user define address 18
-		updatepr,	//	440    12-19	user define address 19
-		updatepr,	//	441    12-20	user define address 20
-		updatepr,	//	442    12-21	user define address 21
-		updatepr,	//	443    12-22	user define address 22
-		updatepr,	//	444    12-23	user define address	23
-		updatepr,	//	445    12-24	user define address 24
-		updatepr,	//	446    12-25	user define address 25
-		updatepr,	//	447    12-26	user define address 26
-		updatepr,	//	448    12-27	user define address 27
-		updatepr,	//	449    12-28	user define address 28
-		updatepr,	//	450    12-29	user define address 29
-		updatepr,	//	451    12-30	user define address 30
-		updatepr,	//	452    12-31	user define address 31
-		updatepr,	//	453    12-32	user define address 32
-		updatepr,	//	454    12-33	user define address 33
-		updatepr,	//	455    12-34	user define address 34
-		updatepr,	//	456    12-35	user define address 35
-		updatepr,	//	457    12-36	user define address 36
-		updatepr,	//	458    12-37	user define address 37
-		updatepr,	//	459    12-38	user define address 38
-		updatepr,	//	460    12-39	user define address 39		
-		updatepr,	//	461    12-40	user define address	40
-		updatepr,	//	462    12-41	user define address 41
-		updatepr,	//	463    12-42	user define address 42
-		updatepr,	//	464    12-43	user define address 43
-		updatepr,	//	465    12-44	user define address 44
-		updatepr,	//	466    12-45	user define address 45
-		updatepr,	//	467    12-46	user define address 46
-		updatepr,	//	468    12-47	user define address 47
-		updatepr,	//	469    12-48	user define address 48
-		updatepr,	//	470    12-49	user define address 49
-		updatepr,	//	471    12-50	user define address	50
-		updatepr,	//	472    12-51	user define address 51
-		updatepr,	//	473    12-52	user define address 52
-		updatepr,	//	474    12-53	user define address 53
-		updatepr,	//	475    12-54	user define address 54
-		updatepr,	//	476    12-55	user define address 55
-		updatepr,	//	477    12-56	user define address 56
-		updatepr,	//	478    12-57	user define address 57
-		updatepr,	//	479    12-58	user define address 58
-		updatepr,	//	480    12-59	user define address 59
-		updatepr,	//	481    12-60	user define address	60
-		updatepr,	//	482    12-61	user define address 61
-		updatepr,	//	483    12-62	user define address 62
-		updatepr,	//	484    12-63	user define address 63
-		updatepr,	//	485    12-64	user define address 64
-		updatepr,	//	486    12-65	user define address 65
-		updatepr,	//	487    12-66	user define address 66
-		updatepr,	//	488    12-67	user define address 67
-		updatepr,	//	489    12-68	user define address 68
-		updatepr,	//	490    12-69	user define address 69
-		updatepr,	//	491    12-70	user define address	70
-		updatepr,	//	492    12-71	user define address 71
-		updatepr,	//	493    12-72	user define address 72
-		updatepr,	//	494    12-73	user define address 73
-		updatepr,	//	495    12-74	user define address 74
-		updatepr,	//	496    12-75	user define address 75
-		updatepr,	//	497    12-76	user define address 76
-		updatepr,	//	498    12-77	user define address 77
-		updatepr,	//	499    12-78	user define address 78
-		updatepr,	//	500    12-79	user define address 79
-		updatepr,	//	501    12-80	user define address	80
-		updatepr,	//	502    12-81	user define address 81
-		updatepr,	//	503    12-82	user define address 82
-		updatepr,	//	504    12-83	user define address 83
-		updatepr,	//	505    12-84	user define address 84
-		updatepr,	//	506    12-85	user define address 85
-		updatepr,	//	507    12-86	user define address 86
-		updatepr,	//	508    12-87	user define address 87
-		updatepr,	//	509    12-88	user define address 88
-		updatepr,	//	510    12-89	user define address 89
-		updatepr,	//	511    12-90	user define address	90
-		updatepr,	//	512    12-91	user define address 91
-		updatepr,	//	513    12-92	user define address 92
-		updatepr,	//	514    12-93	user define address 93
-		updatepr,	//	515    12-94	user define address 94
-		updatepr,	//	516    12-95	user define address 95
-		updatepr,	//	517    12-96	user define address 96
-		updatepr,	//	518    12-97	user define address 97
-		updatepr,	//	519    12-98	user define address 98
-		updatepr,	//	520    12-99	user define address 99
+		updatepr,	//12-00	    user define address	00
+		updatepr,	//12-01	    user define address 01
+		updatepr,	//12-02	    user define address 02
+		updatepr,	//12-03	    user define address 03
+		updatepr,	//12-04	    user define address 04
+		updatepr,	//12-05	    user define address 05
+		updatepr,	//12-06	    user define address 06
+		updatepr,	//12-07	    user define address 07
+		updatepr,	//12-08	    user define address 08
+		updatepr,	//12-09	    user define address 09
+		updatepr,	//12-10	    user define address 10
+		updatepr,	//12-11	    user define address	11
+		updatepr,	//12-12	    user define address 12
+		updatepr,	//12-13	    user define address 13
+		updatepr,	//12-14	    user define address 14
+		updatepr,	//12-15	    user define address 15
+		updatepr,	//12-16	    user define address 16
+		updatepr,	//12-17	    user define address 17
+		updatepr,	//12-18	    user define address 18
+		updatepr,	//12-19	    user define address 19
+		updatepr,	//12-20	    user define address 20
+		updatepr,	//12-21	    user define address 21
+		updatepr,	//12-22	    user define address 22
+		updatepr,	//12-23	    user define address	23
+		updatepr,	//12-24	    user define address 24
+		updatepr,	//12-25	    user define address 25
+		updatepr,	//12-26	    user define address 26
+		updatepr,	//12-27	    user define address 27
+		updatepr,	//12-28	    user define address 28
+		updatepr,	//12-29	    user define address 29
+		updatepr,	//12-30	    user define address 30
+		updatepr,	//12-31	    user define address 31
+		updatepr,	//12-32	    user define address 32
+		updatepr,	//12-33	    user define address 33
+		updatepr,	//12-34	    user define address 34
+		updatepr,	//12-35	    user define address 35
+		updatepr,	//12-36	    user define address 36
+		updatepr,	//12-37	    user define address 37
+		updatepr,	//12-38	    user define address 38
+		updatepr,	//12-39	    user define address 39		
+		updatepr,	//12-40	    user define address	40
+		updatepr,	//12-41	    user define address 41
+		updatepr,	//12-42	    user define address 42
+		updatepr,	//12-43	    user define address 43
+		updatepr,	//12-44	    user define address 44
+		updatepr,	//12-45	    user define address 45
+		updatepr,	//12-46	    user define address 46
+		updatepr,	//12-47	    user define address 47
+		updatepr,	//12-48	    user define address 48
+		updatepr,	//12-49	    user define address 49
+		updatepr,	//12-50	    user define address	50
+		updatepr,	//12-51	    user define address 51
+		updatepr,	//12-52	    user define address 52
+		updatepr,	//12-53	    user define address 53
+		updatepr,	//12-54	    user define address 54
+		updatepr,	//12-55	    user define address 55
+		updatepr,	//12-56	    user define address 56
+		updatepr,	//12-57	    user define address 57
+		updatepr,	//12-58	    user define address 58
+		updatepr,	//12-59	    user define address 59
+		updatepr,	//12-60	    user define address	60
+		updatepr,	//12-61	    user define address 61
+		updatepr,	//12-62	    user define address 62
+		updatepr,	//12-63 	user define address 63
+		updatepr,	//12-64	    user define address 64
+		updatepr,	//12-65	    user define address 65
+		updatepr,	//12-66	    user define address 66
+		updatepr,	//12-67	    user define address 67
+		updatepr,	//12-68 	user define address 68
+		updatepr,	//12-69 	user define address 69
+		updatepr,	//12-70 	user define address	70
+		updatepr,	//12-71	    user define address 71
+		updatepr,	//12-72	    user define address 72
+		updatepr,	//12-73	    user define address 73
+		updatepr,	//12-74	    user define address 74
+		updatepr,	//12-75	    user define address 75
+		updatepr,	//12-76	    user define address 76
+		updatepr,	//12-77	    user define address 77
+		updatepr,	//12-78	    user define address 78
+		updatepr,	//12-79 	user define address 79
+		updatepr,	//12-80	    user define address	80
+		updatepr,	//12-81	    user define address 81
+		updatepr,	//12-82 	user define address 82
+		updatepr,	//12-83 	user define address 83
+		updatepr,	//12-84 	user define address 84
+		updatepr,	//12-85 	user define address 85
+		updatepr,	//12-86 	user define address 86
+		updatepr,	//12-87 	user define address 87
+		updatepr,	//12-88 	user define address 88
+		updatepr,	//12-89 	user define address 89
+		updatepr,	//12-90 	user define address	90
+		updatepr,	//12-91	    user define address 91
+		updatepr,	//12-92	    user define address 92
+		updatepr,	//12-93 	user define address 93
+		updatepr,	//12-94	    user define address 94
+		updatepr,	//12-95	    user define address 95
+		updatepr,	//12-96	    user define address 96
+		updatepr,	//12-97	    user define address 97
+		updatepr,	//12-98	    user define address 98
+		updatepr,	//12-99	    user define address 99
 
 /*---- GROUP 13 --------------------------------------*/
-		fnone	,	//	453    13-00	user address mapping data 00
-		fnone	,	//	454    13-01	user address mapping data 01
-		fnone	,	//	455    13-02	user address mapping data 02
-		fnone	,	//	456    13-03	user address mapping data 03
-		fnone	,	//	457    13-04	user address mapping data 04
-		fnone	,	//	458    13-05	user address mapping data 05
-		fnone	,	//	459    13-06	user address mapping data 06
-		fnone	,	//	460    13-07	user address mapping data 07
-		fnone	,	//	461    13-08	user address mapping data 08
-		fnone	,	//	462    13-09	user address mapping data 09
-		fnone	,	//	463    13-10	user address mapping data 10
-		fnone	,	//	464    13-11	user address mapping data 11
-		fnone	,	//	465    13-12	user address mapping data 12
-		fnone	,	//	466    13-13	user address mapping data 13
-		fnone	,	//	467    13-14	user address mapping data 14
-		fnone	,	//	468    13-15	user address mapping data 15
-		fnone	,	//	469    13-16	user address mapping data 16
-		fnone	,	//	470    13-17	user address mapping data 17
-		fnone	,	//	471    13-18	user address mapping data 18
-		fnone	,	//	472    13-19	user address mapping data 19
-		fnone	,	//	473    13-20	user address mapping data 20
-		fnone	,	//	474    13-21	user address mapping data 21
-		fnone	,	//	475    13-22	user address mapping data 22
-		fnone	,	//	476    13-23	user address mapping data 23
-		fnone	,	//	477    13-24	user address mapping data 24
-		fnone	,	//	478    13-25	user address mapping data 25
-		fnone	,	//	479    13-26	user address mapping data 26
-		fnone	,	//	480    13-27	user address mapping data 27
-		fnone	,	//	481    13-28	user address mapping data 28
-		fnone	,	//	482    13-29	user address mapping data 29
-		fnone	,	//	483    13-30	user address mapping data 30
-		fnone	,	//	484    13-31	user address mapping data 31
-		fnone	,	//	455    13-32	user address mapping data 32
-		fnone	,	//	456    13-33	user address mapping data 33
-		fnone	,	//	457    13-34	user address mapping data 34
-		fnone	,	//	458    13-35	user address mapping data 35
-		fnone	,	//	459    13-36	user address mapping data 36
-		fnone	,	//	460    13-37	user address mapping data 37
-		fnone	,	//	461    13-38	user address mapping data 38
-		fnone	,	//	462    13-39	user address mapping data 39		
-		fnone	,	//	453    13-40	user address mapping data 40
-		fnone	,	//	454    13-41	user address mapping data 41
-		fnone	,	//	455    13-42	user address mapping data 42
-		fnone	,	//	456    13-43	user address mapping data 43
-		fnone	,	//	457    13-44	user address mapping data 44
-		fnone	,	//	458    13-45	user address mapping data 45
-		fnone	,	//	459    13-46	user address mapping data 46
-		fnone	,	//	460    13-47	user address mapping data 47
-		fnone	,	//	461    13-48	user address mapping data 48
-		fnone	,	//	462    13-49	user address mapping data 49
-		fnone	,	//	453    13-50	user address mapping data 50
-		fnone	,	//	454    13-51	user address mapping data 51
-		fnone	,	//	455    13-52	user address mapping data 52
-		fnone	,	//	456    13-53	user address mapping data 53
-		fnone	,	//	457    13-54	user address mapping data 54
-		fnone	,	//	458    13-55	user address mapping data 55
-		fnone	,	//	459    13-56	user address mapping data 56
-		fnone	,	//	460    13-57	user address mapping data 57
-		fnone	,	//	461    13-58	user address mapping data 58
-		fnone	,	//	462    13-59	user address mapping data 59
-		fnone	,	//	453    13-60	user address mapping data 60
-		fnone	,	//	454    13-61	user address mapping data 61
-		fnone	,	//	455    13-62	user address mapping data 62
-		fnone	,	//	456    13-63	user address mapping data 63
-		fnone	,	//	457    13-64	user address mapping data 64
-		fnone	,	//	458    13-65	user address mapping data 65
-		fnone	,	//	459    13-66	user address mapping data 66
-		fnone	,	//	460    13-67	user address mapping data 67
-		fnone	,	//	461    13-68	user address mapping data 68
-		fnone	,	//	462    13-69	user address mapping data 69
-		fnone	,	//	453    13-70	user address mapping data 70
-		fnone	,	//	454    13-71	user address mapping data 71
-		fnone	,	//	455    13-72	user address mapping data 72
-		fnone	,	//	456    13-73	user address mapping data 73
-		fnone	,	//	457    13-74	user address mapping data 74
-		fnone	,	//	458    13-75	user address mapping data 75
-		fnone	,	//	459    13-76	user address mapping data 76
-		fnone	,	//	460    13-77	user address mapping data 77
-		fnone	,	//	461    13-78	user address mapping data 78
-		fnone	,	//	462    13-79	user address mapping data 79
-		fnone	,	//	453    13-80	user address mapping data 80
-		fnone	,	//	454    13-81	user address mapping data 81
-		fnone	,	//	455    13-82	user address mapping data 82
-		fnone	,	//	456    13-83	user address mapping data 83
-		fnone	,	//	457    13-84	user address mapping data 84
-		fnone	,	//	458    13-85	user address mapping data 85
-		fnone	,	//	459    13-86	user address mapping data 86
-		fnone	,	//	460    13-87	user address mapping data 87
-		fnone	,	//	461    13-88	user address mapping data 88
-		fnone	,	//	462    13-89	user address mapping data 89
-		fnone	,	//	453    13-90	user address mapping data 90
-		fnone	,	//	454    13-91	user address mapping data 91
-		fnone	,	//	455    13-92	user address mapping data 92
-		fnone	,	//	456    13-93	user address mapping data 93
-		fnone	,	//	457    13-94	user address mapping data 94
-		fnone	,	//	458    13-95	user address mapping data 95
-		fnone	,	//	459    13-96	user address mapping data 96
-		fnone	,	//	460    13-97	user address mapping data 97
-		fnone	,	//	461    13-98	user address mapping data 98
-		fnone	,	//	462    13-99	user address mapping data 99
+		fnone	,	//13-00	    user address mapping data 00
+		fnone	,	//13-01	    user address mapping data 01
+		fnone	,	//13-02	    user address mapping data 02
+		fnone	,	//13-03	    user address mapping data 03
+		fnone	,	//13-04	    user address mapping data 04
+		fnone	,	//13-05	    user address mapping data 05
+		fnone	,	//13-06	    user address mapping data 06
+		fnone	,	//13-07	    user address mapping data 07
+		fnone	,	//13-08	    user address mapping data 08
+		fnone	,	//13-09	    user address mapping data 09
+		fnone	,	//13-10	    user address mapping data 10
+		fnone	,	//13-11	    user address mapping data 11
+		fnone	,	//13-12	    user address mapping data 12
+		fnone	,	//13-13	    user address mapping data 13
+		fnone	,	//13-14	    user address mapping data 14
+		fnone	,	//13-15	    user address mapping data 15
+		fnone	,	//13-16	    user address mapping data 16
+		fnone	,	//13-17	    user address mapping data 17
+		fnone	,	//13-18	    user address mapping data 18
+		fnone	,	//13-19	    user address mapping data 19
+		fnone	,	//13-20	    user address mapping data 20
+		fnone	,	//13-21	    user address mapping data 21
+		fnone	,	//13-22	    user address mapping data 22
+		fnone	,	//13-23	    user address mapping data 23
+		fnone	,	//13-24	    user address mapping data 24
+		fnone	,	//13-25	    user address mapping data 25
+		fnone	,	//13-26	    user address mapping data 26
+		fnone	,	//13-27	    user address mapping data 27
+		fnone	,	//13-28	    user address mapping data 28
+		fnone	,	//13-29	    user address mapping data 29
+		fnone	,	//13-30	    user address mapping data 30
+		fnone	,	//13-31	    user address mapping data 31
+		fnone	,	//13-32	    user address mapping data 32
+		fnone	,	//13-33	    user address mapping data 33
+		fnone	,	//13-34	    user address mapping data 34
+		fnone	,	//13-35	    user address mapping data 35
+		fnone	,	//13-36	    user address mapping data 36
+		fnone	,	//13-37	    user address mapping data 37
+		fnone	,	//13-38	    user address mapping data 38
+		fnone	,	//13-39	    user address mapping data 39		
+		fnone	,	//13-40	    user address mapping data 40
+		fnone	,	//13-41	    user address mapping data 41
+		fnone	,	//13-42	    user address mapping data 42
+		fnone	,	//13-43	    user address mapping data 43
+		fnone	,	//13-44	    user address mapping data 44
+		fnone	,	//13-45	    user address mapping data 45
+		fnone	,	//13-46	    user address mapping data 46
+		fnone	,	//13-47	    user address mapping data 47
+		fnone	,	//13-48	    user address mapping data 48
+		fnone	,	//13-49	    user address mapping data 49
+		fnone	,	//13-50	    user address mapping data 50
+		fnone	,	//13-51	    user address mapping data 51
+		fnone	,	//13-52	    user address mapping data 52
+		fnone	,	//13-53 	user address mapping data 53
+		fnone	,	//13-54	    user address mapping data 54
+		fnone	,	//13-55	    user address mapping data 55
+		fnone	,	//13-56	    user address mapping data 56
+		fnone	,	//13-57	    user address mapping data 57
+		fnone	,	//13-58	    user address mapping data 58
+		fnone	,	//13-59	    user address mapping data 59
+		fnone	,	//13-60	    user address mapping data 60
+		fnone	,	//13-61	    user address mapping data 61
+		fnone	,	//13-62	    user address mapping data 62
+		fnone	,	//13-63	    user address mapping data 63
+		fnone	,	//13-64	    user address mapping data 64
+		fnone	,	//13-65	    user address mapping data 65
+		fnone	,	//13-66	    user address mapping data 66
+		fnone	,	//13-67	    user address mapping data 67
+		fnone	,	//13-68	    user address mapping data 68
+		fnone	,	//13-69	    user address mapping data 69
+		fnone	,	//13-70	    user address mapping data 70
+		fnone	,	//13-71	    user address mapping data 71
+		fnone	,	//13-72	    user address mapping data 72
+		fnone	,	//13-73	    user address mapping data 73
+		fnone	,	//13-74	    user address mapping data 74
+		fnone	,	//13-75	    user address mapping data 75
+		fnone	,	//13-76	    user address mapping data 76
+		fnone	,	//13-77	    user address mapping data 77
+		fnone	,	//13-78	    user address mapping data 78
+		fnone	,	//13-79	    user address mapping data 79
+		fnone	,	//13-80	    user address mapping data 80
+		fnone	,	//13-81	    user address mapping data 81
+		fnone	,	//13-82	    user address mapping data 82
+		fnone	,	//13-83	    user address mapping data 83
+		fnone	,	//13-84	    user address mapping data 84
+		fnone	,	//13-85	    user address mapping data 85
+		fnone	,	//13-86	    user address mapping data 86
+		fnone	,	//13-87	    user address mapping data 87
+		fnone	,	//13-88	    user address mapping data 88
+		fnone	,	//13-89	    user address mapping data 89
+		fnone	,	//13-90	    user address mapping data 90
+		fnone	,	//13-91	    user address mapping data 91
+		fnone	,	//13-92	    user address mapping data 92
+		fnone	,	//13-93	    user address mapping data 93
+		fnone	,	//13-94	    user address mapping data 94
+		fnone	,	//13-95	    user address mapping data 95
+		fnone	,	//13-96	    user address mapping data 96
+		fnone	,	//13-97	    user address mapping data 97
+		fnone	,	//13-98	    user address mapping data 98
+		fnone	,	//13-99	    user address mapping data 99
 
 /*---- GROUP 14---------------------------------------*/
-		updatepr,	//	485    14-00	Ids Power Save Level
-		updatepr,	//	486    14-01	VF voltage mode selection
-		P14_02	,	//	487    14-02	Constant Torque Selection
-		updatepr,	//	488    14-03	Auto Accel/Decel
-		P14_04  ,	//	489    14-04	Unit of Acc/Dec time
-		updatepr,	//	490    14-05	Power Save mode
-		updatepr,	//	491    14-06	Stop Methods
-		P14_07	,	//	492    14-07	Reverse Operation
-		P14_08	,	//	493    14-08	Skip Freq. Point 1 upper limit
-		P14_08	,	//	494    14-09	Skip Freq. Point 1 lower limit
-		P14_08	,	//	495    14-10	Skip Freq. Point 2 upper limit
-		P14_08	,	//	496    14-11	Skip Freq. Point 2 lower limit
-		P14_08	,	//	497    14-12	Skip Freq. Point 3 upper limit
-		P14_08	,	//	498    14-13	Skip Freq. Point 3 lower limit
-		P01_01	,	//	499    14-14	Motor Base Frequency 2
-		P01_02	,	//	500    14-15	Max Output Voltage 2
-		updatepr,	//	501    14-16	Mid Output Freq.2 1
-		updatepr,	//	502    14-17	Mid Output Voltage 2 1
-		updatepr,	//	503    14-18	Mid Output Freq.2 2
-		updatepr,	//	504    14-19	Mid Output Voltage 2 2
-		P01_07	,	//	505    14-20	Min Output Freq. 2
-		updatepr,	//	506    14-21	Min Output Voltage 2
-		updatepr,	//	507    14-22	up/down key mode
-		updatepr,	//	508    14-23	up/down key speed
-		updatepr,	//	509    14-24	Counter Value Set (Complete)
-		updatepr,	//	510    14-25	Counter Value Reach (Preset)
-		updatepr,	//	511    14-26	LIMIT_SCALE    //[weak magnet, Sampo, 03/31/2011]
-		P02_02	,	//	512    14-27	Multi-Function Input 9
-		P02_02	,	//	513    14-28	Multi-Function Input 10
-		P02_02	,	//	514    14-29	Multi-Function Input 11
-		P02_02	,	//	515    14-30	Multi-Function Input 12
-		P02_02	,	//	516    14-31	Multi-Function Input 13
-		P02_02	,	//	517    14-32	Multi-Function Input 14
-		updatepr,	//	518    14-33	External Terminal Run after Fault Reset
-		updatepr,	//	519    14-34	ACI change to AVI2
-		updatepr,	//	520    14-35	Addition Function of AI
-		updatepr,	//	521    14-36	Multi-Position Point 1
-		updatepr,	//	522    14-37	Multi-Position Point 2
-		updatepr,	//	523    14-38	Multi-Position Point 3
-		updatepr,	//	524    14-39	Multi-Position Point 4
-		updatepr,	//	525    14-40	Multi-Position Point 5
-		updatepr,	//	526    14-41	Multi-Position Point 6
-		updatepr,	//	527    14-42	Multi-Position Point 7
-		updatepr,	//	528    14-43	Multi-Position Point 8
-		updatepr,	//	529    14-44	Multi-Position Point 9
-		updatepr,	//	530    14-45	Multi-Position Point 10
-		updatepr,	//	531    14-46	Multi-Position Point 11
-		updatepr,	//	532    14-47	Multi-Position Point 12
-		updatepr,	//	533    14-48	Multi-Position Point 13
-		updatepr,	//	534    14-49	Multi-Position Point 14
-		updatepr,	//	535    14-50	Multi-Position Point 15
-		P14_51	,	//	536    14-51	Motor Selection 1 or 2
-		updatepr,	//	537    14-52	Y-Delta Connected switching rpm
-		P14_53	,	//	538    14-53	Y-Delta switched Enable
-		P05_01	,	//	539    14-54	Motor 2 rated Current
-		P05_02	,	//	540    14-55	Motor 2 Rated Power
-		P05_03	,	//	541    14-56	Motor 2 Rated RPM
-		P05_04	,	//	542    14-57	Motor 2 pole No.
-		P05_05	,	//	543    14-58	Motor 2 No-Load Current
-		P05_06	,	//	544    14-59	Motor 2 Rs
-		P05_07	,	//	545    14-60	Motor 2 Rr
-		P05_08	,	//	546    14-61	Motor 2 Lm
-		P05_09	,	//	547    14-62	Motor 2 Lx
-		updatepr,	//	548    14-63	Y-Delta On delay time
-		P14_64	,	//	549    14-64	OV stall level
-		updatepr,	//	550    14-65	Thermal Relay 2 Selection
-		updatepr,	//	551    14-66	Thermal Relay 2 Time
-		updatepr,	//	552    14-67	Momentary Power Loss
-		P14_68	,	//	553    14-68	Max. allowable PL time
-		P14_68	,	//	554    14-69	BB Time for speed serach
-		updatepr,	//	555    14-70	Current level for SPD serach
-		updatepr,	//	556    14-71	bb treatment for oc, ov, bb
-		updatepr,	//	557    14-72	Auto restart after fault
-		updatepr,	//	558    14-73	Auto restart Speed serach method
-		updatepr,	//	559    14-74	Deceleration at Momertary Power loss 
-		updatepr,	//	560    14-75	KEB Return Time
-		updatepr,	//	561    14-76	PID feedback selection
-		updatepr,	//	562    14-77	P gain of PID
-		updatepr,	//	563    14-78	I gain of PID
-		updatepr,	//	564    14-79	D gain of PID
-		updatepr,	//	565    14-80	Upper bound for integral
-		updatepr,	//	566    14-81	PID output Freq. Limit
-		P14_82	,	//	567    14-82	PID offset
-		LPFGain	,	//	568    14-83	Derivative Filter Time Constant
-		updatepr,	//	569    14-84	Feedback signal detection time
-		updatepr,	//	570    14-85	PID feedback loss
-		updatepr,	//	571    14-86	Sleep Frequency
-		updatepr,	//	572    14-87	Wake up Frequency
-		updatepr,	//	573    14-88	Sleep Time
-		updatepr,	//	574    14-89	PID Deviation Level
-		updatepr,	//	575    14-90	PID Deviation Time
-		updatepr,	//	576    14-91	PID feedback filter
-		P14_92  ,	//	577    14-92	Main Frequency from communication
-		P14_93  ,	//	578    14-93	Block Transfer 1
-		P14_93  ,	//	579    14-94	Block Transfer 2
-		P14_93  ,	//	580    14-95	Block Transfer 3
-		P14_93  ,	//	581    14-96	Block Transfer 4
-		P14_93  ,	//	582    14-97	Block Transfer 5
-		P14_93  ,	//	583    14-98	Block Transfer 6
-		P14_93  ,	//	584    14-99	Block Transfer 7
-		P14_93  ,	//	585    14-100	Block Transfer 8
-		P14_93  ,	//	586    14-101	Block Transfer 9
-		P14_93  ,	//	587    14-102	Block Transfer 10
-		updatepr,	//	588    14-103	WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
-		updatepr,	//	589    14-104	WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
-		updatepr,	//	590    14-105	OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
-		flashpr	,	//	591    14-106	PG Position Control Point (Home)
-		updatepr,	//	592    14-107	Range for PG Position Attained
-		updatepr,	//	593    14-108	Gain of APR feedforward
-		P01_10	,	//	594    14-109	Decelerate time of APR
-		updatepr,	//	595    14-110	FMax Target by Vcommand Position
-		updatepr,	//	596    14-111	Accel. Time for Position
-		P14_112	,	//	597    14-112	PG Mechanical Gear A
-		P14_112	,	//	598    14-113	PG Mechanical Gear B
-		P14_114	,	//	599    14-114	Interia of motor PU
-		updatepr,	//	600    14-115	Motor1 IdsRef Limit
-		updatepr,	//	601    14-116	Motor2 IdsRef Limit
-		LPFGain,	//	602    14-117	Phase Loss Time
-		P14_118	,	//	603    14-118	Thermo inside Temp
-		updatepr,	//	604    14-119	Speed feed forword
-		updatepr,	//	605    14-120	SVC Slip Generation Compensation Gain //6a02j
-		LPFGain	,	//	606    14-121	PG2 Command Low pass Filter Gain
-		P14_122	,	//	607    14-122	Tension of Torque Control
-		P14_122	,	//	608    14-123	Diameter of Material
-		updatepr,	//	609    14-124	Depth of meterial
-		updatepr,	//	610    14-125	Safety Relay Record
-		updatepr,	//	611    14-126	The interval between pulse time
-		updatepr,	//	612    14-127	Pulse duty
-		P06_17	,	//	613    14-128	Timer of Phase loss (hour)
-		updatepr,	//	614    14-129	Time of APR Curve
-		P11_05	,	//	615    14-130	Jm calculation select
-		P14_131	,	//	616    14-131	Level of Phase Loss
-		updatepr,	//	617    14-132	Virtual MI State
-		P14_133 ,	//	618    14-133	Standstill Current
-		P10_10	,	//	619    14-134   Division factor of PG
-		fnone	,	//	620    14-135	Motor Base Frequency 1
-		P14_136 ,	//	617    14-136	// [CAN Protocol for High Cap , Sampo,  2011/09/05]
-		P14_137 ,	//	617    14-137	// [CAN Protocol for High Cap , Sampo,  2011/09/05]
-		P14_138 ,	//	617    14-138	// [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-		updatepr,	//	617    14-139	// [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-	    updatepr,	//	368    14-140  09-00	Comm Address      //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]
-		P09_01	,	//	369    14-141  09-01	Tranmission speed
-		updatepr,	//	370    14-142  09-02	Comm fault Treatment
-		updatepr,	//	371    14-143  09-03	Comm Time out
-		P09_01  ,	//	372    14-144  09-04	Comm Protocol
-		updatepr,	//	373    14-145  09-05	ASC remote Response Delay Time, 1=100us
-		updatepr,   //    3XX    14-146
-		updatepr,   //    3XX    14-147
-		updatepr,   //    3XX    14-148
-		updatepr,   //    3XX    14-149
-		updatepr,   //    3XX    14-150
-		updatepr,   //    3XX    14-151
-		updatepr,   //    3XX    14-152
-		updatepr,   //    3XX    14-153
+		updatepr,	//14-00	    Ids Power Save Level
+		updatepr,	//14-01	    VF voltage mode selection
+		P14_02	,	//14-02	    Constant Torque Selection
+		updatepr,	//14-03	    Auto Accel/Decel
+		P14_04  ,	//14-04	    Unit of Acc/Dec time
+		updatepr,	//14-05	    Power Save mode
+		updatepr,	//14-06	    Stop Methods
+		P14_07	,	//14-07	    Reverse Operation
+		P14_08	,	//14-08	    Skip Freq. Point 1 upper limit
+		P14_08	,	//14-09	    Skip Freq. Point 1 lower limit
+		P14_08	,	//14-10	    Skip Freq. Point 2 upper limit
+		P14_08	,	//14-11	    Skip Freq. Point 2 lower limit
+		P14_08	,	//14-12	    Skip Freq. Point 3 upper limit
+		P14_08	,	//14-13	    Skip Freq. Point 3 lower limit
+		P01_01	,	//14-14	    Motor Base Frequency 2
+		P01_02	,	//14-15	    Max Output Voltage 2
+		updatepr,	//14-16	    Mid Output Freq.2 1
+		updatepr,	//14-17	    Mid Output Voltage 2 1
+		updatepr,	//14-18	    Mid Output Freq.2 2
+		updatepr,	//14-19	    Mid Output Voltage 2 2
+		P01_07	,	//14-20	    Min Output Freq. 2
+		updatepr,	//14-21	    Min Output Voltage 2
+		updatepr,	//14-22	    up/down key mode
+		updatepr,	//14-23	    up/down key speed
+		updatepr,	//14-24	    Counter Value Set (Complete)
+		updatepr,	//14-25	    Counter Value Reach (Preset)
+		updatepr,	//14-26	    LIMIT_SCALE    //[weak magnet, Sampo, 03/31/2011]
+		P02_02	,	//14-27	    Multi-Function Input 9
+		P02_02	,	//14-28	    Multi-Function Input 10
+		P02_02	,	//14-29	    Multi-Function Input 11
+		P02_02	,	//14-30	    Multi-Function Input 12
+		P02_02	,	//14-31	    Multi-Function Input 13
+		P02_02	,	//14-32	    Multi-Function Input 14
+		updatepr,	//14-33	    External Terminal Run after Fault Reset
+		updatepr,	//14-34	    ACI change to AVI2
+		updatepr,	//14-35	    Addition Function of AI
+		updatepr,	//14-36	    Multi-Position Point 1
+		updatepr,	//14-37	    Multi-Position Point 2
+		updatepr,	//14-38	    Multi-Position Point 3
+		updatepr,	//14-39	    Multi-Position Point 4
+		updatepr,	//14-40	    Multi-Position Point 5
+		updatepr,	//14-41	    Multi-Position Point 6
+		updatepr,	//14-42	    Multi-Position Point 7
+		updatepr,	//14-43	    Multi-Position Point 8
+		updatepr,	//14-44	    Multi-Position Point 9
+		updatepr,	//14-45	    Multi-Position Point 10
+		updatepr,	//14-46	    Multi-Position Point 11
+		updatepr,	//14-47	    Multi-Position Point 12
+		updatepr,	//14-48	    Multi-Position Point 13
+		updatepr,	//14-49	    Multi-Position Point 14
+		updatepr,	//14-50	    Multi-Position Point 15
+		P14_51	,	//14-51	    Motor Selection 1 or 2
+		updatepr,	//14-52	    Y-Delta Connected switching rpm
+		P14_53	,	//14-53	    Y-Delta switched Enable
+		P05_01	,	//14-54	    Motor 2 rated Current
+		P05_02	,	//14-55	    Motor 2 Rated Power
+		P05_03	,	//14-56	    Motor 2 Rated RPM
+		P05_04	,	//14-57	    Motor 2 pole No.
+		P05_05	,	//14-58	    Motor 2 No-Load Current
+		P05_06	,	//14-59	    Motor 2 Rs
+		P05_07	,	//14-60	    Motor 2 Rr
+		P05_08	,	//14-61 	Motor 2 Lm
+		P05_09	,	//14-62	    Motor 2 Lx
+		updatepr,	//14-63	    Y-Delta On delay time
+		P14_64	,	//14-64	    OV stall level
+		updatepr,	//14-65	    Thermal Relay 2 Selection
+		updatepr,	//14-66	    Thermal Relay 2 Time
+		updatepr,	//14-67	    Momentary Power Loss
+		P14_68	,	//14-68	    Max. allowable PL time
+		P14_68	,	//14-69	    BB Time for speed serach
+		updatepr,	//14-70	    Current level for SPD serach
+		updatepr,	//14-71	    bb treatment for oc, ov, bb
+		updatepr,	//14-72	    Auto restart after fault
+		updatepr,	//14-73	    Auto restart Speed serach method
+		updatepr,	//14-74 	Deceleration at Momertary Power loss 
+		updatepr,	//14-75	    KEB Return Time
+		updatepr,	//14-76	    PID feedback selection
+		updatepr,	//14-77	    P gain of PID
+		updatepr,	//14-78	    I gain of PID
+		updatepr,	//14-79	    D gain of PID
+		updatepr,	//14-80	    Upper bound for integral
+		updatepr,	//14-81	    PID output Freq. Limit
+		P14_82	,	//14-82	    PID offset
+		LPFGain	,	//14-83	    Derivative Filter Time Constant
+		updatepr,	//14-84	    Feedback signal detection time
+		updatepr,	//14-85	    PID feedback loss
+		updatepr,	//14-86	    Sleep Frequency
+		updatepr,	//14-87	    Wake up Frequency
+		updatepr,	//14-88	    Sleep Time
+		updatepr,	//14-89	    PID Deviation Level
+		updatepr,	//14-90	    PID Deviation Time
+		updatepr,	//14-91	    PID feedback filter
+		P14_92  ,	//14-92	    Main Frequency from communication
+		P14_93  ,	//14-93	    Block Transfer 1
+		P14_93  ,	//14-94	    Block Transfer 2
+		P14_93  ,	//14-95	    Block Transfer 3
+		P14_93  ,	//14-96	    Block Transfer 4
+		P14_93  ,	//14-97	    Block Transfer 5
+		P14_93  ,	//14-98	    Block Transfer 6
+		P14_93  ,	//14-99	    Block Transfer 7
+		P14_93  ,	//14-100	Block Transfer 8
+		P14_93  ,	//14-101	Block Transfer 9
+		P14_93  ,	//14-102	Block Transfer 10
+		updatepr,	//14-103	WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
+		updatepr,	//14-104	WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
+		updatepr,	//14-105	OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
+		flashpr	,	//14-106	PG Position Control Point (Home)
+		updatepr,	//14-107	Range for PG Position Attained
+		updatepr,	//14-108	Gain of APR feedforward
+		P01_10	,	//14-109	Decelerate time of APR
+		updatepr,	//14-110	FMax Target by Vcommand Position
+		updatepr,	//14-111	Accel. Time for Position
+		P14_112	,	//14-112	PG Mechanical Gear A
+		P14_112	,	//14-113	PG Mechanical Gear B
+		P14_114	,	//14-114	Interia of motor PU
+		updatepr,	//14-115	Motor1 IdsRef Limit
+		updatepr,	//14-116	Motor2 IdsRef Limit
+		LPFGain,	//14-117	Phase Loss Time
+		P14_118	,	//14-118	Thermo inside Temp
+		updatepr,	//14-119	Speed feed forword
+		updatepr,	//14-120	SVC Slip Generation Compensation Gain //6a02j
+		LPFGain	,	//14-121	PG2 Command Low pass Filter Gain
+		P14_122	,	//14-122	Tension of Torque Control
+		P14_122	,	//14-123	Diameter of Material
+		updatepr,	//14-124	Depth of meterial
+		updatepr,	//14-125	Safety Relay Record
+		updatepr,	//14-126	The interval between pulse time
+		updatepr,	//14-127	Pulse duty
+		P06_17	,	//14-128	Timer of Phase loss (hour)
+		updatepr,	//14-129	Time of APR Curve
+		P11_05	,	//14-130	Jm calculation select
+		P14_131	,	//14-131	Level of Phase Loss
+		updatepr,	//14-132	Virtual MI State
+		P14_133 ,	//14-133	Standstill Current
+		P10_10	,	//14-134    Division factor of PG
+		fnone	,	//14-135	Motor Base Frequency 1
+		P14_136 ,	//14-136	// [CAN Protocol for High Cap , Sampo,  2011/09/05]
+		P14_137 ,	//14-137	// [CAN Protocol for High Cap , Sampo,  2011/09/05]
+		P14_138 ,	//14-138	// [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+		updatepr,	//14-139	// [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+	    updatepr,	//14-140    09-00	Comm Address      //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]
+		P09_01	,	//14-141    09-01	Tranmission speed
+		updatepr,	//14-142    09-02	Comm fault Treatment
+		updatepr,	//14-143    09-03	Comm Time out
+		P09_01  ,	//14-144    09-04	Comm Protocol
+		updatepr,	//14-145    09-05	ASC remote Response Delay Time, 1=100us
+		updatepr,   //14-146
+		updatepr,   //14-147
+		updatepr,   //14-148
+		updatepr,   //14-149
+		updatepr,   //14-150
+		updatepr,   //14-151
+		updatepr,   //14-152
+		updatepr,   //14-153
 };
 
 UWORD maxcf(UWORD model)
@@ -3741,7 +3878,8 @@ void P14_08(UWORD prx, UWORD prvalue)
 
 void P02_00(UWORD prx, UWORD prvalue)
 {
-    UBYTE j, ubMCChk, ubBKChk1, ubBKChk2;   //[change for EN81-1+A3, Bernie, 2015/03/16];
+    //UBYTE ubMCChk, ubBKChk1, ubBKChk2;   //[change for EN81-1+A3, Bernie, 2015/03/16];	//Task 268622 IO Direct Landing	//Mitong 20230221 del
+    UBYTE j;
 
     updatepr(prx,prvalue);
     if (PRUPDATE==1){
@@ -3762,6 +3900,8 @@ void P02_00(UWORD prx, UWORD prvalue)
 	        ext3_status.ub = 0;  //[CAN Control, Sampo, 09/15/2010]
 //-- End on 11/28/2008
 
+			CheckMI_Use();	//檢查某個MI是否有設定	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+			/* //以下程式用 CheckMI_Use()代替 //Task 268622 IO Direct Landing	//Mitong 20230221 del ----------------------------------
 			// [ MC Confirm and BK Confirm function check, add by DINO, 03/11/2009
 			ubMCChk = 0;
 			ubBKChk1 = 0;
@@ -3776,7 +3916,7 @@ void P02_00(UWORD prx, UWORD prvalue)
 				if (pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input 1
 					ubBKChk1 = 1;
 				}
-                if (pr[j] == MFI_BK_IN2){	// 44:Mechanical Brake Signal Input 2   //[change for EN81-1+A3, Bernie, 2015/03/16];
+                if (pr[j] == MFI_BK_IN2){	// 44:Mechanical Brake Signal Input 2   //[change for EN81-1+A3, Bernie, 2015/03/16];	
 					ubBKChk2 = 1;
 				}
 			}
@@ -3784,14 +3924,16 @@ void P02_00(UWORD prx, UWORD prvalue)
 			BKCHK_ENABLE1 = ubBKChk1;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 	        BKCHK_ENABLE2 = ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 			// ]
+			*/ //-------------------------------------------------------------------------------------------------------------------------------
         }
     }
 }
 
 void P02_01(UWORD prx, UWORD prvalue)
 {
-    UBYTE j, ubMCChk, ubBKChk1,ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]	
-	
+    //UBYTE ubMCChk, ubBKChk1,ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]	//Task 268622 IO Direct Landing	//Mitong 20230221 del
+    UBYTE j;
+    
     if (prvalue==0){
 		updatepr(prx,prvalue);
     }
@@ -3822,6 +3964,8 @@ void P02_01(UWORD prx, UWORD prvalue)
 	    ext2_status.ub	= 0;
 	    ext3_status.ub  = 0; //[CAN Control, Sampo, 09/15/2010]
 
+		CheckMI_Use();	//檢查某個MI是否有設定	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+		/* //以下程式用 CheckMI_Use()代替 //Task 268622 IO Direct Landing	//Mitong 20230221 del ----------------------------------
 		// [ MC Confirm and BK Confirm function check, add by DINO, 03/11/2009
 		ubMCChk = 0;
         ubBKChk1 = 0;
@@ -3833,10 +3977,10 @@ void P02_01(UWORD prx, UWORD prvalue)
 			if (pr[j] == MFI_MC_IN){	// 41:Magnetic Contactor Signal Input
 				ubMCChk = 1;
 			}
-			if (pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input 1
+			if (pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input 1	
 				ubBKChk1 = 1;
 			}
-            if (pr[j] == MFI_BK_IN2){	// 44:Mechanical Brake Signal Input 2   //[change for EN81-1+A3, Bernie, 2015/03/16]
+            if (pr[j] == MFI_BK_IN2){	// 44:Mechanical Brake Signal Input 2 //[change for EN81-1+A3, Bernie, 2015/03/16]
 				ubBKChk2 = 1;
 			}
 		}
@@ -3844,6 +3988,7 @@ void P02_01(UWORD prx, UWORD prvalue)
 		BKCHK_ENABLE1 = ubBKChk1;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 	    BKCHK_ENABLE2 = ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 		// ]
+		*/ //-----------------------------------------------------------------------------------------------------------------------------------
 	}      
 
 
@@ -3851,8 +3996,9 @@ void P02_01(UWORD prx, UWORD prvalue)
 
 void P02_02(UWORD prx, UWORD prvalue)
 {
-    UBYTE j, ubMCChk, ubBKChk1,ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]	
-
+    UBYTE j;  //[change for EN81-1+A3, Bernie, 2015/03/16]	
+	//UBYTE ubMCChk, ubBKChk1,ubBKChk2;	 //Task 268622 IO Direct Landing	//Mitong 20230221 del
+	
     if (prvalue==0){
         updatepr(prx,prvalue);
     }
@@ -3882,10 +4028,14 @@ void P02_02(UWORD prx, UWORD prvalue)
 	    ext1_status.ub	= 0;
 	    ext2_status.ub	= 0;
 
+		CheckMI_Use();	//檢查某個MI是否有設定	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+		/* //以下程式用 CheckMI_Use()代替 //Task 268622 IO Direct Landing	//Mitong 20230221 del ----------------------------------
 		// [ MC Confirm and BK Confirm function check, add by DINO, 03/11/2009
 		ubMCChk = 0;
         ubBKChk1 = 0;
 		ubBKChk2 = 0;   //[change for EN81-1+A3, Bernie, 2015/03/16]
+		ubMI53 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+		ubMI60 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
 		for (j=MI1;j<=MI8;j++){
 	    	if (pr[j]==MFI_ASRSwitch){	// 27:ASR1 to ASR2
 	        	EXT_ASREN = 1;
@@ -3896,7 +4046,7 @@ void P02_02(UWORD prx, UWORD prvalue)
 			if (pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input
 				ubBKChk1 = 1;
 			}
-            if (pr[j] == MFI_BK_IN2){	// 42:Mechanical Brake Signal Input     //[change for EN81-1+A3, Bernie, 2015/03/16]				
+            if (pr[j] == MFI_BK_IN2){	// 42:Mechanical Brake Signal Input //[change for EN81-1+A3, Bernie, 2015/03/16]
                 ubBKChk2 = 1;
 			}
 		}
@@ -3904,8 +4054,56 @@ void P02_02(UWORD prx, UWORD prvalue)
 		BKCHK_ENABLE1 = ubBKChk1;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 	    BKCHK_ENABLE2 = ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 		// ]
+		*/ //---------------------------------------------------------------------------------------------------------------------------------
 	}        
 }
+
+
+//Task 268622 IO Direct Landing //Mitong 20230221 add ---------------------------------------------------------------------------------
+//檢查某個MI是否有設定
+void CheckMI_Use(void)
+{
+	UBYTE j, ubMCChk, ubBKChk1,ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]	
+	UBYTE ubMI53, ubMI60, ubASR_Chk;	 //Task 268622 IO Direct Landing	//Mitong 20230221 add
+	ubMCChk = 0;
+    ubBKChk1 = 0;
+	ubBKChk2 = 0;   //[change for EN81-1+A3, Bernie, 2015/03/16]
+	ubMI53 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	ubMI60 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	ubASR_Chk = 0;	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	for (j=MI1;j<=MI8;j++){
+	    if (pr[j]==MFI_ASRSwitch){	// 27:ASR1 to ASR2
+	        //EXT_ASREN = 1;	//無法歸零	//Task 268622 IO Direct Landing	//Mitong 20230221 source
+	        ubASR_Chk = 1;		//Task 268622 IO Direct Landing	//Mitong 20230221 new
+		}
+		//if (pr[j] == MFI_MC_IN){	// 41:Magnetic Contactor Signal Input			//Task 268622 IO Direct Landing	//Mitong 20230221 source
+		else if(pr[j] == MFI_MC_IN){	// 41:Magnetic Contactor Signal Input	//Task 268622 IO Direct Landing	//Mitong 20230221 new
+			ubMCChk = 1;
+		}
+		//if (pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input			//Task 268622 IO Direct Landing	//Mitong 20230221 source
+		else if(pr[j] == MFI_BK_IN1){	// 42:Mechanical Brake Signal Input		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+			ubBKChk1 = 1;
+		}  
+		//if (pr[j] == MFI_BK_IN2){	// 42:Mechanical Brake Signal Input //[change for EN81-1+A3, Bernie, 2015/03/16]	//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+        else if(pr[j] == MFI_BK_IN2){	// 44:Mechanical Brake Signal Input //[change for EN81-1+A3, Bernie, 2015/03/16]	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+            ubBKChk2 = 1;
+		}
+		else if(pr[j] == MFI_IODLC_CRPLS1){	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+            ubMI53 = 1;
+		}
+		else if(pr[j] == MFI_IODLC_CRPLS2){	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+            ubMI60 = 1;
+		}
+	}
+	MCCHK_ENABLE = ubMCChk;
+	BKCHK_ENABLE1 = ubBKChk1;  //[change for EN81-1+A3, Bernie, 2015/03/16]
+	BKCHK_ENABLE2 = ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]
+	btIODLC_CRPLS1_HavSet = (ubMI53 == 1);	//btHaveSetCRPLS1=1 表示有設定MI53功能	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	btIODLC_CRPLS2_HavSet = (ubMI60 == 1);	//btHaveSetCRPLS2=1 表示有設定MI60功能	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	EXT_ASREN = (ubASR_Chk == 1);		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+}
+//-----------------------------------------------------------------------------------------------------------------------------
+
 
 void P02_11(UWORD prx, UWORD prvalue)
 {

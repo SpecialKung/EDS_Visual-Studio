@@ -911,7 +911,8 @@ void Driver_ID_Rec(void){
 
 void InitValue(void)
 {
-    UBYTE ubMCChk, ubBKChk1,ubBKChk2, HPSPEC_temp;  //[change for EN81-1+A3, Bernie, 2015/03/16]				
+    //UBYTE ubMCChk, ubBKChk1,ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]	//Task 268622 IO Direct Landing	//Mitong 20230221 del	
+    UBYTE HPSPEC_temp;  //[change for EN81-1+A3, Bernie, 2015/03/16]
     UWORD i;
     UWORD ax, bx;
     UWORD k, px, j;
@@ -1548,22 +1549,25 @@ void InitValue(void)
     AnaPGInit(); 				// add by dino, 06/01/2007
 //    if ( pr[CTRLM]==FOCPM ){ pr[FSTART] = 0; }	//add SCOTTY 10/04/2007
     
-
+	CheckMI_Use();	//檢查某個MI是否有設定	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+	/* //以下程式用 CheckMI_Use()代替 //Task 268622 IO Direct Landing	//Mitong 20230221 del ----------------------------------
 	ubMCChk = 0;
 	ubBKChk1 = 0;
     ubBKChk2 = 0;    //[change for EN81-1+A3, Bernie, 2015/03/16]
+    ubMI53 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
+	ubMI60 = 0;		//Task 268622 IO Direct Landing	//Mitong 20230221 add
     for (i=MI1;i<=MI8;i++){		// Modify by dino, 05/15/2008
 
 	    if (pr[i] == MFI_ASRSwitch){	// 27:ASR1 to ASR2
 	        EXT_ASREN = 1;
 		}
-		if (pr[i] == MFI_MC_IN){		// 41:Magnetic Contactor Signal Input
+		if (pr[i] == MFI_MC_IN){			// 41:Magnetic Contactor Signal Input
 			ubMCChk = 1;
 		}
-		if (pr[i] == MFI_BK_IN1){		// 42:Mechanical Brake Signal Input
+		if (pr[i] == MFI_BK_IN1){		// 42:Mechanical Brake Signal Input	
 			ubBKChk1 = 1;
 		}
-        if (pr[i] == MFI_BK_IN2){	    // 42:Mechanical Brake Signal Input     //[change for EN81-1+A3, Bernie, 2015/03/16]				
+        if (pr[i] == MFI_BK_IN2){	    	// 42:Mechanical Brake Signal Input	//[change for EN81-1+A3, Bernie, 2015/03/16]
             ubBKChk2 = 1;
         }
     }
@@ -1572,7 +1576,8 @@ void InitValue(void)
 	BKCHK_ENABLE1 = ubBKChk1;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 	BKCHK_ENABLE2 = ubBKChk2;  //[change for EN81-1+A3, Bernie, 2015/03/16]
 	// ]
-
+	*/ //-------------------------------------------------------------------------------------------------------------------------
+	
     //======= Check Motor Selection from Multi-Function ====================//
     // Initial PM motor parameter
     if (pr[CTRLM]==FOCPM)				// Control Mode = PM MOTOR
@@ -2590,7 +2595,20 @@ void mi_speed(void)
                     else
                     { 
                         // [IODLC, Lyabryan, 2016/11/11]
-                        fkey.uw.hi = pr[FMI0+speed];
+                        //fkey.uw.hi = pr[FMI0+speed];	//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+
+						//Task 268622 IO Direct Landing	//Mitong 20230221 new	     ------------------------------------------------------
+						//When it is determined to execute IO direct parking, no matter which section speed command to go, it will go to zero speed
+						//當確定要執行IO直接停靠時,不管下要走哪一個段速命令,一律走零速
+						if((!btIODLC_M12 && (btIODLC_M3 || btIODLC_M4)) && IODLC_CRPLS_SW)
+						{
+							fkey.uw.hi = 0;
+						}
+						else
+						{
+							fkey.uw.hi = pr[FMI0+speed];
+						}
+						// -----------------------------------------------------------------------------------------------------
                     }
                	}
                	else
@@ -5445,7 +5463,8 @@ void main(void)
 			// ]
 		}
 		
-        if((pr[IODEN]&0x0001)==0x0001){ // [IODLC, Lyabryan, 2016/11/11]
+        //if((pr[IODEN]&0x0001)==0x0001){ // [IODLC, Lyabryan, 2016/11/11]		//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+        if(btIODEN_ShortFloor){ 		// [IODLC, Lyabryan, 2016/11/11]		//Task 268622 IO Direct Landing	//Mitong 20230221 new	
             IODLC_Distance_calculate(); // [IODLC, Lyabryan, 2016/11/11]
         }
         ////[EPS, Sampo, 03/27/2011]
@@ -5804,13 +5823,15 @@ void main(void)
         }
         else
         {
-            // Rational351466, Special.Kung, 2023/07/10
-            /*
-            if(Error == 0)
-            {
-                Error = PGF3_ERR;
-            }
+            // Rationa l351466, Special.Kung, 2023/07/10
+            /*															//[Special.Kung, 2023/07/10]
+            if(Error == 0)												//[Special.Kung, 2023/07/10]
+            {															//[Special.Kung, 2023/07/10]
+                Error = PGF3_ERR;										//[Special.Kung, 2023/07/10]
+            }															//[Special.Kung, 2023/07/10]
             */
+			// Rationa l351466, Special.Kung, 2023/07/10
+			
             ABV_PGSPDA = 1;
         }
 // ]

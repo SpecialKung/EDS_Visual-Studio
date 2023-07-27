@@ -89,6 +89,7 @@ void (*const mfi1_tbl[(MFIMAX+1)])(UWORD chg,UWORD k) = {
         MI_Sensor819,	//57Sensor819 //[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
         Torq_Detect,	//58:Torq Detect [JES Torq Detect Function, Special.Kung, 2022/09/01]
 		AFE_ERRFBK,	    //59:AFE Error Triger //[AFE Error Handle/Lyabryan/2022/03/24]
+		IODLC_CRPLS_IO2,//60:IODLC_CRPLS //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 #else
 		no_func,        //0: No Function
         mispeed1,       //1: MI speed 1
@@ -196,10 +197,10 @@ UWORD (*const mfo_tbl[(MFOMAX+1)])(UWORD pin, UWORD k) = {
     mfo_DLCLevOn,       //47: Car Stop and Level Sensor Enable ON Flag
     mfo_star_Contactor, //48
     
-    mfo_EPS_MODE,       //49:Lift enable, WTL, 20170621 //[EPS MO Output,Lyabryan,2018/06/19]
-    mfo_abv_PGspa,      //50:PG speed Above Speed Area for  NRG, #16698//James, 2021/08/09
-    mfo_Torq_Detect,	//51:Torq Detect [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	mfo_AFE_RST,       // 52: AFE RST //[AFE Error Handle/Lyabryan/2022/03/24]
+    mfo_EPS_MODE,       //49: Lift enable, WTL, 20170621 //[EPS MO Output,Lyabryan,2018/06/19]
+    mfo_abv_PGspa,      //50: PG speed Above Speed Area for  NRG, #16698//James, 2021/08/09
+    mfo_Torq_Detect,	//51: Torq Detect [JES Torq Detect Function, Special.Kung, 2022/09/01]
+	mfo_AFE_RST,        //52: AFE RST //[AFE Error Handle/Lyabryan/2022/03/24]
 #else 
     mfo_none,           // 0: Not used
     mfo_running,        // 1: Inverter Running //
@@ -446,6 +447,7 @@ void mfi_process(void)
         // (mfi_old, mfi_buf) = (STOP,STOP) in line 2
         // Drive should stop but chg is 0, so keep running!
         // We disable interrput to prevent it !
+
         for (j=0;j<=15;j++) {
             if ((j<=1)||((j==2)&&(pr[WIRE2_3]>=4))){  	// 3 line operatation
 //              if ((pr[SOOC]==1||pr[SOOC]==2)) 		// Source of operation command
@@ -1127,8 +1129,10 @@ void mispeed1(UWORD chg,UWORD k)
 		  // [IODLC, Lyabryan, 2016/11/11] //[
           if(RUNNING == RUN){
               IODLC_MIcheck = 1;
-              if(IODLC_CRPLS_SWSPD&&(IODLC_ubArea_status>= AreaS3)) //&&IODLC_ubArea_status!= Arealand
+              //if(IODLC_CRPLS_SWSPD&&(IODLC_ubArea_status>= AreaS3)) //&&IODLC_ubArea_status!= Arealand	//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+			  if(IODLC_CRPLS_SWSPD && (IODLC_ubArea_status>= AreaS3) && !btIODLC_M3 && !btIODLC_M4){	//Task 268622 IO Direct Landing	//Mitong 20230221 new	
                   IODLC_CRPLS_SW = 1;
+			  }
           }
           else{
               IODLC_CRPLS_SW = 0;
@@ -1712,14 +1716,67 @@ void DLC_UDS(UWORD chg,UWORD k){
 
 //]
 
+// MI53
 void IODLC_CRPLS_IO(UWORD chg,UWORD k){ // [IODLC, Lyabryan, 2016/11/11]
-    if(k != 0){
-        if(IODLC_ubArea_status<Arealand) //[Creep-Optimis,Lyabryan,2019/02/11]
-      	    IODLC_CRPLS_SW = 1; 
-    }
-    else
-  	    IODLC_CRPLS_SW = 0;
+	//Task 268622 IO Direct Landing	//Mitong 20230221 source	  --------------------------------
+    //if(k != 0){
+    //    if(IODLC_ubArea_status<Arealand) //[Creep-Optimis,Lyabryan,2019/02/11]
+    //  	    IODLC_CRPLS_SW = 1; 
+    //}
+    //else
+  	//    IODLC_CRPLS_SW = 0;
+	//-----------------------------------------------------------------------------
+
+	//Task 268622 IO Direct Landing	//Mitong 20230221 new  --------------------------------
+	if(btIODLC_M12)
+	{
+		if(k != 0){
+	        if(IODLC_ubArea_status<Arealand){ //[Creep-Optimis,Lyabryan,2019/02/11]
+    	  	    IODLC_CRPLS_SW = 1;
+	        }
+	    }
+    	else{
+  	    	IODLC_CRPLS_SW = 0;
+    	}
+	}
+	else if(btIODLC_M3)
+	{
+		if(k != 0)
+		{
+			btIODLC_CRPLS1 = 1;
+		}
+		else
+		{
+			btIODLC_CRPLS1 = 0;
+		}
+	}
+	else
+	{
+		btIODLC_CRPLS1 = 0;
+	}
+	// ---------------------------------------------------------------------------
 }
+
+//Task 268622 IO Direct Landing	//Mitong 20230221 add	 ---------
+//MI60
+void IODLC_CRPLS_IO2(UWORD chg,UWORD k){
+	if(btIODLC_M3)
+	{
+    	if(k != 0)
+		{
+			btIODLC_CRPLS2 = 1;
+		}
+		else
+		{
+			btIODLC_CRPLS2 = 0;
+		}
+	}
+	else
+	{
+		btIODLC_CRPLS2 = 0;
+	}
+}
+// -----------------------------------------------------
 
 void EPS_MI_DETCT(UWORD chg,UWORD k){     //[EPS MO Output,Lyabryan,2018/06/19] //[ADCO request function for EPS function, Bernie, 2017/09/06]
 
@@ -2460,10 +2517,11 @@ UWORD mfo_abv_PGspa(UWORD pin,UWORD k){      // #16698 PG speed Above Speed Area
     if (ABV_PGSPDA==1)
     {
         // Rational351466, Special.Kung, 2023/07/10
-        if(Error == 0)
-        {
-            Error = PGF3_ERR;
-        }
+        if(Error == 0)											//[Special.Kung, 2023/07/10]
+        {														//[Special.Kung, 2023/07/10]
+            Error = PGF3_ERR;									//[Special.Kung, 2023/07/10]
+        }														//[Special.Kung, 2023/07/10]
+		// Rational351466, Special.Kung, 2023/07/10
         return (pin^k);
     }
     else

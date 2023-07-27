@@ -145,3 +145,45 @@ IODLC_EXT UWORD_UNION    IODLC_control_flag,
 #define IODLC_CRPLS_S4    IODLC_CRPLS_flag.bit.b2
 #define IODLC_CRPLS_SWSPD IODLC_CRPLS_flag.bit.b3
 #define IODLC_CRPLS_MISW  IODLC_CRPLS_flag.bit.b4
+
+
+
+//Task 268622 IO Direct Landing		//Mitong 20230221 add ----------------------
+IODLC_EXT UWORD		uwIODLC_CRPLS_Cnt,
+					uwIODLC_WarnCnt;
+
+IODLC_EXT UBYTE		ubIODLC_TrigSpeedCnt,
+					ubIODLC_AreaS4_Cnt;
+
+IODLC_EXT UBYTE_UNION	IODLC_control_flag2;
+#define btIODLC_TrigSpeed	IODLC_control_flag2.bit.b0
+#define btIODLC_CRPLS1		IODLC_control_flag2.bit.b1
+#define btIODLC_CRPLS2		IODLC_control_flag2.bit.b2
+#define btIODLC_S4OffDelay	IODLC_control_flag2.bit.b3
+#define btIODLC_CRPLS1_HavSet	IODLC_control_flag2.bit.b4
+#define btIODLC_CRPLS2_HavSet	IODLC_control_flag2.bit.b5
+#define btIODLC_Ena			IODLC_control_flag2.bit.b6
+//#define bt					IODLC_control_flag2.bit.b7
+
+
+IODLC_EXT UBYTE_UNION	ubIODLC_WARN;
+#define btIODLC_WARN1		ubIODLC_WARN.bit.b0
+#define btIODLC_WARN2		ubIODLC_WARN.bit.b1
+#define btIODLC_WARN3		ubIODLC_WARN.bit.b2
+#define btIODLC_WARN4		ubIODLC_WARN.bit.b3
+#define btIODLC_WARN5		ubIODLC_WARN.bit.b4
+#define btIODLC_WARN6		ubIODLC_WARN.bit.b5
+//#define btIODLC_WARN		ubIODLC_WARN.bit.b6
+//#define btIODLC_WARN		ubIODLC_WARN.bit.b7
+
+
+IODLC_EXT UWORD_UNION	uwPrIODEN;
+#define btIODEN_ShortFloor	uwPrIODEN.bit.b0
+#define btIODLC_M12			uwPrIODEN.bit.b1
+//#define bt					uwPrIODEN.bit.b2
+#define btIODLC_M3			uwPrIODEN.bit.b3
+#define btIODLC_M4			uwPrIODEN.bit.b4
+//#define bt					uwPrIODEN.bit.b5
+
+// -----------------------------------------------------------------
+

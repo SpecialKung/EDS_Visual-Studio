@@ -47,6 +47,9 @@
 #define MFI_MC_IN	    41
 #define MFI_BK_IN1		42  //[change for EN81-1+A3, Bernie, 2015/03/16]
 #define MFI_BK_IN2		44  //[change for EN81-1+A3, Bernie, 2015/03/16]
+#define	MFI_IODLC_CRPLS1	53	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+#define	MFI_IODLC_CRPLS2	60	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+
 
 
 #define MFO_STAR_CON    48
@@ -657,7 +660,11 @@
 #define BTT1_WARN     	48		//BTTx Testing [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define BTT2_WARN     	49		//BTTx Normal  [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define BTT3_WARN     	50		//BTTx Success [JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define WARNMAX         51	
+#define	IODLC_WARN		51		//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+//#define WARNMAX         51		//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+#define WARNMAX         52		//Task 268622 IO Direct Landing	//Mitong 20230221 new	
+
+// -----------------------------------------------------------------------------------------
 //-------------------Error code----------------------
 // Driver occur serious fault, then driver stop operation.
 // User must press RESET to restart driver.
@@ -1504,7 +1511,8 @@ worst latency you could accept. It should never timeout. Do not set to 0. */
 
 
 
-#define MFIMAX		    59  //adco	
+//#define MFIMAX		    59  //adco		//Task 268622 IO Direct Landing	//Mitong 20230221 source	
+#define MFIMAX		    60			//Task 268622 IO Direct Landing	//Mitong 20230221 new		
 #define MFOMAX		    52    
 #define AFMMAX		    21
 

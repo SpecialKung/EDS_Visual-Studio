@@ -973,6 +973,13 @@ void  Initial_Var(void){
     IODLC_sleqFlim          =0;
     IODLC_sldelta_sdec      =0;
     IODLC_control_flag.uw   =0;
+	// Task 268622 IO Direct Landing	//Mitong 20230221 add ---------------
+	IODLC_control_flag2.ub  =0;
+	ubIODLC_WARN.ub			=0;	
+	uwIODLC_WarnCnt			=0;
+	ubIODLC_TrigSpeedCnt	=0;
+	uwIODLC_CRPLS_Cnt		=0;
+	// ------------------------------------------------------------
     IODLC_CRPLS_flag.uw     =0;
     /*Lib_ccess======================================*/
 

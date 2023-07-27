@@ -59,14 +59,14 @@ typedef struct{
 #define PROGKEY         8
 #define RECENT_KEY     19 //[add RecentPG,Lyabryan,2020/03/14]
 /*---------- LED EQUATION ---------------
-        ___6 ___
-       |             |
-    5 |             | 7
+        ___6___
+       |       |
+     5 |       | 7
        |___4___|
-       |             |
-    1 |             | 3
+       |       |
+     1 |       | 3
        |___2___|   o
-                             0
+                   0
                                        */
 #define _Ubar	0x4e    //.EQU    0101 0011B    ;u_
 #define _Z		0x44	//.EQU    0001 0001B    ;Z
@@ -359,7 +359,8 @@ const LEDDATASEG WarnMSG[WARNMAX/*+IED_ERRMAX-ERRMAX)*/] = {  // IED Error Displ
     _BLK,    _S,	_n,	  _8,   // Sensor818	047  //[Artemis Add Sensor819 Function/Special/2022/06/06]
       _b,    _t,    _t,   _A,   // bttA	        048  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
       _b,    _t,    _t,   _n,   // bttn	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-      _b,    _t,    _t,   _S,   // btts	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+      _b,    _t,    _t,   _S,   // btts	        050  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+      _d,	 _L,	_c,	  _1,	// dLc1		   051  //IO Direct Landing timing is abnormal(IOª½°±®É§Ç²§±`)//Task 268622 IO Direct Landing	//Mitong 20230221 add
 };
     
 	/*_BLK,  _BLK,    _c,   _t,	// ct		E68	 CAN Tx Error

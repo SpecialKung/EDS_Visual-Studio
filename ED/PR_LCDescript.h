@@ -250,18 +250,18 @@ const string20 c21info[C21MAX]={
     "F, Fmax, H att      ",    // 211DH  F, Fmax, H att  
     "A page value        ",    // 211EH  A page value    
     "A attribute         ",    // 211FH  A attribute     
-	"Cmd Freq. REC.  Hz  ",	   // 2120H Error Fcmd      
-	"Out Freq. REC.  Hz  ",	   // 2121H Error Fout      
-	"Isum Value REC. Amps",	   // 2122H Error Isum      
-	"Motor Freq. REC.Hz  ",	   // 2123H Error Ffbk      
-	"Out Voltage REC.V   ",	   // 2124H Error Vout      
-	"DcBus Value REC.V   ",	   // 2125H Error Vbus      
-	"Out Power REC.  KW  ",	   // 2126H Error Power     
-	"Out Torque REC. %   ",	   // 2127H Error Torque    
-	"IGBT Temp. REC. C   ",	   // 2128H Error IGBT Temp.
-	"DI State REC.   Hex ",	   // 2129H Error MI State  
-	"DO State REC.   Hex ",	   // 212AH Error MO State  
-	"Drive State REC.Hex ",	   // 212BH Error Drive St.    
+	"Cmd Freq. REC.  Hz  ",	   // 2120H  Error Fcmd      
+	"Out Freq. REC.  Hz  ",	   // 2121H  Error Fout      
+	"Isum Value REC. Amps",	   // 2122H  Error Isum      
+	"Motor Freq. REC.Hz  ",	   // 2123H  Error Ffbk      
+	"Out Voltage REC.V   ",	   // 2124H  Error Vout      
+	"DcBus Value REC.V   ",	   // 2125H  Error Vbus      
+	"Out Power REC.  KW  ",	   // 2126H  Error Power     
+	"Out Torque REC. %   ",	   // 2127H  Error Torque    
+	"IGBT Temp. REC. C   ",	   // 2128H  Error IGBT Temp.
+	"DI State REC.   Hex ",	   // 2129H  Error MI State  
+	"DO State REC.   Hex ",	   // 212AH  Error MO State  
+	"Drive State REC.Hex ",	   // 212BH  Error Drive St.    
 };
 
 const string20 c22info[C22MAX]={
@@ -298,18 +298,18 @@ const string20 c22info[C22MAX]={
     "                    ",    //29 221DH  Date Code 
     "                    ",    //30 221EH  Date Code 
     "                    ",    //31 221FH  Date Code 
-    "Cmd Freq. REC.  Hz  ",    //32 2220H Error Fcmd      
-    "Out Freq. REC.  Hz  ",    //33 2221H Error Fout      
-    "Isum Value REC. Amps",    //34 2222H Error Isum      
-    "Motor Freq. REC.Hz  ",    //35 2223H Error Ffbk      
-    "Out Voltage REC.V   ",    //36 2224H Error Vout      
-    "DcBus Value REC.V   ",    //37 2225H Error Vbus      
-    "Out Power REC.  KW  ",    //38 2226H Error Power     
-    "Out Torque REC. %   ",    //39 2227H Error Torque    
-    "IGBT Temp. REC. C   ",    //40 2228H Error IGBT Temp.
-    "DI State REC.   Hex ",    //41 2229H Error MI State  
-    "DO State REC.   Hex ",    //42 222AH Error MO State  
-    "Drive State REC.Hex ",    //43 222BH Error Drive St.    
+    "Cmd Freq. REC.  Hz  ",    //32 2220H  Error Fcmd      
+    "Out Freq. REC.  Hz  ",    //33 2221H  Error Fout      
+    "Isum Value REC. Amps",    //34 2222H  Error Isum      
+    "Motor Freq. REC.Hz  ",    //35 2223H  Error Ffbk      
+    "Out Voltage REC.V   ",    //36 2224H  Error Vout      
+    "DcBus Value REC.V   ",    //37 2225H  Error Vbus      
+    "Out Power REC.  KW  ",    //38 2226H  Error Power     
+    "Out Torque REC. %   ",    //39 2227H  Error Torque    
+    "IGBT Temp. REC. C   ",    //40 2228H  Error IGBT Temp.
+    "DI State REC.   Hex ",    //41 2229H  Error MI State  
+    "DO State REC.   Hex ",    //42 222AH  Error MO State  
+    "Drive State REC.Hex ",    //43 222BH  Error Drive St.    
       
 };
 
@@ -401,7 +401,7 @@ const string20 errinfo[(ERRMAX+1)]={
     "U Phase Loss    OPHL",    //82
     "V Phase Loss    OPHL",    //83
     "W Phase Loss    OPHL",    //84
-    "DLC Ctrl MethodDLCC",     //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
+    "DLC Ctrl Method DLCC",    //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
     "Lv Sensor Short LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
     "Lv Sensor Open  LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "Cur. Ctrl. Err  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
@@ -413,7 +413,7 @@ const string20 errinfo[(ERRMAX+1)]={
 	"BTTx Fail        btt",    //94	 //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTTx Error      bttE",    //95	 //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE Error Lock  AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
+	"AFE Error Lock  AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -517,7 +517,7 @@ const string20 errinfo_tc[(ERRMAX+1)]={
 	"BTT 失敗         btt",    //94	 //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT 錯誤        bttE",    //95  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE錯誤鎖定     AEL ",		//97[AFE Error Handle/Lyabryan/2022/03/24]
+	"AFE錯誤鎖定     AEL ",    //97  [AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -621,7 +621,7 @@ const string20 errinfo_sc[(ERRMAX+1)]={
 	"BTT 囮啖         btt",    //94	 //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT 渣昫        bttE",    //95  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE渣昫坶隅     AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
+	"AFE渣昫坶隅     AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
 
 };
 #endif
@@ -726,7 +726,7 @@ const string20 errinfo_tur[(ERRMAX+1)]={
     "BTTx Fail        btt",    //94	 //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTTx Error      bttE",    //95	 //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE Error Lock  AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
+	"AFE Error Lock  AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -818,7 +818,7 @@ const string20 errinfo_rus[(ERRMAX+1)]={
     "桏遻 U 餇郴     OPHL",    //82
     "桏遻 V 餇郴     OPHL",    //83
     "桏遻 W 餇郴     OPHL",    //84 
-    "DLC Ctrl MethodDLCC",     //85 //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
+    "DLC Ctrl MethodDLCC",     //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
     "Lv Sensor Short LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
     "Lv Sensor Open  LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "Cur. Ctrl. Err  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
@@ -888,6 +888,7 @@ const string20 warninfo[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"Direct Landing  dLc1", //warncode = 51  //IO直停時序異常 //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 };
 #endif
 
@@ -921,8 +922,8 @@ const string20 warninfo_tc[(WARNMAX+1)]={
     "滑差異常        oSL ", //warncode = 24
     "參數自學習中    tUn ", //warncdoe = 25
     "風扇異常        FAn ", //warncode = 26
-    "Can Bus 斷線    dCAn", //warncode = 27   //[CAN Control, Sampo, 09/15/2010]
-    "安全轉矩遺失警告STOA", //warncode = 28   //[STO function add Warning code and run rule, Bernie, 2016/03/22]
+    "Can Bus 斷線    dCAn", //warncode = 27  //[CAN Control, Sampo, 09/15/2010]
+    "安全轉矩遺失警告STOA", //warncode = 28  //[STO function add Warning code and run rule, Bernie, 2016/03/22]
     "UCMP 執行警告   UCMP", //warncode = 29  //[UCMP function, Bernie, 2016/06/14]
     "機種不同複製錯誤SE3 ", //warncode = 30  COPY Fail 3, Model name Error   
     "服務逾時        SERV", //warncode = 31
@@ -944,7 +945,8 @@ const string20 warninfo_tc[(WARNMAX+1)]={
 	"Sensor818 警告  SnW8",	//warncode = 47
 	"BTTx 測試中     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx 正常       bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"BTTx 成功\       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"BTTx 成功\      bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"IO直停時序異常  dLc1", //warncode = 51  //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 };
 #endif
 
@@ -1001,6 +1003,7 @@ const string20 warninfo_sc[(WARNMAX+1)]={
 	"BTTx 聆彸笢     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"IO眻礿奀唗祑都  dLc1", //warncode = 51  //IO直停時序異常 //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 };
 #endif
 
@@ -1058,6 +1061,7 @@ const string20 warninfo_tur[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"Direct Landing  dLc1", //warncode = 51  //IO直停時序異常 //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 };
 #endif
 
@@ -1115,6 +1119,7 @@ const string20 warninfo_rus[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 43  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"Direct Landing  dLc1", //warncode = 51  //IO直停時序異常 //Task 268622 IO Direct Landing	//Mitong 20230221 add	
 };
 #endif
 
@@ -1460,895 +1465,1043 @@ const string20 prinfo[EPMAX] = {
 	"EoL Cnt Recder L    "	,	//	125 15-125  RESERVED       //[add for UL EoL Verification,Bernie, 2013/04/22]
 	"RESERVE             "	,	//	126 15-126  RESERVED
 	"Unavailable         "	,	//	127 15-127  RESERVED
+	"RESERVE             "	,	//	128 15-128  RESERVED
 //	"PPI filter point    "	,	//	128 15-128  PPI control    //[PPI function, Sampo, 2015/09/08]
+    "RESERVE             "	,	//	129 15-129  RESERVED
 
 /*---- GROUP 00---------------------------------------*/
    //12345678901234561234
-	"Identity Code       "	,	//	128 00-00	Model Type of Drive 
-	"Rated Current   Amps"	,	//	129 00-01	Rated Current
-	"Parameter Reset     "	,	//	130 00-02	Parameter Reset
-	"Start up Display    "	,	//	131 00-03	Start up Display
-	"User Display        "	,	//	132 00-04	User Display
-	"User Coefficient    "	,	//	133	00-05	User Coefficient
-	"Firmware Version    "	,	//	134	00-06	Software Version
-	"Password decoder    "	,	//	135	00-07	Password Input
-	"Password Input      "	,	//	136	00-08	Password Input
-	"Control Method      "	,	//	137	00-09	Control Methods
-	"Speed Unit Sel.     "	,	//	138	00-10	Velocity Unit Select
-	"CHG. Output DIR     "	,	//	139 00-11   Change Output Direction, Added by sampo , 06/11/2009
-	"Carry Frequency KHz "	,	//	140	00-12	Carry Frequency
-	"AVR                 "	,	//	141	00-13	AVR
-	"Source of Freq.     "	,	//	142	00-14	Source of Freq. Command
-	"Source of Oper.     "	,	//	143	00-15	Source of Oper. Command
+	"Identity Code       "	,	//	130 00-00	Model Type of Drive 
+	"Rated Current   Amps"	,	//	131 00-01	Rated Current
+	"Parameter Reset     "	,	//	132 00-02	Parameter Reset
+	"Start up Display    "	,	//	133 00-03	Start up Display
+	"User Display        "	,	//	134 00-04	User Display
+	"User Coefficient    "	,	//	135	00-05	User Coefficient
+	"Firmware Version    "	,	//	136	00-06	Software Version
+	"Password decoder    "	,	//	137	00-07	Password Input
+	"Password Input      "	,	//	138	00-08	Password Input
+	"Control Method      "	,	//	139	00-09	Control Methods
+	"Speed Unit Sel.     "	,	//	140	00-10	Velocity Unit Select
+	"CHG. Output DIR     "	,	//	141 00-11   Change Output Direction, Added by sampo , 06/11/2009
+	"Carry Frequency KHz "	,	//	142	00-12	Carry Frequency
+	"AVR                 "	,	//	143	00-13	AVR
+	"Source of Freq.     "	,	//	144	00-14	Source of Freq. Command
+	"Source of Oper.     "	,	//	145	00-15	Source of Oper. Command
+
+    "RESERVE             "	,	//	146 00-16   RESERVED
+    "RESERVE             "	,	//	147 00-17   RESERVED
+    "RESERVE             "	,	//	148 00-18   RESERVED
+    "RESERVE             "	,	//	149 00-19   RESERVED
 
 /*---- GROUP 01---------------------------------------*/
 /*  "12345678901234561234"	*/
-	"Max Output Freq.Hz  "	,	//	144	01-00	Max Output Freq.
-	"Motor1 Fbase    Hz  "	,	//	145	01-01	Motor Base Frequency 1
-	"Max Out-Volt 1  V   "	,	//	146	01-02	Max Output Voltage
-	"Mid Out-Freq.1-1Hz  "	,	//	147	01-03	Mid Output Freq.1
-	"Mid Out-Volt 1-1V   "	,	//	148	01-04	Mid Output Voltage 1
-	"Mid Out-Freq.1-2Hz  "	,	//	149	01-05	Mid Output Freq.2
-	"Mid Out-Volt 1-2V   "	,	//	150	01-06	Mid Output Voltage 2
-	"Min Out-Freq.1  Hz  "	,	//	151	01-07	Min Output Freq.
-	"Min Out-Volt 1  V   "	,	//	152	01-08	Min Output Voltage
-	"Start Frequency Hz  "	,	//	153	01-09	Start Frequency
-	"Upper Bound FreqHz  "	,	//	154	01-10	Upper Bound Freq.
-	"Lower Bound FreqHz  "	,	//	155	01-11	Lower Bound Freq.
-	"1st Accel Time  sec "	,	//	156	01-12	1st Acceleration time
-	"1st Decel Time  sec "	,	//	157	01-13	1st Deceleration time
-	"2nd Accel Time  sec "	,	//	158	01-14	2nd Acceleration time
-	"2nd Decel Time  sec "	,	//	159	01-15	2nd Deceleration time
-	"3rd Accel Time  sec "	,	//	160	01-16	3rd Acceleration time
-	"3rd Decel Time  sec "	,	//	161	01-17	3rd Deceleration time
-	"4th Accel Time  sec "	,	//	162	01-18	4th Acceleration time
-	"4th Decel Time  sec "	,	//	163	01-19	4th Deceleration time
-	"JOG Accel Time  sec "	,	//	164	01-20	JOG Acceleration time
-	"JOG Decel Time  sec "	,	//	165	01-21	JOG Deceleration time
-	"JOG Frequency   Hz  "	,	//	166	01-22	JOG Frequency
-	"Trans ACC/DEC1-4Hz  "	,	//	167	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4
-	"S Curve Time 1  sec "	,	//	168	01-24	S curve Accel time 1
-	"S Curve Time 2  sec "	,	//	169	01-25	S curve Accel time 2
-	"S Curve Time 3  sec "	,	//	170	01-26	S curve Decel time 1
-	"S Curve Time 4  sec "	,	//	171	01-27	S curve Decel time 2
-	"Select Zero Spd     "	,	//	172	01-28	Select Zero Speed
-	"Landing Speed   Hz  "	,	//	173	01-29	Landing Frequency 
-	"S Curve Time 5  sec "	,	//	174	01-30	S curve Decel time 3
-	"Stop Decel Time sec "	,	//	175	01-31	Stop Deceleration time
-    "Force Decel Spd m/s "	,	//	1xx	01-32
-    "IOD Hold Time   sec "	,	//	1xx	01-33   IODHT IO direct hold time   
-    "IOD Land Time   sec "	,	//	1xx	01-34   IODLT IO direct landing freq
-    "CRPLS Jerk lim      "	,	//	1xx	01-35   IODLT IO direct landing time
-    "IOD Dec Point   cm  "	,	//	1xx	01-36   IODLT IO direct DistancE
-    "IOD D.Point Ref m   "	,	//	1xx	01-37   IODLT IO direct DistancE
-    "IODLC Enable        "	,	//	1xx	01-38   IODLT IO direct DistancE
-    "ETS Frequency   Hz  "  ,   //  1xx 01-39   IODLT IO direct DistancE
-    "ESD Decel Time  sec "	,	//	1xx	01-40   IODLT IO direct DistancE
+	"Max Output Freq.Hz  "	,	//	150	01-00	Max Output Freq.
+	"Motor1 Fbase    Hz  "	,	//	151	01-01	Motor Base Frequency 1
+	"Max Out-Volt 1  V   "	,	//	152	01-02	Max Output Voltage
+	"Mid Out-Freq.1-1Hz  "	,	//	153	01-03	Mid Output Freq.1
+	"Mid Out-Volt 1-1V   "	,	//	154	01-04	Mid Output Voltage 1
+	"Mid Out-Freq.1-2Hz  "	,	//	155	01-05	Mid Output Freq.2
+	"Mid Out-Volt 1-2V   "	,	//	156	01-06	Mid Output Voltage 2
+	"Min Out-Freq.1  Hz  "	,	//	157	01-07	Min Output Freq.
+	"Min Out-Volt 1  V   "	,	//	158	01-08	Min Output Voltage
+	"Start Frequency Hz  "	,	//	159	01-09	Start Frequency
+	"Upper Bound FreqHz  "	,	//	160	01-10	Upper Bound Freq.
+	"Lower Bound FreqHz  "	,	//	161	01-11	Lower Bound Freq.
+	"1st Accel Time  sec "	,	//	162	01-12	1st Acceleration time
+	"1st Decel Time  sec "	,	//	163	01-13	1st Deceleration time
+	"2nd Accel Time  sec "	,	//	164	01-14	2nd Acceleration time
+	"2nd Decel Time  sec "	,	//	165	01-15	2nd Deceleration time
+	"3rd Accel Time  sec "	,	//	166	01-16	3rd Acceleration time
+	"3rd Decel Time  sec "	,	//	167	01-17	3rd Deceleration time
+	"4th Accel Time  sec "	,	//	168	01-18	4th Acceleration time
+	"4th Decel Time  sec "	,	//	169	01-19	4th Deceleration time
+	"JOG Accel Time  sec "	,	//	170	01-20	JOG Acceleration time
+	"JOG Decel Time  sec "	,	//	171	01-21	JOG Deceleration time
+	"JOG Frequency   Hz  "	,	//	172	01-22	JOG Frequency
+	"Trans ACC/DEC1-4Hz  "	,	//	173	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4
+	"S Curve Time 1  sec "	,	//	174	01-24	S curve Accel time 1
+	"S Curve Time 2  sec "	,	//	175	01-25	S curve Accel time 2
+	"S Curve Time 3  sec "	,	//	176	01-26	S curve Decel time 1
+	"S Curve Time 4  sec "	,	//	177	01-27	S curve Decel time 2
+	"Select Zero Spd     "	,	//	178	01-28	Select Zero Speed
+	"Landing Speed   Hz  "	,	//	179	01-29	Landing Frequency 
+	"S Curve Time 5  sec "	,	//	180	01-30	S curve Decel time 3
+	"Stop Decel Time sec "	,	//	181	01-31	Stop Deceleration time
+    "Force Decel Spd m/s "	,	//	182	01-32
+    "IOD Hold Time   sec "	,	//	183	01-33   IODHT IO direct hold time   
+    "IOD Land Time   sec "	,	//	184	01-34   IODLT IO direct landing freq
+    "CRPLS Jerk lim      "	,	//	185	01-35   IODLT IO direct landing time
+    "IOD Dec Point   cm  "	,	//	186	01-36   IODLT IO direct DistancE
+    "IOD D.Point Ref m   "	,	//	187	01-37   IODLT IO direct DistancE
+    "IODLC Enable        "	,	//	188	01-38   IODLT IO direct DistancE
+    "ETS Frequency   Hz  "  ,   //  189 01-39   IODLT IO direct DistancE
+    "ESD Decel Time  sec "	,	//	190	01-40   IODLT IO direct DistancE
+    
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-    "Emergency DEC   sec "  ,   //  105 15-105  RESERVE
-    "Emergency S3    sec "  ,   //  105 15-105  RESERVE
-    "Emergency S4    sec "  ,   //  105 15-105  RESERVE
-#endif
+    "Emergency DEC   sec "  ,   //  191 01-41  RESERVED
+    "Emergency S3    sec "  ,   //  192 01-42  RESERVED
+    "Emergency S4    sec "  ,   //  193 01-43  RESERVED
+#else
+    "RESERVE             "	,	//	191 01-41   RESERVED
+    "RESERVE             "	,	//	192 01-42   RESERVED
+    "RESERVE             "	,	//	193 01-43   RESERVED
+#endif    
+    "IODLC TRIGGE SPDHz  "  ,   //	194 01-44   MI direct stop trigger speed		//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+    "RESERVE             "	,	//	195 01-45   RESERVED
+    "RESERVE             "	,	//	196 01-46   RESERVED
+    "RESERVE             "	,	//	197 01-47   RESERVED
+    "RESERVE             "	,	//	198 01-48   RESERVED
+    "RESERVE             "	,	//	199 01-49   RESERVED
+    
 /*---- GROUP 02---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-	"2/3 wire Control    "	,	//	176	02-00	2/3 wire control                
-	"Multi-Fun Input1    "	,	//	177	02-01	Multi-Function Input 1          
-	"Multi-Fun Input2    "	,	//	178	02-02	Multi-Function Input 2          
-	"Multi-Fun Input3    "	,	//	179	02-03	Multi-Function Input 3          
-	"Multi-Fun Input4    "	,	//	180	02-04	Multi-Function Input 4          
-	"Multi-Fun Input5    "	,	//	181	02-05	Multi-Function Input 5          
-	"Multi-Fun Input6    "	,	//	182	02-06	Multi-Function Input 6          
-	"Multi-Fun Input7    "	,	//	183	02-07	Multi-Function Input 7          
-	"Multi-Fun Input8    "	,	//	184	02-08	Multi-Function Input 8		    
-	"D-In Response T sec "	,	//	185	02-09	Digital in response time		
-	"Multi-Input ACT     "	,	//	186	02-10	Multi-Function Input Inverse	
-	"Multi-Fun RLY1      "	,	//	187	02-11	Multi-Function Relay 1		    
-	"Multi-Fun RLY2      "	,	//	188	02-12	Multi-Function Relay 2		    
-	"Multi-Fun RLY3      "	,	//	189	02-13	Multi-Function Output 1		    
-	"Multi-Fun RLY4      "	,	//	190	02-14	Multi-Function Output 2		    
-	"Multi-Fun Out 1     "	,	//	191	02-15	Multi-Function Output 1		    
-	"Multi-Fun Out 2     "	,	//	192	02-16	Multi-Function Output 2		    
-	"Multi-Fun Out 3     "	,	//	193	02-17	Multi-Function Output 1		    
-	"Multi-Fun Out 4     "	,	//	194	02-18	Multi-Function Output 2		    
-	"Multi-Fun Out 5     "	,	//	195	02-19	Multi-Function Output 1		    
-	"Multi-Fun Out 6     "	,	//	196	02-20	Multi-Function Output 2		    
-	"Multi-Fun Out 7     "	,	//	197	02-21	Multi-Function Output 1		    
-	"Multi-Fun Out 8     "	,	//	198	02-22	Multi-Function Output 2		    
-	"Multi-Output ACT    "	,	//	199	02-23	Multi-Function Output inverse	
-    "Seq. Start Mode     "  ,   //  200 02-24   Sequence start mode
-	"DESIRE-FREQ1    Hz  "	,	//	201	02-25	Desired Frequency 1		        
-	"DESIRE-FREQ1 BNDHz  "	,	//	202	02-26	Band of Desired Frequency 1		
-	"DESIRE-FREQ2    Hz  "	,	//	203	02-27	Desired Frequency 2		        
-	"DESIRE-FREQ2 BNDHz  "	,	//	204	02-28	Band of Desired Frequency 2		
-	"Brake RUN Delay sec "	,	//	205	02-29	Brake Delay Timer at run
-	"Brake STOP Delaysec "	,	//	206	02-30	Brake Delay Timer at stop
-	"MCDELAY_RUN Timesec "	,	//	207	02-31	Mech Contact Delay Timer run
-	"MCDELAY_STP Timesec "	,	//	208	02-32	Mech Contact Delay Timer stop				            
-	"Current Detect  %   "	,	//	209	02-33	Isum Current Output Detect	    
-	"Speed Area Set  Hz  "	,	//	210	02-34	Speed Area
-	"Brake CHK Time  sec "	,	//	211	02-35	Mechanical Brake Checking Time
-	"MC CHK Time     sec "	,	//	212 02-36   Magnetic Contactor Checking Time
-	"Torque Prove En     "  ,   //  213 02-37   Mechanical Brake Checking Current Enable
-	"SCDELAY RUN Timesec "  ,   //  214 02-38   Star Contactor delay time when driver run    //[Star contactor function, Bernie, 2017/03/22]
-	"SCDELAY STP Timesec "  ,   //  2XX 02-39   Star Contactor delay time when driver stop   //[Star contactor function, Bernie, 2017/03/22]
-	"LU/LD Fault SEL     "  ,   //  2XX 02-40   LU/LD error  Selection	                     //#15977, LULD detect, James, 2021/04/01
-	"LU/LD Open Det. sec "  ,   //  2XX 02-41   LD/LD Open Detect Time                       //#15977, LULD detect, James, 2021/04/01
-	"LU/LD Short Det.sec "  ,   //  2XX 02-42   LD/LD Short Detect Time                      //#15977, LULD detect, James, 2021/04/01
-	"SPEED-REACH BND Hz  "	,   //  2XX 02-43   Band of Speed Agree Function                 //#18572
-    "STO Short Det   sec "  ,   //  2XX 02-44   STO shor detect time                         //#18196  STO new function for SIL2, James, 2021/10/06    
-    "819 Sensor          "  ,   //  2XX 02-45   819 Sensor                                   //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "Speed Limit     m/s "  ,   //  2XX 02-46   Speed Limit                                  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+	"2/3 wire Control    "	,	//	200	02-00	2/3 wire control                
+	"Multi-Fun Input1    "	,	//	201	02-01	Multi-Function Input 1          
+	"Multi-Fun Input2    "	,	//	202	02-02	Multi-Function Input 2          
+	"Multi-Fun Input3    "	,	//	203	02-03	Multi-Function Input 3          
+	"Multi-Fun Input4    "	,	//	204	02-04	Multi-Function Input 4          
+	"Multi-Fun Input5    "	,	//	205	02-05	Multi-Function Input 5          
+	"Multi-Fun Input6    "	,	//	206	02-06	Multi-Function Input 6          
+	"Multi-Fun Input7    "	,	//	207	02-07	Multi-Function Input 7          
+	"Multi-Fun Input8    "	,	//	208	02-08	Multi-Function Input 8		    
+	"D-In Response T sec "	,	//	209	02-09	Digital in response time		
+	"Multi-Input ACT     "	,	//	210	02-10	Multi-Function Input Inverse	
+	"Multi-Fun RLY1      "	,	//	211	02-11	Multi-Function Relay 1		    
+	"Multi-Fun RLY2      "	,	//	212	02-12	Multi-Function Relay 2		    
+	"Multi-Fun RLY3      "	,	//	213	02-13	Multi-Function Output 1		    
+	"Multi-Fun RLY4      "	,	//	214	02-14	Multi-Function Output 2		    
+	"Multi-Fun Out 1     "	,	//	215	02-15	Multi-Function Output 1		    
+	"Multi-Fun Out 2     "	,	//	216	02-16	Multi-Function Output 2		    
+	"Multi-Fun Out 3     "	,	//	217	02-17	Multi-Function Output 1		    
+	"Multi-Fun Out 4     "	,	//	218	02-18	Multi-Function Output 2		    
+	"Multi-Fun Out 5     "	,	//	219	02-19	Multi-Function Output 1		    
+	"Multi-Fun Out 6     "	,	//	220	02-20	Multi-Function Output 2		    
+	"Multi-Fun Out 7     "	,	//	221	02-21	Multi-Function Output 1		    
+	"Multi-Fun Out 8     "	,	//	222	02-22	Multi-Function Output 2		    
+	"Multi-Output ACT    "	,	//	223	02-23	Multi-Function Output inverse	
+    "Seq. Start Mode     "  ,   //  224 02-24   Sequence start mode
+	"DESIRE-FREQ1    Hz  "	,	//	225	02-25	Desired Frequency 1		        
+	"DESIRE-FREQ1 BNDHz  "	,	//	226	02-26	Band of Desired Frequency 1		
+	"DESIRE-FREQ2    Hz  "	,	//	227	02-27	Desired Frequency 2		        
+	"DESIRE-FREQ2 BNDHz  "	,	//	228	02-28	Band of Desired Frequency 2		
+	"Brake RUN Delay sec "	,	//	229	02-29	Brake Delay Timer at run
+	"Brake STOP Delaysec "	,	//	230	02-30	Brake Delay Timer at stop
+	"MCDELAY_RUN Timesec "	,	//	231	02-31	Mech Contact Delay Timer run
+	"MCDELAY_STP Timesec "	,	//	232	02-32	Mech Contact Delay Timer stop				            
+	"Current Detect  %   "	,	//	233	02-33	Isum Current Output Detect	    
+	"Speed Area Set  Hz  "	,	//	234	02-34	Speed Area
+	"Brake CHK Time  sec "	,	//	235 02-35	Mechanical Brake Checking Time
+	"MC CHK Time     sec "	,	//	236 02-36   Magnetic Contactor Checking Time
+	"Torque Prove En     "  ,   //  237 02-37   Mechanical Brake Checking Current Enable
+	"SCDELAY RUN Timesec "  ,   //  238 02-38   Star Contactor delay time when driver run    //[Star contactor function, Bernie, 2017/03/22]
+	"SCDELAY STP Timesec "  ,   //  239 02-39   Star Contactor delay time when driver stop   //[Star contactor function, Bernie, 2017/03/22]
+	"LU/LD Fault SEL     "  ,   //  240 02-40   LU/LD error  Selection	                     //#15977, LULD detect, James, 2021/04/01
+	"LU/LD Open Det. sec "  ,   //  241 02-41   LD/LD Open Detect Time                       //#15977, LULD detect, James, 2021/04/01
+	"LU/LD Short Det.sec "  ,   //  242 02-42   LD/LD Short Detect Time                      //#15977, LULD detect, James, 2021/04/01
+	"SPEED-REACH BND Hz  "	,   //  243 02-43   Band of Speed Agree Function                 //#18572
+    "STO Short Det   sec "  ,   //  244 02-44   STO shor detect time                         //#18196  STO new function for SIL2, James, 2021/10/06    
+    "819 Sensor          "  ,   //  245 02-45   819 Sensor                                   //[Artemis Add Sensor819 Function/Special/2022/06/06]
+    "Speed Limit     m/s "  ,   //  246 02-46   Speed Limit                                  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+
+    "RESERVE             "	,	//	247 02-47   RESERVED
+    "RESERVE             "	,	//	248 02-48   RESERVED
+    "RESERVE             "	,	//	249 02-49   RESERVED
+    "RESERVE             "	,	//	250 02-50   RESERVED
+    "RESERVE             "	,	//	251 02-51   RESERVED
+    "RESERVE             "	,	//	252 02-52   RESERVED
+    "RESERVE             "	,	//	253 02-53   RESERVED
+    "RESERVE             "	,	//  254 02-54   RESERVED
+    "RESERVE             "	,	//	255 02-55   RESERVED
+    "RESERVE             "	,	//	256 02-56   RESERVED
+    "RESERVE             "	,	//	257 02-57   RESERVED
+    "RESERVE             "	,	//	258 02-58   RESERVED
+    "RESERVE             "	,	//	259 02-59   RESERVED
+    "RESERVE             "	,	//	260 02-60   RESERVED
+    "RESERVE             "	,	//	261 02-61   RESERVED
+    "RESERVE             "	,	//	262 02-62   RESERVED
+    "RESERVE             "	,	//	263 02-63   RESERVED
+    "RESERVE             "	,	//  264 02-64   RESERVED
+    "RESERVE             "	,	//	265 02-65   RESERVED
+    "RESERVE             "	,	//	266 02-66   RESERVED
+    "RESERVE             "	,	//	267 02-67   RESERVED
+    "RESERVE             "	,	//	268 02-68   RESERVED
+    "RESERVE             "	,	//	269 02-69   RESERVED
+    "RESERVE             "	,	//	270 02-70   RESERVED
+    "RESERVE             "	,	//	271 02-71   RESERVED
+    "RESERVE             "	,	//	272 02-72   RESERVED
+    "RESERVE             "	,	//	273 02-73   RESERVED
+    "RESERVE             "	,	//  274 02-74   RESERVED
+    "RESERVE             "	,	//	275 02-75   RESERVED
+    "RESERVE             "	,	//	276 02-76   RESERVED
+    "RESERVE             "	,	//	277 02-77   RESERVED
+    "RESERVE             "	,	//	278 02-78   RESERVED
+    "RESERVE             "	,	//	279 02-79   RESERVED
+    "RESERVE             "	,	//	280 02-80   RESERVED
+    "RESERVE             "	,	//	281 02-81   RESERVED
+    "RESERVE             "	,	//	282 02-82   RESERVED
+    "RESERVE             "	,	//	283 02-83   RESERVED
+    "RESERVE             "	,	//  284 02-84   RESERVED
+    "RESERVE             "	,	//	285 02-85   RESERVED
+    "RESERVE             "	,	//	286 02-86   RESERVED
+    "RESERVE             "	,	//	287 02-87   RESERVED
+    "RESERVE             "	,	//	288 02-88   RESERVED
+    "RESERVE             "	,	//	289 02-89   RESERVED
+    "RESERVE             "	,	//	280 02-90   RESERVED
+    "RESERVE             "	,	//	291 02-91   RESERVED
+    "RESERVE             "	,	//	292 02-92   RESERVED
+    "RESERVE             "	,	//	293 02-93   RESERVED
+    "RESERVE             "	,	//  294 02-94   RESERVED
+    "RESERVE             "	,	//	295 02-95   RESERVED
+    "RESERVE             "	,	//	296 02-96   RESERVED
+    "RESERVE             "	,	//	297 02-97   RESERVED
+    "RESERVE             "	,	//	298 02-98   RESERVED
+    "RESERVE             "	,	//	299 02-99   RESERVED
 
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-	"AUI1 Selection      "	,	//	214	03-00   AUI1 selection                  //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"RESERVED            "	,	//	215	03-01   ACI  selection                  //[ACI function remove, Bernie, 01/20/2012]
-	"AUI2 Selection      "	,	//	216	03-02   AUI2 selection                  //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"AUI1 Input Bias %   "	,	//	217	03-03   AUI1 input Bias                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"RESERVED            "	,	//	218	03-04   ACI  input Bias                 //[ACI function remove, Bernie, 01/20/2012]
-	"AUI2 Input Bias %   "	,	//	219	03-05   AUI2 input Bias                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"AUI1 Bias Mode      "	,	//	220 03-06   AUI1 input Polarity             //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"RESERVED            "	,	//	221 03-07   ACI  input Polarity             //[ACI function remove, Bernie, 01/20/2012]
-	"AUI2 Bias Mode      "	,	//	222 03-08   AUI2 input Polarity             //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"AUI1 Input Gain %   "	,	//	223 03-09   AUI1 input Gain                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"RESERVED            "	,	//	224 03-10   ACI  input Gain                 //[ACI function remove, Bernie, 01/20/2012]
-	"AUI2 Input Gain %   "	,	//	225 03-11   AUI2 input Gain                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"AUI1 Input LPF  sec "	,	//	226 03-12   Low pass filter of AUI1 input   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"RESERVED            "	,	//	227 03-13   Low pass filter of ACI  input   //[ACI function remove, Bernie, 01/20/2012]
-	"AUI2 Input LPF  sec "	,	//	228 03-14   Low pass filter of AUI2 input   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"Load Cell Tune      "	,	//	229 03-15   Loss of ACI                     //[ACI function remove, Bernie, 01/20/2012]
-    "RESERVED            "  ,   //  230 03-16
-	"AO1 Setting         "	,	//	231 03-17   Analong Output 1
-	"AO1 Gain        %   "	,	//	232 03-18   Analong Output 1 Gain
-	"AO1 In Minus        "	,	//	233 03-19   AO1 in minus value
-	"AO2 Setting         "	,	//	234 03-20   Analong Output 2
-	"AO2 Gain        %   "	,	//	235 03-21   Analong Output 2 Gain
-	"AO2 In Minus        "	,	//	236 03-22   AO2 in minus value
-	"AUI1 Input Polar    "	,	//	237 03-23   AUI1 Input Polar                //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	"AUI2 Input Polar    "	,	//	238 03-24   AUI2 Input Polar                //[AI chenge to AUI, Lyabryan, 03/27/2015]
-	//"AUI1 In Setting     "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-	//"AUI2 In Setting     "	,	//	238  03-26    AUI2 Communciate
+	"AUI1 Selection      "	,	//	300	03-00   AUI1 selection                  //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"RESERVED            "	,	//	301	03-01   ACI  selection                  //[ACI function remove, Bernie, 01/20/2012]
+	"AUI2 Selection      "	,	//  302	03-02   AUI2 selection                  //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"AUI1 Input Bias %   "	,	//	303	03-03   AUI1 input Bias                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"RESERVED            "	,	//	307	03-04   ACI  input Bias                 //[ACI function remove, Bernie, 01/20/2012]
+	"AUI2 Input Bias %   "	,	//	305	03-05   AUI2 input Bias                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"AUI1 Bias Mode      "	,	//	306 03-06   AUI1 input Polarity             //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"RESERVED            "	,	//	307 03-07   ACI  input Polarity             //[ACI function remove, Bernie, 01/20/2012]
+	"AUI2 Bias Mode      "	,	//	308 03-08   AUI2 input Polarity             //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"AUI1 Input Gain %   "	,	//	309 03-09   AUI1 input Gain                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"RESERVED            "	,	//	310 03-10   ACI  input Gain                 //[ACI function remove, Bernie, 01/20/2012]
+	"AUI2 Input Gain %   "	,	//	311 03-11   AUI2 input Gain                 //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"AUI1 Input LPF  sec "	,	//	312 03-12   Low pass filter of AUI1 input   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"RESERVED            "	,	//	313 03-13   Low pass filter of ACI  input   //[ACI function remove, Bernie, 01/20/2012]
+	"AUI2 Input LPF  sec "	,	//	314 03-14   Low pass filter of AUI2 input   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"Load Cell Tune      "	,	//	315 03-15   Loss of ACI                     //[ACI function remove, Bernie, 01/20/2012]
+    "RESERVED            "  ,   //  316 03-16   RESERVED
+	"AO1 Setting         "	,	//	317 03-17   Analong Output 1
+	"AO1 Gain        %   "	,	//	318 03-18   Analong Output 1 Gain
+	"AO1 In Minus        "	,	//	319 03-19   AO1 in minus value
+	"AO2 Setting         "	,	//	320 03-20   Analong Output 2
+	"AO2 Gain        %   "	,	//	321 03-21   Analong Output 2 Gain
+	"AO2 In Minus        "	,	//	322 03-22   AO2 in minus value
+	"AUI1 Input Polar    "	,	//	323 03-23   AUI1 Input Polar                //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	"AUI2 Input Polar    "	,	//	324 03-24   AUI2 Input Polar                //[AI chenge to AUI, Lyabryan, 03/27/2015]
+	//"AUI1 In Setting     "	,	//	325  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+	//"AUI2 In Setting     "	,	//	326  03-26    AUI2 Communciate
 	
 /*---- GROUP 04---------------------------------------*/
 /*  "12345678901234561234"	*/
-    "Multi-Speed 0   Hz  "  ,   //  239 04-00   Multi-Speed 0
-    "Multi-Speed 1   Hz  "  ,   //  240 04-01   Multi-Speed 1
-    "Multi-Speed 2   Hz  "  ,   //  241 04-02   Multi-Speed 2
-    "Multi-Speed 3   Hz  "  ,   //  242 04-03   Multi-Speed 3
-    "Multi-Speed 4   Hz  "  ,   //  243 04-04   Multi-Speed 4
-    "Multi-Speed 5   Hz  "  ,   //  244 04-05   Multi-Speed 5
-    "Multi-Speed 6   Hz  "  ,   //  245 04-06   Multi-Speed 6
-    "Multi-Speed 7   Hz  "  ,   //  246 04-07   Multi-Speed 7
-    "Multi-Speed 8   Hz  "  ,   //  247 04-08   Multi-Speed 8
-    "Multi-Speed 9   Hz  "  ,   //  248 04-09   Multi-Speed 9
-    "Multi-Speed 10  Hz  "  ,   //  249 04-10   Multi-Speed 10
-    "Multi-Speed 11  Hz  "  ,   //  250 04-11   Multi-Speed 11
-    "Multi-Speed 12  Hz  "  ,   //  251 04-12   Multi-Speed 12
-    "Multi-Speed 13  Hz  "  ,   //  252 04-13   Multi-Speed 13
-    "Multi-Speed 14  Hz  "  ,   //  253 04-14   Multi-Speed 14
-    "Multi-Speed 15  Hz  "  ,   //  254 04-15   Multi-Speed 15
-    "Rescue Speed    m/s "  ,   //  2xx 04-16
-    "Level Speed     m/s "  ,   //  2xx 04-17
-    "Back Home Spd   m/s "  ,   //  2xx 04-18
+    "Multi-Speed 0   Hz  "  ,   //  327 04-00   Multi-Speed 0
+    "Multi-Speed 1   Hz  "  ,   //  328 04-01   Multi-Speed 1
+    "Multi-Speed 2   Hz  "  ,   //  329 04-02   Multi-Speed 2
+    "Multi-Speed 3   Hz  "  ,   //  330 04-03   Multi-Speed 3
+    "Multi-Speed 4   Hz  "  ,   //  331 04-04   Multi-Speed 4
+    "Multi-Speed 5   Hz  "  ,   //  332 04-05   Multi-Speed 5
+    "Multi-Speed 6   Hz  "  ,   //  333 04-06   Multi-Speed 6
+    "Multi-Speed 7   Hz  "  ,   //  334 04-07   Multi-Speed 7
+    "Multi-Speed 8   Hz  "  ,   //  345 04-08   Multi-Speed 8
+    "Multi-Speed 9   Hz  "  ,   //  346 04-09   Multi-Speed 9
+    "Multi-Speed 10  Hz  "  ,   //  347 04-10   Multi-Speed 10
+    "Multi-Speed 11  Hz  "  ,   //  348 04-11   Multi-Speed 11
+    "Multi-Speed 12  Hz  "  ,   //  349 04-12   Multi-Speed 12
+    "Multi-Speed 13  Hz  "  ,   //  350 04-13   Multi-Speed 13
+    "Multi-Speed 14  Hz  "  ,   //  351 04-14   Multi-Speed 14
+    "Multi-Speed 15  Hz  "  ,   //  352 04-15   Multi-Speed 15
+    "Rescue Speed    m/s "  ,   //  353 04-16
+    "Level Speed     m/s "  ,   //  354 04-17
+    "Back Home Spd   m/s "  ,   //  355 04-18
 	
-    "Rope Slip Comp. mm  "  ,   //  2xx 04-19   GFC Rope compensation, 2021/03/30
-    "TABST0 Status       "  ,   //  2xx 04-20
-    "TABST2 Status       "  ,   //  2xx 04-21
+    "Rope Slip Comp. mm  "  ,   //  356 04-19   GFC Rope compensation, 2021/03/30
+    "TABST0 Status       "  ,   //  357 04-20
+    "TABST2 Status       "  ,   //  358 04-21
 	
-    "Max Floor           "  ,   //  2xx 04-22
-    "Current Floor       "  ,   //  2xx 04-23
-    "PG Revise PCT   %   "  ,   //  2xx 04-24
-    "Sensor Delay Cmpsec "  ,   //  2xx 04-25
-    "DLC Delay Time  ms  "  ,   //  2xx 04-26
-    "Plank Length    mm  "  ,   //  2xx 04-27 
-    "Current Pos. H  m   "  ,   //  2xx 04-28
-    "Current Pos. L  mm  "  ,   //  2xx 04-29
-    "Current PG H        "  ,   //  2xx 04-30 
-    "Current PG L        "  ,   //  2xx 04-31
-    "Plank PG H          "  ,   //  2xx 04-32
-    "Plank PG L          "  ,   //  2xx 04-33
-    "Sensor PG H         "  ,   //  2xx 04-34
-    "Sensor PG L         "  ,   //  2xx 04-35    
-    "DLC Function        "  ,   //  2xx 04-36
-    "PDO TYPE            "  ,   //  2xx 04-37
-    "Dec SW Tol. Gap mm  "  ,   //  2xx 04-38
-    "% of Max Spd    %   "  ,   //  2xx 04-39   //[ADCO EPS Modify]
-    "Spring Extend   mm  "  ,   //  2xx 04-40   //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
-    "EST Status          "  ,   //  2xx 04-41
-    "EST Count           "  ,   //  2xx 04-42
-    "TABST0 Count        "  ,   //  2xx 04-43
-    "TABST1 Count        "  ,   //  2xx 04-44
-    "DDS1/UDS1Spd Limm/s "  ,   //  2XX 04-45   DD1_Vlim  //Artemis speed limit, James, 20200220                          
-    "DDS2/UDS2Spd Limm/s "  ,   //  2XX 04-46   DD2_Vlim  //Artemis speed limit, James, 20200220                                     
-    "DDS3/UDS3Spd Limm/s "  ,   //  2XX 04-47   DD3_Vlim  //Artemis speed limit, James, 20200220                                     
-    "DDS4/UDS4Spd Limm/s "  ,   //  2XX 04-48   DD4_Vlim  //Artemis speed limit, James, 20200220
-    "DLC user page       "  ,   //  2XX 04-49   user page cahnge
+    "Max Floor           "  ,   //  359 04-22
+    "Current Floor       "  ,   //  360 04-23
+    "PG Revise PCT   %   "  ,   //  361 04-24
+    "Sensor Delay Cmpsec "  ,   //  362 04-25
+    "DLC Delay Time  ms  "  ,   //  363 04-26
+    "Plank Length    mm  "  ,   //  364 04-27 
+    "Current Pos. H  m   "  ,   //  365 04-28
+    "Current Pos. L  mm  "  ,   //  366 04-29
+    "Current PG H        "  ,   //  367 04-30 
+    "Current PG L        "  ,   //  368 04-31
+    "Plank PG H          "  ,   //  369 04-32
+    "Plank PG L          "  ,   //  370 04-33
+    "Sensor PG H         "  ,   //  371 04-34
+    "Sensor PG L         "  ,   //  372 04-35    
+    "DLC Function        "  ,   //  373 04-36
+    "PDO TYPE            "  ,   //  374 04-37
+    "Dec SW Tol. Gap mm  "  ,   //  375 04-38
+    "% of Max Spd    %   "  ,   //  376 04-39   //[ADCO EPS Modify]
+    "Spring Extend   mm  "  ,   //  377 04-40   //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
+    "EST Status          "  ,   //  378 04-41
+    "EST Count           "  ,   //  379 04-42
+    "TABST0 Count        "  ,   //  380 04-43
+    "TABST1 Count        "  ,   //  381 04-44
+    "DDS1/UDS1Spd Limm/s "  ,   //  382 04-45   DD1_Vlim  //Artemis speed limit, James, 20200220                          
+    "DDS2/UDS2Spd Limm/s "  ,   //  383 04-46   DD2_Vlim  //Artemis speed limit, James, 20200220                                     
+    "DDS3/UDS3Spd Limm/s "  ,   //  384 04-47   DD3_Vlim  //Artemis speed limit, James, 20200220                                     
+    "DDS4/UDS4Spd Limm/s "  ,   //  385 04-48   DD4_Vlim  //Artemis speed limit, James, 20200220
+    "DLC user page       "  ,   //  386 04-49   user page cahnge
     
-    "1F Position H   m   "  ,   //  2XX 04-30   1Floor Position H                                       
-    "1F Position L   mm  "  ,   //  2XX 04-31   1Floor Position L                                       
-    "2F Position H   m   "  ,   //  2XX 04-32   2Floor Position H                                       
-    "2F Position L   mm  "  ,   //  2XX 04-33   2Floor Position L                                       
-    "3F Position H   m   "  ,   //  2XX 04-34   3Floor Position H                                       
-    "3F Position L   mm  "  ,   //  2XX 04-35   3Floor Position L                                       
-    "4F Position H   m   "  ,   //  2XX 04-36   4Floor Position H                                       
-    "4F Position L   mm  "  ,   //  2XX 04-37   4Floor Position L                                       
-    "5F Position H   m   "  ,   //  2XX 04-38   5Floor Position H                                       
-    "5F Position L   mm  "  ,   //  2XX 04-39   5Floor Position L                                       
-    "6F Position H   m   "  ,   //  2XX 04-40   6Floor Position H                                       
-    "6F Position L   mm  "  ,   //  2XX 04-41   6Floor Position L                                       
-    "7F Position H   m   "  ,   //  2XX 04-42   7Floor Position H                                       
-    "7F Position L   mm  "  ,   //  2XX 04-43   7Floor Position L                                       
-    "8F Position H   m   "  ,   //  2XX 04-44   8Floor Position H                                       
-    "8F Position L   mm  "  ,   //  2XX 04-45   8Floor Position L                                       
-    "9F Position H   m   "  ,   //  2XX 04-46   9Floor Position H                                       
-    "9F Position L   mm  "  ,   //  2XX 04-47   9Floor Position L                                       
-    "10F Position H  m   "  ,   //  2XX 04-48   10Floor Position H                                      
-    "10F Position L  mm  "  ,   //  2XX 04-49   10Floor Position L                                      
-    "11F Position H  m   "  ,   //  2XX 04-50   11Floor Position H                                      
-    "11F Position L  mm  "  ,   //  2XX 04-51   11Floor Position L                                      
-    "12F Position H  m   "  ,   //  2XX 04-52   12Floor Position H                                      
-    "12F Position L  mm  "  ,   //  2XX 04-53   12Floor Position L                                      
-    "13F Position H  m   "  ,   //  2XX 04-54   13Floor Position H                                      
-    "13F Position L  mm  "  ,   //  2XX 04-55   13Floor Position L                                      
-    "14F Position H  m   "  ,   //  2XX 04-56   14Floor Position H                                      
-    "14F Position L  mm  "  ,   //  2XX 04-57   14Floor Position L                                      
-    "15F Position H  m   "  ,   //  2XX 04-58   15Floor Position H                                      
-    "15F Position L  mm  "  ,   //  2XX 04-59   15Floor Position L                                      
-    "16F Position H  m   "  ,   //  2XX 04-60   16Floor Position H                                      
-    "16F Position L  mm  "  ,   //  2XX 04-61   16Floor Position L                                      
-    "17F Position H  m   "  ,   //  2XX 04-62   17Floor Position H                                      
-    "17F Position L  mm  "  ,   //  2XX 04-63   17Floor Position L                                      
-    "18F Position H  m   "  ,   //  2XX 04-64   18Floor Position H                                      
-    "18F Position L  mm  "  ,   //  2XX 04-65   18Floor Position L                                      
-    "19F Position H  m   "  ,   //  2XX 04-66   19Floor Position H                                      
-    "19F Position L  mm  "  ,   //  2XX 04-67   19Floor Position L                                      
-    "20F Position H  m   "  ,   //  2XX 04-68   20Floor Position H                                      
-    "20F Position L  mm  "  ,   //  2XX 04-69   20Floor Position L                                      
-    "21F Position H  m   "  ,   //  2XX 04-70   21Floor Position H                                      
-    "21F Position L  mm  "  ,   //  2XX 04-71   21Floor Position L                                      
-    "22F Position H  m   "  ,   //  2XX 04-72   22Floor Position H                                      
-    "22F Position L  mm  "  ,   //  2XX 04-73   22Floor Position L                                      
-    "23F Position H  m   "  ,   //  2XX 04-74   23Floor Position H                                      
-    "23F Position L  mm  "  ,   //  2XX 04-75   23Floor Position L                                      
-    "24F Position H  m   "  ,   //  2XX 04-76   24Floor Position H                                      
-    "24F Position L  mm  "  ,   //  2XX 04-77   24Floor Position L                                      
-    "25F Position H  m   "  ,   //  2XX 04-78   25Floor Position H                                      
-    "25F Position L  mm  "  ,   //  2XX 04-79   25Floor Position L                                     
+    "1F Position H   m   "  ,   //  387 04-50   1Floor Position H                                       
+    "1F Position L   mm  "  ,   //  388 04-51   1Floor Position L                                       
+    "2F Position H   m   "  ,   //  389 04-52   2Floor Position H                                       
+    "2F Position L   mm  "  ,   //  390 04-53   2Floor Position L                                       
+    "3F Position H   m   "  ,   //  391 04-54   3Floor Position H                                       
+    "3F Position L   mm  "  ,   //  392 04-55   3Floor Position L                                       
+    "4F Position H   m   "  ,   //  393 04-56   4Floor Position H                                       
+    "4F Position L   mm  "  ,   //  394 04-57   4Floor Position L                                       
+    "5F Position H   m   "  ,   //  395 04-58   5Floor Position H                                       
+    "5F Position L   mm  "  ,   //  396 04-59   5Floor Position L                                       
+    "6F Position H   m   "  ,   //  397 04-60   6Floor Position H                                       
+    "6F Position L   mm  "  ,   //  398 04-61   6Floor Position L                                       
+    "7F Position H   m   "  ,   //  399 04-62   7Floor Position H                                       
+    "7F Position L   mm  "  ,   //  400 04-63   7Floor Position L                                       
+    "8F Position H   m   "  ,   //  401 04-64   8Floor Position H                                       
+    "8F Position L   mm  "  ,   //  402 04-65   8Floor Position L                                       
+    "9F Position H   m   "  ,   //  403 04-66   9Floor Position H                                       
+    "9F Position L   mm  "  ,   //  404 04-67   9Floor Position L                                       
+    "10F Position H  m   "  ,   //  405 04-68   10Floor Position H                                      
+    "10F Position L  mm  "  ,   //  406 04-69   10Floor Position L                                      
+    "11F Position H  m   "  ,   //  407 04-70   11Floor Position H                                      
+    "11F Position L  mm  "  ,   //  408 04-71   11Floor Position L                                      
+    "12F Position H  m   "  ,   //  409 04-72   12Floor Position H                                      
+    "12F Position L  mm  "  ,   //  410 04-73   12Floor Position L                                      
+    "13F Position H  m   "  ,   //  411 04-74   13Floor Position H                                      
+    "13F Position L  mm  "  ,   //  412 04-75   13Floor Position L                                      
+    "14F Position H  m   "  ,   //  413 04-76   14Floor Position H                                      
+    "14F Position L  mm  "  ,   //  414 04-77   14Floor Position L                                      
+    "15F Position H  m   "  ,   //  415 04-78   15Floor Position H                                      
+    "15F Position L  mm  "  ,   //  416 04-79   15Floor Position L                                      
+    "16F Position H  m   "  ,   //  417 04-80   16Floor Position H                                      
+    "16F Position L  mm  "  ,   //  418 04-81   16Floor Position L                                      
+    "17F Position H  m   "  ,   //  419 04-82   17Floor Position H                                      
+    "17F Position L  mm  "  ,   //  420 04-83   17Floor Position L                                      
+    "18F Position H  m   "  ,   //  421 04-84   18Floor Position H                                      
+    "18F Position L  mm  "  ,   //  422 04-85   18Floor Position L                                      
+    "19F Position H  m   "  ,   //  423 04-86   19Floor Position H                                      
+    "19F Position L  mm  "  ,   //  424 04-87   19Floor Position L                                      
+    "20F Position H  m   "  ,   //  425 04-88   20Floor Position H                                      
+    "20F Position L  mm  "  ,   //  426 04-89   20Floor Position L                                      
+    "21F Position H  m   "  ,   //  427 04-90   21Floor Position H                                      
+    "21F Position L  mm  "  ,   //  428 04-91   21Floor Position L                                      
+    "22F Position H  m   "  ,   //  429 04-92   22Floor Position H                                      
+    "22F Position L  mm  "  ,   //  430 04-93   22Floor Position L                                      
+    "23F Position H  m   "  ,   //  431 04-94   23Floor Position H                                      
+    "23F Position L  mm  "  ,   //  432 04-95   23Floor Position L                                      
+    "24F Position H  m   "  ,   //  433 04-96   24Floor Position H                                      
+    "24F Position L  mm  "  ,   //  434 04-97   24Floor Position L                                      
+    "25F Position H  m   "  ,   //  435 04-98   25Floor Position H                                      
+    "25F Position L  mm  "  ,   //  436 04-99   25Floor Position L                                     
    
 /*---- GROUP 05----------------------------------------*/
 /*  "12345678901234561234"	*/      	
-	"IM Auto-Tuning      "	,	//	255 05-00	Motor Auto-Tuning
-	"IM Motor Rated AAmps"	,	//	256 05-01	Motor 1 rated Current           
-	"IM Motor Rated PKw  "	,	//	257 05-02	Motor 1 Rated Power             
-	"IM Motor Rated  RPM "	,	//	258 05-03	Motor 1 Rated RPM               
-	"IM Motor Poles      "	,	//	259 05-04	Motor 1 pole No.                
-	"IM Motor No-LoadAmps"	,	//	260 05-05	Motor 1 No-Load Current         
-	"IM Motor Rs     ohm "	,	//	261 05-06	Motor 1 Rs                      
-	"IM Motor Rr     ohm "	,	//	262 05-07	Motor 1 Rr                      
-	"IM Motor Lm      mH "	,	//	263 05-08	Motor 1 Lm                      
-	"IM Motor Lx      mH "	,	//	264 05-09	Motor 1 Lx                      
-	"SVC Volt. LPF   sec "	,	//	265 05-10	Vector Voltage Filter	        
-	"SVC Slip LPF    sec "	,	//	266 05-11	Vector Slip Filter	            
-	"TQR Comp Gain       "	,	//	267 05-12	Torque Compensation Gain	    
-	"Slip Comp Gain      "	,	//	268 05-13	Slip Compensation Gain	        
-	"Slip Deviation L%   "	,	//	269 05-14	Slip Deviation level	        
-	"Slip Deviation Tsec "	,	//	270 05-15	Slip Deviation Detect Time	    
-	"Over Slip Way       "	,	//	271 05-16	Over Slip treatment	            
-	"HUNTING COEFF       "	,	//	272 05-17	Coeff for hunting disable	    
-	"Cumulative Run  Mins"	,	//	273 05-18	Accumulative Motor Operation Min
-	"Cumulative Run  Days"	,	//	274 05-19	Accumulative Motor Operation Day
-	"Core Loss       %   "	,	//	275 05-20	Coreloss % of output Power	    
-	"Power On Min    Mins"	,	//	276 05-21	Power On Min
-	"Power On Day    Days"	,	//	277 05-22	Power On Day
-    "GEN Slip Gain   %   "	,   //  2XX 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
-	"Motor Slip Gain %   "	,	//	2XX 05-24   RESERVE
+	"IM Auto-Tuning      "	,	//	437 05-00	Motor Auto-Tuning
+	"IM Motor Rated AAmps"	,	//	438 05-01	Motor 1 rated Current           
+	"IM Motor Rated PKw  "	,	//	439 05-02	Motor 1 Rated Power             
+	"IM Motor Rated  RPM "	,	//	440 05-03	Motor 1 Rated RPM               
+	"IM Motor Poles      "	,	//	441 05-04	Motor 1 pole No.                
+	"IM Motor No-LoadAmps"	,	//	442 05-05	Motor 1 No-Load Current         
+	"IM Motor Rs     ohm "	,	//	443 05-06	Motor 1 Rs                      
+	"IM Motor Rr     ohm "	,	//	444 05-07	Motor 1 Rr                      
+	"IM Motor Lm      mH "	,	//	445 05-08	Motor 1 Lm                      
+	"IM Motor Lx      mH "	,	//	446 05-09	Motor 1 Lx                      
+	"SVC Volt. LPF   sec "	,	//	447 05-10	Vector Voltage Filter	        
+	"SVC Slip LPF    sec "	,	//	448 05-11	Vector Slip Filter	            
+	"TQR Comp Gain       "	,	//	449 05-12	Torque Compensation Gain	    
+	"Slip Comp Gain      "	,	//	450 05-13	Slip Compensation Gain	        
+	"Slip Deviation L%   "	,	//	451 05-14	Slip Deviation level	        
+	"Slip Deviation Tsec "	,	//	452 05-15	Slip Deviation Detect Time	    
+	"Over Slip Way       "	,	//	453 05-16	Over Slip treatment	            
+	"HUNTING COEFF       "	,	//	454 05-17	Coeff for hunting disable	    
+	"Cumulative Run  Mins"	,	//	455 05-18	Accumulative Motor Operation Min
+	"Cumulative Run  Days"	,	//	456 05-19	Accumulative Motor Operation Day
+	"Core Loss       %   "	,	//	457 05-20	Coreloss % of output Power	    
+	"Power On Min    Mins"	,	//	458 05-21	Power On Min
+	"Power On Day    Days"	,	//	459 05-22	Power On Day
+    "GEN Slip Gain   %   "	,   //  460 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
+	"Motor Slip Gain %   "	,	//	461 05-24   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
 	
 /*---- GROUP 06----------------------------------------*/
 /*  "12345678901234561234"	*/
-	"Low Voltage     V   "	,	//	278 06-00	Low voltage level
-	"Phase loss          "	,	//	279 06-01	Phase loss
-	"OCA Level       %   "	,	//	280 06-02	OC stall during Accel
-	"OCN Level       %   "	,	//	281 06-03	OC stall during Decel
-	"Stall AccDec SEL    "	,	//	282 06-04	Stall preventation Accel/Decel time selection
-	"OL2 selection       "	,	//	283 06-05	Over-Torque 1 Selection
-	"OverTorque Level%   "	,	//	284 06-06	Over-Torque 1 level
-	"Over-Torque Timesec "	,	//	285 06-07	Over-Torque 1 Time
-	"OL3 selection       "	,	//	286 06-08	Over-Torque 2 Selection	                     
-	"OverLoad 3 Level%   "	,	//	287 06-09	Over-Torque 2 level	                         
-	"OverLoad 3 Time sec "	,	//	288 06-10	Over-Torque 2 Time	                         
-	"TQR LIMIT       %   "	,	//	289 06-11	Current Limit
-	"Thermal RLY1 SEL    "	,	//	290 06-12	Thermal Relay 1 Selection
-	"Thermal RLY1 T  sec "	,	//	291 06-13	Thermal Relay 1 Time
-	"OH Warning Level C  "	,	//	292 06-14	OH Warning Level
-	"Stall Level Limt%   "	,	//	293 06-15	Stall preventation Limit Level
-	"1st Fault Record    "	,	//	294 06-16	1st Fault Record
-	"2nd Fault Record    "	,	//	295 06-17	2nd Fault Record
-	"3rd Fault Record    "	,	//	296 06-18	3rd Fault Record
-	"4th Fault Record    "	,	//	297 06-19	4th Fault Record
-	"5th Fault Record    "	,	//	298 06-20	5th Fault Record
-	"6th Fault Record    "	,	//	299 06-21	6th Fault Record
-	"Fault Option 1      "	,	//	300 06-22	Fault Option 1
-	"Fault Option 2      "	,	//	301 06-23	Fault Option 2
-	"Fault Option 3      "	,	//	302 06-24	Fault Option 3
-	"Fault Option 4      "	,	//	303 06-25	Fault Option 4
-	"PTC Treatments      "	,	//	304 06-26	PTC over Treatments	                         
-	"PTC Level       %   "	,	//	305 06-27	PTC Level
-	"PTC Detect FT   sec "	,	//	306 06-28	PTC Detect Filter time
-	"EPS Voltage     V   "	,	//	307 06-29	EPS voltage level
-	"Fault Option MOD    "	,	//	308 06-30	Fault Option Mode
-	"Output Detection    "	,	//	309 06-31   Motor Phase Detection Mode, Add by DINO, 05/12/2009
-	"1st Fault Time  Mins"	,	//	310 06-32	1st Fault Time(MIN)
-	"1st Fault Time  Days"	,	//	311 06-33	1st Fault Time(DAY)
-	"2nd Fault Time  Mins"	,	//	312 06-34	2nd Fault Time(MIN)
-	"2nd Fault Time  Days"	,	//	313 06-35	2nd Fault Time(DAY)
-	"3rd Fault Time  Mins"	,	//	314 06-36	3rd Fault Time(MIN)
-	"3rd Fault Time  Days"	,	//	315 06-37	3rd Fault Time(DAY)
-	"4th Fault Time  Mins"	,	//	316 06-38	4th Fault Time(MIN)
-	"4th Fault Time  Days"	,	//	317 06-39	4th Fault Time(DAY)
-	"5th Fault Time  Mins"	,	//	318 06-40	5th Fault Time(MIN)
-	"5th Fault Time  Days"	,	//	319 06-41	5th Fault Time(DAY)
-	"6th Fault Time  Mins"	,	//	320 06-42	6th Fault Time(MIN)
-	"6th Fault Time  Days"	,	//	321 06-43	6th Fault Time(DAY)
-    "EPS Speed       Hz  "  ,   //  322 06-44	EPS Frequency
-    "ERR Option MOD  BIN "  ,	//  323 06-45   LV Option Mode
-    "EPS Option MOD      "  ,	//  324 06-46   EPS Option Mode
-    "GEN SCAN TIME   sec "  ,   //  325 06-47   Generation Operation Detected Time
-    "UPS CAPACITY    KVA "  ,   //  326 06-48   UPS Capacity (0.1KVA)
-    "STO Func. select    "  ,   //  327 06-49   STO Lock selection     //[Safty function, Bernie] 
-    "Restart Select      "	,   //  328 06-50   Base Block Speed Search (oc,ov,occ.......)  //[Add auto restart after fault, Bernie, 06/06/12]
-    "Auto Restart T  sec "  ,   //  329 06-51   Auto restart times after fault     
-    "Restart Intervalsec "  ,   //  330 06-52   Auto restart interval
-    "Cmd Freq. REC.  Hz  "	,	//	331 06-53   Fkey Record
-    "Out Freq. REC.  Hz  "	,	//	332 06-54   Fcmd Record"Out Freq. REC.  Hz  "	,	    //	94 	15-94   Fcmd Record
-    "Isum Value REC. Amps"	,	//	333 06-55	Isum Record
-    "Motor Freq. REC.Hz  "	,	//	334 06-56	Fout Record
-    "Out Voltage REC.V   "	,	//	335 06-57	Vout Record
-	"DcBus Value REC.V   "	,   //  336 06-58	Dcbus Record  
-	"Out Power REC.  KW  "	,	//	337 06-59   Power Record
-	"Out Torque REC. %   "	,	//	338 06-60   Torque Record
-	"IGBT Temp. REC.  C  "	,	//	339 06-61	IGBT Temperature Record    
-	"DI State REC.   Hex "	,	//	340 06-62   MFI State Record
-	"DO State REC.   Hex "	,	//	341 06-63   MFO State Record
-	"Drive State REC.Hex "	,	//	342 06-64   Drive State Record
-	"UCMP Curnt limit%   "  ,   //  3XX 06-65   Current limitation for UCMP function        //[UCMP function, Bernie, 2016/06/14]
-	"Service times       "  ,   //  3xx 06-66   Service time count                          //[Service time function, Bernie, 2017/03/14]
-	"Service Enable      "  ,   //  3xx 06-67   Service time function Enable                //[Service time function, Bernie, 2017/03/14]
-    "EPS Detect PF   deg "  ,   //  3xx 06-68   EPS Detect Current    
-    "EPS PF angle    deg "  ,   //  3xx 06-69   EPS Detect Current Ref
-    "EPS Direction       "  ,   //  3xx 06-70   EPS Detect direction
-    "EPS MO On delay sec "  ,   //  3xx 06-71   EPS MO Off Time
-    "EPS MO Off delaysec "  ,   //  3xx 06-72   EPS MO Off Time
-    "Run Dir. Count  H   "	,	//	3xx 06-73   Running direction count high						
-    "Run Dir. Count  L   "	,	//	3xx 06-74   Running direction count low
-    "Run Dir. Temp   H   "	,	//	3xx 06-75   Temp running direction count high
-    "Run Dir. Temp   L   "	,	//  3xx 06-76   Temp running direction count low
-    "Temp Count Rst.     "	,	//	3xx 06-77   Temp running reset count
-    "Run Limit Level k   "	,	//	3xx 06-78   Running life
-    "Run Count Treat     "	,	//	3xx 06-79   Running function
-    "Out Freq. REC2  Hz  "  ,   //  3xx 06-80   Fcmd Record1"Out Freq. REC.  Hz  "
-    "DcBus Value REC2V   "	,   //  3xx 06-81   Dcbus Record 1
-    "Isum Value REC2 Amps"  ,   //  3xx 06-82   Isum Record1
-    "IGBT Temp. REC2 C   "  ,   //  3xx 06-83   IGBT Temperature Record1
-    "Out Freq. REC3  Hz  "  ,   //  3xx 06-84   Fcmd Record2"Out Freq. REC.  Hz  "
-    "DcBus Value REC3V   "	,   //  3xx 06-85   Dcbus Record2
-    "Isum Value REC3 Amps"  ,   //  3xx 06-86   Isum Record2
-    "IGBT Temp. REC3 C   "  ,   //  3xx 06-87   IGBT Temperature Record2
-    "Out Freq. REC4  Hz  "  ,   //  3xx 06-88   Fcmd Record3"Out Freq. REC.  Hz  "
-    "DcBus Value REC4V   "	,   //  3xx 06-89   Dcbus Record3
-    "Isum Value REC4 Amps"  ,   //  3xx 06-90   Isum Record3
-    "IGBT Temp. REC4 C   "  ,   //  3xx 06-91   IGBT Temperature Record3
-    "Out Freq. REC5  Hz  "  ,   //  3xx 06-92   Fcmd Record4"Out Freq. REC.  Hz  "
-    "DcBus Value REC5V   "	,   //  3xx 06-93   Dcbus Record4
-    "Isum Value REC5 Amps"  ,   //  3xx 06-94   Isum Record4
-    "IGBT Temp. REC5 C   "  ,   //  3xx 06-95   IGBT Temperature Record4
-    "Out Freq. REC6  Hz  "  ,   //  3xx 06-96   Fcmd Record5"Out Freq. REC.  Hz  "
-    "DcBus Value REC6V   "	,   //  3xx 06-97   Dcbus Record5
-    "Isum Value REC6 Amps"  ,   //  3xx 06-98   Isum Record5
-    "IGBT Temp. REC6 C   "  ,   //  3xx 06-99   IGBT Temperature Record5
+	"Low Voltage     V   "	,	//	462 06-00	Low voltage level
+	"Phase loss          "	,	//	463 06-01	Phase loss
+	"OCA Level       %   "	,	//	464 06-02	OC stall during Accel
+	"OCN Level       %   "	,	//	465 06-03	OC stall during Decel
+	"Stall AccDec SEL    "	,	//  466 06-04	Stall preventation Accel/Decel time selection
+	"OL2 selection       "	,	//	467 06-05	Over-Torque 1 Selection
+	"OverTorque Level%   "	,	//	468 06-06	Over-Torque 1 level
+	"Over-Torque Timesec "	,	//	469 06-07	Over-Torque 1 Time
+	"OL3 selection       "	,	//	470 06-08	Over-Torque 2 Selection	                     
+	"OverLoad 3 Level%   "	,	//	471 06-09	Over-Torque 2 level	                         
+	"OverLoad 3 Time sec "	,	//	472 06-10	Over-Torque 2 Time	                         
+	"TQR LIMIT       %   "	,	//	473 06-11	Current Limit
+	"Thermal RLY1 SEL    "	,	//	474 06-12	Thermal Relay 1 Selection
+	"Thermal RLY1 T  sec "	,	//	475 06-13	Thermal Relay 1 Time
+	"OH Warning Level C  "	,	//	476 06-14	OH Warning Level
+	"Stall Level Limt%   "	,	//	477 06-15	Stall preventation Limit Level
+	"1st Fault Record    "	,	//	478 06-16	1st Fault Record
+	"2nd Fault Record    "	,	//	479 06-17	2nd Fault Record
+	"3rd Fault Record    "	,	//	480 06-18	3rd Fault Record
+	"4th Fault Record    "	,	//	481 06-19	4th Fault Record
+	"5th Fault Record    "	,	//	482 06-20	5th Fault Record
+	"6th Fault Record    "	,	//	483 06-21	6th Fault Record
+	"Fault Option 1      "	,	//	484 06-22	Fault Option 1
+	"Fault Option 2      "	,	//	485 06-23	Fault Option 2
+	"Fault Option 3      "	,	//	486 06-24	Fault Option 3
+	"Fault Option 4      "	,	//	487 06-25	Fault Option 4
+	"PTC Treatments      "	,	//	488 06-26	PTC over Treatments	                         
+	"PTC Level       %   "	,	//	489 06-27	PTC Level
+	"PTC Detect FT   sec "	,	//	490 06-28	PTC Detect Filter time
+	"EPS Voltage     V   "	,	//	491 06-29	EPS voltage level
+	"Fault Option MOD    "	,	//	492 06-30	Fault Option Mode
+	"Output Detection    "	,	//	493 06-31   Motor Phase Detection Mode, Add by DINO, 05/12/2009
+	"1st Fault Time  Mins"	,	//	494 06-32	1st Fault Time(MIN)
+	"1st Fault Time  Days"	,	//	495 06-33	1st Fault Time(DAY)
+	"2nd Fault Time  Mins"	,	//	496 06-34	2nd Fault Time(MIN)
+	"2nd Fault Time  Days"	,	//	497 06-35	2nd Fault Time(DAY)
+	"3rd Fault Time  Mins"	,	//	498 06-36	3rd Fault Time(MIN)
+	"3rd Fault Time  Days"	,	//	499 06-37	3rd Fault Time(DAY)
+	"4th Fault Time  Mins"	,	//	500 06-38	4th Fault Time(MIN)
+	"4th Fault Time  Days"	,	//	501 06-39	4th Fault Time(DAY)
+	"5th Fault Time  Mins"	,	//	502 06-40	5th Fault Time(MIN)
+	"5th Fault Time  Days"	,	//	503 06-41	5th Fault Time(DAY)
+	"6th Fault Time  Mins"	,	//	504 06-42	6th Fault Time(MIN)
+	"6th Fault Time  Days"	,	//	505 06-43	6th Fault Time(DAY)
+    "EPS Speed       Hz  "  ,   //  506 06-44	EPS Frequency
+    "ERR Option MOD  BIN "  ,	//  507 06-45   LV Option Mode
+    "EPS Option MOD      "  ,	//  508 06-46   EPS Option Mode
+    "GEN SCAN TIME   sec "  ,   //  509 06-47   Generation Operation Detected Time
+    "UPS CAPACITY    KVA "  ,   //  510 06-48   UPS Capacity (0.1KVA)
+    "STO Func. select    "  ,   //  511 06-49   STO Lock selection     //[Safty function, Bernie] 
+    "Restart Select      "	,   //  512 06-50   Base Block Speed Search (oc,ov,occ.......)  //[Add auto restart after fault, Bernie, 06/06/12]
+    "Auto Restart T  sec "  ,   //  513 06-51   Auto restart times after fault     
+    "Restart Intervalsec "  ,   //  514 06-52   Auto restart interval
+    "Cmd Freq. REC.  Hz  "	,	//	515 06-53   Fkey Record
+    "Out Freq. REC.  Hz  "	,	//	516 06-54   Fcmd Record"Out Freq. REC.  Hz  "	,	    //	94 	15-94   Fcmd Record
+    "Isum Value REC. Amps"	,	//	517 06-55	Isum Record
+    "Motor Freq. REC.Hz  "	,	//	518 06-56	Fout Record
+    "Out Voltage REC.V   "	,	//	519 06-57	Vout Record
+	"DcBus Value REC.V   "	,   //  520 06-58	Dcbus Record  
+	"Out Power REC.  KW  "	,	//	521 06-59   Power Record
+	"Out Torque REC. %   "	,	//	522 06-60   Torque Record
+	"IGBT Temp. REC.  C  "	,	//	523 06-61	IGBT Temperature Record    
+	"DI State REC.   Hex "	,	//	524 06-62   MFI State Record
+	"DO State REC.   Hex "	,	//	525 06-63   MFO State Record
+	"Drive State REC.Hex "	,	//	526 06-64   Drive State Record
+	"UCMP Curnt limit%   "  ,   //  527 06-65   Current limitation for UCMP function        //[UCMP function, Bernie, 2016/06/14]
+	"Service times       "  ,   //  528 06-66   Service time count                          //[Service time function, Bernie, 2017/03/14]
+	"Service Enable      "  ,   //  529 06-67   Service time function Enable                //[Service time function, Bernie, 2017/03/14]
+    "EPS Detect PF   deg "  ,   //  530 06-68   EPS Detect Current    
+    "EPS PF angle    deg "  ,   //  531 06-69   EPS Detect Current Ref
+    "EPS Direction       "  ,   //  532 06-70   EPS Detect direction
+    "EPS MO On delay sec "  ,   //  533 06-71   EPS MO Off Time
+    "EPS MO Off delaysec "  ,   //  534 06-72   EPS MO Off Time
+    "Run Dir. Count  H   "	,	//	535 06-73   Running direction count high						
+    "Run Dir. Count  L   "	,	//	536 06-74   Running direction count low
+    "Run Dir. Temp   H   "	,	//	537 06-75   Temp running direction count high
+    "Run Dir. Temp   L   "	,	//  538 06-76   Temp running direction count low
+    "Temp Count Rst.     "	,	//	539 06-77   Temp running reset count
+    "Run Limit Level k   "	,	//	540 06-78   Running life
+    "Run Count Treat     "	,	//	541 06-79   Running function
+    "Out Freq. REC2  Hz  "  ,   //  542 06-80   Fcmd Record1"Out Freq. REC.  Hz  "
+    "DcBus Value REC2V   "	,   //  543 06-81   Dcbus Record 1
+    "Isum Value REC2 Amps"  ,   //  544 06-82   Isum Record1
+    "IGBT Temp. REC2 C   "  ,   //  545 06-83   IGBT Temperature Record1
+    "Out Freq. REC3  Hz  "  ,   //  546 06-84   Fcmd Record2"Out Freq. REC.  Hz  "
+    "DcBus Value REC3V   "	,   //  547 06-85   Dcbus Record2
+    "Isum Value REC3 Amps"  ,   //  548 06-86   Isum Record2
+    "IGBT Temp. REC3 C   "  ,   //  549 06-87   IGBT Temperature Record2
+    "Out Freq. REC4  Hz  "  ,   //  550 06-88   Fcmd Record3"Out Freq. REC.  Hz  "
+    "DcBus Value REC4V   "	,   //  551 06-89   Dcbus Record3
+    "Isum Value REC4 Amps"  ,   //  552 06-90   Isum Record3
+    "IGBT Temp. REC4 C   "  ,   //  553 06-91   IGBT Temperature Record3
+    "Out Freq. REC5  Hz  "  ,   //  554 06-92   Fcmd Record4"Out Freq. REC.  Hz  "
+    "DcBus Value REC5V   "	,   //  555 06-93   Dcbus Record4
+    "Isum Value REC5 Amps"  ,   //  556 06-94   Isum Record4
+    "IGBT Temp. REC5 C   "  ,   //  557 06-95   IGBT Temperature Record4
+    "Out Freq. REC6  Hz  "  ,   //  558 06-96   Fcmd Record5"Out Freq. REC.  Hz  "
+    "DcBus Value REC6V   "	,   //  559 06-97   Dcbus Record5
+    "Isum Value REC6 Amps"  ,   //  560 06-98   Isum Record5
+    "IGBT Temp. REC6 C   "  ,   //  561 06-99   IGBT Temperature Record5
     
 /*---- GROUP 07-----------------------------------------*/ 
 /*  "12345678901234561234"	*/
-	"SW Braking LevelV   "	,	//	327 07-00	SW Braking Level
-    "BK Voltage Hold V   "  ,   //	328 07-01	DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
-	"Start DCI Level %   "	,	//	329 07-02	DCI Current Level                       //[DCI Level when stop, Bernie, 05/21/2012]
-	"DC Inject Start sec "	,	//	330 07-03	DCI Time at Start 
-	"DC Inject Stop  sec "	,	//	331 07-04	DCI Time at STOP
-	"DC Inject StartFHz  "	,	//	332 07-05	DCI Freq. At start
-	"DC Injection Ki     "	,	//	333 07-06	DCI KI
-	"GEAR ACC TIME   sec "	,	//	334 07-07	Gear wait time when acceleration
-	"GEAR ACC FREQ   Hz  "	,	//	335 07-08	Gear wait frequency when acceleration
-	"GEAR DEC TIME   sec "	,	//	336 07-09	Gear wait time when deceleration
-	"GEAR DEC FREQ   Hz  "	,	//	337 07-10	Gear wait frequency when deceleration
-	"Cooling Fan         "	,	//	338 07-11	Fan Control
-	"Torque Ref.     %   "	,	//	339 07-12	TQC Reference from RS485
-	"SOURCE OF TQR       "	,	//	340 07-13	Source of Torque Command
-	"TQR MAX. LEVEL  %   "	,	//	341 07-14	Torque max. level
-	"TQR COM Filter  sec "	,	//	342 07-15	Torque command filter
-	"Speed Limit Sel.    "	,	//	343 07-16	Speed Limit selection
-	"TQR +SPD LIMIT  %   "	,	//	344 07-17	Torque mode positive speed limit
-	"TQR -SPD LIMIT  %   "	,	//	345 07-18	Torque mode negative speed limit
-	"TQR OFFSET SEL      "	,	//	346 07-19	Torque offset selection
-	"TQR OFFSET LEVEL%   "	,	//	347 07-20	Torque offset setting level
-	"TQR OFFSET HIGH %   "	,	//	348 07-21	Torque offset setting level High
-	"TQR OFFSET MID. %   "	,	//	349 07-22	Torque offset setting level Middle
-	"TQR OFFSET LOW  %   "	,	//	350 07-23	Torque offset setting level Low
-	"FWD Motor Tq LIM%   "	,	//	351 07-24	FWD Motoring Tq Limit
-	"FWD Reg. Tq LIM %   "	,	//	352 07-25	FWD Regeneration Tq Limit
-	"REV Motor Tq LIM%   "	,	//	353 07-26	REV Motoring Tq Limit
-	"REV Reg. Tq LIM %   "	,	//	354 07-27	REV Regeneration Tq Limit
-	"FORCE STOP WAY      "	,	//	355 07-28	Emergency Stop & Forced Stop selection
-	"Torque DEC. Timesec "	,	//	356 07-29   Torque Decrease Time
-	"STOP DCI Level  %   "	,	//	356 07-30   STOP DC Inject Level                    //[DCI Level when stop, Bernie, 05/21/2012]
-	"BTT100             %"  ,   //  357 07-31   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Detect         "  ,   //  358 07-32   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Distance    ppr"  ,   //  359 07-33   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Detect Time sec"  ,   //  360 07-34   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Fail Torq      "  ,   //  361 07-35   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Min Torq       "  ,   //  362 07-36   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx Max Torq       "  ,   //  362 07-37   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"SW Braking LevelV   "	,	//	562 07-00	SW Braking Level
+    "BK Voltage Hold V   "  ,   //	563 07-01	DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
+	"Start DCI Level %   "	,	//	564 07-02	DCI Current Level                       //[DCI Level when stop, Bernie, 05/21/2012]
+	"DC Inject Start sec "	,	//	565 07-03	DCI Time at Start 
+	"DC Inject Stop  sec "	,	//	566 07-04	DCI Time at STOP
+	"DC Inject StartFHz  "	,	//	567 07-05	DCI Freq. At start
+	"DC Injection Ki     "	,	//	568 07-06	DCI KI
+	"GEAR ACC TIME   sec "	,	//	569 07-07	Gear wait time when acceleration
+	"GEAR ACC FREQ   Hz  "	,	//	570 07-08	Gear wait frequency when acceleration
+	"GEAR DEC TIME   sec "	,	//	572 07-09	Gear wait time when deceleration
+	"GEAR DEC FREQ   Hz  "	,	//	573 07-10	Gear wait frequency when deceleration
+	"Cooling Fan         "	,	//	574 07-11	Fan Control
+	"Torque Ref.     %   "	,	//	575 07-12	TQC Reference from RS485
+	"SOURCE OF TQR       "	,	//	576 07-13	Source of Torque Command
+	"TQR MAX. LEVEL  %   "	,	//	577 07-14	Torque max. level
+	"TQR COM Filter  sec "	,	//	578 07-15	Torque command filter
+	"Speed Limit Sel.    "	,	//	579 07-16	Speed Limit selection
+	"TQR +SPD LIMIT  %   "	,	//	580 07-17	Torque mode positive speed limit
+	"TQR -SPD LIMIT  %   "	,	//  581 07-18	Torque mode negative speed limit
+	"TQR OFFSET SEL      "	,	//	582 07-19	Torque offset selection
+	"TQR OFFSET LEVEL%   "	,	//	583 07-20	Torque offset setting level
+	"TQR OFFSET HIGH %   "	,	//	584 07-21	Torque offset setting level High
+	"TQR OFFSET MID. %   "	,	//	585 07-22	Torque offset setting level Middle
+	"TQR OFFSET LOW  %   "	,	//	586 07-23	Torque offset setting level Low
+	"FWD Motor Tq LIM%   "	,	//	587 07-24	FWD Motoring Tq Limit
+	"FWD Reg. Tq LIM %   "	,	//	588 07-25	FWD Regeneration Tq Limit
+	"REV Motor Tq LIM%   "	,	//	589 07-26	REV Motoring Tq Limit
+	"REV Reg. Tq LIM %   "	,	//	590 07-27	REV Regeneration Tq Limit
+	"FORCE STOP WAY      "	,	//	591 07-28	Emergency Stop & Forced Stop selection
+	"Torque DEC. Timesec "	,	//	592 07-29   Torque Decrease Time
+	"STOP DCI Level  %   "	,	//	593 07-30   STOP DC Inject Level                    //[DCI Level when stop, Bernie, 05/21/2012]
+	"BTT100             %"  ,   //  594 07-31   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Detect         "  ,   //  595 07-32   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Distance    ppr"  ,   //  596 07-33   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Detect Time sec"  ,   //  597 07-34   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Fail Torq      "  ,   //  598 07-35   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Min Torq       "  ,   //  599 07-36   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx Max Torq       "  ,   //  600 07-37   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+
+    "RESERVE             "  ,   //	601 07-38   RESERVED
+    "RESERVE             "  ,   //	602 07-39   RESERVED
+    "RESERVE             "  ,   //	603 07-40   RESERVED
+    "RESERVE             "  ,   //	604 07-41   RESERVED
+    "RESERVE             "  ,   //	605 07-42   RESERVED
+    "RESERVE             "  ,   //  606 07-43   RESERVED
+    "RESERVE             "  ,   //  607 07-44   RESERVED
+    "RESERVE             "  ,   //  608 07-45   RESERVED
+    "RESERVE             "  ,   //  609 07-46   RESERVED
+    "RESERVE             "  ,   //  610 07-47   RESERVED
+    "RESERVE             "  ,   //  611 07-48   RESERVED
+    "RESERVE             "  ,   //  612 07-49   RESERVED
+    "RESERVE             "  ,   //  613 07-50   RESERVED
+    "RESERVE             "  ,   //  614 07-51   RESERVED
+    "RESERVE             "  ,   //	615 07-52   RESERVED
+    "RESERVE             "  ,   //	616 07-53   RESERVED
+    "RESERVE             "  ,   //	617 07-54   RESERVED
+    "RESERVE             "  ,   //	618 07-55   RESERVED
+    "RESERVE             "  ,   //	619 07-56   RESERVED
+    "RESERVE             "  ,   //  620 07-57   RESERVED
+    "RESERVE             "  ,   //	621 07-58   RESERVED
+    "RESERVE             "  ,   //	622 07-59   RESERVED
+    "RESERVE             "  ,   //	623 07-60   RESERVED
+    "RESERVE             "  ,   //	624 07-61   RESERVED
+    "RESERVE             "  ,   //	625 07-62   RESERVED
+    "RESERVE             "  ,   //	626 07-63   RESERVED
+    "RESERVE             "  ,   //  627 07-64   RESERVED
+    "RESERVE             "  ,   //  628 07-65   RESERVED
+    "RESERVE             "  ,   //  629 07-66   RESERVED
+    "RESERVE             "  ,   //  630 07-67   RESERVED
+    "RESERVE             "  ,   //  631 07-68   RESERVED
+    "RESERVE             "  ,   //  632 07-69   RESERVED
+    "RESERVE             "  ,   //  633 07-70   RESERVED
+    "RESERVE             "  ,   //  634 07-71   RESERVED
+    "RESERVE             "  ,   //	635 07-72   RESERVED
+    "RESERVE             "  ,   //	636 07-73   RESERVED
+    "RESERVE             "  ,   //	637 07-74   RESERVED
+    "RESERVE             "  ,   //  638 07-75   RESERVED
+    "RESERVE             "  ,   //	639 07-76   RESERVED
+    "RESERVE             "  ,   //	640 07-77   RESERVED
+    "RESERVE             "  ,   //	641 07-78   RESERVED
+    "RESERVE             "  ,   //  642 07-79   RESERVED
+    "RESERVE             "  ,   //  643 07-80   RESERVED
+    "RESERVE             "  ,   //  644 07-81   RESERVED
+    "RESERVE             "  ,   //  645 07-82   RESERVED
+    "RESERVE             "  ,   //  646 07-83   RESERVED
+    "RESERVE             "  ,   //  647 07-84   RESERVED
+    "RESERVE             "  ,   //  648 07-85   RESERVED
+    "RESERVE             "  ,   //  649 07-86   RESERVED
+    "RESERVE             "  ,   //  650 07-87   RESERVED
+    "RESERVE             "  ,   //  651 07-88   RESERVED
+    "RESERVE             "  ,   //  652 07-89   RESERVED
+    "RESERVE             "  ,   //  653 07-90   RESERVED
+    "RESERVE             "  ,   //  654 07-91   RESERVED
+    "RESERVE             "  ,   //  655 07-92   RESERVED
+    "RESERVE             "  ,   //  656 07-93   RESERVED
+    "RESERVE             "  ,   //  657 07-94   RESERVED
+    "RESERVE             "  ,   //  658 07-95   RESERVED
+    "RESERVE             "  ,   //  659 07-96   RESERVED
+    "RESERVE             "  ,   //  660 07-97   RESERVED
+    "RESERVE             "  ,   //  661 07-98   RESERVED
+    "RESERVE             "  ,   //  662 07-99   RESERVED
     
 /*---- GROUP 08-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"PM Auto-Tuning      "	,	//	357 08-00	PMotor Auto-Tuning  
-	"PM Motor Rated AAmps"	,	//	358 08-01	PMotor rated Current
-	"PM Motor Rated PKw  "	,	//	359 08-02	PMotor Rated Power  
-	"PM Motor Rated  RPM "	,	//	360 08-03	PMotor Rated RPM    
-	"PM Motor Poles      "	,	//	361 08-04	PMotor pole No.     
-	"PM Motor Rs     ohm "	,	//	362 08-05	PMotor Rs           
-	"REVERSE             "	,	//	363 08-06	PMotor Ld           
-	"PM Motor Lq     mH  "	,	//	364 08-07	PMotor Lq           
-	"Back EMF        Vrms"	,	//	365 08-08	PMotor Bemf coff	
-	"Z-Offset Angle  deg "	,	//	366 08-09	PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
-	"Position Align      "	,	//	367 08-10	//ADDED BY DIN
+	"PM Auto-Tuning      "	,	//	663 08-00	PMotor Auto-Tuning  
+	"PM Motor Rated AAmps"	,	//	664 08-01	PMotor rated Current
+	"PM Motor Rated PKw  "	,	//	665 08-02	PMotor Rated Power  
+	"PM Motor Rated  RPM "	,	//	666 08-03	PMotor Rated RPM    
+	"PM Motor Poles      "	,	//	667 08-04	PMotor pole No.     
+	"PM Motor Rs     ohm "	,	//	668 08-05	PMotor Rs           
+	"REVERSE             "	,	//	669 08-06	PMotor Ld           
+	"PM Motor Lq     mH  "	,	//	670 08-07	PMotor Lq           
+	"Back EMF        Vrms"	,	//	671 08-08	PMotor Bemf coff	
+	"Z-Offset Angle  deg "	,	//	672 08-09	PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
+	"Position Align      "	,	//	673 08-10	//ADDED BY DIN
 
 /*---- GROUP 09-----------------------------------------*/							
 /*  "12345678901234561234"	*/
-    "VFD Comm Address    "	,	//	368 09-00   Comm Address                              
-    "COM Baud Rate   kbps"	,	//	369 09-01   Tranmission speed                         
-    "COM Fault Treatment "	,	//	370 09-02   Comm fault Treatment                      
-    "COM Time Out    sec "	,	//	371 09-03   Comm Time out                             
-    "COM Protocol        "	,	//	372 09-04   Comm Protocol                             
-    "Response Delay Tms  "	,	//	373 09-05   ASC remote Response Delay Time, 1=100us   
-    "CAN_BUARD           "	,   //  3XX 09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
-    "PDO_Tx_Time     ms  "	,   //  3XX 09-07   CAN PDO Handshaking Period  
-    "CAN_Check_Time  ms  "	,   //  3XX 09-08   CAN Communiction Timeout
-    "Elevator ID Code    "  ,   //  3XX 09-09   Elevator Control Identification Code
-    "FHM Register        "  ,   //  3XX 09-10
-    "DLC Register 1      "  ,   //  3XX 09-11
-    "DLC Register 2      "  ,   //  3XX 09-12
-    "DLC Register 3      "  ,   //  3XX 09-13     
-    "PDO TXTIME      ms  "  ,   //  3XX 09-14   CAN fail rate---aevin 6/12/2017
+    "VFD Comm Address    "	,	//	674 09-00   Comm Address                              
+    "COM Baud Rate   kbps"	,	//	675 09-01   Tranmission speed                         
+    "COM Fault Treatment "	,	//	676 09-02   Comm fault Treatment                      
+    "COM Time Out    sec "	,	//	677 09-03   Comm Time out                             
+    "COM Protocol        "	,	//	678 09-04   Comm Protocol                             
+    "Response Delay Tms  "	,	//	679 09-05   ASC remote Response Delay Time, 1=100us   
+    "CAN_BUARD           "	,   //	680 09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
+    "PDO_Tx_Time     ms  "	,   //  681 09-07   CAN PDO Handshaking Period  
+    "CAN_Check_Time  ms  "	,   //	682 09-08   CAN Communiction Timeout
+    "Elevator ID Code    "  ,   //	683 09-09   Elevator Control Identification Code
+    "FHM Register        "  ,   //	684 09-10
+    "DLC Register 1      "  ,   //	685 09-11
+    "DLC Register 2      "  ,   //	686 09-12
+    "DLC Register 3      "  ,   //	687 09-13     
+    "PDO TXTIME      ms  "  ,   //	688 09-14   CAN fail rate---aevin 6/12/2017
 
 /*---- GROUP 10------------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"Encoder Types       "	,	//	374 10-00	Encoder TYPE                             
-	"Encoder pulses  ppr "	,	//	375 10-01	Encoder pulses	                    
-	"PG input setting    "	,	//	376 10-02	PG input setting	                
-	"PG Err Treat        "	,	//	377 10-03	PG fbk fault treatment	            
-	"PG Err Det. Timesec "	,	//	378 10-04	PG fbk Error Detection Time	        
-	"PG FBK DET Level%   "	,	//	379 10-05	PG fbk overspeed detection level	
-	"OverSPD Det.Timesec "	,	//	380 10-06	Over speed Detection Time	        
-	"PG FBK DEV Level%   "	,	//	381 10-07	PG fbk speed deviation level	    
-	"DEV Detect Time sec "	,	//	382 10-08	Deviation Detect Time	            
-	"Over SPD Way        "	,	//	383 10-09	Operation at overspeed	            
-	"Hall Input Types    "  ,   //  384 10-10   Hall Input Types
-	"Zero SPD Loop Kp%   "	,	//	385 10-11	KP gain of ASR in Zero speed	
-	"Zero SPD Loop Kisec "	,	//	386 10-12	Ki gain of ASR in Zero speed	
-	"Low SPD Loop Kp %   "	,	//	387 10-13	ASR P Gain 1	                
-	"Low SPD Loop Ki sec "	,	//	388 10-14	ASR I Gain 1	                
-	"High SPD Loop Kp%   "	,	//	389 10-15	ASR P Gain 2	                
-	"High SPD Loop Kisec "	,	//	390 10-16	ASR I Gain 2	                
-	"ASR1/2 Switch F Hz  "	,	//	391 10-17	ASR1/ASR2 switch freq	        
-	"Primary LPG     sec "	,	//	392 10-18	Primary LowPass filter Gain 
-	"Position Loop Kp%   "  ,	//	393 10-19   position control Kp Gain  
-    "Low SPD Slope   Hz  "  ,   //  394 10-20   Low Spd band
-    "High SPD Slope  Hz  "  ,   //  395 10-21   High Spd band
-	"POS CONT Time   sec "	,	//	396 10-22   Position control time
-	"POS CONT LPG    sec "	,	//	397 10-23   Position control LOW POSS FILTER
-	"Source of POS       "	,	//	398 10-24   Source of position control, add by dino, 06/30/2008
-	"Zero SPD Land Kp%   "	,	//	399 10-25	KP gain of ASR in Zero speed of Landing
-	"Zero SPD Land Kisec "	,	//	400 10-26	Ki gain of ASR in Zero speed of Landing
-	"Position SPD Kp %   "	,	//	401 10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-	"Position SPD Ki sec "	,	//	402 10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-	"PG Card Freq Div    "	,   //  403 10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-	"PG Card Mode        "	,   //  404 10-30   PG Card Mode setting                //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG C+/C- TYPE       "  ,   //  405 10-31   RESERVE                             //[change parameter to normal group, Bernie, 2014/02/14]
-    "Over Acc Level  m/s2"  ,   //  406 10-32   Over acc level setting              //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "OverAcc Det.Timesec "  ,   //  407 10-33   Over acc detect time                //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "Over Acc setting    "  ,   //  408 10-34   Over acc detect rule setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+	"Encoder Types       "	,	//	689 10-00	Encoder TYPE                             
+	"Encoder pulses  ppr "	,	//	690 10-01	Encoder pulses	                    
+	"PG input setting    "	,	//  691 10-02	PG input setting	                
+	"PG Err Treat        "	,	//  692 10-03	PG fbk fault treatment	            
+	"PG Err Det. Timesec "	,	//  693 10-04	PG fbk Error Detection Time	        
+	"PG FBK DET Level%   "	,	//  694 10-05	PG fbk overspeed detection level	
+	"OverSPD Det.Timesec "	,	//  695 10-06	Over speed Detection Time	        
+	"PG FBK DEV Level%   "	,	//	696 10-07	PG fbk speed deviation level	    
+	"DEV Detect Time sec "	,	//	697 10-08	Deviation Detect Time	            
+	"Over SPD Way        "	,	//	698 10-09	Operation at overspeed	            
+	"Hall Input Types    "  ,   //  699 10-10   Hall Input Types
+	"Zero SPD Loop Kp%   "	,	//	700 10-11	KP gain of ASR in Zero speed	
+	"Zero SPD Loop Kisec "	,	//	701 10-12	Ki gain of ASR in Zero speed	
+	"Low SPD Loop Kp %   "	,	//	702 10-13	ASR P Gain 1	                
+	"Low SPD Loop Ki sec "	,	//	703 10-14	ASR I Gain 1	                
+	"High SPD Loop Kp%   "	,	//	704 10-15	ASR P Gain 2	                
+	"High SPD Loop Kisec "	,	//	705 10-16	ASR I Gain 2	                
+	"ASR1/2 Switch F Hz  "	,	//  706 10-17	ASR1/ASR2 switch freq	        
+	"Primary LPG     sec "	,	//  707 10-18	Primary LowPass filter Gain 
+	"Position Loop Kp%   "  ,	//  708 10-19   position control Kp Gain  
+    "Low SPD Slope   Hz  "  ,   //  709 10-20   Low Spd band
+    "High SPD Slope  Hz  "  ,   //  710 10-21   High Spd band
+	"POS CONT Time   sec "	,	//  711 10-22   Position control time
+	"POS CONT LPG    sec "	,	//  712 10-23   Position control LOW POSS FILTER
+	"Source of POS       "	,	//  713 10-24   Source of position control, add by dino, 06/30/2008
+	"Zero SPD Land Kp%   "	,	//  714 10-25	KP gain of ASR in Zero speed of Landing
+	"Zero SPD Land Kisec "	,	//	715 10-26	Ki gain of ASR in Zero speed of Landing
+	"Position SPD Kp %   "	,	//	716 10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+	"Position SPD Ki sec "	,	//	717 10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+	"PG Card Freq Div    "	,   //	718 10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+	"PG Card Mode        "	,   //	719 10-30   PG Card Mode setting                //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG C+/C- TYPE       "  ,   //  720 10-31   RESERVE                             //[change parameter to normal group, Bernie, 2014/02/14]
+    "Over Acc Level  m/s2"  ,   //	721 10-32   Over acc level setting              //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "OverAcc Det.Timesec "  ,   //	722 10-33   Over acc detect time                //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "Over Acc setting    "  ,   //	723 10-34   Over acc detect rule setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+
+    "RESERVE             "  ,   //	724 10-35   RESERVED
+    "RESERVE             "  ,   //	725 10-36   RESERVED
+    "RESERVE             "  ,   //	726 10-37   RESERVED
+    "RESERVE             "  ,   //	727 10-38   RESERVED
+    "RESERVE             "  ,   //	728 10-39   RESERVED
 
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"System Control  Hex "	,	//	401 11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo	
-    "Fmax to Lift Spdm/s "  ,   //  402 11-01   Lift operation speed                                        
-    "Sheave Diameter mm  "  ,   //  403 11-02   SHEAVE diameter			ADDED BY SCOTTY                     
-    "Gear Ratio          "  ,   //  404 11-03   Gear Ratio                                              
-    "Suspension Ratio    "  ,   //  405 11-04   Suspension ratio	                                        
-    "Inertia Ratio   %   "  ,   //  406 11-05   inertia	percent			ADDED BY SCOTTY                     
-	"Zero SP Loop BW Hz  "	,	//	407 11-06	Zero Speed Loop BandWidth	                                
-	"Low SP Loop BW  Hz  "	,	//	408 11-07	Speed Loop BandWidth1		                                
-	"High SP Loop BW Hz  "	,	//	409 11-08	Speed Loop BandWidth2		                                
-	"SPD Loop Kr     %   "	,	//	410 11-09	PDFFKr		                                                
-	"SPD FFD GAIN    %   "	,	//	411 11-10	SPEED FFD GAIN			ADDED BY SCOTTY                     
-	"Netch Deep      db  "	,	//	412 11-11	Netch filter deep(db)	                                    
-	"Netch Freq.     Hz  "	,	//	413 11-12	Netch filter frequency	                                    
-	"LPF for display sec "	,	//	414 11-13	Low Pass Filter for display	                                
-	"Max. ACC Current%   "	,	//	415 11-14	ACC Max current                                             
-    "Max Meter per S m/s "  ,	//	416 11-15	max meter/sec	                                            
-    "Disp address    Hex "  ,   //	417 11-16	Display address,add by dino 2007/03/08                      
-    "Disp data           "  ,	//	418 11-17	Display data,   add by dino 2007/03/08                      
-    "Protect Bit         "  ,   //  419 11-18   Protect Bit	                                                
-	"Zero SP Land BW Hz  "	,	//	420 11-19	Zero Speed Loop BandWidth of Landing
-	"PWM Mode            "	,	//	4XX 11-20	PWM MODE, 0=SVPWM+DPWM,1=SVPWM    PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
-    "LPF for LC01    sec "	,	//	422 11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"System Control  Hex "	,	//  729 11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo	
+    "Fmax to Lift Spdm/s "  ,   //  730 11-01   Lift operation speed                                        
+    "Sheave Diameter mm  "  ,   //  731 11-02   SHEAVE diameter			ADDED BY SCOTTY                     
+    "Gear Ratio          "  ,   //  732 11-03   Gear Ratio                                              
+    "Suspension Ratio    "  ,   //  733 11-04   Suspension ratio	                                        
+    "Inertia Ratio   %   "  ,   //  734 11-05   inertia	percent			ADDED BY SCOTTY                     
+	"Zero SP Loop BW Hz  "	,	//	735 11-06	Zero Speed Loop BandWidth	                                
+	"Low SP Loop BW  Hz  "	,	//	736 11-07	Speed Loop BandWidth1		                                
+	"High SP Loop BW Hz  "	,	//	737 11-08	Speed Loop BandWidth2		                                
+	"SPD Loop Kr     %   "	,	//  738 11-09	PDFFKr		                                                
+	"SPD FFD GAIN    %   "	,	//	739 11-10	SPEED FFD GAIN			ADDED BY SCOTTY                     
+	"Netch Deep      db  "	,	//	740 11-11	Netch filter deep(db)	                                    
+	"Netch Freq.     Hz  "	,	//	741 11-12	Netch filter frequency	                                    
+	"LPF for display sec "	,	//  742 11-13	Low Pass Filter for display	                                
+	"Max. ACC Current%   "	,	//  743 11-14	ACC Max current                                             
+    "Max Meter per S m/s "  ,	//  744 11-15	max meter/sec	                                            
+    "Disp address    Hex "  ,   //  745 11-16	Display address,add by dino 2007/03/08                      
+    "Disp data           "  ,	//  746 11-17	Display data,   add by dino 2007/03/08                      
+    "Protect Bit         "  ,   //  747 11-18   Protect Bit	                                                
+	"Zero SP Land BW Hz  "	,	//  748 11-19	Zero Speed Loop BandWidth of Landing
+	"PWM Mode            "	,	//  749 11-20	PWM MODE, 0=SVPWM+DPWM,1=SVPWM    PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
+    "LPF for LC01    sec "	,	//  750 11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-	"Motor SPD RPM       "	,	//	420 11-21   Lift_SPD_Hz Sibocom, Jason, 2019/12/31
+	"Motor SPD RPM       "	,	//	750 11-21   Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
     "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
-
+    "RESERVE             "  ,   //	752 11-23   RESERVED
+    "RESERVE             "  ,   //	753 11-24   RESERVED
+    "RESERVE             "  ,   //	754 11-25   RESERVED
+    "RESERVE             "  ,   //	755 11-26   RESERVED
+    "RESERVE             "  ,   //	756 11-27   RESERVED
+    "RESERVE             "  ,   //	757 11-28   RESERVED
+    "RESERVE             "  ,   //	758 11-29   RESERVED
+    
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "UMAP_ADD0           "  ,   //  421 12-00
-    "UMAP_ADD1           "  ,   //  422 12-01
-    "UMAP_ADD2           "  ,   //  423 12-02
-    "UMAP_ADD3           "  ,   //  424 12-03
-    "UMAP_ADD4           "  ,   //  425 12-04
-    "UMAP_ADD5           "  ,   //  426 12-05
-    "UMAP_ADD6           "  ,   //  427 12-06
-    "UMAP_ADD7           "  ,   //  428 12-07
-    "UMAP_ADD8           "  ,   //  429 12-08
-    "UMAP_ADD9           "  ,   //  430 12-09
-    "UMAP_ADD10          "  ,   //  431 12-10
-    "UMAP_ADD11          "  ,   //  432 12-11
-    "UMAP_ADD12          "  ,   //  433 12-12
-    "UMAP_ADD13          "  ,   //  434 12-13
-    "UMAP_ADD14          "  ,   //  435 12-14
-    "UMAP_ADD15          "  ,   //  436 12-15
-    "UMAP_ADD16          "  ,   //  437 12-16
-    "UMAP_ADD17          "  ,   //  438 12-17
-    "UMAP_ADD18          "  ,   //  439 12-18
-    "UMAP_ADD19          "  ,   //  440 12-19 
-    "UMAP_ADD20          "  ,   //  441 12-20
-    "UMAP_ADD21          "  ,   //  442 12-21
-    "UMAP_ADD22          "  ,   //  443 12-22
-    "UMAP_ADD23          "  ,   //  444 12-23
-    "UMAP_ADD24          "  ,   //  445 12-24
-    "UMAP_ADD25          "  ,   //  446 12-25
-    "UMAP_ADD26          "  ,   //  447 12-26
-    "UMAP_ADD27          "  ,   //  448 12-27
-    "UMAP_ADD28          "  ,   //  449 12-28
-    "UMAP_ADD29          "  ,   //  450 12-29
-    "UMAP_ADD30          "  ,   //  451 12-30
-    "UMAP_ADD31          "  ,   //  452 12-31
-    "UMAP_ADD32          "  ,   //  4xx 12-32
-    "UMAP_ADD33          "  ,   //  4xx 12-33
-    "UMAP_ADD34          "  ,   //  4xx 12-34
-    "UMAP_ADD35          "  ,   //  4xx 12-35
-    "UMAP_ADD36          "  ,   //  4xx 12-36
-    "UMAP_ADD37          "  ,   //  4xx 12-37
-    "UMAP_ADD38          "  ,   //  4xx 12-38
-    "UMAP_ADD39          "  ,   //  4xx 12-39
-    "UMAP_ADD40          "  ,   //  4xx 12-40
-    "UMAP_ADD41          "  ,   //  4xx 12-41
-    "UMAP_ADD42          "  ,   //  4xx 12-42
-    "UMAP_ADD43          "  ,   //  4xx 12-43
-    "UMAP_ADD44          "  ,   //  4xx 12-44
-    "UMAP_ADD45          "  ,   //  4xx 12-45
-    "UMAP_ADD46          "  ,   //  4xx 12-46
-    "UMAP_ADD47          "  ,   //  4xx 12-47
-    "UMAP_ADD48          "  ,   //  4xx 12-48
-    "UMAP_ADD49          "  ,   //  4xx 12-49
-    "RESERVED            "  ,   //  421   12-00    
-    "RESERVED            "  ,   //  422   12-01    
-    "RESERVED            "  ,   //  423   12-02    
-    "RESERVED            "  ,   //  424   12-33    
-    "RESERVED            "  ,   //  425   12-04    
-    "RESERVED            "  ,   //  426   12-05    
-    "RESERVED            "  ,   //  427   12-06    
-    "RESERVED            "  ,   //  428   12-07    
-    "RESERVED            "  ,   //  429   12-08    
-    "RESERVED            "  ,   //  430   12-09    
-    "RESERVED            "  ,   //  421   12-00    
-    "RESERVED            "  ,   //  422   12-01    
-    "RESERVED            "  ,   //  423   12-02    
-    "RESERVED            "  ,   //  424   12-33    
-    "RESERVED            "  ,   //  425   12-04    
-    "RESERVED            "  ,   //  426   12-05    
-    "RESERVED            "  ,   //  427   12-06    
-    "RESERVED            "  ,   //  428   12-07    
-    "RESERVED            "  ,   //  429   12-08    
-    "RESERVED            "  ,   //  430   12-09    
-    "RESERVED            "  ,   //  421   12-00    
-    "RESERVED            "  ,   //  422   12-01    
-    "RESERVED            "  ,   //  423   12-02    
-    "RESERVED            "  ,   //  424   12-33    
-    "RESERVED            "  ,   //  425   12-04    
-    "RESERVED            "  ,   //  426   12-05    
-    "RESERVED            "  ,   //  427   12-06    
-    "RESERVED            "  ,   //  428   12-07    
-    "RESERVED            "  ,   //  429   12-08    
-    "RESERVED            "  ,   //  430   12-09    
-    "RESERVED            "  ,   //  421   12-00    
-    "RESERVED            "  ,   //  422   12-01    
-    "RESERVED            "  ,   //  423   12-02    
-    "RESERVED            "  ,   //  424   12-33    
-    "RESERVED            "  ,   //  425   12-04    
-    "RESERVED            "  ,   //  426   12-05    
-    "RESERVED            "  ,   //  427   12-06    
-    "RESERVED            "  ,   //  428   12-07    
-    "RESERVED            "  ,   //  429   12-08    
-    "RESERVED            "  ,   //  430   12-09    
-    "RESERVED            "  ,   //  421   12-00    
-    "RESERVED            "  ,   //  422   12-01    
-    "RESERVED            "  ,   //  423   12-02    
-    "RESERVED            "  ,   //  424   12-33    
-    "RESERVED            "  ,   //  425   12-04    
-    "RESERVED            "  ,   //  426   12-05    
-    "RESERVED            "  ,   //  427   12-06    
-    "RESERVED            "  ,   //  428   12-07    
-    "RESERVED            "  ,   //  429   12-08    
-    "RESERVED            "  ,   //  430   12-09    
+    "UMAP_ADD0           "  ,   //  759 12-00
+    "UMAP_ADD1           "  ,   //  760 12-01
+    "UMAP_ADD2           "  ,   //  761 12-02
+    "UMAP_ADD3           "  ,   //  762 12-03
+    "UMAP_ADD4           "  ,   //	763 12-04
+    "UMAP_ADD5           "  ,   //	764 12-05
+    "UMAP_ADD6           "  ,   //	765 12-06
+    "UMAP_ADD7           "  ,   //	766 12-07
+    "UMAP_ADD8           "  ,   //	767 12-08
+    "UMAP_ADD9           "  ,   //	768 12-09
+    "UMAP_ADD10          "  ,   //	769 12-10
+    "UMAP_ADD11          "  ,   //	770 12-11
+    "UMAP_ADD12          "  ,   //	771 12-12
+    "UMAP_ADD13          "  ,   //	772 12-13
+    "UMAP_ADD14          "  ,   //	773 12-14
+    "UMAP_ADD15          "  ,   //  774 12-15
+    "UMAP_ADD16          "  ,   //	775 12-16
+    "UMAP_ADD17          "  ,   //	776 12-17
+    "UMAP_ADD18          "  ,   //	777 12-18
+    "UMAP_ADD19          "  ,   //	778 12-19 
+    "UMAP_ADD20          "  ,   //	779 12-20
+    "UMAP_ADD21          "  ,   //	780 12-21
+    "UMAP_ADD22          "  ,   //  781 12-22
+    "UMAP_ADD23          "  ,   //	782 12-23
+    "UMAP_ADD24          "  ,   //	783 12-24
+    "UMAP_ADD25          "  ,   //	784 12-25
+    "UMAP_ADD26          "  ,   //	785 12-26
+    "UMAP_ADD27          "  ,   //	786 12-27
+    "UMAP_ADD28          "  ,   //	787 12-28
+    "UMAP_ADD29          "  ,   //	788 12-29
+    "UMAP_ADD30          "  ,   //  789 12-30
+    "UMAP_ADD31          "  ,   //  790 12-31
+    "UMAP_ADD32          "  ,   //  791 12-32
+    "UMAP_ADD33          "  ,   //  792 12-33
+    "UMAP_ADD34          "  ,   //  793 12-34
+    "UMAP_ADD35          "  ,   //  794 12-35
+    "UMAP_ADD36          "  ,   //  795 12-36
+    "UMAP_ADD37          "  ,   //  796 12-37
+    "UMAP_ADD38          "  ,   //  797 12-38
+    "UMAP_ADD39          "  ,   //  798 12-39
+    "UMAP_ADD40          "  ,   //  799 12-40
+    "UMAP_ADD41          "  ,   //  800 12-41
+    "UMAP_ADD42          "  ,   //  801 12-42
+    "UMAP_ADD43          "  ,   //  802 12-43
+    "UMAP_ADD44          "  ,   //  803 12-44
+    "UMAP_ADD45          "  ,   //  804 12-45
+    "UMAP_ADD46          "  ,   //  805 12-46
+    "UMAP_ADD47          "  ,   //  806 12-47
+    "UMAP_ADD48          "  ,   //  807 12-48
+    "UMAP_ADD49          "  ,   //  808 12-49
+    "RESERVED            "  ,   //  809 12-50    
+    "RESERVED            "  ,   //  810 12-51    
+    "RESERVED            "  ,   //  811 12-52    
+    "RESERVED            "  ,   //  812 12-53    
+    "RESERVED            "  ,   //  813 12-54    
+    "RESERVED            "  ,   //  814 12-55    
+    "RESERVED            "  ,   //  815 12-56    
+    "RESERVED            "  ,   //  816 12-57    
+    "RESERVED            "  ,   //  817 12-58    
+    "RESERVED            "  ,   //  818 12-59    
+    "RESERVED            "  ,   //  819 12-60    
+    "RESERVED            "  ,   //  820 12-61    
+    "RESERVED            "  ,   //  821 12-62    
+    "RESERVED            "  ,   //  822 12-63    
+    "RESERVED            "  ,   //  823 12-64    
+    "RESERVED            "  ,   //  824 12-65    
+    "RESERVED            "  ,   //  825 12-66    
+    "RESERVED            "  ,   //  826 12-67    
+    "RESERVED            "  ,   //  827 12-68    
+    "RESERVED            "  ,   //  828 12-69    
+    "RESERVED            "  ,   //  829 12-70    
+    "RESERVED            "  ,   //  830 12-71    
+    "RESERVED            "  ,   //  831 12-72    
+    "RESERVED            "  ,   //  832 12-73    
+    "RESERVED            "  ,   //  833 12-74    
+    "RESERVED            "  ,   //  834 12-75    
+    "RESERVED            "  ,   //  835 12-76    
+    "RESERVED            "  ,   //  836 12-77    
+    "RESERVED            "  ,   //  837 12-78    
+    "RESERVED            "  ,   //  838 12-79    
+    "RESERVED            "  ,   //  839 12-80    
+    "RESERVED            "  ,   //  840 12-81    
+    "RESERVED            "  ,   //  841 12-82    
+    "RESERVED            "  ,   //  842 12-83    
+    "RESERVED            "  ,   //  843 12-84    
+    "RESERVED            "  ,   //  844 12-85    
+    "RESERVED            "  ,   //  845 12-86    
+    "RESERVED            "  ,   //  846 12-87    
+    "RESERVED            "  ,   //  847 12-88    
+    "RESERVED            "  ,   //  848 12-89    
+    "RESERVED            "  ,   //  849 12-90    
+    "RESERVED            "  ,   //  850 12-91    
+    "RESERVED            "  ,   //  851 12-92    
+    "RESERVED            "  ,   //  852 12-93    
+    "RESERVED            "  ,   //  853 12-94    
+    "RESERVED            "  ,   //  854 12-95    
+    "RESERVED            "  ,   //  855 12-96    
+    "RESERVED            "  ,   //  856 12-97    
+    "RESERVED            "  ,   //  857 12-98    
+    "RESERVED            "  ,   //  858 12-99    
     
 /*---- GROUP 13------------------------------------------*/
 /*  "12345678901234561234"	*/
-    "UMAP_DATA0          "  ,   //  453 13-00
-    "UMAP_DATA1          "  ,   //  454 13-01
-    "UMAP_DATA2          "  ,   //  455 13-02
-    "UMAP_DATA3          "  ,   //  456 13-33
-    "UMAP_DATA4          "  ,   //  457 13-04
-    "UMAP_DATA5          "  ,   //  458 13-05
-    "UMAP_DATA6          "  ,   //  459 13-06
-    "UMAP_DATA7          "  ,   //  460 13-07
-    "UMAP_DATA8          "  ,   //  461 13-08
-    "UMAP_DATA9          "  ,   //  462 13-09
-    "UMAP_DATA10         "  ,   //  463 13-10
-    "UMAP_DATA11         "  ,   //  464 13-11
-    "UMAP_DATA12         "  ,   //  465 13-12
-    "UMAP_DATA13         "  ,   //  466 13-13
-    "UMAP_DATA14         "  ,   //  467 13-14
-    "UMAP_DATA15         "  ,   //  468 13-15
-    "UMAP_DATA16         "  ,   //  469 13-16
-    "UMAP_DATA17         "  ,   //  470 13-17
-    "UMAP_DATA18         "  ,   //  471 13-18
-    "UMAP_DATA19         "  ,   //  472 13-19
-    "UMAP_DATA20         "  ,   //  473 13-20
-    "UMAP_DATA21         "  ,   //  474 13-21
-    "UMAP_DATA22         "  ,   //  475 13-22
-    "UMAP_DATA23         "  ,   //  476 13-23
-    "UMAP_DATA24         "  ,   //  477 13-24
-    "UMAP_DATA25         "  ,   //  478 13-25
-    "UMAP_DATA26         "  ,   //  479 13-26
-    "UMAP_DATA27         "  ,   //  480 13-27
-    "UMAP_DATA28         "  ,   //  481 13-28
-    "UMAP_DATA29         "  ,   //  482 13-29
-    "UMAP_DATA30         "  ,   //  483 13-30
-    "UMAP_DATA31         "  ,   //  484 13-31
-    "UMAP_DATA32         "  ,   //  455 13-32
-    "UMAP_DATA33         "  ,   //  456 13-33
-    "UMAP_DATA34         "  ,   //  457 13-34
-    "UMAP_DATA35         "  ,   //  458 13-35
-    "UMAP_DATA36         "  ,   //  459 13-36
-    "UMAP_DATA37         "  ,   //  460 13-37
-    "UMAP_DATA38         "  ,   //  461 13-38
-    "UMAP_DATA39         "  ,   //  462 13-39
-    "UMAP_DATA40         "  ,   //  463 13-30
-    "UMAP_DATA41         "  ,   //  464 13-41
-    "UMAP_DATA42         "  ,   //  465 13-42
-    "UMAP_DATA43         "  ,   //  466 13-43
-    "UMAP_DATA44         "  ,   //  467 13-44
-    "UMAP_DATA45         "  ,   //  468 13-45
-    "UMAP_DATA46         "  ,   //  469 13-46
-    "UMAP_DATA47         "  ,   //  470 13-47
-    "UMAP_DATA48         "  ,   //  471 13-48
-    "UMAP_DATA49         "  ,   //  472 13-49
-    "UMAP_DATA50         "  ,   //  473 13-50
-    "UMAP_DATA51         "  ,   //  474 13-51
-    "UMAP_DATA52         "  ,   //  475 13-52
-    "UMAP_DATA53         "  ,   //  476 13-53
-    "UMAP_DATA54         "  ,   //  477 13-54
-    "UMAP_DATA55         "  ,   //  478 13-55
-    "UMAP_DATA56         "  ,   //  479 13-56
-    "UMAP_DATA57         "  ,   //  480 13-57
-    "UMAP_DATA58         "  ,   //  481 13-58
-    "UMAP_DATA59         "  ,   //  482 13-59
-    "UMAP_DATA60         "  ,   //  483 13-60
-    "UMAP_DATA61         "  ,   //  484 13-61
-    "UMAP_DATA62         "  ,   //  485 13-62
-    "UMAP_DATA63         "  ,   //  4xx 13-63
-    "UMAP_DATA64         "  ,   //  4xx 13-64
-    "UMAP_DATA65         "  ,   //  4xx 13-65
-    "UMAP_DATA66         "  ,   //  4xx 13-66
-    "UMAP_DATA67         "  ,   //  4xx 13-67
-    "UMAP_DATA68         "  ,   //  4xx 13-68
-    "UMAP_DATA69         "  ,   //  4xx 13-69
-    "UMAP_DATA70         "  ,   //  4xx 13-70
-    "UMAP_DATA71         "  ,   //  4xx 13-71
-    "UMAP_DATA72         "  ,   //  4xx 13-72
-    "UMAP_DATA73         "  ,   //  4xx 13-73
-    "UMAP_DATA74         "  ,   //  4xx 13-74
-    "UMAP_DATA75         "  ,   //  4xx 13-75
-    "UMAP_DATA76         "  ,   //  4xx 13-76
-    "UMAP_DATA77         "  ,   //  4xx 13-77
-    "UMAP_DATA78         "  ,   //  4xx 13-78
-    "UMAP_DATA79         "  ,   //  4xx 13-79
-    "UMAP_DATA80         "  ,   //  4xx 13-80
-    "UMAP_DATA81         "  ,   //  4xx 13-81
-    "UMAP_DATA82         "  ,   //  4xx 13-82
-    "UMAP_DATA83         "  ,   //  4xx 13-83
-    "UMAP_DATA84         "  ,   //  4xx 13-84
-    "UMAP_DATA85         "  ,   //  4xx 13-85
-    "UMAP_DATA86         "  ,   //  4xx 13-86
-    "UMAP_DATA87         "  ,   //  4xx 13-87
-    "UMAP_DATA88         "  ,   //  4xx 13-88
-    "UMAP_DATA89         "  ,   //  4xx 13-89
-    "UMAP_DATA90         "  ,   //  4xx 13-90
-    "UMAP_DATA91         "  ,   //  4xx 13-91
-    "UMAP_DATA92         "  ,   //  4xx 13-92
-    "UMAP_DATA93         "  ,   //  4xx 13-93
-    "UMAP_DATA94         "  ,   //  4xx 13-94
-    "UMAP_DATA95         "  ,   //  4xx 13-95
-    "UMAP_DATA96         "  ,   //  4xx 13-96
-    "UMAP_DATA97         "  ,   //  4xx 13-97
-    "UMAP_DATA98         "  ,   //  4xx 13-98
-    "UMAP_DATA99         "  ,   //  4xx 13-99
+    "UMAP_DATA0          "  ,   //  859 13-00
+    "UMAP_DATA1          "  ,   //  860 13-01
+    "UMAP_DATA2          "  ,   //  861 13-02
+    "UMAP_DATA3          "  ,   //  862 13-33
+    "UMAP_DATA4          "  ,   //  863 13-04
+    "UMAP_DATA5          "  ,   //  864 13-05
+    "UMAP_DATA6          "  ,   //  865 13-06
+    "UMAP_DATA7          "  ,   //  866 13-07
+    "UMAP_DATA8          "  ,   //  867 13-08
+    "UMAP_DATA9          "  ,   //  868 13-09
+    "UMAP_DATA10         "  ,   //  869 13-10
+    "UMAP_DATA11         "  ,   //  870 13-11
+    "UMAP_DATA12         "  ,   //  871 13-12
+    "UMAP_DATA13         "  ,   //  872 13-13
+    "UMAP_DATA14         "  ,   //  873 13-14
+    "UMAP_DATA15         "  ,   //  874 13-15
+    "UMAP_DATA16         "  ,   //  875 13-16
+    "UMAP_DATA17         "  ,   //  876 13-17
+    "UMAP_DATA18         "  ,   //  877 13-18
+    "UMAP_DATA19         "  ,   //  878 13-19
+    "UMAP_DATA20         "  ,   //  879 13-20
+    "UMAP_DATA21         "  ,   //  880 13-21
+    "UMAP_DATA22         "  ,   //  881 13-22
+    "UMAP_DATA23         "  ,   //  882 13-23
+    "UMAP_DATA24         "  ,   //  883 13-24
+    "UMAP_DATA25         "  ,   //  884 13-25
+    "UMAP_DATA26         "  ,   //  885 13-26
+    "UMAP_DATA27         "  ,   //  886 13-27
+    "UMAP_DATA28         "  ,   //  887 13-28
+    "UMAP_DATA29         "  ,   //  888 13-29
+    "UMAP_DATA30         "  ,   //  889 13-30
+    "UMAP_DATA31         "  ,   //  890 13-31
+    "UMAP_DATA32         "  ,   //  891 13-32
+    "UMAP_DATA33         "  ,   //  892 13-33
+    "UMAP_DATA34         "  ,   //  893 13-34
+    "UMAP_DATA35         "  ,   //  893 13-35
+    "UMAP_DATA36         "  ,   //  894 13-36
+    "UMAP_DATA37         "  ,   //  895 13-37
+    "UMAP_DATA38         "  ,   //  896 13-38
+    "UMAP_DATA39         "  ,   //  897 13-39
+    "UMAP_DATA40         "  ,   //  898 13-30
+    "UMAP_DATA41         "  ,   //  899 13-41
+    "UMAP_DATA42         "  ,   //  900 13-42
+    "UMAP_DATA43         "  ,   //	901 13-43
+    "UMAP_DATA44         "  ,   //	902 13-44
+    "UMAP_DATA45         "  ,   //	903 13-45
+    "UMAP_DATA46         "  ,   //	904 13-46
+    "UMAP_DATA47         "  ,   //	905 13-47
+    "UMAP_DATA48         "  ,   //  906 13-48
+    "UMAP_DATA49         "  ,   //  907 13-49
+    "UMAP_DATA50         "  ,   //  908 13-50
+    "UMAP_DATA51         "  ,   //  909 13-51
+    "UMAP_DATA52         "  ,   //  910 13-52
+    "UMAP_DATA53         "  ,   //  911 13-53
+    "UMAP_DATA54         "  ,   //  912 13-54
+    "UMAP_DATA55         "  ,   //  913 13-55
+    "UMAP_DATA56         "  ,   //  914 13-56
+    "UMAP_DATA57         "  ,   //	915 13-57
+    "UMAP_DATA58         "  ,   //	916 13-58
+    "UMAP_DATA59         "  ,   //	917 13-59
+    "UMAP_DATA60         "  ,   //	918 13-60
+    "UMAP_DATA61         "  ,   //	919 13-61
+    "UMAP_DATA62         "  ,   //  920 13-62
+    "UMAP_DATA63         "  ,   //	921 13-63
+    "UMAP_DATA64         "  ,   //	922 13-64
+    "UMAP_DATA65         "  ,   //	923 13-65
+    "UMAP_DATA66         "  ,   //	924 13-66
+    "UMAP_DATA67         "  ,   //	925 13-67
+    "UMAP_DATA68         "  ,   //	926 13-68
+    "UMAP_DATA69         "  ,   //  927 13-69
+    "UMAP_DATA70         "  ,   //  928 13-70
+    "UMAP_DATA71         "  ,   //  929 13-71
+    "UMAP_DATA72         "  ,   //  930 13-72
+    "UMAP_DATA73         "  ,   //  931 13-73
+    "UMAP_DATA74         "  ,   //  932 13-74
+    "UMAP_DATA75         "  ,   //  933 13-75
+    "UMAP_DATA76         "  ,   //  934 13-76
+    "UMAP_DATA77         "  ,   //	935 13-77
+    "UMAP_DATA78         "  ,   //	936 13-78
+    "UMAP_DATA79         "  ,   //	937 13-79
+    "UMAP_DATA80         "  ,   //  938 13-80
+    "UMAP_DATA81         "  ,   //	939 13-81
+    "UMAP_DATA82         "  ,   //	940 13-82
+    "UMAP_DATA83         "  ,   //	941 13-83
+    "UMAP_DATA84         "  ,   //  942 13-84
+    "UMAP_DATA85         "  ,   //  943 13-85
+    "UMAP_DATA86         "  ,   //  944 13-86
+    "UMAP_DATA87         "  ,   //  945 13-87
+    "UMAP_DATA88         "  ,   //  946 13-88
+    "UMAP_DATA89         "  ,   //  947 13-89
+    "UMAP_DATA90         "  ,   //  948 13-90
+    "UMAP_DATA91         "  ,   //  949 13-91
+    "UMAP_DATA92         "  ,   //  950 13-92
+    "UMAP_DATA93         "  ,   //  951 13-93
+    "UMAP_DATA94         "  ,   //  952 13-94
+    "UMAP_DATA95         "  ,   //  953 13-95
+    "UMAP_DATA96         "  ,   //  954 13-96
+    "UMAP_DATA97         "  ,   //  955 13-97
+    "UMAP_DATA98         "  ,   //  956 13-98
+    "UMAP_DATA99         "  ,   //  957 13-99
 /*--- GROUP 14------------------------------------------*/
 /*  "12345678901234561234"	*/
-	"Id PWRSAVE Level%   "	,	//	485 14-00	Ids Power Save Level
-	"VF CURVE MODE       "	,	//	486 14-01	VF voltage mode selection
-	"Overload 1 Mode     "	,	//	487 14-02	Constant Torque Selection
-	"Auto ACC/DEC        "	,	//	488 14-03	Auto Accel/Decel
-	"Unit ACC/DEC T      "	,	//	489 14-04	Unit of Acc/Dec time
-	"POWER SAVE MODE     "	,	//	490 14-05	Power Save mode
-	"Stop Methods        "	,	//	491 14-06	Stop Methods
-	"Reverse Operate     "	,	//	492 14-07	Reverse Operation
-	"Skip Freq. 1UP  Hz  "	,	//	493 14-08	Skip Freq. Point 1 upper limit
-	"Skip Freq. 1LOW Hz  "	,	//	494 14-09	Skip Freq. Point 1 lower limit
-	"Skip Freq. 2UP  Hz  "	,	//	495 14-10	Skip Freq. Point 2 upper limit
-	"Skip Freq. 2LOW Hz  "	,	//	496 14-11	Skip Freq. Point 2 lower limit
-	"Skip Freq. 3UP  Hz  "	,	//	497 14-12	Skip Freq. Point 3 upper limit
-	"Skip Freq. 3LOW Hz  "	,	//	498 14-13	Skip Freq. Point 3 lower limit
-	"Motor2 Fbase    Hz  "	,	//	499 14-14	Motor Base Frequency 2
-	"Max Out-Volt 2  V   "	,	//	500 14-15	Max Output Voltage 2
-	"Mid Out-Freq.2-1Hz  "	,	//	501 14-16	Mid Output Freq.2 1
-	"Mid Out-Volt 2-1V   "	,	//	502 14-17	Mid Output Voltage 2 1
-	"Mid Out-Freq.2-2Hz  "	,	//	503 14-18	Mid Output Freq.2 2
-	"Mid Out-Volt 2-2V   "	,	//	504 14-19	Mid Output Voltage 2 2
-	"Min Out-Freq.2  Hz  "	,	//	505 14-20	Min Output Freq. 2
-	"Min Out-Volt 2  V   "	,	//	506 14-21	Min Output Voltage 2
-	"UP/DOWN Key MODE    "	,	//	507 14-22	up/down key mode
-	"UP/DOWN KEY SPD     "	,	//	508 14-23	up/down key speed
-	"Counter Set         "	,	//	509 14-24	Counter Value Set (Complete)
-	"Counter Reach       "	,	//	510 14-25	Counter Value Reach (Preset)
-	"LIMIT SCALE         "	,	//	511 14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
-	"Multi-Fun Input9    "	,	//	512 14-27	Multi-Function Input 9
-	"Multi-Fun InputA    "	,	//	513 14-28	Multi-Function Input 10
-	"Multi-Fun InputB    "	,	//	514 14-29	Multi-Function Input 11
-	"Multi-Fun InputC    "	,	//	515 14-30	Multi-Function Input 12
-	"Multi-Fun InputD    "	,	//	516 14-31	Multi-Function Input 13
-	"Multi-Fun InputE    "	,	//	517 14-32	Multi-Function Input 14
-	"Fault Reset OP      "	,	//	518 14-33	External Terminal Run after Fault Reset
-	"ACI/AVI2 SEL        "	,	//	519 14-34	ACI change to AVI2
-	"Addition of AI      "	,	//	520 14-35	Addition Function of AI
-	"Multi-Posit 1       "	,	//	521 14-36	Multi-Position Point 1
-	"Multi-Posit 2       "	,	//	522 14-37	Multi-Position Point 2
-	"Multi-Posit 3       "	,	//	523 14-38	Multi-Position Point 3
-	"Multi-Posit 4       "	,	//	524 14-39	Multi-Position Point 4
-	"Multi-Posit 5       "	,	//	525 14-40	Multi-Position Point 5
-	"Multi-Posit 6       "	,	//	526 14-41	Multi-Position Point 6
-	"Multi-Posit 7       "	,	//	527 14-42	Multi-Position Point 7
-	"Multi-Posit 8       "	,	//	528 14-43	Multi-Position Point 8
-	"Multi-Posit 9       "	,	//	529 14-44	Multi-Position Point 9
-	"Multi-Posit 10      "	,	//	530 14-45	Multi-Position Point 10
-	"Multi-Posit 11      "	,	//	531 14-46	Multi-Position Point 11
-	"Multi-Posit 12      "	,	//	532 14-47	Multi-Position Point 12
-	"Multi-Posit 13      "	,	//	533 14-48	Multi-Position Point 13
-	"Multi-Posit 14      "	,	//	534 14-49	Multi-Position Point 14
-	"Multi-Posit 15      "	,	//	535 14-50	Multi-Position Point 15
-	"MOTOR 1 OR 2        "	,	//	536 14-51	Motor Selection 1 or 2
-	"Y-D Switch Hz   Hz  "	,	//	537 14-52	Y-Delta Connected switching rpm
-	"Y-D Switch Sel      "	,	//	538 14-53	Y-Delta switched Enable
-	"Motor2 Rated    Amps"	,	//	539 14-54	Motor 2 rated Current
-	"Motor2 Rated P  Kw  "	,	//	540 14-55	Motor 2 Rated Power
-	"Motor2 Rated    RPM "	,	//	541 14-56	Motor 2 Rated RPM
-	"Motor2 Poles        "	,	//	542 14-57	Motor 2 pole No.
-	"Motor2 No-Load  Amps"	,	//	543 14-58	Motor 2 No-Load Current
-	"Motor2 Rs       ohm "	,	//	544 14-59	Motor 2 Rs
-	"Motor2 Rr       ohm "	,	//	545 14-60	Motor 2 Rr
-	"Motor2 Lm       mH  "	,	//	546 14-61	Motor 2 Lm
-	"Motor2 Lx       mH  "	,	//	547 14-62	Motor 2 Lx
-	"Y-D On Delay T      "	,	//	548 14-63	Y-Delta On delay time
-	"OV stall level  V   "	,	//	549 14-64	OV stall level
-	"Thermal RLY2 SEL    "	,	//	550 14-65	Thermal Relay 2 Selection
-	"Thermal RLY2 T      "	,	//	551 14-66	Thermal Relay 2 Time
-	"Momentary Power     "	,	//	552 14-67	Momentary Power Loss
-	"Power Loss Time sec "	,	//	553 14-68	Max. allowable PL time
-	"Base Block Time sec "	,	//	554 14-69	BB Time for speed serach
-	"SPD Search Curr %   "	,	//	555 14-70	Current level for SPD serach
-	"BB Treatment        "	,	//	556 14-71	bb treatment for oc, ov, bb
-	"Auto Restart        "	,	//	557 14-72	Auto restart after fault
-	"Restart Method      "	,	//	558 14-73	Auto restart Speed serach method
-	"DEB Decel SEL       "	,	//	559 14-74	Deceleration at Momertary Power loss 
-	"DEB Return Time     "	,	//	560 14-75	KEB Return Time
-	"PID Fdb SEL         "	,	//	561 14-76	PID feedback selection	
-	"P Gain of PID       "	,	//	562 14-77	P gain of PID	
-	"I Gain of PID   sec "	,	//	563 14-78	I gain of PID	
-	"D Gain of PID       "	,	//	564 14-79	D gain of PID	
-	"Up Limit for I  %   "	,	//	565 14-80	Upper bound for integral	
-	"PID Out-Limiter %   "	,	//	566 14-81	PID output Freq. Limit	
-	"PID Offset      %   "	,	//	567 14-82	PID offset	
-	"PID Out-Filter  sec "	,	//	568 14-83	Derivative Filter Time Constant	
-	"Fdb Detect Time sec "	,	//	569 14-84	Feedback signal detection time	
-	"PID Fdb Loss        "	,	//	570 14-85	PID feedback loss	
-	"SLEEP FREQ          "	,	//	571 14-86	Sleep Frequency	
-	"WAKE FREQ           "	,	//	572 14-87	Wake up Frequency	
-	"SLEEP TIME          "	,	//	573 14-88	Sleep Time	
-	"PID DEV. LEVEL  %   "	,	//	574 14-89	PID Deviation Level	
-	"PID DEV. TIME       "	,	//	575 14-90	PID Deviation Time	
-	"PID Fbk Filter  sec "	,	//	576 14-91	PID feedback filter	
-	"Comm Main Freq. Hz  "	,	//	577 14-92	Main Frequency from communication	
-	"Block Trans. 1      "	,	//	578 14-93	Block Transfer 1	
-	"Block Trans. 2      "	,	//	579 14-94	Block Transfer 2	
-	"Block Trans. 3      "	,	//	580 14-95	Block Transfer 3
-	"Block Trans. 4      "	,	//	581 14-96	Block Transfer 4
-	"Block Trans. 5      "	,	//	582 14-97	Block Transfer 5
-	"Block Trans. 6      "	,	//	583 14-98	Block Transfer 6
-	"Block Trans. 7      "	,	//	584 14-99	Block Transfer 7
-	"Block Trans. 8      "	,	//	585 14-100  Block Transfer 8
-	"Block Trans. 9      "	,	//	586 14-101  Block Transfer 9
-	"Block Trans. 10     "	,	//	587 14-102  Block Transfer 10
-	"WEAKLPF             "	,	//	588 14-103  WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
-	"WEAKTHETA           "	,	//	589 14-104  WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
-	"OVER_SCALE          "	,	//	590 14-105  OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
-	"PG Position Home    "	,	//	591 14-106  PG Position Control Point (Home)
-	"PG Attained Home    "	,	//	592 14-107  Range for PG Position Attained
-	"APR FFD Gain        "	,	//	593 14-108  Gain of APR feedforward
-	"APR Decel Time  sec "	,	//	594 14-109  Decelerate time of APR
-	"FMAX by VcomAPR Hz  "	,	//	595 14-110  FMax Target by Vcommand Position
-	"RESERVE             "	,	//	596 14-111  Accel. Time for Position
-	"PG Mech. Gear A     "	,	//	597 14-112  PG Mechanical Gear A
-	"PG Mech. Gear B     "	,	//	598 14-113  PG Mechanical Gear B
-	"System Jm       PU  "	,	//	599 14-114  Interia of motor PU
-	"M1IdsRef Limit   %  "	,	//	600 14-115  Motor1 IdsRef Limit
-	"M2IdsRef Limit   %  "	,	//	601 14-116  Motor2 IdsRef Limit
-	"Phase Loss Time sec "	,	//	602 14-117  Phase Loss Time
-	"TH Inside Temp   C  "	,	//	603 14-118  Thermo inside Temp
-	"ASR FeedForward     "	,	//	604 14-119  Speed feed forword
-	"SlipGen.CompGain    "	,	//	605 14-120  SVC Slip Generation Compensation Gain //6a02j
-	"PG-REF COM LPG      "	,	//	606 14-121  PG2 Command Low pass Filter Gain
-	"TENSION OF TQCPGNt  "	,	//	607 14-122  Tension of Torque Control
-	"DIAMETER        m   "	,	//	608 14-123  Diameter of Material
-	"DEPTH           cm  "	,	//	609 14-124  Depth of meterial
-	"RESERVE             "	,	//	610 14-125  Reserve
-	"ABZ ST Times        "	,	//	611 14-126  Reserve
-	"ABZ ST Duty         "	,	//	612 14-127  Reserve
-	"TIMER OF PHL    hr. "	,	//	613 14-128  Timer of Phase loss (hour)
-	"RESERVE             "	,	//	614 14-129  Time of APR Curve
-    "Jm source           "  ,   //	615 14-130  IM control use inertia source
-	"PHL LEVEL           "	,	//	616 14-131  PHASE LOSS detect level
-	"Muti-input state    "	,	//	617 14-132  muti input state
-    "StandStill Curr.Amps"  ,   //  618 14-133  Standstill Current
-	"PG Scale Factor     "	,	//	619 14-134  Division factor of PG	 
-	"OLD Irate           "	,	//	620 14-135  OLD Irate       // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_CONTROL         "	,   //  6XX 14-136  [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_BUARD           "	,   //  6XX 14-137  [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_Check_Time  sec "	,   //  6XX 14-138  [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-	"PDO_Tx_Time     ms  "	,   //  6XX 14-139  [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-    "VFD Com1 Address    "	,	//	6XX 14-140  Comm Address           //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                      
-	"COM1 Baud Rate  kbps"	,	//	6XX 14-141  Tranmission speed                         
-	"COM1 Fault Treat    "	,	//	6XX 14-142  Comm fault Treatment                      
-	"COM1 Time Out   sec "	,	//	6XX 14-143  Comm Time out                             
-	"COM1 Protocol       "	,	//	6XX 14-144  Comm Protocol                             
-	"COM1 Delay Time ms  "	,	//	6XX 14-145  ASC remote Response Delay Time, 1=100us 
-    "OPHL 10Hz COUNT     "	,	//	6XX 14-146  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  5Hz COUNT     "	,	//	6XX 14-147  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  2Hz COUNT     "	,	//	6XX 14-148  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.5Hz COUNT    "	,	//	6XX 14-149  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.2Hz COUNT    "	,	//	6XX 14-150  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 1       "	,	//	6XX 14-151  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 2       "	,	//	6XX 14-152  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 3       "	,	//	6XX 14-153  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+	"Id PWRSAVE Level%   "	,	//	958 14-00	Ids Power Save Level
+	"VF CURVE MODE       "	,	//	959 14-01	VF voltage mode selection
+	"Overload 1 Mode     "	,	//	960 14-02	Constant Torque Selection
+	"Auto ACC/DEC        "	,	//	961 14-03	Auto Accel/Decel
+	"Unit ACC/DEC T      "	,	//	962 14-04	Unit of Acc/Dec time
+	"POWER SAVE MODE     "	,	//  963 14-05	Power Save mode
+	"Stop Methods        "	,	//  964 14-06	Stop Methods
+	"Reverse Operate     "	,	//  965 14-07	Reverse Operation
+	"Skip Freq. 1UP  Hz  "	,	//  966 14-08	Skip Freq. Point 1 upper limit
+	"Skip Freq. 1LOW Hz  "	,	//  967 14-09	Skip Freq. Point 1 lower limit
+	"Skip Freq. 2UP  Hz  "	,	//  968 14-10	Skip Freq. Point 2 upper limit
+	"Skip Freq. 2LOW Hz  "	,	//  969 14-11	Skip Freq. Point 2 lower limit
+	"Skip Freq. 3UP  Hz  "	,	//  970 14-12	Skip Freq. Point 3 upper limit
+	"Skip Freq. 3LOW Hz  "	,	//  971 14-13	Skip Freq. Point 3 lower limit
+	"Motor2 Fbase    Hz  "	,	//  972 14-14	Motor Base Frequency 2
+	"Max Out-Volt 2  V   "	,	//  973 14-15	Max Output Voltage 2
+	"Mid Out-Freq.2-1Hz  "	,	//  974 14-16	Mid Output Freq.2 1
+	"Mid Out-Volt 2-1V   "	,	//  975 14-17	Mid Output Voltage 2 1
+	"Mid Out-Freq.2-2Hz  "	,	//  976 14-18	Mid Output Freq.2 2
+	"Mid Out-Volt 2-2V   "	,	//  977 14-19	Mid Output Voltage 2 2
+	"Min Out-Freq.2  Hz  "	,	//  978 14-20	Min Output Freq. 2
+	"Min Out-Volt 2  V   "	,	//  979 14-21	Min Output Voltage 2
+	"UP/DOWN Key MODE    "	,	//  980 14-22	up/down key mode
+	"UP/DOWN KEY SPD     "	,	//  981 14-23	up/down key speed
+	"Counter Set         "	,	//  982 14-24	Counter Value Set (Complete)
+	"Counter Reach       "	,	//  983 14-25	Counter Value Reach (Preset)
+	"LIMIT SCALE         "	,	//  984 14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
+	"Multi-Fun Input9    "	,	//  985 14-27	Multi-Function Input 9
+	"Multi-Fun InputA    "	,	//  986 14-28	Multi-Function Input 10
+	"Multi-Fun InputB    "	,	//  987 14-29	Multi-Function Input 11
+	"Multi-Fun InputC    "	,	//  988 14-30	Multi-Function Input 12
+	"Multi-Fun InputD    "	,	//  989 14-31	Multi-Function Input 13
+	"Multi-Fun InputE    "	,	//  990 14-32	Multi-Function Input 14
+	"Fault Reset OP      "	,	//  991 14-33	External Terminal Run after Fault Reset
+	"ACI/AVI2 SEL        "	,	//  992 14-34	ACI change to AVI2
+	"Addition of AI      "	,	//  993 14-35	Addition Function of AI
+	"Multi-Posit 1       "	,	//  993 14-36	Multi-Position Point 1
+	"Multi-Posit 2       "	,	//  994 14-37	Multi-Position Point 2
+	"Multi-Posit 3       "	,	//  995 14-38	Multi-Position Point 3
+	"Multi-Posit 4       "	,	//  996 14-39	Multi-Position Point 4
+	"Multi-Posit 5       "	,	//  997 14-40	Multi-Position Point 5
+	"Multi-Posit 6       "	,	//  998 14-41	Multi-Position Point 6
+	"Multi-Posit 7       "	,	//  999 14-42	Multi-Position Point 7
+	"Multi-Posit 8       "	,	//  1000 14-43	Multi-Position Point 8
+	"Multi-Posit 9       "	,	//	1001 14-44	Multi-Position Point 9
+	"Multi-Posit 10      "	,	//	1002 14-45	Multi-Position Point 10
+	"Multi-Posit 11      "	,	//	1003 14-46	Multi-Position Point 11
+	"Multi-Posit 12      "	,	//	1004 14-47	Multi-Position Point 12
+	"Multi-Posit 13      "	,	//	1005 14-48	Multi-Position Point 13
+	"Multi-Posit 14      "	,	//  1006 14-49	Multi-Position Point 14
+	"Multi-Posit 15      "	,	//  1007 14-50	Multi-Position Point 15
+	"MOTOR 1 OR 2        "	,	//  1008 14-51	Motor Selection 1 or 2
+	"Y-D Switch Hz   Hz  "	,	//  1009 14-52	Y-Delta Connected switching rpm
+	"Y-D Switch Sel      "	,	//  1010 14-53	Y-Delta switched Enable
+	"Motor2 Rated    Amps"	,	//  1011 14-54	Motor 2 rated Current
+	"Motor2 Rated P  Kw  "	,	//  1012 14-55	Motor 2 Rated Power
+	"Motor2 Rated    RPM "	,	//  1013 14-56	Motor 2 Rated RPM
+	"Motor2 Poles        "	,	//  1014 14-57	Motor 2 pole No.
+	"Motor2 No-Load  Amps"	,	//	1015 14-58	Motor 2 No-Load Current
+	"Motor2 Rs       ohm "	,	//	1016 14-59	Motor 2 Rs
+	"Motor2 Rr       ohm "	,	//	1017 14-60	Motor 2 Rr
+	"Motor2 Lm       mH  "	,	//	1018 14-61	Motor 2 Lm
+	"Motor2 Lx       mH  "	,	//	1019 14-62	Motor 2 Lx
+	"Y-D On Delay T      "	,	//  1020 14-63	Y-Delta On delay time
+	"OV stall level  V   "	,	//	1021 14-64	OV stall level
+	"Thermal RLY2 SEL    "	,	//	1022 14-65	Thermal Relay 2 Selection
+	"Thermal RLY2 T      "	,	//	1023 14-66	Thermal Relay 2 Time
+	"Momentary Power     "	,	//	1024 14-67	Momentary Power Loss
+	"Power Loss Time sec "	,	//	1025 14-68	Max. allowable PL time
+	"Base Block Time sec "	,	//	1026 14-69	BB Time for speed serach
+	"SPD Search Curr %   "	,	//  1027 14-70	Current level for SPD serach
+	"BB Treatment        "	,	//  1028 14-71	bb treatment for oc, ov, bb
+	"Auto Restart        "	,	//  1029 14-72	Auto restart after fault
+	"Restart Method      "	,	//  1030 14-73	Auto restart Speed serach method
+	"DEB Decel SEL       "	,	//  1031 14-74	Deceleration at Momertary Power loss 
+	"DEB Return Time     "	,	//  1032 14-75	KEB Return Time
+	"PID Fdb SEL         "	,	//  1033 14-76	PID feedback selection	
+	"P Gain of PID       "	,	//  1034 14-77	P gain of PID	
+	"I Gain of PID   sec "	,	//	1035 14-78	I gain of PID	
+	"D Gain of PID       "	,	//	1036 14-79	D gain of PID	
+	"Up Limit for I  %   "	,	//	1037 14-80	Upper bound for integral	
+	"PID Out-Limiter %   "	,	//  1038 14-81	PID output Freq. Limit	
+	"PID Offset      %   "	,	//	1039 14-82	PID offset	
+	"PID Out-Filter  sec "	,	//	1040 14-83	Derivative Filter Time Constant	
+	"Fdb Detect Time sec "	,	//	1041 14-84	Feedback signal detection time	
+	"PID Fdb Loss        "	,	//  1042 14-85	PID feedback loss	
+	"SLEEP FREQ          "	,	//  1043 14-86	Sleep Frequency	
+	"WAKE FREQ           "	,	//  1044 14-87	Wake up Frequency	
+	"SLEEP TIME          "	,	//  1045 14-88	Sleep Time	
+	"PID DEV. LEVEL  %   "	,	//  1046 14-89	PID Deviation Level	
+	"PID DEV. TIME       "	,	//  1047 14-90	PID Deviation Time	
+	"PID Fbk Filter  sec "	,	//  1048 14-91	PID feedback filter	
+	"Comm Main Freq. Hz  "	,	//  1049 14-92	Main Frequency from communication	
+	"Block Trans. 1      "	,	//  1050 14-93	Block Transfer 1	
+	"Block Trans. 2      "	,	//  1051 14-94	Block Transfer 2	
+	"Block Trans. 3      "	,	//  1052 14-95	Block Transfer 3
+	"Block Trans. 4      "	,	//  1053 14-96	Block Transfer 4
+	"Block Trans. 5      "	,	//  1054 14-97	Block Transfer 5
+	"Block Trans. 6      "	,	//  1055 14-98	Block Transfer 6
+	"Block Trans. 7      "	,	//  1056 14-99	Block Transfer 7
+	"Block Trans. 8      "	,	//  1057 14-100 Block Transfer 8
+	"Block Trans. 9      "	,	//	1086 14-101 Block Transfer 9
+	"Block Trans. 10     "	,	//	1087 14-102 Block Transfer 10
+	"WEAKLPF             "	,	//	1088 14-103 WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
+	"WEAKTHETA           "	,	//	1089 14-104 WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
+	"OVER_SCALE          "	,	//	1090 14-105 OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
+	"PG Position Home    "	,	//	1091 14-106 PG Position Control Point (Home)
+	"PG Attained Home    "	,	//	1092 14-107 Range for PG Position Attained
+	"APR FFD Gain        "	,	//	1093 14-108 Gain of APR feedforward
+	"APR Decel Time  sec "	,	//	1094 14-109 Decelerate time of APR
+	"FMAX by VcomAPR Hz  "	,	//	1095 14-110 FMax Target by Vcommand Position
+	"RESERVE             "	,	//	1096 14-111 Accel. Time for Position
+	"PG Mech. Gear A     "	,	//	1097 14-112 PG Mechanical Gear A
+	"PG Mech. Gear B     "	,	//	1098 14-113 PG Mechanical Gear B
+	"System Jm       PU  "	,	//	1099 14-114 Interia of motor PU
+	"M1IdsRef Limit   %  "	,	//	1100 14-115 Motor1 IdsRef Limit
+	"M2IdsRef Limit   %  "	,	//  1101 14-116 Motor2 IdsRef Limit
+	"Phase Loss Time sec "	,	//	1102 14-117 Phase Loss Time
+	"TH Inside Temp   C  "	,	//	1103 14-118 Thermo inside Temp
+	"ASR FeedForward     "	,	//	1104 14-119 Speed feed forword
+	"SlipGen.CompGain    "	,	//	1105 14-120 SVC Slip Generation Compensation Gain //6a02j
+	"PG-REF COM LPG      "	,	//  1106 14-121 PG2 Command Low pass Filter Gain
+	"TENSION OF TQCPGNt  "	,	//	1107 14-122 Tension of Torque Control
+	"DIAMETER        m   "	,	//	1108 14-123 iameter of Material
+	"DEPTH           cm  "	,	//	1109 14-124 Depth of meterial
+	"RESERVE             "	,	//	1110 14-125 Reserve
+	"ABZ ST Times        "	,	//	1111 14-126 Reserve
+	"ABZ ST Duty         "	,	//	1112 14-127 Reserve
+	"TIMER OF PHL    hr. "	,	//	1113 14-128 Timer of Phase loss (hour)
+	"RESERVE             "	,	//	1114 14-129 Time of APR Curve
+    "Jm source           "  ,   //	1115 14-130 IM control use inertia source
+	"PHL LEVEL           "	,	//	1116 14-131 PHASE LOSS detect level
+	"Muti-input state    "	,	//	1117 14-132 muti input state
+    "StandStill Curr.Amps"  ,   //  1118 14-133 Standstill Current
+	"PG Scale Factor     "	,	//	1119 14-134 Division factor of PG	 
+	"OLD Irate           "	,	//	1120 14-135 OLD Irate       // [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_CONTROL         "	,   //  1121 14-136 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_BUARD           "	,   //  1122 14-137 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_Check_Time  sec "	,   //  1123 14-138 [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+	"PDO_Tx_Time     ms  "	,   //  1124 14-139 [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+    "VFD Com1 Address    "	,	//	1125 14-140 Comm Address           //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                      
+	"COM1 Baud Rate  kbps"	,	//	1126 14-141 Tranmission speed                         
+	"COM1 Fault Treat    "	,	//	1127 14-142 Comm fault Treatment                      
+	"COM1 Time Out   sec "	,	//	1128 14-143 Comm Time out                             
+	"COM1 Protocol       "	,	//	1129 14-144 Comm Protocol                             
+	"COM1 Delay Time ms  "	,	//	1130 14-145 ASC remote Response Delay Time, 1=100us 
+    "OPHL 10Hz COUNT     "	,	//	1131 14-146 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  5Hz COUNT     "	,	//	1132 14-147 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  2Hz COUNT     "	,	//	1133 14-148 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.5Hz COUNT    "	,	//	1134 14-149 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.2Hz COUNT    "	,	//	1135 14-150 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 1       "	,	//	1136 14-151 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 2       "	,	//	1137 14-152 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 3       "	,	//	1138 14-153 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
 };
 #endif
 
@@ -2503,7 +2656,7 @@ const string20 prinfo_tc[EPMAX] = {
     "Min. Pulse Width    "  ,   //  91  15-91   minimum pulse, ADDED BY SCOTTY,2007/07/11
 	"D Frame FAN Cont    "	,	//	92 	15-92	D Frame Fan control
 	"Z Phase UVW Sect    "	,	//	93 	15-93	Z phase UVW Section when PG_TYPE = 2
-    "                    "  ,   //  94  15-94   
+    "RESERVE             "  ,   //  94  15-94 
     "LAST PG COUNTER     "  ,   //  95  15-95   PG Position Record, add by scotty, 12/07/2007
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
@@ -2538,891 +2691,1041 @@ const string20 prinfo_tc[EPMAX] = {
 	"RESERVE             "	,	//	126 15-126  RESERVED
 	"Unavailable         "	,	//	127 15-127  RESERVED
 //	"PPI filter point    "	,	//	128 15-128  PPI control     //[PPI function, Sampo, 2015/09/08]
+    "RESERVE             "	,	//	128 15-128  RESERVED
+    "RESERVE             "	,	//	129 15-129  RESERVED
 
 /*---- GROUP 00---------------------------------------*/
    //12345678901234561234
-    "機種識別碼          "	,	//	128 00-00	Model Type of Drive 
-    "變頻器額定電流  Amps"	,	//	129 00-01	Rated Current
-    "參數重置設定        "	,	//	130 00-02	Parameter Reset
-    "開機顯示畫面選擇    "	,	//	131 00-03	Start up Display       //chinese description creat by Bernie 
-    "多功\能顯示選擇      "	,	//	132 00-04	User Display            // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "定義比例設定        "	,	//	133 00-05	User Coefficient        //chinese description creat by Bernie 
-    "軟體版本            "	,	//	134 00-06	Software Version
-    "參數保護解碼輸入    "	,	//	135 00-07	Password Input
-    "參數保護解碼設定    "	,	//	136 00-08	Password Input
-    "控制模式            "	,	//	137 00-09	Control Methods
-    "速度單位            "	,	//	138 00-10	Velocity Unit Select
-    "驅動器輸出方向      "	,	//	139 00-11   Change Output Direction, Added by sampo , 06/11/2009
-    "載波頻率        KHz "	,	//	140 00-12	Carry Frequency
-    "自動穩壓功\能        "	,	//	141 00-13	AVR                     // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "速度指令來源        "	,	//	142 00-14	Source of Freq. Command
-    "運轉指令來源        "	,	//	143 00-15	Source of Oper. Command
+    "機種識別碼          "	,	//	130 00-00	Model Type of Drive 
+    "變頻器額定電流  Amps"	,	//	131 00-01	Rated Current
+    "參數重置設定        "	,	//	132 00-02	Parameter Reset
+    "開機顯示畫面選擇    "	,	//	133 00-03	Start up Display       //chinese description creat by Bernie 
+    "多功\能顯示選擇     "	,	//	134 00-04	User Display            // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "定義比例設定        "	,	//	135	00-05	User Coefficient        //chinese description creat by Bernie 
+    "軟體版本            "	,	//	136	00-06	Software Version
+    "參數保護解碼輸入    "	,	//	137	00-07	Password Input
+    "參數保護解碼設定    "	,	//	138	00-08	Password Input
+    "控制模式            "	,	//	139	00-09	Control Methods
+    "速度單位            "	,	//	140	00-10	Velocity Unit Select
+    "驅動器輸出方向      "	,	//	141 00-11   Change Output Direction, Added by sampo , 06/11/2009
+    "載波頻率        KHz "	,	//	142	00-12	Carry Frequency
+    "自動穩壓功\能       "	,	//	143	00-13	AVR                     // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "速度指令來源        "	,	//	144	00-14	Source of Freq. Command
+    "運轉指令來源        "	,	//	145	00-15	Source of Oper. Command
+
+    "保留                "	,	//	146 00-16   RESERVED
+    "保留                "	,	//	147 00-17   RESERVED
+    "保留                "	,	//	148 00-18   RESERVED
+    "保留                "	,	//	149 00-19   RESERVED
     
 /*---- GROUP 01---------------------------------------*/
 /*  "12345678901234561234"	*/
-	"最大操作頻率    Hz  "	,	//	144	01-00   Max Output Freq.
-	"電機額定頻率    Hz  "	,	//	145	01-01   Motor Base Frequency 1
-	"電機額定電壓    V   "	,	//	146	01-02   Max Output Voltage
-	"第二輸出頻率    Hz  "	,	//	147	01-03   Mid Output Freq.1
-	"第二輸出電壓    V   "	,	//	148	01-04   Mid Output Voltage 1
-	"第三輸出頻率    Hz  "	,	//	149	01-05   Mid Output Freq.2
-	"第三輸出電壓    V   "	,	//	150	01-06   Mid Output Voltage 2
-	"第四輸出頻率    Hz  "	,	//	151	01-07   Min Output Freq.
-	"第四輸出電壓    V   "	,	//	152	01-08   Min Output Voltage
-	"啟動頻率        Hz  "	,	//	153	01-09   Start Frequency
-	"輸出頻率上限值  Hz  "	,	//	154	01-10   Upper Bound Freq.
-	"輸出頻率下限值  Hz  "	,	//	155	01-11   Lower Bound Freq.
-	"第一加速時間    sec "	,	//	156	01-12   1st Acceleration time      //chinese description creat by Bernie 
-	"第一減速時間    sec "	,	//	157	01-13   1st Deceleration time      //chinese description creat by Bernie 
-	"第二加速時間    sec "	,	//	158	01-14   2nd Acceleration time      //chinese description creat by Bernie 
-	"第二減速時間    sec "	,	//	159	01-15   2nd Deceleration time      //chinese description creat by Bernie 
-	"第三加速時間    sec "	,	//	160	01-16   3rd Acceleration time      //chinese description creat by Bernie 
-	"第三減速時間    sec "	,	//	161	01-17   3rd Deceleration time      //chinese description creat by Bernie 
-	"第四加速時間    sec "	,	//	162	01-18   4th Acceleration time      //chinese description creat by Bernie 
-	"第四減速時間    sec "	,	//	163	01-19   4th Deceleration time      //chinese description creat by Bernie 
-	"寸動加速時間    sec "	,	//	164	01-20   JOG Acceleration time
-	"寸動減速時間    sec "	,	//	165	01-21   JOG Deceleration time
-	"寸動頻率        Hz  "	,	//	166	01-22   JOG Frequency
-	"1-4加減速切換   Hz  "	,	//	167	01-23   Transition Frequency ACC1/DEC1 to ACC4/DEC4
-	"加速開始S1時間  sec "	,	//	168	01-24   S curve Accel time 1
-	"加速開始S2時間  sec "	,	//	169	01-25   S curve Accel time 2
-	"加速開始S3時間  sec "	,	//	170	01-26   S curve Decel time 1
-	"加速開始S4時間  sec "	,	//	171	01-27   S curve Decel time 2
-	"小於第四頻率模式    "	,	//	172	01-28   Select Zero Speed
-	"平層速度切換    Hz  "	,	//	173	01-29   Landing Frequency 
-	"低於平層速度S5  sec "	,	//	174	01-30   S curve Decel time 3
-	"停車減速時間    sec "	,	//	175	01-31   Stop Deceleration time
-    "終端強制減速度  m/s "	,	//  1xx 01-32
-    "端子直停高速時間sec "	,	//	1xx	01-33   IODHT IO direct hold time   
-    "端子直停平層時間sec "	,	//	1xx	01-34   IODLT IO direct landing freq
-    "端子直停衝量限制    "	,	//	1xx	01-35   IODLT IO direct landing time
-    "端子直停減速距離cm  "	,	//	1xx	01-36   IODLT IO direct DistancE
-    "直停參考減速距離m   "	,	//	1xx	01-37   IODLT IO direct DistancE
-    "端子直接停靠致能    "	,	//	1xx	01-38   IODLT IO direct DistancE
-    "ETS頻率比較準位 Hz  "  ,   //  1xx 01-37   IODLT IO direct DistancE
-    "緊急減速減速時間sec "	,	//	1xx	01-37   IODLT IO direct DistancE
+	"最大操作頻率    Hz  "	,	//	150	01-00	Max Output Freq.
+	"電機額定頻率    Hz  "	,	//	151	01-01	Motor Base Frequency 1
+	"電機額定電壓    V   "	,	//	152	01-02	Max Output Voltage
+	"第二輸出頻率    Hz  "	,	//	153	01-03	Mid Output Freq.1
+	"第二輸出電壓    V   "	,	//	154	01-04	Mid Output Voltage 1
+	"第三輸出頻率    Hz  "	,	//	155	01-05	Mid Output Freq.2
+	"第三輸出電壓    V   "	,	//	156	01-06	Mid Output Voltage 2
+	"第四輸出頻率    Hz  "	,	//	157	01-07	Min Output Freq.
+	"第四輸出電壓    V   "	,	//	158	01-08	Min Output Voltage
+	"啟動頻率        Hz  "	,	//	159	01-09	Start Frequency
+	"輸出頻率上限值  Hz  "	,	//	160	01-10	Upper Bound Freq.
+	"輸出頻率下限值  Hz  "	,	//	161	01-11	Lower Bound Freq.
+	"第一加速時間    sec "	,	//	162	01-12	1st Acceleration time      //chinese description creat by Bernie 
+	"第一減速時間    sec "	,	//	163	01-13	1st Deceleration time      //chinese description creat by Bernie 
+	"第二加速時間    sec "	,	//	164	01-14	2nd Acceleration time      //chinese description creat by Bernie 
+	"第二減速時間    sec "	,	//	165	01-15	2nd Deceleration time      //chinese description creat by Bernie 
+	"第三加速時間    sec "	,	//	166	01-16	3rd Acceleration time      //chinese description creat by Bernie 
+	"第三減速時間    sec "	,	//	167	01-17	3rd Deceleration time      //chinese description creat by Bernie 
+	"第四加速時間    sec "	,	//	168	01-18	4th Acceleration time      //chinese description creat by Bernie 
+	"第四減速時間    sec "	,	//	169	01-19	4th Deceleration time      //chinese description creat by Bernie 
+	"寸動加速時間    sec "	,	//	170	01-20	JOG Acceleration time
+	"寸動減速時間    sec "	,	//	171	01-21	JOG Deceleration time
+	"寸動頻率        Hz  "	,	//	172	01-22	JOG Frequency
+	"1-4加減速切換   Hz  "	,	//	173	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4
+	"加速開始S1時間  sec "	,	//	174	01-24	S curve Accel time 1
+	"加速開始S2時間  sec "	,	//	175	01-25	S curve Accel time 2
+	"加速開始S3時間  sec "	,	//	176	01-26	S curve Decel time 1
+	"加速開始S4時間  sec "	,	//	177	01-27	S curve Decel time 2
+	"小於第四頻率模式    "	,	//	178	01-28	Select Zero Speed
+	"平層速度切換    Hz  "	,	//	179	01-29	Landing Frequency 
+	"低於平層速度S5  sec "	,	//	180	01-30	S curve Decel time 3
+	"停車減速時間    sec "	,	//	181	01-31	Stop Deceleration time
+    "終端強制減速度  m/s "	,	//	182	01-32
+    "端子直停高速時間sec "	,	//	183	01-33   IODHT IO direct hold time   
+    "端子直停平層時間sec "	,	//  184 01-34   IODLT IO direct landing freq
+    "端子直停衝量限制    "	,	//  185 01-35   IODLT IO direct landing time
+    "端子直停減速距離cm  "	,	//  186 01-36   IODLT IO direct DistancE
+    "直停參考減速距離m   "	,	//  187 01-37   IODLT IO direct DistancE
+    "端子直接停靠致能    "	,	//  188 01-38   IODLT IO direct DistancE
+    "ETS頻率比較準位 Hz  "  ,   //  189 01-39   IODLT IO direct DistancE
+    "緊急減速減速時間sec "	,	//  190 01-40   IODLT IO direct DistancE
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 	"Emergency DEC   sec "  ,   //  105 15-105  RESERVE
     "Emergency S3    sec "  ,   //  105 15-105  RESERVE
     "Emergency S4    sec "  ,   //  105 15-105  RESERVE
-#endif
+#else
+    "保留                "	,	//	191 01-41   RESERVED
+    "保留                "	,	//	192 01-42   RESERVED
+    "保留                "	,	//	193 01-43   RESERVED
+#endif    
+    "端子直停觸發速度Hz  "	,	//	194 01-44   MI direct stop trigger speed	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+    "保留                "	,	//	195 01-45   RESERVED
+    "保留                "	,	//	196 01-46   RESERVED
+    "保留                "	,	//	197 01-47   RESERVED
+    "保留                "	,	//	198 01-48   RESERVED
+    "保留                "	,	//	199 01-49   RESERVED
+
+    
 /*---- GROUP 02---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-    "2/3 線式運轉控制    "	,	//	176	02-00   2/3 wire control                
-    "MI1功\能選擇         "	,	//	177	02-01   Multi-Function Input 1          
-    "MI2功\能選擇         "	,	//	178	02-02   Multi-Function Input 2       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]       
-    "MI3功\能選擇         "	,	//	179	02-03   Multi-Function Input 3       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
-    "MI4功\能選擇         "	,	//	180	02-04   Multi-Function Input 4       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
-    "MI5功\能選擇         "	,	//	181	02-05   Multi-Function Input 5       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
-    "MI6功\能選擇         "	,	//	182	02-06   Multi-Function Input 6       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
-    "MI7功\能選擇         "	,	//	183	02-07   Multi-Function Input 7       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
-    "MI8功\能選擇         "	,	//	184	02-08   Multi-Function Input 8       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "數位輸入響應時間sec "	,	//	185	02-09   Digital in response time		
-    "數位輸入方向        "	,	//	186	02-10   Multi-Function Input Inverse	
-    "RA 功\能選擇         "	,	//	187	02-11   Multi-Function Relay 1	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "MRA功\能選擇         "	,	//	188	02-12   Multi-Function Relay 2	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "R1A功\能選擇         "	,	//	189	02-13   Multi-Function Output 1	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19] 	    
-    "R2A功\能選擇         "	,	//	190	02-14   Multi-Function Output 2	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "MO1功\能選擇         "	,	//	191	02-15   Multi-Function Output 3	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "MO2功\能選擇         "	,	//	192	02-16   Multi-Function Output 4	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "MO3功\能選擇         "	,	//	193	02-17   Multi-Function Output 5	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "MO4功\能選擇         "	,	//	194	02-18   Multi-Function Output 6	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
-    "MO5功\能選擇         "	,	//	195	02-19   Multi-Function Output 7	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "MO6功\能選擇         "	,	//	196	02-20   Multi-Function Output 8	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "MO7功\能選擇         "	,	//	197	02-21   Multi-Function Output 9	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "MO8 功\能選擇        "	,	//	198	02-22   Multi-Function Output 10	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
-    "數位輸出方向        "	,	//	199	02-23   Multi-Function Output inverse	
-    "啟動信號模式選擇    "  ,   //  200 02-24   Sequence start mode
-    "任意頻率到達1   Hz  "	,	//	201	02-25   Desired Frequency 1		        
-    "任意頻率到達1寬 Hz  "	,	//	202	02-26   Band of Desired Frequency 1		
-    "任意頻率到達2   Hz  "	,	//	203	02-27   Desired Frequency 2		        
-    "任意頻率到達2寬 Hz  "	,	//	204	02-28   Band of Desired Frequency 2		
-    "機械煞車放閘延時sec "	,	//	205	02-29   Brake Delay Timer at run
-    "機械煞車抱閘延時sec "	,	//	206	02-30   Brake Delay Timer at stop
-    "電磁閥導通延時  sec "	,	//	207	02-31   Mech Contact Delay Timer run
-    "電磁閥斷開延時  sec "	,	//	208	02-32   Mech Contact Delay Timer stop				            
-    "電流準位設定    %   "	,	//	209	02-33   Isum Current Output Detect	    
-    "速度區段設定    Hz  "	,	//	210	02-34   Speed Area
-    "機械煞車檢出時間sec "	,	//	211	02-35   Mechanical Brake Checking Time
-    "電磁閥檢出時間  sec "	,	//	212 02-36   Magnetic Contactor Checking Time
-    "轉矩確認動作選擇    "  ,   //  213 02-37   Mechanical Brake Checking Current Enable
-    "封星導通延時間  sec "  ,   //  207 02-38   Mech Contact Delay Timer run            //[Star contactor function, Bernie, 2017/03/22] 
-    "封星斷開延時間  sec "  ,   //  208 02-39   Mech Contact Delay Timer stop           //[Star contactor function, Bernie, 2017/03/22]
-	"LU/LD異常選擇       "  ,   //  2xx 02-40   LU/LD error  Selection	                //#15977, LULD detect, James, 2021/04/01
-	"LU/LD開路偵測   sec "  ,   //  2xx 02-41   LD/LD Open Detect Time                  //#15977, LULD detect, James, 2021/04/01
-	"LU/LD短路偵測   sec "  ,   //  2xx 02-42   LD/LD Short Detect Time                 //#15977, LULD detect, James, 2021/04/01
-    "運轉速度到達寬度Hz  "	,	//  202 02-43   Band of Speed Agree Function #18572			
-    "STO短路偵測時間 sec "  ,   //  2xx 02-44   STO shor detect time                    //#18196  STO new function for SIL2, James, 2021/10/06
-    "819 Sensor          "  ,   //  2xx 02-45   //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "速度限制        m/s "  ,   //  2xx 02-46   //[Artemis Add Sensor819 Function/Special/2022/06/06] 
+    "2/3 線式運轉控制    "	,	//	200	02-00	2/3 wire control                
+    "MI1功\能選擇        "	,	//	201	02-01	Multi-Function Input 1          
+    "MI2功\能選擇        "	,	//	202	02-02	Multi-Function Input 2       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]       
+    "MI3功\能選擇        "	,	//	203	02-03	Multi-Function Input 3       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
+    "MI4功\能選擇        "	,	//	204	02-04	Multi-Function Input 4       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
+    "MI5功\能選擇        "	,	//	205	02-05	Multi-Function Input 5       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
+    "MI6功\能選擇        "	,	//	206	02-06	Multi-Function Input 6       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
+    "MI7功\能選擇        "	,	//	207	02-07	Multi-Function Input 7       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]      
+    "MI8功\能選擇        "	,	//	208	02-08	Multi-Function Input 8       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "數位輸入響應時間sec "	,	//	209	02-09	Digital in response time		
+    "數位輸入方向        "	,	//	210	02-10	Multi-Function Input Inverse	
+    "RA 功\能選擇        "	,	//	211	02-11	Multi-Function Relay 1	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "MRA功\能選擇        "	,	//	212	02-12	Multi-Function Relay 2	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "R1A功\能選擇        "	,	//	213	02-13	Multi-Function Output 1	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19] 	    
+    "R2A功\能選擇        "	,	//	214	02-14	Multi-Function Output 2	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "MO1功\能選擇        "	,	//	215	02-15	Multi-Function Output 3	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "MO2功\能選擇        "	,	//	216	02-16	Multi-Function Output 4	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "MO3功\能選擇        "	,	//	217	02-17	Multi-Function Output 5	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "MO4功\能選擇        "	,	//	218	02-18	Multi-Function Output 6	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]    
+    "MO5功\能選擇        "	,	//	219	02-19	Multi-Function Output 7	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "MO6功\能選擇        "	,	//	220	02-20	Multi-Function Output 8	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "MO7功\能選擇        "	,	//	221	02-21	Multi-Function Output 9	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "MO8 功\能選擇       "	,	//	222	02-22	Multi-Function Output 10	   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]	    
+    "數位輸出方向        "	,	//	223	02-23	Multi-Function Output inverse	
+    "啟動信號模式選擇    "  ,   //  224 02-24   Sequence start mode
+    "任意頻率到達1   Hz  "	,	//	225	02-25	Desired Frequency 1		        
+    "任意頻率到達1寬 Hz  "	,	//	226	02-26	Band of Desired Frequency 1		
+    "任意頻率到達2   Hz  "	,	//	227	02-27	Desired Frequency 2		        
+    "任意頻率到達2寬 Hz  "	,	//	228	02-28	Band of Desired Frequency 2		
+    "機械煞車放閘延時sec "	,	//	229	02-29	Brake Delay Timer at run
+    "機械煞車抱閘延時sec "	,	//	230	02-30	Brake Delay Timer at stop
+    "電磁閥導通延時  sec "	,	//	231	02-31	Mech Contact Delay Timer run
+    "電磁閥斷開延時  sec "	,	//	232	02-32	Mech Contact Delay Timer stop				            
+    "電流準位設定    %   "	,	//	233	02-33	Isum Current Output Detect	    
+    "速度區段設定    Hz  "	,	//	234	02-34	Speed Area
+    "機械煞車檢出時間sec "	,	//	235 02-35	Mechanical Brake Checking Time
+    "電磁閥檢出時間  sec "	,	//	236 02-36   Magnetic Contactor Checking Time
+    "轉矩確認動作選擇    "  ,   //  237 02-37   Mechanical Brake Checking Current Enable
+    "封星導通延時間  sec "  ,   //  238 02-38   Mech Contact Delay Timer run            //[Star contactor function, Bernie, 2017/03/22] 
+    "封星斷開延時間  sec "  ,   //  239 02-39   Mech Contact Delay Timer stop           //[Star contactor function, Bernie, 2017/03/22]
+	"LU/LD異常選擇       "  ,   //  240 02-40   LU/LD error  Selection	                //#15977, LULD detect, James, 2021/04/01
+	"LU/LD開路偵測   sec "  ,   //  241 02-41   LD/LD Open Detect Time                  //#15977, LULD detect, James, 2021/04/01
+	"LU/LD短路偵測   sec "  ,   //  242 02-42   LD/LD Short Detect Time                 //#15977, LULD detect, James, 2021/04/01
+    "運轉速度到達寬度Hz  "	,	//  243 02-43   Band of Speed Agree Function #18572			
+    "STO短路偵測時間 sec "  ,   //  244 02-44   STO shor detect time                    //#18196  STO new function for SIL2, James, 2021/10/06
+    "819 Sensor          "  ,   //  245 02-45   //[Artemis Add Sensor819 Function/Special/2022/06/06]
+    "速度限制        m/s "  ,   //  246 02-46   //[Artemis Add Sensor819 Function/Special/2022/06/06]
+
+    "保留                "	,	//	247 02-47   RESERVED
+    "保留                "	,	//	248 02-48   RESERVED
+    "保留                "	,	//	249 02-49   RESERVED
+    "保留                "	,	//	250 02-50   RESERVED
+    "保留                "	,	//	251 02-51   RESERVED
+    "保留                "	,	//	252 02-52   RESERVED
+    "保留                "	,	//	253 02-53   RESERVED
+    "保留                "	,	//  254 02-54   RESERVED
+    "保留                "	,	//	255 02-55   RESERVED
+    "保留                "	,	//	256 02-56   RESERVED
+    "保留                "	,	//	257 02-57   RESERVED
+    "保留                "	,	//	258 02-58   RESERVED
+    "保留                "	,	//	259 02-59   RESERVED
+    "保留                "	,	//	260 02-60   RESERVED
+    "保留                "	,	//	261 02-61   RESERVED
+    "保留                "	,	//	262 02-62   RESERVED
+    "保留                "	,	//	263 02-63   RESERVED
+    "保留                "	,	//  264 02-64   RESERVED
+    "保留                "	,	//	265 02-65   RESERVED
+    "保留                "	,	//	266 02-66   RESERVED
+    "保留                "	,	//	267 02-67   RESERVED
+    "保留                "	,	//	268 02-68   RESERVED
+    "保留                "	,	//	269 02-69   RESERVED
+    "保留                "	,	//	270 02-70   RESERVED
+    "保留                "	,	//	271 02-71   RESERVED
+    "保留                "	,	//	272 02-72   RESERVED
+    "保留                "	,	//	273 02-73   RESERVED
+    "保留                "	,	//  274 02-74   RESERVED
+    "保留                "	,	//	275 02-75   RESERVED
+    "保留                "	,	//	276 02-76   RESERVED
+    "保留                "	,	//	277 02-77   RESERVED
+    "保留                "	,	//	278 02-78   RESERVED
+    "保留                "	,	//	279 02-79   RESERVED
+    "保留                "	,	//	280 02-80   RESERVED
+    "保留                "	,	//	281 02-81   RESERVED
+    "保留                "	,	//	282 02-82   RESERVED
+    "保留                "	,	//	283 02-83   RESERVED
+    "保留                "	,	//  284 02-84   RESERVED
+    "保留                "	,	//	285 02-85   RESERVED
+    "保留                "	,	//	286 02-86   RESERVED
+    "保留                "	,	//	287 02-87   RESERVED
+    "保留                "	,	//	288 02-88   RESERVED
+    "保留                "	,	//	289 02-89   RESERVED
+    "保留                "	,	//	280 02-90   RESERVED
+    "保留                "	,	//	291 02-91   RESERVED
+    "保留                "	,	//	292 02-92   RESERVED
+    "保留                "	,	//	293 02-93   RESERVED
+    "保留                "	,	//  294 02-94   RESERVED
+    "保留                "	,	//	295 02-95   RESERVED
+    "保留                "	,	//	296 02-96   RESERVED
+    "保留                "	,	//	297 02-97   RESERVED
+    "保留                "	,	//	298 02-98   RESERVED
+    "保留                "	,	//	299 02-99   RESERVED
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-    "AUI1功\能選擇        "	,	//	214	03-00   AUI1 selection                    //[Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "保留                "	,	//	215	03-01   ACI  selection                    //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2功\能選擇        "	,	//	216	03-02   AUI2 selection                    //[Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1輸入偏壓    %   "	,	//	217	03-03   AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "保留                "	,	//	218	03-04   ACI  input Bias                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2輸入偏壓    %   "	,	//	219	03-05   AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1正負偏壓模式    "	,	//	220 03-06   AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "保留                "	,	//	221 03-07   ACI  input Polarity               //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2正負偏壓模式    "	,	//	222 03-08   AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1輸入增益    %   "	,	//	223 03-09   AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "保留                "	,	//	224 03-10   ACI  input Gain                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2輸入增益    %   "	,	//	225 03-11   AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1濾波時間    sec "	,	//	226 03-12   Low pass filter of AUI1 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "保留                "	,	//	227 03-13   Low pass filter of ACI  input     //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2濾波時間    sec "	,	//	228 03-14   Low pass filter of AUI2 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "荷重補償自學習      "	,	//	229 03-15   Loss of ACI                       //[ACI function remove, Bernie, 01/20/2012]
-    "保留                "  ,   //  230 03-16   RESERVED 
-    "AO1 輸出選擇        "	,	//	231 03-17   Analong Output 1
-    "AO1 輸出增益    %   "	,	//	232 03-18   Analong Output 1 Gain
-    "AO1 輸出反向致能    "	,	//	233 03-19   AO1 in minus value
-    "AO2 輸出選擇        "	,	//	234 03-20   Analong Output 2
-    "AO2 輸出增益    %   "	,	//	235 03-21   Analong Output 2 Gain
-    "AO2 輸出反向致能    "	,	//	236 03-22   AO2 in minus value
-    "AUI1類比輸入型式    "	,	//	237 03-23   AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI2類比輸入型式    "	,	//	238 03-24   AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    //"AUI1輸入設定        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-	//"AUI2輸入設定        "	,	//	238  03-26    AUI2 Communciate
+    "AUI1功\能選擇        "	,	//	300	03-00   AUI1 selection                    //[Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "保留                "	,	//	301	03-01   ACI  selection                    //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2功\能選擇        "	,	//  302	03-02   AUI2 selection                    //[Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1輸入偏壓    %   "	,	//	303	03-03   AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "保留                "	,	//	307	03-04   ACI  input Bias                   //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2輸入偏壓    %   "	,	//	305	03-05   AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1正負偏壓模式    "	,	//	306 03-06   AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "保留                "	,	//	307 03-07   ACI  input Polarity               //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2正負偏壓模式    "	,	//	308 03-08   AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1輸入增益    %   "	,	//	309 03-09   AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "保留                "	,	//	310 03-10   ACI  input Gain                   //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2輸入增益    %   "	,	//	311 03-11   AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1濾波時間    sec "	,	//	312 03-12   Low pass filter of AUI1 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "保留                "	,	//	313 03-13   Low pass filter of ACI  input     //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2濾波時間    sec "	,	//	314 03-14   Low pass filter of AUI2 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "荷重補償自學習      "	,	//	315 03-15   Loss of ACI                       //[ACI function remove, Bernie, 01/20/2012]
+    "保留                "  ,   //  316 03-16   RESERVED 
+    "AO1 輸出選擇        "	,	//	317 03-17   Analong Output 1
+    "AO1 輸出增益    %   "	,	//	318 03-18   Analong Output 1 Gain
+    "AO1 輸出反向致能    "	,	//	319 03-19   AO1 in minus value
+    "AO2 輸出選擇        "	,	//	320 03-20   Analong Output 2
+    "AO2 輸出增益    %   "	,	//	321 03-21   Analong Output 2 Gain
+    "AO2 輸出反向致能    "	,	//	322 03-22   AO2 in minus value
+    "AUI1類比輸入型式    "	,	//	323 03-23   AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2類比輸入型式    "	,	//	324 03-24   AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    //"AUI1輸入設定        "	,	//	325  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+	//"AUI2輸入設定        "	,	//	326  03-26    AUI2 Communciate
 	
 
 /*---- GROUP 04---------------------------------------*/
 /*  "12345678901234561234"	*/
-    "第零段速        Hz  "	,   //  239 04-00   Multi-Speed 0
-    "第一段速        Hz  "	,   //  240 04-01   Multi-Speed 1
-    "第二段速        Hz  "	,   //  241 04-02   Multi-Speed 2
-    "第三段速        Hz  "	,   //  242 04-03   Multi-Speed 3
-    "第四段速        Hz  "	,   //  243 04-04   Multi-Speed 4
-    "第五段速        Hz  "	,   //  244 04-05   Multi-Speed 5
-    "第六段速        Hz  "	,   //  245 04-06   Multi-Speed 6
-    "第七段速        Hz  "	,   //  246 04-07   Multi-Speed 7
-    "第八段速        Hz  "	,   //  247 04-08   Multi-Speed 8
-    "第九段速        Hz  "	,   //  248 04-09   Multi-Speed 9
-    "第十段速        Hz  "	,   //  249 04-10   Multi-Speed 10 
-    "第十一段速      Hz  "	,   //  250 04-11   Multi-Speed 11
-    "第十二段速      Hz  "	,   //  251 04-12   Multi-Speed 12
-    "第十三段速      Hz  "	,   //  252 04-13   Multi-Speed 13
-    "第十四段速      Hz  "	,   //  253 04-14   Multi-Speed 14
-    "第十五段速      Hz  "	,   //  254 04-15   Multi-Speed 15
+    "第零段速        Hz  "	,   //  327 04-00   Multi-Speed 0
+    "第一段速        Hz  "	,   //  328 04-01   Multi-Speed 1
+    "第二段速        Hz  "	,   //  329 04-02   Multi-Speed 2
+    "第三段速        Hz  "	,   //  330 04-03   Multi-Speed 3
+    "第四段速        Hz  "	,   //  331 04-04   Multi-Speed 4
+    "第五段速        Hz  "	,   //  332 04-05   Multi-Speed 5
+    "第六段速        Hz  "	,   //  333 04-06   Multi-Speed 6
+    "第七段速        Hz  "	,   //  334 04-07   Multi-Speed 7
+    "第八段速        Hz  "	,   //  345 04-08   Multi-Speed 8
+    "第九段速        Hz  "	,   //  346 04-09   Multi-Speed 9
+    "第十段速        Hz  "	,   //  347 04-10   Multi-Speed 10 
+    "第十一段速      Hz  "	,   //  348 04-11   Multi-Speed 11
+    "第十二段速      Hz  "	,   //  349 04-12   Multi-Speed 12
+    "第十三段速      Hz  "	,   //  350 04-13   Multi-Speed 13
+    "第十四段速      Hz  "	,   //  351 04-14   Multi-Speed 14
+    "第十五段速      Hz  "	,   //  352 04-15   Multi-Speed 15
+    "救援速度        m/s "  ,   //  353 04-16
+    "平層速度        m/s "  ,   //  354 04-17
+    "反基站速度      m/s "  ,   //  355 04-18
     
-    "救援速度        m/s "  ,   //  2xx 04-16
-    "平層速度        m/s "  ,   //  2xx 04-17
-    "反基站速度      m/s "  ,   //  2xx 04-18
-    "鋼索打滑補償    mm  "  ,   //  2xx 04-19   GFC Rope compensation, 2021/03/30
-    "TABST0 Status       "  ,   //  2xx 04-20
-    "TABST2 Status       "  ,   //  2xx 04-21
-    "最高物理樓層        "  ,   //  2xx 04-22
-    "目前樓層            "  ,   //  2xx 04-23
-    "脈衝校正條件    %   "  ,   //  2xx 04-24
-    "開關延遲補償    sec "  ,   //    2xx 04-25
-    "等速冗餘時間    ms  "  ,   //  2xx 04-26
-    "著床板長度      mm  "  ,   //  2xx 04-27 
-    "目前位置 高     m   "  ,   //  2xx 04-28
-    "目前位置 低     mm  "  ,   //  2xx 04-29
-    "目前脈衝 H          "  ,   //  2xx 04-30 
-    "目前脈衝 L          "  ,   //  2xx 04-31
-    "著床板脈衝 H        "  ,   //  2xx 04-32
-    "著床板脈衝 L        "  ,   //  2xx 04-33
-    "光電間距脈衝H       "  ,   //  2xx 04-34
-    "光電間距脈衝L       "  ,   //  2xx 04-35
-    "DLC功\能集           "  ,  //  2xx 04-36   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "PDO顯示型態         "  ,   //  2xx 04-37
-    "減速開關容許\誤差mm  "  ,  //  2xx 04-38   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "最大梯速百分比  %   "  ,   //  2xx 04-39   //[ADCO EPS Modify]
-    "彈簧延伸補償    mm  "  ,   //    2xx 04-40//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
-    "EST Status          "  ,   //  2xx 04-41
-    "EST Count           "  ,   //  2xx 04-42
-    "TABST0 Count        "  ,   //  2xx 04-43
-    "TABST1 Count        "  ,   //  2xx 04-44
-    "DDS1/UDS1速限   m/s "  ,   //  2XX 04-45   DD1_Vlim  //Artemis speed limit, James, 20200220                                    
-    "DDS2/UDS2速限   m/s "  ,   //  2XX 04-46   DD2_Vlim  //Artemis speed limit, James, 20200220                                
-    "DDS3/UDS3速限   m/s "  ,   //  2XX 04-47   DD3_Vlim  //Artemis speed limit, James, 20200220                                      
-    "DDS4/UDS4速限   m/s "  ,   //  2XX 04-48   DD4_Vlim  //Artemis speed limit, James, 20200220
-    "功\能頁面設定        "  ,  //  2XX 04-49   user page cahnge       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "鋼索打滑補償    mm  "  ,   //  356 04-19   GFC Rope compensation, 2021/03/30
+    "TABST0 Status       "  ,   //  357 04-20
+    "TABST2 Status       "  ,   //  358 04-21
     
-    "1 樓位置 高     m   "  ,   //  2XX 04-50   1Floor Position H 
-    "1 樓位置 低     mm  "  ,   //  2XX 04-51   1Floor Position L                                       
-    "2 樓位置 高     m   "  ,   //  2XX 04-52   2Floor Position H                                       
-    "2 樓位置 低     mm  "  ,   //  2XX 04-53   2Floor Position L                                       
-    "3 樓位置 高     m   "  ,   //  2XX 04-54   3Floor Position H                                       
-    "3 樓位置 低     mm  "  ,   //  2XX 04-55   3Floor Position L                                       
-    "4 樓位置 高     m   "  ,   //  2XX 04-56   4Floor Position H                                       
-    "4 樓位置 低     mm  "  ,   //  2XX 04-57   4Floor Position L                                       
-    "5 樓位置 高     m   "  ,   //  2XX 04-58   5Floor Position H                                       
-    "5 樓位置 低     mm  "  ,   //  2XX 04-59   5Floor Position L                                       
-    "6 樓位置 高     m   "  ,   //  2XX 04-60   6Floor Position H                                       
-    "6 樓位置 低     mm  "  ,   //  2XX 04-61   6Floor Position L                                       
-    "7 樓位置 高     m   "  ,   //  2XX 04-62   7Floor Position H                                       
-    "7 樓位置 低     mm  "  ,   //  2XX 04-63   7Floor Position L                                       
-    "8 樓位置 高     m   "  ,   //  2XX 04-64   8Floor Position H                                       
-    "8 樓位置 低     mm  "  ,   //  2XX 04-65   8Floor Position L                                       
-    "9 樓位置 高     m   "  ,   //  2XX 04-66   9Floor Position H                                       
-    "9 樓位置 低     mm  "  ,   //  2XX 04-67   9Floor Position L                                       
-    "10樓位置 高     m   "  ,   //  2XX 04-68   10Floor Position H                                      
-    "10樓位置 低     mm  "  ,   //  2XX 04-69   10Floor Position L                                      
-    "11樓位置 高     m   "  ,   //  2XX 04-70   11Floor Position H                                      
-    "11樓位置 低     mm  "  ,   //  2XX 04-71   11Floor Position L                                      
-    "12樓位置 高     m   "  ,   //  2XX 04-72   12Floor Position H                                      
-    "12樓位置 低     mm  "  ,   //  2XX 04-73   12Floor Position L                                      
-    "13樓位置 高     m   "  ,   //  2XX 04-74   13Floor Position H                                      
-    "13樓位置 低     mm  "  ,   //  2XX 04-75   13Floor Position L                                      
-    "14樓位置 高     m   "  ,   //  2XX 04-76   14Floor Position H                                      
-    "14樓位置 低     mm  "  ,   //  2XX 04-77   14Floor Position L                                      
-    "15樓位置 高     m   "  ,   //  2XX 04-78   15Floor Position H                                      
-    "15樓位置 低     mm  "  ,   //  2XX 04-79   15Floor Position L                                      
-    "16樓位置 高     m   "  ,   //  2XX 04-80   16Floor Position H                                      
-    "16樓位置 低     mm  "  ,   //  2XX 04-81   16Floor Position L                                      
-    "17樓位置 高     m   "  ,   //  2XX 04-82   17Floor Position H                                      
-    "17樓位置 低     mm  "  ,   //  2XX 04-83   17Floor Position L                                      
-    "18樓位置 高     m   "  ,   //  2XX 04-84   18Floor Position H                                      
-    "18樓位置 低     mm  "  ,   //  2XX 04-85   18Floor Position L                                      
-    "19樓位置 高     m   "  ,   //  2XX 04-86   19Floor Position H                                      
-    "19樓位置 低     mm  "  ,   //  2XX 04-87   19Floor Position L                                      
-    "20樓位置 高     m   "  ,   //  2XX 04-88   20Floor Position H                                      
-    "20樓位置 低     mm  "  ,   //  2XX 04-89   20Floor Position L                                      
-    "21樓位置 高     m   "  ,   //  2XX 04-90   21Floor Position H                                      
-    "21樓位置 低     mm  "  ,   //  2XX 04-91   21Floor Position L                                      
-    "22樓位置 高     m   "  ,   //  2XX 04-92   22Floor Position H                                      
-    "22樓位置 低     mm  "  ,   //  2XX 04-93   22Floor Position L                                      
-    "23樓位置 高     m   "  ,   //  2XX 04-94   23Floor Position H                                      
-    "23樓位置 低     mm  "  ,   //  2XX 04-95   23Floor Position L                                      
-    "24樓位置 高     m   "  ,   //  2XX 04-96   24Floor Position H                                      
-    "24樓位置 低     mm  "  ,   //  2XX 04-97   24Floor Position L                                      
-    "25樓位置 高     m   "  ,   //  2XX 04-98   25Floor Position H                                      
-    "25樓位置 低     mm  "  ,   //  2XX 04-99   25Floor Position L                                      
+    "最高物理樓層        "  ,   //  359 04-22
+    "目前樓層            "  ,   //  360 04-23
+    "脈衝校正條件    %   "  ,   //  361 04-24
+    "開關延遲補償    sec "  ,   //  362 04-25
+    "等速冗餘時間    ms  "  ,   //  363 04-26
+    "著床板長度      mm  "  ,   //  364 04-27 
+    "目前位置 高     m   "  ,   //  365 04-28
+    "目前位置 低     mm  "  ,   //  366 04-29
+    "目前脈衝 H          "  ,   //  367 04-30 
+    "目前脈衝 L          "  ,   //  368 04-31
+    "著床板脈衝 H        "  ,   //  369 04-32
+    "著床板脈衝 L        "  ,   //  370 04-33
+    "光電間距脈衝H       "  ,   //  371 04-34
+    "光電間距脈衝L       "  ,   //  372 04-35   
+    "DLC功\能集           "  ,  //  373 04-36   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "PDO顯示型態         "  ,   //  374 04-37
+    "減速開關容許\誤差mm  "  ,  //  375 04-38   // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "最大梯速百分比  %   "  ,   //  376 04-39   //[ADCO EPS Modify]
+    "彈簧延伸補償    mm  "  ,   //  377 04-40   //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
+    "EST Status          "  ,   //  378 04-41
+    "EST Count           "  ,   //  379 04-42
+    "TABST0 Count        "  ,   //  380 04-43
+    "TABST1 Count        "  ,   //  381 04-44
+    "DDS1/UDS1速限   m/s "  ,   //  382 04-45   DD1_Vlim  //Artemis speed limit, James, 20200220                                    
+    "DDS2/UDS2速限   m/s "  ,   //  383 04-46   DD2_Vlim  //Artemis speed limit, James, 20200220                                
+    "DDS3/UDS3速限   m/s "  ,   //  384 04-47   DD3_Vlim  //Artemis speed limit, James, 20200220                                      
+    "DDS4/UDS4速限   m/s "  ,   //  385 04-48   DD4_Vlim  //Artemis speed limit, James, 20200220
+    "功\能頁面設定        "  ,  //  386 04-49   user page cahnge       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    
+    "1 樓位置 高     m   "  ,   //  387 04-50   1Floor Position H 
+    "1 樓位置 低     mm  "  ,   //  388 04-51   1Floor Position L                                       
+    "2 樓位置 高     m   "  ,   //  389 04-52   2Floor Position H                                       
+    "2 樓位置 低     mm  "  ,   //  390 04-53   2Floor Position L                                       
+    "3 樓位置 高     m   "  ,   //  391 04-54   3Floor Position H                                       
+    "3 樓位置 低     mm  "  ,   //  392 04-55   3Floor Position L                                       
+    "4 樓位置 高     m   "  ,   //  393 04-56   4Floor Position H                                       
+    "4 樓位置 低     mm  "  ,   //  394 04-57   4Floor Position L                                       
+    "5 樓位置 高     m   "  ,   //  395 04-58   5Floor Position H                                       
+    "5 樓位置 低     mm  "  ,   //  396 04-59   5Floor Position L                                       
+    "6 樓位置 高     m   "  ,   //  397 04-60   6Floor Position H                                       
+    "6 樓位置 低     mm  "  ,   //  398 04-61   6Floor Position L                                       
+    "7 樓位置 高     m   "  ,   //  399 04-62   7Floor Position H                                       
+    "7 樓位置 低     mm  "  ,   //  400 04-63   7Floor Position L                                       
+    "8 樓位置 高     m   "  ,   //  401 04-64   8Floor Position H                                       
+    "8 樓位置 低     mm  "  ,   //  402 04-65   8Floor Position L                                       
+    "9 樓位置 高     m   "  ,   //  403 04-66   9Floor Position H                                       
+    "9 樓位置 低     mm  "  ,   //  404 04-67   9Floor Position L                                       
+    "10樓位置 高     m   "  ,   //  405 04-68   10Floor Position H                                      
+    "10樓位置 低     mm  "  ,   //  406 04-69   10Floor Position L                                      
+    "11樓位置 高     m   "  ,   //  407 04-70   11Floor Position H                                      
+    "11樓位置 低     mm  "  ,   //  408 04-71   11Floor Position L                                      
+    "12樓位置 高     m   "  ,   //  409 04-72   12Floor Position H                                      
+    "12樓位置 低     mm  "  ,   //  410 04-73   12Floor Position L                                      
+    "13樓位置 高     m   "  ,   //  411 04-74   13Floor Position H                                      
+    "13樓位置 低     mm  "  ,   //  412 04-75   13Floor Position L                                      
+    "14樓位置 高     m   "  ,   //  413 04-76   14Floor Position H                                      
+    "14樓位置 低     mm  "  ,   //  414 04-77   14Floor Position L                                      
+    "15樓位置 高     m   "  ,   //  415 04-78   15Floor Position H                                      
+    "15樓位置 低     mm  "  ,   //  416 04-79   15Floor Position L                                      
+    "16樓位置 高     m   "  ,   //  417 04-80   16Floor Position H                                      
+    "16樓位置 低     mm  "  ,   //  418 04-81   16Floor Position L                                      
+    "17樓位置 高     m   "  ,   //  419 04-82   17Floor Position H                                      
+    "17樓位置 低     mm  "  ,   //  420 04-83   17Floor Position L                                      
+    "18樓位置 高     m   "  ,   //  421 04-84   18Floor Position H                                      
+    "18樓位置 低     mm  "  ,   //  422 04-85   18Floor Position L                                      
+    "19樓位置 高     m   "  ,   //  423 04-86   19Floor Position H                                      
+    "19樓位置 低     mm  "  ,   //  424 04-87   19Floor Position L                                      
+    "20樓位置 高     m   "  ,   //  425 04-88   20Floor Position H                                      
+    "20樓位置 低     mm  "  ,   //  426 04-89   20Floor Position L                                      
+    "21樓位置 高     m   "  ,   //  427 04-90   21Floor Position H                                      
+    "21樓位置 低     mm  "  ,   //  428 04-91   21Floor Position L                                      
+    "22樓位置 高     m   "  ,   //  429 04-92   22Floor Position H                                      
+    "22樓位置 低     mm  "  ,   //  430 04-93   22Floor Position L                                      
+    "23樓位置 高     m   "  ,   //  431 04-94   23Floor Position H                                      
+    "23樓位置 低     mm  "  ,   //  432 04-95   23Floor Position L                                      
+    "24樓位置 高     m   "  ,   //  433 04-96   24Floor Position H                                      
+    "24樓位置 低     mm  "  ,   //  434 04-97   24Floor Position L                                      
+    "25樓位置 高     m   "  ,   //  435 04-98   25Floor Position H                                      
+    "25樓位置 低     mm  "  ,   //  436 04-99   25Floor Position L                                      
     
 /*---- GROUP 05----------------------------------------*/
 /*  "12345678901234561234"	*/      	
-    "IM參數自學習        "	,	//	255 05-00   Motor Auto-Tuning
-    "IM電機額定電流  Amps"	,	//	256 05-01   Motor 1 rated Current           
-    "IM電機額定功\率  Kw  "	,	//	257 05-02   Motor 1 Rated Power       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]           
-    "IM電機額定轉速  RPM "	,	//	258 05-03   Motor 1 Rated RPM               
-    "IM電機極數          "	,	//	259 05-04   Motor 1 pole No.                
-    "IM電機無載電流  Amps"	,	//	260 05-05   Motor 1 No-Load Current         
-    "IM電機參數 Rs   ohm "	,	//	261 05-06   Motor 1 Rs                      
-    "IM電機參數 Rr   ohm "	,	//	262 05-07   Motor 1 Rr                      
-    "IM電機參數 Lm   mH  "	,	//	263 05-08   Motor 1 Lm                      
-    "IM電機參數 Lx   mH  "	,	//	264 05-09   Motor 1 Lx                      
-    "轉矩補償低通濾波sec "	,	//	265 05-10   Vector Voltage Filter	        
-    "滑差補償低通濾波sec "	,	//	266 05-11   Vector Slip Filter	            
-    "轉矩補償增益        "	,	//	267 05-12   Torque Compensation Gain	    
-    "滑差補償增益        "	,	//	268 05-13   Slip Compensation Gain	        
-    "滑差誤差準位    %   "	,	//	269 05-14   Slip Deviation level	        
-    "滑差誤差檢出時間sec "	,	//	270 05-15   Slip Deviation Detect Time	    
-    "過滑差檢出選擇      "	,	//	271 05-16   Over Slip treatment	            
-    "震盪補償因子        "	,	//	272 05-17   Coeff for hunting disable	    
-    "累積電機運轉時間Mins"	,	//	273 05-18   Accumulative Motor Operation Min
-    "累積電機運轉天數Days"	,	//	274 05-19   Accumulative Motor Operation Day
-    "鐵蕊損失補償    %   "	,	//	275 05-20   Coreloss % of output Power	    
-    "變頻器上電時間  Mins"	,	//	276 05-21   Power On Min
-    "變頻器上電天數  Days"	,	//	277 05-22   Power On Day    
-    "回生滑差補償增益%   "  ,   //  2XX 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
-	"電動滑差補償增益%   "	,	//	123 05-24   RESERVED
+    "IM參數自學習        "	,	//	437 05-00	Motor Auto-Tuning
+    "IM電機額定電流  Amps"	,	//	438 05-01	Motor 1 rated Current           
+    "IM電機額定功\率  Kw  "	,	//	439 05-02	Motor 1 Rated Power       // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]           
+    "IM電機額定轉速  RPM "	,	//	440 05-03	Motor 1 Rated RPM               
+    "IM電機極數          "	,	//	441 05-04	Motor 1 pole No.                
+    "IM電機無載電流  Amps"	,	//	442 05-05	Motor 1 No-Load Current         
+    "IM電機參數 Rs   ohm "	,	//	443 05-06	Motor 1 Rs                      
+    "IM電機參數 Rr   ohm "	,	//	444 05-07	Motor 1 Rr                      
+    "IM電機參數 Lm   mH  "	,	//	445 05-08	Motor 1 Lm                      
+    "IM電機參數 Lx   mH  "	,	//	446 05-09	Motor 1 Lx                      
+    "轉矩補償低通濾波sec "	,	//	447 05-10	Vector Voltage Filter	        
+    "滑差補償低通濾波sec "	,	//	448 05-11	Vector Slip Filter	            
+    "轉矩補償增益        "	,	//	449 05-12	Torque Compensation Gain	    
+    "滑差補償增益        "	,	//	450 05-13	Slip Compensation Gain	        
+    "滑差誤差準位    %   "	,	//	451 05-14	Slip Deviation level	        
+    "滑差誤差檢出時間sec "	,	//	452 05-15	Slip Deviation Detect Time	    
+    "過滑差檢出選擇      "	,	//	453 05-16	Over Slip treatment	            
+    "震盪補償因子        "	,	//	454 05-17	Coeff for hunting disable	    
+    "累積電機運轉時間Mins"	,	//	455 05-18	Accumulative Motor Operation Min
+    "累積電機運轉天數Days"	,	//	456 05-19	Accumulative Motor Operation Day
+    "鐵蕊損失補償    %   "	,	//	457 05-20	Coreloss % of output Power	    
+    "變頻器上電時間  Mins"	,	//	458 05-21	Power On Min
+    "變頻器上電天數  Days"	,	//	459 05-22	Power On Day    
+    "回生滑差補償增益%   "  ,   //  460 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
+	"電動滑差補償增益%   "	,	//	461 05-24   RESERVED
 	
 /*---- GROUP 06----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "低電壓位準      V   "	,	//  278 06-00   Low voltage level
-    "欠相保護            "	,	//  279 06-01   Phase loss
-    "加速過電流失速  %   "	,	//	280 06-02   OC stall during Accel
-    "定速過電流失速  %   "	,	//	281 06-03   OC stall during Decel
-    "過電流失速處理      "	,	//	282 06-04   Stall preventation Accel/Decel time selection
-    "過轉矩OT1處理       "	,	//	283 06-05   Over-Torque 1 Selection
-    "過轉矩OT1位準   %   "	,	//	284 06-06   Over-Torque 1 level
-    "過轉矩OT1檢出   sec "	,	//	285 06-07   Over-Torque 1 Time
-    "過轉矩OT2處理       "	,	//	286 06-08   Over-Torque 2 Selection	                     
-    "過轉矩OT2位準   %   "	,	//	287 06-09   Over-Torque 2 level	                         
-    "過轉矩OT2檢出   sec "	,	//	288 06-10   Over-Torque 2 Time	                         
-    "電流限制        %   "	,	//	289 06-11   Current Limit
-    "電子熱電驛選擇      "	,	//	290 06-12   Thermal Relay 1 Selection
-    "熱電驛作用時間  sec "	,	//	291 06-13   Thermal Relay 1 Time
-    "過熱警告溫度位準C   "	,	//	292 06-14   OH Warning Level
-    "失速防止限制位準%   "	,	//	293 06-15   Stall preventation Limit Level
-    "最近一次故障紀錄    "	,	//	294 06-16   1st Fault Record
-    "2次前的故障紀錄     "	,	//	295 06-17   2nd Fault Record
-    "3次前的故障紀錄     "	,	//	296 06-18   3rd Fault Record
-    "4次前的故障紀錄     "	,	//	297 06-19   4th Fault Record
-    "5次前的故障紀錄     "	,	//	298 06-20   5th Fault Record
-    "6次前的故障紀錄     "	,	//	299 06-21   6th Fault Record
-    "異常輸出選擇 1      "	,	//	300 06-22   Fault Option 1
-    "異常輸出選擇 2      "	,	//	301 06-23   Fault Option 2
-    "異常輸出選擇 3      "	,	//	302 06-24   Fault Option 3
-    "異常輸出選擇 4      "	,	//	303 06-25   Fault Option 4
-    "PTC動作選擇         "	,	//	304 06-26   PTC over Treatments	                         
-    "PTC準位         %   "	,	//	305 06-27   PTC Level
-    "PTC檢出時間     sec "	,	//	306 06-28   PTC Detect Filter time
-    "緊急運行電源電壓V   "	,	//	307 06-29   EPS voltage level
-    "錯誤輸出選擇        "	,	//	308 06-30   Fault Option Mode
-    "ED 輸出欠相偵測     "	,	//	309 06-31   Motor Phase Detection Mode, Add by DINO, 05/12/2009
-    "前一次異常運轉  Mins"	,	//	310 06-32   1st Fault Time(MIN)
-    "前一次異常運轉  Days"	,	//	311 06-33   1st Fault Time(DAY)
-    "2次前異常運轉   Mins"	,	//	312 06-34   2nd Fault Time(MIN)
-    "2次前異常運轉   Days"	,	//	313 06-35   2nd Fault Time(DAY)
-    "3次前異常運轉   Mins"	,	//	314 06-36   3rd Fault Time(MIN)
-    "3次前異常運轉   Days"	,	//	315 06-37   3rd Fault Time(DAY)
-    "4次前異常運轉   Mins"	,	//	316 06-38   4th Fault Time(MIN)
-    "4次前異常運轉   Days"	,	//	317 06-39   4th Fault Time(DAY)
-    "5次前異常運轉   Mins"	,	//	318 06-40   5th Fault Time(MIN)
-    "5次前異常運轉   Days"	,	//	319 06-41   5th Fault Time(DAY)
-    "6次前異常運轉   Mins"	,	//	320 06-42   6th Fault Time(MIN)
-    "6次前異常運轉   Days"	,	//	321 06-43   6th Fault Time(DAY)
-    "緊急電源運行速度Hz  "  ,   //  322 06-44   EPS Frequency
-    "錯誤動作選擇        "  ,	//  323 06-45   LV Option Mode
-    "EPS 模式選擇        "  ,	//  324 06-46   EPS Option Mode
-    "發電方向搜尋時間sec "  ,   //  325 06-47   Generation Operation Detected Time
-    "緊急運行電源容量KVA "  ,   //  326 06-48   UPS Capacity (0.1KVA)
-    "STO功\能選擇        "  ,   //  3xx 06-49   STO Lock selection     //[Safty function, Bernie]    
-    "故障重試時MO動作    "  ,   //  356 06-50   Base Block Speed Search (oc,ov,occ.......)  //[Add auto restart after fault, Bernie, 06/06/12]
-    "故障重試次數        "  ,   //  356 06-51   Auto restart times after fault     
-    "故障重試時間    sec "  ,   //  356 06-52   Auto restart interval
-    "異常時頻率命令  Hz  "  ,   //  3xx 06-53   Fkey Record
-    "異常時頻率輸出  Hz  "  ,   //  3xx 06-54   Fcmd Record
-    "異常時輸出電流  Amps"  ,   //  3xx 06-55   Isum Record
-    "異常時馬達頻率  Hz  "  ,   //  3xx 06-56   Fout Record
-    "異常時輸出電壓  V   "  ,   //  3xx 06-57   Vout Record
-    "異常時DCBus電壓 V   "  ,   //  3xx 06-58   Dcbus Record    
-    "異常時輸出功\率  KW  "  ,  //  3xx 06-59   Power Record                                // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "異常時輸出轉矩  %   "  ,   //  3xx 06-60   Torque Record
-    "異常時IGBT溫度  C   "  ,   //  3xx 06-61   IGBT Temperature Record   
-    "異常時輸入端子  Hex "  ,   //  3xx 06-62   MFI State Record
-    "異常時輸出端子  Hex "  ,   //  3xx 06-63   MFO State Record
-    "異常時驅動器狀態Hex "  ,   //  3xx 06-64   Drive State Record
-    "UCMP電流限制準位%   "  ,   //  3XX 06-65   Current limitation for UCMP function        //[UCMP function, Bernie, 2016/06/14]
-    "驅動器服務次數      "  ,   //  3xx 06-66   Service time count                          //[Service time function, Bernie, 2017/03/14]
-    "驅動器服務設定      "  ,   //  3xx 06-67   Service time function Enable                //[Service time function, Bernie, 2017/03/14]
-    "EPS偵測功\因準位 deg "  ,  //  3xx 06-68   EPS Detect Current    
-    "EPS功\因角       deg "  ,  //  3xx 06-69   EPS Detect Current Ref
-    "EPS方向輸出         "  ,   //  3xx 06-70   EPS Detect direction
-    "EPS端子輸出延遲 sec "  ,   //  3xx 06-71   EPS MO Off Time
-    "EPS端子閉合延遲 sec "  ,   //  3xx 06-72   EPS MO Off Time
-    "永久運行方向計數H   "	,	//	3xx 06-73   Running direction count high						
-    "永久運行方向計數L   "	,	//	3xx 06-74   Running direction count low
-    "單次運行方向計數H   "	,	//	3xx 06-75   Temp running direction count high
-    "單次運行方向計數L   "	,	//  3xx 06-76   Temp running direction count low
-    "單次運行重置次數    "	,	//	3xx 06-77   Temp running reset count
-    "運行方向限制次數k   "	,	//	3xx 06-78   Running life
-    "運行次數功\能選項    "	,	//	3xx 06-79   Running function
-    "異常2時頻率輸出  Hz  " ,   //  3xx 06-80   Fcmd Record1
-    "異常2時DCBus電壓 V   " ,   //  3xx 06-81   Dcbus Record1
-    "異常2時輸出電流  Amps" ,   //  3xx 06-82   Isum Record1
-    "異常2時IGBT溫度  C   "	,	//  3xx 06-83   IGBT Temperature Record1
-    "異常3時頻率輸出  Hz  " ,   //  3xx 06-84   Fcmd Record2
-    "異常3時DCBus電壓 V   " ,   //  3xx 06-85   Dcbus Record2
-    "異常3時輸出電流  Amps" ,   //  3xx 06-86   Isum Record2
-    "異常3時IGBT溫度  C   " ,   //  3xx 06-87   IGBT Temperature Record2
-    "異常4時頻率輸出  Hz  " ,   //  3xx 06-88   Fcmd Record3
-    "異常4時DCBus電壓 V   " ,   //  3xx 06-89   Dcbus Record3
-    "異常4時輸出電流  Amps" ,   //  3xx 06-90   Isum Record3
-    "異常4時IGBT溫度  C   " ,   //  3xx 06-91   IGBT Temperature Record3
-    "異常5時頻率輸出  Hz  " ,   //  3xx 06-92   Fcmd Record4
-    "異常5時DCBus電壓 V   " ,   //  3xx 06-93   Dcbus Record4
-    "異常5時輸出電流  Amps" ,   //  3xx 06-94   Isum Record4
-    "異常5時IGBT溫度  C   " ,   //  3xx 06-95   IGBT Temperature Record4
-    "異常6時頻率輸出  Hz  " ,   //  3xx 06-96   Fcmd Record5
-    "異常6時DCBus電壓 V   " ,   //  3xx 06-97   Dcbus Record5
-    "異常6時輸出電流  Amps" ,   //  3xx 06-98   Isum Record5
-    "異常6時IGBT溫度  C   " ,   //  3xx 06-99   IGBT Temperature Record5
+    "低電壓位準      V   "	,	//	462 06-00	Low voltage level
+    "欠相保護            "	,	//	463 06-01	Phase loss
+    "加速過電流失速  %   "	,	//	464 06-02	OC stall during Accel
+    "定速過電流失速  %   "	,	//	465 06-03	OC stall during Decel
+    "過電流失速處理      "	,	//  466 06-04	Stall preventation Accel/Decel time selection
+    "過轉矩OT1處理       "	,	//	467 06-05	Over-Torque 1 Selection
+    "過轉矩OT1位準   %   "	,	//	468 06-06	Over-Torque 1 level
+    "過轉矩OT1檢出   sec "	,	//	469 06-07	Over-Torque 1 Time
+    "過轉矩OT2處理       "	,	//	470 06-08	Over-Torque 2 Selection	                     
+    "過轉矩OT2位準   %   "	,	//	471 06-09	Over-Torque 2 level	                         
+    "過轉矩OT2檢出   sec "	,	//	472 06-10	Over-Torque 2 Time	                         
+    "電流限制        %   "	,	//	473 06-11	Current Limit
+    "電子熱電驛選擇      "	,	//	474 06-12	Thermal Relay 1 Selection
+    "熱電驛作用時間  sec "	,	//	475 06-13	Thermal Relay 1 Time
+    "過熱警告溫度位準C   "	,	//	476 06-14	OH Warning Level
+    "失速防止限制位準%   "	,	//	477 06-15	Stall preventation Limit Level
+    "最近一次故障紀錄    "	,	//	478 06-16	1st Fault Record
+    "2次前的故障紀錄     "	,	//	479 06-17	2nd Fault Record
+    "3次前的故障紀錄     "	,	//	480 06-18	3rd Fault Record
+    "4次前的故障紀錄     "	,	//	481 06-19	4th Fault Record
+    "5次前的故障紀錄     "	,	//	482 06-20	5th Fault Record
+    "6次前的故障紀錄     "	,	//	483 06-21	6th Fault Record
+    "異常輸出選擇 1      "	,	//	484 06-22	Fault Option 1
+    "異常輸出選擇 2      "	,	//	485 06-23	Fault Option 2
+    "異常輸出選擇 3      "	,	//	486 06-24	Fault Option 3
+    "異常輸出選擇 4      "	,	//	487 06-25	Fault Option 4
+    "PTC動作選擇         "	,	//	488 06-26	PTC over Treatments	                         
+    "PTC準位         %   "	,	//	489 06-27	PTC Level
+    "PTC檢出時間     sec "	,	//	490 06-28	PTC Detect Filter time
+    "緊急運行電源電壓V   "	,	//	491 06-29	EPS voltage level
+    "錯誤輸出選擇        "	,	//	492 06-30	Fault Option Mode
+    "ED 輸出欠相偵測     "	,	//	493 06-31   Motor Phase Detection Mode, Add by DINO, 05/12/2009
+    "前一次異常運轉  Mins"	,	//	494 06-32	1st Fault Time(MIN)
+    "前一次異常運轉  Days"	,	//	495 06-33	1st Fault Time(DAY)
+    "2次前異常運轉   Mins"	,	//	496 06-34	2nd Fault Time(MIN)
+    "2次前異常運轉   Days"	,	//	497 06-35	2nd Fault Time(DAY)
+    "3次前異常運轉   Mins"	,	//	498 06-36	3rd Fault Time(MIN)
+    "3次前異常運轉   Days"	,	//	499 06-37	3rd Fault Time(DAY)
+    "4次前異常運轉   Mins"	,	//	500 06-38	4th Fault Time(MIN)
+    "4次前異常運轉   Days"	,	//	501 06-39	4th Fault Time(DAY)
+    "5次前異常運轉   Mins"	,	//	502 06-40	5th Fault Time(MIN)
+    "5次前異常運轉   Days"	,	//	503 06-41	5th Fault Time(DAY)
+    "6次前異常運轉   Mins"	,	//	504 06-42	6th Fault Time(MIN)
+    "6次前異常運轉   Days"	,	//	505 06-43	6th Fault Time(DAY)
+    "緊急電源運行速度Hz  "  ,   //  506 06-44	EPS Frequency
+    "錯誤動作選擇        "  ,	//  507 06-45   LV Option Mode
+    "EPS 模式選擇        "  ,	//  508 06-46   EPS Option Mode
+    "發電方向搜尋時間sec "  ,   //  509 06-47   Generation Operation Detected Time
+    "緊急運行電源容量KVA "  ,   //  510 06-48   UPS Capacity (0.1KVA)
+    "STO功\能選擇        "  ,   //  511 06-49   STO Lock selection     //[Safty function, Bernie]    
+    "故障重試時MO動作    "  ,   //  512 06-50   Base Block Speed Search (oc,ov,occ.......)  //[Add auto restart after fault, Bernie, 06/06/12]
+    "故障重試次數        "  ,   //  513 06-51   Auto restart times after fault     
+    "故障重試時間    sec "  ,   //  514 06-52   Auto restart interval
+    "異常時頻率命令  Hz  "  ,   //	515 06-53   Fkey Record
+    "異常時頻率輸出  Hz  "  ,   //	516 06-54   Fcmd Record
+    "異常時輸出電流  Amps"  ,   //	517 06-55	Isum Record
+    "異常時馬達頻率  Hz  "  ,   //	518 06-56	Fout Record
+    "異常時輸出電壓  V   "  ,   //	519 06-57	Vout Record
+    "異常時DCBus電壓 V   "  ,   //  520 06-58	Dcbus Record    
+    "異常時輸出功\率  KW  "  ,  //	521 06-59   Power Record                                // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "異常時輸出轉矩  %   "  ,   //	522 06-60   Torque Record
+    "異常時IGBT溫度  C   "  ,   //	523 06-61	IGBT Temperature Record   
+    "異常時輸入端子  Hex "  ,   //	524 06-62   MFI State Record
+    "異常時輸出端子  Hex "  ,   //	525 06-63   MFO State Record
+    "異常時驅動器狀態Hex "  ,   //	526 06-64   Drive State Record
+    "UCMP電流限制準位%   "  ,   //  527 06-65   Current limitation for UCMP function        //[UCMP function, Bernie, 2016/06/14]
+    "驅動器服務次數      "  ,   //  528 06-66   Service time count                          //[Service time function, Bernie, 2017/03/14]
+    "驅動器服務設定      "  ,   //  529 06-67   Service time function Enable                //[Service time function, Bernie, 2017/03/14]
+    "EPS偵測功\因準位 deg "  ,  //  530 06-68   EPS Detect Current    
+    "EPS功\因角       deg "  ,  //  531 06-69   EPS Detect Current Ref
+    "EPS方向輸出         "  ,   //  532 06-70   EPS Detect direction
+    "EPS端子輸出延遲 sec "  ,   //  533 06-71   EPS MO Off Time
+    "EPS端子閉合延遲 sec "  ,   //  534 06-72   EPS MO Off Time
+    "永久運行方向計數H   "	,	//	535 06-73   Running direction count high						
+    "永久運行方向計數L   "	,	//	536 06-74   Running direction count low
+    "單次運行方向計數H   "	,	//	537 06-75   Temp running direction count high
+    "單次運行方向計數L   "	,	//  538 06-76   Temp running direction count low
+    "單次運行重置次數    "	,	//	539 06-77   Temp running reset count
+    "運行方向限制次數k   "	,	//	540 06-78   Running life
+    "運行次數功\能選項    "	,	//	541 06-79   Running function
+    "異常2時頻率輸出  Hz  " ,   //  542 06-80   Fcmd Record1
+    "異常2時DCBus電壓 V   " ,   //  543 06-81   Dcbus Record1
+    "異常2時輸出電流  Amps" ,   //  544 06-82   Isum Record1
+    "異常2時IGBT溫度  C   "	,	//  545 06-83   IGBT Temperature Record1
+    "異常3時頻率輸出  Hz  " ,   //  546 06-84   Fcmd Record2
+    "異常3時DCBus電壓 V   " ,   //  547 06-85   Dcbus Record2
+    "異常3時輸出電流  Amps" ,   //  548 06-86   Isum Record2
+    "異常3時IGBT溫度  C   " ,   //  549 06-87   IGBT Temperature Record2
+    "異常4時頻率輸出  Hz  " ,   //  550 06-88   Fcmd Record3
+    "異常4時DCBus電壓 V   " ,   //  551 06-89   Dcbus Record3
+    "異常4時輸出電流  Amps" ,   //  552 06-90   Isum Record3
+    "異常4時IGBT溫度  C   " ,   //  553 06-91   IGBT Temperature Record3
+    "異常5時頻率輸出  Hz  " ,   //  554 06-92   Fcmd Record4
+    "異常5時DCBus電壓 V   " ,   //  555 06-93   Dcbus Record4
+    "異常5時輸出電流  Amps" ,   //  556 06-94   Isum Record4
+    "異常5時IGBT溫度  C   " ,   //  557 06-95   IGBT Temperature Record4
+    "異常6時頻率輸出  Hz  " ,   //  558 06-96   Fcmd Record5
+    "異常6時DCBus電壓 V   " ,   //  559 06-97   Dcbus Record5
+    "異常6時輸出電流  Amps" ,   //  560 06-98   Isum Record5
+    "異常6時IGBT溫度  C   " ,   //  561 06-99   IGBT Temperature Record5
 
 /*---- GROUP 07-----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "煞車晶體放電位準V   "	,	//	327 07-00 SW Braking Level
-    "煞車晶體遲滯電壓V   "  ,   //	328 07-01 DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
-    "起動直流制動準位%   "	,	//	329 07-02 DCI Current Level     //[DCI Level when stop, Bernie, 05/21/2012]
-    "起動直流制動時間sec "	,	//	330 07-03 DCI Time at Start 
-    "停車直流制動時間sec "	,	//	331 07-04 DCI Time at STOP
-    "停車制動起始頻率Hz  "	,	//	332 07-05 DCI Freq. At start
-    "直流制動I增益       "	,	//	333 07-06 DCI KI
-    "齒隙加速中斷時間sec "	,	//	334 07-07 Gear wait time when acceleration
-    "齒隙加速中斷頻率Hz  "	,	//	335 07-08 Gear wait frequency when acceleration
-    "齒隙減速中斷時間sec "	,	//	336 07-09 Gear wait time when deceleration
-    "齒隙減速中斷頻率Hz  "	,	//	337 07-10 Gear wait frequency when deceleration
-    "風扇控制方式        "	,	//	338 07-11 Fan Control
-    "轉矩命令        %   "	,	//	339 07-12 TQC Reference from RS485
-    "轉矩命令來源        "	,	//	340 07-13 Source of Torque Command
-    "最大轉矩命令    %   "	,	//	341 07-14 Torque max. level
-    "轉矩命令濾波時間sec "	,	//	342 07-15 Torque command filter
-    "速度限制選擇        "	,	//	343 07-16 Speed Limit selection
-    "轉矩模式+SPD限制%   "	,	//	344 07-17 Torque mode positive speed limit
-    "轉矩模式-SPD限制%   "	,	//	345 07-18 Torque mode negative speed limit
-    "轉矩命令偏壓來源    "	,	//	346 07-19 Torque offset selection
-    "轉矩命令偏壓設定%   "	,	//	347 07-20 Torque offset setting level
-    "高轉矩偏量      %   "	,	//	348 07-21 Torque offset setting level High
-    "中轉矩偏量      %   "	,	//	349 07-22 Torque offset setting level Middle
-    "低轉矩偏量      %   "	,	//	350 07-23 Torque offset setting level Low
-    "正轉電動轉矩限制%   "	,	//	351 07-24 FWD Motoring Tq Limit
-    "正轉回生轉矩限制%   "	,	//	352 07-25 FWD Regeneration Tq Limit
-    "反轉電動轉矩限制%   "	,	//	353 07-26 REV Motoring Tq Limit
-    "反轉回生轉矩限制%   "	,	//	354 07-27 REV Regeneration Tq Limit
-    "強制停機檢出方式    "	,	//	355 07-28 Emergency Stop & Forced Stop selection
-    "停車轉矩遞減時間sec "	,	//	356 07-29 Torque Decrease Time
-    "停止直流制動準位%   "	,	//	356 07-30 STOP DC Inject Level     //[DCI Level when stop, Bernie, 05/21/2012]
-    "BTT100             %"  ,   //  357 07-31  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測            "  ,   //  358 07-32  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測距離     ppr"  ,   //  359 07-33  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測秒數        "  ,   //  360 07-34  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測失敗轉矩    "  ,   //  361 07-35  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測最小轉矩    "  ,   //  362 07-36  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx檢測最大轉矩    "  ,   //  362 07-37  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "煞車晶體放電位準V   "	,	//	562 07-00	SW Braking Level
+    "煞車晶體遲滯電壓V   "  ,   //	563 07-01	DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
+    "起動直流制動準位%   "	,	//	564 07-02	DCI Current Level     //[DCI Level when stop, Bernie, 05/21/2012]
+    "起動直流制動時間sec "	,	//	565 07-03	DCI Time at Start 
+    "停車直流制動時間sec "	,	//	566 07-04	DCI Time at STOP
+    "停車制動起始頻率Hz  "	,	//	567 07-05	DCI Freq. At start
+    "直流制動I增益       "	,	//	568 07-06	DCI KI
+    "齒隙加速中斷時間sec "	,	//	569 07-07	Gear wait time when acceleration
+    "齒隙加速中斷頻率Hz  "	,	//	570 07-08	Gear wait frequency when acceleration
+    "齒隙減速中斷時間sec "	,	//	572 07-09	Gear wait time when deceleration
+    "齒隙減速中斷頻率Hz  "	,	//	573 07-10	Gear wait frequency when deceleration
+    "風扇控制方式        "	,	//	574 07-11	Fan Control
+    "轉矩命令        %   "	,	//	575 07-12	TQC Reference from RS485
+    "轉矩命令來源        "	,	//	576 07-13	Source of Torque Command
+    "最大轉矩命令    %   "	,	//	577 07-14	Torque max. level
+    "轉矩命令濾波時間sec "	,	//	578 07-15	Torque command filter
+    "速度限制選擇        "	,	//	579 07-16	Speed Limit selection
+    "轉矩模式+SPD限制%   "	,	//	580 07-17	Torque mode positive speed limit
+    "轉矩模式-SPD限制%   "	,	//  581 07-18	Torque mode negative speed limit
+    "轉矩命令偏壓來源    "	,	//	582 07-19	Torque offset selection
+    "轉矩命令偏壓設定%   "	,	//	583 07-20	Torque offset setting level
+    "高轉矩偏量      %   "	,	//	584 07-21	Torque offset setting level High
+    "中轉矩偏量      %   "	,	//	585 07-22	Torque offset setting level Middle
+    "低轉矩偏量      %   "	,	//	586 07-23	Torque offset setting level Low
+    "正轉電動轉矩限制%   "	,	//	587 07-24	FWD Motoring Tq Limit
+    "正轉回生轉矩限制%   "	,	//	588 07-25	FWD Regeneration Tq Limit
+    "反轉電動轉矩限制%   "	,	//	589 07-26	REV Motoring Tq Limit
+    "反轉回生轉矩限制%   "	,	//	590 07-27	REV Regeneration Tq Limit
+    "強制停機檢出方式    "	,	//	591 07-28	Emergency Stop & Forced Stop selection
+    "停車轉矩遞減時間sec "	,	//	592 07-29   Torque Decrease Time
+    "停止直流制動準位%   "	,	//	593 07-30   STOP DC Inject Level     //[DCI Level when stop, Bernie, 05/21/2012]
+    "BTT100             %"  ,   //  594 07-31   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測            "  ,   //  595 07-32   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測距離     ppr"  ,   //  596 07-33   /[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測秒數        "  ,   //  597 07-34   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測失敗轉矩    "  ,   //  598 07-35   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測最小轉矩    "  ,   //  599 07-36   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測最大轉矩    "  ,   //  600 07-37   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+
+    "保留                "  ,   //	601 07-38   RESERVED
+    "保留                "  ,   //	602 07-39   RESERVED
+    "保留                "  ,   //	603 07-40   RESERVED
+    "保留                "  ,   //	604 07-41   RESERVED
+    "保留                "  ,   //	605 07-42   RESERVED
+    "保留                "  ,   //  606 07-43   RESERVED
+    "保留                "  ,   //  607 07-44   RESERVED
+    "保留                "  ,   //  608 07-45   RESERVED
+    "保留                "  ,   //  609 07-46   RESERVED
+    "保留                "  ,   //  610 07-47   RESERVED
+    "保留                "  ,   //  611 07-48   RESERVED
+    "保留                "  ,   //  612 07-49   RESERVED
+    "保留                "  ,   //  613 07-50   RESERVED
+    "保留                "  ,   //  614 07-51   RESERVED
+    "保留                "  ,   //	615 07-52   RESERVED
+    "保留                "  ,   //	616 07-53   RESERVED
+    "保留                "  ,   //	617 07-54   RESERVED
+    "保留                "  ,   //	618 07-55   RESERVED
+    "保留                "  ,   //	619 07-56   RESERVED
+    "保留                "  ,   //  620 07-57   RESERVED
+    "保留                "  ,   //	621 07-58   RESERVED
+    "保留                "  ,   //	622 07-59   RESERVED
+    "保留                "  ,   //	623 07-60   RESERVED
+    "保留                "  ,   //	624 07-61   RESERVED
+    "保留                "  ,   //	625 07-62   RESERVED
+    "保留                "  ,   //	626 07-63   RESERVED
+    "保留                "  ,   //  627 07-64   RESERVED
+    "保留                "  ,   //  628 07-65   RESERVED
+    "保留                "  ,   //  629 07-66   RESERVED
+    "保留                "  ,   //  630 07-67   RESERVED
+    "保留                "  ,   //  631 07-68   RESERVED
+    "保留                "  ,   //  632 07-69   RESERVED
+    "保留                "  ,   //  633 07-70   RESERVED
+    "保留                "  ,   //  634 07-71   RESERVED
+    "保留                "  ,   //	635 07-72   RESERVED
+    "保留                "  ,   //	636 07-73   RESERVED
+    "保留                "  ,   //	637 07-74   RESERVED
+    "保留                "  ,   //  638 07-75   RESERVED
+    "保留                "  ,   //	639 07-76   RESERVED
+    "保留                "  ,   //	640 07-77   RESERVED
+    "保留                "  ,   //	641 07-78   RESERVED
+    "保留                "  ,   //  642 07-79   RESERVED
+    "保留                "  ,   //  643 07-80   RESERVED
+    "保留                "  ,   //  644 07-81   RESERVED
+    "保留                "  ,   //  645 07-82   RESERVED
+    "保留                "  ,   //  646 07-83   RESERVED
+    "保留                "  ,   //  647 07-84   RESERVED
+    "保留                "  ,   //  648 07-85   RESERVED
+    "保留                "  ,   //  649 07-86   RESERVED
+    "保留                "  ,   //  650 07-87   RESERVED
+    "保留                "  ,   //  651 07-88   RESERVED
+    "保留                "  ,   //  652 07-89   RESERVED
+    "保留                "  ,   //  653 07-90   RESERVED
+    "保留                "  ,   //  654 07-91   RESERVED
+    "保留                "  ,   //  655 07-92   RESERVED
+    "保留                "  ,   //  656 07-93   RESERVED
+    "保留                "  ,   //  657 07-94   RESERVED
+    "保留                "  ,   //  658 07-95   RESERVED
+    "保留                "  ,   //  659 07-96   RESERVED
+    "保留                "  ,   //  660 07-97   RESERVED
+    "保留                "  ,   //  661 07-98   RESERVED
+    "保留                "  ,   //  662 07-99   RESERVED
     
 /*---- GROUP 08-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-    "PM參數自學習        "	,	//	357 08-00   PMotor Auto-Tuning  
-    "PM電機額定電流  Amps"	,	//	358 08-01   PMotor rated Current 
-    "PM電機額定功\率  Kw  "	,	//	359 08-02   PMotor Rated Power           // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
-    "PM電機額定轉速  RPM "	,	//	360 08-03   PMotor Rated RPM    
-    "PM電機極數          "	,	//	361 08-04   PMotor pole No.     
-    "PM電機參數 Rs   ohm "	,	//	362 08-05   PMotor Rs           
-    "PM電機參數 Ld   mH  "	,	//	363 08-06   PMotor Ld           
-    "PM電機參數 Lq   mH  "	,	//	364 08-07   PMotor Lq           
-    "電機反電動勢    Vrms"	,	//	365 08-08   PMotor Bemf coff	
-    "磁極偏移角      deg "	,	//	366 08-09   PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
-    "磁極重新定位        "	,	//	367 08-10   //ADDED BY DINO    
+    "PM參數自學習        "	,	//	663 08-00	PMotor Auto-Tuning  
+    "PM電機額定電流  Amps"	,	//	664 08-01	PMotor rated Current 
+    "PM電機額定功\率  Kw  "	,	//	665 08-02	PMotor Rated Power           // [Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]
+    "PM電機額定轉速  RPM "	,	//	666 08-03	PMotor Rated RPM    
+    "PM電機極數          "	,	//	667 08-04	PMotor pole No.     
+    "PM電機參數 Rs   ohm "	,	//	668 08-05	PMotor Rs           
+    "PM電機參數 Ld   mH  "	,	//	669 08-06	PMotor Ld           
+    "PM電機參數 Lq   mH  "	,	//	670 08-07	PMotor Lq           
+    "電機反電動勢    Vrms"	,	//	671 08-08	PMotor Bemf coff	
+    "磁極偏移角      deg "	,	//	672 08-09	PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
+    "磁極重新定位        "	,	//	673 08-10	//ADDED BY DINO    
 	
 /*---- GROUP 09-----------------------------------------*/							
 /*  "12345678901234561234"	*/
-    "通訊位址            "	,	//	368   09-06    Comm Address                              
-    "通訊傳送速度    kbps"	,	//	369   09-07    Tranmission speed                         
-    "通訊錯誤處理        "	,	//	370   09-08    Comm fault Treatment                      
-    "逾時檢出時間    sec "	,	//	371   09-09    Comm Time out                             
-    "通訊格式            "	,	//	372   09-10    Comm Protocol                             
-    "回應延遲時間    ms  "	,	//	373   09-11    ASC remote Response Delay Time, 1=100us   
-    "CAN 通訊包率        "  ,   //  3XX   09-06    CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
-    "CAN PDO交握時間 ms  "  ,   //  3XX   09-07    CAN PDO Handshaking Period
-    "CAN PDO通訊逾時 ms  "  ,   //  3XX   09-08    CAN Communiction Timeout 
-    "上位機識別碼        "  ,   //  3XX   09-09 
-    "FHM 暫存器          "  ,   //  3XX   09-10   
-    "DLC 暫存器1         "  ,   //  3XX   09-11   
-    "DLC 暫存器2         "  ,   //  3XX   09-12    
-    "DLC 暫存器3         "  ,   //  3XX   09-13    
-    "PDO傳送間隔     ms  "  ,   //  3XX   09-14     CAN fail rate---aevin 6/12/2017
+    "通訊位址            "	,	//	674 09-00   Comm Address                              
+    "通訊傳送速度    kbps"	,	//	675 09-01   Tranmission speed                         
+    "通訊錯誤處理        "	,	//	676 09-02   Comm fault Treatment                      
+    "逾時檢出時間    sec "	,	//	677 09-03   Comm Time out                             
+    "通訊格式            "	,	//	678 09-04   Comm Protocol                             
+    "回應延遲時間    ms  "	,	//	679 09-05   ASC remote Response Delay Time, 1=100us   
+    "CAN 通訊包率        "  ,   //	680 09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
+    "CAN PDO交握時間 ms  "  ,   //  681 09-07   CAN PDO Handshaking Period
+    "CAN PDO通訊逾時 ms  "  ,   //	682 09-08   CAN Communiction Timeout 
+    "上位機識別碼        "  ,   //	683 09-09   
+    "FHM 暫存器          "  ,   //	684 09-10
+    "DLC 暫存器1         "  ,   //	685 09-11
+    "DLC 暫存器2         "  ,   //	686 09-12
+    "DLC 暫存器3         "  ,   //	687 09-13   
+    "PDO傳送間隔     ms  "  ,   //	688 09-14   CAN fail rate---aevin 6/12/2017
 /*---- GROUP 10------------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"編碼器種類選擇      "	,	//	374   10-00 Encoder TYPE                             
-	"編碼器脈沖點數  ppr "	,	//	375   10-01 Encoder pulses	                    
-	"編碼器輸入型式      "	,	//	376   10-02 PG input setting	                
-	"PG錯誤動作選擇      "	,	//	377   10-03 PG fbk fault treatment	            
-	"PG錯誤檢出時間  sec "	,	//	378   10-04 PG fbk Error Detection Time	        
-	"PG失速位準      %   "	,	//	379   10-05 PG fbk overspeed detection level	
-	"PF失速檢出時間  sec "	,	//	380   10-06 Over speed Detection Time	        
-	"PG轉差異常位準  %   "	,	//	381   10-07 PG fbk speed deviation level	    
-	"PG轉差檢出時間  sec "	,	//	382   10-08 Deviation Detect Time	            
-	"PG失速動作選擇      "	,	//	383   10-09 Operation at overspeed	            
-	"HALL信號模式選擇    "  ,   //  384   10-10 Hall Input Types
-	"起動零速增益P       "	,	//	385   10-11 KP gain of ASR in Zero speed	
-	"起動零速積分I   sec "	,	//	386   10-12 Ki gain of ASR in Zero speed	
-	"低速增益P           "	,	//	387   10-13 ASR P Gain 1	                
-	"低速積分時間I   sec "	,	//	388   10-14 ASR I Gain 1	                
-	"高速增益P           "	,	//	389   10-15 ASR P Gain 2	                
-	"高速積分時間I   sec "	,	//	390   10-16 ASR I Gain 2	                
-	"低/高速切換頻率 Hz  "	,	//	391   10-17 ASR1/ASR2 switch freq	        
-	"ASR低通濾波增益 sec "	,	//	392   10-18 Primary LowPass filter Gain 
-	"位置控制ASR增益P    "  ,	//	393   10-19 position control Kp Gain  
-    "零/低速寬度調整 Hz  "  ,   //  394   10-20 Low Spd band
-    "低/高速寬度調整 Hz  "  ,   //  395   10-21 High Spd band
-	"位置控制ASR積分Isec "	,	//	396   10-22 Position control time
-	"起動位置控制低通sec "	,	//	397   10-23 Position control LOW POSS FILTER
-	"位置控制模式選擇    "	,	//	398   10-24 Source of position control, add by dino, 06/30/2008
-	"平層零速增益P   %   "	,	//	399   10-25 KP gain of ASR in Zero speed of Landing
-	"平層零速積分I   sec "	,	//	400   10-26 Ki gain of ASR in Zero speed of Landing
-	"位置控制零速增益%   "	,	//	385   10-27 KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-	"位置控制零速積分sec "	,	//	386   10-28 Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-    "PG卡除頻輸出值      "	,   //  4xx   10-29 PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG卡除頻輸出型式    "	,   //  4xx   10-30 PG Card Mode setting                      //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG C+/C-選擇        "  ,   //  110   10-31 RESERVED    //[change parameter to normal group, Bernie, 2014/02/14]
-    "電梯過加速度準位m/s2"  ,   //  3XX   10-32 Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "過加速度偵測時間sec "  ,   //  3XX   10-33     Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "過加速度偵選擇      "  ,   //  3XX   10-34     Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+	"編碼器種類選擇      "	,	//	689 10-00	Encoder TYPE                             
+	"編碼器脈沖點數  ppr "	,	//	690 10-01	Encoder pulses	                    
+	"編碼器輸入型式      "	,	//  691 10-02	PG input setting	                
+	"PG錯誤動作選擇      "	,	//  692 10-03	PG fbk fault treatment	            
+	"PG錯誤檢出時間  sec "	,	//  693 10-04	PG fbk Error Detection Time	        
+	"PG失速位準      %   "	,	//  694 10-05	PG fbk overspeed detection level	
+	"PF失速檢出時間  sec "	,	//  695 10-06	Over speed Detection Time	        
+	"PG轉差異常位準  %   "	,	//	696 10-07	PG fbk speed deviation level	    
+	"PG轉差檢出時間  sec "	,	//	697 10-08	Deviation Detect Time	            
+	"PG失速動作選擇      "	,	//	698 10-09	Operation at overspeed	            
+	"HALL信號模式選擇    "  ,   //  699 10-10   Hall Input Types
+	"起動零速增益P       "	,	//	700 10-11	KP gain of ASR in Zero speed	
+	"起動零速積分I   sec "	,	//	701 10-12	Ki gain of ASR in Zero speed	
+	"低速增益P           "	,	//	702 10-13	ASR P Gain 1	                
+	"低速積分時間I   sec "	,	//	703 10-14	ASR I Gain 1	                
+	"高速增益P           "	,	//	704 10-15	ASR P Gain 2	                
+	"高速積分時間I   sec "	,	//	705 10-16	ASR I Gain 2	                
+	"低/高速切換頻率 Hz  "	,	//  706 10-17	ASR1/ASR2 switch freq	        
+	"ASR低通濾波增益 sec "	,	//  707 10-18	Primary LowPass filter Gain 
+	"位置控制ASR增益P    "  ,	//  708 10-19   position control Kp Gain  
+    "零/低速寬度調整 Hz  "  ,   //  709 10-20   Low Spd band
+    "低/高速寬度調整 Hz  "  ,   //  710 10-21   High Spd band
+	"位置控制ASR積分Isec "	,	//  711 10-22   Position control time
+	"起動位置控制低通sec "	,	//  712 10-23   Position control LOW POSS FILTER
+	"位置控制模式選擇    "	,	//  713 10-24   Source of position control, add by dino, 06/30/2008
+	"平層零速增益P   %   "	,	//  714 10-25	KP gain of ASR in Zero speed of Landing
+	"平層零速積分I   sec "	,	//	715 10-26	Ki gain of ASR in Zero speed of Landing
+	"位置控制零速增益%   "	,	//	716 10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+	"位置控制零速積分sec "	,	//	717 10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
+    "PG卡除頻輸出值      "	,   //	718 10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG卡除頻輸出型式    "	,   //	719 10-30   PG Card Mode setting                      //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG C+/C-選擇        "  ,   //  720 10-31   RESERVED    //[change parameter to normal group, Bernie, 2014/02/14]
+    "電梯過加速度準位m/s2"  ,   //	721 10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "過加速度偵測時間sec "  ,   //	722 10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "過加速度偵選擇      "  ,   //	723 10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+
+    "保留                "  ,   //	724 10-35   RESERVED
+    "保留                "  ,   //	725 10-36   RESERVED
+    "保留                "  ,   //	726 10-37   RESERVED
+    "保留                "  ,   //	727 10-38   RESERVED
+    "保留                "  ,   //	728 10-39   RESERVED
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-    "系統控制        Hex "	,	//	401   11-00     system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo	
-    "最大頻率對應梯速m/s "  ,   //  402   11-01     Lift operation speed                                        
-    "曳引輪直徑      mm  "  ,   //  403   11-02     SHEAVE diameter			ADDED BY SCOTTY                     
-    "齒輪比              "  ,   //  404   11-03     Gear Ratio                                              
-    "懸掛比              "  ,   //  405   11-04     Suspension ratio	                                        
-    "機械慣量百分比  %   "  ,   //  406   11-05     inertia	percent			ADDED BY SCOTTY                     
-    "起動零速頻寬    Hz  "	,	//	407   11-06     Zero Speed Loop BandWidth	                                
-    "低速頻寬        Hz  "	,	//	408   11-07     Speed Loop BandWidth1		                                
-    "高速頻寬        Hz  "	,	//	409   11-08     Speed Loop BandWidth2		                                
-    "PDFF增益值      %   "	,	//	410   11-09     PDFFKr		                                                
-    "速度控制前饋增益%   "	,	//	411   11-10     SPEED FFD GAIN			ADDED BY SCOTTY                     
-    "凹陷濾波深度    db  "	,	//	412   11-11     Netch filter deep(db)	                                    
-    "凹陷濾波頻率    Hz  "	,	//	413   11-12     Netch filter frequency	                                    
-    "面板顯示濾波時間sec "	,	//	414   11-13     Low Pass Filter for display	                                
-    "加速時最大電流  %   "	,	//	415   11-14     ACC Max current                                             
-    "電梯最大加速度  m/s2"  ,	//	416   11-15     max meter/sec	                                            
-    "監控資料位址    Hex "  ,   //	417   11-16     Display address,add by dino 2007/03/08                      
-    "監控資料            "  ,	//	418   11-17     Display data,   add by dino 2007/03/08                      
-    "保留                "  ,   //  419   11-18     Protect Bit	                                                
-    "停車零速頻寬    Hz  "	,	//	420   11-19     Zero Speed Loop BandWidth of Landing
-    "PWM 模式選擇        "  ,   //  4XX   11-20     PWM mode selection  //[move parameter to 11-20, Bernie, 2017/02/16]
-    "LC01顯示濾波時間 sec"	,	//	422   11-21	    Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "系統控制        Hex "	,	//  729 11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo	
+    "最大頻率對應梯速m/s "  ,   //  730 11-01   Lift operation speed                                        
+    "曳引輪直徑      mm  "  ,   //  731 11-02   SHEAVE diameter			ADDED BY SCOTTY                     
+    "齒輪比              "  ,   //  732 11-03   Gear Ratio                                              
+    "懸掛比              "  ,   //  733 11-04   Suspension ratio	                                        
+    "機械慣量百分比  %   "  ,   //  734 11-05   inertia	percent			ADDED BY SCOTTY                     
+    "起動零速頻寬    Hz  "	,	//	735 11-06	Zero Speed Loop BandWidth	                                
+    "低速頻寬        Hz  "	,	//	736 11-07	Speed Loop BandWidth1		                                
+    "高速頻寬        Hz  "	,	//	737 11-08	Speed Loop BandWidth2		                                
+    "PDFF增益值      %   "	,	//  738 11-09	PDFFKr		                                                
+    "速度控制前饋增益%   "	,	//	739 11-10	SPEED FFD GAIN			ADDED BY SCOTTY                     
+    "凹陷濾波深度    db  "	,	//	740 11-11	Netch filter deep(db)	                                    
+    "凹陷濾波頻率    Hz  "	,	//	741 11-12	Netch filter frequency	                                    
+    "面板顯示濾波時間sec "	,	//  742 11-13	Low Pass Filter for display	                                
+    "加速時最大電流  %   "	,	//  743 11-14	ACC Max current                                             
+    "電梯最大加速度  m/s2"  ,	//  744 11-15	max meter/sec	                                            
+    "監控資料位址    Hex "  ,   //  745 11-16	Display address,add by dino 2007/03/08                      
+    "監控資料            "  ,	//  746 11-17	Display data,   add by dino 2007/03/08                      
+    "保留                "  ,   //  747 11-18   Protect Bit	                                                
+    "停車零速頻寬    Hz  "	,	//  748 11-19	Zero Speed Loop BandWidth of Landing
+    "PWM 模式選擇        "  ,   //  749 11-20	PWM mode selection  //[move parameter to 11-20, Bernie, 2017/02/16]
+    "LC01顯示濾波時間 sec"	,	//  750 11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-	"Motor SPD RPM       "	,	//	420   11-21     Lift_SPD_Hz Sibocom, Jason, 2019/12/31
+	"Motor SPD RPM       "	,	//	750   11-21     Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
     "Client_Mode         "  ,   //  422 11-22       //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
+    "保留                "  ,   //	752 11-23   RESERVED
+    "保留                "  ,   //	753 11-24   RESERVED
+    "保留                "  ,   //	754 11-25   RESERVED
+    "保留                "  ,   //	755 11-26   RESERVED
+    "保留                "  ,   //	756 11-27   RESERVED
+    "保留                "  ,   //	757 11-28   RESERVED
+    "保留                "  ,   //	758 11-29   RESERVED
+    
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "自訂參數 1          "  ,   //  421   12-00
-    "自訂參數 2          "  ,   //  422   12-01
-    "自訂參數 3          "  ,   //  423   12-02
-    "自訂參數 4          "  ,   //  424   12-33
-    "自訂參數 5          "  ,   //  425   12-04
-    "自訂參數 6          "  ,   //  426   12-05
-    "自訂參數 7          "  ,   //  427   12-06
-    "自訂參數 8          "  ,   //  428   12-07
-    "自訂參數 9          "  ,   //  429   12-08
-    "自訂參數 10         "  ,   //  430   12-09
-    "自訂參數 11         "  ,   //  431   12-10
-    "自訂參數 12         "  ,   //  432   12-11
-    "自訂參數 13         "  ,   //  433   12-12
-    "自訂參數 14         "  ,   //  434   12-13
-    "自訂參數 15         "  ,   //  435   12-14
-    "自訂參數 16         "  ,   //  436   12-15
-    "自訂參數 17         "  ,   //  437   12-16
-    "自訂參數 18         "  ,   //  438   12-17
-    "自訂參數 19         "  ,   //  439   12-18
-    "自訂參數 20         "  ,   //  440   12-19
-    "自訂參數 21         "  ,   //  441   12-20
-    "自訂參數 22         "  ,   //  442   12-21
-    "自訂參數 23         "  ,   //  443   12-22
-    "自訂參數 24         "  ,   //  444   12-23
-    "自訂參數 25         "  ,   //  445   12-24
-    "自訂參數 26         "  ,   //  446   12-25
-    "自訂參數 27         "  ,   //  447   12-26
-    "自訂參數 28         "  ,   //  448   12-27
-    "自訂參數 29         "  ,   //  449   12-28
-    "自訂參數 30         "  ,   //  450   12-29
-    "自訂參數 31         "  ,   //  451   12-30
-    "自訂參數 32         "  ,   //  452   12-31
-    "自訂參數 33         "  ,   //  433   12-12
-    "自訂參數 34         "  ,   //  434   12-13
-    "自訂參數 35         "  ,   //  435   12-14
-    "自訂參數 36         "  ,   //  436   12-15
-    "自訂參數 37         "  ,   //  437   12-16
-    "自訂參數 38         "  ,   //  438   12-17
-    "自訂參數 39         "  ,   //  439   12-18
-    "自訂參數 40         "  ,   //  430   12-09
-    "自訂參數 41         "  ,   //  431   12-10
-    "自訂參數 42         "  ,   //  432   12-11
-    "自訂參數 43         "  ,   //  433   12-12
-    "自訂參數 44         "  ,   //  434   12-13
-    "自訂參數 45         "  ,   //  435   12-14
-    "自訂參數 46         "  ,   //  436   12-15
-    "自訂參數 47         "  ,   //  437   12-16
-    "自訂參數 48         "  ,   //  438   12-17
-    "自訂參數 49         "  ,   //  439   12-18
-    "自訂參數 50         "  ,   //  430   12-09
-    "保留                "  ,   //  431   12-10
-    "保留                "  ,   //  432   12-11
-    "保留                "  ,   //  433   12-12
-    "保留                "  ,   //  434   12-13
-    "保留                "  ,   //  435   12-14
-    "保留                "  ,   //  436   12-15
-    "保留                "  ,   //  437   12-16
-    "保留                "  ,   //  438   12-17
-    "保留                "  ,   //  439   12-18
-    "保留                "  ,   //  430   12-09
-    "保留                "  ,   //  431   12-10
-    "保留                "  ,   //  432   12-11
-    "保留                "  ,   //  433   12-12
-    "保留                "  ,   //  434   12-13
-    "保留                "  ,   //  435   12-14
-    "保留                "  ,   //  436   12-15
-    "保留                "  ,   //  437   12-16
-    "保留                "  ,   //  438   12-17
-    "保留                "  ,   //  439   12-18
-    "保留                "  ,   //  430   12-09
-    "保留                "  ,   //  431   12-10
-    "保留                "  ,   //  432   12-11
-    "保留                "  ,   //  433   12-12
-    "保留                "  ,   //  434   12-13
-    "保留                "  ,   //  435   12-14
-    "保留                "  ,   //  436   12-15
-    "保留                "  ,   //  437   12-16
-    "保留                "  ,   //  438   12-17
-    "保留                "  ,   //  439   12-18
-    "保留                "  ,   //  430   12-09
-    "保留                "  ,   //  431   12-10
-    "保留                "  ,   //  432   12-11
-    "保留                "  ,   //  433   12-12
-    "保留                "  ,   //  434   12-13
-    "保留                "  ,   //  435   12-14
-    "保留                "  ,   //  436   12-15
-    "保留                "  ,   //  437   12-16
-    "保留                "  ,   //  438   12-17
-    "保留                "  ,   //  439   12-18
-    "保留                "  ,   //  430   12-09
-    "保留                "  ,   //  431   12-10
-    "保留                "  ,   //  432   12-11
-    "保留                "  ,   //  433   12-12
-    "保留                "  ,   //  434   12-13
-    "保留                "  ,   //  435   12-14
-    "保留                "  ,   //  436   12-15
-    "保留                "  ,   //  437   12-16
-    "保留                "  ,   //  438   12-17
-    "保留                "  ,   //  439   12-18
-    "保留                "  ,   //  439   12-18
+    "自訂參數 1          "  ,   //  759 12-00
+    "自訂參數 2          "  ,   //  760 12-01
+    "自訂參數 3          "  ,   //  761 12-02
+    "自訂參數 4          "  ,   //  762 12-03
+    "自訂參數 5          "  ,   //	763 12-04
+    "自訂參數 6          "  ,   //	764 12-05
+    "自訂參數 7          "  ,   //	765 12-06
+    "自訂參數 8          "  ,   //	766 12-07
+    "自訂參數 9          "  ,   //	767 12-08
+    "自訂參數 10         "  ,   //	768 12-09
+    "自訂參數 11         "  ,   //	769 12-10
+    "自訂參數 12         "  ,   //	770 12-11
+    "自訂參數 13         "  ,   //	771 12-12
+    "自訂參數 14         "  ,   //	772 12-13
+    "自訂參數 15         "  ,   //	773 12-14
+    "自訂參數 16         "  ,   //  774 12-15
+    "自訂參數 17         "  ,   //	775 12-16
+    "自訂參數 18         "  ,   //	776 12-17
+    "自訂參數 19         "  ,   //	777 12-18
+    "自訂參數 20         "  ,   //	778 12-19 
+    "自訂參數 21         "  ,   //	779 12-20
+    "自訂參數 22         "  ,   //	780 12-21
+    "自訂參數 23         "  ,   //  781 12-22
+    "自訂參數 24         "  ,   //	782 12-23
+    "自訂參數 25         "  ,   //	783 12-24
+    "自訂參數 26         "  ,   //	784 12-25
+    "自訂參數 27         "  ,   //	785 12-26
+    "自訂參數 28         "  ,   //	786 12-27
+    "自訂參數 29         "  ,   //	787 12-28
+    "自訂參數 30         "  ,   //	788 12-29
+    "自訂參數 31         "  ,   //  789 12-30
+    "自訂參數 32         "  ,   //  790 12-31
+    "自訂參數 33         "  ,   //  791 12-32
+    "自訂參數 34         "  ,   //  792 12-33
+    "自訂參數 35         "  ,   //  793 12-34
+    "自訂參數 36         "  ,   //  794 12-35
+    "自訂參數 37         "  ,   //  795 12-36
+    "自訂參數 38         "  ,   //  796 12-37
+    "自訂參數 39         "  ,   //  797 12-38
+    "自訂參數 40         "  ,   //  798 12-39
+    "自訂參數 41         "  ,   //  799 12-40
+    "自訂參數 42         "  ,   //  800 12-41
+    "自訂參數 43         "  ,   //  801 12-42
+    "自訂參數 44         "  ,   //  802 12-43
+    "自訂參數 45         "  ,   //  803 12-44
+    "自訂參數 46         "  ,   //  804 12-45
+    "自訂參數 47         "  ,   //  805 12-46
+    "自訂參數 48         "  ,   //  806 12-47
+    "自訂參數 49         "  ,   //  807 12-48
+    "自訂參數 50         "  ,   //  808 12-49
+    "保留                "  ,   //  809 12-50 
+    "保留                "  ,   //  810 12-51 
+    "保留                "  ,   //  811 12-52 
+    "保留                "  ,   //  812 12-53 
+    "保留                "  ,   //  813 12-54 
+    "保留                "  ,   //  814 12-55 
+    "保留                "  ,   //  815 12-56 
+    "保留                "  ,   //  816 12-57 
+    "保留                "  ,   //  817 12-58 
+    "保留                "  ,   //  818 12-59 
+    "保留                "  ,   //  819 12-60 
+    "保留                "  ,   //  820 12-61 
+    "保留                "  ,   //  821 12-62 
+    "保留                "  ,   //  822 12-63 
+    "保留                "  ,   //  823 12-64 
+    "保留                "  ,   //  824 12-65 
+    "保留                "  ,   //  825 12-66 
+    "保留                "  ,   //  826 12-67 
+    "保留                "  ,   //  827 12-68 
+    "保留                "  ,   //  828 12-69 
+    "保留                "  ,   //  829 12-70 
+    "保留                "  ,   //  830 12-71 
+    "保留                "  ,   //  831 12-72 
+    "保留                "  ,   //  832 12-73 
+    "保留                "  ,   //  833 12-74 
+    "保留                "  ,   //  834 12-75 
+    "保留                "  ,   //  835 12-76 
+    "保留                "  ,   //  836 12-77 
+    "保留                "  ,   //  837 12-78 
+    "保留                "  ,   //  838 12-79 
+    "保留                "  ,   //  839 12-80 
+    "保留                "  ,   //  840 12-81 
+    "保留                "  ,   //  841 12-82 
+    "保留                "  ,   //  842 12-83 
+    "保留                "  ,   //  843 12-84 
+    "保留                "  ,   //  844 12-85 
+    "保留                "  ,   //  845 12-86 
+    "保留                "  ,   //  846 12-87 
+    "保留                "  ,   //  847 12-88 
+    "保留                "  ,   //  848 12-89 
+    "保留                "  ,   //  849 12-90 
+    "保留                "  ,   //  850 12-91 
+    "保留                "  ,   //  851 12-92 
+    "保留                "  ,   //  852 12-93 
+    "保留                "  ,   //  853 12-94 
+    "保留                "  ,   //  854 12-95 
+    "保留                "  ,   //  855 12-96 
+    "保留                "  ,   //  856 12-97 
+    "保留                "  ,   //  857 12-98 
+    "保留                "  ,   //  858 12-99 
 
 /*---- GROUP 13------------------------------------------*/
 /*  "12345678901234561234"	*/
-    "自定常用參數 1      "  ,   //  453   13-00
-    "自定常用參數 2      "  ,   //  454   13-01
-    "自定常用參數 3      "  ,   //  455   13-02
-    "自定常用參數 4      "  ,   //  456   13-33
-    "自定常用參數 5      "  ,   //  457   13-04
-    "自定常用參數 6      "  ,   //  458   13-05
-    "自定常用參數 7      "  ,   //  459   13-06
-    "自定常用參數 8      "  ,   //  460   13-07
-    "自定常用參數 9      "  ,   //  461   13-08
-    "自定常用參數 10     "  ,   //  462   13-09
-    "自定常用參數 11     "  ,   //  463   13-10
-    "自定常用參數 12     "  ,   //  464   13-11
-    "自定常用參數 13     "  ,   //  465   13-12
-    "自定常用參數 14     "  ,   //  466   13-13
-    "自定常用參數 15     "  ,   //  467   13-14
-    "自定常用參數 16     "  ,   //  468   13-15
-    "自定常用參數 17     "  ,   //  469   13-16
-    "自定常用參數 18     "  ,   //  470   13-17
-    "自定常用參數 19     "  ,   //  471   13-18
-    "自定常用參數 20     "  ,   //  472   13-19
-    "自定常用參數 21     "  ,   //  473   13-20
-    "自定常用參數 22     "  ,   //  474   13-21
-    "自定常用參數 23     "  ,   //  475   13-22
-    "自定常用參數 24     "  ,   //  476   13-23
-    "自定常用參數 25     "  ,   //  477   13-24
-    "自定常用參數 26     "  ,   //  478   13-25
-    "自定常用參數 27     "  ,   //  479   13-26
-    "自定常用參數 28     "  ,   //  480   13-27
-    "自定常用參數 29     "  ,   //  481   13-28
-    "自定常用參數 30     "  ,   //  482   13-29
-    "自定常用參數 31     "  ,   //  483   13-30
-    "自定常用參數 32     "  ,   //  484   13-31
-    "自定常用參數 33     "  ,   //  455   13-02
-    "自定常用參數 34     "  ,   //  456   13-33
-    "自定常用參數 35     "  ,   //  457   13-04
-    "自定常用參數 36     "  ,   //  458   13-05
-    "自定常用參數 37     "  ,   //  459   13-06
-    "自定常用參數 38     "  ,   //  460   13-07
-    "自定常用參數 39     "  ,   //  461   13-08
-    "自定常用參數 40     "  ,   //  462   13-09
-    "自定常用參數 41     "  ,   //  463   13-10
-    "自定常用參數 42     "  ,   //  464   13-11
-    "自定常用參數 43     "  ,   //  465   13-12
-    "自定常用參數 44     "  ,   //  466   13-13
-    "自定常用參數 45     "  ,   //  467   13-14
-    "自定常用參數 46     "  ,   //  468   13-15
-    "自定常用參數 47     "  ,   //  469   13-16
-    "自定常用參數 48     "  ,   //  470   13-17
-    "自定常用參數 49     "  ,   //  471   13-18
-    "自定常用參數 50     "  ,   //  462   13-09
-    "自定常用參數 51     "  ,   //  463   13-10
-    "自定常用參數 52     "  ,   //  464   13-11
-    "自定常用參數 53     "  ,   //  465   13-12
-    "自定常用參數 54     "  ,   //  466   13-13
-    "自定常用參數 55     "  ,   //  467   13-14
-    "自定常用參數 56     "  ,   //  468   13-15
-    "自定常用參數 57     "  ,   //  469   13-16
-    "自定常用參數 58     "  ,   //  470   13-17
-    "自定常用參數 59     "  ,   //  471   13-18
-    "自定常用參數 60     "  ,   //  462   13-09
-    "自定常用參數 61     "  ,   //  463   13-10
-    "自定常用參數 62     "  ,   //  464   13-11
-    "自定常用參數 63     "  ,   //  465   13-12
-    "自定常用參數 64     "  ,   //  466   13-13
-    "自定常用參數 65     "  ,   //  467   13-14
-    "自定常用參數 66     "  ,   //  468   13-15
-    "自定常用參數 67     "  ,   //  469   13-16
-    "自定常用參數 68     "  ,   //  470   13-17
-    "自定常用參數 69     "  ,   //  471   13-18
-    "自定常用參數 70     "  ,   //  462   13-09
-    "自定常用參數 71     "  ,   //  463   13-10
-    "自定常用參數 72     "  ,   //  464   13-11
-    "自定常用參數 73     "  ,   //  465   13-12
-    "自定常用參數 74     "  ,   //  466   13-13
-    "自定常用參數 75     "  ,   //  467   13-14
-    "自定常用參數 76     "  ,   //  468   13-15
-    "自定常用參數 77     "  ,   //  469   13-16
-    "自定常用參數 78     "  ,   //  470   13-17
-    "自定常用參數 79     "  ,   //  471   13-18
-    "自定常用參數 80     "  ,   //  462   13-09
-    "自定常用參數 81     "  ,   //  463   13-10
-    "自定常用參數 82     "  ,   //  464   13-11
-    "自定常用參數 83     "  ,   //  465   13-12
-    "自定常用參數 84     "  ,   //  466   13-13
-    "自定常用參數 85     "  ,   //  467   13-14
-    "自定常用參數 86     "  ,   //  468   13-15
-    "自定常用參數 87     "  ,   //  469   13-16
-    "自定常用參數 88     "  ,   //  470   13-17
-    "自定常用參數 89     "  ,   //  471   13-18
-    "自定常用參數 90     "  ,   //  462   13-09
-    "自定常用參數 91     "  ,   //  463   13-10
-    "自定常用參數 92     "  ,   //  464   13-11
-    "自定常用參數 93     "  ,   //  465   13-12
-    "自定常用參數 94     "  ,   //  466   13-13
-    "自定常用參數 95     "  ,   //  467   13-14
-    "自定常用參數 96     "  ,   //  468   13-15
-    "自定常用參數 97     "  ,   //  469   13-16
-    "自定常用參數 98     "  ,   //  470   13-17
-    "自定常用參數 99     "  ,   //  471   13-18
-    "自定常用參數 100    "  ,   //  471   13-18
+    "自定常用參數 1      "  ,   //  859 13-00
+    "自定常用參數 2      "  ,   //  860 13-01
+    "自定常用參數 3      "  ,   //  861 13-02
+    "自定常用參數 4      "  ,   //  862 13-33
+    "自定常用參數 5      "  ,   //  863 13-04
+    "自定常用參數 6      "  ,   //  864 13-05
+    "自定常用參數 7      "  ,   //  865 13-06
+    "自定常用參數 8      "  ,   //  866 13-07
+    "自定常用參數 9      "  ,   //  867 13-08
+    "自定常用參數 10     "  ,   //  868 13-09
+    "自定常用參數 11     "  ,   //  869 13-10
+    "自定常用參數 12     "  ,   //  870 13-11
+    "自定常用參數 13     "  ,   //  871 13-12
+    "自定常用參數 14     "  ,   //  872 13-13
+    "自定常用參數 15     "  ,   //  873 13-14
+    "自定常用參數 16     "  ,   //  874 13-15
+    "自定常用參數 17     "  ,   //  875 13-16
+    "自定常用參數 18     "  ,   //  876 13-17
+    "自定常用參數 19     "  ,   //  877 13-18
+    "自定常用參數 20     "  ,   //  878 13-19
+    "自定常用參數 21     "  ,   //  879 13-20
+    "自定常用參數 22     "  ,   //  880 13-21
+    "自定常用參數 23     "  ,   //  881 13-22
+    "自定常用參數 24     "  ,   //  882 13-23
+    "自定常用參數 25     "  ,   //  883 13-24
+    "自定常用參數 26     "  ,   //  884 13-25
+    "自定常用參數 27     "  ,   //  885 13-26
+    "自定常用參數 28     "  ,   //  886 13-27
+    "自定常用參數 29     "  ,   //  887 13-28
+    "自定常用參數 30     "  ,   //  888 13-29
+    "自定常用參數 31     "  ,   //  889 13-30
+    "自定常用參數 32     "  ,   //  890 13-31
+    "自定常用參數 33     "  ,   //  891 13-32
+    "自定常用參數 34     "  ,   //  892 13-33
+    "自定常用參數 35     "  ,   //  893 13-34
+    "自定常用參數 36     "  ,   //  893 13-35
+    "自定常用參數 37     "  ,   //  894 13-36
+    "自定常用參數 38     "  ,   //  895 13-37
+    "自定常用參數 39     "  ,   //  896 13-38
+    "自定常用參數 40     "  ,   //  897 13-39
+    "自定常用參數 41     "  ,   //  898 13-30
+    "自定常用參數 42     "  ,   //  899 13-41
+    "自定常用參數 43     "  ,   //  900 13-42
+    "自定常用參數 44     "  ,   //	901 13-43
+    "自定常用參數 45     "  ,   //	902 13-44
+    "自定常用參數 46     "  ,   //	903 13-45
+    "自定常用參數 47     "  ,   //	904 13-46
+    "自定常用參數 48     "  ,   //	905 13-47
+    "自定常用參數 49     "  ,   //  906 13-48
+    "自定常用參數 50     "  ,   //  907 13-49
+    "自定常用參數 51     "  ,   //  908 13-50
+    "自定常用參數 52     "  ,   //  909 13-51
+    "自定常用參數 53     "  ,   //  910 13-52
+    "自定常用參數 54     "  ,   //  911 13-53
+    "自定常用參數 55     "  ,   //  912 13-54
+    "自定常用參數 56     "  ,   //  913 13-55
+    "自定常用參數 57     "  ,   //  914 13-56
+    "自定常用參數 58     "  ,   //	915 13-57
+    "自定常用參數 59     "  ,   //	916 13-58
+    "自定常用參數 60     "  ,   //	917 13-59
+    "自定常用參數 61     "  ,   //	918 13-60
+    "自定常用參數 62     "  ,   //	919 13-61
+    "自定常用參數 63     "  ,   //  920 13-62
+    "自定常用參數 64     "  ,   //	921 13-63
+    "自定常用參數 65     "  ,   //	922 13-64
+    "自定常用參數 66     "  ,   //	923 13-65
+    "自定常用參數 67     "  ,   //	924 13-66
+    "自定常用參數 68     "  ,   //	925 13-67
+    "自定常用參數 69     "  ,   //	926 13-68
+    "自定常用參數 70     "  ,   //  927 13-69
+    "自定常用參數 71     "  ,   //  928 13-70
+    "自定常用參數 72     "  ,   //  929 13-71
+    "自定常用參數 73     "  ,   //  930 13-72
+    "自定常用參數 74     "  ,   //  931 13-73
+    "自定常用參數 75     "  ,   //  932 13-74
+    "自定常用參數 76     "  ,   //  933 13-75
+    "自定常用參數 77     "  ,   //  934 13-76
+    "自定常用參數 78     "  ,   //	935 13-77
+    "自定常用參數 79     "  ,   //	936 13-78
+    "自定常用參數 80     "  ,   //	937 13-79
+    "自定常用參數 81     "  ,   //  938 13-80
+    "自定常用參數 82     "  ,   //	939 13-81
+    "自定常用參數 83     "  ,   //	940 13-82
+    "自定常用參數 84     "  ,   //	941 13-83
+    "自定常用參數 85     "  ,   //  942 13-84
+    "自定常用參數 86     "  ,   //  943 13-85
+    "自定常用參數 87     "  ,   //  944 13-86
+    "自定常用參數 88     "  ,   //  945 13-87
+    "自定常用參數 89     "  ,   //  946 13-88
+    "自定常用參數 90     "  ,   //  947 13-89
+    "自定常用參數 91     "  ,   //  948 13-90
+    "自定常用參數 92     "  ,   //  949 13-91
+    "自定常用參數 93     "  ,   //  950 13-92
+    "自定常用參數 94     "  ,   //  951 13-93
+    "自定常用參數 95     "  ,   //  952 13-94
+    "自定常用參數 96     "  ,   //  953 13-95
+    "自定常用參數 97     "  ,   //  954 13-96
+    "自定常用參數 98     "  ,   //  955 13-97
+    "自定常用參數 99     "  ,   //  956 13-98
+    "自定常用參數 100    "  ,   //  957 13-99
 /*--- GROUP 14------------------------------------------*/
 /*  "12345678901234561234"	*/
-	"Id PWRSAVE Level%   "	,	//	485   14-00	Ids Power Save Level
-	"VF CURVE MODE       "	,	//	486   14-01	VF voltage mode selection
-	"Overload 1 Mode     "	,	//	487   14-02	Constant Torque Selection
-	"Auto ACC/DEC        "	,	//	488   14-03	Auto Accel/Decel
-	"Unit ACC/DEC T      "	,	//	489   14-04	Unit of Acc/Dec time
-	"POWER SAVE MODE     "	,	//	490   14-05	Power Save mode
-	"Stop Methods        "	,	//	491   14-06	Stop Methods
-	"Reverse Operate     "	,	//	492   14-07	Reverse Operation
-	"Skip Freq. 1UP  Hz  "	,	//	493   14-08	Skip Freq. Point 1 upper limit
-	"Skip Freq. 1LOW Hz  "	,	//	494   14-09	Skip Freq. Point 1 lower limit
-	"Skip Freq. 2UP  Hz  "	,	//	495   14-10	Skip Freq. Point 2 upper limit
-	"Skip Freq. 2LOW Hz  "	,	//	496   14-11	Skip Freq. Point 2 lower limit
-	"Skip Freq. 3UP  Hz  "	,	//	497   14-12	Skip Freq. Point 3 upper limit
-	"Skip Freq. 3LOW Hz  "	,	//	498   14-13	Skip Freq. Point 3 lower limit
-	"Motor2 Fbase    Hz  "	,	//	499   14-14	Motor Base Frequency 2
-	"Max Out-Volt 2  V   "	,	//	500   14-15	Max Output Voltage 2
-	"Mid Out-Freq.2-1Hz  "	,	//	501   14-16	Mid Output Freq.2 1
-	"Mid Out-Volt 2-1V   "	,	//	502   14-17	Mid Output Voltage 2 1
-	"Mid Out-Freq.2-2Hz  "	,	//	503   14-18	Mid Output Freq.2 2
-	"Mid Out-Volt 2-2V   "	,	//	504   14-19	Mid Output Voltage 2 2
-	"Min Out-Freq.2  Hz  "	,	//	505   14-20	Min Output Freq. 2
-	"Min Out-Volt 2  V   "	,	//	506   14-21	Min Output Voltage 2
-	"UP/DOWN Key MODE    "	,	//	507   14-22	up/down key mode
-	"UP/DOWN KEY SPD     "	,	//	508   14-23	up/down key speed
-	"Counter Set         "	,	//	509   14-24	Counter Value Set (Complete)
-	"Counter Reach       "	,	//	510   14-25	Counter Value Reach (Preset)
-	"LIMIT SCALE         "	,	//	511   14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
-	"Multi-Fun Input9    "	,	//	512   14-27	Multi-Function Input 9
-	"Multi-Fun InputA    "	,	//	513   14-28	Multi-Function Input 10
-	"Multi-Fun InputB    "	,	//	514   14-29	Multi-Function Input 11
-	"Multi-Fun InputC    "	,	//	515   14-30	Multi-Function Input 12
-	"Multi-Fun InputD    "	,	//	516   14-31	Multi-Function Input 13
-	"Multi-Fun InputE    "	,	//	517   14-32	Multi-Function Input 14
-	"Fault Reset OP      "	,	//	518   14-33	External Terminal Run after Fault Reset
-	"ACI/AVI2 SEL        "	,	//	519   14-34	ACI change to AVI2
-	"Addition of AI      "	,	//	520   14-35	Addition Function of AI
-	"Multi-Posit 1       "	,	//	521   14-36	Multi-Position Point 1
-	"Multi-Posit 2       "	,	//	522   14-37	Multi-Position Point 2
-	"Multi-Posit 3       "	,	//	523   14-38	Multi-Position Point 3
-	"Multi-Posit 4       "	,	//	524   14-39	Multi-Position Point 4
-	"Multi-Posit 5       "	,	//	525   14-40	Multi-Position Point 5
-	"Multi-Posit 6       "	,	//	526   14-41	Multi-Position Point 6
-	"Multi-Posit 7       "	,	//	527   14-42	Multi-Position Point 7
-	"Multi-Posit 8       "	,	//	528   14-43	Multi-Position Point 8
-	"Multi-Posit 9       "	,	//	529   14-44	Multi-Position Point 9
-	"Multi-Posit 10      "	,	//	530   14-45	Multi-Position Point 10
-	"Multi-Posit 11      "	,	//	531   14-46	Multi-Position Point 11
-	"Multi-Posit 12      "	,	//	532   14-47	Multi-Position Point 12
-	"Multi-Posit 13      "	,	//	533   14-48	Multi-Position Point 13
-	"Multi-Posit 14      "	,	//	534   14-49	Multi-Position Point 14
-	"Multi-Posit 15      "	,	//	535   14-50	Multi-Position Point 15
-	"MOTOR 1 OR 2        "	,	//	536   14-51	Motor Selection 1 or 2
-	"Y-D Switch Hz   Hz  "	,	//	537   14-52	Y-Delta Connected switching rpm
-	"Y-D Switch Sel      "	,	//	538   14-53	Y-Delta switched Enable
-	"Motor2 Rated    Amps"	,	//	539   14-54	Motor 2 rated Current
-	"Motor2 Rated P  Kw  "	,	//	540   14-55	Motor 2 Rated Power
-	"Motor2 Rated    RPM "	,	//	541   14-56	Motor 2 Rated RPM
-	"Motor2 Poles        "	,	//	542   14-57	Motor 2 pole No.
-	"Motor2 No-Load  Amps"	,	//	543   14-58	Motor 2 No-Load Current
-	"Motor2 Rs       ohm "	,	//	544   14-59	Motor 2 Rs
-	"Motor2 Rr       ohm "	,	//	545   14-60	Motor 2 Rr
-	"Motor2 Lm       mH  "	,	//	546   14-61	Motor 2 Lm
-	"Motor2 Lx       mH  "	,	//	547   14-62	Motor 2 Lx
-	"Y-D On Delay T      "	,	//	548   14-63	Y-Delta On delay time
-	"OV stall level  V   "	,	//	549   14-64	OV stall level
-	"Thermal RLY2 SEL    "	,	//	550   14-65	Thermal Relay 2 Selection
-	"Thermal RLY2 T      "	,	//	551   14-66	Thermal Relay 2 Time
-	"Momentary Power     "	,	//	552   14-67	Momentary Power Loss
-	"Power Loss Time sec "	,	//	553   14-68	Max. allowable PL time
-	"Base Block Time sec "	,	//	554   14-69	BB Time for speed serach
-	"SPD Search Curr %   "	,	//	555   14-70	Current level for SPD serach
-	"BB Treatment        "	,	//	556   14-71	bb treatment for oc, ov, bb
-	"Auto Restart        "	,	//	557   14-72	Auto restart after fault
-	"Restart Method      "	,	//	558   14-73	Auto restart Speed serach method
-	"DEB Decel SEL       "	,	//	559   14-74	Deceleration at Momertary Power loss 
-	"DEB Return Time     "	,	//	560   14-75	KEB Return Time
-	"PID Fdb SEL         "	,	//	561   14-76	PID feedback selection	
-	"P Gain of PID       "	,	//	562   14-77	P gain of PID	
-	"I Gain of PID   sec "	,	//	563   14-78	I gain of PID	
-	"D Gain of PID       "	,	//	564   14-79	D gain of PID	
-	"Up Limit for I  %   "	,	//	565   14-80	Upper bound for integral	
-	"PID Out-Limiter %   "	,	//	566   14-81	PID output Freq. Limit	
-	"PID Offset      %   "	,	//	567   14-82	PID offset	
-	"PID Out-Filter  sec "	,	//	568   14-83	Derivative Filter Time Constant	
-	"Fdb Detect Time sec "	,	//	569   14-84	Feedback signal detection time	
-	"PID Fdb Loss        "	,	//	570   14-85	PID feedback loss	
-	"SLEEP FREQ          "	,	//	571   14-86	Sleep Frequency	
-	"WAKE FREQ           "	,	//	572   14-87	Wake up Frequency	
-	"SLEEP TIME          "	,	//	573   14-88	Sleep Time	
-	"PID DEV. LEVEL  %   "	,	//	574   14-89	PID Deviation Level	
-	"PID DEV. TIME       "	,	//	575   14-90	PID Deviation Time	
-	"PID Fbk Filter  sec "	,	//	576   14-91	PID feedback filter	
-	"Comm Main Freq. Hz  "	,	//	577   14-92	Main Frequency from communication	
-	"Block Trans. 1      "	,	//	578   14-93	Block Transfer 1	
-	"Block Trans. 2      "	,	//	579   14-94	Block Transfer 2	
-	"Block Trans. 3      "	,	//	580   14-95	Block Transfer 3
-	"Block Trans. 4      "	,	//	581   14-96	Block Transfer 4
-	"Block Trans. 5      "	,	//	582   14-97	Block Transfer 5
-	"Block Trans. 6      "	,	//	583   14-98	Block Transfer 6
-	"Block Trans. 7      "	,	//	584   14-99	Block Transfer 7
-	"Block Trans. 8      "	,	//	585   14-100 Block Transfer 8
-	"Block Trans. 9      "	,	//	586   14-101 Block Transfer 9
-	"Block Trans. 10     "	,	//	587   14-102 Block Transfer 10
-	"WEAKLPF             "	,	//	588   14-103 WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
-	"WEAKTHETA           "	,	//	589   14-104 WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
-	"OVER_SCALE          "	,	//	590   14-105 OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
-	"PG Position Home    "	,	//	591   14-106 PG Position Control Point (Home)
-	"PG Attained Home    "	,	//	592   14-107 Range for PG Position Attained
-	"APR FFD Gain        "	,	//	593   14-108 Gain of APR feedforward
-	"APR Decel Time  sec "	,	//	594   14-109 Decelerate time of APR
-	"FMAX by VcomAPR Hz  "	,	//	595   14-110 FMax Target by Vcommand Position
-	"RESERVE             "	,	//	596   14-111 Accel. Time for Position
-	"PG Mech. Gear A     "	,	//	597   14-112 PG Mechanical Gear A
-	"PG Mech. Gear B     "	,	//	598   14-113 PG Mechanical Gear B
-	"System Jm       PU  "	,	//	599   14-114 Interia of motor PU
-	"M1IdsRef Limit   %  "	,	//	600   14-115 Motor1 IdsRef Limit
-	"M2IdsRef Limit   %  "	,	//	601   14-116 Motor2 IdsRef Limit
-	"Phase Loss Time sec "	,	//	602   14-117 Phase Loss Time
-	"TH Inside Temp   C  "	,	//	603   14-118 Thermo inside Temp
-	"ASR FeedForward     "	,	//	604   14-119 Speed feed forword
-	"SlipGen.CompGain    "	,	//	605   14-120 SVC Slip Generation Compensation Gain //6a02j
-	"PG-REF COM LPG      "	,	//	606   14-121 PG2 Command Low pass Filter Gain
-	"TENSION OF TQCPGNt  "	,	//	607   14-122 Tension of Torque Control
-	"DIAMETER        m   "	,	//	608   14-123 Diameter of Material
-	"DEPTH           cm  "	,	//	609   14-124 Depth of meterial
-	"RESERVE             "	,	//	610   14-125 Reserve
-	"ABZ ST Times        "	,	//	611   14-126 Reserve
-	"ABZ ST Duty         "	,	//	612   14-127 Reserve
-	"TIMER OF PHL    hr. "	,	//	613   14-128 Timer of Phase loss (hour)
-	"RESERVE             "	,	//	614   14-129 Time of APR Curve
-    "Jm source           "  ,   //	615   14-130 IM control use inertia source
-	"PHL LEVEL           "	,	//	616   14-131 PHASE LOSS detect level
-	"Muti-input state    "	,	//	617   14-132 muti input state
-    "StandStill Curr.Amps"  ,   //  618   14-133 Standstill Current
-	"PG Scale Factor     "	,	//	619   14-134 Division factor of PG	
-	"OLD Irate           "	,	//	619   14-135 OLD Irate       // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_CONTROL         "	,   // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_BUARD           "	,   // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_Check_Time  sec "	,   // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-	"PDO_Tx_Time     ms  "	,   // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-	"COM1通訊位址        "	,	//	368   09-00 Comm Address             //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                        
-    "COM1通訊傳送速度kbps"	,	//	369   09-01 Tranmission speed                         
-    "COM1通訊錯誤處理    "	,	//	370   09-02 Comm fault Treatment                      
-    "COM1逾時檢出時間sec "	,	//	371   09-03 Comm Time out                             
-    "COM1通訊格式        "	,	//	372   09-04 Comm Protocol                             
-    "COM1回應延遲時間ms  "	,	//	373   09-05 ASC remote Response Delay Time, 1=100us     
-    "OPHL 10Hz COUNT     "  ,   //  3XX   14-146    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  5Hz COUNT     "  ,   //  3XX   14-147    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  2Hz COUNT     "  ,   //  3XX   14-148    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.5Hz COUNT    "  ,   //  3XX   14-149    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.2Hz COUNT    "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 1       "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 2       "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 3       "	,	//	3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+	"Id PWRSAVE Level%   "	,	//	958 14-00	Ids Power Save Level
+	"VF CURVE MODE       "	,	//	959 14-01	VF voltage mode selection
+	"Overload 1 Mode     "	,	//	960 14-02	Constant Torque Selection
+	"Auto ACC/DEC        "	,	//	961 14-03	Auto Accel/Decel
+	"Unit ACC/DEC T      "	,	//	962 14-04	Unit of Acc/Dec time
+	"POWER SAVE MODE     "	,	//  963 14-05	Power Save mode
+	"Stop Methods        "	,	//  964 14-06	Stop Methods
+	"Reverse Operate     "	,	//  965 14-07	Reverse Operation
+	"Skip Freq. 1UP  Hz  "	,	//  966 14-08	Skip Freq. Point 1 upper limit
+	"Skip Freq. 1LOW Hz  "	,	//  967 14-09	Skip Freq. Point 1 lower limit
+	"Skip Freq. 2UP  Hz  "	,	//  968 14-10	Skip Freq. Point 2 upper limit
+	"Skip Freq. 2LOW Hz  "	,	//  969 14-11	Skip Freq. Point 2 lower limit
+	"Skip Freq. 3UP  Hz  "	,	//  970 14-12	Skip Freq. Point 3 upper limit
+	"Skip Freq. 3LOW Hz  "	,	//  971 14-13	Skip Freq. Point 3 lower limit
+	"Motor2 Fbase    Hz  "	,	//  972 14-14	Motor Base Frequency 2
+	"Max Out-Volt 2  V   "	,	//  973 14-15	Max Output Voltage 2
+	"Mid Out-Freq.2-1Hz  "	,	//  974 14-16	Mid Output Freq.2 1
+	"Mid Out-Volt 2-1V   "	,	//  975 14-17	Mid Output Voltage 2 1
+	"Mid Out-Freq.2-2Hz  "	,	//  976 14-18	Mid Output Freq.2 2
+	"Mid Out-Volt 2-2V   "	,	//  977 14-19	Mid Output Voltage 2 2
+	"Min Out-Freq.2  Hz  "	,	//  978 14-20	Min Output Freq. 2
+	"Min Out-Volt 2  V   "	,	//  979 14-21	Min Output Voltage 2
+	"UP/DOWN Key MODE    "	,	//  980 14-22	up/down key mode
+	"UP/DOWN KEY SPD     "	,	//  981 14-23	up/down key speed
+	"Counter Set         "	,	//  982 14-24	Counter Value Set (Complete)
+	"Counter Reach       "	,	//  983 14-25	Counter Value Reach (Preset)
+	"LIMIT SCALE         "	,	//  984 14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
+	"Multi-Fun Input9    "	,	//  985 14-27	Multi-Function Input 9
+	"Multi-Fun InputA    "	,	//  986 14-28	Multi-Function Input 10
+	"Multi-Fun InputB    "	,	//  987 14-29	Multi-Function Input 11
+	"Multi-Fun InputC    "	,	//  988 14-30	Multi-Function Input 12
+	"Multi-Fun InputD    "	,	//  989 14-31	Multi-Function Input 13
+	"Multi-Fun InputE    "	,	//  990 14-32	Multi-Function Input 14
+	"Fault Reset OP      "	,	//  991 14-33	External Terminal Run after Fault Reset
+	"ACI/AVI2 SEL        "	,	//  992 14-34	ACI change to AVI2
+	"Addition of AI      "	,	//  993 14-35	Addition Function of AI
+	"Multi-Posit 1       "	,	//  993 14-36	Multi-Position Point 1
+	"Multi-Posit 2       "	,	//  994 14-37	Multi-Position Point 2
+	"Multi-Posit 3       "	,	//  995 14-38	Multi-Position Point 3
+	"Multi-Posit 4       "	,	//  996 14-39	Multi-Position Point 4
+	"Multi-Posit 5       "	,	//  997 14-40	Multi-Position Point 5
+	"Multi-Posit 6       "	,	//  998 14-41	Multi-Position Point 6
+	"Multi-Posit 7       "	,	//  999 14-42	Multi-Position Point 7
+	"Multi-Posit 8       "	,	//  1000 14-43	ulti-Position Point 8
+	"Multi-Posit 9       "	,	//	1001 14-44	ulti-Position Point 9
+	"Multi-Posit 10      "	,	//	1002 14-45	ulti-Position Point 10
+	"Multi-Posit 11      "	,	//	1003 14-46	ulti-Position Point 11
+	"Multi-Posit 12      "	,	//	1004 14-47	ulti-Position Point 12
+	"Multi-Posit 13      "	,	//	1005 14-48	ulti-Position Point 13
+	"Multi-Posit 14      "	,	//  1006 14-49	ulti-Position Point 14
+	"Multi-Posit 15      "	,	//  1007 14-50	ulti-Position Point 15
+	"MOTOR 1 OR 2        "	,	//  1008 14-51	otor Selection 1 or 2
+	"Y-D Switch Hz   Hz  "	,	//  1009 14-52	-Delta Connected switching rpm
+	"Y-D Switch Sel      "	,	//  1010 14-53	-Delta switched Enable
+	"Motor2 Rated    Amps"	,	//  1011 14-54	otor 2 rated Current
+	"Motor2 Rated P  Kw  "	,	//  1012 14-55	otor 2 Rated Power
+	"Motor2 Rated    RPM "	,	//  1013 14-56	otor 2 Rated RPM
+	"Motor2 Poles        "	,	//  1014 14-57	otor 2 pole No.
+	"Motor2 No-Load  Amps"	,	//	1015 14-58	otor 2 No-Load Current
+	"Motor2 Rs       ohm "	,	//	1016 14-59	otor 2 Rs
+	"Motor2 Rr       ohm "	,	//	1017 14-60	otor 2 Rr
+	"Motor2 Lm       mH  "	,	//	1018 14-61	otor 2 Lm
+	"Motor2 Lx       mH  "	,	//	1019 14-62	otor 2 Lx
+	"Y-D On Delay T      "	,	//  1020 14-63	-Delta On delay time
+	"OV stall level  V   "	,	//	1021 14-64	V stall level
+	"Thermal RLY2 SEL    "	,	//	1022 14-65	hermal Relay 2 Selection
+	"Thermal RLY2 T      "	,	//	1023 14-66	hermal Relay 2 Time
+	"Momentary Power     "	,	//	1024 14-67	omentary Power Loss
+	"Power Loss Time sec "	,	//	1025 14-68	ax. allowable PL time
+	"Base Block Time sec "	,	//	1026 14-69	B Time for speed serach
+	"SPD Search Curr %   "	,	//  1027 14-70	urrent level for SPD serach
+	"BB Treatment        "	,	//  1028 14-71	b treatment for oc, ov, bb
+	"Auto Restart        "	,	//  1029 14-72	uto restart after fault
+	"Restart Method      "	,	//  1030 14-73	uto restart Speed serach method
+	"DEB Decel SEL       "	,	//  1031 14-74	eceleration at Momertary Power loss 
+	"DEB Return Time     "	,	//  1032 14-75	EB Return Time
+	"PID Fdb SEL         "	,	//  1033 14-76	ID feedback selection	
+	"P Gain of PID       "	,	//  1034 14-77	 gain of PID	
+	"I Gain of PID   sec "	,	//	1035 14-78	 gain of PID	
+	"D Gain of PID       "	,	//	1036 14-79	 gain of PID	
+	"Up Limit for I  %   "	,	//	1037 14-80	pper bound for integral	
+	"PID Out-Limiter %   "	,	//  1038 14-81	ID output Freq. Limit	
+	"PID Offset      %   "	,	//	1039 14-82	ID offset	
+	"PID Out-Filter  sec "	,	//	1040 14-83	erivative Filter Time Constant	
+	"Fdb Detect Time sec "	,	//	1041 14-84	eedback signal detection time	
+	"PID Fdb Loss        "	,	//  1042 14-85	ID feedback loss	
+	"SLEEP FREQ          "	,	//  1043 14-86	leep Frequency	
+	"WAKE FREQ           "	,	//  1044 14-87	ake up Frequency	
+	"SLEEP TIME          "	,	//  1045 14-88	leep Time	
+	"PID DEV. LEVEL  %   "	,	//  1046 14-89	ID Deviation Level	
+	"PID DEV. TIME       "	,	//  1047 14-90	ID Deviation Time	
+	"PID Fbk Filter  sec "	,	//  1048 14-91	ID feedback filter	
+	"Comm Main Freq. Hz  "	,	//  1049 14-92	ain Frequency from communication	
+	"Block Trans. 1      "	,	//  1050 14-93	lock Transfer 1	
+	"Block Trans. 2      "	,	//  1051 14-94	lock Transfer 2	
+	"Block Trans. 3      "	,	//  1052 14-95	lock Transfer 3
+	"Block Trans. 4      "	,	//  1053 14-96	lock Transfer 4
+	"Block Trans. 5      "	,	//  1054 14-97	lock Transfer 5
+	"Block Trans. 6      "	,	//  1055 14-98	lock Transfer 6
+	"Block Trans. 7      "	,	//  1056 14-99	lock Transfer 7
+	"Block Trans. 8      "	,	//  1057 14-100 Block Transfer 8
+	"Block Trans. 9      "	,	//	1086 14-101 Block Transfer 9
+	"Block Trans. 10     "	,	//	1087 14-102 Block Transfer 10
+	"WEAKLPF             "	,	//	1088 14-103 WEAKLPF    //[weak magnet, Sampo, 03/31/2011]
+	"WEAKTHETA           "	,	//	1089 14-104 WEAKTHETA  //[weak magnet, Sampo, 03/31/2011]
+	"OVER_SCALE          "	,	//	1090 14-105 OVER_SCALE //[weak magnet, Sampo, 03/31/2011]
+	"PG Position Home    "	,	//	1091 14-106 PG Position Control Point (Home)
+	"PG Attained Home    "	,	//	1092 14-107 Range for PG Position Attained
+	"APR FFD Gain        "	,	//	1093 14-108 Gain of APR feedforward
+	"APR Decel Time  sec "	,	//	1094 14-109 Decelerate time of APR
+	"FMAX by VcomAPR Hz  "	,	//	1095 14-110 FMax Target by Vcommand Position
+	"RESERVE             "	,	//	1096 14-111 Accel. Time for Position
+	"PG Mech. Gear A     "	,	//	1097 14-112 PG Mechanical Gear A
+	"PG Mech. Gear B     "	,	//	1098 14-113 PG Mechanical Gear B
+	"System Jm       PU  "	,	//	1099 14-114 Interia of motor PU
+	"M1IdsRef Limit   %  "	,	//	1100 14-115 Motor1 IdsRef Limit
+	"M2IdsRef Limit   %  "	,	//  1101 14-116 Motor2 IdsRef Limit
+	"Phase Loss Time sec "	,	//	1102 14-117 Phase Loss Time
+	"TH Inside Temp   C  "	,	//	1103 14-118 Thermo inside Temp
+	"ASR FeedForward     "	,	//	1104 14-119 Speed feed forword
+	"SlipGen.CompGain    "	,	//	1105 14-120 SVC Slip Generation Compensation Gain //6a02j
+	"PG-REF COM LPG      "	,	//  1106 14-121 PG2 Command Low pass Filter Gain
+	"TENSION OF TQCPGNt  "	,	//	1107 14-122 Tension of Torque Control
+	"DIAMETER        m   "	,	//	1108 14-123 Diameter of Material
+	"DEPTH           cm  "	,	//	1109 14-124 Depth of meterial
+	"RESERVE             "	,	//	1110 14-125 Reserve
+	"ABZ ST Times        "	,	//	1111 14-126 Reserve
+	"ABZ ST Duty         "	,	//	1112 14-127 Reserve
+	"TIMER OF PHL    hr. "	,	//	1113 14-128 Timer of Phase loss (hour)
+	"RESERVE             "	,	//	1114 14-129 Time of APR Curve
+    "Jm source           "  ,   //	1115 14-130 IM control use inertia source
+	"PHL LEVEL           "	,	//	1116 14-131 PHASE LOSS detect level
+	"Muti-input state    "	,	//	1117 14-132 muti input state
+    "StandStill Curr.Amps"  ,   //  1118 14-133 Standstill Current
+	"PG Scale Factor     "	,	//	1119 14-134 Division factor of PG	
+	"OLD Irate           "	,	//	1120 14-135 OLD Irate       // [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_CONTROL         "	,   //  1121 14-136 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_BUARD           "	,   //  1122 14-137 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_Check_Time  sec "	,   //  1123 14-138 [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+	"PDO_Tx_Time     ms  "	,   //  1124 14-139 [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+	"COM1通訊位址        "	,	//	1125 14-140 Comm Address             //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                        
+    "COM1通訊傳送速度kbps"	,	//	1126 14-141 Tranmission speed                         
+    "COM1通訊錯誤處理    "	,	//	1127 14-142 Comm fault Treatment                      
+    "COM1逾時檢出時間sec "	,	//	1128 14-143 Comm Time out                             
+    "COM1通訊格式        "	,	//	1129 14-144 Comm Protocol                             
+    "COM1回應延遲時間ms  "	,	//	1130 14-145 ASC remote Response Delay Time, 1=100us     
+    "OPHL 10Hz COUNT     "  ,   //	1131 14-146 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  5Hz COUNT     "  ,   //	1132 14-147 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  2Hz COUNT     "  ,   //	1133 14-148 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.5Hz COUNT    "  ,   //	1134 14-149 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.2Hz COUNT    "  ,   //	1135 14-150 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 1       "  ,   //	1136 14-151 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 2       "  ,   //	1137 14-152 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 3       "	,	//	1138 14-153 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
 };
 #endif
 
@@ -3562,9 +3865,9 @@ const string20 prinfo_sc[EPMAX] = {
 #else
     "RESERVE             "  ,   //  79  15-80
 #endif
-    "OPHL_SPER           "  ,   //  80
-    "OPHL_CURER          "  ,   //  81
-    "OPHL_ERCNT          "  ,   //  82                                 
+    "OPHL_SPER           "  ,   //  80  15-80
+    "OPHL_CURER          "  ,   //  81  15-81
+    "OPHL_ERCNT          "  ,   //  82  15-82                           
 	"BLD DateCode        "  ,   //  83  15-83   //[BootLoader DataCode, Special.Kung, 2022/10/31] 
 	"FineAUI 0V ADC  adc "	,	//	84  15-84	calibration for AUI ZeroPoint (0V)              
 	"FineAUI +2V ADC adc "	,	//	85  15-85	calibration for AUI max (+2V)                   
@@ -3611,890 +3914,977 @@ const string20 prinfo_sc[EPMAX] = {
 	"RESERVE             "	,	//	126 15-126  RESERVED
 	"Unavailable         "	,	//	127 15-127  RESERVED
 //	"PPI filter point    "	,	//	127 15-128  PPI control     //[PPI function, Sampo, 2015/09/08]
-
+    "RESERVE             "	,	//	128 15-128  RESERVED
+    "RESERVE             "	,	//	129 15-129  RESERVED
 
 /*---- GROUP 00---------------------------------------*/
    //12345678901234561234
-    "儂笱梓妎睫          "	,	//	128 00-00	Model Type of Drive 
-    "曹けん塗隅萇霜  Amps"	,	//	129 00-01	Rated Current
-    "統杅笭离扢隅        "	,	//	130 00-02	Parameter Reset
-    "羲儂珆尨賒醱恁寁    "	,	//	131 00-03	Start up Display        //chinese 
-    "嗣髡夔珆尨恁寁      "	,	//	132 00-04	User Display            //chinese 
-    "隅砱掀瞰扢隅        "	,	//	133 00-05	User Coefficient        //chinese 
-    "�篲�唳掛            "	,	//	134 00-06	Software Version
-    "統杅悵誘躇鎢怀��    "	,	//	135 00-07	Password Input
-    "統杅悵誘躇鎢扢隅    "	,	//	136 00-08	Password Input
-    "諷秶耀宒            "	,	//	137 00-09	Control Methods
-    "厒僅等弇            "	,	//	138 00-10	Velocity Unit Select
-    "��雄ん怀堤源砃      "	,	//	139 00-11   Change Output Direction, Added by 
-    "婥疏け薹        KHz "	,	//	140 00-12	Carry Frequency
-    "赻雄恛揤髡夔        "	,	//	141 00-13	AVR
-    "厒僅硌鍔懂埭        "	,	//	142 00-14	Source of Freq. Command
-    "堍蛌硌鍔懂埭        "	,	//	143 00-15	Source of Oper. Command
+    "儂笱梓妎睫          "	,	//	130 00-00	Model Type of Drive 
+    "曹けん塗隅萇霜  Amps"	,	//	131 00-01	Rated Current
+    "統杅笭离扢隅        "	,	//	132 00-02	Parameter Reset
+    "羲儂珆尨賒醱恁寁    "	,	//	133 00-03	Start up Display        //chinese 
+    "嗣髡夔珆尨恁寁      "	,	//	134 00-04	User Display            //chinese 
+    "隅砱掀瞰扢隅        "	,	//	135	00-05	User Coefficient        //chinese 
+    "�篲�唳掛            "	,	//	136	00-06	Software Version
+    "統杅悵誘躇鎢怀��    "	,	//	137	00-07	Password Input
+    "統杅悵誘躇鎢扢隅    "	,	//	138	00-08	Password Input
+    "諷秶耀宒            "	,	//	139	00-09	Control Methods
+    "厒僅等弇            "	,	//	140	00-10	Velocity Unit Select
+    "��雄ん怀堤源砃      "	,	//	141 00-11   Change Output Direction, Added by 
+    "婥疏け薹        KHz "	,	//	142	00-12	Carry Frequency
+    "赻雄恛揤髡夔        "	,	//	143	00-13	AVR
+    "厒僅硌鍔懂埭        "	,	//	144	00-14	Source of Freq. Command
+    "堍蛌硌鍔懂埭        "	,	//	145	00-15	Source of Oper. Command
+
+    "悵隱                "	,	//	146 00-16   RESERVED
+    "悵隱                "	,	//	147 00-17   RESERVED
+    "悵隱                "	,	//	148 00-18   RESERVED
+    "悵隱                "	,	//	149 00-19   RESERVED
     
 /*---- GROUP 01---------------------------------------*/
 /*  "12345678901234561234"	*/
-	"郔湮紱釬け薹    Hz  "	,	//	144	01-00 Max Output Freq.
-	"萇儂塗隅け薹    Hz  "	,	//	145	01-01 Motor Base Frequency 1
-	"萇儂塗隅萇揤    V   "	,	//	146	01-02 Max Output Voltage
-	"菴媼怀堤け薹    Hz  "	,	//	147	01-03 Mid Output Freq.1
-	"菴媼怀堤萇揤    V   "	,	//	148	01-04 Mid Output Voltage 1
-	"菴��怀堤け薹    Hz  "	,	//	149	01-05 Mid Output Freq.2
-	"菴��怀堤萇揤    V   "	,	//	150	01-06 Mid Output Voltage 2
-	"菴侐怀堤け薹    Hz  "	,	//	151	01-07 Min Output Freq.
-	"菴侐怀堤萇揤    V   "	,	//	152	01-08 Min Output Voltage
-	"ゐ雄け薹        Hz  "	,	//	153	01-09 Start Frequency
-	"怀堤け薹奻癹硉  Hz  "	,	//	154	01-10 Upper Bound Freq.
-	"怀堤け薹狟癹硉  Hz  "	,	//	155	01-11 Lower Bound Freq.
-	"菴珨樓厒奀潔    sec "	,	//	156	01-12 1st Acceleration time      //chinese 
-	"菴珨熬厒奀潔    sec "	,	//	157	01-13 1st Deceleration time      //chinese 
-	"菴媼樓厒奀潔    sec "	,	//	158	01-14 2nd Acceleration time      //chinese 
-	"菴媼熬厒奀潔    sec "	,	//	159	01-15 2nd Deceleration time      //chinese 
-	"菴��樓厒奀潔    sec "	,	//	160	01-16 3rd Acceleration time      //chinese 
-	"菴��熬厒奀潔    sec "	,	//	161	01-17 3rd Deceleration time      //chinese 
-	"菴侐樓厒奀潔    sec "	,	//	162	01-18 4th Acceleration time      //chinese 
-	"菴侐熬厒奀潔    sec "	,	//	163	01-19 4th Deceleration time      //chinese 
-	"渡雄樓厒奀潔    sec "	,	//	164	01-20 JOG Acceleration time
-	"渡雄熬厒奀潔    sec "	,	//	165	01-21 JOG Deceleration time
-	"渡雄け薹        Hz  "	,	//	166	01-22 JOG Frequency
-	"1-4樓厒з遙     Hz  "	,	//	167	01-23 Transition Frequency ACC1/DEC1 to 
-	"樓厒羲宎S1奀潔  sec "	,	//	168	01-24 S curve Accel time 1
-	"樓厒羲宎S2奀潔  sec "	,	//	169	01-25 S curve Accel time 2
-	"樓厒羲宎S3奀潔  sec "	,	//	170	01-26 S curve Decel time 1
-	"樓厒羲宎S4奀潔  sec "	,	//	171	01-27 S curve Decel time 2
-	"苤衾菴侐け薹耀宒    "	,	//	172	01-28 Select Zero Speed
-	"す脯厒僅з遙    Hz  "	,	//	173	01-29 Landing Frequency 
-	"腴衾す脯厒僅S5  sec "	,	//	174	01-30 S curve Decel time 3
-	"礿陬熬厒奀潔    sec "	,	//	175	01-31 Stop Deceleration time	
-    "笝傷Ч秶熬厒僅  m/s "	,	//  1xx 01-32
-    "傷赽眻礿詢厒奀潔sec "	,	//	1xx	01-33 IODHT IO direct hold time   
-    "傷赽眻礿す脯奀潔sec "	,	//	1xx	01-34 IODLT IO direct landing freq
-    "傷赽眻礿喳講癹秶    "	,	//	1xx	01-35 IODLT IO direct landing time
-    "傷赽眻礿熬厒擒燭cm  "	,	//	1xx	01-36 IODLT IO direct DistancE
-    "眻礿統蕉熬厒擒燭m   "	,	//	1xx	01-37 IODLT IO direct DistancE
-    "傷赽眻諉礿蕞祡夔    "	,	//	1xx	01-38 IODLT IO direct DistancE
-    "ETS勳薹掀誕袧弇 Hz  "  ,   //  1xx 01-39 IODLT IO direct DistancE
-    "踡摹熬厒熬厒奀潔sec "	,	//	1xx	01-40 IODLT IO direct DistancE
+	"郔湮紱釬け薹    Hz  "	,	//	150	01-00	Max Output Freq.
+	"萇儂塗隅け薹    Hz  "	,	//	151	01-01	Motor Base Frequency 1
+	"萇儂塗隅萇揤    V   "	,	//	152	01-02	Max Output Voltage
+	"菴媼怀堤け薹    Hz  "	,	//	153	01-03	Mid Output Freq.1
+	"菴媼怀堤萇揤    V   "	,	//	154	01-04	Mid Output Voltage 1
+	"菴��怀堤け薹    Hz  "	,	//	155	01-05	Mid Output Freq.2
+	"菴��怀堤萇揤    V   "	,	//	156	01-06	Mid Output Voltage 2
+	"菴侐怀堤け薹    Hz  "	,	//	157	01-07	Min Output Freq.
+	"菴侐怀堤萇揤    V   "	,	//	158	01-08	Min Output Voltage
+	"ゐ雄け薹        Hz  "	,	//	159	01-09	Start Frequency
+	"怀堤け薹奻癹硉  Hz  "	,	//	160	01-10	Upper Bound Freq.
+	"怀堤け薹狟癹硉  Hz  "	,	//	161	01-11	Lower Bound Freq.
+	"菴珨樓厒奀潔    sec "	,	//	162	01-12	1st Acceleration time      //chinese 
+	"菴珨熬厒奀潔    sec "	,	//	163	01-13	1st Deceleration time      //chinese 
+	"菴媼樓厒奀潔    sec "	,	//	164	01-14	2nd Acceleration time      //chinese 
+	"菴媼熬厒奀潔    sec "	,	//	165	01-15	2nd Deceleration time      //chinese 
+	"菴��樓厒奀潔    sec "	,	//	166	01-16	3rd Acceleration time      //chinese 
+	"菴��熬厒奀潔    sec "	,	//	167	01-17	3rd Deceleration time      //chinese 
+	"菴侐樓厒奀潔    sec "	,	//	168	01-18	4th Acceleration time      //chinese 
+	"菴侐熬厒奀潔    sec "	,	//	169	01-19	4th Deceleration time      //chinese 
+	"渡雄樓厒奀潔    sec "	,	//	170	01-20	JOG Acceleration time
+	"渡雄熬厒奀潔    sec "	,	//	171	01-21	JOG Deceleration time
+	"渡雄け薹        Hz  "	,	//	172	01-22	JOG Frequency
+	"1-4樓厒з遙     Hz  "	,	//	173	01-23	Transition Frequency ACC1/DEC1 to 
+	"樓厒羲宎S1奀潔  sec "	,	//	174	01-24	S curve Accel time 1
+	"樓厒羲宎S2奀潔  sec "	,	//	175	01-25	S curve Accel time 2
+	"樓厒羲宎S3奀潔  sec "	,	//	176	01-26	S curve Decel time 1
+	"樓厒羲宎S4奀潔  sec "	,	//	177	01-27	S curve Decel time 2
+	"苤衾菴侐け薹耀宒    "	,	//	178	01-28	Select Zero Speed
+	"す脯厒僅з遙    Hz  "	,	//	179	01-29	Landing Frequency 
+	"腴衾す脯厒僅S5  sec "	,	//	180	01-30	S curve Decel time 3
+	"礿陬熬厒奀潔    sec "	,	//	181	01-31	Stop Deceleration time	
+    "笝傷Ч秶熬厒僅  m/s "	,	//	182	01-32
+    "傷赽眻礿詢厒奀潔sec "	,	//	183	01-33   IODHT IO direct hold time   
+    "傷赽眻礿す脯奀潔sec "	,	//  184 01-34   IODLT IO direct landing freq
+    "傷赽眻礿喳講癹秶    "	,	//  185 01-35   IODLT IO direct landing time
+    "傷赽眻礿熬厒擒燭cm  "	,	//  186 01-36   IODLT IO direct DistancE
+    "眻礿統蕉熬厒擒燭m   "	,	//  187 01-37   IODLT IO direct DistancE
+    "傷赽眻諉礿蕞祡夔    "	,	//  188 01-38   IODLT IO direct DistancE
+    "ETS勳薹掀誕袧弇 Hz  "  ,   //  189 01-39   IODLT IO direct DistancE
+    "踡摹熬厒熬厒奀潔sec "	,	//  190 01-40   IODLT IO direct DistancE
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     "Emergency DEC   sec "  ,   //  105 15-105 RESERVED
     "Emergency S3    sec "  ,   //  105 15-105 RESERVED
     "Emergency S4    sec "  ,   //  105 15-105 RESERVED
-#endif
+#else
+    "悵隱                "	,	//	191 01-41   RESERVED
+    "悵隱                "	,	//	192 01-42   RESERVED
+    "悵隱                "	,	//	193 01-43   RESERVED
+#endif    
+    "傷赽眻礿揖楷厒僅Hz  "	,	//	194 01-44   端子直停觸發速度  MI direct stop trigger speed	//Task 268622 IO Direct Landing	//Mitong 20230221 add
+    "悵隱                "	,	//	195 01-45   RESERVED
+    "悵隱                "	,	//	196 01-46   RESERVED
+    "悵隱                "	,	//	197 01-47   RESERVED
+    "悵隱                "	,	//	198 01-48   RESERVED
+    "悵隱                "	,	//	199 01-49   RESERVED
+    
 /*---- GROUP 02---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-    "2/3 盄宒堍蛌耀宒    "	,	//	176	02-00 2/3 wire control                
-    "MI1髡夔恁寁         "	,	//	177	02-01 Multi-Function Input 1          
-    "MI2髡夔恁寁         "	,	//	178	02-02 Multi-Function Input 2          
-    "MI3髡夔恁寁         "	,	//	179	02-03 Multi-Function Input 3          
-    "MI4髡夔恁寁         "	,	//	180	02-04 Multi-Function Input 4          
-    "MI5髡夔恁寁         "	,	//	181	02-05 Multi-Function Input 5          
-    "MI6髡夔恁寁         "	,	//	182	02-06 Multi-Function Input 6          
-    "MI7髡夔恁寁         "	,	//	183	02-07 Multi-Function Input 7          
-    "MI8髡夔恁寁         "	,	//	184	02-08 Multi-Function Input 8		    
-    "杅趼怀�輴嬧百掉酲ec "	,	//	185	02-09 Digital in response time		
-    "杅趼怀�賰誕�        "	,	//	186	02-10 Multi-Function Input Inverse	
-    "RA 髡夔恁寁         "	,	//	187	02-11 Multi-Function Relay 1		    
-    "MRA髡夔恁寁         "	,	//	188	02-12 Multi-Function Relay 2		    
-    "R1A髡夔恁寁         "	,	//	189	02-13 Multi-Function Output 1		    
-    "R2A髡夔恁寁         "	,	//	190	02-14 Multi-Function Output 2		    
-    "MO1髡夔恁寁         "	,	//	191	02-15 Multi-Function Output 3		    
-    "MO2髡夔恁寁         "	,	//	192	02-16 Multi-Function Output 4		    
-    "MO3髡夔恁寁         "	,	//	193	02-17 Multi-Function Output 5		    
-    "MO4髡夔恁寁         "	,	//	194	02-18 Multi-Function Output 6		    
-    "MO5髡夔恁寁         "	,	//	195	02-19 Multi-Function Output 7		    
-    "MO6髡夔恁寁         "	,	//	196	02-20 Multi-Function Output 8		    
-    "MO7髡夔恁寁         "	,	//	197	02-21 Multi-Function Output 9		    
-    "MO8髡夔恁寁         "	,	//	198	02-22 Multi-Function Output 10		    
-    "杅趼怀堤源砃        "	,	//	199	02-23 Multi-Function Output inverse	
-    "ゐ雄陓瘍耀宒恁寁    "  ,   //  200 02-24 Sequence start mode
-    "�扂牓肅妗蓬�1   Hz  "	,	//	201	02-25 Desired Frequency 1		        
-    "�扂牓肅妗蓬�1遵 Hz  "	,	//	202	02-26 Band of Desired Frequency 1		
-    "�扂牓肅妗蓬�2   Hz  "	,	//	203	02-27 Desired Frequency 2		        
-    "�扂牓肅妗蓬�2遵 Hz  "	,	//	204	02-28 Band of Desired Frequency 2		
-    "儂迮价陬庋溫晊奀sec "	,	//	205	02-29 Brake Delay Timer at run
-    "儂迮价陬惕掅晊奀sec "	,	//	206	02-30 Brake Delay Timer at stop
-    "萇棠概絳籵晊奀  sec "	,	//	207	02-31 Mech Contact Delay Timer run
-    "萇棠概剿羲晊奀  sec "	,	//	208	02-32 Mech Contact Delay Timer stop		
-    "萇霜袧弇扢隅    %   "	,	//	209	02-33 Isum Current Output Detect	    
-    "厒僅⑹僇扢隅    Hz  "	,	//	210	02-34 Speed Area
-    "儂迮价陬潰堤奀潔sec "	,	//	211	02-35 Mechanical Brake Checking Time
-    "萇棠概潰堤奀潔  sec "	,	//	212 02-36 Magnetic Contactor Checking Time
-    "蛌撻�溜炩脂劙√�    "  ,   //  213 02-37 Mechanical Brake Checking Current Enable
-    "萇棠概絳籵晊奀  sec "	,	//	207	02-38 Mech Contact Delay Timer run
-    "萇棠概剿羲晊奀  sec "	,	//	208	02-39 Mech Contact Delay Timer stop	
-	"LU/LD祑都恁寁       "  ,   //  2xx 02-40 LU/LD error  Selection	  //#15977, LULD detect, James, 2021/04/01
-	"LU/LD羲繚淈聆   sec "  ,   //  2xx 02-41 LD/LD Open Detect Time      //#15977, LULD detect, James, 2021/04/01
-	"LU/LD傻繚淈聆   sec "  ,   //  2xx 02-42 LD/LD Short Detect Time     //#15977, LULD detect, James, 2021/04/01
-    "堍蛌厒僅善湛遵僅Hz  "	,	//  202 02-43 Band of Speed Agree Function #18572			
-    "STO傻繚淈聆奀潔 sec "  ,   //  2xx 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
-    "819 Sensor          "  ,   //  2xx 02-45 //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "厒僅癹秶        m/s "  ,   //  2xx 02-46 //[Artemis Add Sensor819 Function/Special/2022/06/06]
+    "2/3 盄宒堍蛌耀宒    "	,	//	200	02-00	2/3 wire control                
+    "MI1髡夔恁寁         "	,	//	201	02-01	Multi-Function Input 1          
+    "MI2髡夔恁寁         "	,	//	202	02-02	Multi-Function Input 2          
+    "MI3髡夔恁寁         "	,	//	203	02-03	Multi-Function Input 3          
+    "MI4髡夔恁寁         "	,	//	204	02-04	Multi-Function Input 4          
+    "MI5髡夔恁寁         "	,	//	205	02-05	Multi-Function Input 5          
+    "MI6髡夔恁寁         "	,	//	206	02-06	Multi-Function Input 6          
+    "MI7髡夔恁寁         "	,	//	207	02-07	Multi-Function Input 7          
+    "MI8髡夔恁寁         "	,	//	208	02-08	Multi-Function Input 8		    
+    "杅趼怀�輴嬧百掉酲ec "	,	//	209	02-09	Digital in response time		
+    "杅趼怀�賰誕�        "	,	//	210	02-10	Multi-Function Input Inverse	
+    "RA 髡夔恁寁         "	,	//	211	02-11	Multi-Function Relay 1		    
+    "MRA髡夔恁寁         "	,	//	212	02-12	Multi-Function Relay 2		    
+    "R1A髡夔恁寁         "	,	//	213	02-13	Multi-Function Output 1		    
+    "R2A髡夔恁寁         "	,	//	214	02-14	Multi-Function Output 2		    
+    "MO1髡夔恁寁         "	,	//	215	02-15	Multi-Function Output 3		    
+    "MO2髡夔恁寁         "	,	//	216	02-16	Multi-Function Output 4		    
+    "MO3髡夔恁寁         "	,	//	217	02-17	Multi-Function Output 5		    
+    "MO4髡夔恁寁         "	,	//	218	02-18	Multi-Function Output 6		    
+    "MO5髡夔恁寁         "	,	//	219	02-19	Multi-Function Output 7		    
+    "MO6髡夔恁寁         "	,	//	220	02-20	Multi-Function Output 8		    
+    "MO7髡夔恁寁         "	,	//	221	02-21	Multi-Function Output 9		    
+    "MO8髡夔恁寁         "	,	//	222	02-22	Multi-Function Output 10		    
+    "杅趼怀堤源砃        "	,	//	223	02-23	Multi-Function Output inverse	
+    "ゐ雄陓瘍耀宒恁寁    "  ,   //  224 02-24   Sequence start mode
+    "�扂牓肅妗蓬�1   Hz  "	,	//	225	02-25	Desired Frequency 1		        
+    "�扂牓肅妗蓬�1遵 Hz  "	,	//	226	02-26	Band of Desired Frequency 1		
+    "�扂牓肅妗蓬�2   Hz  "	,	//	227	02-27	Desired Frequency 2		        
+    "�扂牓肅妗蓬�2遵 Hz  "	,	//	228	02-28	Band of Desired Frequency 2		
+    "儂迮价陬庋溫晊奀sec "	,	//	229	02-29	Brake Delay Timer at run
+    "儂迮价陬惕掅晊奀sec "	,	//	230	02-30	Brake Delay Timer at stop
+    "萇棠概絳籵晊奀  sec "	,	//	231	02-31	Mech Contact Delay Timer run
+    "萇棠概剿羲晊奀  sec "	,	//	232	02-32	Mech Contact Delay Timer stop		
+    "萇霜袧弇扢隅    %   "	,	//	233	02-33	Isum Current Output Detect	    
+    "厒僅⑹僇扢隅    Hz  "	,	//	234	02-34	Speed Area
+    "儂迮价陬潰堤奀潔sec "	,	//	235 02-35	Mechanical Brake Checking Time
+    "萇棠概潰堤奀潔  sec "	,	//	236 02-36   Magnetic Contactor Checking Time
+    "蛌撻�溜炩脂劙√�    "  ,   //  237 02-37   Mechanical Brake Checking Current Enable
+    "萇棠概絳籵晊奀  sec "	,	//  238 02-38   Mech Contact Delay Timer run
+    "萇棠概剿羲晊奀  sec "	,	//  239 02-39   Mech Contact Delay Timer stop	
+	"LU/LD祑都恁寁       "  ,   //  240 02-40   LU/LD error  Selection	  //#15977, LULD detect, James, 2021/04/01
+	"LU/LD羲繚淈聆   sec "  ,   //  241 02-41   LD/LD Open Detect Time      //#15977, LULD detect, James, 2021/04/01
+	"LU/LD傻繚淈聆   sec "  ,   //  242 02-42   LD/LD Short Detect Time     //#15977, LULD detect, James, 2021/04/01
+    "堍蛌厒僅善湛遵僅Hz  "	,	//  243 02-43   Band of Speed Agree Function #18572			
+    "STO傻繚淈聆奀潔 sec "  ,   //  244 02-44   STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
+    "819 Sensor          "  ,   //  245 02-45   //[Artemis Add Sensor819 Function/Special/2022/06/06]
+    "厒僅癹秶        m/s "  ,   //  246 02-46   //[Artemis Add Sensor819 Function/Special/2022/06/06]
+
+    "悵隱                "  ,   //	247 02-47   RESERVED
+    "悵隱                "  ,   //	248 02-48   RESERVED
+    "悵隱                "  ,   //	249 02-49   RESERVED
+    "悵隱                "  ,   //	250 02-50   RESERVED
+    "悵隱                "  ,   //	251 02-51   RESERVED
+    "悵隱                "  ,   //	252 02-52   RESERVED
+    "悵隱                "  ,   //	253 02-53   RESERVED
+    "悵隱                "  ,   //  254 02-54   RESERVED
+    "悵隱                "  ,   //	255 02-55   RESERVED
+    "悵隱                "  ,   //	256 02-56   RESERVED
+    "悵隱                "  ,   //	257 02-57   RESERVED
+    "悵隱                "  ,   //	258 02-58   RESERVED
+    "悵隱                "  ,   //	259 02-59   RESERVED
+    "悵隱                "  ,   //	260 02-60   RESERVED
+    "悵隱                "  ,   //	261 02-61   RESERVED
+    "悵隱                "  ,   //	262 02-62   RESERVED
+    "悵隱                "  ,   //	263 02-63   RESERVED
+    "悵隱                "  ,   //  264 02-64   RESERVED
+    "悵隱                "  ,   //	265 02-65   RESERVED
+    "悵隱                "  ,   //	266 02-66   RESERVED
+    "悵隱                "  ,   //	267 02-67   RESERVED
+    "悵隱                "  ,   //	268 02-68   RESERVED
+    "悵隱                "  ,   //	269 02-69   RESERVED
+    "悵隱                "  ,   //	270 02-70   RESERVED
+    "悵隱                "  ,   //	271 02-71   RESERVED
+    "悵隱                "  ,   //	272 02-72   RESERVED
+    "悵隱                "  ,   //	273 02-73   RESERVED
+    "悵隱                "  ,   //  274 02-74   RESERVED
+    "悵隱                "  ,   //	275 02-75   RESERVED
+    "悵隱                "  ,   //	276 02-76   RESERVED
+    "悵隱                "  ,   //	277 02-77   RESERVED
+    "悵隱                "  ,   //	278 02-78   RESERVED
+    "悵隱                "  ,   //	279 02-79   RESERVED
+    "悵隱                "  ,   //	280 02-80   RESERVED
+    "悵隱                "  ,   //	281 02-81   RESERVED
+    "悵隱                "  ,   //	282 02-82   RESERVED
+    "悵隱                "  ,   //	283 02-83   RESERVED
+    "悵隱                "  ,   //  284 02-84   RESERVED
+    "悵隱                "  ,   //	285 02-85   RESERVED
+    "悵隱                "  ,   //	286 02-86   RESERVED
+    "悵隱                "  ,   //	287 02-87   RESERVED
+    "悵隱                "  ,   //	288 02-88   RESERVED
+    "悵隱                "  ,   //	289 02-89   RESERVED
+    "悵隱                "  ,   //	280 02-90   RESERVED
+    "悵隱                "  ,   //	291 02-91   RESERVED
+    "悵隱                "  ,   //	292 02-92   RESERVED
+    "悵隱                "  ,   //	293 02-93   RESERVED
+    "悵隱                "  ,   //  294 02-94   RESERVED
+    "悵隱                "  ,   //	295 02-95   RESERVED
+    "悵隱                "  ,   //	296 02-96   RESERVED
+	"悵隱                "  ,   //  297 02-97   RESERVED
+	"悵隱                "  ,   //  298 02-98   RESERVED
+	"悵隱                "  ,   //  299 02-99   RESERVED
+
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
-    "AUI1髡夔恁寁        "	,	//	214	03-00 AUI1 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "悵隱                "	,	//	215	03-01 ACI  selection                    //[ACI function remove, Bernie, 01/20/2012] 
-    "AUI2髡夔恁寁        "	,	//	216	03-02 AUI2 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1怀�踰巷�    %   "	,	//	217	03-03 AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "悵隱                "	,	//	218	03-04 ACI  input Bias                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2怀�踰巷�    %   "	,	//	219	03-05 AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1淏蛹ぇ揤耀宒    "	,	//	220 03-06 AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "悵隱                "	,	//	221 03-07 ACI  input Polarity               //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2淏蛹ぇ揤耀宒    "	,	//	222 03-08 AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1怀�郺齎�    %   "	,	//	223 03-09 AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "悵隱                "	,	//	224 03-10 ACI  input Gain                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2怀�郺齎�    %   "	,	//	225 03-11 AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1薦疏奀潔    sec "	,	//	226 03-12 Low pass filter of AUI1 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "悵隱                "	,	//	227 03-13 Low pass filter of ACI  input     //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2薦疏奀潔    sec "	,	//	228 03-14 Low pass filter of AUI2 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "盡笭硃野赻悝炾      "	,	//	229 03-15 Loss of ACI                       //[ACI function remove, Bernie, 01/20/2012]
-    "悵隱                "  ,   //  230 03-16 RESERVED 
-    "AO1 怀堤恁寁        "	,	//	231 03-17 Analong Output 1
-    "AO1 怀堤崝祔    %   "	,	//	232 03-18 Analong Output 1 Gain
-    "AO1 怀堤毀砃妏夔    "	,	//	233 03-19 AO1 in minus value
-    "AO2 怀堤恁砐        "	,	//	234 03-20 Analong Output 2
-    "AO2 怀堤崝祔    %   "	,	//	235 03-21 Analong Output 2 Gain
-    "AO2 怀堤毀砃妏夔    "	,	//	236 03-22 AO2 in minus value
-    "AUI1耀攜怀�踽�宒    "	,	//	237 03-23 AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI2耀攜怀�踽�宒    "	,	//	238 03-24 AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    //"AUI1怀�輶頞�        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-    //"AUI2怀�輶頞�        "	,	//	238  03-26    AUI2 Communciate
+    "AUI1髡夔恁寁        "	,	//	300	03-00   AUI1 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "悵隱                "	,	//	301	03-01   ACI  selection                    //[ACI function remove, Bernie, 01/20/2012] 
+    "AUI2髡夔恁寁        "	,	//  302	03-02   AUI2 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1怀�踰巷�    %   "	,	//	303	03-03   AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "悵隱                "	,	//	307	03-04   ACI  input Bias                   //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2怀�踰巷�    %   "	,	//	305	03-05   AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1淏蛹ぇ揤耀宒    "	,	//	306 03-06   AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "悵隱                "	,	//	307 03-07   ACI  input Polarity               //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2淏蛹ぇ揤耀宒    "	,	//	308 03-08   AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1怀�郺齎�    %   "	,	//	309 03-09   AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "悵隱                "	,	//	310 03-10   ACI  input Gain                   //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2怀�郺齎�    %   "	,	//	311 03-11   AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1薦疏奀潔    sec "	,	//	312 03-12   Low pass filter of AUI1 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "悵隱                "	,	//	313 03-13   Low pass filter of ACI  input     //[ACI function remove, Bernie, 01/20/2012]
+    "AUI2薦疏奀潔    sec "	,	//	314 03-14   Low pass filter of AUI2 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "盡笭硃野赻悝炾      "	,	//	315 03-15   Loss of ACI                       //[ACI function remove, Bernie, 01/20/2012]
+    "悵隱                "  ,   //  316 03-16   RESERVED 
+    "AO1 怀堤恁寁        "	,	//	317 03-17   Analong Output 1
+    "AO1 怀堤崝祔    %   "	,	//	318 03-18   Analong Output 1 Gain
+    "AO1 怀堤毀砃妏夔    "	,	//	319 03-19   AO1 in minus value
+    "AO2 怀堤恁砐        "	,	//	320 03-20   Analong Output 2
+    "AO2 怀堤崝祔    %   "	,	//	321 03-21   Analong Output 2 Gain
+    "AO2 怀堤毀砃妏夔    "	,	//	322 03-22   AO2 in minus value
+    "AUI1耀攜怀�踽�宒    "	,	//	323 03-23   AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2耀攜怀�踽�宒    "	,	//	324 03-24   AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    //"AUI1怀�輶頞�        "	,	//	325  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+    //"AUI2怀�輶頞�        "	,	//	326  03-26    AUI2 Communciate
 
 /*---- GROUP 04---------------------------------------*/
 /*  "12345678901234561234"	*/
-    "菴錨僇厒        Hz  "	,	//	239 04-00 Multi-Speed 0
-    "菴珨僇厒        Hz  "	,	//	240 04-01 Multi-Speed 1
-    "菴媼僇厒        Hz  "	,	//	241 04-02 Multi-Speed 2
-    "菴��僇厒        Hz  "	,	//	242 04-03 Multi-Speed 3
-    "菴侐僇厒        Hz  "	,	//	243 04-04 Multi-Speed 4
-    "菴拻僇厒        Hz  "	,	//	244 04-05 Multi-Speed 5
-    "菴鞠僇厒        Hz  "	,	//	245 04-06 Multi-Speed 6
-    "菴ほ僇厒        Hz  "	,	//	246 04-07 Multi-Speed 7
-    "菴匐僇厒        Hz  "	,	//	247 04-08 Multi-Speed 8
-    "菴嬝僇厒        Hz  "	,	//	248 04-09 Multi-Speed 9
-    "菴坋僇厒        Hz  "	,	//	249 04-10 Multi-Speed 10 
-    "菴坋珨僇厒      Hz  "	,	//	250 04-11 Multi-Speed 11
-    "菴坋媼僇厒      Hz  "	,	//	251 04-12 Multi-Speed 12
-    "菴坋��僇厒      Hz  "	,	//	252 04-13 Multi-Speed 13
-    "菴坋侐僇厒      Hz  "	,	//	253 04-14 Multi-Speed 14
-    "菴坋拻僇厒      Hz  "	,	//	254 04-15 Multi-Speed 15
+    "菴錨僇厒        Hz  "	,	//  327 04-00   Multi-Speed 0
+    "菴珨僇厒        Hz  "	,	//  328 04-01   Multi-Speed 1
+    "菴媼僇厒        Hz  "	,	//  329 04-02   Multi-Speed 2
+    "菴��僇厒        Hz  "	,	//  330 04-03   Multi-Speed 3
+    "菴侐僇厒        Hz  "	,	//  331 04-04   Multi-Speed 4
+    "菴拻僇厒        Hz  "	,	//  332 04-05   Multi-Speed 5
+    "菴鞠僇厒        Hz  "	,	//  333 04-06   Multi-Speed 6
+    "菴ほ僇厒        Hz  "	,	//  334 04-07   Multi-Speed 7
+    "菴匐僇厒        Hz  "	,	//  345 04-08   Multi-Speed 8
+    "菴嬝僇厒        Hz  "	,	//  346 04-09   Multi-Speed 9
+    "菴坋僇厒        Hz  "	,	//  347 04-10   Multi-Speed 10 
+    "菴坋珨僇厒      Hz  "	,	//  348 04-11   Multi-Speed 11
+    "菴坋媼僇厒      Hz  "	,	//  349 04-12   Multi-Speed 12
+    "菴坋��僇厒      Hz  "	,	//  350 04-13   Multi-Speed 13
+    "菴坋侐僇厒      Hz  "	,	//  351 04-14   Multi-Speed 14
+    "菴坋拻僇厒      Hz  "	,	//  352 04-15   Multi-Speed 15
+    "寰堔厒僅        m/s "  ,   //  353 04-16
+    "す脯厒僅        m/s "  ,   //  354 04-17
+    "毀價桴厒僅      m/s "  ,   //  355 04-18
     
-    "寰堔厒僅        m/s "  ,   //    2xx 04-16
-    "す脯厒僅        m/s "  ,   //    2xx 04-17
-    "毀價桴厒僅      m/s "  ,   //    2xx 04-18
-    "詩坰湖賑硃野    mm  "  ,   //    2xx 04-19 GFC Rope compensation, 2021/03/30
-    "TABST0 Status       "  ,   //    2xx 04-20
-    "TABST2 Status       "  ,   //    2xx 04-21
-    "郔詢昜燴瞼脯        "  ,   //    2xx 04-22
-    "醴ヶ瞼脯            "  ,   //    2xx 04-23
-    "闕喳苺淏沭璃    %   "  ,   //    2xx 04-24
-    "羲壽晊喧硃野    sec "  ,   //    2xx 04-25
-    "脹厒�葯鉌掉�    ms  "  ,   //    2xx 04-26
-    "覂散啣酗僅      mm  "  ,   //    2xx 04-27 
-    "醴ヶ弇离 詢     m   "  ,   //    2xx 04-28
-    "醴ヶ弇离 腴     mm  "  ,   //    2xx 04-29
-    "醴ヶ闕喳 H          "  ,   //    2xx 04-30 
-    "醴ヶ闕喳 L          "  ,   //    2xx 04-31
-    "覂散啣闕喳 H        "  ,   //    2xx 04-32
-    "覂散啣闕喳 L        "  ,   //    2xx 04-33
-    "嫖萇潔擒闕喳H       "  ,   //    2xx 04-34
-    "嫖萇潔擒闕喳L       "  ,   //    2xx 04-35
-    "DLC髡夔摩           "  ,   //    2xx 04-36
-    "PDO珆尨倰怓         "  ,   //    2xx 04-37
-    "熬厒羲壽�楅簊馦螸m  "  ,   //    2xx 04-38
-    "郔湮枍厒啃煦掀  %   "  ,   //    2xx 04-39 //[ADCO EPS Modify]
-    "粟銅晊扥硃野    mm  "  ,   //    2xx 04-40//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
-    "EST Status          "  ,   //    2xx 04-41
-    "EST Count           "  ,   //    2xx 04-42
-    "TABST0 Count        "  ,   //    2xx 04-43
-    "TABST1 Count        "  ,   //    2xx 04-44
-    "DDS1/UDS1厒癹   m/s "  ,   //    2XX 04-45  DD1_Vlim  //Artemis speed limit, James, 20200220                                     
-    "DDS2/UDS2厒癹   m/s "  ,   //    2XX 04-46  DD2_Vlim  //Artemis speed limit, James, 20200220                                    
-    "DDS3/UDS3厒癹   m/s "  ,   //    2XX 04-47  DD3_Vlim  //Artemis speed limit, James, 20200220                                    
-    "DDS4/UDS4厒癹   m/s "  ,   //    2XX 04-48  DD4_Vlim  //Artemis speed limit, James, 20200220
-    "髡夔珜醱扢隅        "  ,   //    2XX 04-49  user page cahnge
+    "詩坰湖賑硃野    mm  "  ,   //  356 04-19    GFC Rope compensation, 2021/03/30
+    "TABST0 Status       "  ,   //  357 04-20
+    "TABST2 Status       "  ,   //  358 04-21
+    "郔詢昜燴瞼脯        "  ,   //  359 04-22
+    "醴ヶ瞼脯            "  ,   //  360 04-23
+    "闕喳苺淏沭璃    %   "  ,   //  361 04-24
+    "羲壽晊喧硃野    sec "  ,   //  362 04-25
+    "脹厒�葯鉌掉�    ms  "  ,   //  363 04-26
+    "覂散啣酗僅      mm  "  ,   //  364 04-27  
+    "醴ヶ弇离 詢     m   "  ,   //  365 04-28
+    "醴ヶ弇离 腴     mm  "  ,   //  366 04-29
+    "醴ヶ闕喳 H          "  ,   //  367 04-30  
+    "醴ヶ闕喳 L          "  ,   //  368 04-31
+    "覂散啣闕喳 H        "  ,   //  369 04-32
+    "覂散啣闕喳 L        "  ,   //  370 04-33
+    "嫖萇潔擒闕喳H       "  ,   //  371 04-34
+    "嫖萇潔擒闕喳L       "  ,   //  372 04-35   
+    "DLC髡夔摩           "  ,   //  373 04-36   
+    "PDO珆尨倰怓         "  ,   //  374 04-37
+    "熬厒羲壽�楅簊馦螸m  "  ,   //  375 04-38   
+    "郔湮枍厒啃煦掀  %   "  ,   //  376 04-39    //[ADCO EPS Modify]
+    "粟銅晊扥硃野    mm  "  ,   //  377 04-40    //#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
+    "EST Status          "  ,   //  378 04-41
+    "EST Count           "  ,   //  379 04-42
+    "TABST0 Count        "  ,   //  380 04-43
+    "TABST1 Count        "  ,   //  381 04-44
+    "DDS1/UDS1厒癹   m/s "  ,   //  382 04-45    DD1_Vlim  //Artemis speed limit, James, 20200220                                     
+    "DDS2/UDS2厒癹   m/s "  ,   //  383 04-46    DD2_Vlim  //Artemis speed limit, James, 20200220                                    
+    "DDS3/UDS3厒癹   m/s "  ,   //  384 04-47    DD3_Vlim  //Artemis speed limit, James, 20200220                                    
+    "DDS4/UDS4厒癹   m/s "  ,   //  385 04-48    DD4_Vlim  //Artemis speed limit, James, 20200220
+    "髡夔珜醱扢隅        "  ,   //  386 04-49    user page cahnge
     
-    "1 瞼弇离 詢     m   "  , //  2XX 04-50   1Floor Position H 
-    "1 瞼弇离 腴     mm  "  , //  2XX 04-51   1Floor Position L                                       
-    "2 瞼弇离 詢     m   "  , //  2XX 04-52   2Floor Position H                                       
-    "2 瞼弇离 腴     mm  "  , //  2XX 04-53   2Floor Position L                                       
-    "3 瞼弇离 詢     m   "  , //  2XX 04-54   3Floor Position H                                       
-    "3 瞼弇离 腴     mm  "  , //  2XX 04-55   3Floor Position L                                       
-    "4 瞼弇离 詢     m   "  , //  2XX 04-56   4Floor Position H                                       
-    "4 瞼弇离 腴     mm  "  , //  2XX 04-57   4Floor Position L                                       
-    "5 瞼弇离 詢     m   "  , //  2XX 04-58   5Floor Position H                                       
-    "5 瞼弇离 腴     mm  "  , //  2XX 04-59   5Floor Position L                                       
-    "6 瞼弇离 詢     m   "  , //  2XX 04-60   6Floor Position H                                       
-    "6 瞼弇离 腴     mm  "  , //  2XX 04-61   6Floor Position L                                       
-    "7 瞼弇离 詢     m   "  , //  2XX 04-62   7Floor Position H                                       
-    "7 瞼弇离 腴     mm  "  , //  2XX 04-63   7Floor Position L                                       
-    "8 瞼弇离 詢     m   "  , //  2XX 04-64   8Floor Position H                                       
-    "8 瞼弇离 腴     mm  "  , //  2XX 04-65   8Floor Position L                                       
-    "9 瞼弇离 詢     m   "  , //  2XX 04-66   9Floor Position H                                       
-    "9 瞼弇离 腴     mm  "  , //  2XX 04-67   9Floor Position L                                       
-    "10瞼弇离 詢     m   "  , //  2XX 04-68   10Floor Position H                                      
-    "10瞼弇离 腴     mm  "  , //  2XX 04-69   10Floor Position L                                      
-    "11瞼弇离 詢     m   "  , //  2XX 04-70   11Floor Position H                                      
-    "11瞼弇离 腴     mm  "  , //  2XX 04-71   11Floor Position L                                      
-    "12瞼弇离 詢     m   "  , //  2XX 04-72   12Floor Position H                                      
-    "12瞼弇离 腴     mm  "  , //  2XX 04-73   12Floor Position L                                      
-    "13瞼弇离 詢     m   "  , //  2XX 04-74   13Floor Position H                                      
-    "13瞼弇离 腴     mm  "  , //  2XX 04-75   13Floor Position L                                      
-    "14瞼弇离 詢     m   "  , //  2XX 04-76   14Floor Position H                                      
-    "14瞼弇离 腴     mm  "  , //  2XX 04-77   14Floor Position L                                      
-    "15瞼弇离 詢     m   "  , //  2XX 04-78   15Floor Position H                                      
-    "15瞼弇离 腴     mm  "  , //  2XX 04-79   15Floor Position L                                      
-    "16瞼弇离 詢     m   "  , //  2XX 04-80   16Floor Position H                                      
-    "16瞼弇离 腴     mm  "  , //  2XX 04-81   16Floor Position L                                      
-    "17瞼弇离 詢     m   "  , //  2XX 04-82   17Floor Position H                                      
-    "17瞼弇离 腴     mm  "  , //  2XX 04-83   17Floor Position L                                      
-    "18瞼弇离 詢     m   "  , //  2XX 04-84   18Floor Position H                                      
-    "18瞼弇离 腴     mm  "  , //  2XX 04-85   18Floor Position L                                      
-    "19瞼弇离 詢     m   "  , //  2XX 04-86   19Floor Position H                                      
-    "19瞼弇离 腴     mm  "  , //  2XX 04-87   19Floor Position L                                      
-    "20瞼弇离 詢     m   "  , //  2XX 04-88   20Floor Position H                                      
-    "20瞼弇离 腴     mm  "  , //  2XX 04-89   20Floor Position L                                      
-    "21瞼弇离 詢     m   "  , //  2XX 04-90   21Floor Position H                                      
-    "21瞼弇离 腴     mm  "  , //  2XX 04-91   21Floor Position L                                      
-    "22瞼弇离 詢     m   "  , //  2XX 04-92   22Floor Position H                                      
-    "22瞼弇离 腴     mm  "  , //  2XX 04-93   22Floor Position L                                      
-    "23瞼弇离 詢     m   "  , //  2XX 04-94   23Floor Position H                                      
-    "23瞼弇离 腴     mm  "  , //  2XX 04-95   23Floor Position L                                      
-    "24瞼弇离 詢     m   "  , //  2XX 04-96   24Floor Position H                                      
-    "24瞼弇离 腴     mm  "  , //  2XX 04-97   24Floor Position L                                      
-    "25瞼弇离 詢     m   "  , //  2XX 04-98   25Floor Position H                                      
-    "25瞼弇离 腴     mm  "  , //  2XX 04-99   25Floor Position L                                      
+    "1 瞼弇离 詢     m   "  ,   //  387 04-50   1Floor Position H 
+    "1 瞼弇离 腴     mm  "  ,   //  388 04-51   1Floor Position L                                       
+    "2 瞼弇离 詢     m   "  ,   //  389 04-52   2Floor Position H                                       
+    "2 瞼弇离 腴     mm  "  ,   //  390 04-53   2Floor Position L                                       
+    "3 瞼弇离 詢     m   "  ,   //  391 04-54   3Floor Position H                                       
+    "3 瞼弇离 腴     mm  "  ,   //  392 04-55   3Floor Position L                                       
+    "4 瞼弇离 詢     m   "  ,   //  393 04-56   4Floor Position H                                       
+    "4 瞼弇离 腴     mm  "  ,   //  394 04-57   4Floor Position L                                       
+    "5 瞼弇离 詢     m   "  ,   //  395 04-58   5Floor Position H                                       
+    "5 瞼弇离 腴     mm  "  ,   //  396 04-59   5Floor Position L                                       
+    "6 瞼弇离 詢     m   "  ,   //  397 04-60   6Floor Position H                                       
+    "6 瞼弇离 腴     mm  "  ,   //  398 04-61   6Floor Position L                                       
+    "7 瞼弇离 詢     m   "  ,   //  399 04-62   7Floor Position H                                       
+    "7 瞼弇离 腴     mm  "  ,   //  400 04-63   7Floor Position L                                       
+    "8 瞼弇离 詢     m   "  ,   //  401 04-64   8Floor Position H                                       
+    "8 瞼弇离 腴     mm  "  ,   //  402 04-65   8Floor Position L                                       
+    "9 瞼弇离 詢     m   "  ,   //  403 04-66   9Floor Position H                                       
+    "9 瞼弇离 腴     mm  "  ,   //  404 04-67   9Floor Position L                                       
+    "10瞼弇离 詢     m   "  ,   //  405 04-68   10Floor Position H                                      
+    "10瞼弇离 腴     mm  "  ,   //  406 04-69   10Floor Position L                                      
+    "11瞼弇离 詢     m   "  ,   //  407 04-70   11Floor Position H                                      
+    "11瞼弇离 腴     mm  "  ,   //  408 04-71   11Floor Position L                                      
+    "12瞼弇离 詢     m   "  ,   //  409 04-72   12Floor Position H                                      
+    "12瞼弇离 腴     mm  "  ,   //  410 04-73   12Floor Position L                                      
+    "13瞼弇离 詢     m   "  ,   //  411 04-74   13Floor Position H                                      
+    "13瞼弇离 腴     mm  "  ,   //  412 04-75   13Floor Position L                                      
+    "14瞼弇离 詢     m   "  ,   //  413 04-76   14Floor Position H                                      
+    "14瞼弇离 腴     mm  "  ,   //  414 04-77   14Floor Position L                                      
+    "15瞼弇离 詢     m   "  ,   //  415 04-78   15Floor Position H                                      
+    "15瞼弇离 腴     mm  "  ,   //  416 04-79   15Floor Position L                                      
+    "16瞼弇离 詢     m   "  ,   //  417 04-80   16Floor Position H                                      
+    "16瞼弇离 腴     mm  "  ,   //  418 04-81   16Floor Position L                                      
+    "17瞼弇离 詢     m   "  ,   //  419 04-82   17Floor Position H                                      
+    "17瞼弇离 腴     mm  "  ,   //  420 04-83   17Floor Position L                                      
+    "18瞼弇离 詢     m   "  ,   //  421 04-84   18Floor Position H                                      
+    "18瞼弇离 腴     mm  "  ,   //  422 04-85   18Floor Position L                                      
+    "19瞼弇离 詢     m   "  ,   //  423 04-86   19Floor Position H                                      
+    "19瞼弇离 腴     mm  "  ,   //  424 04-87   19Floor Position L                                      
+    "20瞼弇离 詢     m   "  ,   //  425 04-88   20Floor Position H                                      
+    "20瞼弇离 腴     mm  "  ,   //  426 04-89   20Floor Position L                                      
+    "21瞼弇离 詢     m   "  ,   //  427 04-90   21Floor Position H                                      
+    "21瞼弇离 腴     mm  "  ,   //  428 04-91   21Floor Position L                                      
+    "22瞼弇离 詢     m   "  ,   //  429 04-92   22Floor Position H                                      
+    "22瞼弇离 腴     mm  "  ,   //  430 04-93   22Floor Position L                                      
+    "23瞼弇离 詢     m   "  ,   //  431 04-94   23Floor Position H                                      
+    "23瞼弇离 腴     mm  "  ,   //  432 04-95   23Floor Position L                                      
+    "24瞼弇离 詢     m   "  ,   //  433 04-96   24Floor Position H                                      
+    "24瞼弇离 腴     mm  "  ,   //  434 04-97   24Floor Position L                                      
+    "25瞼弇离 詢     m   "  ,   //  435 04-98   25Floor Position H                                      
+    "25瞼弇离 腴     mm  "  ,   //  436 04-99   25Floor Position L                                      
         
 /*---- GROUP 05----------------------------------------*/
 /*  "12345678901234561234"	*/      	
-    "IM統杅赻悝炾        "	,	//	255 05-00 Motor Auto-Tuning
-    "IM萇儂塗隅萇霜  Amps"	,	//	256 05-01 Motor 1 rated Current           
-    "IM萇儂塗隅髡薹  Kw  "	,	//	257 05-02 Motor 1 Rated Power             
-    "IM萇儂塗隅蛌厒  RPM "	,	//	258 05-03 Motor 1 Rated RPM               
-    "IM萇儂憤杅          "	,	//	259 05-04 Motor 1 pole No.                
-    "IM萇儂拻婥萇霜  Amps"	,	//	260 05-05 Motor 1 No-Load Current         
-    "IM萇儂統杅 Rs   ohm "	,	//	261 05-06 Motor 1 Rs                      
-    "IM萇儂統杅 Rr   ohm "	,	//	262 05-07 Motor 1 Rr                      
-    "IM萇儂統杅 Lm   mH  "	,	//	263 05-08 Motor 1 Lm                      
-    "IM萇儂統杅 Lx   mH  "	,	//	264 05-09 Motor 1 Lx                      
-    "蛌撻硃野腴籵薦疏sec "	,	//	265 05-10 Vector Voltage Filter	        
-    "賑船硃野腴籵薦疏sec "	,	//	266 05-11 Vector Slip Filter	            
-    "萇雄蛌撻硃野崝祔    "	,	//	267 05-12 Torque Compensation Gain	    
-    "賑船硃野崝祔        "	,	//	268 05-13 Slip Compensation Gain	        
-    "賑船昫船袧弇    %   "	,	//	269 05-14 Slip Deviation level	        
-    "賑船昫船潰堤奀潔sec "	,	//	270 05-15 Slip Deviation Detect Time	    
-    "徹賑船潰堤恁寁      "	,	//	271 05-16 Over Slip treatment	            
-    "涾絕硃野秪赽        "	,	//	272 05-17 Coeff for hunting disable	    
-    "濛數萇儂堍蛌奀潔Mins"	,	//	273 05-18 Accumulative Motor Operation Min
-    "濛數萇儂堍蛌    Days"	,	//	274 05-19 Accumulative Motor Operation Day
-    "沺郋囷囮硃野    %   "	,	//	275 05-20 Coreloss % of output Power	    
-    "曹けん奻萇奀潔  Mins"	,	//	276 05-21 Power On Min
-    "曹けん奻萇毞杅  Days"	,	//	277 05-22 Power On Day    
-    "隙汜賑船硃野崝祔%   "  ,   //  2XX 05-23 Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
-	"萇雄賑船硃野崝祔%   "	,	//	2XX 05-24 RESERVED
+    "IM統杅赻悝炾        "	,	//	437 05-00	Motor Auto-Tuning
+    "IM萇儂塗隅萇霜  Amps"	,	//	438 05-01	Motor 1 rated Current           
+    "IM萇儂塗隅髡薹  Kw  "	,	//	439 05-02	Motor 1 Rated Power             
+    "IM萇儂塗隅蛌厒  RPM "	,	//	440 05-03	Motor 1 Rated RPM               
+    "IM萇儂憤杅          "	,	//	441 05-04	Motor 1 pole No.                
+    "IM萇儂拻婥萇霜  Amps"	,	//	442 05-05	Motor 1 No-Load Current         
+    "IM萇儂統杅 Rs   ohm "	,	//	443 05-06	Motor 1 Rs                      
+    "IM萇儂統杅 Rr   ohm "	,	//	444 05-07	Motor 1 Rr                      
+    "IM萇儂統杅 Lm   mH  "	,	//	445 05-08	Motor 1 Lm                      
+    "IM萇儂統杅 Lx   mH  "	,	//	446 05-09	Motor 1 Lx                      
+    "蛌撻硃野腴籵薦疏sec "	,	//	447 05-10	Vector Voltage Filter	        
+    "賑船硃野腴籵薦疏sec "	,	//	448 05-11	Vector Slip Filter	            
+    "萇雄蛌撻硃野崝祔    "	,	//	449 05-12	Torque Compensation Gain	    
+    "賑船硃野崝祔        "	,	//	450 05-13	Slip Compensation Gain	        
+    "賑船昫船袧弇    %   "	,	//	451 05-14	Slip Deviation level	        
+    "賑船昫船潰堤奀潔sec "	,	//	452 05-15	Slip Deviation Detect Time	    
+    "徹賑船潰堤恁寁      "	,	//	453 05-16	Over Slip treatment	            
+    "涾絕硃野秪赽        "	,	//	454 05-17	Coeff for hunting disable	    
+    "濛數萇儂堍蛌奀潔Mins"	,	//	455 05-18	Accumulative Motor Operation Min
+    "濛數萇儂堍蛌    Days"	,	//	456 05-19	Accumulative Motor Operation Day
+    "沺郋囷囮硃野    %   "	,	//	457 05-20	Coreloss % of output Power	    
+    "曹けん奻萇奀潔  Mins"	,	//	458 05-21	Power On Min
+    "曹けん奻萇毞杅  Days"	,	//	459 05-22	Power On Day    
+    "隙汜賑船硃野崝祔%   "  ,   //  460 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
+	"萇雄賑船硃野崝祔%   "	,	//	461 05-24   RESERVED
 	
 /*---- GROUP 06----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "腴萇揤袧弇      V   "	,	//  278  06-00 Low voltage level
-    "Й眈悵誘            "	,	//  279  06-01 Phase loss
-    "樓厒徹萇霜囮厒  %   "	,	//	280  06-02 OC stall during Accel
-    "隅厒徹萇霜囮厒  %   "	,	//	281  06-03 OC stall during Decel
-    "徹萇霜囮厒揭燴      "	,	//	282  06-04 Stall preventation Accel/Decel time selection
-    "徹蛌撻OT1揭燴       "	,	//	283  06-05 Over-Torque 1 Selection
-    "徹蛌撻OT1袧弇   %   "	,	//	284  06-06 Over-Torque 1 level
-    "徹蛌撻OT1潰堤   sec "	,	//	285  06-07 Over-Torque 1 Time
-    "徹蛌撻OT2揭燴       "	,	//	286  06-08 Over-Torque 2 Selection	                     
-    "徹蛌撻OT2袧弇   %   "	,	//	287  06-09 Over-Torque 2 level	                         
-    "徹蛌撻OT2潰堤   sec "	,	//	288  06-10 Over-Torque 2 Time	                         
-    "萇霜癹秶        %   "	,	//	289  06-11 Current Limit
-    "萇赽��萇緛恁寁      "	,	//	290  06-12 Thermal Relay 1 Selection
-    "��萇緛釬蚚奀潔  sec "	,	//	291  06-13 Thermal Relay 1 Time
-    "徹��劑豢恲僅袧弇C   "	,	//	292  06-14 OH Warning Level
-    "囮厒滅砦癹秶袧弇%   "	,	//	293  06-15 Stall preventation Limit Level
-    "郔輪珨棒嘟梤暮翹    "	,	//	294  06-16 1st Fault Record
-    "2棒ヶ腔嘟梤暮翹     "	,	//	295  06-17 2nd Fault Record
-    "3棒ヶ腔嘟梤暮翹     "	,	//	296  06-18 3rd Fault Record
-    "4棒ヶ腔嘟梤暮翹     "	,	//	297  06-19 4th Fault Record
-    "5棒ヶ腔嘟梤暮翹     "	,	//	298  06-20 5th Fault Record
-    "6棒ヶ腔嘟梤暮翹     "	,	//	299  06-21 6th Fault Record
-    "祑都怀堤恁寁 1      "	,	//	300  06-22 Fault Option 1
-    "祑都怀堤恁寁2       "	,	//	301  06-23 Fault Option 2
-    "祑都怀堤恁寁3       "	,	//	302  06-24 Fault Option 3
-    "祑都怀堤恁寁4       "	,	//	303  06-25 Fault Option 4
-    "PTC雄釬恁寁         "	,	//	304  06-26 PTC over Treatments	                         
-    "PTC袧弇         %   "	,	//	305  06-27 PTC Level
-    "PTC潰堤奀潔     sec "	,	//	306  06-28 PTC Detect Filter time
-    "踡摹堍俴萇埭萇揤V   "	,	//	307  06-29 EPS voltage level
-    "渣昫怀堤恁寁        "	,	//	308  06-30 Fault Option Mode
-    "ED 怀堤Й眈淈聆     "	,	//	309  06-31 Motor Phase Detection Mode, Add by DINO, 05/12/2009
-    "ヶ珨棒祑都堍蛌  Mins"	,	//	310  06-32 1st Fault Time(MIN)
-    "ヶ珨棒祑都堍蛌  Days"	,	//	311  06-33 1st Fault Time(DAY)
-    "2棒ヶ祑都堍蛌   Mins"	,	//	312  06-34 2nd Fault Time(MIN)
-    "2棒ヶ祑都堍蛌   Days"	,	//	313  06-35 2nd Fault Time(DAY)
-    "3棒ヶ祑都堍蛌   Mins"	,	//	314  06-36 3rd Fault Time(MIN)
-    "3棒ヶ祑都堍蛌   Days"	,	//	315  06-37 3rd Fault Time(DAY)
-    "4棒ヶ祑都堍蛌   Mins"	,	//	316  06-38 4th Fault Time(MIN)
-    "4棒ヶ祑都堍蛌   Days"	,	//	317  06-39 4th Fault Time(DAY)
-    "5棒ヶ祑都堍蛌   Mins"	,	//	318  06-40 5th Fault Time(MIN)
-    "5棒ヶ祑都堍蛌   Days"	,	//	319  06-41 5th Fault Time(DAY)
-    "6棒ヶ祑都堍蛌   Mins"	,	//	320  06-42 6th Fault Time(MIN)
-    "6棒ヶ祑都堍蛌   Days"	,	//	321  06-43 6th Fault Time(DAY)
-    "踡摹萇埭堍俴厒僅Hz  "  ,   //  322  06-44 EPS Frequency
-    "渣昫雄釬恁寁        "  ,	//  323  06-45 LV Option Mode
-    "EPS 耀宒恁寁        "  ,	//  324  06-46 EPS Option Mode
-    "楷萸源砃刲坰奀潔sec "  ,   //  325  06-47 Generation Operation Detected Time
-    "踡摹堍俴萇埭�暕熾VA "  ,   //  326  06-48 UPS Capacity (0.1KVA)
-    "STO髡夔恁寁         "  ,   //  3xx  06-49 STO Lock selection     //[Safty function, Bernie]   
-    "嘟梤笭彸奀MO雄釬    "  ,   //  356  06-50 Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
-    "嘟梤笭彸棒杅        "  ,   //  356  06-51 Auto restart times after fault     
-    "嘟梤笭彸奀潔    sec "  ,   //  356  06-52 Auto restart interval
-    "祑都奀け薹韜鍔  Hz  "  ,   //  3xx  06-53 Fkey Record
-    "祑都奀け薹怀堤  Hz  "  ,   //  3xx  06-54 Fcmd Record
-    "祑都奀怀堤萇霜  Amps"  ,   //  3xx  06-55 Isum Record
-    "祑都奀鎮湛け薹  Hz  "  ,   //  3xx  06-56 Fout Record
-    "祑都奀怀堤萇揤  V   "  ,   //  3xx  06-57 Vout Record
-    "祑都奀DCBus萇揤 V   "  ,   //  3xx  06-58 Dcbus Record    
-    "祑都奀怀堤髡薹  KW  "  ,   //  3xx  06-59 Power Record
-    "祑都奀怀堤蛌撻  %   "  ,   //  3xx  06-60 Torque Record
-    "祑都奀IGBT恲僅  C   "  ,   //  3xx  06-61 IGBT Temperature Record   
-    "祑都奀怀�賱匋�  Hex "  ,   //  3xx  06-62 MFI State Record
-    "祑都奀怀堤傷赽  Hex "  ,   //  3xx  06-63 MFO State Record
-    "祑都奀��雄ん袨怓Hex "  ,   //  3xx  06-64 Drive State Record
-    "UCMP萇霜癹秶袧弇%   "  ,   //  3XX  06-65 Current limitation for UCMP function            //[UCMP function, Bernie, 2016/06/14]
-    "龢雄婑督昢棒杅      "  ,   //  3xx  06-66 Service time count                              //[Service time function, Bernie, 2017/03/14]
-    "龢雄婑督昢扢隅      "  ,   //  3xx  06-67 Service time function Enable                    //[Service time function, Bernie, 2017/03/14]
-    "EPS淈聆髡秪袧弇 deg "  ,   //  3xx  06-68 EPS Detect Current    
-    "EPS髡秪褒       deg "  ,   //  3xx  06-69 EPS Detect Current Ref
-    "EPS源砃憮堤         "  ,   //  3xx  06-70 EPS Detect direction
-    "EPS傷赽憮堤晊恁 sec "  ,   //  3xx  06-71 EPS MO Off Time
-    "EPS傷赽敕磁晊恁 sec "  ,   //  3xx  06-72 EPS MO Off Time
-    "蚗壅堍俴源砃數杅H   "	,   //	3xx  06-73 Running direction count high						
-    "蚗壅堍俴源砃數杅L   "	,   //	3xx  06-74 Running direction count low
-    "等棒堍俴源砃數杅H   "	,   //	3xx  06-75 Temp running direction count high
-    "等棒堍俴源砃數杅L   "	,   //  3xx  06-76 Temp running direction count low
-    "等棒堍俴笭离棒杅    "	,   //	3xx  06-77 Temp running reset count
-    "堍俴源砃癹秶棒杅k   "	,   //	3xx  06-78 Running life
-    "堍俴棒杅髡夔恁砐    "	,   //	3xx  06-79 Running function
-    "祑都2奀け薹怀堤  Hz  " ,   //  3xx  06-80 Fcmd Record1
-    "祑都2奀DCBus萇揤 V   " ,   //  3xx  06-81 Dcbus Record1
-    "祑都2奀怀堤萇霜  Amps" ,   //  3xx  06-82 Isum Record1
-    "祑都2奀IGBT恲僅  C   "	,   //  3xx  06-83 IGBT Temperature Record1
-    "祑都3奀け薹怀堤  Hz  " ,   //  3xx  06-84 Fcmd Record2
-    "祑都3奀DCBus萇揤 V   " ,   //  3xx  06-85 Dcbus Record2
-    "祑都3奀怀堤萇霜  Amps" ,   //  3xx  06-86 Isum Record2
-    "祑都3奀IGBT恲僅  C   " ,   //  3xx  06-87 IGBT Temperature Record2
-    "祑都4奀け薹怀堤  Hz  " ,   //  3xx  06-88 Fcmd Record3
-    "祑都4奀DCBus萇揤 V   " ,   //  3xx  06-89 Dcbus Record3
-    "祑都4奀怀堤萇霜  Amps" ,   //  3xx  06-90 Isum Record3
-    "祑都4奀IGBT恲僅  C   " ,   //  3xx  06-91 IGBT Temperature Record3
-    "祑都5奀け薹怀堤  Hz  " ,   //  3xx  06-92 Fcmd Record4
-    "祑都5奀DCBus萇揤 V   " ,   //  3xx  06-93 Dcbus Record4
-    "祑都5奀怀堤萇霜  Amps" ,   //  3xx  06-94 Isum Record4
-    "祑都5奀IGBT恲僅  C   " ,   //  3xx  06-95 IGBT Temperature Record4
-    "祑都6奀け薹怀堤  Hz  " ,   //  3xx  06-96 Fcmd Record5
-    "祑都6奀DCBus萇揤 V   " ,   //  3xx  06-97 Dcbus Record5
-    "祑都6奀怀堤萇霜  Amps" ,   //  3xx  06-98 Isum Record5
-    "祑都6奀IGBT恲僅  C   " ,   //  3xx  06-99 IGBT Temperature Record5
+    "腴萇揤袧弇      V   "	,	//	462 06-00	Low voltage level
+    "Й眈悵誘            "	,	//	463 06-01	Phase loss
+    "樓厒徹萇霜囮厒  %   "	,	//	464 06-02	OC stall during Accel
+    "隅厒徹萇霜囮厒  %   "	,	//	465 06-03	OC stall during Decel
+    "徹萇霜囮厒揭燴      "	,	//  466 06-04	Stall preventation Accel/Decel time selection
+    "徹蛌撻OT1揭燴       "	,	//	467 06-05	Over-Torque 1 Selection
+    "徹蛌撻OT1袧弇   %   "	,	//	468 06-06	Over-Torque 1 level
+    "徹蛌撻OT1潰堤   sec "	,	//	469 06-07	Over-Torque 1 Time
+    "徹蛌撻OT2揭燴       "	,	//	470 06-08	Over-Torque 2 Selection	                     
+    "徹蛌撻OT2袧弇   %   "	,	//	471 06-09	Over-Torque 2 level	                         
+    "徹蛌撻OT2潰堤   sec "	,	//	472 06-10	Over-Torque 2 Time	                         
+    "萇霜癹秶        %   "	,	//	473 06-11	Current Limit
+    "萇赽��萇緛恁寁      "	,	//	474 06-12	Thermal Relay 1 Selection
+    "��萇緛釬蚚奀潔  sec "	,	//	475 06-13	Thermal Relay 1 Time
+    "徹��劑豢恲僅袧弇C   "	,	//	476 06-14	OH Warning Level
+    "囮厒滅砦癹秶袧弇%   "	,	//	477 06-15	Stall preventation Limit Level
+    "郔輪珨棒嘟梤暮翹    "	,	//	478 06-16	1st Fault Record
+    "2棒ヶ腔嘟梤暮翹     "	,	//	479 06-17	2nd Fault Record
+    "3棒ヶ腔嘟梤暮翹     "	,	//	480 06-18	3rd Fault Record
+    "4棒ヶ腔嘟梤暮翹     "	,	//	481 06-19	4th Fault Record
+    "5棒ヶ腔嘟梤暮翹     "	,	//	482 06-20	5th Fault Record
+    "6棒ヶ腔嘟梤暮翹     "	,	//	483 06-21	6th Fault Record
+    "祑都怀堤恁寁 1      "	,	//	484 06-22	Fault Option 1
+    "祑都怀堤恁寁2       "	,	//	485 06-23	Fault Option 2
+    "祑都怀堤恁寁3       "	,	//	486 06-24	Fault Option 3
+    "祑都怀堤恁寁4       "	,	//	487 06-25	Fault Option 4
+    "PTC雄釬恁寁         "	,	//	488 06-26	PTC over Treatments	                         
+    "PTC袧弇         %   "	,	//	489 06-27	PTC Level
+    "PTC潰堤奀潔     sec "	,	//	490 06-28	PTC Detect Filter time
+    "踡摹堍俴萇埭萇揤V   "	,	//	491 06-29	EPS voltage level
+    "渣昫怀堤恁寁        "	,	//	492 06-30	Fault Option Mode
+    "ED 怀堤Й眈淈聆     "	,	//	493 06-31   Motor Phase Detection Mode, Add by DINO, 05/12/2009
+    "ヶ珨棒祑都堍蛌  Mins"	,	//	494 06-32	1st Fault Time(MIN)
+    "ヶ珨棒祑都堍蛌  Days"	,	//	495 06-33	1st Fault Time(DAY)
+    "2棒ヶ祑都堍蛌   Mins"	,	//	496 06-34	2nd Fault Time(MIN)
+    "2棒ヶ祑都堍蛌   Days"	,	//	497 06-35	2nd Fault Time(DAY)
+    "3棒ヶ祑都堍蛌   Mins"	,	//	498 06-36	3rd Fault Time(MIN)
+    "3棒ヶ祑都堍蛌   Days"	,	//	499 06-37	3rd Fault Time(DAY)
+    "4棒ヶ祑都堍蛌   Mins"	,	//	500 06-38	4th Fault Time(MIN)
+    "4棒ヶ祑都堍蛌   Days"	,	//	501 06-39	4th Fault Time(DAY)
+    "5棒ヶ祑都堍蛌   Mins"	,	//	502 06-40	5th Fault Time(MIN)
+    "5棒ヶ祑都堍蛌   Days"	,	//	503 06-41	5th Fault Time(DAY)
+    "6棒ヶ祑都堍蛌   Mins"	,	//	504 06-42	6th Fault Time(MIN)
+    "6棒ヶ祑都堍蛌   Days"	,	//	505 06-43	6th Fault Time(DAY)
+    "踡摹萇埭堍俴厒僅Hz  "  ,   //  506 06-44	EPS Frequency
+    "渣昫雄釬恁寁        "  ,	//  507 06-45   LV Option Mode
+    "EPS 耀宒恁寁        "  ,	//  508 06-46   EPS Option Mode
+    "楷萸源砃刲坰奀潔sec "  ,   //  509 06-47   Generation Operation Detected Time
+    "踡摹堍俴萇埭�暕熾VA "  ,   //  510 06-48   UPS Capacity (0.1KVA)
+    "STO髡夔恁寁         "  ,   //  511 06-49   STO Lock selection     //[Safty function, Bernie]   
+    "嘟梤笭彸奀MO雄釬    "  ,   //  512 06-50   Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
+    "嘟梤笭彸棒杅        "  ,   //  513 06-51   Auto restart times after fault     
+    "嘟梤笭彸奀潔    sec "  ,   //  514 06-52   Auto restart interval
+    "祑都奀け薹韜鍔  Hz  "  ,   //	515 06-53   Fkey Record
+    "祑都奀け薹怀堤  Hz  "  ,   //	516 06-54   Fcmd Record
+    "祑都奀怀堤萇霜  Amps"  ,   //	517 06-55	Isum Record
+    "祑都奀鎮湛け薹  Hz  "  ,   //	518 06-56	Fout Record
+    "祑都奀怀堤萇揤  V   "  ,   //	519 06-57	Vout Record
+    "祑都奀DCBus萇揤 V   "  ,   //  520 06-58	Dcbus Record    
+    "祑都奀怀堤髡薹  KW  "  ,   //	521 06-59   Power Record
+    "祑都奀怀堤蛌撻  %   "  ,   //	522 06-60   Torque Record
+    "祑都奀IGBT恲僅  C   "  ,   //	523 06-61	IGBT Temperature Record   
+    "祑都奀怀�賱匋�  Hex "  ,   //	524 06-62   MFI State Record
+    "祑都奀怀堤傷赽  Hex "  ,   //	525 06-63   MFO State Record
+    "祑都奀��雄ん袨怓Hex "  ,   //	526 06-64   Drive State Record
+    "UCMP萇霜癹秶袧弇%   "  ,   //  527 06-65   Current limitation for UCMP function            //[UCMP function, Bernie, 2016/06/14]
+    "龢雄婑督昢棒杅      "  ,   //  528 06-66   Service time count                              //[Service time function, Bernie, 2017/03/14]
+    "龢雄婑督昢扢隅      "  ,   //  529 06-67   Service time function Enable                    //[Service time function, Bernie, 2017/03/14]
+    "EPS淈聆髡秪袧弇 deg "  ,   //  530 06-68   EPS Detect Current    
+    "EPS髡秪褒       deg "  ,   //  531 06-69   EPS Detect Current Ref
+    "EPS源砃憮堤         "  ,   //  532 06-70   EPS Detect direction
+    "EPS傷赽憮堤晊恁 sec "  ,   //  533 06-71   EPS MO Off Time
+    "EPS傷赽敕磁晊恁 sec "  ,   //  534 06-72   EPS MO Off Time
+    "蚗壅堍俴源砃數杅H   "	,   //	535 06-73   Running direction count high						
+    "蚗壅堍俴源砃數杅L   "	,   //	536 06-74   Running direction count low
+    "等棒堍俴源砃數杅H   "	,   //	537 06-75   Temp running direction count high
+    "等棒堍俴源砃數杅L   "	,   //  538 06-76   Temp running direction count low
+    "等棒堍俴笭离棒杅    "	,   //	539 06-77   Temp running reset count
+    "堍俴源砃癹秶棒杅k   "	,   //	540 06-78   Running life
+    "堍俴棒杅髡夔恁砐    "	,   //	541 06-79   Running function
+    "祑都2奀け薹怀堤  Hz  " ,   //  542 06-80   Fcmd Record1
+    "祑都2奀DCBus萇揤 V   " ,   //  543 06-81   Dcbus Record1
+    "祑都2奀怀堤萇霜  Amps" ,   //  544 06-82   Isum Record1
+    "祑都2奀IGBT恲僅  C   "	,   //  545 06-83   IGBT Temperature Record1
+    "祑都3奀け薹怀堤  Hz  " ,   //  546 06-84   Fcmd Record2
+    "祑都3奀DCBus萇揤 V   " ,   //  547 06-85   Dcbus Record2
+    "祑都3奀怀堤萇霜  Amps" ,   //  548 06-86   Isum Record2
+    "祑都3奀IGBT恲僅  C   " ,   //  549 06-87   IGBT Temperature Record2
+    "祑都4奀け薹怀堤  Hz  " ,   //  550 06-88   Fcmd Record3
+    "祑都4奀DCBus萇揤 V   " ,   //  551 06-89   Dcbus Record3
+    "祑都4奀怀堤萇霜  Amps" ,   //  552 06-90   Isum Record3
+    "祑都4奀IGBT恲僅  C   " ,   //  553 06-91   IGBT Temperature Record3
+    "祑都5奀け薹怀堤  Hz  " ,   //  554 06-92   Fcmd Record4
+    "祑都5奀DCBus萇揤 V   " ,   //  555 06-93   Dcbus Record4
+    "祑都5奀怀堤萇霜  Amps" ,   //  556 06-94   Isum Record4
+    "祑都5奀IGBT恲僅  C   " ,   //  557 06-95   IGBT Temperature Record4
+    "祑都6奀け薹怀堤  Hz  " ,   //  558 06-96   Fcmd Record5
+    "祑都6奀DCBus萇揤 V   " ,   //  559 06-97   Dcbus Record5
+    "祑都6奀怀堤萇霜  Amps" ,   //  560 06-98   Isum Record5
+    "祑都6奀IGBT恲僅  C   " ,   //  561 06-99   IGBT Temperature Record5
 /*---- GROUP 07-----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "价陬儒极溫萇袧弇V   "	,	//	327   07-00 SW Braking Level
-    "伢陬儒极喧笴萇揤V   "  ,   //	328   07-01 DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
-    "ゐ雄眻霜秶雄袧弇%   "	,	//	329   07-02 DCI Current Level    //[DCI Level when stop, Bernie, 05/21/2012]
-    "ゐ雄眻霜秶雄奀潔sec "	,	//	330   07-03 DCI Time at Start 
-    "礿陬眻霜秶雄奀潔sec "	,	//	331   07-04 DCI Time at STOP
-    "礿陬秶雄れ宎け薹Hz  "	,	//	332   07-05 DCI Freq. At start
-    "眻霜秶雄I崝祔       "	,	//	333   07-06 DCI KI
-    "喘炵樓厒笢剿奀潔sec "	,	//	334   07-07 Gear wait time when acceleration
-    "喘炵樓厒笢剿け薹Hz  "	,	//	335   07-08 Gear wait frequency when acceleration
-    "喘炵熬厒笢剿奀潔sec "	,	//	336   07-09 Gear wait time when deceleration
-    "喘炵熬厒笢剿け薹Hz  "	,	//	337   07-10 Gear wait frequency when deceleration
-    "瑞圮諷秶源宒        "	,	//	338   07-11 Fan Control
-    "蛌撻韜鍔        %   "	,	//	339   07-12 TQC Reference from RS485
-    "蛌撻韜鍔懂埭        "	,	//	340   07-13 Source of Torque Command
-    "郔湮蛌撻韜鍔    %   "	,	//	341   07-14 Torque max. level
-    "蛌撻韜鍔薦疏奀潔sec "	,	//	342   07-15 Torque command filter
-    "厒僅癹秶恁寁        "	,	//	343   07-16 Speed Limit selection
-    "蛌撻耀宒+SPD癹秶%   "	,	//	344   07-17 Torque mode positive speed limit
-    "蛌撻耀宒-SPD癹秶%   "	,	//	345   07-18 Torque mode negative speed limit
-    "蛌撻韜鍔ぇ揤懂埭    "	,	//	346   07-19 Torque offset selection
-    "蛌撻韜鍔ぇ揤扢隅%   "	,	//	347   07-20 Torque offset setting level
-    "詢蛌撻ぇ講      %   "	,	//	348   07-21 Torque offset setting level High
-    "笢蛌撻ぇ講      %   "	,	//	349   07-22 Torque offset setting level Middle
-    "腴蛌撻ぇ講      %   "	,	//	350   07-23 Torque offset setting level Low
-    "淏蛌萇雄蛌撻癹秶%   "	,	//	351   07-24 FWD Motoring Tq Limit
-    "毀蛌隙汜蛌撻癹秶%   "	,	//	352   07-25 FWD Regeneration Tq Limit
-    "淏蛌萇雄蛌撻癹秶%   "	,	//	353   07-26 REV Motoring Tq Limit
-    "毀蛌隙汜蛌撻癹秶%   "	,	//	354   07-27 REV Regeneration Tq Limit
-    "Ч秶礿儂潰堤源宒    "	,	//	355   07-28 Emergency Stop & Forced Stop selection
-    "礿陬蛌撻熬厒奀潔sec "	,	//	356   07-29 Torque Decrease Time
-    "礿砦眻霜秶雄袧弇%   "  ,   //  356   07-30 STOP DC Inject Level       //[DCI Level when stop, Bernie, 05/21/2012]
-    "BTT100             %"  ,   //  357   07-31  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆           "  ,   //  358   07-32  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆擒燭    ppr"  ,   //  359   07-33  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆鏃杅       "  ,   //  360   07-34  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆囮啖蛌撻   "  ,   //  361   07-35  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆郔苤蛌撻   "  ,   //  362   07-36  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 潰聆郔湮蛌撻   "  ,   //  362   07-37  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "价陬儒极溫萇袧弇V   "	,	//	562 07-00	SW Braking Level
+    "伢陬儒极喧笴萇揤V   "  ,   //	563 07-01	DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
+    "ゐ雄眻霜秶雄袧弇%   "	,	//	564 07-02	DCI Current Level    //[DCI Level when stop, Bernie, 05/21/2012]
+    "ゐ雄眻霜秶雄奀潔sec "	,	//	565 07-03	DCI Time at Start 
+    "礿陬眻霜秶雄奀潔sec "	,	//	566 07-04	DCI Time at STOP
+    "礿陬秶雄れ宎け薹Hz  "	,	//	567 07-05	DCI Freq. At start
+    "眻霜秶雄I崝祔       "	,	//	568 07-06	DCI KI
+    "喘炵樓厒笢剿奀潔sec "	,	//	569 07-07	Gear wait time when acceleration
+    "喘炵樓厒笢剿け薹Hz  "	,	//	570 07-08	Gear wait frequency when acceleration
+    "喘炵熬厒笢剿奀潔sec "	,	//	572 07-09	Gear wait time when deceleration
+    "喘炵熬厒笢剿け薹Hz  "	,	//	573 07-10	Gear wait frequency when deceleration
+    "瑞圮諷秶源宒        "	,	//	574 07-11	Fan Control
+    "蛌撻韜鍔        %   "	,	//	575 07-12	TQC Reference from RS485
+    "蛌撻韜鍔懂埭        "	,	//	576 07-13	Source of Torque Command
+    "郔湮蛌撻韜鍔    %   "	,	//	577 07-14	Torque max. level
+    "蛌撻韜鍔薦疏奀潔sec "	,	//	578 07-15	Torque command filter
+    "厒僅癹秶恁寁        "	,	//	579 07-16	Speed Limit selection
+    "蛌撻耀宒+SPD癹秶%   "	,	//	580 07-17	Torque mode positive speed limit
+    "蛌撻耀宒-SPD癹秶%   "	,	//  581 07-18	Torque mode negative speed limit
+    "蛌撻韜鍔ぇ揤懂埭    "	,	//	582 07-19	Torque offset selection
+    "蛌撻韜鍔ぇ揤扢隅%   "	,	//	583 07-20	Torque offset setting level
+    "詢蛌撻ぇ講      %   "	,	//	584 07-21	Torque offset setting level High
+    "笢蛌撻ぇ講      %   "	,	//	585 07-22	Torque offset setting level Middle
+    "腴蛌撻ぇ講      %   "	,	//	586 07-23	Torque offset setting level Low
+    "淏蛌萇雄蛌撻癹秶%   "	,	//	587 07-24	FWD Motoring Tq Limit
+    "毀蛌隙汜蛌撻癹秶%   "	,	//	588 07-25	FWD Regeneration Tq Limit
+    "淏蛌萇雄蛌撻癹秶%   "	,	//	589 07-26	REV Motoring Tq Limit
+    "毀蛌隙汜蛌撻癹秶%   "	,	//	590 07-27	REV Regeneration Tq Limit
+    "Ч秶礿儂潰堤源宒    "	,	//	591 07-28	Emergency Stop & Forced Stop selection
+    "礿陬蛌撻熬厒奀潔sec "	,	//	592 07-29   Torque Decrease Time
+    "礿砦眻霜秶雄袧弇%   "  ,   //	593 07-30   STOP DC Inject Level       //[DCI Level when stop, Bernie, 05/21/2012]
+    "BTT100             %"  ,   //  594 07-31   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆            "  ,   //  595 07-32   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆擒燭     ppr"  ,   //  596 07-33   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆鏃杅        "  ,   //  597 07-34   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆囮啖蛌撻    "  ,   //  598 07-35   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆郔苤蛌撻    "  ,   //  599 07-36   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx潰聆郔湮蛌撻    "  ,   //  600 07-37   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     
 /*---- GROUP 08-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-    "PM統杅赻悝炾        "	,	//	357   08-00 PMotor Auto-Tuning  
-    "PM萇儂塗隅萇霜  Amps"	,	//	358   08-01 PMotor rated Current
-    "PM萇儂塗隅髡薹  Kw  "	,	//	359   08-02 PMotor Rated Power  
-    "PM萇儂塗隅蛌厒  RPM "	,	//	360   08-03 PMotor Rated RPM    
-    "PM萇儂憤杅          "	,	//	361   08-04 PMotor pole No.     
-    "PM萇儂統杅 Rs   ohm "	,	//	362   08-05 PMotor Rs           
-    "PM萇儂統杅 Ld   mH  "	,	//	363   08-06 PMotor Ld           
-    "PM萇儂統杅 Lq   mH  "	,	//	364   08-07 PMotor Lq           
-    "萇儂毀萇雄岊    Vrms"	,	//	365   08-08 PMotor Bemf coff	
-    "棠憤ぇ痄褒      deg "	,	//	366   08-09 PM Z-pulse offset angle, 0.1 degree, dino
-    "棠憤笭陔隅弇        "	,	//	367   08-10 //ADDED BY DINO    
+    "PM統杅赻悝炾        "	,	//	663 08-00	PMotor Auto-Tuning  
+    "PM萇儂塗隅萇霜  Amps"	,	//	664 08-01	PMotor rated Current
+    "PM萇儂塗隅髡薹  Kw  "	,	//	665 08-02	PMotor Rated Power  
+    "PM萇儂塗隅蛌厒  RPM "	,	//	666 08-03	PMotor Rated RPM    
+    "PM萇儂憤杅          "	,	//	667 08-04	PMotor pole No.     
+    "PM萇儂統杅 Rs   ohm "	,	//	668 08-05	PMotor Rs           
+    "PM萇儂統杅 Ld   mH  "	,	//	669 08-06	PMotor Ld           
+    "PM萇儂統杅 Lq   mH  "	,	//	670 08-07	PMotor Lq           
+    "萇儂毀萇雄岊    Vrms"	,	//	671 08-08	PMotor Bemf coff	
+    "棠憤ぇ痄褒      deg "	,	//	672 08-09	PM Z-pulse offset angle, 0.1 degree, dino
+    "棠憤笭陔隅弇        "	,	//	673 08-10	//ADDED BY DINO    
 	
 /*---- GROUP 09-----------------------------------------*/							
 /*  "12345678901234561234"	*/
-    "籵捅華硊            "	,	//	368   09-06 Comm Address                              
-    "籵捅換怀厒僅    kbps"	,	//	369   09-07 Tranmission speed                         
-    "籵捅渣昫揭燴        "	,	//	370   09-08 Comm fault Treatment                      
-    "貣奀潰堤奀潔    sec "	,	//	371   09-09 Comm Time out                             
-    "籵捅跡宒            "	,	//	372   09-10 Comm Protocol                             
-    "砒茼晊奀奀潔    ms  "	,	//	373   09-11 ASC remote Response Delay Time, 1=100us   
-    "CAN 籵捅婦薹        "	,   //  3XX   09-06 CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
-    "CAN PDO蝠挍奀潔 ms  "	,   //  3XX   09-07 CAN PDO Handshaking Period
-    "CAN PDO籵捅貣奀 ms  "	,   //  3XX   09-08 CAN Communiction Timeout	
-    "奻弇儂妎梗鎢        "  ,   //  3XX   09-09 
-    "FHM 婃湔ん          "  ,   //  3XX   09-10   
-    "DLC 婃湔ん1         "  ,   //  3XX   09-11   
-    "DLC 婃湔ん2         "  ,   //  3XX   09-12    
-    "DLC 婃湔ん3         "  ,   //  3XX   09-13   
-	"PDO換冞潔路     ms  "	,	//	3XX   09-14 CAN fail rate---aevin 6/12/2017
+    "籵捅華硊            "	,	//	674 09-00   Comm Address                              
+    "籵捅換怀厒僅    kbps"	,	//	675 09-01   Tranmission speed                         
+    "籵捅渣昫揭燴        "	,	//	676 09-02   Comm fault Treatment                      
+    "貣奀潰堤奀潔    sec "	,	//	677 09-03   Comm Time out                             
+    "籵捅跡宒            "	,	//	678 09-04   Comm Protocol                             
+    "砒茼晊奀奀潔    ms  "	,	//	679 09-05   ASC remote Response Delay Time, 1=100us   
+    "CAN 籵捅婦薹        "	,   //	680 09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
+    "CAN PDO蝠挍奀潔 ms  "	,   //  681 09-07   CAN PDO Handshaking Period
+    "CAN PDO籵捅貣奀 ms  "	,   //	682 09-08   CAN Communiction Timeout	
+    "奻弇儂妎梗鎢        "  ,   //	683 09-09   
+    "FHM 婃湔ん          "  ,   //	684 09-10  
+    "DLC 婃湔ん1         "  ,   //	685 09-11  
+    "DLC 婃湔ん2         "  ,   //	686 09-12   
+    "DLC 婃湔ん3         "  ,   //	687 09-13     
+	"PDO換冞潔路     ms  "	,	//	688 09-14   CAN fail rate---aevin 6/12/2017
 
 /*---- GROUP 10------------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"晤鎢ん笱濬恁寁      "	,	//	374   10-00 Encoder TYPE                             
-	"晤鎢ん闕喳萸杅  ppr "	,	//	375   10-01 Encoder pulses	                    
-	"晤鎢ん怀�遶恀�      "	,	//	376   10-02 PG input setting	                
-	"PG渣昫雄釬恁寁      "	,	//	377   10-03 PG fbk fault treatment	            
-	"PG渣昫潰堤奀潔  sec "	,	//	378   10-04 PG fbk Error Detection Time	        
-	"PG囮厒袧弇      %   "	,	//	379   10-05 PG fbk overspeed detection level	
-	"PF囮厒潰堤奀潔  sec "	,	//	380   10-06 Over speed Detection Time	        
-	"PG蛌船祑都袧弇  %   "	,	//	381   10-07 PG fbk speed deviation level	    
-	"PG蛌船潰堤奀潔  sec "	,	//	382   10-08 Deviation Detect Time	            
-	"PG囮厒雄釬恁寁      "	,	//	383   10-09 Operation at overspeed	            
-	"HALL陓瘍耀宒恁寁    "  ,   //  384   10-10 Hall Input Types
-	"ゐ雄錨厒崝祔P       "	,	//	385   10-11 KP gain of ASR in Zero speed	
-	"ゐ雄錨厒儅煦I   sec "	,	//	386   10-12 Ki gain of ASR in Zero speed	
-	"腴厒崝祔P           "	,	//	387   10-13 ASR P Gain 1	                
-	"腴厒儅煦奀潔I   sec "	,	//	388   10-14 ASR I Gain 1	                
-	"詢厒崝祔P           "	,	//	389   10-15 ASR P Gain 2	                
-	"詢厒儅煦奀潔I   sec "	,	//	390   10-16 ASR I Gain 2	                
-	"腴/詢厒з遙け薹 Hz  "	,	//	391   10-17 ASR1/ASR2 switch freq	        
-	"ASR腴籵薦疏崝祔 sec "	,	//	392   10-18 Primary LowPass filter Gain 
-	"弇离諷秶ASR崝祔 P   "  ,	//	393   10-19 position control Kp Gain  
-    "錨/腴厒湍遵覃淕 Hz  "  ,   //  394   10-20 Low Spd band
-    "腴/詢厒湍遵覃淕 Hz  "  ,   //  395   10-21 High Spd band
-	"弇离諷秶ASR儅煦Isec "	,	//	396   10-22 Position control time
-	"ゐ雄弇离諷秶腴籵sec "	,	//	397   10-23 Position control LOW POSS FILTER
-	"弇离諷秶耀宒恁寁    "	,	//	398   10-24 Source of position control, add by dino, 
-	"す脯錨厒崝祔P   %   "	,	//	399   10-25 KP gain of ASR in Zero speed of 
-	"す脯錨厒儅煦I   sec "	,	//	400   10-26 Ki gain of ASR in Zero speed of Landing
-	"弇离諷秶錨厒崝祔%   "	,	//	385   10-27 KP gain of ASR in Zero speed during 
-	"弇离諷秶錨厒儅煦sec "	,	//	386   10-28 Ki gain of ASR in Zero speed during 
-    "PG縐壺け怀堤硉      "	,   //  4xx   10-29 PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG縐壺け怀堤倰宒    "	,   //  4xx   10-30 PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
-    "PG C+/C-恁寁        "  ,   //  110   10-31 RESERVED     //[change parameter to normal group, Bernie, 2014/02/14]
-    "萇枍徹樓厒僅袧弇m/s2"  ,   //  3XX   10-32 Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "徹樓厒僅淈聆奀潔sec "  ,   //  3XX   10-33 Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "徹樓厒僅淈聆恁寁    "  ,   //  3XX   10-34 Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+	"晤鎢ん笱濬恁寁      "	,	//	689 10-00	Encoder TYPE                             
+	"晤鎢ん闕喳萸杅  ppr "	,	//	690 10-01	Encoder pulses	                    
+	"晤鎢ん怀�遶恀�      "	,	//  691 10-02	PG input setting	                
+	"PG渣昫雄釬恁寁      "	,	//  692 10-03	PG fbk fault treatment	            
+	"PG渣昫潰堤奀潔  sec "	,	//  693 10-04	PG fbk Error Detection Time	        
+	"PG囮厒袧弇      %   "	,	//  694 10-05	PG fbk overspeed detection level	
+	"PF囮厒潰堤奀潔  sec "	,	//  695 10-06	Over speed Detection Time	        
+	"PG蛌船祑都袧弇  %   "	,	//	696 10-07	PG fbk speed deviation level	    
+	"PG蛌船潰堤奀潔  sec "	,	//	697 10-08	Deviation Detect Time	            
+	"PG囮厒雄釬恁寁      "	,	//	698 10-09	Operation at overspeed	            
+	"HALL陓瘍耀宒恁寁    "  ,   //  699 10-10   Hall Input Types
+	"ゐ雄錨厒崝祔P       "	,	//	700 10-11	KP gain of ASR in Zero speed	
+	"ゐ雄錨厒儅煦I   sec "	,	//	701 10-12	Ki gain of ASR in Zero speed	
+	"腴厒崝祔P           "	,	//	702 10-13	ASR P Gain 1	                
+	"腴厒儅煦奀潔I   sec "	,	//	703 10-14	ASR I Gain 1	                
+	"詢厒崝祔P           "	,	//	704 10-15	ASR P Gain 2	                
+	"詢厒儅煦奀潔I   sec "	,	//	705 10-16	ASR I Gain 2	                
+	"腴/詢厒з遙け薹 Hz  "	,	//  706 10-17	ASR1/ASR2 switch freq	        
+	"ASR腴籵薦疏崝祔 sec "	,	//  707 10-18	Primary LowPass filter Gain 
+	"弇离諷秶ASR崝祔 P   "  ,	//  708 10-19   position control Kp Gain  
+    "錨/腴厒湍遵覃淕 Hz  "  ,   //  709 10-20   Low Spd band
+    "腴/詢厒湍遵覃淕 Hz  "  ,   //  710 10-21   High Spd band
+	"弇离諷秶ASR儅煦Isec "	,	//  711 10-22   Position control time
+	"ゐ雄弇离諷秶腴籵sec "	,	//  712 10-23   Position control LOW POSS FILTER
+	"弇离諷秶耀宒恁寁    "	,	//  713 10-24   Source of position control, add by dino, 
+	"す脯錨厒崝祔P   %   "	,	//  714 10-25	KP gain of ASR in Zero speed of 
+	"す脯錨厒儅煦I   sec "	,	//	715 10-26	Ki gain of ASR in Zero speed of Landing
+	"弇离諷秶錨厒崝祔%   "	,	//	716 10-27	KP gain of ASR in Zero speed during 
+	"弇离諷秶錨厒儅煦sec "	,	//	717 10-28	Ki gain of ASR in Zero speed during 
+    "PG縐壺け怀堤硉      "	,   //	718 10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG縐壺け怀堤倰宒    "	,   //	719 10-30   PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
+    "PG C+/C-恁寁        "  ,   //  720 10-31   RESERVED     //[change parameter to normal group, Bernie, 2014/02/14]
+    "萇枍徹樓厒僅袧弇m/s2"  ,   //	721 10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "徹樓厒僅淈聆奀潔sec "  ,   //	722 10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "徹樓厒僅淈聆恁寁    "  ,   //	723 10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+
+    "悵隱                "  ,   //	724 10-35   RESERVED
+    "悵隱                "  ,   //	725 10-36   RESERVED
+    "悵隱                "  ,   //	726 10-37   RESERVED
+    "悵隱                "  ,   //	727 10-38   RESERVED
+    "悵隱                "  ,   //	728 10-39   RESERVED
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
-    "炵苀諷秶        Hex "	,	//	401   11-00 system control bit0:auto, bit1:Jm tunning, 
-    "郔湮け薹勤茼枍厒m/s "  ,   //  402   11-01 Lift operation speed                                        
-    "珝竘謫眻噤      mm  "  ,   //  403   11-02 SHEAVE diameter		                
-    "喘謫掀              "  ,   //  404   11-03 Gear Ratio                                              
-    "唑境掀              "  ,   //  405   11-04 Suspension ratio	                                        
-    "儂迮嫦講啃煦掀  %   "  ,   //  406   11-05 inertia	percent		                  
-    "ゐ雄錨厒湍遵    Hz  "	,	//	407   11-06 Zero Speed Loop BandWidth	                                
-    "腴厒湍遵        Hz  "	,	//	408   11-07 Speed Loop BandWidth1		                                
-    "詢厒湍遵        Hz  "	,	//	409   11-08 Speed Loop BandWidth2		                                
-    "PDFF崝祔硉      %   "	,	//	410   11-09 PDFFKr		                                                
-    "厒僅諷秶ヶ嚏崝祔%   "	,	//	411   11-10 SPEED FFD GAIN		                    
-    "側疪薦疏旮僅    db  "	,	//	412   11-11 Netch filter deep(db)	                                    
-    "側疪薦疏け薹    Hz  "	,	//	413   11-12 Netch filter frequency	                                    
-    "醱啣珆尨薦疏奀潔sec "	,	//	414   11-13 Low Pass Filter for display	                                
-    "樓厒奀郔湮萇霜  %   "	,	//	415   11-14 ACC Max current                                             
-    "萇枍郔湮樓厒僅  m/s2"  ,	//	416   11-15 max meter/sec	                                            
-    "潼諷杅擂弇离    Hex "  ,   //	417   11-16 Display address,add by dino 2007/03/08                      
-    "潼諷訧蹋            "  ,	//	418   11-17 Display data,   add by dino 2007/03/08                      
-    "悵隱                "  ,   //  419   11-18 Protect Bit	                                                
-    "礿陬錨厒湍遵    Hz  "	,	//	420   11-19 Zero Speed Loop BandWidth of Landing  
-    "PWM 耀宒耀宒        "  ,   //  4XX   11-20 PWM Mode selection  PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
-    "LC01珆尨薦疏奀潔 sec"	,	//	422   11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "炵苀諷秶        Hex "	,	//  729 11-00	system control bit0:auto, bit1:Jm tunning, 
+    "郔湮け薹勤茼枍厒m/s "  ,   //  730 11-01   Lift operation speed                                        
+    "珝竘謫眻噤      mm  "  ,   //  731 11-02   SHEAVE diameter		                
+    "喘謫掀              "  ,   //  732 11-03   Gear Ratio                                              
+    "唑境掀              "  ,   //  733 11-04   Suspension ratio	                                        
+    "儂迮嫦講啃煦掀  %   "  ,   //  734 11-05   inertia	percent		                  
+    "ゐ雄錨厒湍遵    Hz  "	,	//	735 11-06	Zero Speed Loop BandWidth	                                
+    "腴厒湍遵        Hz  "	,	//	736 11-07	Speed Loop BandWidth1		                                
+    "詢厒湍遵        Hz  "	,	//	737 11-08	Speed Loop BandWidth2		                                
+    "PDFF崝祔硉      %   "	,	//  738 11-09	PDFFKr		                                                
+    "厒僅諷秶ヶ嚏崝祔%   "	,	//	739 11-10	SPEED FFD GAIN		                    
+    "側疪薦疏旮僅    db  "	,	//	740 11-11	Netch filter deep(db)	                                    
+    "側疪薦疏け薹    Hz  "	,	//	741 11-12	Netch filter frequency	                                    
+    "醱啣珆尨薦疏奀潔sec "	,	//  742 11-13	Low Pass Filter for display	                                
+    "樓厒奀郔湮萇霜  %   "	,	//  743 11-14	ACC Max current                                             
+    "萇枍郔湮樓厒僅  m/s2"  ,	//  744 11-15	max meter/sec	                                            
+    "潼諷杅擂弇离    Hex "  ,   //  745 11-16	Display address,add by dino 2007/03/08                      
+    "潼諷訧蹋            "  ,	//  746 11-17	Display data,   add by dino 2007/03/08                      
+    "悵隱                "  ,   //  747 11-18   Protect Bit	                                                
+    "礿陬錨厒湍遵    Hz  "	,	//  748 11-19	Zero Speed Loop BandWidth of Landing  
+    "PWM 耀宒耀宒        "  ,   //  749 11-20	PWM Mode selection  PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
+    "LC01珆尨薦疏奀潔 sec"	,	//  750 11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-	"Motor SPD RPM       "	,	//	420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
+	"Motor SPD RPM       "	,	//	750   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
     "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
+    "悵隱                "  ,   //	752 11-23   RESERVED
+    "悵隱                "  ,   //	753 11-24   RESERVED
+    "悵隱                "  ,   //	754 11-25   RESERVED
+    "悵隱                "  ,   //	755 11-26   RESERVED
+    "悵隱                "  ,   //	756 11-27   RESERVED
+    "悵隱                "  ,   //	757 11-28   RESERVED
+    "悵隱                "  ,   //	758 11-29   RESERVED
+    
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
-    "赻隅統杅1           "  ,   //  421   12-00
-    "赻隅統杅2           "  ,   //  422   12-01
-    "赻隅統杅3           "  ,   //  423   12-02
-    "赻隅統杅4           "  ,   //  424   12-33
-    "赻隅統杅5           "  ,   //  425   12-04
-    "赻隅統杅6           "  ,   //  426   12-05
-    "赻隅統杅7           "  ,   //  427   12-06
-    "赻隅統杅8           "  ,   //  428   12-07
-    "赻隅統杅9           "  ,   //  429   12-08
-    "赻隅統杅10          "  ,   //  430   12-09
-    "赻隅統杅11          "  ,   //  431   12-10
-    "赻隅統杅12          "  ,   //  432   12-11
-    "赻隅統杅13          "  ,   //  433   12-12
-    "赻隅統杅14          "  ,   //  434   12-13
-    "赻隅統杅15          "  ,   //  435   12-14
-    "赻隅統杅16          "  ,   //  436   12-15
-    "赻隅統杅17          "  ,   //  437   12-16
-    "赻隅統杅18          "  ,   //  438   12-17
-    "赻隅統杅19          "  ,   //  439   12-18
-    "赻隅統杅20          "  ,   //  440   12-19
-    "赻隅統杅21          "  ,   //  441   12-20
-    "赻隅統杅22          "  ,   //  442   12-21
-    "赻隅統杅23          "  ,   //  443   12-22
-    "赻隅統杅24          "  ,   //  444   12-23
-    "赻隅統杅25          "  ,   //  445   12-24
-    "赻隅統杅26          "  ,   //  446   12-25
-    "赻隅統杅27          "  ,   //  447   12-26
-    "赻隅統杅28          "  ,   //  448   12-27
-    "赻隅統杅29          "  ,   //  449   12-28
-    "赻隅統杅30          "  ,   //  450   12-29
-    "赻隅統杅31          "  ,   //  451   12-30
-    "赻隅統杅32          "  ,   //  452   12-31
-    "赻隅統杅33          "  ,   //  433   12-12
-    "赻隅統杅34          "  ,   //  434   12-13
-    "赻隅統杅35          "  ,   //  435   12-14
-    "赻隅統杅36          "  ,   //  436   12-15
-    "赻隅統杅37          "  ,   //  437   12-16
-    "赻隅統杅38          "  ,   //  438   12-17
-    "赻隅統杅39          "  ,   //  439   12-18
-    "赻隅統杅40          "  ,   //  430   12-09
-    "赻隅統杅41          "  ,   //  431   12-10
-    "赻隅統杅42          "  ,   //  432   12-11
-    "赻隅統杅43          "  ,   //  433   12-12
-    "赻隅統杅44          "  ,   //  434   12-13
-    "赻隅統杅45          "  ,   //  435   12-14
-    "赻隅統杅46          "  ,   //  436   12-15
-    "赻隅統杅47          "  ,   //  437   12-16
-    "赻隅統杅48          "  ,   //  438   12-17
-    "赻隅統杅49          "  ,   //  439   12-18
-    "赻隅統杅50          "  ,   //  430   12-09
-    "悵隱                "  ,   //  431   12-10
-    "悵隱                "  ,   //  432   12-11
-    "悵隱                "  ,   //  433   12-12
-    "悵隱                "  ,   //  434   12-13
-    "悵隱                "  ,   //  435   12-14
-    "悵隱                "  ,   //  436   12-15
-    "悵隱                "  ,   //  437   12-16
-    "悵隱                "  ,   //  438   12-17
-    "悵隱                "  ,   //  439   12-18
-    "悵隱                "  ,   //  430   12-09
-    "悵隱                "  ,   //  431   12-10
-    "悵隱                "  ,   //  432   12-11
-    "悵隱                "  ,   //  433   12-12
-    "悵隱                "  ,   //  434   12-13
-    "悵隱                "  ,   //  435   12-14
-    "悵隱                "  ,   //  436   12-15
-    "悵隱                "  ,   //  437   12-16
-    "悵隱                "  ,   //  438   12-17
-    "悵隱                "  ,   //  439   12-18
-    "悵隱                "  ,   //  430   12-09
-    "悵隱                "  ,   //  431   12-10
-    "悵隱                "  ,   //  432   12-11
-    "悵隱                "  ,   //  433   12-12
-    "悵隱                "  ,   //  434   12-13
-    "悵隱                "  ,   //  435   12-14
-    "悵隱                "  ,   //  436   12-15
-    "悵隱                "  ,   //  437   12-16
-    "悵隱                "  ,   //  438   12-17
-    "悵隱                "  ,   //  439   12-18
-    "悵隱                "  ,   //  430   12-09
-    "悵隱                "  ,   //  431   12-10
-    "悵隱                "  ,   //  432   12-11
-    "悵隱                "  ,   //  433   12-12
-    "悵隱                "  ,   //  434   12-13
-    "悵隱                "  ,   //  435   12-14
-    "悵隱                "  ,   //  436   12-15
-    "悵隱                "  ,   //  437   12-16
-    "悵隱                "  ,   //  438   12-17
-    "悵隱                "  ,   //  439   12-18
-    "悵隱                "  ,   //  430   12-09
-    "悵隱                "  ,   //  431   12-10
-    "悵隱                "  ,   //  432   12-11
-    "悵隱                "  ,   //  433   12-12
-    "悵隱                "  ,   //  434   12-13
-    "悵隱                "  ,   //  435   12-14
-    "悵隱                "  ,   //  436   12-15
-    "悵隱                "  ,   //  437   12-16
-    "悵隱                "  ,   //  438   12-17
-    "悵隱                "  ,   //  439   12-18
-    "悵隱                "  ,   //  439   12-18
+    "赻隅統杅1           "  ,   //  759 12-00
+    "赻隅統杅2           "  ,   //  760 12-01
+    "赻隅統杅3           "  ,   //  761 12-02
+    "赻隅統杅4           "  ,   //  762 12-03
+    "赻隅統杅5           "  ,   //	763 12-04
+    "赻隅統杅6           "  ,   //	764 12-05
+    "赻隅統杅7           "  ,   //	765 12-06
+    "赻隅統杅8           "  ,   //	766 12-07
+    "赻隅統杅9           "  ,   //	767 12-08
+    "赻隅統杅10          "  ,   //	768 12-09
+    "赻隅統杅11          "  ,   //	769 12-10
+    "赻隅統杅12          "  ,   //	770 12-11
+    "赻隅統杅13          "  ,   //	771 12-12
+    "赻隅統杅14          "  ,   //	772 12-13
+    "赻隅統杅15          "  ,   //	773 12-14
+    "赻隅統杅16          "  ,   //  774 12-15
+    "赻隅統杅17          "  ,   //	775 12-16
+    "赻隅統杅18          "  ,   //	776 12-17
+    "赻隅統杅19          "  ,   //	777 12-18
+    "赻隅統杅20          "  ,   //	778 12-19
+    "赻隅統杅21          "  ,   //	779 12-20
+    "赻隅統杅22          "  ,   //	780 12-21
+    "赻隅統杅23          "  ,   //  781 12-22
+    "赻隅統杅24          "  ,   //	782 12-23
+    "赻隅統杅25          "  ,   //	783 12-24
+    "赻隅統杅26          "  ,   //	784 12-25
+    "赻隅統杅27          "  ,   //	785 12-26
+    "赻隅統杅28          "  ,   //	786 12-27
+    "赻隅統杅29          "  ,   //	787 12-28
+    "赻隅統杅30          "  ,   //	788 12-29
+    "赻隅統杅31          "  ,   //  789 12-30
+    "赻隅統杅32          "  ,   //  790 12-31
+    "赻隅統杅33          "  ,   //  791 12-32
+    "赻隅統杅34          "  ,   //  792 12-33
+    "赻隅統杅35          "  ,   //  793 12-34
+    "赻隅統杅36          "  ,   //  794 12-35
+    "赻隅統杅37          "  ,   //  795 12-36
+    "赻隅統杅38          "  ,   //  796 12-37
+    "赻隅統杅39          "  ,   //  797 12-38
+    "赻隅統杅40          "  ,   //  798 12-39
+    "赻隅統杅41          "  ,   //  799 12-40
+    "赻隅統杅42          "  ,   //  800 12-41
+    "赻隅統杅43          "  ,   //  801 12-42
+    "赻隅統杅44          "  ,   //  802 12-43
+    "赻隅統杅45          "  ,   //  803 12-44
+    "赻隅統杅46          "  ,   //  804 12-45
+    "赻隅統杅47          "  ,   //  805 12-46
+    "赻隅統杅48          "  ,   //  806 12-47
+    "赻隅統杅49          "  ,   //  807 12-48
+    "赻隅統杅50          "  ,   //  808 12-49
+    "悵隱                "  ,   //  809 12-50
+    "悵隱                "  ,   //  810 12-51
+    "悵隱                "  ,   //  811 12-52
+    "悵隱                "  ,   //  812 12-53
+    "悵隱                "  ,   //  813 12-54
+    "悵隱                "  ,   //  814 12-55
+    "悵隱                "  ,   //  815 12-56
+    "悵隱                "  ,   //  816 12-57
+    "悵隱                "  ,   //  817 12-58
+    "悵隱                "  ,   //  818 12-59
+    "悵隱                "  ,   //  819 12-60
+    "悵隱                "  ,   //  820 12-61
+    "悵隱                "  ,   //  821 12-62
+    "悵隱                "  ,   //  822 12-63
+    "悵隱                "  ,   //  823 12-64
+    "悵隱                "  ,   //  824 12-65
+    "悵隱                "  ,   //  825 12-66
+    "悵隱                "  ,   //  826 12-67
+    "悵隱                "  ,   //  827 12-68
+    "悵隱                "  ,   //  828 12-69
+    "悵隱                "  ,   //  829 12-70
+    "悵隱                "  ,   //  830 12-71
+    "悵隱                "  ,   //  831 12-72
+    "悵隱                "  ,   //  832 12-73
+    "悵隱                "  ,   //  833 12-74
+    "悵隱                "  ,   //  834 12-75
+    "悵隱                "  ,   //  835 12-76
+    "悵隱                "  ,   //  836 12-77
+    "悵隱                "  ,   //  837 12-78
+    "悵隱                "  ,   //  838 12-79
+    "悵隱                "  ,   //  839 12-80
+    "悵隱                "  ,   //  840 12-81
+    "悵隱                "  ,   //  841 12-82
+    "悵隱                "  ,   //  842 12-83
+    "悵隱                "  ,   //  843 12-84
+    "悵隱                "  ,   //  844 12-85
+    "悵隱                "  ,   //  845 12-86
+    "悵隱                "  ,   //  846 12-87
+    "悵隱                "  ,   //  847 12-88
+    "悵隱                "  ,   //  848 12-89
+    "悵隱                "  ,   //  849 12-90
+    "悵隱                "  ,   //  850 12-91
+    "悵隱                "  ,   //  851 12-92
+    "悵隱                "  ,   //  852 12-93
+    "悵隱                "  ,   //  853 12-94
+    "悵隱                "  ,   //  854 12-95
+    "悵隱                "  ,   //  855 12-96
+    "悵隱                "  ,   //  856 12-97
+    "悵隱                "  ,   //  857 12-98
+    "悵隱                "  ,   //  858 12-99
 
 /*---- GROUP 13------------------------------------------*/
 /*  "12345678901234561234"	*/
-    "赻隅都蚚統杅1       "  ,   //  453   13-00
-    "赻隅都蚚統杅2       "  ,   //  454   13-01
-    "赻隅都蚚統杅3       "  ,   //  455   13-02
-    "赻隅都蚚統杅4       "  ,   //  456   13-33
-    "赻隅都蚚統杅5       "  ,   //  457   13-04
-    "赻隅都蚚統杅6       "  ,   //  458   13-05
-    "赻隅都蚚統杅7       "  ,   //  459   13-06
-    "赻隅都蚚統杅8       "  ,   //  460   13-07
-    "赻隅都蚚統杅9       "  ,   //  461   13-08
-    "赻隅都蚚統杅10      "  ,   //  462   13-09
-    "赻隅都蚚統杅11      "  ,   //  463   13-10
-    "赻隅都蚚統杅12      "  ,   //  464   13-11
-    "赻隅都蚚統杅13      "  ,   //  465   13-12
-    "赻隅都蚚統杅14      "  ,   //  466   13-13
-    "赻隅都蚚統杅15      "  ,   //  467   13-14
-    "赻隅都蚚統杅16      "  ,   //  468   13-15
-    "赻隅都蚚統杅17      "  ,   //  469   13-16
-    "赻隅都蚚統杅18      "  ,   //  470   13-17
-    "赻隅都蚚統杅19      "  ,   //  471   13-18
-    "赻隅都蚚統杅20      "  ,   //  472   13-19
-    "赻隅都蚚統杅21      "  ,   //  473   13-20
-    "赻隅都蚚統杅22      "  ,   //  474   13-21
-    "赻隅都蚚統杅23      "  ,   //  475   13-22
-    "赻隅都蚚統杅24      "  ,   //  476   13-23
-    "赻隅都蚚統杅25      "  ,   //  477   13-24
-    "赻隅都蚚統杅26      "  ,   //  478   13-25
-    "赻隅都蚚統杅27      "  ,   //  479   13-26
-    "赻隅都蚚統杅28      "  ,   //  480   13-27
-    "赻隅都蚚統杅29      "  ,   //  481   13-28
-    "赻隅都蚚統杅30      "  ,   //  482   13-29
-    "赻隅都蚚統杅31      "  ,   //  483   13-30
-    "赻隅都蚚統杅32      "  ,   //  484   13-31
-    "赻隅都蚚統杅33      "  ,   //  465   13-12
-    "赻隅都蚚統杅34      "  ,   //  466   13-13
-    "赻隅都蚚統杅35      "  ,   //  467   13-14
-    "赻隅都蚚統杅36      "  ,   //  468   13-15
-    "赻隅都蚚統杅37      "  ,   //  469   13-16
-    "赻隅都蚚統杅38      "  ,   //  470   13-17
-    "赻隅都蚚統杅39      "  ,   //  471   13-18
-    "赻隅都蚚統杅40      "  ,   //  462   13-09
-    "赻隅都蚚統杅41      "  ,   //  463   13-10
-    "赻隅都蚚統杅42      "  ,   //  464   13-11
-    "赻隅都蚚統杅43      "  ,   //  465   13-12
-    "赻隅都蚚統杅44      "  ,   //  466   13-13
-    "赻隅都蚚統杅45      "  ,   //  467   13-14
-    "赻隅都蚚統杅46      "  ,   //  468   13-15
-    "赻隅都蚚統杅47      "  ,   //  469   13-16
-    "赻隅都蚚統杅48      "  ,   //  470   13-17
-    "赻隅都蚚統杅49      "  ,   //  471   13-18
-    "赻隅都蚚統杅50      "  ,   //  462   13-09
-    "赻隅都蚚統杅51      "  ,   //  463   13-10
-    "赻隅都蚚統杅52      "  ,   //  464   13-11
-    "赻隅都蚚統杅53      "  ,   //  465   13-12
-    "赻隅都蚚統杅54      "  ,   //  466   13-13
-    "赻隅都蚚統杅55      "  ,   //  467   13-14
-    "赻隅都蚚統杅56      "  ,   //  468   13-15
-    "赻隅都蚚統杅57      "  ,   //  469   13-16
-    "赻隅都蚚統杅58      "  ,   //  470   13-17
-    "赻隅都蚚統杅59      "  ,   //  471   13-18
-    "赻隅都蚚統杅60      "  ,   //  462   13-09
-    "赻隅都蚚統杅61      "  ,   //  463   13-10
-    "赻隅都蚚統杅62      "  ,   //  464   13-11
-    "赻隅都蚚統杅63      "  ,   //  465   13-12
-    "赻隅都蚚統杅64      "  ,   //  466   13-13
-    "赻隅都蚚統杅65      "  ,   //  467   13-14
-    "赻隅都蚚統杅66      "  ,   //  468   13-15
-    "赻隅都蚚統杅67      "  ,   //  469   13-16
-    "赻隅都蚚統杅68      "  ,   //  470   13-17
-    "赻隅都蚚統杅69      "  ,   //  471   13-18
-    "赻隅都蚚統杅70      "  ,   //  462   13-09
-    "赻隅都蚚統杅71      "  ,   //  463   13-10
-    "赻隅都蚚統杅72      "  ,   //  464   13-11
-    "赻隅都蚚統杅73      "  ,   //  465   13-12
-    "赻隅都蚚統杅74      "  ,   //  466   13-13
-    "赻隅都蚚統杅75      "  ,   //  467   13-14
-    "赻隅都蚚統杅76      "  ,   //  468   13-15
-    "赻隅都蚚統杅77      "  ,   //  469   13-16
-    "赻隅都蚚統杅78      "  ,   //  470   13-17
-    "赻隅都蚚統杅79      "  ,   //  471   13-18
-    "赻隅都蚚統杅80      "  ,   //  462   13-09
-    "赻隅都蚚統杅81      "  ,   //  463   13-10
-    "赻隅都蚚統杅82      "  ,   //  464   13-11
-    "赻隅都蚚統杅83      "  ,   //  465   13-12
-    "赻隅都蚚統杅84      "  ,   //  466   13-13
-    "赻隅都蚚統杅85      "  ,   //  467   13-14
-    "赻隅都蚚統杅86      "  ,   //  468   13-15
-    "赻隅都蚚統杅87      "  ,   //  469   13-16
-    "赻隅都蚚統杅88      "  ,   //  470   13-17
-    "赻隅都蚚統杅89      "  ,   //  471   13-18
-    "赻隅都蚚統杅90      "  ,   //  462   13-09
-    "赻隅都蚚統杅91      "  ,   //  463   13-10
-    "赻隅都蚚統杅92      "  ,   //  464   13-11
-    "赻隅都蚚統杅93      "  ,   //  465   13-12
-    "赻隅都蚚統杅94      "  ,   //  466   13-13
-    "赻隅都蚚統杅95      "  ,   //  467   13-14
-    "赻隅都蚚統杅96      "  ,   //  468   13-15
-    "赻隅都蚚統杅97      "  ,   //  469   13-16
-    "赻隅都蚚統杅98      "  ,   //  470   13-17
-    "赻隅都蚚統杅99      "  ,   //  471   13-18
-    "赻隅都蚚統杅100     "  ,   //  471   13-18
+    "赻隅都蚚統杅1       "  ,   //  859 13-00
+    "赻隅都蚚統杅2       "  ,   //  860 13-01
+    "赻隅都蚚統杅3       "  ,   //  861 13-02
+    "赻隅都蚚統杅4       "  ,   //  862 13-33
+    "赻隅都蚚統杅5       "  ,   //  863 13-04
+    "赻隅都蚚統杅6       "  ,   //  864 13-05
+    "赻隅都蚚統杅7       "  ,   //  865 13-06
+    "赻隅都蚚統杅8       "  ,   //  866 13-07
+    "赻隅都蚚統杅9       "  ,   //  867 13-08
+    "赻隅都蚚統杅10      "  ,   //  868 13-09
+    "赻隅都蚚統杅11      "  ,   //  869 13-10
+    "赻隅都蚚統杅12      "  ,   //  870 13-11
+    "赻隅都蚚統杅13      "  ,   //  871 13-12
+    "赻隅都蚚統杅14      "  ,   //  872 13-13
+    "赻隅都蚚統杅15      "  ,   //  873 13-14
+    "赻隅都蚚統杅16      "  ,   //  874 13-15
+    "赻隅都蚚統杅17      "  ,   //  875 13-16
+    "赻隅都蚚統杅18      "  ,   //  876 13-17
+    "赻隅都蚚統杅19      "  ,   //  877 13-18
+    "赻隅都蚚統杅20      "  ,   //  878 13-19
+    "赻隅都蚚統杅21      "  ,   //  879 13-20
+    "赻隅都蚚統杅22      "  ,   //  880 13-21
+    "赻隅都蚚統杅23      "  ,   //  881 13-22
+    "赻隅都蚚統杅24      "  ,   //  882 13-23
+    "赻隅都蚚統杅25      "  ,   //  883 13-24
+    "赻隅都蚚統杅26      "  ,   //  884 13-25
+    "赻隅都蚚統杅27      "  ,   //  885 13-26
+    "赻隅都蚚統杅28      "  ,   //  886 13-27
+    "赻隅都蚚統杅29      "  ,   //  887 13-28
+    "赻隅都蚚統杅30      "  ,   //  888 13-29
+    "赻隅都蚚統杅31      "  ,   //  889 13-30
+    "赻隅都蚚統杅32      "  ,   //  890 13-31
+    "赻隅都蚚統杅33      "  ,   //  891 13-32
+    "赻隅都蚚統杅34      "  ,   //  892 13-33
+    "赻隅都蚚統杅35      "  ,   //  893 13-34
+    "赻隅都蚚統杅36      "  ,   //  893 13-35
+    "赻隅都蚚統杅37      "  ,   //  894 13-36
+    "赻隅都蚚統杅38      "  ,   //  895 13-37
+    "赻隅都蚚統杅39      "  ,   //  896 13-38
+    "赻隅都蚚統杅40      "  ,   //  897 13-39
+    "赻隅都蚚統杅41      "  ,   //  898 13-30
+    "赻隅都蚚統杅42      "  ,   //  899 13-41
+    "赻隅都蚚統杅43      "  ,   //  900 13-42
+    "赻隅都蚚統杅44      "  ,   //	901 13-43
+    "赻隅都蚚統杅45      "  ,   //	902 13-44
+    "赻隅都蚚統杅46      "  ,   //	903 13-45
+    "赻隅都蚚統杅47      "  ,   //	904 13-46
+    "赻隅都蚚統杅48      "  ,   //	905 13-47
+    "赻隅都蚚統杅49      "  ,   //  906 13-48
+    "赻隅都蚚統杅50      "  ,   //  907 13-49
+    "赻隅都蚚統杅51      "  ,   //  908 13-50
+    "赻隅都蚚統杅52      "  ,   //  909 13-51
+    "赻隅都蚚統杅53      "  ,   //  910 13-52
+    "赻隅都蚚統杅54      "  ,   //  911 13-53
+    "赻隅都蚚統杅55      "  ,   //  912 13-54
+    "赻隅都蚚統杅56      "  ,   //  913 13-55
+    "赻隅都蚚統杅57      "  ,   //  914 13-56
+    "赻隅都蚚統杅58      "  ,   //	915 13-57
+    "赻隅都蚚統杅59      "  ,   //	916 13-58
+    "赻隅都蚚統杅60      "  ,   //	917 13-59
+    "赻隅都蚚統杅61      "  ,   //	918 13-60
+    "赻隅都蚚統杅62      "  ,   //	919 13-61
+    "赻隅都蚚統杅63      "  ,   //  920 13-62
+    "赻隅都蚚統杅64      "  ,   //	921 13-63
+    "赻隅都蚚統杅65      "  ,   //	922 13-64
+    "赻隅都蚚統杅66      "  ,   //	923 13-65
+    "赻隅都蚚統杅67      "  ,   //	924 13-66
+    "赻隅都蚚統杅68      "  ,   //	925 13-67
+    "赻隅都蚚統杅69      "  ,   //	926 13-68
+    "赻隅都蚚統杅70      "  ,   //  927 13-69
+    "赻隅都蚚統杅71      "  ,   //  928 13-70
+    "赻隅都蚚統杅72      "  ,   //  929 13-71
+    "赻隅都蚚統杅73      "  ,   //  930 13-72
+    "赻隅都蚚統杅74      "  ,   //  931 13-73
+    "赻隅都蚚統杅75      "  ,   //  932 13-74
+    "赻隅都蚚統杅76      "  ,   //  933 13-75
+    "赻隅都蚚統杅77      "  ,   //  934 13-76
+    "赻隅都蚚統杅78      "  ,   //	935 13-77
+    "赻隅都蚚統杅79      "  ,   //	936 13-78
+    "赻隅都蚚統杅80      "  ,   //	937 13-79
+    "赻隅都蚚統杅81      "  ,   //  938 13-80
+    "赻隅都蚚統杅82      "  ,   //	939 13-81
+    "赻隅都蚚統杅83      "  ,   //	940 13-82
+    "赻隅都蚚統杅84      "  ,   //	941 13-83
+    "赻隅都蚚統杅85      "  ,   //  942 13-84
+    "赻隅都蚚統杅86      "  ,   //  943 13-85
+    "赻隅都蚚統杅87      "  ,   //  944 13-86
+    "赻隅都蚚統杅88      "  ,   //  945 13-87
+    "赻隅都蚚統杅89      "  ,   //  946 13-88
+    "赻隅都蚚統杅90      "  ,   //  947 13-89
+    "赻隅都蚚統杅91      "  ,   //  948 13-90
+    "赻隅都蚚統杅92      "  ,   //  949 13-91
+    "赻隅都蚚統杅93      "  ,   //  950 13-92
+    "赻隅都蚚統杅94      "  ,   //  951 13-93
+    "赻隅都蚚統杅95      "  ,   //  952 13-94
+    "赻隅都蚚統杅96      "  ,   //  953 13-95
+    "赻隅都蚚統杅97      "  ,   //  954 13-96
+    "赻隅都蚚統杅98      "  ,   //  955 13-97
+    "赻隅都蚚統杅99      "  ,   //  956 13-98
+    "赻隅都蚚統杅100     "  ,   //  957 13-99
+    
 /*--- GROUP 14------------------------------------------*/
 /*  "12345678901234561234"	*/
-	"Id PWRSAVE Level%   "	,	//	485   14-00	Ids Power Save Level
-	"VF CURVE MODE       "	,	//	486   14-01	VF voltage mode selection
-	"Overload 1 Mode     "	,	//	487   14-02	Constant Torque Selection
-	"Auto ACC/DEC        "	,	//	488   14-03	Auto Accel/Decel
-	"Unit ACC/DEC T      "	,	//	489   14-04	Unit of Acc/Dec time
-	"POWER SAVE MODE     "	,	//	490   14-05	Power Save mode
-	"Stop Methods        "	,	//	491   14-06	Stop Methods
-	"Reverse Operate     "	,	//	492   14-07	Reverse Operation
-	"Skip Freq. 1UP  Hz  "	,	//	493   14-08	Skip Freq. Point 1 upper limit
-	"Skip Freq. 1LOW Hz  "	,	//	494   14-09	Skip Freq. Point 1 lower limit
-	"Skip Freq. 2UP  Hz  "	,	//	495   14-10	Skip Freq. Point 2 upper limit
-	"Skip Freq. 2LOW Hz  "	,	//	496   14-11	Skip Freq. Point 2 lower limit
-	"Skip Freq. 3UP  Hz  "	,	//	497   14-12	Skip Freq. Point 3 upper limit
-	"Skip Freq. 3LOW Hz  "	,	//	498   14-13	Skip Freq. Point 3 lower limit
-	"Motor2 Fbase    Hz  "	,	//	499   14-14	Motor Base Frequency 2
-	"Max Out-Volt 2  V   "	,	//	500   14-15	Max Output Voltage 2
-	"Mid Out-Freq.2-1Hz  "	,	//	501   14-16	Mid Output Freq.2 1
-	"Mid Out-Volt 2-1V   "	,	//	502   14-17	Mid Output Voltage 2 1
-	"Mid Out-Freq.2-2Hz  "	,	//	503   14-18	Mid Output Freq.2 2
-	"Mid Out-Volt 2-2V   "	,	//	504   14-19	Mid Output Voltage 2 2
-	"Min Out-Freq.2  Hz  "	,	//	505   14-20	Min Output Freq. 2
-	"Min Out-Volt 2  V   "	,	//	506   14-21	Min Output Voltage 2
-	"UP/DOWN Key MODE    "	,	//	507   14-22	up/down key mode
-	"UP/DOWN KEY SPD     "	,	//	508   14-23	up/down key speed
-	"Counter Set         "	,	//	509   14-24	Counter Value Set (Complete)
-	"Counter Reach       "	,	//	510   14-25	Counter Value Reach (Preset)
-	"LIMIT SCALE         "	,	//	511   14-26	LIMIT_SCALE      //[weak 
-	"Multi-Fun Input9    "	,	//	512   14-27	Multi-Function Input 9
-	"Multi-Fun InputA    "	,	//	513   14-28	Multi-Function Input 10
-	"Multi-Fun InputB    "	,	//	514   14-29	Multi-Function Input 11
-	"Multi-Fun InputC    "	,	//	515   14-30	Multi-Function Input 12
-	"Multi-Fun InputD    "	,	//	516   14-31	Multi-Function Input 13
-	"Multi-Fun InputE    "	,	//	517   14-32	Multi-Function Input 14
-	"Fault Reset OP      "	,	//	518   14-33	External Terminal Run after Fault 
-	"ACI/AVI2 SEL        "	,	//	519   14-34	ACI change to AVI2
-	"Addition of AI      "	,	//	520   14-35	Addition Function of AI
-	"Multi-Posit 1       "	,	//	521   14-36	Multi-Position Point 1
-	"Multi-Posit 2       "	,	//	522   14-37	Multi-Position Point 2
-	"Multi-Posit 3       "	,	//	523   14-38	Multi-Position Point 3
-	"Multi-Posit 4       "	,	//	524   14-39	Multi-Position Point 4
-	"Multi-Posit 5       "	,	//	525   14-40	Multi-Position Point 5
-	"Multi-Posit 6       "	,	//	526   14-41	Multi-Position Point 6
-	"Multi-Posit 7       "	,	//	527   14-42	Multi-Position Point 7
-	"Multi-Posit 8       "	,	//	528   14-43	Multi-Position Point 8
-	"Multi-Posit 9       "	,	//	529   14-44	Multi-Position Point 9
-	"Multi-Posit 10      "	,	//	530   14-45	Multi-Position Point 10
-	"Multi-Posit 11      "	,	//	531   14-46	Multi-Position Point 11
-	"Multi-Posit 12      "	,	//	532   14-47	Multi-Position Point 12
-	"Multi-Posit 13      "	,	//	533   14-48	Multi-Position Point 13
-	"Multi-Posit 14      "	,	//	534   14-49	Multi-Position Point 14
-	"Multi-Posit 15      "	,	//	535   14-50	Multi-Position Point 15
-	"MOTOR 1 OR 2        "	,	//	536   14-51	Motor Selection 1 or 2
-	"Y-D Switch Hz   Hz  "	,	//	537   14-52	Y-Delta Connected switching rpm
-	"Y-D Switch Sel      "	,	//	538   14-53	Y-Delta switched Enable
-	"Motor2 Rated    Amps"	,	//	539   14-54	Motor 2 rated Current
-	"Motor2 Rated P  Kw  "	,	//	540   14-55	Motor 2 Rated Power
-	"Motor2 Rated    RPM "	,	//	541   14-56	Motor 2 Rated RPM
-	"Motor2 Poles        "	,	//	542   14-57	Motor 2 pole No.
-	"Motor2 No-Load  Amps"	,	//	543   14-58	Motor 2 No-Load Current
-	"Motor2 Rs       ohm "	,	//	544   14-59	Motor 2 Rs
-	"Motor2 Rr       ohm "	,	//	545   14-60	Motor 2 Rr
-	"Motor2 Lm       mH  "	,	//	546   14-61	Motor 2 Lm
-	"Motor2 Lx       mH  "	,	//	547   14-62	Motor 2 Lx
-	"Y-D On Delay T      "	,	//	548   14-63	Y-Delta On delay time
-	"OV stall level  V   "	,	//	549   14-64	OV stall level
-	"Thermal RLY2 SEL    "	,	//	550   14-65	Thermal Relay 2 Selection
-	"Thermal RLY2 T      "	,	//	551   14-66	Thermal Relay 2 Time
-	"Momentary Power     "	,	//	552   14-67	Momentary Power Loss
-	"Power Loss Time sec "	,	//	553   14-68	Max. allowable PL time
-	"Base Block Time sec "	,	//	554   14-69	BB Time for speed serach
-	"SPD Search Curr %   "	,	//	555   14-70	Current level for SPD serach
-	"BB Treatment        "	,	//	556   14-71	bb treatment for oc, ov, bb
-	"Auto Restart        "	,	//	557   14-72	Auto restart after fault
-	"Restart Method      "	,	//	558   14-73	Auto restart Speed serach method
-	"DEB Decel SEL       "	,	//	559   14-74	Deceleration at Momertary Power 
-	"DEB Return Time     "	,	//	560   14-75	KEB Return Time
-	"PID Fdb SEL         "	,	//	561   14-76	PID feedback selection	
-	"P Gain of PID       "	,	//	562   14-77	P gain of PID	
-	"I Gain of PID   sec "	,	//	563   14-78	I gain of PID	
-	"D Gain of PID       "	,	//	564   14-79	D gain of PID	
-	"Up Limit for I  %   "	,	//	565   14-80	Upper bound for integral	
-	"PID Out-Limiter %   "	,	//	566   14-81	PID output Freq. Limit	
-	"PID Offset      %   "	,	//	567   14-82	PID offset	
-	"PID Out-Filter  sec "	,	//	568   14-83	Derivative Filter Time Constant	
-	"Fdb Detect Time sec "	,	//	569   14-84	Feedback signal detection time	
-	"PID Fdb Loss        "	,	//	570   14-85	PID feedback loss	
-	"SLEEP FREQ          "	,	//	571   14-86	Sleep Frequency	
-	"WAKE FREQ           "	,	//	572   14-87	Wake up Frequency	
-	"SLEEP TIME          "	,	//	573   14-88	Sleep Time	
-	"PID DEV. LEVEL  %   "	,	//	574   14-89	PID Deviation Level	
-	"PID DEV. TIME       "	,	//	575   14-90	PID Deviation Time	
-	"PID Fbk Filter  sec "	,	//	576   14-91	PID feedback filter	
-	"Comm Main Freq. Hz  "	,	//	577   14-92	Main Frequency from 
-	"Block Trans. 1      "	,	//	578   14-93	Block Transfer 1	
-	"Block Trans. 2      "	,	//	579   14-94	Block Transfer 2	
-	"Block Trans. 3      "	,	//	580   14-95	Block Transfer 3
-	"Block Trans. 4      "	,	//	581   14-96	Block Transfer 4
-	"Block Trans. 5      "	,	//	582   14-97	Block Transfer 5
-	"Block Trans. 6      "	,	//	583   14-98	Block Transfer 6
-	"Block Trans. 7      "	,	//	584   14-99	Block Transfer 7
-	"Block Trans. 8      "	,	//	585   14-100 Block Transfer 8
-	"Block Trans. 9      "	,	//	586   14-101 Block Transfer 9
-	"Block Trans. 10     "	,	//	587   14-102 Block Transfer 10
-	"WEAKLPF             "	,	//	588   14-103 WEAKLPF    //[weak magnet, 
-	"WEAKTHETA           "	,	//	589   14-104 WEAKTHETA  //[weak magnet, 
-	"OVER_SCALE          "	,	//	590   14-105 OVER_SCALE //[weak magnet, 
-	"PG Position Home    "	,	//	591   14-106 PG Position Control Point (Home)
-	"PG Attained Home    "	,	//	592   14-107 Range for PG Position Attained
-	"APR FFD Gain        "	,	//	593   14-108 Gain of APR feedforward
-	"APR Decel Time  sec "	,	//	594   14-109 Decelerate time of APR
-	"FMAX by VcomAPR Hz  "	,	//	595   14-110 FMax Target by Vcommand Position
-	"RESERVE             "	,	//	596   14-111 Accel. Time for Position
-	"PG Mech. Gear A     "	,	//	597   14-112 PG Mechanical Gear A
-	"PG Mech. Gear B     "	,	//	598   14-113 PG Mechanical Gear B
-	"System Jm       PU  "	,	//	599   14-114 Interia of motor PU
-	"M1IdsRef Limit   %  "	,	//	600   14-115 Motor1 IdsRef Limit
-	"M2IdsRef Limit   %  "	,	//	601   14-116 Motor2 IdsRef Limit
-	"Phase Loss Time sec "	,	//	602   14-117 Phase Loss Time
-	"TH Inside Temp   C  "	,	//	603   14-118 Thermo inside Temp
-	"ASR FeedForward     "	,	//	604   14-119 Speed feed forword
-	"SlipGen.CompGain    "	,	//	605   14-120 SVC Slip Generation Compensation 
-	"PG-REF COM LPG      "	,	//	606   14-121 PG2 Command Low pass Filter Gain
-	"TENSION OF TQCPGNt  "	,	//	607   14-122 Tension of Torque Control
-	"DIAMETER        m   "	,	//	608   14-123 Diameter of Material
-	"DEPTH           cm  "	,	//	609   14-124 Depth of meterial
-	"RESERVE             "	,	//	610   14-125 Reserve
-	"ABZ ST Times        "	,	//	611   14-126 Reserve
-	"ABZ ST Duty         "	,	//	612   14-127 Reserve
-	"TIMER OF PHL    hr. "	,	//	613   14-128 Timer of Phase loss (hour)
-	"RESERVE             "	,	//	614   14-129 Time of APR Curve
-    "Jm source           "  ,   //	615   14-130 IM control use inertia source
-	"PHL LEVEL           "	,	//	616   14-131 PHASE LOSS detect level
-	"Muti-input state    "	,	//	617   14-132 muti input state
-    "StandStill Curr.Amps"  ,   //  618   14-133 Standstill Current
-	"PG Scale Factor     "	,	//	619   14-134 Division factor of PG	
-	"OLD Irate           "	,	//	619   14-135 OLD Irate            // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_CONTROL         "	,   //  [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_BUARD           "	,   //  [CAN Protocol for High Cap , Sampo,  2011/09/05]
-	"CAN_Check_Time  sec "	,   //  [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-	"PDO_Tx_Time     ms  "	,   //  [CAN Protocol for High Cap, Bernie, 09/22/2011]   
-    "COM1籵捅華硊        "  ,   //  368   09-00 Comm Address                //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                       
-    "COM1籵捅換怀厒僅kbps"  ,   //  369   09-01 Tranmission speed                          
-    "COM1籵捅渣昫揭燴    "  ,   //  370   09-02 Comm fault Treatment                      
-    "COM1貣奀潰堤奀潔sec "  ,   //  371   09-03 Comm Time out                             
-    "COM1籵捅跡宒        "  ,   //  372   09-04 Comm Protocol                             
-    "COM1砒茼晊奀奀潔ms  "  ,   //  373   09-05 ASC remote Response Delay Time,  
-    "OPHL 10Hz COUNT     "  ,   //  3XX   14-146    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  5Hz COUNT     "  ,   //  3XX   14-147    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL  2Hz COUNT     "  ,   //  3XX   14-148    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.5Hz COUNT    "  ,   //  3XX   14-149    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL 0.2Hz COUNT    "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 1       "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 2       "  ,   //  3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-    "OPHL I GAIN 2       "  ,  	//	3XX   14-150    The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+	"Id PWRSAVE Level%   "	,	//	958 14-00	Ids Power Save Level
+	"VF CURVE MODE       "	,	//	959 14-01	VF voltage mode selection
+	"Overload 1 Mode     "	,	//	960 14-02	Constant Torque Selection
+	"Auto ACC/DEC        "	,	//	961 14-03	Auto Accel/Decel
+	"Unit ACC/DEC T      "	,	//	962 14-04	Unit of Acc/Dec time
+	"POWER SAVE MODE     "	,	//  963 14-05	Power Save mode
+	"Stop Methods        "	,	//  964 14-06	Stop Methods
+	"Reverse Operate     "	,	//  965 14-07	Reverse Operation
+	"Skip Freq. 1UP  Hz  "	,	//  966 14-08	Skip Freq. Point 1 upper limit
+	"Skip Freq. 1LOW Hz  "	,	//  967 14-09	Skip Freq. Point 1 lower limit
+	"Skip Freq. 2UP  Hz  "	,	//  968 14-10	Skip Freq. Point 2 upper limit
+	"Skip Freq. 2LOW Hz  "	,	//  969 14-11	Skip Freq. Point 2 lower limit
+	"Skip Freq. 3UP  Hz  "	,	//  970 14-12	Skip Freq. Point 3 upper limit
+	"Skip Freq. 3LOW Hz  "	,	//  971 14-13	Skip Freq. Point 3 lower limit
+	"Motor2 Fbase    Hz  "	,	//  972 14-14	Motor Base Frequency 2
+	"Max Out-Volt 2  V   "	,	//  973 14-15	Max Output Voltage 2
+	"Mid Out-Freq.2-1Hz  "	,	//  974 14-16	Mid Output Freq.2 1
+	"Mid Out-Volt 2-1V   "	,	//  975 14-17	Mid Output Voltage 2 1
+	"Mid Out-Freq.2-2Hz  "	,	//  976 14-18	Mid Output Freq.2 2
+	"Mid Out-Volt 2-2V   "	,	//  977 14-19	Mid Output Voltage 2 2
+	"Min Out-Freq.2  Hz  "	,	//  978 14-20	Min Output Freq. 2
+	"Min Out-Volt 2  V   "	,	//  979 14-21	Min Output Voltage 2
+	"UP/DOWN Key MODE    "	,	//  980 14-22	up/down key mode
+	"UP/DOWN KEY SPD     "	,	//  981 14-23	up/down key speed
+	"Counter Set         "	,	//  982 14-24	Counter Value Set (Complete)
+	"Counter Reach       "	,	//  983 14-25	Counter Value Reach (Preset)
+	"LIMIT SCALE         "	,	//  984 14-26	LIMIT_SCALE      //[weak 
+	"Multi-Fun Input9    "	,	//  985 14-27	Multi-Function Input 9
+	"Multi-Fun InputA    "	,	//  986 14-28	Multi-Function Input 10
+	"Multi-Fun InputB    "	,	//  987 14-29	Multi-Function Input 11
+	"Multi-Fun InputC    "	,	//  988 14-30	Multi-Function Input 12
+	"Multi-Fun InputD    "	,	//  989 14-31	Multi-Function Input 13
+	"Multi-Fun InputE    "	,	//  990 14-32	Multi-Function Input 14
+	"Fault Reset OP      "	,	//  991 14-33	External Terminal Run after Fault 
+	"ACI/AVI2 SEL        "	,	//  992 14-34	ACI change to AVI2
+	"Addition of AI      "	,	//  993 14-35	Addition Function of AI
+	"Multi-Posit 1       "	,	//  993 14-36	Multi-Position Point 1
+	"Multi-Posit 2       "	,	//  994 14-37	Multi-Position Point 2
+	"Multi-Posit 3       "	,	//  995 14-38	Multi-Position Point 3
+	"Multi-Posit 4       "	,	//  996 14-39	Multi-Position Point 4
+	"Multi-Posit 5       "	,	//  997 14-40	Multi-Position Point 5
+	"Multi-Posit 6       "	,	//  998 14-41	Multi-Position Point 6
+	"Multi-Posit 7       "	,	//  999 14-42	Multi-Position Point 7
+	"Multi-Posit 8       "	,	//  1000 14-43	Multi-Position Point 8
+	"Multi-Posit 9       "	,	//	1001 14-44	Multi-Position Point 9
+	"Multi-Posit 10      "	,	//	1002 14-45	Multi-Position Point 10
+	"Multi-Posit 11      "	,	//	1003 14-46	Multi-Position Point 11
+	"Multi-Posit 12      "	,	//	1004 14-47	Multi-Position Point 12
+	"Multi-Posit 13      "	,	//	1005 14-48	Multi-Position Point 13
+	"Multi-Posit 14      "	,	//  1006 14-49	Multi-Position Point 14
+	"Multi-Posit 15      "	,	//  1007 14-50	Multi-Position Point 15
+	"MOTOR 1 OR 2        "	,	//  1008 14-51	Motor Selection 1 or 2
+	"Y-D Switch Hz   Hz  "	,	//  1009 14-52	Y-Delta Connected switching rpm
+	"Y-D Switch Sel      "	,	//  1010 14-53	Y-Delta switched Enable
+	"Motor2 Rated    Amps"	,	//  1011 14-54	Motor 2 rated Current
+	"Motor2 Rated P  Kw  "	,	//  1012 14-55	Motor 2 Rated Power
+	"Motor2 Rated    RPM "	,	//  1013 14-56	Motor 2 Rated RPM
+	"Motor2 Poles        "	,	//  1014 14-57	Motor 2 pole No.
+	"Motor2 No-Load  Amps"	,	//	1015 14-58	Motor 2 No-Load Current
+	"Motor2 Rs       ohm "	,	//	1016 14-59	Motor 2 Rs
+	"Motor2 Rr       ohm "	,	//	1017 14-60	Motor 2 Rr
+	"Motor2 Lm       mH  "	,	//	1018 14-61	Motor 2 Lm
+	"Motor2 Lx       mH  "	,	//	1019 14-62	Motor 2 Lx
+	"Y-D On Delay T      "	,	//  1020 14-63	Y-Delta On delay time
+	"OV stall level  V   "	,	//	1021 14-64	OV stall level
+	"Thermal RLY2 SEL    "	,	//	1022 14-65	Thermal Relay 2 Selection
+	"Thermal RLY2 T      "	,	//	1023 14-66	Thermal Relay 2 Time
+	"Momentary Power     "	,	//	1024 14-67	Momentary Power Loss
+	"Power Loss Time sec "	,	//	1025 14-68	Max. allowable PL time
+	"Base Block Time sec "	,	//	1026 14-69	BB Time for speed serach
+	"SPD Search Curr %   "	,	//  1027 14-70	Current level for SPD serach
+	"BB Treatment        "	,	//  1028 14-71	bb treatment for oc, ov, bb
+	"Auto Restart        "	,	//  1029 14-72	Auto restart after fault
+	"Restart Method      "	,	//  1030 14-73	Auto restart Speed serach method
+	"DEB Decel SEL       "	,	//  1031 14-74	Deceleration at Momertary Power 
+	"DEB Return Time     "	,	//  1032 14-75	KEB Return Time
+	"PID Fdb SEL         "	,	//  1033 14-76	PID feedback selection	
+	"P Gain of PID       "	,	//  1034 14-77	P gain of PID	
+	"I Gain of PID   sec "	,	//	1035 14-78	I gain of PID	
+	"D Gain of PID       "	,	//	1036 14-79	D gain of PID	
+	"Up Limit for I  %   "	,	//	1037 14-80	Upper bound for integral	
+	"PID Out-Limiter %   "	,	//  1038 14-81	PID output Freq. Limit	
+	"PID Offset      %   "	,	//	1039 14-82	PID offset	
+	"PID Out-Filter  sec "	,	//	1040 14-83	Derivative Filter Time Constant	
+	"Fdb Detect Time sec "	,	//	1041 14-84	Feedback signal detection time	
+	"PID Fdb Loss        "	,	//  1042 14-85	PID feedback loss	
+	"SLEEP FREQ          "	,	//  1043 14-86	Sleep Frequency	
+	"WAKE FREQ           "	,	//  1044 14-87	Wake up Frequency	
+	"SLEEP TIME          "	,	//  1045 14-88	Sleep Time	
+	"PID DEV. LEVEL  %   "	,	//  1046 14-89	PID Deviation Level	
+	"PID DEV. TIME       "	,	//  1047 14-90	PID Deviation Time	
+	"PID Fbk Filter  sec "	,	//  1048 14-91	PID feedback filter	
+	"Comm Main Freq. Hz  "	,	//  1049 14-92	Main Frequency from 
+	"Block Trans. 1      "	,	//  1050 14-93	Block Transfer 1	
+	"Block Trans. 2      "	,	//  1051 14-94	Block Transfer 2	
+	"Block Trans. 3      "	,	//  1052 14-95	Block Transfer 3
+	"Block Trans. 4      "	,	//  1053 14-96	Block Transfer 4
+	"Block Trans. 5      "	,	//  1054 14-97	Block Transfer 5
+	"Block Trans. 6      "	,	//  1055 14-98	Block Transfer 6
+	"Block Trans. 7      "	,	//  1056 14-99	Block Transfer 7
+	"Block Trans. 8      "	,	//  1057 14-100 Block Transfer 8
+	"Block Trans. 9      "	,	//  1086 14-101 Block Transfer 9
+	"Block Trans. 10     "	,	//	1087 14-102 Block Transfer 10
+	"WEAKLPF             "	,	//	1088 14-103 WEAKLPF    //[weak magnet, 
+	"WEAKTHETA           "	,	//	1089 14-104 WEAKTHETA  //[weak magnet, 
+	"OVER_SCALE          "	,	//	1090 14-105 OVER_SCALE //[weak magnet, 
+	"PG Position Home    "	,	//	1091 14-106 PG Position Control Point (Home)
+	"PG Attained Home    "	,	//	1092 14-107 Range for PG Position Attained
+	"APR FFD Gain        "	,	//	1093 14-108 Gain of APR feedforward
+	"APR Decel Time  sec "	,	//	1094 14-109 Decelerate time of APR
+	"FMAX by VcomAPR Hz  "	,	//	1095 14-110 FMax Target by Vcommand Position
+	"RESERVE             "	,	//	1096 14-111 Accel. Time for Position
+	"PG Mech. Gear A     "	,	//	1097 14-112 PG Mechanical Gear A
+	"PG Mech. Gear B     "	,	//	1098 14-113 PG Mechanical Gear B
+	"System Jm       PU  "	,	//	1099 14-114 Interia of motor PU
+	"M1IdsRef Limit   %  "	,	//	1100 14-115 Motor1 IdsRef Limit
+	"M2IdsRef Limit   %  "	,	//	1101 14-116 Motor2 IdsRef Limit
+	"Phase Loss Time sec "	,	//	1102 14-117 Phase Loss Time
+	"TH Inside Temp   C  "	,	//	1103 14-118 Thermo inside Temp
+	"ASR FeedForward     "	,	//	1104 14-119 Speed feed forword
+	"SlipGen.CompGain    "	,	//	1105 14-120 SVC Slip Generation Compensation 
+	"PG-REF COM LPG      "	,	//	1106 14-121 PG2 Command Low pass Filter Gain
+	"TENSION OF TQCPGNt  "	,	//	1107 14-122 Tension of Torque Control
+	"DIAMETER        m   "	,	//	1108 14-123 Diameter of Material
+	"DEPTH           cm  "	,	//	1109 14-124 Depth of meterial
+	"RESERVE             "	,	//	1110 14-125 Reserve
+	"ABZ ST Times        "	,	//	1111 14-126 Reserve
+	"ABZ ST Duty         "	,	//	1112 14-127 Reserve
+	"TIMER OF PHL    hr. "	,	//	1113 14-128 Timer of Phase loss (hour)
+	"RESERVE             "	,	//	1114 14-129 Time of APR Curve
+    "Jm source           "  ,   //	1115 14-130 IM control use inertia source
+	"PHL LEVEL           "	,	//	1116 14-131 PHASE LOSS detect level
+	"Muti-input state    "	,	//	1117 14-132 muti input state
+    "StandStill Curr.Amps"  ,   //  1118 14-133 Standstill Current
+	"PG Scale Factor     "	,	//	1119 14-134 Division factor of PG	
+	"OLD Irate           "	,	//	1120 14-135 OLD Irate            // [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_CONTROL         "	,   //  1121 14-136 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_BUARD           "	,   //  1122 14-137 [CAN Protocol for High Cap , Sampo,  2011/09/05]
+	"CAN_Check_Time  sec "	,   //  1123 14-138 [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+	"PDO_Tx_Time     ms  "	,   //  1124 14-139 [CAN Protocol for High Cap, Bernie, 09/22/2011]   
+    "COM1籵捅華硊        "  ,   //  1125 14-140 Comm Address                //[move the keypad parameter to Group 14, Bernie, 11/08/2011 ]                       
+    "COM1籵捅換怀厒僅kbps"  ,   //  1126 14-141 Tranmission speed                          
+    "COM1籵捅渣昫揭燴    "  ,   //  1127 14-142 Comm fault Treatment                      
+    "COM1貣奀潰堤奀潔sec "  ,   //  1128 14-143 Comm Time out                             
+    "COM1籵捅跡宒        "  ,   //  1129 14-144 Comm Protocol                             
+    "COM1砒茼晊奀奀潔ms  "  ,   //  1130 14-145 ASC remote Response Delay Time,  
+    "OPHL 10Hz COUNT     "  ,   //  1131 14-146 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  5Hz COUNT     "  ,   //  1132 14-147 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL  2Hz COUNT     "  ,   //  1133 14-148 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.5Hz COUNT    "  ,   //  1134 14-149 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL 0.2Hz COUNT    "  ,   //  1135 14-150 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 1       "  ,   //  1136 14-151 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 2       "  ,   //  1137 14-152 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+    "OPHL I GAIN 2       "  ,  	//	1138 14-153 The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
 };
 #endif
 
@@ -4505,7 +4895,7 @@ const string20 prinfo_tur[EPMAX] = {
 	"DEBUG FLAG          "	,	//	0   15-00	Debug Flag 1	                                
 	"DBC Change Freq.    "	,	//	1   15-01	DBC CHANGE FREQ	                                
 	"EFFICIENCY      %   "	,	//	2   15-02	efficiency of Motor	                            
-    "ZOffset Tune I  %   "  ,   //    3   15-03   Z Phase search current level                    
+    "ZOffset Tune I  %   "  ,   //  3   15-03   Z Phase search current level                    
 	"RATED-I AD VALUE    "	,	//	4   15-04	AD value at Rated Current	                    
 	"Ide Iqe LPF Gain    "	,	//	5   15-05	Id*,Iq* LPF	                                    
 	"Factory Serial 1    "	,	//	6   15-06	Only for Factory 1	                            
@@ -4703,7 +5093,19 @@ const string20 prinfo_tur[EPMAX] = {
     "Emergency DEC   sec "  ,   //  105 15-105  RESERVED
     "Emergency S3    sec "  ,   //  105 15-105  RESERVED
     "Emergency S4    sec "  ,   //  105 15-105  RESERVED
+#else
+	"Rezerve			 "	,	//	01-41  RESERVE
+	"Rezerve			 "	,	//	01-42  RESERVE
+	"Rezerve			 "	,	//	01-43  RESERVE
 #endif
+	"IODLC TRIGGE SPDHz  "  ,   //	01-44   MI direct stop trigger speed	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+	"Rezerve			 "	,	//	195 01-45   RESERVED
+    "Rezerve			 "	,	//	196 01-46   RESERVED
+    "Rezerve			 "	,	//	197 01-47   RESERVED
+    "Rezerve			 "	,	//	198 01-48   RESERVED
+    "Rezerve			 "	,	//	199 01-49   RESERVED
+//-----------------------------------------------------------------------------------------------------------	
+
 /*---- GROUP 02---------------------------------------*/						
 /*  "12345678901234561234"	*/
     "2/3 KabloKontrol    "	,	//	176	02-00 2/3 wire control                
@@ -5104,7 +5506,7 @@ const string20 prinfo_tur[EPMAX] = {
 	"EnkoderSapma Sev    "	,	//	381   10-07 PG fbk speed deviation level	    
 	"SapmaAlg.Suresi san "	,	//	382   10-08 Deviation Detect Time	            
 	"Asiri Hiz Durumu    "	,	//	383   10-09 Operation at overspeed	            
-	"Hall Giris Tipi     "  ,   //    384   10-10 Hall Input Types
+	"Hall Giris Tipi     "  ,   //  384   10-10 Hall Input Types
 	"Zero SPD Loop Kp%   "	,	//	385   10-11 KP gain of ASR in Zero speed	
 	"Zero SPD Loop Kisan "	,	//	386   10-12 Ki gain of ASR in Zero speed	
 	"Low SPD Loop Kp %   "	,	//	387   10-13 ASR P Gain 1	                
@@ -5114,8 +5516,8 @@ const string20 prinfo_tur[EPMAX] = {
 	"ASR1/2 Switch F Hz  "	,	//	391   10-17 ASR1/ASR2 switch freq	        
 	"Primary LPG     san "	,	//	392   10-18 Primary LowPass filter Gain 
 	"Position Loop Kp%   "  ,	//	393   10-19 position control Kp Gain  
-    "Low SPD Slope   Hz  "  ,   //    394   10-20 Low Spd band
-    "High SPD Slope  Hz  "  ,   //    395   10-21 High Spd band
+    "Low SPD Slope   Hz  "  ,   //  394   10-20 Low Spd band
+    "High SPD Slope  Hz  "  ,   //  395   10-21 High Spd band
 	"POS CONT Time   san "	,	//	396   10-22 Position control time
 	"POS CONT LPG    san "	,	//	397   10-23 Position control LOW POSS FILTER
 	"Source of POS       "	,	//	398   10-24 Source of position control, add by dino, 
@@ -5123,21 +5525,21 @@ const string20 prinfo_tur[EPMAX] = {
 	"Zero SPD Land Kisan "	,	//	400   10-26 Ki gain of ASR in Zero speed of Landing
 	"Position SPD Kp %   "	,	//	385   10-27 KP gain of ASR in Zero speed during 
 	"Position SPD Ki san "	,	//	386   10-28 Ki gain of ASR in Zero speed during 
-    "PG KardFrekBolme    "	,   //    4xx   10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG Kard Modu        "	,   //    4xx   10-30   PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
-    "PG C+/C- Tipi       "  ,   //  110 15-110  RESERVED     //[change parameter to normal group, Bernie, 2014/02/14]
-    "AsiriHizlanSev  m/s2"  ,   //    3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "AsiriHizlanTespisan "  ,   //    3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "AsiriHizlan Ayar    "  ,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "PG KardFrekBolme    "	,   //  4xx   10-29   PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG Kard Modu        "	,   //  4xx   10-30   PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
+    "PG C+/C- Tipi       "  ,   //  110   15-110  RESERVED     //[change parameter to normal group, Bernie, 2014/02/14]
+    "AsiriHizlanSev  m/s2"  ,   //  3XX   10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "AsiriHizlanTespisan "  ,   //  3XX   10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+    "AsiriHizlan Ayar    "  ,   //  3XX   10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
     "Sistem Kontrol      "	,	//	401   11-00 system control bit0:auto, bit1:Jm tunning, 
-    "Fmax Spd        m/s "  ,   //    402   11-01 Lift operation speed                                        
-    "Kasnak Cap          "  ,   //    403   11-02 SHEAVE diameter		                
-    "Mek Disli Oran      "  ,   //    404   11-03 Gear Ratio                                              
-    "Suspansiyon Oran    "  ,   //    405   11-04 Suspension ratio	                                        
-    "Atalet Orani    %   "  ,   //    406   11-05 inertia	percent		                  
+    "Fmax Spd        m/s "  ,   //  402   11-01 Lift operation speed                                        
+    "Kasnak Cap          "  ,   //  403   11-02 SHEAVE diameter		                
+    "Mek Disli Oran      "  ,   //  404   11-03 Gear Ratio                                              
+    "Suspansiyon Oran    "  ,   //  405   11-04 Suspension ratio	                                        
+    "Atalet Orani    %   "  ,   //  406   11-05 inertia	percent		                  
     "0 Hiz Bant Gen  Hz  "	,	//	407   11-06 Zero Speed Loop BandWidth	                                
     "DusukHizBantGen Hz  "	,	//	408   11-07 Speed Loop BandWidth1		                                
     "YuksekHizBantGenHz  "	,	//	409   11-08 Speed Loop BandWidth2		                                
@@ -5150,7 +5552,7 @@ const string20 prinfo_tur[EPMAX] = {
     "Kabin Hizlanma  m/s "  ,	//	416   11-15 max meter/sec	                                            
     "Disp address    Hex "  ,   //	417   11-16 Display address,add by dino 2007/03/08                      
     "Disp data           "  ,	//	418   11-17 Display data,   add by dino 2007/03/08                      
-    "Koruma Biti         "  ,   //    419   11-18 Protect Bit	                                                
+    "Koruma Biti         "  ,   //  419   11-18 Protect Bit	                                                
     "Zero SP Land BW Hz  "	,	//	420   11-19 Zero Speed Loop BandWidth of Landing  
     "PWM Modu            "  ,   //  4XX   11-20 PWM Mode selection  PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
     "LPF for LC01    sec "	,	//	422   11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -5773,7 +6175,19 @@ const string20 prinfo_rus[EPMAX] = {
     "Emergency DEC   sec "  ,   //  105 15-105  RESERVED
     "Emergency S3    sec "  ,   //  105 15-105  RESERVED
     "Emergency S4    sec "  ,   //  105 15-105  RESERVED
+#else
+	"煩雎赹隓嵑痭倎    "	,	//	01-41  RESERVE
+	"煩雎赹隓嵑痭倎    "	,	//	01-42  RESERVE
+	"煩雎赹隓嵑痭倎    "	,	//	01-43  RESERVE
 #endif
+	"IODLC TRIGGE SPDHz  "  ,   //	01-44   MI direct stop trigger speed	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
+	"煩雎赹隓嵑痭倎    "	,	//	195 01-45   RESERVED
+    "煩雎赹隓嵑痭倎    "	,	//	196 01-46   RESERVED
+    "煩雎赹隓嵑痭倎    "	,	//	197 01-47   RESERVED
+    "煩雎赹隓嵑痭倎    "	,	//	198 01-48   RESERVED
+    "煩雎赹隓嵑痭倎    "	,	//	199 01-49   RESERVED
+//----------------------------------------------------------------------------------------------------------------
+
 /*---- GROUP 02---------------------------------------*/						
 /*  "12345678901234561234"	*/					
 	"2/3-葮痭痽.蝃   "	,	//	176	02-00	2/3 wire control                

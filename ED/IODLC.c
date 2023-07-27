@@ -374,6 +374,7 @@ void IODLC_Distance_calculate(void){
 	        IODLC_ulCPSDistance = 0;
             IODLC_CRPLS_MISW = 0;
             IODLC_CRPLS_SWSPD = 0;
+			btIODLC_TrigSpeed = 0;	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
         default:
             
         break;

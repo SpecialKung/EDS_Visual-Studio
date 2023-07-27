@@ -92,6 +92,7 @@ MFIO_EXT void DLC_DDS(UWORD chg,UWORD k);
 MFIO_EXT void DLC_UDS(UWORD chg,UWORD k);
 //]
 MFIO_EXT void IODLC_CRPLS_IO(UWORD chg,UWORD k); // [IODLC, Lyabryan, 2016/11/11]
+MFIO_EXT void IODLC_CRPLS_IO2(UWORD chg,UWORD k);	//MI60	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
 MFIO_EXT void EPS_MI_DETCT(UWORD chg,UWORD k);   //[EPS MO Output,Lyabryan,2018/06/19]
 MFIO_EXT void SMTRISE_ETS(UWORD chg,UWORD k);    //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
 MFIO_EXT void SMTRISE_ESD(UWORD chg,UWORD k);    //[KEB ESD&ETS Function/Lyabryan/2018/08/10]

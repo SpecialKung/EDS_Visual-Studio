@@ -1957,7 +1957,7 @@
       <GeneralOptionPatch-DefaultValue>None</GeneralOptionPatch-DefaultValue>
       <GeneralOptionSaveAcc-DefaultValue>False</GeneralOptionSaveAcc-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585265639937811902</TimeTagModified--0>
+      <TimeTagModified--0>-8585172122683669016</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
@@ -1982,7 +1982,7 @@
       <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
       <EnsureCompatibilityOfPathAndLinkageOrder-0>True</EnsureCompatibilityOfPathAndLinkageOrder-0>
       <GeneralOptionDpfpu-0>Nodpfpu</GeneralOptionDpfpu-0>
-      <LinkOptionConvertFileName-0>ED_RX63T_DLC.mot</LinkOptionConvertFileName-0>
+      <LinkOptionConvertFileName-0>ED_RX63T_DLC.bin</LinkOptionConvertFileName-0>
       <AsmOptionGoptimize-0>False</AsmOptionGoptimize-0>
       <GeneralOptionEndian-0>Little</GeneralOptionEndian-0>
       <LinkOptionMultiConvertFileName-0 />
@@ -2418,10 +2418,10 @@ USBC_DEBUGLCD_PP
 </LinkOptionCommandLine-DefaultValue>
       <LinkOptionSplitVect-DefaultValue>False</LinkOptionSplitVect-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585168526857884243</TimeTagModified--0>
+      <TimeTagModified--0>-8585265495088592944</TimeTagModified--0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionForm-0>Absolute</LinkOptionForm-0>
-      <LinkOptionFormConvert-0>Stype</LinkOptionFormConvert-0>
+      <LinkOptionFormConvert-0>Binary</LinkOptionFormConvert-0>
       <LinkOptionInput-0 />
       <LinkOptionListShow-0>List</LinkOptionListShow-0>
       <LinkOptionOptimize-0>None</LinkOptionOptimize-0>
@@ -2468,7 +2468,7 @@ D_sdram=R_sdram
       <LinkOptionOptimizeShortFormat-0>False</LinkOptionOptimizeShortFormat-0>
       <LinkOptionShowTotalSize-0>True</LinkOptionShowTotalSize-0>
       <LinkOptionChangeMessageWarning-0>None</LinkOptionChangeMessageWarning-0>
-      <LinkOptionConvertFileName-0>ED_RX63T_DLC.mot</LinkOptionConvertFileName-0>
+      <LinkOptionConvertFileName-0>ED_RX63T_DLC.bin</LinkOptionConvertFileName-0>
       <LinkOptionEntry-0>False</LinkOptionEntry-0>
       <LinkOptionMessage-0>NoMessage</LinkOptionMessage-0>
       <LinkOptionOptimizeBranch-0>False</LinkOptionOptimizeBranch-0>
@@ -2567,15 +2567,15 @@ D_sdram=R_sdram
       <LinkOptionS9-DefaultValue>False</LinkOptionS9-DefaultValue>
       <HexOptionCreateUnfilledArea-DefaultValue>False</HexOptionCreateUnfilledArea-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585168526857884243</TimeTagModified--0>
-      <HexOptionForm-0>Stype</HexOptionForm-0>
+      <TimeTagModified--0>-8585265495088592944</TimeTagModified--0>
+      <HexOptionForm-0>Binary</HexOptionForm-0>
       <HexOptionOutput-0>True</HexOptionOutput-0>
       <HexOptionSameLinkMessage-0>True</HexOptionSameLinkMessage-0>
       <HexOptionMessage-0>NoMessage</HexOptionMessage-0>
       <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
       <LinkOptionRecordH-0>None</LinkOptionRecordH-0>
       <HexOptionNoMessageNumber-0 />
-      <LinkOptionConvertFileName-0>ED_RX63T_DLC.mot</LinkOptionConvertFileName-0>
+      <LinkOptionConvertFileName-0>ED_RX63T_DLC.bin</LinkOptionConvertFileName-0>
       <LinkOptionRecordS-0>None</LinkOptionRecordS-0>
       <HexOptionChangeMessageInformation-0>None</HexOptionChangeMessageInformation-0>
       <HexOptionLoadAddress-0 />
@@ -2753,7 +2753,7 @@ D_sdram=R_sdram
       <LbgOptionFloatOrder-DefaultValue>False</LbgOptionFloatOrder-DefaultValue>
       <LbgOptionBranchChaining-DefaultValue>None</LbgOptionBranchChaining-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585554992279543646</TimeTagModified--0>
+      <TimeTagModified--0>-8585172122683559289</TimeTagModified--0>
       <LbgOptionLanguage-0>C</LbgOptionLanguage-0>
       <LbgOptionLibraryMode-0>MakeOptionChanged</LbgOptionLibraryMode-0>
       <LbgOptionLogo-0>False</LbgOptionLogo-0>

@@ -59,6 +59,7 @@ PrHandel_EXT void P01_10(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P02_00(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P02_01(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P02_02(UWORD prx, UWORD prvalue);
+PrHandel_EXT void CheckMI_Use(void);	//檢查某個MI是否有設定	//Task 268622 IO Direct Landing	//Mitong 20230221 add	
 PrHandel_EXT void P02_11(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P02_33(UWORD prx, UWORD prvalue);
 
