@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "TB_1ms.C": "cpp",
-        "TB_100us.C": "cpp"
+        "TB_100us.C": "cpp",
+        "CM_FOC.C": "cpp",
+        "CM_TQCPG.C": "cpp"
     }
 }

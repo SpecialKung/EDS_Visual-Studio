@@ -1435,7 +1435,7 @@ void  Initial_Var(void){
         RCAN_MB3[i]=0;
     }
     for(i=0;i<8;i++){
-        RCAN_MB5[i]=0;
+        RCAN_MB5[i]=0;
     }
     for(i=0;i<8;i++){
         RCAN_MB7[i]=0;

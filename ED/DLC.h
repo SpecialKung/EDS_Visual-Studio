@@ -169,7 +169,7 @@ DLC_EXT	UWORD	            PR_S4ACC1,
 							DLC_uwT3,		//運算後, S3的時間
 							DLC_uwT4,		//運算後, S4的時間
 							DLC_uwTd,		//運算後, eq dec的時間
-							DLC_uwTc,	//等速段時間
+							DLC_uwTc,		//等速段時間
 							DLC_uwRateSpd,
 							DLC_uwRateSpdMax,
 							DLC_uwTRa,		//idea Tacc
