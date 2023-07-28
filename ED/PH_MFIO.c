@@ -848,13 +848,12 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 	    		    stop();
                 }
             }
-			if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))
-            { 
-                //[Sibocom exist FWD/REV Warn, Jason, 2019/10/07]
-				WarnCode = 0;
-                Keypad_Page = pr[S_DISP];
-		        Keypad_PageTmp = 0;
-            }
+			if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))              //[Special.Kung, 2023/05/02]
+            {                                                                       //[Special.Kung, 2023/05/02]
+				WarnCode       = 0;                                                 //[Special.Kung, 2023/05/02]
+                Keypad_Page    = pr[S_DISP];                                        //[Special.Kung, 2023/05/02]
+		        Keypad_PageTmp = 0;                                                 //[Special.Kung, 2023/05/02]
+			}                                                                       //[Special.Kung, 2023/05/02]
 		}
 		//k=EXT_REV, mean EXT_FWD active
 		else if(k==EXT_REV) 
@@ -929,10 +928,9 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
                 Keypad_Page    = pr[S_DISP];                                        //[Special.Kung, 2023/05/02]
 		        Keypad_PageTmp = 0;                                                 //[Special.Kung, 2023/05/02]
 			}                                                                       //[Special.Kung, 2023/05/02]
-
 		}
         //k=EXT_FWDREV
-		else if(k=EXT_FWDREV)
+		else if(k==EXT_FWDREV)
         {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15] //[FWD & REV Warning only for Sibocom,Lyabryan,2020/09/01]
 	    	if (CMDJOG==0){	// Add by DINO, 11/28/2008
@@ -987,8 +985,6 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
             if(CMDJOG==0)                                                                   //[Special.Kung, 2023/05/02]
             {                                                                               //[Special.Kung, 2023/05/02]
                 FWDREV_Enable1 = 1;                                                         //[Special.Kung, 2023/05/02]
-                LIFT_RUNCMD    = 1;                                                         //[Special.Kung, 2023/05/02]
-                run();                                                                      //[Special.Kung, 2023/05/02]
 
                 if((FWDREV_Enable2==0) && (FWDREVWarn_ubCount>=20))                         //[Special.Kung, 2023/05/02]
                 {                                                                           //[Special.Kung, 2023/05/02]
@@ -1015,24 +1011,26 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
         //k=0
         else                                                                                //[Special.Kung, 2023/05/02]
         {                                                                                   //[Special.Kung, 2023/05/02]
-            // Add by DINO, 11/28/2008
-            LIFT_RUNCMD    = 0;                                                             //[Special.Kung, 2023/05/02]
-            MODE2          = 0;                                                             //[Special.Kung, 2023/05/02]                           
-            MODE3          = 0;                                                             //[Special.Kung, 2023/05/02]
-            IODLC_CRPLS_SW = 0;                                                             //[Special.Kung, 2023/05/02]
-            stop();                                                                         //[Special.Kung, 2023/05/02]
-            RUN_DETECT     = 0;                                                             //[Special.Kung, 2023/05/02]
-            RUN_SENSOR0    = 0;                                                             //[Special.Kung, 2023/05/02]
-            RUN_SENSOR1    = 0;                                                             //[Special.Kung, 2023/05/02]
+            if(CMDJOG==0)                                                                   //[Special.Kung, 2023/05/02]
+            {
+                LIFT_RUNCMD    = 0;                                                         //[Special.Kung, 2023/05/02]
+                MODE2          = 0;                                                         //[Special.Kung, 2023/05/02]                           
+                MODE3          = 0;                                                         //[Special.Kung, 2023/05/02]
+                IODLC_CRPLS_SW = 0;                                                         //[Special.Kung, 2023/05/02]
+                stop();                                                                     //[Special.Kung, 2023/05/02]
+                RUN_DETECT     = 0;                                                         //[Special.Kung, 2023/05/02]
+                RUN_SENSOR0    = 0;                                                         //[Special.Kung, 2023/05/02]
+                RUN_SENSOR1    = 0;                                                         //[Special.Kung, 2023/05/02]
 
-            FWDREV_Enable1 = 0;                                                             //[Special.Kung, 2023/05/02]
-            FWDREV_Enable2 = 0;                                                             //[Special.Kung, 2023/05/02]
+                FWDREV_Enable1 = 0;                                                         //[Special.Kung, 2023/05/02]
+                FWDREV_Enable2 = 0;                                                         //[Special.Kung, 2023/05/02]
 
-            if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))                      //[Special.Kung, 2023/05/02]
-            {                                                                               //[Special.Kung, 2023/05/02]
-                WarnCode       = 0;                                                         //[Special.Kung, 2023/05/02]
-                Keypad_Page    = pr[S_DISP];                                                //[Special.Kung, 2023/05/02]
-                Keypad_PageTmp = 0;                                                         //[Special.Kung, 2023/05/02]
+                if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))                  //[Special.Kung, 2023/05/02]
+                {                                                                           //[Special.Kung, 2023/05/02]
+                    WarnCode       = 0;                                                     //[Special.Kung, 2023/05/02]
+                    Keypad_Page    = pr[S_DISP];                                            //[Special.Kung, 2023/05/02]
+                    Keypad_PageTmp = 0;                                                     //[Special.Kung, 2023/05/02]
+                }  
             }                                                                               //[Special.Kung, 2023/05/02]
         }                                                                                   //[Special.Kung, 2023/05/02]
     }

@@ -366,7 +366,7 @@ const LEDDATASEG WarnMSG[WARNMAX/*+IED_ERRMAX-ERRMAX)*/] = {  // IED Error Displ
 	_BLK,  _BLK,    _c,   _r,	// cr		E69  CAN Rx Error
 	_BLK,  _BLK,    _c,   _o,	// co		E70  CAN Overwrite
 	_BLK,    _c,    _t,   _o,	// cto		E71  CAN Timeout
-	  _L,    _d,    _i,   _F,	// Ldif		E72  Position Difference Over
+  _L  ,    _d,    _i,   _F,	// Ldif		E72  Position Difference Over
 	_BLK,    _E,    _7,   _3,
 	_BLK,  _BLK,    _L,   _t,	// Lt		E74  Leveling Timeout
 	_BLK,  _BLK,    _L,   _S,	// LS		E75  Leveling Single
@@ -388,9 +388,9 @@ const LEDDATASEG WarnMSG[WARNMAX/*+IED_ERRMAX-ERRMAX)*/] = {  // IED Error Displ
 	_BLK,    _E,    _9,   _1,
 	_BLK,    _S,    _S,   _L,	// SSL		E92	 System Safe Lock
 	_BLK,    _S,    _A,   _F,	// SAF		E93	 Safe Loop Lost
-	  _S,    _r,    _u,   _n,	// Srun		E94	 Motor Feedback Lost
+  _S  ,    _r,    _u,   _n,	// Srun		E94	 Motor Feedback Lost
 	_BLK,    _S,    _b,   _r,	// Sbbr		E95  Brake Feedback Lost
-	  _S,    _d,    _b,   _P,	// SdbP		E96	 Door Bypass Lost
+	_S  ,    _d,    _b,   _P,	// SdbP		E96	 Door Bypass Lost
 	_BLK,    _E,    _9,   _7,
 	_BLK,    _E,    _9,   _8,*/
 
@@ -489,12 +489,14 @@ const LEDDATASEG ErrMSG[ERRMAX] = {
     _S  ,    _t,    _L,   _4,   // STOL4        089  //STOL4 Short Error, power on to reset//#12225,STO short detect, James for 04-49=4~7, 2021/10/14
     _S  ,    _t,    _o,   _r,   // STOr         090  //STOr error at running //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
     _S  ,    _t,    _o,   _S,   // STOS         091  //STOS Short error  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
-	_S	,	 _n,	_E,   _7,	// Sensor817	092  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-	_S	,	 _n,	_E,   _8,	// Sensor818	093  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-	_BLK,    _b,    _t,   _t,   // BBT          094  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    _b  ,    _t,    _t,   _E,   // BBTE         095  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
-    _b  ,    _t,    _t,   _n,   // BBTn         096  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	_BLK,    _A,    _E,   _L,   // AEL          097  //[AFE Error Handle/Lyabryan/2022/03/24]
+	  _S	,	   _n,	  _E,   _7,	  // Sensor817	  092  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+	  _S	,	   _n,	  _E,   _8,	  // Sensor818	  093  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+	  _BLK,    _b,    _t,   _t,   // btt          094  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    _b  ,    _t,    _t,   _E,   // bttE         095  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
+    _b  ,    _t,    _t,   _n,   // bttn         096  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	  _BLK,    _A,    _E,   _L,   // AEL          097  //[AFE Error Handle/Lyabryan/2022/03/24]
+	  _S  ,    _E,    _n,   _L,   // SEnL         098  //[Ratioanal 271718, Special.Kung, 2023/05/02]
+	  _r  ,    _E,    _n,   _L,   // rEnL         099  //[Ratioanal 271718, Special.Kung, 2023/05/02]
 };
 
 #else
