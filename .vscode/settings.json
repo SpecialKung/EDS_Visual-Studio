@@ -3,6 +3,11 @@
         "TB_1ms.C": "cpp",
         "TB_100us.C": "cpp",
         "CM_FOC.C": "cpp",
-        "CM_TQCPG.C": "cpp"
+        "CM_TQCPG.C": "cpp",
+        "PH_LEDKEY.C": "cpp",
+        "SCI_IntPro.C": "cpp",
+        "SCI1_EnDat.C": "cpp",
+        "SCI1_Hiper.C": "cpp",
+        "SCI4_PGComm.C": "cpp"
     }
 }
