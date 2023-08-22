@@ -56,8 +56,6 @@ void DLC_Initial_value(void){
   if(btArtemisEnable)
   {
     pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
-    pr[CAN_BURD] = 2;   // Jerry.sk.Tseng 2023/04/01 For initial Pr09-06
-    write_ep(BLK_WRITE,CAN_BURD, 2);
   }
   else
   {
@@ -1796,13 +1794,8 @@ void DLC_Algorithm(void){
 		DLC_uwAutoTar = 0;
 	}
 
-   if(pr[Sensor819] != 0)
-   {
-       Sensor817_Protect();    //[Artemis Add Sensor819 Function/Special/2022/06/06]
-       Sensor818_Protect();    //[Artemis Add Sensor819 Function/Special/2022/06/06]
-   }
-
-
+	Sensor817_Protect();	//[Artemis Add Sensor819 Function/Special/2022/06/06]
+	Sensor818_Protect();	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 	
 
 	//¥i°±¾a¼Ó¼h DLC_ubLevTar
@@ -4583,7 +4576,7 @@ void Sensor818_Protect(void)
 		{
 			if(DLC_btModNor)
 			{
-				if(pr[Sensor819]==4) //  DDS + UDS +819_Both
+				if(pr[Sensor819]==3)
 				{	
 					if((DLC_btUD1==0) && (DLC_btDD1==0) && (MFI_btSensor819_Both==1))
 					{	
@@ -4594,13 +4587,13 @@ void Sensor818_Protect(void)
 						Error = Sensor818_ERR;
 					}
 				}
-				/*else if(pr[Sensor819]==3)
+				else if(pr[Sensor819]==2)
 				{	
 					Error = 0;
-				}*/
-				else if(pr[Sensor819]==2) // UDS + 819_Button
+				}
+				else if(pr[Sensor819]==1)
 				{	
-					if((DLC_btUD1==1) && (DLC_btDD1==0) && (MFI_btSensor819_Top==0))
+					if((DLC_btUD1==0) && (DLC_btDD1==1) && (MFI_btSensor819_Top==1))
 					{	
 						Error = Sensor818_ERR;
 					}
@@ -4613,14 +4606,14 @@ void Sensor818_Protect(void)
 						Error = Sensor818_ERR;
 					}
 				}
-				/*else if(pr[Sensor819]==0)
+				else if(pr[Sensor819]==0)
 				{	
 					Error = 0;
-				}*/
+				}
 			}
 			else
 			{
-				if(pr[Sensor819]==4) //  DDS + UDS +819_Both
+				if(pr[Sensor819]==3)
 				{
 					if((DLC_btUD1==0) && (DLC_btDD1==0) && (MFI_btSensor819_Both==1))
 					{	
@@ -4630,21 +4623,18 @@ void Sensor818_Protect(void)
 					{	
 						WarnCode = Sensor818_WARN;
 					}
-                    else
+					else
 					{	
-					    if(Sensor818_WARN == WarnCode)
-                        {
-                            WarnCode = 0;
-                        }     
+						WarnCode = 0;
 					}
 				}
-				/*else if(pr[Sensor819]==3)
+				else if(pr[Sensor819]==2)
 				{	
 					WarnCode = 0;
-				}*/	
-				else if(pr[Sensor819]==2) // UDS + 819_Button
+				}	
+				else if(pr[Sensor819]==1)
 				{	
-					if((DLC_btUD1==1) && (DLC_btDD1==0) && (MFI_btSensor819_Top==0))   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
+					if((DLC_btUD1==0) && (DLC_btDD1==1) && (MFI_btSensor819_Top==1))
 					{	
 						WarnCode = Sensor818_WARN;
 					}
@@ -4658,16 +4648,13 @@ void Sensor818_Protect(void)
 					}
 					else
 					{	
-					    if(Sensor818_WARN == WarnCode)
-                        {
-                            WarnCode = 0;
-                        }     
+						WarnCode = 0;
 					}
-				}              
-				/*else if(pr[Sensor819]==1)
+				}	
+				else if(pr[Sensor819]==0)
 				{	
 					WarnCode = 0;
-				}*/
+				}
 
 			}
 		}
@@ -4692,7 +4679,7 @@ void Sensor817_Protect(void)
 		{
 			if(DLC_btModNor)
 			{
-				if(pr[Sensor819]==4) //  DDS + UDS +819_Both 
+				if(pr[Sensor819]==3)
 				{	
 					if((DLC_btUD1==0) && (DLC_btDD1==0) && (MFI_btSensor819_Both==1))
 					{	
@@ -4703,9 +4690,9 @@ void Sensor817_Protect(void)
 						Error = Sensor817_ERR;
 					}
 				}
-				else if(pr[Sensor819]==3) // DDS + 819_Button 
+				else if(pr[Sensor819]==2)
 				{	
-					if((DLC_btUD1==0) && (DLC_btDD1==1) && (MFI_btSensor819_Button==0))
+					if((DLC_btUD1==1) && (DLC_btDD1==0) && (MFI_btSensor819_Button==1))
 					{	
 						Error = Sensor817_ERR;
 					}
@@ -4718,18 +4705,18 @@ void Sensor817_Protect(void)
 						Error = Sensor817_ERR;
 					}
 				}
-				/*else if(pr[Sensor819]==2)
-				{	
-					Error = 0;
-				}
 				else if(pr[Sensor819]==1)
 				{	
 					Error = 0;
-				}*/
+				}
+				else if(pr[Sensor819]==0)
+				{	
+					Error = 0;
+				}
 			}
 			else
 			{
-				if(pr[Sensor819]==4) // UDS + DDS + 819_Both   
+				if(pr[Sensor819]==3)
 				{	
 					if((DLC_btUD1==0) && (DLC_btDD1==0) && (MFI_btSensor819_Both==1))
 					{	
@@ -4739,17 +4726,10 @@ void Sensor817_Protect(void)
 					{	
 						WarnCode = Sensor817_WARN;
 					}
-                    else
-					{	
-					    if(Sensor817_WARN == WarnCode)
-                        {
-                            WarnCode = 0;
-                        }     
-					}
 				}
-				else if(pr[Sensor819]==3)// DDS + 819_Button
+				else if(pr[Sensor819]==2)
 				{	
-					if((DLC_btUD1==0) && (DLC_btDD1==1) && (MFI_btSensor819_Button==0)) //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
+					if((DLC_btUD1==1) && (DLC_btDD1==0) && (MFI_btSensor819_Button==1))
 					{	
 						WarnCode = Sensor817_WARN;
 					}
@@ -4761,22 +4741,15 @@ void Sensor817_Protect(void)
 					{	
 						WarnCode = Sensor817_WARN;
 					}
-                    else
-					{	
-					    if(Sensor817_WARN == WarnCode)
-                        {
-                            WarnCode = 0;
-                        }     
-					}
-				}
-				/*else if(pr[Sensor819]==2)
-				{	
-					WarnCode = 0;
 				}
 				else if(pr[Sensor819]==1)
 				{	
 					WarnCode = 0;
-				}*/
+				}
+				else if(pr[Sensor819]==0)
+				{	
+					WarnCode = 0;
+				}
 			}
 			
 		}

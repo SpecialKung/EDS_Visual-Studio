@@ -132,7 +132,7 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 		flashpr ,	//	96	15-96	AFM max. value
 		flashpr ,	//	97	15-97	AFM min. value
 		updatepr,	//	98	15-98	Softstart Delay Time
-		P15_99	,	//	99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023     
+		fnone	,	//	99       
 		updatepr,   //  100 15-100
 		updatepr,   //  101 15-101
 		updatepr,   //  102
@@ -732,7 +732,6 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 		fnone   ,   //  4XX    11-21    lift spd cmd for Sibocom, Jason, 2019/12/31
 #endif
-        updatepr,	//	421    12-00	user define address	00
 /*---- GROUP 12 --------------------------------------*/
 		updatepr,	//	421    12-00	user define address	00
 		updatepr,	//	422    12-01	user define address 01
@@ -2361,8 +2360,6 @@ void P00_02(UWORD prx, UWORD prvalue)
 			case  9:          /* reset User Parameter only */
 			case 10:
 				KEYEND = END;
-                btArtemisEnable = 0;
-                pr[Client_Mode]= 0;                
 				wr_def2ep();
 				PrArea(prvalue);
                 //[ //[IEDS vs. EDS deriver,Lyabryan,2016/07/14]
@@ -2582,33 +2579,18 @@ void P00_02(UWORD prx, UWORD prvalue)
             break;
       //]
             case 200:
-				KEYEND = END;  
-                
+				KEYEND = END;                
                 btArtemisEnable = 1;        //[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
-                
-                updatepr(PRRESET, prvalue);   
-			    if ( PRUPDATE ){
-                    facc1.ul = cal_time(pr[FMAX],0);
-                    fdec1.ul = cal_time(pr[FMAX],0);
-                    //facc2.ul = cal_time(pr[FMAX],pr[ACCEL2]);
-                    //fdec2.ul = cal_time(pr[FMAX],pr[DECEL2]);
-                    //facc3.ul = cal_time(pr[FMAX],pr[ACCEL3]);
-                    //fdec3.ul = cal_time(pr[FMAX],pr[DECEL3]);
-                    //facc4.ul = cal_time(pr[FMAX],pr[ACCEL4]);
-                    //fdec4.ul = cal_time(pr[FMAX],pr[DECEL4]);	
-                    fjacc.ul = 0;	
-                    fjdec.ul = 0;	
-                    fdec5.ul = cal_time(pr[FMAX],0);
-                    //Pfdec.ul = cal_time(pr[FMAX],pr[APRDECT]);
 
-                    DLC_Initial_value();
-                    DINT();
-    				InitValue();
-    				EINT();
-			    }
-               write_ep(BLK_WRITE,Client_Mode, 1);
-               pr[Client_Mode] = 1;
-                
+                wr_def2ep();
+                PrArea(prvalue);
+                DLC_Initial_value();
+
+                updatepr(CAN_BURD,2);       //09-06=2
+
+                DINT();
+                InitValue();
+                EINT();
 			break;
 			case 1234:
 				if ((FSET_LOCK==0)&&(SHOW_ALLPR==1)){
@@ -6164,25 +6146,6 @@ void P15_42(UWORD prx, UWORD prvalue)
         DBCDt = pr[DBC2]>>4;
 
 }
-
-//Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-void P15_99(UWORD prx, UWORD prvalue)
-{
-    updatepr(prx,prvalue);
-
-    if (PRUPDATE==1)
-    {
-        if((prvalue&0x0001)==0x0000)
-        {
-            ICTDetectGBP = 0;
-        }
-        else if((prvalue&0x0001)==0x0001)
-        {
-            ICTDetectGBP = 1;
-        }
-    }
-}
-
 void ACC_Unit_SecToms2(void) //[Unit sec=>m/(sec^2)]
 {
                 PR_flAccel1ms2 = ACC_UnitConv(PR_flAccel1sec, 0);

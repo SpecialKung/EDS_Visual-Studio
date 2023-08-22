@@ -884,15 +884,6 @@ void stop_status(void)
 		zcal_uwMTU1cnt = MTU1.TCNT;//---Aevin addto record TCNT--6/22/2017
     }
 #endif 
-    if(pr[Client_Mode] != 0)
-    {
-        btArtemisEnable = 1;
-    }
-    else
-    {
-        btArtemisEnable = 0;
-    }
-
 }
 void Driver_ID_Rec(void){
     
@@ -1809,12 +1800,6 @@ void InitValue(void)
 
     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     TorqDetect_Init();
-
-    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-    pr[DEBUG_F2] = (pr[DEBUG_F2]&0xFFFE);
-    write_ep(BLK_WRITE,DEBUG_F2, pr[DEBUG_F2]);
-    ICTDetectGBP = 0;
-
 }
 
 void Pin_power(void)           // Pin (W)
@@ -4715,9 +4700,6 @@ void main(void)
     rec_uwRetryCnt = read_ep(RESETCNT);    //[Add auto restart after fault, Bernie, 06/06/12]
  
     Pgz_Disconnect_Init(); //[Zphase broken, Lyabryan, 2015/09/17]
-
-    btArtemisEnable = read_ep(Client_Mode); //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
 
 	//#16550 Artemis default value, James, 20210520
 //#if Artemis_ENABLE

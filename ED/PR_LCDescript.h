@@ -944,7 +944,7 @@ const string20 warninfo_tc[(WARNMAX+1)]={
 	"Sensor818 牡  SnW8",	//warncode = 47
 	"BTTx 代刚い     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx タ盽       bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"BTTx Θ\       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"BTTx Θ       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 };
 #endif
 
@@ -1431,7 +1431,7 @@ const string20 prinfo[EPMAX] = {
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
 	"Soft Start Time sec "	,	//	98  15-98	Softstart Delay Time
-	"DEBUG FLAG2         "  ,   //  99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+	"RESERVE             "  ,   //  99  15-99
 	"Z-cab Mode          "  ,   //  100 15-100
 	"Qer_min             "  ,   //  101 15-101
 	"Qer_Shift           "  ,   //  102 15-102
@@ -1985,9 +1985,6 @@ const string20 prinfo[EPMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 	"Motor SPD RPM       "	,	//	420 11-21   Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
-    "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
-
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
     "UMAP_ADD0           "  ,   //  421 12-00
@@ -2508,7 +2505,7 @@ const string20 prinfo_tc[EPMAX] = {
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
 	"Soft Start Time sec "	,	//	98  15-98	Softstart Delay Time
-    "DEBUG FLAG2         "  ,   //  99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+    "RESERVE             "  ,   //  99  15-99
 	"Z-cab Mode          "  ,   //  100 15-100
 	"Qer_min             "  ,   //  101 15-101
 	"Qer_Shift           "  ,   //  102 15-102
@@ -3060,8 +3057,6 @@ const string20 prinfo_tc[EPMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 	"Motor SPD RPM       "	,	//	420   11-21     Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
-    "Client_Mode         "  ,   //  422 11-22       //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
     "璹把计 1          "  ,   //  421   12-00
@@ -3576,17 +3571,17 @@ const string20 prinfo_sc[EPMAX] = {
     "Min. Pulse Width    "  ,   //  91  15-91   minimum pulse, ADDED BY SCOTTY,2007/07/11
 	"D Frame FAN Cont    "	,	//	92 	15-92	D Frame Fan control
 	"Z Phase UVW Sect    "	,	//	93 	15-93	Z phase UVW Section when PG_TYPE = 2
-    "RESERVE             "  ,   //  94  15-94
+    "                    "  ,   //
     "LAST PG COUNTER     "  ,   //  95  15-95   PG Position Record, add by scotty, 12/07/2007
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
 	"Soft Start Time sec "	,	//	98  15-98	Softstart Delay Time
-	"DEBUG FLAG2         "  ,   //  99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-	"Z-cab Mode          "  ,   //  100 15-100
-	"Qer_min             "  ,   //  101 15-101
-	"Qer_Shift           "  ,   //  102 15-102
-	"Sin_HS_Tab          "  ,   //  103 15-103
-	"                    "  ,   //  104 15-104
+	"RESERVE             "  ,   //  99
+	"Z-cab Mode          "  ,   //  100
+	"Qer_min             "  ,   //  101
+	"Qer_Shift           "  ,   //  102
+	"Sin_HS_Tab          "  ,   //  103
+	"                    "  ,   //  104
 	"RESERVE             "	,	//	105 15-105  RESERVED
 	"CAN Control         "	,	//	106 15-106  Can Control      //[CAN Control, Sampo, 09/15/2010]
 	"CAN Fault Handle    "	,	//	107 15-107  Can Fault Handle //[CAN Control, Sampo, 09/15/2010]
@@ -4132,8 +4127,6 @@ const string20 prinfo_sc[EPMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 	"Motor SPD RPM       "	,	//	420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
-    "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
     "自定参数1           "  ,   //  421   12-00
@@ -4605,7 +4598,7 @@ const string20 prinfo_tur[EPMAX] = {
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
 	"Soft Start Time sec "	,	//	98  15-98	Softstart Delay Time
-	"DEBUG FLAG2         "  ,   //  99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+	"RESERVE             "  ,   //  99
 	"Z-cab Mode          "  ,   //  100
 	"Qer_min             "  ,   //  101
 	"Qer_Shift           "  ,   //  102
@@ -5157,7 +5150,6 @@ const string20 prinfo_tur[EPMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     "Motor SPD RPM       "  ,   //  420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
-    "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
 /*---- GROUP 12-----------------------------------------*/
 /*	"12345678901234561234"	*/
 	"UMAP_ADD0			 "	,	//	421   12-00
@@ -5677,7 +5669,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"AFM MAX. Value      "	,	//	96 	15-96   AFM max. value
 	"AFM MIN. Value      "	,	//	97 	15-97   AFM min. value
 	"Soft Start Time sec "	,	//	98  15-98	Softstart Delay Time
-	"DEBUG FLAG2         "  ,   //  99  15-99   //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+	"RESERVE             "  ,   //  99
 	"Z-cab Mode          "  ,   //  100  
 	"Qer_min             "  ,   //  101
 	"Qer_Shift           "  ,   //  102
@@ -6226,8 +6218,6 @@ const string20 prinfo_rus[EPMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     "Motor SPD RPM       "  ,   //  420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
-    "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
 /*---- GROUP 12-----------------------------------------*/
 /*  "12345678901234561234"	*/
     "UMAP_按           "  ,   //  421   12-00

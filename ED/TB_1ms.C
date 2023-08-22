@@ -3184,12 +3184,11 @@ void TimeBase_500us(void)
             uwMinDcbus = uwTemp;
     }
 
-    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-    if(((pr[DEBUG_F2]&0x0001)==0x0001) && (SHOW_ALLPR) && (ICTDetectGBP))
+    if(pr[FACTORY4]==1)
     {
         //Special,Kung modfiy for ICT pull high GBP, 11/04/2022
-        //PORT3.PDR.BIT.B1 = 1;
-        GBP_ON = 1;
+        PORT3.PDR.BIT.B1 = 1;
+        PORT3.PODR.BIT.B1 = 1;
     }
     else
     {

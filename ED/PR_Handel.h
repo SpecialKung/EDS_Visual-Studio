@@ -162,7 +162,6 @@ PrHandel_EXT void P15_34(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P15_12(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P15_41(UWORD prx, UWORD prvalue);
 PrHandel_EXT void P15_42(UWORD prx, UWORD prvalue);
-PrHandel_EXT void P15_99(UWORD prx, UWORD prvalue);     //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
 
 PrHandel_EXT void ACC_Unit_SecToms2(void);
 PrHandel_EXT void ACC_Unit_ms2ToSec(void);

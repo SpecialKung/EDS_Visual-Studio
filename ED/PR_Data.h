@@ -1,4 +1,4 @@
- /*------------	Group15	 --------*/						
+/*------------	Group15	 --------*/						
 #define	GROUP15			0					
 #define	DEBUG_F1		(GROUP15+0)		//	0	15-00	Debug Flag 1	
 #define	DBCCHG_F		(GROUP15+1)		//	1	15-01	DBC CHANGE FREQ	
@@ -94,16 +94,16 @@
 #define	MINI_PULSE		(GROUP15+91)	//	91	15-91	minimum pulse, ADDED BY SCOTTY,2007/07/11
 #define	FAN_Dframe		(GROUP15+92)	//  92	15-92	D frame FAN Control
 #define Z_SECT			(GROUP15+93)	//  93  15-93	Z phase UVW Section when PG_TYPE = 2, add by dino, 10/29/2007
-#define RESEVER  		(GROUP15+94)	//      15-94	RESEVER
+
 #define PG_POSatLV		(GROUP15+95)	//	95 	15-95	PG Position Record, add by scotty, 12/07/2007
 #define DAMAX			(GROUP15+96)	//	96 	15-96	AFM max. value
 #define DAMIN			(GROUP15+97)	//	97 	15-97	AFM min. value
 #define	RLY_TIME		(GROUP15+98)	//	98	15-98	Softstart Delay Time
-#define DEBUG_F2  		(GROUP15+99)	//      15-99	Debug Flag 2    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+
 #define	ZCAB_MODE		(GROUP15+100)	//	100	15-100	//[Z-calibration compensation speed,Jerry Yu,2019/06/05] 
-#define	Qer_min			(GROUP15+101)	//	101	15-101  Qer_min  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
-#define	Qer_Shift		(GROUP15+102)	//	102	15-102  Qer_Shift  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
-#define Sin_HS_Tab		(GROUP15+103)	//	103	15-103  Sin_HS_Tab //[Sin Table extend,Jason,2019/09/02]
+#define	Qer_min			(GROUP15+101)	//	101	15-101 Qer_min  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
+#define	Qer_Shift		(GROUP15+102)	//	102	15-102 Qer_Shift  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
+#define Sin_HS_Tab		(GROUP15+103)	//	103	15-103 Sin_HS_Tab //[Sin Table extend,Jason,2019/09/02]
 #define PSW_2006H		(GROUP15+105)	//  105 15-105  User Password, Write form 2006H, Read from 21FFH, DINO, 12/23/2009
 #define CAN_CTRL		(GROUP15+106)	//  106 15-106  Can Control       //[CAN Control, Sampo, 09/15/2010]
 #define CAN_FAULT		(GROUP15+107)	//  106 15-107  Can Fault handle  //[CAN Control, Sampo, 09/15/2010]
@@ -650,13 +650,10 @@
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 #define Lift_SPD_RPM  	(GROUP11+21)	//	10	11-21	LIFT_SPD_CMD	    //[SIBOCOM, Jason, 2019/12/31]
 /*------------ Group12 ----------*/
-//#define GROUP12			(GROUP11+22)
+#define GROUP12			(GROUP11+22)
 #else
 
-#define Client_Mode     (GROUP11+22)    //	420	11-21   //Save Customer bit
-/*------------ Group12 ----------*/
-
-#define GROUP12			(GROUP11+23)
+#define GROUP12			(GROUP11+22)
 #endif
 #define	UMAP_ADD0		(GROUP12+0)		//	421	12-00
 #define	UMAP_ADD1		(GROUP12+1)		//	422	12-01
