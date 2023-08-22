@@ -265,8 +265,9 @@ void CAN_SDO_RX_Decode(void){
 }
 
 void CAN_PDO_RX_Data(void){
-	UBYTE ubDILow,ubDIHi;
-	UWORD ax, uwspeed;
+	UBYTE 		ubDILow,ubDIHi;
+	UWORD 		ax, uwspeed;
+	ULONG_UNION	ultmp;
 	
 	DLC_PDO_RX_EM.ub.low = RCAN_MB1[0];
 	DLC_PDO_RX_EM.ub.hi = RCAN_MB1[1]; 
@@ -276,6 +277,30 @@ void CAN_PDO_RX_Data(void){
 	DLC_PDO_RX_RC.ub = RCAN_MB1[4];
 	DLC_PDO_RX_TF = RCAN_MB1[5];
 
+    // GFC APS Jerry.Sk.Tseng 2022/12/23
+    if(DLC_PDO_RX_RC.ub & 0x80) //check Byte4 Bit 7
+    {
+        if(pr[CAN_FUN] & 0x04)  // Check bit 2
+        {
+            ultmp.ub.b3 = 0;
+            ultmp.ub.b2 = RCAN_MB1[5];
+            ultmp.ub.b1 = RCAN_MB1[6];  
+            ultmp.ub.b0 = RCAN_MB1[7]; 
+			ulDLC_PDO_RX_APS_ClipPu = ultmp.ul;	// GFC1test
+        }
+        else
+        {
+            ultmp.ub.b3 = 0;
+            ultmp.ub.b2 = RCAN_MB1[5];
+            ultmp.ub.b1 = RCAN_MB1[6];  
+            ultmp.ub.b0 = RCAN_MB1[7];
+			ulDLC_PDO_RX_APS_Pu = ultmp.ul;	// GFC1test
+        }        
+    }else
+    {
+        DLC_PDO_RX_TF = RCAN_MB1[5];
+    }
+    
 	if(DLC_ubDecel==0){  //20180612 //[Gfc DLC modify,Henry,2018/05/23]
 		if((DLC_ubDIR == DIR_NULL) &&
 			 (DLC_PDO_RX_TF <= DLC_ubLevMax) &&  // DLC function, Henry, 2016/07/20

@@ -4963,7 +4963,11 @@ void main(void)
     CAN_UWEST_STATUS = pr[EST_STATUS];
 
     FIRST_FLAG = 1;     //[PG quality function, Bernie, 2017/06/20]
-
+	if((Driver_ID == IEDS_DRIVER) && ((pr[DLC_MODE3] & 0x01) != 0))	// GFC1test
+	{
+		DLC_udApsCnt = pr[SENSOR_H];	//04-34
+		DLC_udEncCnt = pr[SENSOR_L];	//04-35
+	}
     while(1)
     {    
      //===================== Encoder quality ====================//

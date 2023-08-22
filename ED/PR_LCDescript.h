@@ -944,7 +944,7 @@ const string20 warninfo_tc[(WARNMAX+1)]={
 	"Sensor818 警告  SnW8",	//warncode = 47
 	"BTTx 測試中     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx 正常       bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"BTTx 成功       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"BTTx 成功\       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 };
 #endif
 

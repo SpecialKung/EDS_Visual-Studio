@@ -652,7 +652,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 09-10 CAN_FUN      */  RLD|DOT0|DPH,                   0,          65535,              0,    // 3XX 09-10 Factory Function  
 /* 09-11 DLC_MODE1    */  RLD|DOT0|DPH,                   0,          65535,              0,    // 3XX 09-11 RD Function
 /* 09-12 DLC_MODE2    */  READ|RLD|DOT0|DPH,              0,          65535,              0,    // 3XX 09-12 DLC Mode
-/* 09-13 DLC_MODE3    */  READ|RLD|DOT0|DPH,              0,          65535,              0,
+/* 09-13 DLC_MODE3    */  RLD|DOT0|DPH,              0,          65535,              0,
 /* 09-14 CANPDOTXTIME */  RLD|DOT0,		            	  0,		  65535,		      0,    //CANPDOTXTIME--aevin 6/12/2017
 
 /*--------      GROUP 10     -----------*/
