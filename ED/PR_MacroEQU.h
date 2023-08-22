@@ -889,7 +889,8 @@
 
 #define BRK_RLS2        inv3_status.bit.b0  // Braker Release 2      // DIN function
 #define AUI_TUNE        inv3_status.bit.b1  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08] // Braker Release 2      // DIN function
-#define AUI_TUNE_FINISH inv3_status.bit.b2  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08] 
+#define AUI_TUNE_FINISH inv3_status.bit.b2  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
+#define ICTDetectGBP    inv3_status.bit.b3  //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
 
 /*---------- mfi0 status ------*/
 #define MFI_CHG         mfi0_status.bit.b0  // Multi_Function_Input status change //

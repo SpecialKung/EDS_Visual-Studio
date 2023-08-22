@@ -8,18 +8,15 @@
     #define DateCode      20195	/* 20150615 Mon. */
 #else
     #if OFFICIAL_VERSION
-        #define SWVERS_H      110
+        #define SWVERS_H      109
         #define SWVERS_L         0
-        #define DateCode      23032	/* 20200803 Mon. */
+        #define DateCode      20383	/* 20200803 Mon. */
     #else
-        #define SWVERS_H      9111
+        #define SWVERS_H      9109
         #define SWVERS_L         0
-        #define DateCode      23295	/* 20200803 Mon. */
+        #define DateCode      22435	/* 20211221 Tue. */
     #endif
 #endif
-
-//DLC_PDO_ID004_B4
-
 /*============================================================================================
 History:
 Version    Date    - Notes

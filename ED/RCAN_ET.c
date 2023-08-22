@@ -92,7 +92,7 @@ void CAN_ICT_TX(void){
 }
 
 void CAN_PDO_TX_return(void){
-
+//DLC_PDO_RX_TF
 	//DLC_PDO_TX_InvO.uw = UnitTransfer();  //[DLC, Bernie, 2014/10/06]
 	    
 	CAN1.MB[0].DATA[0] = DLC_PDO_TX_INV_ST.ub.low;	//inv status
@@ -275,7 +275,7 @@ void CAN_PDO_RX_Data(void){
 	DLC_PDO_RX_DI.ub.low = RCAN_MB1[2];
 	DLC_PDO_RX_DI.ub.hi = RCAN_MB1[3];
 	DLC_PDO_RX_RC.ub = RCAN_MB1[4];
-	DLC_PDO_RX_TF = RCAN_MB1[5];
+//	DLC_PDO_RX_TF = RCAN_MB1[5];	//mitong 20230818 del
 
     // GFC APS Jerry.Sk.Tseng 2022/12/23
     if(DLC_PDO_RX_RC.ub & 0x80) //check Byte4 Bit 7

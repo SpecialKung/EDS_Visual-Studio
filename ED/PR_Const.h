@@ -163,7 +163,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 15-96  DAMAX       */  RLD|WRUN|DOT0,                  0,          65535,              0,
 /* 15-97  DAMIN       */  RLD|WRUN|DOT0,                  0,          65535,              0,
 /* 15-98  RLY_TIME    */  RLD|WRUN|DOT3,                  0,           2000,            500,      
-/* 15-99  RESERVE     */      READ|DOT0,                  0,          65535,              0, 
+/* 15-99  DEBUG_F2    */  RLD|WRUN|DOT0|DPH,              0,          65535,              0, 
 /* 15-100 ZCAB_MODE   */      	   DOT0,                  0,              2,              0,
 /* 15-101 Qer_min     */  RLD|WRUN|DOT0,                  0,            500,              0,   
 /* 15-102 Qer_Shift   */  RLD|WRUN|DOT0,                  1,              5,              4,      
@@ -719,6 +719,8 @@ const PARAM_ATTR attr1[PRMAX] = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 /* 11-21 Lift_SPD_RPM */  READ|DOT0, 		        	  0, 		  65535, 			  0,
 #endif
+/* 11-22 Client_Mode  */  RLD|  DOT0,                    0,           65535,              0,
+
 /*--------    GROUP 12    --------*/
 /* 12-00 UMAP_ADD0    */  RLD|WRUN|DOT0,                  0,           9999,            616,
 /* 12-01 UMAP_ADD1    */  RLD|WRUN|DOT0,                  0,           9999,            632,
@@ -1784,11 +1786,14 @@ const UWORD FaultBitCodeTable[ERRMAX+1] = {
   0 , //  86: LSS //#15977, LULD detect, James, 2021/04/01
   0 , //  87: LSO //#15977, LULD detect, James, 2021/04/01
   32, //  88: CurCtrl_ERR //#16434 MPHL improvement, Jerry, 2021/06/30
-  8 , //  89: //[Artemis Add Sensor819 Function/Special/2022/06/06]
-  8 , //  90: //[Artemis Add Sensor819 Function/Special/2022/06/06]
-  8 , //  91: BTT Test Fail     //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
-  8 , //  92: BTT Test Error    //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
-  8 , //  93: BTT No Action     //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
+  0 , //  89: STOL4_ERR 
+  0 , //  90: STOr_ERR
+  0 , //  91: STOS_ERR
+  8 , //  92: Sensor817_ERR //[Artemis Add Sensor819 Function/Special/2022/06/06]
+  8 , //  93: Sensor818_ERR //[Artemis Add Sensor819 Function/Special/2022/06/06]
+  8 , //  94: BTT Test Fail     //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
+  8 , //  95: BTT Test Error    //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
+  8 , //  96: BTT No Action     //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
   0 , //  94: No Error
 };
 
@@ -1883,12 +1888,15 @@ const UBYTE FaultBitCodeTable1[ERRMAX+1] = {
   0 , //  86: LSS //#15977, LULD detect, James, 2021/04/01
   0 , //  87: LSO //#15977, LULD detect, James, 2021/04/01
   11, //  88: CurCtrl_ERR //#16434 MPHL improvement, Jerry, 2021/06/30
-  8 , //  89: //[Artemis Add Sensor819 Function/Special/2022/06/06]
-  8 , //  90: //[Artemis Add Sensor819 Function/Special/2022/06/06]
-  8 , //  91: BTT Test Fail
-  8 , //  92: BTT Test Error
-  8 , //  93: BTT No Action
-  0 , //  94: No Error
+  0 , //  89: STOL4_ERR 
+  0 , //  90: STOr_ERR
+  0 , //  91: STOS_ERR
+  8 , //  92: Sensor817_ERR //[Artemis Add Sensor819 Function/Special/2022/06/06]
+  8 , //  93: Sensor818_ERR //[Artemis Add Sensor819 Function/Special/2022/06/06]
+  8 , //  94: BTT Test Fail
+  8 , //  95: BTT Test Error
+  8 , //  96: BTT No Action
+  0 , //  97: No Error
 };
 
 

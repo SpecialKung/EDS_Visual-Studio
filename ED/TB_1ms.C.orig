@@ -1581,9 +1581,9 @@ void Run_Execute(void)
 {
     UWORD uwBKRUNT, FreqStart, uwFUPper;
 
-    if ( pr[CTRLM]==FOCPM )
+  if ( pr[CTRLM]==FOCPM )
       FreqStart = 0;
-    else
+  else
       FreqStart = fstart;
 /*  // Delete by DINO, 03/05/2010
   //====== Record Dcbus Value 
@@ -1592,63 +1592,45 @@ void Run_Execute(void)
     DCBUSREC = 0;
   }
 */      
-    if (RUNDCI==1) 
-    {
-        if (ZEROST == 1)
-        {
-            if (ZEROSP == 1)
-            { 
-                //Zero speed flag enable [01-34] 
-                ftemp.ul = 0;
-                fcmd.ul = 0;
-                // 13107 = 9268 * sqrt(2)
-                if ((pr[CTRLM]==VF)||(pr[CTRLM]==VFPG))
-                {
-                    if ((EXT_MOTOR1to2==1)||(pr[MOTORSEL]==2))  // Motor 2 highest priority
-                    {
-                        dci_ctrl(U16xU16divU16(COF_uwMIrRe, 13107, pr[I_RATE]), pr[VMIN2]);
-                    }
-                    else
-                    {
-                        dci_ctrl(U16xU16divU16(COF_uwMIrRe, 13107, pr[I_RATE]), pr[VMIN1]);
-                    }
-                }        
-                else if (pr[CTRLM]==SVC)
-                {
-                    dci_ctrl(U16xU16divU16(COF_uwMIrRe,13107,pr[I_RATE]),VF_uwVcmpMax>>1);
-                }
-            }  //end if (ZEROSP == 1)
-            else
-            {
-                if (Fcmd>FreqStart)
-                {
-                    fcmd.uw.hi = FreqStart;
-                    ftemp.uw.hi = FreqStart;
-                }
-                else
-                {
-                    fcmd.uw.hi = Fcmd;
-                    ftemp.uw.hi = Fcmd;                     
-                }
-                      
-                ftemp.uw.low = 0;
-                fcmd.uw.low = 0;
-                RUNDCI = 0;
-                TB1_uwDCICnt = 0;   //[DCI redesign, Bernie, 2016/11/18]
-                ZEROST = 0;
-            }
-      }
-      else
-      {
-          if (TB1_uwDCICnt >= (pr[DCISTA]*100))
-          { // RUN DC Injection finished
-              if (Fcmd>FreqStart)
-              {
+  if (RUNDCI==1) {
+      if (ZEROST == 1){
+          if (ZEROSP == 1){ //Zero speed flag enable [01-34] 
+              ftemp.ul = 0;
+              fcmd.ul = 0;
+              // 13107 = 9268 * sqrt(2)
+              if ((pr[CTRLM]==VF)||(pr[CTRLM]==VFPG)){
+                  if ((EXT_MOTOR1to2==1)||(pr[MOTORSEL]==2))  // Motor 2 highest priority
+                      dci_ctrl(U16xU16divU16(COF_uwMIrRe, 13107, pr[I_RATE]), pr[VMIN2]);
+                  else
+                      dci_ctrl(U16xU16divU16(COF_uwMIrRe, 13107, pr[I_RATE]), pr[VMIN1]);
+              }        
+              else if (pr[CTRLM]==SVC)
+                  dci_ctrl(U16xU16divU16(COF_uwMIrRe,13107,pr[I_RATE]),VF_uwVcmpMax>>1);
+          }  //end if (ZEROSP == 1)
+          else {
+              if (Fcmd>FreqStart){
                   fcmd.uw.hi = FreqStart;
                   ftemp.uw.hi = FreqStart;
               }
-              else
-              {
+              else{
+                  fcmd.uw.hi = Fcmd;
+                  ftemp.uw.hi = Fcmd;                     
+              }
+                      
+              ftemp.uw.low = 0;
+              fcmd.uw.low = 0;
+              RUNDCI = 0;
+              TB1_uwDCICnt = 0;   //[DCI redesign, Bernie, 2016/11/18]
+              ZEROST = 0;
+          }
+      }
+      else {
+          if (TB1_uwDCICnt >= (pr[DCISTA]*100)) { // RUN DC Injection finished
+              if (Fcmd>FreqStart){
+                  fcmd.uw.hi = FreqStart;
+                  ftemp.uw.hi = FreqStart;
+              }
+              else{
                   fcmd.uw.hi = Fcmd;
                   ftemp.uw.hi = Fcmd;
               }
@@ -1660,10 +1642,8 @@ void Run_Execute(void)
               RUN_DCI_OK = 1;            //[GK communication, Bernie, 2013/03/18].
               TB1_uwDCICnt = 0;
 #if SCOTTY
-              if (pr[CTRLM]==FOCPM)
-              {        //ADDED BY SCOTTY 2007/08/06
-                  if (ALIGN ==0)
-                  {
+              if (pr[CTRLM]==FOCPM){        //ADDED BY SCOTTY 2007/08/06
+                  if (ALIGN ==0){
                       Init_SpDtPG1();
                       ALIGN = 1;
                       pr[ST_TUNE] = 0;      //ADDED SCOTTY 09/27/2007
@@ -1671,26 +1651,23 @@ void Run_Execute(void)
               }
 #endif
           }
-          else
-          {   // DC Injection processing
+          else{               // DC Injection processing
               ftemp.ul = 0;
               fcmd.ul = 0;
               TB1_uwDCICnt++; 
-              if (pr[CTRLM]!=FOCPM)
-              {   //ADDED BY SCOTTY 2006/06/30        
+              if (pr[CTRLM]!=FOCPM){    //ADDED BY SCOTTY 2006/06/30        
                   dci_ctrl(U16xU16divU16(pr[DCICL],COF_uwIIratePu,100),(vbase>>1));
               }
           }
       }    
-    }//End RUN DC-injection
-    // [For generation direction, by Justin , 2010/04/27
-    else if ( GEN_START )
-    {
+  }//End RUN DC-injection
+  // [For generation direction, by Justin , 2010/04/27
+  else if ( GEN_START ){
       Generation_DIR();
-    }
-    //]
+  }
+  //]
 
-    Torq_Tune_Process();   //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
+  Torq_Tune_Process();   //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
 
 
 
@@ -1699,118 +1676,95 @@ void Run_Execute(void)
 
 
     
-    if (((PositionCom==1)||(ZeroServo==1))&&(APRCMDDIR!=WGDIR))
-    {
+    if (((PositionCom==1)||(ZeroServo==1))&&(APRCMDDIR!=WGDIR)){
         NORMALSP = 0;
         adjcnt = 0;
         Fcmd = 0;
           
-        if (fcmd.uw.hi > fmin)
-        {
-            if ((!HOLD)&&(!RESTART)&&(!SPSEARCH)&&(!RUNDCI)&&(!VPHOLD))
-            {
-                chk_stallv();
-                decelerate();
+        if (fcmd.uw.hi > fmin){
+          if ((!HOLD)&&(!RESTART)&&(!SPSEARCH)&&(!RUNDCI)&&(!VPHOLD)){
+            chk_stallv();
+          decelerate();
             }
         }
-        else
-        {
-            ZCycleCNT = 0;
-            WGDIR = APRCMDDIR;
-            PG_integral = 0;
-            VF_SlipLPF.sl = 0;
+        else{
+          ZCycleCNT = 0;
+          WGDIR = APRCMDDIR;
+          PG_integral = 0;
+          VF_SlipLPF.sl = 0;
         }
     }
-    else if ((PositionCom==0)&&(ZeroServo==0)&&(CMDDIR!=WGDIR))
-    {
+    else if ((PositionCom==0)&&(ZeroServo==0)&&(CMDDIR!=WGDIR)){
         NORMALSP = 0;
         adjcnt = 0;
         Fcmd = 0;
-        APR_uwZpulseCnt = 0;
-        APR_uwPGCycle = 0;
+    APR_uwZpulseCnt = 0;
+    APR_uwPGCycle = 0;
       
-        if (fcmd.uw.hi > fmin)
-        {
-            if ((!HOLD)&&(!RESTART)&&(!SPSEARCH)&&(!RUNDCI)&&(!VPHOLD))
-            {
-                chk_stallv();
-                decelerate();
+        if (fcmd.uw.hi > fmin){
+          if ((!HOLD)&&(!RESTART)&&(!SPSEARCH)&&(!RUNDCI)&&(!VPHOLD)){
+            chk_stallv();
+          decelerate();
             }
         }
-        else
-        {           
-            WGDIR = CMDDIR;
-            PG_integral = 0;
-            VF_SlipLPF.sl = 0;
-            ZCycleCNT = 0;
+        else{           
+          WGDIR = CMDDIR;
+          PG_integral = 0;
+          VF_SlipLPF.sl = 0;
+          ZCycleCNT = 0;
         }
         CMDDIR2 = CMDDIR;
         APRCMDDIR = CMDDIR;
-    }
-    else
-    {
+  }
+    else{
         CMDDIR2 = CMDDIR;
         APRCMDDIR = CMDDIR;
-        if (TUN_START == 1)
-        {
-            if ( pr[PM_AUTO_T]==3 )  // Add by DINO, 08/11/2008
-            {
-                HOLD = 0;
-            }
-            else if ((TUN_DC_OK==0)||(TUN_HFSS_OK==0))
-            {
-                if (pr[PM_AUTO_T]!= 2 )   // Debug BY SCOTTY 04/09/2007
-                {
-                    HOLD = 1;       // Hold Speed 禁止加減速 
-                }
-            }
-            else
-            {
-                HOLD = 0;
-            }
+        if (TUN_START == 1){
+          if ( pr[PM_AUTO_T]==3 )  // Add by DINO, 08/11/2008
+            HOLD = 0;
+          else if ((TUN_DC_OK==0)||(TUN_HFSS_OK==0)){
+            if (pr[PM_AUTO_T]!= 2 )   // Debug BY SCOTTY 04/09/2007
+                HOLD = 1;       // Hold Speed 禁止加減速 
+          }
+          else
+            HOLD = 0;
         }
         // [ Generation Operation, DINO, 04/27/2010
         else if ((GEN_START == 1)&&(pr[CTRLM] > SVC)&&(pr[EPS_OPTM]!=4)) //[EPS autodetect dir,Lyabryan,2018/07/02] //[EPS, Sampo, 03/27/2011]
             Fcmd = 0;
         // ]
-        else
-        {
-            if (Fcmd!=fkey.uw.hi)
-            {
-                NORMALSP = 0;
-                adjcnt = 0;
-            }
+        else{
+          if (Fcmd!=fkey.uw.hi){
+            NORMALSP = 0;
+            adjcnt = 0;
+      }
                     
-            if ((pr[PIDSL]==0)||(MFI_PIDDIS==1))
-            {
-                if (CMDJOG==0)
+          if ((pr[PIDSL]==0)||(MFI_PIDDIS==1)){
+              if (CMDJOG==0)
                   ext_updown();
           
-                Fcmd = fkey.uw.hi;    
-            }
-            else
-            {
+        Fcmd = fkey.uw.hi;    
+          }
+          else{
                 if (PIDHOLD==0)                
-                    PID_Ctrl();
-                PID_Sleep();
-            }
-            if (MFI_WG==1)
-            {
+                 PID_Ctrl();
+              PID_Sleep();
+          }
+          if (MFI_WG==1){
                 WgOff2Sby();
             }
         }
                   
-        if ((Fcmd < pr[FLOWER])&&(Fcmd>=fmin))
-        {
+        if ((Fcmd < pr[FLOWER])&&(Fcmd>=fmin)){
             Fcmd = pr[FLOWER];
-            fcmd.uw.low = 0;
+          fcmd.uw.low = 0;
         }
 
-        // [ EPS Speed Limit, Add by DINO, 08/30/2010
-        if ( EPS )
-          uwFUPper = COF_uwFepsLimit;
-        else
-          uwFUPper = pr[FUPPER];
+    // [ EPS Speed Limit, Add by DINO, 08/30/2010
+    if ( EPS )
+      uwFUPper = COF_uwFepsLimit;
+    else
+      uwFUPper = pr[FUPPER];
         if (Fcmd > uwFUPper){
             Fcmd = uwFUPper;
         }
@@ -2088,7 +2042,7 @@ void Stop_Execute(void)
         //AD_uwIA0 = LowPass(CurZero_LPG, (AN0<<4), AD_uwIA0);
         //AD_uwIB0 = LowPass(CurZero_LPG, (AN1<<4), AD_uwIB0);
         //AD_uwIC0 = LowPass(CurZero_LPG, (AN2<<4), AD_uwIC0);
-      if((!GEN_START)&&(TB_500ms)|| (PWRON == 1)){  //(((pr[LV_OPTM]&0x0008)==0x0008)||(PWRON_IF)) //[remove DCI when EPS status, Lyabryan, 2015/12/09]
+      if((!GEN_START)&&(TB_500ms)){  //(((pr[LV_OPTM]&0x0008)==0x0008)||(PWRON_IF)) //[remove DCI when EPS status, Lyabryan, 2015/12/09]
         AD_uwIA0 = LowPass(CurZero_LPG, (AN000<<4), AD_uwIA0);
         AD_uwIB0 = LowPass(CurZero_LPG, (AN001<<4), AD_uwIB0);
         AD_uwIC0 = LowPass(CurZero_LPG, (AN002<<4), AD_uwIC0);
@@ -3081,7 +3035,6 @@ void TimeBase_500us(void)
 {
     UWORD uwTemp;
     ULONG	ulTmp;
-	UDOUBLE	udTmp;
 
 
 // The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
@@ -3184,18 +3137,7 @@ void TimeBase_500us(void)
             uwMinDcbus = uwTemp;
     }
 
-    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-    if(((pr[DEBUG_F2]&0x0001)==0x0001) && (SHOW_ALLPR) && (ICTDetectGBP))
-    {
-        //Special,Kung modfiy for ICT pull high GBP, 11/04/2022
-        //PORT3.PDR.BIT.B1 = 1;
-        GBP_ON = 1;
-    }
-    else
-    {
-        sw_brake();
-    }
-
+    sw_brake();
     TB_500us ^= 1;
 
 	if(TB_500us == 1){
@@ -3205,11 +3147,9 @@ void TimeBase_500us(void)
 		TimeBase_1msB();
 		//DLC function, Henry, 2016/07/20 [
 		DLC_uwPOWCnt=(DLC_uwPOWCnt<1000)?(DLC_uwPOWCnt+1):DLC_uwPOWCnt;
-	
-		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-// GFC1test		//udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-// GFC1test		//COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];
+		COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);
+			
 		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000)){ //[Gfc DLC modify,Henry,2018/05/23]	
 			if(DLC_uwInit == 0){			
 				DLC_PrMgr(PR_INIT_RD);
@@ -3271,76 +3211,39 @@ void TimeBase_1ms(void)
     IrmsAD     = IrmsAD1;
   // ]
     TB1_uwNewIrmsAD = (ULONG)IrmsAD * 931 >> 10;  // New IED Irated is 110%, 1/1.1*1024=931, DINO, 09/06/2010
-    if (TB1_uwRYCnt < Def_uwRYCnt)
-    { 
-        TB1_uwRYCnt++;
-    }  // Add by DINO, 05/22/2008   
+  if (TB1_uwRYCnt < 300){ TB1_uwRYCnt++; }  // Add by DINO, 05/22/2008   
 
-    if(TB1_uwPGQuality_1sec<1000)
-    {
-        TB1_uwPGQuality_1sec++;
-    }
+   if(TB1_uwPGQuality_1sec<1000){
+       TB1_uwPGQuality_1sec++;
+   }
 
 
-    if((RUNNING==RUN)&&(fcmd.uw.hi!=0))
-    {
-
-        if(SPR_uwPGDIRCnt>100)
-        {
-            if(PGABerr_LPF.sw.hi>0)
-            {
+   if((RUNNING==RUN)&&(fcmd.uw.hi!=0)){
+       
+       if(SPR_uwPGDIRCnt>100){
+           if(PGABerr_LPF.sw.hi>0){
                SPR_uwPGDIR = 1;
-            }
-            else
-            {
+           }
+           else{
                SPR_uwPGDIR = 0;
-            }
-        }
-        else
-        {
+           }
+       }
+       else{
            SPR_uwPGDIRCnt++;
-        }
-    }
-    else
-    {
-        SPR_uwPGDIRCnt = 0;
-    }
-
-    if(BTTx_ubTestCase==BTT_Testing)
-    {
-        BTTx_ulTestCount = BTTx_ulTestCount+1;
-    }
-    else
-    {
-        BTTx_ulTestCount = 0;
-    }
-
-    if(WarnCode == BTT2_WARN)
-    {
-        BTTx_ulClearbttnCount = BTTx_ulClearbttnCount+1;
-    }
-    else if(WarnCode == BTT3_WARN)
-    {
-        BTTx_ulClearbttnCount = BTTx_ulClearbttnCount+1;
-    }
-    else
-    {
-        BTTx_ulClearbttnCount = 0;
-    }
+       }
+   }
+   else{
+       SPR_uwPGDIRCnt = 0;
+   }
 
 
   
 
     if (RUNNING == RUN)
-    {
-        TB1_uwSBKCnt = 0;
-    }
-    else
-    {
-        if ( TB1_uwSBKCnt < 750 )
-        {
-            TB1_uwSBKCnt++;
-        }
+      TB1_uwSBKCnt = 0;
+    else{
+      if ( TB1_uwSBKCnt < 750 )
+        TB1_uwSBKCnt++;
     }
 
     mfi_status = (mfi_now^pr[MI_INV]);
@@ -3348,13 +3251,7 @@ void TimeBase_1ms(void)
    
     mfo_status = (mfo_now^pr[MO_INV]);
 
-    if(mfi_status==0)
-    {
-        BTTx_btFWDREVReset = 0;
-    }
-
-    if(CC4KeyPad==1&&TB1_uw1secCnt<3000)
-    {
+    if(CC4KeyPad==1&&TB1_uw1secCnt<3000){
         TB1_uw1secCnt++;
     }
     else{
@@ -3363,37 +3260,24 @@ void TimeBase_1ms(void)
             CC4KeyPad = 0;
         }
     }
-    // [ FanLock Treatment Selection, DINO, 04/27/2010
-    uwTemp = pr[LV_OPTM];
+  // [ FanLock Treatment Selection, DINO, 04/27/2010
+  uwTemp = pr[LV_OPTM];
     // bit0: LV Treatment
     if (uwTemp & 0x0001)
-    {
-        LVMOD = 1;    //Warning
-    }
+      LVMOD = 1;    //Warning
     else
-    {
-        LVMOD = 0;    //Error
-    }
+      LVMOD = 0;    //Error
     // bit1: FanLock Treatment
     if (uwTemp & 0x0002)
-    {
-        FANLOCKMOD = 1; //Warning
-    }
+      FANLOCKMOD = 1; //Warning
     else
-    {
-        FANLOCKMOD = 0; //Error
-    }
+      FANLOCKMOD = 0; //Error
 
     // [ Operation in Generation Direction if EPS
-    if ((pr[EPS_OPTM] == 1) ||(pr[EPS_OPTM] == 2)||(pr[EPS_OPTM] == 3)||(pr[EPS_OPTM] == 4))
-    {
-        //[EPS autodetect dir,Lyabryan,2018/07/02] //[Modify EPS function, Bernie, 2012/11/27 ]
-        GEN_EN = 1;   //AUTO
-    }
+    if ((pr[EPS_OPTM] == 1) ||(pr[EPS_OPTM] == 2)||(pr[EPS_OPTM] == 3)||(pr[EPS_OPTM] == 4)) //[EPS autodetect dir,Lyabryan,2018/07/02] //[Modify EPS function, Bernie, 2012/11/27 ]
+      GEN_EN = 1;   //AUTO
     else
-    {
-        GEN_EN = 0;   //MANUAL
-    }
+      GEN_EN = 0;   //MANUAL
     // ]
     
     if(!EPS){ //[EPS autodetect dir,Lyabryan,2018/07/02]
@@ -3441,11 +3325,9 @@ void TimeBase_1ms(void)
     slIrmsReLPF  = lowpass_sl(DisplayLPG, IrmsRe, slIrmsReLPF);
     slDcbusDCLPF = lowpass_sl(DisplayLPG, dcbusDC, slDcbusDCLPF);
 */
-    VcmdLLPF.sl   += (SLONG)(Vcmd_LL - VcmdLLPF.sw.hi) * DisplayLPG;  //Vcmd_LL
-    IrmsReLPF.sl  += (SLONG)(IrmsRe  - IrmsReLPF.sw.hi) * DisplayLPG; //Irms
-    DcbusDCLPF.sl += (SLONG)(dcbusDC - DcbusDCLPF.sw.hi) * DisplayLPG;  //DCbus
-
-    TqRefPuLPF.sl += (SLONG)(swTqRefPu - TqRefPuLPF.sw.hi) * LC01DisplayLPG;  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+  VcmdLLPF.sl   += (SLONG)(Vcmd_LL - VcmdLLPF.sw.hi) * DisplayLPG;  //Vcmd_LL
+  IrmsReLPF.sl  += (SLONG)(IrmsRe  - IrmsReLPF.sw.hi) * DisplayLPG; //Irms
+  DcbusDCLPF.sl += (SLONG)(dcbusDC - DcbusDCLPF.sw.hi) * DisplayLPG;  //DCbus
 // ]
 
   // [ Calculate Electrical angle, add by Sampo, 04/22/2009
@@ -4250,91 +4132,66 @@ void TimeBase_1ms(void)
             }
           else{
                 TB1_ub100msCnt = 4;
-                /* ------ 100ms timer ------*/
-                TB_100ms = 1;
+              /* ------ 100ms timer ------*/
+              TB_100ms = 1;
 
-                PID_Loss();
-                PID_Deviation();
+              PID_Loss();
+              PID_Deviation();
 
 
 
 //              if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]!=3)) {            // Enable Time out Detection
-                if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]<2)) 
-                {            // SCOTTY 09/03/2007
-                    if (SCI2_TodCNT <= pr[CTODT2])      //tod_cnt, Time out detection count
-                    {
-                        SCI2_TodCNT++;
-                    }
-                }
-                if ((pr[CTODT3]!=0)&&(pr[C_FAULT3]<2)) 
-                {            // SCOTTY 09/03/2007
-                    if (SCI3_TodCNT <= pr[CTODT3])      //tod_cnt, Time out detection count
-                    {
-                        SCI3_TodCNT++;
-                    }
-                }
+              if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]<2)) {            // SCOTTY 09/03/2007
+                  if (SCI2_TodCNT <= pr[CTODT2])      //tod_cnt, Time out detection count
+                      SCI2_TodCNT++;          
+              }
+              if ((pr[CTODT3]!=0)&&(pr[C_FAULT3]<2)) {            // SCOTTY 09/03/2007
+                  if (SCI3_TodCNT <= pr[CTODT3])      //tod_cnt, Time out detection count
+                      SCI3_TodCNT++;          
+              }
 
-                //if (Com_WatchDog3<250)    
+               //if (Com_WatchDog3<250)    
                    //Com_WatchDog3++;
                    
-                //if (Com_WatchDog4<250)    
+               //if (Com_WatchDog4<250)    
                    //Com_WatchDog4++;
 
                   
-                //if (Com_WatchDog2<250)
-                //[JES SE1_ERR, Rational 282940, Special.Kung, 2022/08/24]
-                if((Com_WatchDog2<250) && (COPYFLAG==0))
-                {         
-                    Com_WatchDog2++;
-                }
-
-                if(Com_WatchDog0<250)
-                {
-                    Com_WatchDog0++;
-                }
+              if (Com_WatchDog2<250)    
+                  Com_WatchDog2++;
+                  
+              if (Com_WatchDog0<250)    
+                  Com_WatchDog0++;
 
                 if((OT1CST)&&(TB1_uwOT1Cnt<0x3ff))  // OT1 count start
-                {
                     TB1_uwOT1Cnt ++;
-                }
             
                 if((OT2CST)&&(TB1_uwOT2Cnt<0x3ff))  // OT2 count start
-                {
                     TB1_uwOT2Cnt ++;
-                }
                     
-                if (OVERSLIP==1)
-                {
-                    if ((UWORD)TB1_ubOverWsCnt<=pr[SLIPDEVT])
-                    {
-                        TB1_ubOverWsCnt++;
-                    }
+                if (OVERSLIP==1){
+                  if ((UWORD)TB1_ubOverWsCnt<=pr[SLIPDEVT])
+                    TB1_ubOverWsCnt++;
                 }         
               
-                if (TB1_ub1secCnt!=0)
-                {
+              if (TB1_ub1secCnt!=0){
                   TB1_ub1secCnt --;
-                }
-                else
-                {               
-                    TB1_ub1secCnt = 9;
-                    /* ------ 1 sec timer ------*/
-                    TB_1sec = 1;
-                    if (pr[PGINPUT]!=0)
-                    {
-                        SpDt_uwPG1LoSpdCNT_Z1 = SpDt_uwPG1LoSpdCNT_Old;
-                    }
-                }        
-                // [ LED KEYPAD, DINO, 03/12/2010
-                if (TB1_ub1secCnt < 5)
-                {
-                    LEDBLINK = 1 ;
-                }
-                else
-                {
-                    LEDBLINK = 0;
-                }
-                chkamps();      
+              }
+              else{               
+                  TB1_ub1secCnt = 9;
+                  /* ------ 1 sec timer ------*/
+                  TB_1sec = 1;
+                  if (pr[PGINPUT]!=0)
+                        SpDt_uwPG1LoSpdCNT_Z1 = SpDt_uwPG1LoSpdCNT_Old;                                 
+              }        
+              // [ LED KEYPAD, DINO, 03/12/2010
+        if (TB1_ub1secCnt < 5){
+                LEDBLINK = 1 ;
+        }
+        else{
+          LEDBLINK = 0;
+        }
+              chkamps();      
             }// 100ms End
         }// 20ms End
     }// 10ms End   
@@ -4871,20 +4728,6 @@ void TimeBase_1msB(void){
         }
     }
 
-    if(AFE_ERR_TMR)
-    {
-        AFE_uwMOCNT--;
-        if(AFE_uwMOCNT==0)
-        {
-            AFE_ERR_TRIG = 0;
-            AFE_ERR_TMR = 0;
-            AFE_Level_Delay = 1;
-        }
-    }
-    else
-    {
-        AFE_uwMOCNT = AFE_ERR_RST_CNT;
-    }
   
   if((Error == 0)&&((pr[DEBUG_PG]&0x0400)!=0x0400)&& Zphase_countAB_flag&&(pr[PG_TYPE]==SIN_SIN)){ //[Zphase broken, Lyabryan, 2015/09/17]  //[modify Error code,Lyabryan,2016/07/21]
       WGOFF;
@@ -6000,9 +5843,11 @@ void OverAccFunction(void){                //[Over Acceleration protection funct
             else{
                 uwAccTemp = abs((ULONG)COF_uwFbRe * (-SpDt_slSpdFdbPu>>15))>>14;
             }
+            //uwtest11 = uwAccTemp;
             AccTemp_LPF.sl += (uwAccTemp - AccTemp_LPF.sw.hi)*(6553); // Lowpass
             //uwAccTemp = Hz2Metric(uwAccTemp);
             //SpDt_uwAccCalcul = Hz2Metric(AccTemp_LPF.sw.hi);
+            //uwtest12 =  SpDt_uwAccCalculOld;
             SpDt_uwAccOpt = abs(AccTemp_LPF.sw.hi - SpDt_uwAccCalculOld);
         
             SpDt_uwAccCalculOld = AccTemp_LPF.sw.hi;   //

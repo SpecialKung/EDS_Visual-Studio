@@ -252,7 +252,11 @@ DLC_EXT	UWORD	DLC_uwTra3,
 							//DLC_uwS4Cnt,		// Mitong 20220513 del
 							DLC_uwPeriodCnt,
 							DLC_uwDCICnt,
-							DLC_uwSfbk;
+							DLC_uwSfbk,
+							uwPr_CAN_FUN_Old,	//mitong 20230818
+							uwWelExcTmr;		//mitong 20230818
+
+
 DLC_EXT	SWORD				swRopeCmp;
 
 DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
@@ -361,6 +365,10 @@ DLC_EXT	UWORD_UNION	DLC_uwCAN;	 //09-10 factory function
 #define	DLC_btWelRst    DLC_uwCAN.bit.b4	// PG Pulse Reset
 #define	DLC_btWelExcOld	DLC_uwCAN.bit.b5	// PG Pulse Record Aux
 #define	DLC_btWelEnd	DLC_uwCAN.bit.b6
+#define	DLC_btWelExcAux	DLC_uwCAN.bit.b7	//mitong 20230818
+#define	DLC_btWelDoneAux	DLC_uwCAN.bit.b8	//mitong 20230818
+
+
 
 
 DLC_EXT UWORD_UNION DLC_0436;
