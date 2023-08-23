@@ -2458,9 +2458,19 @@ UWORD mfo_abv_spa(UWORD pin,UWORD k){      // Above Speed Area//
 UWORD mfo_abv_PGspa(UWORD pin,UWORD k){      // #16698 PG speed Above Speed Area for NRG//James, 2021/08/09
 
     if (ABV_PGSPDA==1)
+    {
+        // Rational351466, Special.Kung, 2023/07/10
+        if(Error == 0)											//[Special.Kung, 2023/07/10]
+        {														//[Special.Kung, 2023/07/10]
+            Error = PGF3_ERR;									//[Special.Kung, 2023/07/10]
+        }														//[Special.Kung, 2023/07/10]
+		// Rational351466, Special.Kung, 2023/07/10
         return (pin^k);
+    }
     else
-	    return (0^k);
+    {
+        return (0^k);
+    }
 }
 UWORD mfo_low_spa(UWORD pin,UWORD k){      // Below Speed Area//
 

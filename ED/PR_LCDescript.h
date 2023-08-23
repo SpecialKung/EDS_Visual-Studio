@@ -944,7 +944,7 @@ const string20 warninfo_tc[(WARNMAX+1)]={
 	"Sensor818 警告  SnW8",	//warncode = 47
 	"BTTx 測試中     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx 正常       bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"BTTx 成功       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	"BTTx 成功\       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 };
 #endif
 
@@ -2956,12 +2956,12 @@ const string20 prinfo_tc[EPMAX] = {
     "停車轉矩遞減時間sec "	,	//	356 07-29 Torque Decrease Time
     "停止直流制動準位%   "	,	//	356 07-30 STOP DC Inject Level     //[DCI Level when stop, Bernie, 05/21/2012]
     "BTT100             %"  ,   //  357 07-31  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測           "  ,   //  358 07-32  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測距離    ppr"  ,   //  359 07-33  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測秒數       "  ,   //  360 07-34  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測失敗轉矩   "  ,   //  361 07-35  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測最小轉矩   "  ,   //  362 07-36  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-    "BTTx 檢測最大轉矩   "  ,   //  362 07-37  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測            "  ,   //  358 07-32  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測距離     ppr"  ,   //  359 07-33  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測秒數        "  ,   //  360 07-34  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測失敗轉矩    "  ,   //  361 07-35  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測最小轉矩    "  ,   //  362 07-36  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    "BTTx檢測最大轉矩    "  ,   //  362 07-37  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     
 /*---- GROUP 08-----------------------------------------*/						
 /*  "12345678901234561234"	*/
