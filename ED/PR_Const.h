@@ -370,9 +370,9 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 04-22 MAX_FLOOR    */  RLD|DOT0,                       1,             75,              8,  
 /* 04-23 LEV_CUR      */  RLD|DOT0,                       0,             75,              0, 
 /* 04-24 PG_RST_MODE  */  RLD|DOT0,                       0,            100,            100,
-/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
 /* 04-26 LAND_DLY_TIME*/  RLD|DOT0,                       0,           3000,            500,   
-/* 04-27 LEV_LEN      */  READ|RLD|DOT0,                  0,            800,            215,
+/* 04-27 LEV_LEN      */  READ|RLD|DOT0,                  0,          65535,            215,
 /* 04-28 INV_POS_H    */  READ|RLD|DOT0,                  0,          65535,              0,   
 /* 04-29 INV_POS_L    */  READ|RLD|DOT0,                  0,           9999,              0, 
 /* 04-30 CUR_PG_H     */  RLD|DOT0,                       0,          65535,              0,  
