@@ -401,7 +401,7 @@ const string20 errinfo[(ERRMAX+1)]={
     "U Phase Loss    OPHL",    //82
     "V Phase Loss    OPHL",    //83
     "W Phase Loss    OPHL",    //84
-    "DLC Ctrl Method DLCC",    //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
+    "DLC Ctrl MethodDLCC",     //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
     "Lv Sensor Short LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
     "Lv Sensor Open  LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "Cur. Ctrl. Err  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
@@ -413,9 +413,7 @@ const string20 errinfo[(ERRMAX+1)]={
 	"BTTx Fail        btt",    //94	 //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTTx Error      bttE",    //95	 //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE Error Lock  AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
-	"STOP MI40 Loss  SEnL",    //98  //[Ratioanal 271718, Special.Kung, 2023/05/02]
-	"RUN MI40 Loss   rEnL",    //99  //[Ratioanal 271718, Special.Kung, 2023/05/02]
+	"AFE Error Lock  AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -519,9 +517,7 @@ const string20 errinfo_tc[(ERRMAX+1)]={
 	"BTT ¥¢±Ñ         btt",    //94	 //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT ¿ù»~        bttE",    //95  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE¿ù»~Âê©w     AEL ",    //97  [AFE Error Handle/Lyabryan/2022/03/24]
-	"STOP MI40 Loss  SEnL",    //98  //[Ratioanal 271718, Special.Kung, 2023/05/02]
-	"RUN MI40 Loss   rEnL",    //99  //[Ratioanal 271718, Special.Kung, 2023/05/02]
+	"AFE¿ù»~Âê©w     AEL ",		//97[AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -625,9 +621,7 @@ const string20 errinfo_sc[(ERRMAX+1)]={
 	"BTT Ê§°Ü         btt",    //94	 //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT ´íÎó        bttE",    //95  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE´íÎóËø¶¨     AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
-	"STOP MI40 Loss  SEnL",    //98  //[Ratioanal 271718, Special.Kung, 2023/05/02]
-	"RUN MI40 Loss   rEnL",    //99  //[Ratioanal 271718, Special.Kung, 2023/05/02]
+	"AFE´íÎóËø¶¨     AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
 
 };
 #endif
@@ -732,9 +726,7 @@ const string20 errinfo_tur[(ERRMAX+1)]={
     "BTTx Fail        btt",    //94	 //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTTx Error      bttE",    //95	 //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"AFE Error Lock  AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
-	"STOP MI40 Loss  SEnL",    //98  //[Ratioanal 271718, Special.Kung, 2023/05/02]
-	"RUN MI40 Loss   rEnL",    //99  //[Ratioanal 271718, Special.Kung, 2023/05/02]
+	"AFE Error Lock  AEL ",    //97//[AFE Error Handle/Lyabryan/2022/03/24]
 };
 #endif
 
@@ -826,7 +818,7 @@ const string20 errinfo_rus[(ERRMAX+1)]={
     "ÑàëÒ U äÐ×ë     OPHL",    //82
     "ÑàëÒ V äÐ×ë     OPHL",    //83
     "ÑàëÒ W äÐ×ë     OPHL",    //84 
-    "DLC Ctrl MethodDLCC",     //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
+    "DLC Ctrl MethodDLCC",     //85 //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
     "Lv Sensor Short LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
     "Lv Sensor Open  LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "Cur. Ctrl. Err  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
@@ -839,8 +831,6 @@ const string20 errinfo_rus[(ERRMAX+1)]={
     "BTTx Error      bttE",    //95	 //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     "BTT No Action   bttn",    //96  //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"AFE Error Lock  AEL ",    //97  //[AFE Error Handle/Lyabryan/2022/03/24]
-	"STOP MI40 Loss  SEnL",    //98  //[Ratioanal 271718, Special.Kung, 2023/05/02]
-	"RUN MI40 Loss   rEnL",    //99  //[Ratioanal 271718, Special.Kung, 2023/05/02]
 };
 #endif
 
@@ -898,7 +888,6 @@ const string20 warninfo[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"                    ", //warncode = 51  
 };
 #endif
 
@@ -955,8 +944,7 @@ const string20 warninfo_tc[(WARNMAX+1)]={
 	"Sensor818 Äµ§i  SnW8",	//warncode = 47
 	"BTTx ´ú¸Õ¤¤     bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx ¥¿±`       bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"BTTx ¦¨¥\\      bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"                    ", //warncode = 51  
+	"BTTx ¦¨¥\\       bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 };
 #endif
 
@@ -1070,7 +1058,6 @@ const string20 warninfo_tur[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 48  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"                    ", //warncode = 51  
 };
 #endif
 
@@ -1128,7 +1115,6 @@ const string20 warninfo_rus[(WARNMAX+1)]={
 	"BTTx Testing    bttA", //warncode = 43  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Normal     bttn", //warncode = 49  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 	"BTTx Success    bttS", //warncode = 50  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	"                    ", //warncode = 51  
 };
 #endif
 
@@ -1592,7 +1578,6 @@ const string20 prinfo[EPMAX] = {
     "STO Short Det   sec "  ,   //  2XX 02-44   STO shor detect time                         //#18196  STO new function for SIL2, James, 2021/10/06    
     "819 Sensor          "  ,   //  2XX 02-45   819 Sensor                                   //[Artemis Add Sensor819 Function/Special/2022/06/06]
     "Speed Limit     m/s "  ,   //  2XX 02-46   Speed Limit                                  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-	"FWDREV CNT          "	,	//	247 02-47   FWDREV CNT                                   //[Ratioanal 271718, Special.Kung, 2023/05/02]
 
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
@@ -2670,8 +2655,6 @@ const string20 prinfo_tc[EPMAX] = {
     "STOµu¸ô°»´ú®É¶¡ sec "  ,   //  2xx 02-44   STO shor detect time                    //#18196  STO new function for SIL2, James, 2021/10/06
     "819 Sensor          "  ,   //  2xx 02-45   //[Artemis Add Sensor819 Function/Special/2022/06/06]
     "³t«×­­¨î        m/s "  ,   //  2xx 02-46   //[Artemis Add Sensor819 Function/Special/2022/06/06] 
-    "FWDREV¦P®ÉÄ²µo¦¸¼Æ  "	,	//	247 02-47   FWDREV CNT                              //[Ratioanal 271718, Special.Kung, 2023/05/02]
-
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
     "AUI1¥\\¯à¿ï¾Ü        "	,	//	214	03-00   AUI1 selection                    //[Fill up 20 bits for the parameter after specific BIG-5 character with space, Freeman, 2017/06/19]   //[AI chenge to AUI, Lyabryan, 03/27/2015]
@@ -3746,8 +3729,6 @@ const string20 prinfo_sc[EPMAX] = {
     "STO¶ÌÂ·Õì²âÊ±¼ä sec "  ,   //  2xx 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
     "819 Sensor          "  ,   //  2xx 02-45 //[Artemis Add Sensor819 Function/Special/2022/06/06]
     "ËÙ¶ÈÏÞÖÆ        m/s "  ,   //  2xx 02-46 //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "FWDREV CNT          "	,	//	247 02-47   FWDREV CNT                                   //[Ratioanal 271718, Special.Kung, 2023/05/02]
-    
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
     "AUI1¹¦ÄÜÑ¡Ôñ        "	,	//	214	03-00 AUI1 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
@@ -4771,8 +4752,7 @@ const string20 prinfo_tur[EPMAX] = {
 	"SPEED-REACH BND Hz  "	,   //  202 02-43   Band of Speed Agree Function  //#18572
     "STO Short Det   sec "  ,   //  2xx 02-44   STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
     "819 Sensor          "  ,   //  2xx 02-40   //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "Hiz Limiti      m/s "  ,   //  2xx 02-41   //[Artemis Add Sensor819 Function/Special/2022/06/06]     
-    "FWDREV CNT          "	,	//	247 02-47   FWDREV CNT                                   //[Ratioanal 271718, Special.Kung, 2023/05/02]
+    "Hiz Limiti      m/s "  ,   //  2xx 02-41   //[Artemis Add Sensor819 Function/Special/2022/06/06]      
 
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
@@ -5843,7 +5823,6 @@ const string20 prinfo_rus[EPMAX] = {
     "STO Short Det   sec "  ,   //  2xx 02-44   STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
     "819 Sensor          "  ,   //  2xx 02-45   //[Artemis Add Sensor819 Function/Special/2022/06/06]
     "Speed Limit     m/s "  ,   //  2xx 02-46   //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    "FWDREV CNT          "	,	//	247 02-47   FWDREV CNT                                   //[Ratioanal 271718, Special.Kung, 2023/05/02]
 /*---- GROUP 03---------------------------------------*/						
 /*  "12345678901234561234"	*/					
 	"°ÝÐÛÞÓ.ÒåÞÔ AUI1    "	,	//	214	03-00    AUI1 selection     //[AI chenge to AUI, Lyabryan, 03/27/2015]

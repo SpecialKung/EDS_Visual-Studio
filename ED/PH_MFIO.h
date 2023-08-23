@@ -185,8 +185,7 @@ MFIO_EXT UWORD trg_cnt,
 			   uwFaultBitCode,
 			   uwPcomClkMI,
 			   uwPcomDataMI,
-			   uwSPIPcom,
-			   FWDREVClear_uwCount;
+			   uwSPIPcom;
 
 MFIO_EXT UWORD swmaxT1,
 	           swmaxT2,
@@ -196,8 +195,7 @@ MFIO_EXT ULONG slmaxT1,
                slmaxT2,
                mio_ulMfiSta;
 
-MFIO_EXT UWORD_UNION		
-               vfd_uwFunSel2;              // VFD Functions Selection 2
+MFIO_EXT UWORD_UNION		vfd_uwFunSel2;				// VFD Functions Selection 2
 
 MFIO_EXT UBYTE EXT_AISEL,
                speed,
@@ -213,8 +211,7 @@ MFIO_EXT UBYTE EXT_AISEL,
 			   Speed_old,
 			   Speed_priority,
 			   Speed_INS,
-			   Speed_RELEVEL,
-			   FWDREVWarn_ubCount;				
+			   Speed_RELEVEL;				
 			 
 
 #ifdef _MFIO_C              

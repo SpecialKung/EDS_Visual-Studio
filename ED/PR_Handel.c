@@ -275,7 +275,6 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 		updatepr,   //	218 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
 		updatepr,	//  2xx 02-45	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 		updatepr,	//  2xx 02-46 //[Artemis Add Sensor819 Function/Special/2022/06/06]
-		updatepr,	//02-47     //[Ratioanal 271718, Special.Kung, 2023/05/02]
 /*---- GROUP 03---------------------------------------*/
 		updatepr,	//	214  03-00	AVI selection
 		updatepr,	//	215  03-01	ACI selection
@@ -2618,16 +2617,6 @@ void P00_02(UWORD prx, UWORD prvalue)
 					wr_FF2ep();
 				}
 			break;
-			//[Ratioanal 271718, Special.Kung, 2023/05/02]
-			case 5555: 											//[Special.Kung, 2023/05/02]
-                if ((FSET_LOCK==0)&&(SHOW_ENHANCE==1))			//[Special.Kung, 2023/05/02]
-                {												//[Special.Kung, 2023/05/02]
-                    pr[FWDREV_CNT] = 0;							//[Special.Kung, 2023/05/02]
-                    write_ep(0,FWDREV_CNT,0);					//[Special.Kung, 2023/05/02]
-                    KEYEND = END;								//[Special.Kung, 2023/05/02]
-                }												//[Special.Kung, 2023/05/02]
-            break;												//[Special.Kung, 2023/05/02]
-			//[Ratioanal 271718, Special.Kung, 2023/05/02]
             case 5566: //[Running Dir Count,Special,2018/08/17]
                 if ((FSET_LOCK==0)&&(SHOW_ENHANCE==1)){
                     pr[IR_COUNT_H] = 0;

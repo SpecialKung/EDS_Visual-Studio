@@ -950,28 +950,15 @@ void sw_protect(void)
 				}
 				else
 		        	stop();
-
-			break;
-            
-			case Sensor817_ERR:                         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-            case Sensor818_ERR:                         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				break;
+			case Sensor817_ERR:
+            case Sensor818_ERR:
 				WGOFF;
     	        Vcmd_LL = 0;
-				LIFT_ENABLE = 0;					    // Add by DINO, 03/28/2008
-                TB1_uwMCStopCnt = pr[MCDELAY_STOP];     // Add by DINO, 03/28/2008
+				LIFT_ENABLE = 0;					// Add by DINO, 03/28/2008
+                TB1_uwMCStopCnt = pr[MCDELAY_STOP]; // Add by DINO, 03/28/2008
                 CMDFREE = 1;
-		    break;
-
-            //[Ratioanal 271718, Special.Kung, 2023/05/02]
-            case STOP_MI40_ERR:                         //[Special.Kung, 2023/05/02]
-            case RUN_MI40_ERR:                          //[Special.Kung, 2023/05/02]
-                WGOFF;									//[Special.Kung, 2023/05/02]
-    	        Vcmd_LL = 0;							//[Special.Kung, 2023/05/02]
-				LIFT_ENABLE = 0;					    //[Special.Kung, 2023/05/02]
-                TB1_uwMCStopCnt = pr[MCDELAY_STOP];     //[Special.Kung, 2023/05/02]
-            break;										//[Special.Kung, 2023/05/02]
-			//[Ratioanal 271718, Special.Kung, 2023/05/02]
-            
+				break;
             default:
                 WGOFF;
     	        Vcmd_LL = 0;                   // Let Vcmd = 0
@@ -1270,15 +1257,7 @@ void Error_Handel(void)
                 KEYRESET = 1;     //can reset 
             //}
         break;
-        //[AFE Error Handle/Lyabryan/2022/03/24]
-
-		//[Ratioanal 271718, Special.Kung, 2023/05/02]
-        case STOP_MI40_ERR:     						//[Special.Kung, 2023/05/02]
-        case RUN_MI40_ERR:      						//[Special.Kung, 2023/05/02]
-            KEYRESET = 1;								//[Special.Kung, 2023/05/02]
-        break;											//[Special.Kung, 2023/05/02]
-		//[Ratioanal 271718, Special.Kung, 2023/05/02]
-        
+        //[AFE Error Handle/Lyabryan/2022/03/24]		
 		default:
 		    KEYRESET = 1;     //can reset 
 		break;	//Break of case NULL:
