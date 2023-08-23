@@ -2220,7 +2220,8 @@ SWORD AUI2Calculate(void)
 }
 
 //[Sibocom exist FWD/REV Warn, Jason, 2019/10/07]
-void mfi_FwdRevWarn(void){
+void mfi_FwdRevWarn(void)
+{
 	if((WarnCode == 0)&&(Error == 0)){
 		WarnCode = FWDREV_WARN;
 	}
@@ -2280,8 +2281,16 @@ void mi_speed(void)
     C21xx[0x19] &=  0xfcfb; 
 	
     if (pr[CTRLM]!=TQCPG)
-    {    // Speed control mode   //6a17j mask
-		if (speed==0)
+    {    
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+        if(FWDREV_Enable1)                              //[Special.Kung, 2023/05/02]
+        {                                               //[Special.Kung, 2023/05/02]
+            fkey.uw.hi = 0;                             //[Special.Kung, 2023/05/02]
+        }                                               //[Special.Kung, 2023/05/02]
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+
+        // Speed control mode   //6a17j mask
+        else if(speed==0)
         {
 			if (CMDJOG == 1)
             {    
@@ -5798,21 +5807,16 @@ void main(void)
         }
 
         // #16698 PG speed Above Speed Area for NRG//James, 2021/08/09
-        if((pr[SP_AREA]==0) || (abs(slMotorHz)<pr[SP_AREA]))
+        if(pr[SP_AREA] == 0 || (abs(slMotorHz) < pr[SP_AREA]))
         {
 		    ABV_PGSPDA = 0;
         }
         else
         {
-            // Rationa l351466, Special.Kung, 2023/07/10
-            /*															//[Special.Kung, 2023/07/10]
-            if(Error == 0)												//[Special.Kung, 2023/07/10]
-            {															//[Special.Kung, 2023/07/10]
-                Error = PGF3_ERR;										//[Special.Kung, 2023/07/10]
-            }															//[Special.Kung, 2023/07/10]
-            */
-			// Rationa l351466, Special.Kung, 2023/07/10
-			
+            if(Error == 0)
+            {
+                Error = PGF3_ERR;
+            }
             ABV_PGSPDA = 1;
         }
 // ]

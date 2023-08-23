@@ -246,11 +246,11 @@
 #define	STO_SHORT_T     (GROUP2+44)	    //  218 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
 #define Sensor819       (GROUP2+45)		//  2xx 02-45	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 #define Speed_Limit     (GROUP2+46)		//  2xx 02-46	//[Artemis Add Sensor819 Function/Special/2022/06/06]
-
+#define FWDREV_CNT      (GROUP2+47)	    //02-47	    //[Ratioanal 271718, Special.Kung, 2023/05/02]
 
 
 /*------------	Group3	 --------*/
-#define	GROUP3			(GROUP2+47)
+#define	GROUP3			(GROUP2+48)
 #define AUI1_SL			(GROUP3+0)	    //	214	03-00	AVI selection	
 #define ACI_SL 			(GROUP3+1)	    //	215	03-01	ACI selection	
 #define AUI2_SL			(GROUP3+2)	    //	216	03-02	AUI selection	

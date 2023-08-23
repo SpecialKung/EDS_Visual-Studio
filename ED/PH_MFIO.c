@@ -782,10 +782,13 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 		//k=EXT_FWD, mean EXT_REV active
 
 		if(k==EXT_FWD)
-        {        
+        {
             //run();	// delete by dino, 03/08/2007
-            RUN_DETECT = 1;
-            RUN_SENSOR0 = 1;   //[Service time function, Bernie, 2017/03/14]
+            RUN_DETECT     = 1;
+            RUN_SENSOR0    = 1;      //[Service time function, Bernie, 2017/03/14]
+            FWDREV_Enable1 = 0;      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+            FWDREV_Enable2 = 0;      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+            
             if (pr[SETDIR]==2) 
             {           
                 // disable Forward //
@@ -798,9 +801,13 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 	    	}
 	    	else
             {
-	    		if(((PWM_Status.ub&0x42) == 0)&&(!EPS_MODE4))
+	    		if(((PWM_Status.ub&0x42)==0)&&(!EPS_MODE4))
                 { 
-                    //[EPS autodetect dir,Lyabryan,2018/07/02]  //GEN_OK3 = 0; GEN_START = 0; //Generation Operation, DINO, 04/27/2010   //0x12 to 0x42 [Modify EPS function, Bernie, 2012/11/27 ]
+                    //[EPS autodetect dir,Lyabryan,2018/07/02]  
+                    //GEN_OK3 = 0; GEN_START = 0; 
+                    //Generation Operation, DINO, 04/27/2010   
+                    //0x12 to 0x42 [Modify EPS function, Bernie, 2012/11/27 ]
+                    
 					CMDDIR = FORWARD;// gfc
              		if(WGDIR!=CMDDIR) 
                     {     
@@ -817,7 +824,10 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 	    	// gfc
 	    	if(CMDJOG==0 && !GEN_START && (MODE3==0)&&(RUNNING==STOP))
             {   
-                // Add by DINO, 11/28/2008 //[EPS, Sampo, 03/27/2011]  //[DIN time sequence, Bernie, 2013/03/07]
+                // Add by DINO, 11/28/2008 
+                //[EPS, Sampo, 03/27/2011]  
+                //[DIN time sequence, Bernie, 2013/03/07]
+                
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 			//[ //[Sibocom FWD & REV only one exist set EPS mode 0, Jason, 2019/12/31]
 				if(EPS && (pr[SIBO_EPS_FRMODE]!=0)){ 
@@ -832,25 +842,28 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
             else
             {
                 //[DIN time sequence, Bernie, 2013/03/07]
-                if((MODE3 == 1))
+                if((MODE3==1))
                 {
                     LIFT_RUNCMD = 0;
 	    		    stop();
                 }
             }
-			if(WarnCode == FWDREV_WARN)
-            { 
-                //[Sibocom exist FWD/REV Warn, Jason, 2019/10/07]
-				Keypad_Page = Keypad_PageTmp;
-				WarnCode = 0;
-            }
+			if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))              //[Special.Kung, 2023/05/02]
+            {                                                                       //[Special.Kung, 2023/05/02]
+				WarnCode       = 0;                                                 //[Special.Kung, 2023/05/02]
+                Keypad_Page    = pr[S_DISP];                                        //[Special.Kung, 2023/05/02]
+		        Keypad_PageTmp = 0;                                                 //[Special.Kung, 2023/05/02]
+			}                                                                       //[Special.Kung, 2023/05/02]
 		}
 		//k=EXT_REV, mean EXT_FWD active
 		else if(k==EXT_REV) 
-        {  
+        {
             //run();	// delete by dino, 03/08/2007
-            RUN_DETECT = 1;
-            RUN_SENSOR0 = 1;   //[Service time function, Bernie, 2017/03/14]
+            RUN_DETECT     = 1;
+            RUN_SENSOR0    = 1;      //[Service time function, Bernie, 2017/03/14]
+            FWDREV_Enable1 = 0;      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+            FWDREV_Enable2 = 0;      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+            
 	    	if (pr[SETDIR]==1)
             {
               	CMDDIR = FORWARD; // gfc   //[Wrong dir in Ins,Lyabryan,2018/07/16]
@@ -862,9 +875,13 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 	    	}
 	    	else
             {
-	    		if(((PWM_Status.ub&0x42) == 0)&&(!EPS_MODE4))
+	    		if(((PWM_Status.ub&0x42)==0)&&(!EPS_MODE4))
                 {
-                    //[EPS autodetect dir,Lyabryan,2018/07/02] //GEN_OK3 = 0; GEN_START = 0; //Generation Operation, DINO, 04/27/2010    //0x12 to 0x42 [Modify EPS function, Bernie, 2012/11/27 ]
+                    //[EPS autodetect dir,Lyabryan,2018/07/02] 
+                    //GEN_OK3 = 0; GEN_START = 0; 
+                    //Generation Operation, DINO, 04/27/2010    
+                    //0x12 to 0x42 [Modify EPS function, Bernie, 2012/11/27 ]
+                    
              		CMDDIR = REVERSE;// gfc
              		if(WGDIR!=CMDDIR)
                     {
@@ -881,7 +898,10 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
 	    	// gfc
 	    	if(CMDJOG==0 && !GEN_START && (MODE3==0)&&(RUNNING==STOP))
             {   
-                // Add by DINO, 11/28/2008 //[EPS, Sampo, 03/27/2011]  //[DIN time sequence, Bernie, 2013/03/07]
+                // Add by DINO, 11/28/2008 
+                //[EPS, Sampo, 03/27/2011]  
+                //[DIN time sequence, Bernie, 2013/03/07]
+                
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 			//[ //[Sibocom FWD & REV only one exist set EPS mode 0, Jason, 2019/12/31]
 				if(EPS && (pr[SIBO_EPS_FRMODE]!=0)){ 
@@ -896,20 +916,21 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
             else
             {                    
                 //[DIN time sequence, Bernie, 2013/03/07]
-                if((MODE3 == 1))
+                if((MODE3==1))
                 {
                     LIFT_RUNCMD = 0;
                     stop();
       	        }
             }			
-			if(WarnCode == FWDREV_WARN)
-            {
-				Keypad_Page = Keypad_PageTmp;
-				WarnCode = 0;
-			}
-
+			if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))              //[Special.Kung, 2023/05/02]
+            {                                                                       //[Special.Kung, 2023/05/02]
+				WarnCode       = 0;                                                 //[Special.Kung, 2023/05/02]
+                Keypad_Page    = pr[S_DISP];                                        //[Special.Kung, 2023/05/02]
+		        Keypad_PageTmp = 0;                                                 //[Special.Kung, 2023/05/02]
+			}                                                                       //[Special.Kung, 2023/05/02]
 		}
-		else
+        //k=EXT_FWDREV
+		else if(k==EXT_FWDREV)
         {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15] //[FWD & REV Warning only for Sibocom,Lyabryan,2020/09/01]
 	    	if (CMDJOG==0){	// Add by DINO, 11/28/2008
@@ -960,20 +981,58 @@ void di_sub0(UWORD chg, UWORD k)          // 2_wire: di_0: run/fwd, di_1:run/rev
                 }
 	    	}
 #else
-            if(CMDJOG==0)
-            { 
-                // Add by DINO, 11/28/2008
-                LIFT_RUNCMD = 0;           
-                MODE2 = 0;  //[DIN time sequence, Bernie, 2013/03/07]
-                MODE3 = 0;          
-                IODLC_CRPLS_SW = 0; // [IODLC, Lyabryan, 2016/11/11]
-                stop();
-                RUN_DETECT = 0; //[Russia time srequence for IM, Bernie, 2015/07/13]
-                RUN_SENSOR0 = 0;  //[Service time function, Bernie, 2017/03/14]
-                RUN_SENSOR1 = 0;
-            }
-#endif
+            //[Ratioanal 271718, Special.Kung, 2023/05/02]
+            if(CMDJOG==0)                                                                   //[Special.Kung, 2023/05/02]
+            {                                                                               //[Special.Kung, 2023/05/02]
+                FWDREV_Enable1 = 1;                                                         //[Special.Kung, 2023/05/02]
+
+                if((FWDREV_Enable2==0) && (FWDREVWarn_ubCount>=20))                         //[Special.Kung, 2023/05/02]
+                {                                                                           //[Special.Kung, 2023/05/02]
+                    FWDREV_Enable2 = 1;                                                     //[Special.Kung, 2023/05/02]
+                    pr[FWDREV_CNT] = pr[FWDREV_CNT]+1;                                      //[Special.Kung, 2023/05/02]
+                    write_ep(0,FWDREV_CNT ,pr[FWDREV_CNT]);                                 //[Special.Kung, 2023/05/02]
+
+                    if((WarnCode==0)&&(Error==0))                                           //[Special.Kung, 2023/05/02]
+                    {                                                                       //[Special.Kung, 2023/05/02]
+                        WarnDisplaySave();                                                  //[Special.Kung, 2023/05/02]
+                        WarnCode = FWDREV_WARN;                                             //[Special.Kung, 2023/05/02]
+                    }                                                                       //[Special.Kung, 2023/05/02]
+                    else                                                                    //[Special.Kung, 2023/05/02]
+                    {                                                                       //[Special.Kung, 2023/05/02]
+                    }                                                                       //[Special.Kung, 2023/05/02]
+                }                                                                           //[Special.Kung, 2023/05/02]
+                else                                                                        //[Special.Kung, 2023/05/02]
+                {                                                                           //[Special.Kung, 2023/05/02]
+                }                                                                           //[Special.Kung, 2023/05/02]
+            }                                                                               //[Special.Kung, 2023/05/02]
+            //[Ratioanal 271718, Special.Kung, 2023/05/02]
 	    }
+#endif
+        //k=0
+        else                                                                                //[Special.Kung, 2023/05/02]
+        {                                                                                   //[Special.Kung, 2023/05/02]
+            if(CMDJOG==0)                                                                   //[Special.Kung, 2023/05/02]
+            {
+                LIFT_RUNCMD    = 0;                                                         //[Special.Kung, 2023/05/02]
+                MODE2          = 0;                                                         //[Special.Kung, 2023/05/02]                           
+                MODE3          = 0;                                                         //[Special.Kung, 2023/05/02]
+                IODLC_CRPLS_SW = 0;                                                         //[Special.Kung, 2023/05/02]
+                stop();                                                                     //[Special.Kung, 2023/05/02]
+                RUN_DETECT     = 0;                                                         //[Special.Kung, 2023/05/02]
+                RUN_SENSOR0    = 0;                                                         //[Special.Kung, 2023/05/02]
+                RUN_SENSOR1    = 0;                                                         //[Special.Kung, 2023/05/02]
+
+                FWDREV_Enable1 = 0;                                                         //[Special.Kung, 2023/05/02]
+                FWDREV_Enable2 = 0;                                                         //[Special.Kung, 2023/05/02]
+
+                if((WarnCode==FWDREV_WARN) && (FWDREVClear_uwCount>=5000))                  //[Special.Kung, 2023/05/02]
+                {                                                                           //[Special.Kung, 2023/05/02]
+                    WarnCode       = 0;                                                     //[Special.Kung, 2023/05/02]
+                    Keypad_Page    = pr[S_DISP];                                            //[Special.Kung, 2023/05/02]
+                    Keypad_PageTmp = 0;                                                     //[Special.Kung, 2023/05/02]
+                }  
+            }                                                                               //[Special.Kung, 2023/05/02]
+        }                                                                                   //[Special.Kung, 2023/05/02]
     }
 }
 
@@ -996,9 +1055,12 @@ void di_sub1(UWORD chg, UWORD k)          // 2_wire: di_0: run/stop, di_1:fwd/re
 		    }
 		}*/
 
-		if(((PWM_Status.ub&0x42) == 0)&&(!EPS_MODE4))
+		if(((PWM_Status.ub&0x42)==0)&&(!EPS_MODE4))
         {  
-            //[EPS autodetect dir,Lyabryan,2018/07/02]  //GEN_OK3 = 0; GEN_START = 0; //Generation Operation, DINO, 04/27/2010
+            //[EPS autodetect dir,Lyabryan,2018/07/02]  
+            //GEN_OK3 = 0; GEN_START = 0; 
+            //Generation Operation, DINO, 04/27/2010
+            
 			if ((k&EXT_REV)==EXT_REV)
             { 
                 // Reverse
@@ -1080,9 +1142,12 @@ void di_sub2(UWORD chg, UWORD k)        // 3_wire: di_0, di_2:run/stop, di_1:fwd
             }
         }
 
-		if(((PWM_Status.ub&0x42) == 0)&&(!EPS_MODE4))
+		if(((PWM_Status.ub&0x42)==0)&&(!EPS_MODE4))
         { 
-            //[EPS autodetect dir,Lyabryan,2018/07/02]    //GEN_OK3 = 0; GEN_START = 0; //Generation Operation, DINO, 04/27/2010
+            //[EPS autodetect dir,Lyabryan,2018/07/02]    
+            //GEN_OK3 = 0; GEN_START = 0; 
+            //Generation Operation, DINO, 04/27/2010
+            
         	if((k&EXT_REV)==EXT_REV)
             { 
                 // Reverse
@@ -1376,15 +1441,33 @@ void ForceRampStop(UWORD chg,UWORD k)
 void ForceCoastStop(UWORD chg,UWORD k)
 {
 
-	    if (k==0){
-	    	EXT_FORCESTOP = 1;
-	    	EXT_COASTSTOP = 1;
-	    	EXT_ENABLE    = 1;
-		    stop();	    
-	    }
-	    else
-			EXT_ENABLE    = 0;
-
+    if(k==0)
+    {
+    	EXT_ENABLE    = 1;
+        
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+        if(MOTORCONNECTOR)                                                  //[Special.Kung, 2023/05/02]
+        {                                                                   //[Special.Kung, 2023/05/02]
+            if((CMDRUN==RUN) && (EXT_ENABLE==1) && (Error==0))              //[Special.Kung, 2023/05/02]
+            {                                                               //[Special.Kung, 2023/05/02]
+                Error = RUN_MI40_ERR;                                       //[Special.Kung, 2023/05/02]
+            }                                                               //[Special.Kung, 2023/05/02]
+            else if((CMDRUN==STOP) && (EXT_ENABLE==1) && (Error==0))        //[Special.Kung, 2023/05/02]
+            {                                                               //[Special.Kung, 2023/05/02]
+                Error = STOP_MI40_ERR;                                      //[Special.Kung, 2023/05/02]
+            }                                                               //[Special.Kung, 2023/05/02]
+        }                                                                   //[Special.Kung, 2023/05/02]
+        //[Ratioanal 271718, Special.Kung, 2023/05/02]
+        
+        EXT_FORCESTOP = 1;
+    	EXT_COASTSTOP = 1;
+        
+        stop();	    
+    }
+    else
+    {
+	    EXT_ENABLE    = 0;
+    }
 }
 
 void ForceCoastStop1(UWORD chg,UWORD k)
@@ -2458,19 +2541,9 @@ UWORD mfo_abv_spa(UWORD pin,UWORD k){      // Above Speed Area//
 UWORD mfo_abv_PGspa(UWORD pin,UWORD k){      // #16698 PG speed Above Speed Area for NRG//James, 2021/08/09
 
     if (ABV_PGSPDA==1)
-    {
-        // Rational351466, Special.Kung, 2023/07/10
-        if(Error == 0)											//[Special.Kung, 2023/07/10]
-        {														//[Special.Kung, 2023/07/10]
-            Error = PGF3_ERR;									//[Special.Kung, 2023/07/10]
-        }														//[Special.Kung, 2023/07/10]
-		// Rational351466, Special.Kung, 2023/07/10
         return (pin^k);
-    }
     else
-    {
-        return (0^k);
-    }
+	    return (0^k);
 }
 UWORD mfo_low_spa(UWORD pin,UWORD k){      // Below Speed Area//
 

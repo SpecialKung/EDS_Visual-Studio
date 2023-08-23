@@ -304,13 +304,14 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 02-37 BRK_CHKTQR   */  RLD|DOT0,                       0,              1,              0,
 /* 02-38 SCDELAY_RUN  */  RLD|WRUN|DOT3,                 10,          65000,            200,
 /* 02-39 SCDELAY_STOP */  RLD|WRUN|DOT3,                 10,          65000,            200,
-/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              2,    //#15977, LULD detect, James, 2021/04/01
+/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              0,    //#15977, LULD detect, James, 2021/04/01
 /* 02-41 LS_OPEN_TIME */  RLD|WRUN|DOT1,                  0,            100,             30,    //#15977, LULD detect, James, 2021/04/01
 /* 02-42 LS_SHORT_TIME*/  RLD|WRUN|DOT1, 				  0, 		    100, 			 30,    //#15977, LULD detect, James, 2021/04/01
 /* 02-43 SpdAgree_B   */  CHG|RLD|WRUN|DOT2,              0,           MAXF,            200,    // 202 02-40   Band of Speed Agree Function #18572 
 /* 02-44 STO_SHORT_T  */  RLD|WRUN|DOT1,                  0,            100,             10,    //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
 /* 02-45 Sensor819    */  RLD|DOT0,                       0,              4,              0,    //[Artemis Add Sensor819 Function/Special/2022/06/06]
 /* 02-46 Lift_SPD     */  CHG|RLD|WRUN|DOT2,             10,            400,             80,    //[Artemis Add Sensor819 Function/Special/2022/06/06]
+/* 02-47 FWDREV_CNT    */  READ|DOT0,                      0,          65535,              0,    //[Ratioanal 271718, Special.Kung, 2023/05/02]
 
 
 /*--------      GROUP 03        --------*/
@@ -370,7 +371,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 04-22 MAX_FLOOR    */  RLD|DOT0,                       1,             75,              8,  
 /* 04-23 LEV_CUR      */  RLD|DOT0,                       0,             75,              0, 
 /* 04-24 PG_RST_MODE  */  RLD|DOT0,                       0,            100,            100,
-/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 È´òÈÄüÊ¢ØÊúâÊãñÂ∞æÈÄüÂèäÂπ≥Â±§‰∏çÊ∫ñÁöÑÂïèÈ°å // Mitong 20220902 new
+/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 ∞™≥t±Ë¶≥©Ïß¿≥t§Œ•≠ºh§£∑«™∫∞›√D // Mitong 20220902 new
 /* 04-26 LAND_DLY_TIME*/  RLD|DOT0,                       0,           3000,            500,   
 /* 04-27 LEV_LEN      */  READ|RLD|DOT0,                  0,            800,            215,
 /* 04-28 INV_POS_H    */  READ|RLD|DOT0,                  0,          65535,              0,   

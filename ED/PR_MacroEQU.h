@@ -657,7 +657,7 @@
 #define BTT1_WARN     	48		//BTTx Testing [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define BTT2_WARN     	49		//BTTx Normal  [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define BTT3_WARN     	50		//BTTx Success [JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define WARNMAX         51	
+#define WARNMAX         51
 //-------------------Error code----------------------
 // Driver occur serious fault, then driver stop operation.
 // User must press RESET to restart driver.
@@ -755,7 +755,9 @@
 #define BTT2_ERR        95      //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define BTT3_ERR        96      //BTT No Action [JES Torq Detect Function, Special.Kung, 2022/09/01]
 #define GFCAFE_ERR    	97		//[AFE Error Handle/Lyabryan/2022/03/24]
-#define ERRMAX          98
+#define STOP_MI40_ERR   98      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+#define RUN_MI40_ERR    99      //[Ratioanal 271718, Special.Kung, 2023/05/02]
+#define ERRMAX          100
 
 #define CPU_ERR_ILL     0x81
 #define CPU_ERR_SORT    0x82
@@ -914,9 +916,9 @@
 #define MFI_BRKCHK1      mfi2_status.bit.b0  // Mechanical brake checking state 1         //[change for EN81-1+A3, Bernie, 2015/03/16]
 #define MFI_MCCHK		 mfi2_status.bit.b1  // Magnetic Contactor checking state
 #define MFI_BRKCHK2      mfi2_status.bit.b2  // Mechanical brake checking state 2         //[change for EN81-1+A3, Bernie, 2015/03/16]
-#define MFI_btSensor819_Button mfi2_status.bit.b3  // 819 Switch				//[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
-#define MFI_btSensor819_Top    mfi2_status.bit.b4  // 819 Switch				//[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
-#define MFI_btSensor819_Both   mfi2_status.bit.b5
+#define MFI_btSensor819_Button mfi2_status.bit.b3   // 819 Switch				//[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
+#define MFI_btSensor819_Top    mfi2_status.bit.b4   // 819 Switch				//[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
+#define MFI_btSensor819_Both   mfi2_status.bit.b5   // 819 Switch				//[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
 
 /*--------external di status ------*/
 #define EXT_EF          ext_status.bit.b0   // E.F
@@ -972,16 +974,18 @@
 #define CHKAMPS         err_status.bit.b0	// check amps if below OCR
 #define PIDDEVF         err_status.bit.b1	// PID deviation flag
 #define COM_BB          err_status.bit.b2   // Comm bb
-#define ERR_MO			err_status.bit.b3	// Error Delay Output flag, Add by DINO, 10/24/2008
+#define ERR_MO			    err_status.bit.b3	// Error Delay Output flag, Add by DINO, 10/24/2008
 #define MODELCHG        err_status.bit.b4	// Model Change Flag
 #define STALL_TY        err_status.bit.b5	// STALL TYPE
-#define PWRON			err_status.bit.b6	// Power ON Flag, add by DINO, 12/01/2008
+#define PWRON			      err_status.bit.b6	// Power ON Flag, add by DINO, 12/01/2008
 #define REGEN           err_status.bit.b7	// RE-GENERATION
 #define PHLACTIVE       err_status.bit.b8	// PHL active flag
 #define WARNSTOPREC     err_status.bit.b9	// recording flag of Warning stop	09/05/2007
-#define LVMOD			err_status.bit.b10	// LV Treatment, 0:Error/1:Warn
-#define FANLOCKMOD		err_status.bit.b11	// FanLock Treatment, 0:Error/1:Warn
-#define PWRON_IF		err_status.bit.b12	//[SERV READ ONLY,Lyabryan,2018/08/17]
+#define LVMOD			      err_status.bit.b10	// LV Treatment, 0:Error/1:Warn
+#define FANLOCKMOD		  err_status.bit.b11	// FanLock Treatment, 0:Error/1:Warn
+#define PWRON_IF		    err_status.bit.b12	//[SERV READ ONLY,Lyabryan,2018/08/17]
+#define FWDREV_Enable1	err_status.bit.b13	//[Ratioanal 271718, Special.Kung, 2023/05/02]
+#define FWDREV_Enable2	err_status.bit.b14	//[Ratioanal 271718, Special.Kung, 2023/05/02]
 
 //---------- UART1 comm. status --------*/	
 #define ASC_RTU1        com1_status.bit.b0  // ASC(0)/RTU(1) mode

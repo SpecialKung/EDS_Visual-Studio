@@ -84,12 +84,12 @@ void PG_speed_search(void)
 /*------------ Restart Subroutine after Fault-------------------------------*/
 void Restart_Prog(void)
 {
-  UWORD FreqStart;
+    UWORD FreqStart;
 
-  if ( pr[CTRLM]==FOCPM )
-    FreqStart = 0;
-  else
-    FreqStart = fstart;
+    if ( pr[CTRLM]==FOCPM )
+        FreqStart = 0;
+    else
+        FreqStart = fstart;
 
     if (BBTAT){                             // BB Time Attain
         RST316J = 0;
@@ -3306,6 +3306,7 @@ void TimeBase_1ms(void)
         SPR_uwPGDIRCnt = 0;
     }
 
+    //BTTx Success [JES Torq Detect Function, Special.Kung, 2022/09/01]
     if(BTTx_ubTestCase==BTT_Testing)
     {
         BTTx_ulTestCount = BTTx_ulTestCount+1;
@@ -3315,11 +3316,11 @@ void TimeBase_1ms(void)
         BTTx_ulTestCount = 0;
     }
 
-    if(WarnCode == BTT2_WARN)
+    if(WarnCode==BTT2_WARN)
     {
         BTTx_ulClearbttnCount = BTTx_ulClearbttnCount+1;
     }
-    else if(WarnCode == BTT3_WARN)
+    else if(WarnCode==BTT3_WARN)
     {
         BTTx_ulClearbttnCount = BTTx_ulClearbttnCount+1;
     }
@@ -3327,7 +3328,41 @@ void TimeBase_1ms(void)
     {
         BTTx_ulClearbttnCount = 0;
     }
+    //BTTx Success [JES Torq Detect Function, Special.Kung, 2022/09/01]
 
+    //[Ratioanal 271718, Special.Kung, 2023/05/02]
+    if(FWDREV_Enable1==1)                                               //[Special.Kung, 2023/05/02]
+    {                                                                   //[Special.Kung, 2023/05/02]
+        if(FWDREVWarn_ubCount<20)                                       //[Special.Kung, 2023/05/02]
+        {                                                               //[Special.Kung, 2023/05/02]
+            FWDREVWarn_ubCount = FWDREVWarn_ubCount+1;                  //[Special.Kung, 2023/05/02]
+        }                                                               //[Special.Kung, 2023/05/02]
+        else                                                            //[Special.Kung, 2023/05/02]
+        {                                                               //[Special.Kung, 2023/05/02]
+            FWDREVWarn_ubCount = 20;                                    //[Special.Kung, 2023/05/02]
+        }                                                               //[Special.Kung, 2023/05/02]
+    }                                                                   //[Special.Kung, 2023/05/02]
+    else                                                                //[Special.Kung, 2023/05/02]
+    {                                                                   //[Special.Kung, 2023/05/02]
+        FWDREVWarn_ubCount = 0;                                         //[Special.Kung, 2023/05/02]
+    }                                                                   //[Special.Kung, 2023/05/02]
+
+    if((WarnCode==FWDREV_WARN) && (FWDREV_Enable1==0))                  //[Special.Kung, 2023/05/02]
+    {                                                                   //[Special.Kung, 2023/05/02]
+        if(FWDREVClear_uwCount<5000)                                    //[Special.Kung, 2023/05/02]
+        {                                                               //[Special.Kung, 2023/05/02]
+            FWDREVClear_uwCount = FWDREVClear_uwCount+1;                //[Special.Kung, 2023/05/02]
+        }                                                               //[Special.Kung, 2023/05/02]
+        else                                                            //[Special.Kung, 2023/05/02]
+        {                                                               //[Special.Kung, 2023/05/02]
+            FWDREVClear_uwCount = 5000;                                 //[Special.Kung, 2023/05/02]
+        }                                                               //[Special.Kung, 2023/05/02]
+    }                                                                   //[Special.Kung, 2023/05/02]
+    else                                                                //[Special.Kung, 2023/05/02]
+    {                                                                   //[Special.Kung, 2023/05/02]
+        FWDREVClear_uwCount = 0;                                        //[Special.Kung, 2023/05/02]
+    }                                                                   //[Special.Kung, 2023/05/02]
+    //[Ratioanal 271718, Special.Kung, 2023/05/02]
 
   
 
