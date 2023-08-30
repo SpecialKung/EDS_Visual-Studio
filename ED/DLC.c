@@ -178,19 +178,24 @@ void DLC_Initial_value(void){
 }
 
 void DLC_Init(void){
-  DLC_uwJ4 = 0;
-  DLC_uwTD = 0;
-  DLC_uwTDCnt = 0;
+	DLC_uwJ4 = 0;
+	DLC_uwTD = 0;
+	DLC_uwTDCnt = 0;
 
-  DLC_uwS1Tmr = 0;
-  DLC_uwAccTmr = 0;
-  DLC_uwS2Tmr = 0;
-  DLC_uwConTmr = 0;
-  DLC_uwS3Tmr = 0;
-  DLC_uwDecTmr = 0;
-  DLC_uwS4Tmr = 0;
-  DLC_ubMode = MODE_NULL;		// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
-  DLC_ulSpd0p1mm = 0;			// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
+	DLC_uwS1Tmr = 0;
+	DLC_uwAccTmr = 0;
+	DLC_uwS2Tmr = 0;
+	DLC_uwConTmr = 0;
+	DLC_uwS3Tmr = 0;
+	DLC_uwDecTmr = 0;
+	DLC_uwS4Tmr = 0;
+	DLC_ubMode = MODE_NULL;		// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
+	DLC_ulSpd0p1mm = 0;			// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
+
+	DLC_swCurAcc = 0;			//Rationa 362631, Special.Kung
+	DLC_ulCurSpdOld = 0;		//Rationa 362631, Special.Kung
+  	DLC_uwTmr = 0;				//Rationa 362631, Special.Kung
+	DLC_uwTmrOld = 0;			//Rationa 362631, Special.Kung
 }
 
 void DLC_PrMgr(UBYTE Val){
@@ -790,10 +795,10 @@ void DLC_PDO_Byte67(void){
 }
 
 void DLC_Algorithm(void){
-    UWORD ubDILow, ax, ubPgDir, i, j, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
+    UWORD ubDILow, ax, ubPgDir, i, j, k, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
     UWORD uwDI, uwPgTmp, uwTmp; // 0504 JINGDO
     UWORD uwPgDif,uwadjstVal;
-    ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm;
+    ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm, ulCurAcc;
     SLONG slPgDif;
     UDOUBLE ud1, ud2, ud3, ulspeed, ud4;
     double d1, d2, d3, d4;	
@@ -1524,6 +1529,31 @@ void DLC_Algorithm(void){
 			ulTmp = DLC_ulCurSpd;
 		DLC_ulCurSpd = ulTmp;
 		DLC_LULD_Protect(DLC_btLU, DLC_btLUOld, DLC_btLD, DLC_btLDOld);
+
+		DLC_uwTmr = DLC_uwTmr+1;														//Rationa 362631, Special.Kung
+		DLC_ulCurAcc = abs(DLC_ulCurSpd-DLC_ulCurSpdOld)/(DLC_uwTmr-DLC_uwTmrOld);		//Rationa 362631, Special.Kung
+		DLC_ulCurSpdOld = DLC_ulCurSpd;													//Rationa 362631, Special.Kung
+		DLC_uwTmrOld = DLC_uwTmr;														//Rationa 362631, Special.Kung
+/*
+		ulCurAcc = abs(DLC_ulCurSpd-DLC_ulCurSpdOld)/(DLC_uwTmr-DLC_uwTmrOld);
+
+		if(k<5)
+		{
+			DLC_ulCurAccArray[4]=DLC_ulCurAccArray[3];
+			DLC_ulCurAccArray[3]=DLC_ulCurAccArray[2];
+			DLC_ulCurAccArray[2]=DLC_ulCurAccArray[1];
+			DLC_ulCurAccArray[1]=DLC_ulCurAccArray[0];
+			DLC_ulCurAccArray[0]=ulCurAcc;
+
+			k = k+1;
+
+    	}
+		else if(k>=4)
+		{
+			k=0;
+			DLC_ulCurAcc = (DLC_ulCurAccArray[0]+DLC_ulCurAccArray[1]+DLC_ulCurAccArray[2]+DLC_ulCurAccArray[3]+DLC_ulCurAccArray[4])/5;
+		}
+*/
 	}
 	else	//protection
 	{
@@ -2699,6 +2729,8 @@ ULONG Spd_NOR(ULONG ulCurSpd){
 			//stopping area
 			ulDisStp = ulD3 + ulDdec + ulD4;
 			DLC_ulDStop = ulDisStp;
+
+			DLC_uwConTmr = DLC_uwConTmr+1;
 			
 			if(ulDisTar <= ulDisStp){
 				DLC_ubSubtra = 0x0a;
@@ -3725,43 +3757,52 @@ void WelTunProc(void){
 			else{  // DLC_btDznMd = 1   // adco
 				
 				DLC_ulPgSen = 0;
-				if(DLC_ubLevCur == 1){
+				if(DLC_ubLevCur == 1)
+				{
 					// 1F pos
 					//if(DLC_btDZN == 1 && DLC_btDZNOld == 0)
-					if(DLC_btDZN == 0 && DLC_btDZNOld == 1){
+					if(DLC_btDZN == 0 && DLC_btDZNOld == 1)
+					{
 						DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;	//aevinpoint
 						DLC_uwWelTra = 0x09;
 					}
 					else
 						DLC_uwWelTra = 0x0a;
-			  }
-			  else{
+			  	}
+			  	else{
 			  	
-					if(DLC_ubLevCur == 2){
+					if(DLC_ubLevCur == 2)
+					{
 						// learn board length
-				    if(DLC_btDZN == 1 && DLC_btDZNOld == 0){     //Dzn enter
-					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
-					    DLC_uwWelTra = 0x0b;
-				    }
-				    else if(DLC_btDZN == 0 && DLC_btDZNOld == 1){ //Dzn leave
-					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
-					    DLC_uwWelTra = 0x0c;
+						if(DLC_btDZN == 1 && DLC_btDZNOld == 0)
+						{
+							//Dzn enter
+							DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
+							DLC_uwWelTra = 0x0b;
+						}
+				   		else if(DLC_btDZN == 0 && DLC_btDZNOld == 1)
+						{
+							//Dzn leave
+					    	DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
+					    	DLC_uwWelTra = 0x0c;
 
-				      // fix 1F, 2F pos
-					  //DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					  DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-					  //DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					  DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
-				    }
-				  }			  	
+				      		// fix 1F, 2F pos
+					  		//DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					  		DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+					  		//DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					  		DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
+				    	}
+					}			  	
 			  	
-			  	// record each level pos
-					if(DLC_btDZN == 1 && DLC_btDZNOld == 0){
-						if(DLC_ubLevCur == 2)   // 2F時, DLC_ulPgBrd尚未得到
-					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
-					  else
-					    //DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+			  		// record each level pos
+					if(DLC_btDZN == 1 && DLC_btDZNOld == 0)
+					{
+						if(DLC_ubLevCur == 2)   
+							// 2F時, DLC_ulPgBrd尚未得到
+					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
+					  	else
+					    	//DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 					}
 			  }
 			}

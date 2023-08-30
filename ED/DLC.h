@@ -152,7 +152,10 @@ DLC_EXT	ULONG		        ultest1,
                             ultest2,
                             ultest3,
                             ultest4,
-                            DLC_ulCurSpd;
+                            DLC_ulCurSpd,
+							DLC_ulCurSpdOld,			//Rationa 362631, Special.Kung
+							DLC_ulCurAcc,				//Rationa 362631, Special.Kung
+							DLC_ulCurAccArray[5];
 
 DLC_EXT	UWORD	            PR_S4ACC1,
                             PR_S4ACC2,
@@ -218,7 +221,9 @@ DLC_EXT	UWORD    			DLC_uwV3,			//real spd variable V3
 							DLC_uwTra2,
 							DynJerkTmr,
 							uwDI_buf,
-							uwDI_old;
+							uwDI_old,
+							DLC_uwTmr,						//Rationa 362631, Special.Kung
+							DLC_uwTmrOld;					//Rationa 362631, Special.Kung
 							
 DLC_EXT	UWORD DLC_uwTra3,
 							DLC_uwTra4,
@@ -240,7 +245,9 @@ DLC_EXT	UWORD	DLC_uwTra3,
 							DLC_uwPeriodCnt,
 							DLC_uwDCICnt,
 							DLC_uwSfbk;
-DLC_EXT	SWORD				swRopeCmp;
+							
+DLC_EXT	SWORD				swRopeCmp,
+							DLC_swCurAcc;
 
 DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
 							DLC_ubtra,

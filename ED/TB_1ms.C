@@ -1761,7 +1761,7 @@ void Run_Execute(void)
             {
                 if (pr[PM_AUTO_T]!= 2 )   // Debug BY SCOTTY 04/09/2007
                 {
-                    HOLD = 1;       // Hold Speed ¸T¤î¥[´î³t 
+                    HOLD = 1;       // Hold Speed ï¿½Tï¿½ï¿½[ï¿½ï¿½t 
                 }
             }
             else
@@ -1954,36 +1954,45 @@ void Run_Execute(void)
           uwBKRUNT = pr[BRK_RUNDT];
     }
 
-      if (pr[PM_AUTO_T]==2 || STtune==1 || TUN_SS==1){  // dino, 08/11/2008
-          BRK_RLS = 0;  //lock
-      }
-  // [ Don't release BRK in Static Tune, Add by DINO, 06/29/2009
-      else if (pr[AUTO_T] == 2){
-          BRK_RLS = 0;  //lock
-      }         
-      else{
-          // [ Flux Confirm, Add by DINO, 06/29/2009
-          if (I0CHK == 0){
-            BRK_RLS = 0;
-          }
-          // ]
-          else{
-            if (fcmd.uw.hi != 0){
-                BRK_RLS = 1;  //release
-                TB1_uwBrkRunCnt = uwBKRUNT+1;
-              }
-              else{
-                  if ( TB1_uwBrkRunCnt > uwBKRUNT )
-                      BRK_RLS = 1;  //release
-                  else {
-                      BRK_RLS = 0;  //lock
-                      if(UCMP == 0){    //[UCMP function, Bernie, 2016/06/14]
-                          TB1_uwBrkRunCnt++;
-                      }
-                  }
-              }
-          }
-      } 
+        if (pr[PM_AUTO_T]==2 || STtune==1 || TUN_SS==1)
+        {  // dino, 08/11/2008
+            BRK_RLS = 0;  //lock
+        }
+        // [ Don't release BRK in Static Tune, Add by DINO, 06/29/2009
+        else if (pr[AUTO_T] == 2)
+        {
+            BRK_RLS = 0;  //lock
+        }         
+        else
+        {
+            // [ Flux Confirm, Add by DINO, 06/29/2009
+            if (I0CHK == 0)
+            {
+                BRK_RLS = 0;
+            }
+            // ]
+            else
+            {
+                if (fcmd.uw.hi != 0)
+                {
+                    BRK_RLS = 1;  //release
+                    TB1_uwBrkRunCnt = uwBKRUNT+1;
+                }
+                else
+                {
+                    if ( TB1_uwBrkRunCnt > uwBKRUNT )
+                        BRK_RLS = 1;  //release
+                    else 
+                    {
+                        BRK_RLS = 0;  //lock
+                        if(UCMP == 0)
+                        {    //[UCMP function, Bernie, 2016/06/14]
+                            TB1_uwBrkRunCnt++;
+                        }
+                    }
+                }
+            }
+        } 
 
         /*-------- AVR function -----------------------*/
         if ((pr[AVR]==0)||((pr[AVR]==2)&&(ACCODEC==ACCON)))
@@ -3205,10 +3214,10 @@ void TimeBase_500us(void)
 		TimeBase_1msB();
 		//DLC function, Henry, 2016/07/20 [
 		DLC_uwPOWCnt=(DLC_uwPOWCnt<1000)?(DLC_uwPOWCnt+1):DLC_uwPOWCnt;
-		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
-		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
+		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
 			
 		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000)){ //[Gfc DLC modify,Henry,2018/05/23]	
 			if(DLC_uwInit == 0){			
@@ -4938,7 +4947,7 @@ void SIBO_STO_Safty(void){
     }
         
     STO_Truth_Table();
-	if(pr[SOFC]==4){ //¸g¥ÑCAN_BUSµ¹©w¤è¦V
+	if(pr[SOFC]==4){ //ï¿½gï¿½ï¿½CAN_BUSï¿½ï¿½ï¿½wï¿½ï¿½V
 		mfi_status_temp = (DLC_PDO_RX_DI.uw>>1)&0x003;
 	}
 	else{
@@ -5174,7 +5183,7 @@ void TB3_STO_Safty(void){
     uwSTOShortTime = pr[STO_SHORT_T] * 200;//(1.0(dot1) *  200) *500us = 1sec
     
 	//add STO run dir command source from CANbus, James, 2020/11/26
-	if(pr[SOFC]==4)//¸g¥ÑCAN_BUSµ¹©w¤è¦V
+	if(pr[SOFC]==4)//ï¿½gï¿½ï¿½CAN_BUSï¿½ï¿½ï¿½wï¿½ï¿½V
 	{ 
 		mfi_status_temp = (DLC_PDO_RX_DI.uw>>1)&0x0003;
 	}

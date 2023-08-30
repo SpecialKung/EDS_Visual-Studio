@@ -204,6 +204,8 @@ MonitorPr_EXT UWORD     uw_PGtest,             //[ED for HW test, Bernie, 2014/0
 MonitorPr_EXT SLONG_UNION		DcbusDCLPF,		//Dcbus (Vdc)
                                 TqRefPuLPF;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
+#pragma address DLC_swCurAcc=0x0000a17A
+
 /************************************************************************
  Copyright (c) 2005 EMBU DELTA
  All rights reserved.

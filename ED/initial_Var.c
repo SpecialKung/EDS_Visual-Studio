@@ -888,6 +888,10 @@ void  Initial_Var(void){
     DLC_uwAutoTar           =0;
     DLC_uwEM.uw             =0;    
 	DLC_ubSpdLimFlag		=0;//Artemis speed limit, James, 20200220
+    DLC_swCurAcc            =0;
+    DLC_uwTmr               =0;
+    DLC_uwTmrOld            =0;
+    DLC_ulCurSpdOld         =0;
     /*IODLC======================================*/
     IODLC_ubArea_status     =0;
     IODLC_uwPR_J1           =0;
@@ -1435,7 +1439,8 @@ void  Initial_Var(void){
         RCAN_MB3[i]=0;
     }
     for(i=0;i<8;i++){
-        RCAN_MB5[i]=0;
+        RCAN_MB5[i]=0;
+
     }
     for(i=0;i<8;i++){
         RCAN_MB7[i]=0;
