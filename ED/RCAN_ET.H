@@ -69,8 +69,8 @@ RCAN_ET_EXT UBYTE RCAN_ubErr4Rgst,
                   DLC_PDO_RX_TF,
                   DLC_PDO_TX_LTF,
                   DLC_PDO_TX_ALF,
-                  DLC_PDO_DLC_Mode,
-                  DLC_PDO_RX_Data_Mode,
+                  //DLC_PDO_DLC_Mode,     //Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+                  //DLC_PDO_RX_Data_Mode, //Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
                   DLC_PDO_TX_Data_Mode;
 
 RCAN_ET_EXT UWORD RCAN_ubICTCnt,

@@ -252,9 +252,7 @@ DLC_EXT	UWORD	DLC_uwTra3,
 							//DLC_uwS4Cnt,		// Mitong 20220513 del
 							DLC_uwPeriodCnt,
 							DLC_uwDCICnt,
-							DLC_uwSfbk,
-							uwPr_CAN_FUN_Old,	//mitong 20230818
-							uwWelExcTmr;		//mitong 20230818
+							DLC_uwSfbk;
 
 
 DLC_EXT	SWORD				swRopeCmp;
@@ -278,7 +276,8 @@ DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
 							DLC_ubLuLdProtectState,//#15977, LULD detect, James, 2021/04/01
 							DLC_ubDec0SModeTmr,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_ubDec0SMode,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_ubWelEndTmr;
+							//DLC_ubWelEndTmr,	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+							DLC_ubWelExcTmr;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 
 DLC_EXT	UBYTE	DLC_EPS_Source,//1:MI, 2:CAN
 				DLC_uwAutoTar;
@@ -365,9 +364,10 @@ DLC_EXT	UWORD_UNION	DLC_uwCAN;	 //09-10 factory function
 #define	DLC_btWelRst    DLC_uwCAN.bit.b4	// PG Pulse Reset
 #define	DLC_btWelExcOld	DLC_uwCAN.bit.b5	// PG Pulse Record Aux
 #define	DLC_btWelEnd	DLC_uwCAN.bit.b6
-#define	DLC_btWelExcAux	DLC_uwCAN.bit.b7	//mitong 20230818
-#define	DLC_btWelDoneAux	DLC_uwCAN.bit.b8	//mitong 20230818
-
+#define	DLC_btWelExcAux		DLC_uwCAN.bit.b7	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btWelDoneAux	DLC_uwCAN.bit.b8	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btWelUpOld		DLC_uwCAN.bit.b9	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btAPS_Mode		DLC_uwCAN.bit.b10	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 
 
 
@@ -400,6 +400,6 @@ DLC_EXT UWORD_UNION DLC_Word1;
 //#define DLC_bt      		DLC_Word1.bit.b14
 //#define DLC_bt      		DLC_Word1.bit.b15
 
-#define DLC_MODE_NORMAL     0
-#define DLC_MODE_APS        1
+//#define DLC_MODE_NORMAL     0	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+//#define DLC_MODE_APS        1	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
 

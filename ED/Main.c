@@ -2096,7 +2096,7 @@ SWORD AUI1Calculate(void)
     else
     	ax = S16xS16divS16((SWORD)pr[AUI1BIAS],pr[CAUI1MAX],1000);
     
-    if (uwPN==0){		//03-06 °¾À£¼Ò¦¡
+    if (uwPN==0){		//03-06 ï¿½ï¿½ï¿½ï¿½ï¿½Ò¦ï¿½
 		// No offset
         ay = S16xS16divS16(swGain,ay,1000);
     }					
@@ -2690,7 +2690,7 @@ void mi_speed(void)
     }    
     //if(CMDRUN != RUN){               //[Modify preload function, Bernie, 01/20/2012]
     if((CMDRUN != RUN)&&(RUNNING == STOP)){   //[Pre-Torque BUG,Lyabryan,2019/01/08]            //[Modify preload function, Bernie, 01/20/2012]
-	    if (pr[TQROFSE] == 0){	//07-19 Âà¯x©R¥O°¾À£¨Ó·½
+	    if (pr[TQROFSE] == 0){	//07-19 ï¿½ï¿½xï¿½Rï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½
 		    TqC_swTqOfstPu = 0;
         }
 	    else if (pr[TQROFSE] == 1){
@@ -3468,7 +3468,7 @@ void Sibocom_mi_speed(void) //[Sibocom acc/dec,Lyabryan,2019/11/12]
 
 
     if((CMDRUN != RUN)&&(RUNNING == STOP)){   //[Pre-Torque BUG,Lyabryan,2019/01/08]            //[Modify preload function, Bernie, 01/20/2012]
-	    if (pr[TQROFSE] == 0){	//07-19 Âà¯x©R¥O°¾À£¨Ó·½
+	    if (pr[TQROFSE] == 0){	//07-19 ï¿½ï¿½xï¿½Rï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½
 		    TqC_swTqOfstPu = 0;
         }
 	    else if (pr[TQROFSE] == 1){
@@ -4963,11 +4963,12 @@ void main(void)
     CAN_UWEST_STATUS = pr[EST_STATUS];
 
     FIRST_FLAG = 1;     //[PG quality function, Bernie, 2017/06/20]
-	if((Driver_ID == IEDS_DRIVER) && ((pr[DLC_MODE3] & 0x01) != 0))	// GFC1test
-	{
-		DLC_udApsCnt = pr[SENSOR_H];	//04-34
-		DLC_udEncCnt = pr[SENSOR_L];	//04-35
-	}
+	//if((Driver_ID == IEDS_DRIVER) && ((pr[DLC_MODE3] & 0x01) != 0))	//Task 361568 å´‡å‹PU586æ¸¬è©¦APSåŠŸèƒ½ äº•é“å­¸ç¿’æˆåŠŸå¾Œç„¡æ³•æ­£å¸¸é‹è½‰ //mitong 20230824 source
+	//if(DLC_btAPS_Mode) //Task 361568 å´‡å‹PU586æ¸¬è©¦APSåŠŸèƒ½ äº•é“å­¸ç¿’æˆåŠŸå¾Œç„¡æ³•æ­£å¸¸é‹è½‰ //mitong 20230824 new
+    //{
+		//DLC_udApsCnt = pr[SENSOR_H];	//04-34 //20230829 del
+		//DLC_udEncCnt = pr[SENSOR_L];	//04-35 //20230829 del
+	//}
     while(1)
     {    
      //===================== Encoder quality ====================//
@@ -6278,12 +6279,12 @@ void main(void)
 
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 /*====================================================================================================*/
-//³t«×Àu¥ýÅv©w¸q
-//1.±Ò°Ê¹B¦æ¦Ü°ª³tµ¥³t«e¡A¥i¥H±µ¨ü©Ò¦³©R¥O³t«×«ü¥O
-//2.°ª³tµ¥³t´î³t¦Ü§C³tµ¥³t(¥­¼h³t)¤¤¡A¥i±µ¨ü³t«×©R¥O§C©ó·í«e¹B¦æ³t«×¡A­Y³t«×©R¥O¤j©ó·í«e¹B¦æ³t«×¡A
-//  ¤£±µ¨ü¨Ã«ùÄò¹B¦æ¦Ü«e¤@­Ó¥Ø¼Ð³t«×
-//3.ÀË­×¹B¦æ®É¡A¥i±µ¨ü¤ñÀË­×³t«×§Cªº³t«×©R¥O¡A¦ý¤£¯à°ª
-//4.±Ï´©³t«×¤£¯à³Q¨ä¥L³t«×¤Á´«(°£¤F¹s³t©Î°±¤î)
+//ï¿½tï¿½ï¿½ï¿½uï¿½ï¿½ï¿½vï¿½wï¿½q
+//1.ï¿½Ò°Ê¹Bï¿½ï¿½Ü°ï¿½ï¿½tï¿½ï¿½ï¿½tï¿½eï¿½Aï¿½iï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½Ò¦ï¿½ï¿½Rï¿½Oï¿½tï¿½×«ï¿½ï¿½O
+//2.ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½tï¿½ï¿½tï¿½Ü§Cï¿½tï¿½ï¿½ï¿½t(ï¿½ï¿½ï¿½hï¿½t)ï¿½ï¿½ï¿½Aï¿½iï¿½ï¿½ï¿½ï¿½ï¿½tï¿½×©Rï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½eï¿½Bï¿½ï¿½tï¿½×¡Aï¿½Yï¿½tï¿½×©Rï¿½Oï¿½jï¿½ï¿½ï¿½ï¿½eï¿½Bï¿½ï¿½tï¿½×¡A
+//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã«ï¿½ï¿½ï¿½Bï¿½ï¿½Ü«eï¿½@ï¿½Ó¥Ø¼Ð³tï¿½ï¿½
+//3.ï¿½Ë­×¹Bï¿½ï¿½É¡Aï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë­×³tï¿½×§Cï¿½ï¿½ï¿½tï¿½×©Rï¿½Oï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½à°ª
+//4.ï¿½Ï´ï¿½ï¿½tï¿½×¤ï¿½ï¿½ï¿½Qï¿½ï¿½Lï¿½tï¿½×¤ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Fï¿½sï¿½tï¿½Î°ï¿½ï¿½ï¿½)
 /*====================================================================================================*/
 UWORD Sibocom_Speed_Priority(UWORD ax){
 

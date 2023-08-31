@@ -275,31 +275,39 @@ void CAN_PDO_RX_Data(void){
 	DLC_PDO_RX_DI.ub.low = RCAN_MB1[2];
 	DLC_PDO_RX_DI.ub.hi = RCAN_MB1[3];
 	DLC_PDO_RX_RC.ub = RCAN_MB1[4];
-//	DLC_PDO_RX_TF = RCAN_MB1[5];	//mitong 20230818 del
+//	DLC_PDO_RX_TF = RCAN_MB1[5];	//Task 361568 崇友PU586測試APS功能,無法正常運轉 //mitong 20230824 del
 
-    // GFC APS Jerry.Sk.Tseng 2022/12/23
-    if(DLC_PDO_RX_RC.ub & 0x80) //check Byte4 Bit 7
+    if(DLC_btAPS_Mode)    //Task 361568 崇友PU586測試APS功能,無法正常運轉 //mitong 20230824 
     {
-        if(pr[CAN_FUN] & 0x04)  // Check bit 2
+      // GFC APS Jerry.Sk.Tseng 2022/12/23
+        if(DLC_PDO_RX_RC.bit.b7)    //check Byte4 Bit 7 //Task 361568 崇友PU586測試APS功能,無法正常運轉 //mitong 20230824
         {
-            ultmp.ub.b3 = 0;
-            ultmp.ub.b2 = RCAN_MB1[5];
-            ultmp.ub.b1 = RCAN_MB1[6];  
-            ultmp.ub.b0 = RCAN_MB1[7]; 
-			ulDLC_PDO_RX_APS_ClipPu = ultmp.ul;	// GFC1test
+            if(pr[CAN_FUN] & 0x04)  // Check bit 2
+            {
+                ultmp.ub.b3 = 0;
+                ultmp.ub.b2 = RCAN_MB1[5];
+                ultmp.ub.b1 = RCAN_MB1[6];  
+                ultmp.ub.b0 = RCAN_MB1[7]; 
+		    	ulDLC_PDO_RX_APS_ClipPu = ultmp.ul;	// GFC1test
+            }
+            else
+            {
+                ultmp.ub.b3 = 0;
+                ultmp.ub.b2 = RCAN_MB1[5];
+                ultmp.ub.b1 = RCAN_MB1[6];  
+                ultmp.ub.b0 = RCAN_MB1[7];
+			    ulDLC_PDO_RX_APS_Pu = ultmp.ul;	// GFC1test
+            }        
+        }else
+        {
+            DLC_PDO_RX_TF = RCAN_MB1[5];
         }
-        else
-        {
-            ultmp.ub.b3 = 0;
-            ultmp.ub.b2 = RCAN_MB1[5];
-            ultmp.ub.b1 = RCAN_MB1[6];  
-            ultmp.ub.b0 = RCAN_MB1[7];
-			ulDLC_PDO_RX_APS_Pu = ultmp.ul;	// GFC1test
-        }        
-    }else
+    }
+    else
     {
         DLC_PDO_RX_TF = RCAN_MB1[5];
     }
+    // -----------------------------------------------------------------------------------------
     
 	if(DLC_ubDecel==0){  //20180612 //[Gfc DLC modify,Henry,2018/05/23]
 		if((DLC_ubDIR == DIR_NULL) &&

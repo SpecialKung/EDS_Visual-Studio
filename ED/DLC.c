@@ -200,6 +200,7 @@ void DLC_PrMgr(UBYTE Val){
 	UDOUBLE ud1, ud2, ud3;
 	UWORD uwLift_SPD,uwSpeedLimit_Temp;
 	
+	DLC_btAPS_Mode = ((pr[DLC_MODE3] & 0x01) != 0);	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 	if(Val == PR_INIT_RD){	
 		//基本參數
     //DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
@@ -300,6 +301,8 @@ void DLC_PrMgr(UBYTE Val){
     DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
     DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
 
+
+	/* //Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source ---------
     if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
     {
         DLC_ulPgDD1 = DLC_ulPosDD1 << 1;
@@ -343,9 +346,36 @@ void DLC_PrMgr(UBYTE Val){
         //DLC_ulPgUL = DLC_ulPgUL*10;
         DLC_ulPgUL = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUL);
     }
+	*/ // -----------------------------------------------------------------------------------------
 
-			
-
+	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new ---------------
+	DLC_ulPgDD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD1);
+	DLC_ulPgUD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD1);
+	if(DLC_btAPS_Mode)
+	{
+		DLC_ulPgDD2 = 0;
+        DLC_ulPgDD3 = 0;
+        DLC_ulPgDD4 = 0;  
+        DLC_ulPgUD2 = 0;      
+        DLC_ulPgUD3 = 0;      
+        DLC_ulPgUD4 = 0;      
+        DLC_ulPgUL  = 0;
+		DLC_udApsCnt = pr[SENSOR_H];	//04-34	//20230829
+		DLC_udEncCnt = pr[SENSOR_L];	//04-35 //20230829
+	}
+	else
+	{
+		DLC_ulPgDD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD2);  
+        DLC_ulPgDD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD3);
+        DLC_ulPgDD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD4);
+        DLC_ulPgUD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD2);
+        DLC_ulPgUD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD3);
+        DLC_ulPgUD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD4);
+        DLC_ulPgUL =  (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUL);
+		//DLC_udApsCnt = 0;	//04-34	//20230829
+		//DLC_udEncCnt = 0;	//04-35 //20230829
+	}		
+	// ------------------------------------------------------------------------------------------------
 
     DLC_ubLevMax = pr[MAX_FLOOR];
     DLC_ubLevMin = 1;
@@ -494,14 +524,17 @@ void DLC_PrMgr(UBYTE Val){
         j = (DLC_PDO_RX_RC.ub&0x20)?1:0;
         DLC_btUD4 = (i||j)?1:0;
 
+		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del ----------------
+		/*
         i = (pr[DLC_MODE3] & 0x01)?1:0;         // byte4 bit6
         j = (DLC_PDO_RX_RC.ub&0x40)?1:0;
         DLC_PDO_DLC_Mode = (i&&j)?1:0;
 
-        i = (DLC_PDO_DLC_Mode & 0x01)?1:0;   // byte4 bit7
-        j = (DLC_PDO_RX_RC.ub&0x80)?1:0;
-        DLC_PDO_RX_Data_Mode = (i&&j)?1:0;
-
+        //i = (DLC_PDO_DLC_Mode & 0x01)?1:0;   // byte4 bit7
+        //j = (DLC_PDO_RX_RC.ub&0x80)?1:0;
+        //DLC_PDO_RX_Data_Mode = (i&&j)?1:0;	
+		*/
+		// ---------------------------------------------------------------------------------------------
 
 
                                         
@@ -633,25 +666,29 @@ void DLC_PrMgr(UBYTE Val){
 		//參數讀取
 		pr[LEV_CUR] = DLC_ubLevCur; 
 		DLC_btPRChk = (pr[CAN_FUN]&0x0001)?1:0;
-		DLC_btWelDoneAux = (pr[CAN_FUN]&0x0002)?1:0;	//mitong 20230818
-		DLC_btWelExcAux = (pr[CAN_FUN]&0x0004)?1:0;		//mitong 20230818
+		//DLC_btWelDone = (pr[CAN_FUN]&0x0002)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		DLC_btWelDoneAux = (pr[CAN_FUN]&0x0002)?1:0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
+		//DLC_btWelExc = (pr[CAN_FUN]&0x0004)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		DLC_btWelExcAux = (pr[CAN_FUN]&0x0004)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 		DLC_btWelRec = (pr[CAN_FUN]&0x0008)?1:0;
 		DLC_btWelRst = (pr[CAN_FUN]&0x0010)?1:0;
-		DLC_btWelExc = DLC_btWelExcAux || DLC_btWelRec;	//mitong 20230818
-		if(!DLC_btWelExc && !DLC_btWelRec && !DLC_btWelRst)
+
+		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add -----------------
+		DLC_btWelExc = DLC_btWelExcAux || DLC_btWelRec || DLC_btWelRst;	//mitong 20230818
+		if(!DLC_btWelExc)
 		{
-			if(uwWelExcTmr < 65535)
+			if(DLC_ubWelExcTmr < 255)
 			{
-				uwWelExcTmr++;
+				DLC_ubWelExcTmr++;
 			}
 		}
 		else
 		{
-			uwWelExcTmr = 0;
+			DLC_ubWelExcTmr = 0;
 		}
-		DLC_btWelDone = DLC_btWelDoneAux && (uwWelExcTmr > 10);	//mitong 20230818
+		DLC_btWelDone = DLC_btWelDoneAux && (DLC_ubWelExcTmr > 20);
+		// ----------------------------------------------------------------------------------------------
 
-//ulDLC_PDO_RX_APS_ClipPu
 
 		
 		//04-36 DLC Function
@@ -766,7 +803,8 @@ void DLC_PrMgr(UBYTE Val){
 //		DLC_ulPosVal = DLC_ulPgCnt/ulTmp;
 		//DLC_ulPosVal = U32xU32divU32((DLC_ulPgCnt>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 		//DLC_ulPosVal = DLC_ulPosVal/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-        if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23
+        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		if(DLC_btAPS_Mode)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
         {
             //DLC_ulPosVal = (ulDLC_PDO_RX_APS_Pu + 1) >> 1; //The APS data is 0.5mm
             DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu);	// GFC1test
@@ -797,7 +835,8 @@ void DLC_PrMgr(UBYTE Val){
 		pr[INV_POS_H] = DLC_ulPosVal/1000;	//m
 		pr[INV_POS_L] = DLC_ulPosVal%1000;	//mm
 #else
-		if((DLC_PDO_DLC_Mode == DLC_MODE_APS) || (Driver_ID == IEDS_DRIVER))	// GFC1test
+		//if((DLC_PDO_DLC_Mode == DLC_MODE_APS) || (Driver_ID == IEDS_DRIVER))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		if(DLC_btAPS_Mode || (Driver_ID == IEDS_DRIVER))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 		{
 			DLC_ulPosPar.ul = DLC_ulPosVal;
 		}
@@ -840,7 +879,9 @@ void DLC_PrMgr(UBYTE Val){
 			DLC_PDO_ID005_B5.ub = DLC_ulDisTar.ub.b1;
 			DLC_PDO_ID005_B6.ub = DLC_ulDisTar.ub.b2;//m, byte2+byte3
 			DLC_PDO_ID005_B7.ub = DLC_ulDisTar.ub.b3;
-		}else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)   // GFC APS Jerry.Sk.Tseng 2022/12/23
+		}
+		//else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)   // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		else if(DLC_btAPS_Mode)   // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
         {
 
             DLC_PDO_ID004_B4.ub |= 0x40;    // Set Byte4 bit 6 as 1
@@ -1009,23 +1050,26 @@ void DLC_Algorithm(void){
 	
 
 
-    if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
+    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
     {
         DLC_ulPgCnt = ulDLC_PDO_RX_APS_Pu;
-		// ---------------------------------------------------------------
-		// GFC1test
-		//求底樓到頂樓,APS求得的mm 與Encoder求得的mm 的差別,用於速度校正
-		if(DLC_btWelRst)	//井道學習上行瞬間
+		// ------------------------------------------------------------------------------------------------------------------------------------
+		//求井道學習時從底部啟動到頂部停止的距離,APS求得的mm 與Encoder求得的mm 的差別,用於速度校正
+		//if(DLC_btWelRst)	//井道學習上行瞬間			//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		if(DLC_btWelExc && (DLC_ubDIR == DIR_UP) && !DLC_btWelUpOld)	//井道學習上行瞬間	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 		{
 			DLC_udEncCnt = 0x0ffffffff;
 			DLC_udApsCnt = (UDOUBLE)ulDLC_PDO_RX_APS_Pu;
+			DLC_ubLevCur = 0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 		}
 		else if(!DLC_btWelExc && DLC_btWelExcOld)	//井道學習上行結束
 		{
 			DLC_btWelEnd = 1;
-			DLC_ubWelEndTmr = 0;
+			//DLC_ubWelEndTmr = 0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
 		}	
 		DLC_btWelExcOld = DLC_btWelExc;
+		DLC_btWelUpOld = (DLC_ubDIR == DIR_UP);			//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 		//
 		if(DLC_btWelExc || DLC_btWelEnd)	//井道學習
 		{
@@ -1051,45 +1095,45 @@ void DLC_Algorithm(void){
                 	DLC_udEncCnt += (UDOUBLE)slPgDif;
             	}
         	}
+		}
+		//
+		//if(DLC_btWelEnd)										//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		//{														//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		//	DLC_ubWelEndTmr++;									//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		//	if(DLC_ubWelEndTmr > 250)							//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		if(DLC_btWelEnd && ((ulDLC_PDO_RX_APS_Pu - DLC_udApsCnt) > 100))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
+		{
+			DLC_btWelEnd = 0;
 			//
-			if(DLC_btWelEnd)
+			DLC_udApsCnt = pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu - DLC_udApsCnt);
+			//
+			if(DLC_udEncCnt > 0x0ffffffff)
 			{
-				DLC_ubWelEndTmr++;
-				if(DLC_ubWelEndTmr > 250)
-				{
-					DLC_btWelEnd = 0;
-					//
-					DLC_udApsCnt = pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu - DLC_udApsCnt);
-					//
-					if(DLC_udEncCnt > 0x0ffffffff)
-					{
-						DLC_udEncCnt = DLC_udEncCnt - 0x0ffffffff;
-					}
-					else
-					{
-						DLC_udEncCnt = 0x0ffffffff - DLC_udEncCnt;
-					}
-					ud1 = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];
-					DLC_udEncCnt = ((DLC_udEncCnt * (UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_uwPole * 500) + (ud1 >> 1)) / ud1;
-					//
-					i = DLC_udApsCnt / 65536;	//此值不可四捨五入
-					j = DLC_udEncCnt / 65536;	//此值不可四捨五入
-					if(i < j)
-					{
-						i = j+1;
-					}
-					else
-					{
-						i = i+1;
-					}
-					DLC_udApsCnt = (DLC_udApsCnt + (i>>1)) / i;
-					DLC_udEncCnt = (DLC_udEncCnt + (i>>1)) / i;
-					pr[SENSOR_H] = (UWORD)DLC_udApsCnt;
-					pr[SENSOR_L] = (UWORD)DLC_udEncCnt;
-				}
+				DLC_udEncCnt = DLC_udEncCnt - 0x0ffffffff;
 			}
-    	}
-		// ------------------------------------------------------------------------------
+			else
+			{
+				DLC_udEncCnt = 0x0ffffffff - DLC_udEncCnt;
+			}
+			ud1 = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];
+			DLC_udEncCnt = ((DLC_udEncCnt * (UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_uwPole * 500) + (ud1 >> 1)) / ud1;
+			//
+			i = DLC_udApsCnt / 65536;	//此值不可四捨五入
+			j = DLC_udEncCnt / 65536;	//此值不可四捨五入
+			if(i < j)
+			{
+				i = j+1;
+			}
+			else
+			{
+				i = i+1;
+			}
+			DLC_udApsCnt = (DLC_udApsCnt + (i>>1)) / i;
+			DLC_udEncCnt = (DLC_udEncCnt + (i>>1)) / i;
+			pr[SENSOR_H] = (UWORD)DLC_udApsCnt;
+			pr[SENSOR_L] = (UWORD)DLC_udEncCnt;
+		}
+		// -----------------------------------------------------------------------------------------------------------------------------------------
     }	
     else
     {
@@ -1136,12 +1180,14 @@ void DLC_Algorithm(void){
 	//04-40(開關延遲補償    sec)
 	//ulDelayCmpmm = DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]);//m/s(dot4)*sec(dot3)-->mm(dot7), 4+3=7	//將  開關延遲補償  與  MI濾波時間分開
 	//ulDelayCmpPg = U32xU32divU32(ulDelayCmpmm , 65536, COF_ulPls2MMgain)/250;//mm(dot7)*Q16/gain*Q2/1000	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-	if(DLC_PDO_DLC_Mode != DLC_MODE_APS)
+	//if(DLC_PDO_DLC_Mode != DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(!DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		ulDelayCmpmm = (DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]) + 5000) / 10000;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 		ulDelayCmpPg = (ULONG)pos_1MMtoPG((UDOUBLE)ulDelayCmpmm);	// GFC1test			// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 	}
-	else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+	//else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	else	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		ulDelayCmpPg = 0;
 	}
@@ -1195,7 +1241,8 @@ void DLC_Algorithm(void){
                         //{
          	            //    DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse                       
                         //}
-                        if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
+                        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+						if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
                         {
 							DLC_ulPgRopeCmp = 0;
                         }
@@ -1287,7 +1334,8 @@ void DLC_Algorithm(void){
                         //{
                         //    DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse                       
                         //}
-						if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
+						//if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+						if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
                         {
                             DLC_ulPgRopeCmp =  0;
                         }
@@ -1348,7 +1396,8 @@ void DLC_Algorithm(void){
 	else{
 		//DLC_ulPosVal = U32xU32divU32((DLC_ulPgCnt>>2), COF_ulPls2MMgain, 65536);
 		//DLC_ulPosVal = DLC_ulPosVal/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-        if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23
+        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+		if(DLC_btAPS_Mode)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
         {
             //DLC_ulPosVal = (ulDLC_PDO_RX_APS_Pu + 1) >> 1; //The APS data is 0.5mm
             DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu);	// GFC1test
@@ -1366,7 +1415,8 @@ void DLC_Algorithm(void){
     //if((DLC_btModIns==1)&&((DLC_btWelRec==1)||(DLC_btWelExc==1)))
     if((DLC_btWelRec==1)||(DLC_btWelExc==1))
         {
-            if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+            //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+			if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
             {
                 WelTunProcAPS();   //WelTun Proc
             }else
@@ -1952,8 +2002,9 @@ void DLC_Algorithm(void){
 	//ulspeed = ud1/100;
     // ---------------------------------------------------------------------
     // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new 四捨五入 ------
-    if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && DLC_btModNor)
-    {
+    //if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && DLC_btModNor)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode && DLC_btModNor)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
+	{
     	//ud1 = (UDOUBLE)DLC_ulCurSpd * (UDOUBLE)pr[FMAX];	// GFC1test
     	//ud2 = (UDOUBLE)pr[Lift_SPD] * 100;
     	ud1 = (UDOUBLE)DLC_ulCurSpd * (UDOUBLE)pr[FMAX] * DLC_udApsCnt;	// GFC1test
@@ -3173,11 +3224,18 @@ ULONG Spd_NOR(ULONG ulCurSpd){
 					}
 					else
 					{
-						if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	// GFC1test
+						//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+						if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 						{	
-							if(DLC_uwJD < 20)
+							//20230829 source
+							//if(DLC_uwJD < 20)
+							//{
+							//	DLC_uwJD = 20;
+							//}
+							//20230829 new
+							if(DLC_uwJD < 1)
 							{
-								DLC_uwJD = 20;
+								DLC_uwJD = 1;
 							}
 						}
 						else
@@ -4047,31 +4105,32 @@ void WelTunProc(void){
 			  }
 			  else{
 			  	
-					if(DLC_ubLevCur == 2){
+					if(DLC_ubLevCur == 2)
+					{
 						// learn board length
-				    if(DLC_btDZN == 1 && DLC_btDZNOld == 0){     //Dzn enter
-					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
-					    DLC_uwWelTra = 0x0b;
-				    }
-				    else if(DLC_btDZN == 0 && DLC_btDZNOld == 1){ //Dzn leave
-					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
-					    DLC_uwWelTra = 0x0c;
+				    	if(DLC_btDZN == 1 && DLC_btDZNOld == 0){     //Dzn enter
+					    	DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
+					    	DLC_uwWelTra = 0x0b;
+				    	}
+				    	else if(DLC_btDZN == 0 && DLC_btDZNOld == 1){ //Dzn leave
+					    	DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
+					    	DLC_uwWelTra = 0x0c;
 
-				      // fix 1F, 2F pos
-					  //DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					  DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-					  //DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					  DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
-				    }
-				  }			  	
+				      		// fix 1F, 2F pos
+					  		//DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+						  DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+						  //DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+						  DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
+					    }
+					}			  	
 			  	
-			  	// record each level pos
+			  		// record each level pos
 					if(DLC_btDZN == 1 && DLC_btDZNOld == 0){
 						if(DLC_ubLevCur == 2)   // 2F時, DLC_ulPgBrd尚未得到
-					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
-					  else
-					    //DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
+					  	else
+					    	//DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 					}
 			  }
 			}
@@ -4108,20 +4167,11 @@ void WelTunProcAPS(void){
 	UBYTE i, j, k, ErrFlag=0;
 	ULONG ulDelayCmpmm, ulDelayCmpPg;
 	UDOUBLE	udTmp;
-
-//DLC_PDO_RX_RC	
 	
 	// Reset PG Pulse Matrix
 	if(DLC_btWelRst == 1){	
 		DLC_uwWelTra = 0x11;
 		WelTunReset();
-		//mitong 20230818 -------------------------------------------------------
-		//if(((uwPr_CAN_FUN_Old & 0x10) != 0) && ((pr[CAN_FUN] & 0x10) == 0))	
-		//{
-			DLC_ubLevCur = 0;
-		//}
-		//uwPr_CAN_FUN_Old = pr[CAN_FUN];
-	// ---------------------------------------------------------------------
 	}
 	// PG Pulse Record
 	else if(DLC_btWelRec == 1){
@@ -4144,11 +4194,8 @@ void WelTunProcAPS(void){
 						&& (ulDLC_PDO_RX_APS_ClipPu != DLC_ulPgLev[DLC_ubLevCur]))	// GFC1test 防止APS跳動
             {
             	
-                if(!DLC_btDD1)	//mitong 20230818
-                {
+                //if(!DLC_btDD1)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
                     DLC_ubLevCur = (DLC_ubLevCur < 0x4B) ? DLC_ubLevCur + 1 : 0x4B;
-                }
-                
                 
                 DLC_ulPgLev[DLC_ubLevCur] = ulDLC_PDO_RX_APS_ClipPu;
 				DLC_uwWelTra = 0x14;
@@ -4229,7 +4276,8 @@ void WelTun_eeprom(void){
 	UWORD uwUD1_Vlim, uwDD1_Vlim, uwUD2_Vlim, uwDD2_Vlim,uwUD3_Vlim, uwDD3_Vlim,uwUD4_Vlim, uwDD4_Vlim;
 
 
-    if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
     {
         // APS to mm
           for(i = 1; i <= 0x4B; i ++){
@@ -4847,7 +4895,8 @@ PGBS = (DLC_ulOffset * SpDt_ulPG1Npulse * pr[FMAX]) / (pr[Lift_SPD] * COF_uwPole
 UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val)	// GFC1test
 {
 	UDOUBLE len , udtmp;
-	if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		len = pg_val * 5;
 	}
@@ -4870,7 +4919,8 @@ UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val)	// GFC1test
 UDOUBLE pos_PGto1MM(UDOUBLE pg_val)	// GFC1test
 {
 	UDOUBLE len , udtmp;
-	if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		len = (pg_val + 1) >> 1;
 	}
@@ -4894,7 +4944,8 @@ UDOUBLE pos_PGto1MM(UDOUBLE pg_val)	// GFC1test
 UDOUBLE pos_0d1MMtoPG(UDOUBLE len)	// GFC1test
 {
 	UDOUBLE pg_val , udtmp;	
-	if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
+	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		pg_val = (len + 2) / 5;
 	}	
@@ -4917,7 +4968,8 @@ UDOUBLE pos_0d1MMtoPG(UDOUBLE len)	// GFC1test
 UDOUBLE pos_1MMtoPG(UDOUBLE len)	// GFC1test
 {
 	UDOUBLE pg_val , udtmp; 
-	if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && 0)
+	//if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && 0)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
+	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
 	{
 		pg_val = len << 1;
 	}	
