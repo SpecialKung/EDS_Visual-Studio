@@ -78,6 +78,8 @@ TB_1ms_EXT void OverAccInit(void);
 TB_1ms_EXT void Torq_Tune_Process(void); //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
 TB_1ms_EXT void VFGenOrMot_DIR(void);
 TB_1ms_EXT void EPS_NormalDetectCurrent(void);
+TB_1ms_EXT void AccFunction(void);			//[Rationa 362631, Special.Kung]
+TB_1ms_EXT void AccFunctionInit(void);		//[Rationa 362631, Special.Kung]
 
 /* Exported Variable List ======================================*/
 TB_1ms_EXT UBYTE		TB1_ub1msCnt,
@@ -185,7 +187,6 @@ TB_1ms_EXT SLONG_UNION	cosphiLPF,
 						COSadLPF,
 						PGLadLPF;
 
-
 TB_1ms_EXT ULONG_UNION  facc1,
                         facc2,
                         facc3,
@@ -226,6 +227,7 @@ TB_1ms_EXT ULONG_UNION  faccH1,      //[]
                         fdecL2,
                         fdecL3,
                         fdecINS;
+
 TB_1ms_EXT UWORD    	VFfslip_uwLPG,
                     	cosphi_uwLPG,
                     	VFVcomp_uwLPG,
@@ -254,26 +256,21 @@ TB_1ms_EXT SWORD        EPS_swRecord_S1,
                         AUI_swfl_T;
 						//] //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
 
-
-
-
-
-
 TB_1ms_EXT UWORD		TB1_uwPhi,
-                        Zphase_countAB_count,//[Zphase broken, Lyabryan, 2015/09/17]
-                        Zphase_countAB_flag,//[Zphase broken, Lyabryan, 2015/09/17]
-                        Zphase_countAB_old, //[Zphase broken, Lyabryan, 2015/09/17]
-                        Zphase_error_zero, //[Zphase broken, Lyabryan, 2015/09/17]
-                        Zphase_tune_count; //[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_countAB_count,			//[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_countAB_flag,			//[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_countAB_old, 			//[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_error_zero, 				//[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_tune_count; 				//[Zphase broken, Lyabryan, 2015/09/17]
 
-TB_1ms_EXT SWORD        Zphase_swcountAB_error, //[Zphase broken, Lyabryan, 2015/09/17]
-                        Zphase_swcountAB_error_old; //[Zphase broken, Lyabryan, 2015/09/17]
-
+TB_1ms_EXT SWORD        Zphase_swcountAB_error, 		//[Zphase broken, Lyabryan, 2015/09/17]
+                        Zphase_swcountAB_error_old; 	//[Zphase broken, Lyabryan, 2015/09/17]
 
 TB_1ms_EXT SLONG		dec_integral, 
                 		acc_integral,
-                		TB1_slSpdAcc,		//ADDED BY SCOTTY 02/05/2007 
-                		acc1_integral; 
+                		TB1_slSpdAcc,			//ADDED BY SCOTTY 02/05/2007 
+                		acc1_integral;
+						
                           
 TB_1ms_EXT UWORD		reg_t2s3TCR,
 			    		PGHOMEMem,
@@ -285,14 +282,14 @@ TB_1ms_EXT UWORD		reg_t2s3TCR,
 						uwFWDPFangle,
 						uwREVPFangle,
 						TB1_uwFcmdOld,		// Last Fcmd, DINO, 08/02/2010 
-						Vcmd_LL2;       //[weak magnet, Sampo, 03/31/2011]
+						Vcmd_LL2;       	//[weak magnet, Sampo, 03/31/2011]
 
-TB_1ms_EXT UWORD		uwRetryCnt,          //[Add auto restart after fault, Bernie, 06/06/12]
-						uwRetryTimeCnt,      //[Add auto restart after fault, Bernie, 06/06/12]
-						rec_uwRetryCnt,      //[Add auto restart after fault, Bernie, 06/06/12]
-						uwReset_10mCnt;      //[Add auto restart after fault, Bernie, 06/06/12]
+TB_1ms_EXT UWORD		uwRetryCnt,         //[Add auto restart after fault, Bernie, 06/06/12]
+						uwRetryTimeCnt,     //[Add auto restart after fault, Bernie, 06/06/12]
+						rec_uwRetryCnt,     //[Add auto restart after fault, Bernie, 06/06/12]
+						uwReset_10mCnt;     //[Add auto restart after fault, Bernie, 06/06/12]
 
-TB_1ms_EXT UWORD	    TB1_uwGenorMotCnt;   //[Add Generator or Motor Direction, Bernie, 05/21/2012]  
+TB_1ms_EXT UWORD	    TB1_uwGenorMotCnt;	//[Add Generator or Motor Direction, Bernie, 05/21/2012]  
 
 TB_1ms_EXT ULONG		GearAccCnt, 
                 		GearDecCnt,
@@ -331,6 +328,23 @@ TB_1ms_EXT UBYTE        ubPGrevCnt,         // JOSH don't revise SpdFdb continuo
                         ubRevise;           // JOSH revise SpdFdb flag
 TB_1ms_EXT UWORD		uwGFF_MaxVal;		// GFF Maximum Value Record, Jerry Yu, 2019/11/11
 TB_1ms_EXT UBYTE		ubIntervalSeted;	//[Add GFF and Ocx auto reset function, Jerry Yu, 2019/05/23]
+
+TB_1ms_EXT UWORD
+						TB1_uwSampleRate;		//[Rationa 362631, Special.Kung]
+
+TB_1ms_EXT SLONG_UNION
+						AccFbTemp_LPF,			//[Rationa 362631, Special.Kung]
+						AccCmdTemp_LPF;   		//[Rationa 362631, Special.Kung]
+
+TB_1ms_EXT SWORD
+						TB1_swAccCalculOld,		//[Rationa 362631, Special.Kung]
+						TB1_swAccCmdOpt,		//[Rationa 362631, Special.Kung]
+						TB1_swAccCmdCalculOld;	//[Rationa 362631, Special.Kung]
+
+TB_1ms_EXT SLONG
+						TB1_slAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB1_slAccTemp2,			//[Rationa 362631, Special.Kung]
+						TB1_slAccCalculOld;		//[Rationa 362631, Special.Kung]
 
 /*== Local Variable List (Variables not open to other files)  ==*/
 

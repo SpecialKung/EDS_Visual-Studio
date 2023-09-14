@@ -705,6 +705,8 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
         P10_32,     //    3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
         P10_33,     //    3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
         updatepr,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+		updatepr,	//	421    10-35	//[Rationa 362631, Special.Kung]
+		updatepr,	//	421    10-36	//[Rationa 362631, Special.Kung]
 
 /*---- GROUP 11---------------------------------------*/
 		updatepr,	//	401    11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo
@@ -732,7 +734,8 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 		fnone   ,   //  4XX    11-21    lift spd cmd for Sibocom, Jason, 2019/12/31
 #endif
-        updatepr,	//	421    12-00	user define address	00
+        updatepr,	//	421    11-22	
+		
 /*---- GROUP 12 --------------------------------------*/
 		updatepr,	//	421    12-00	user define address	00
 		updatepr,	//	422    12-01	user define address 01
@@ -4678,17 +4681,17 @@ void P04_50(UWORD prx, UWORD prvalue){
 		//adjust floor position,Henry,2019/01/07
     //if(pr[FLOOR_PAGE]==3){
     if((pr[FLOOR_PAGE]==4)||(pr[FLOOR_PAGE]==5)||(pr[FLOOR_PAGE]==6)){ //[adjust floor position,Henry,2019/01/07]
-        // ³o­Ó¼gªk ¥Î¨Ó­­¨î·L½Õ¤j¤p----7/6/2018
+        // ï¿½oï¿½Ó¼gï¿½k ï¿½Î¨Ó­ï¿½ï¿½ï¿½Lï¿½Õ¤jï¿½p----7/6/2018
         if(DLC_ulPgBrd !=0){
             //mod pulse to mm [
             //get brd's length mm
-    	    //ulBrdLen = U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	        //ulBrdLen = ulBrdLen/10;//get borad's length								// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	        ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+    	    //ulBrdLen = U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	        //ulBrdLen = ulBrdLen/10;//get borad's length								// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	        ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
 	        if(DLC_ulPgSen && (DLC_ulPgSen<DLC_ulPgBrd)){
-                //ulSenLen = U32xU32divU32((DLC_ulPgSen>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	            //ulSenLen = ulBrdLen/10;//get sensors distance							// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-	            ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+                //ulSenLen = U32xU32divU32((DLC_ulPgSen>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	            //ulSenLen = ulBrdLen/10;//get sensors distance							// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
+	            ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
             }
             else
                 ulSenLen = 0;            

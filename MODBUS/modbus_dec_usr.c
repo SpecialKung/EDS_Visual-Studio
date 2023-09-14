@@ -65,7 +65,7 @@ const struct stMNTR_TABLE stMntrTable[M00xx_SIZE+2]={
 	1U,		0xa1,	0x02,	0x00,		"frq Cmd(fcmd)            ",	3U,
 	2U,	    0xa1, 	0x76,	0x00,		"frq Cmd(fkey)            ",	3U,
 	3U,		0xa1,	0x06,	0x00,		"Out Frq(fout)            ",	3U,
-	4U,		0xa1,	0x7A,	0x00,		"DLC_swCurAcc             ",	4U,
+	4U,		0xa1,	0x7A,	0x00,		"SpDt_swAccOpt(ACC)       ",	4U,
 	5U,		0xa1,	0x08,	0x00,		"DC-Bus(dcbusDC)          ",	3U,
 	6U,		0xa1,	0x0c,	0x00,		"Out Volt(VcmdLLPF)       ",	4U,
 	7U,		0xa1,	0x0e,	0x00,		"Out Cur(IrmsRe)          ",	3U,		

@@ -1418,6 +1418,7 @@ void InitValue(void)
 	PHL_LPG = Set_LPG(pr[PHL_T],10);                    //0.01, in 1ms, 0.01/1ms = 10
 	SPR_uwPPILPG = Set_LPG(pr[ZSPLowpass],2);			// PPI LPF Gain, 0.001, in 500us, 0.001/500us=2, DINO, 07/28/2010
 
+
     IODLC_Initial_value(); // [IODLC, Lyabryan, 2016/11/11]
 
     if (pr[U_SET]!=0){

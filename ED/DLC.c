@@ -192,10 +192,9 @@ void DLC_Init(void){
 	DLC_ubMode = MODE_NULL;		// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
 	DLC_ulSpd0p1mm = 0;			// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
 
-	DLC_swCurAcc = 0;			//Rationa 362631, Special.Kung
-	DLC_ulCurSpdOld = 0;		//Rationa 362631, Special.Kung
-  	DLC_uwTmr = 0;				//Rationa 362631, Special.Kung
-	DLC_uwTmrOld = 0;			//Rationa 362631, Special.Kung
+	DLC_ulCurSpdOld         =0;     //[GFC  DLC speed cruve,Special.Kung]
+    DLC_uwNorTmr            =0;     //[GFC  DLC speed cruve,Special.Kung]
+    DLC_ulAcc               =0;     //[GFC  DLC speed cruve,Special.Kung]
 }
 
 void DLC_PrMgr(UBYTE Val){
@@ -795,15 +794,16 @@ void DLC_PDO_Byte67(void){
 }
 
 void DLC_Algorithm(void){
-    UWORD ubDILow, ax, ubPgDir, i, j, k, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
+    UWORD ubDILow, ax, ubPgDir, i, j, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
     UWORD uwDI, uwPgTmp, uwTmp; // 0504 JINGDO
     UWORD uwPgDif,uwadjstVal;
-    ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm, ulCurAcc;
+    ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm;
     SLONG slPgDif;
     UDOUBLE ud1, ud2, ud3, ulspeed, ud4;
     double d1, d2, d3, d4;	
     Bool blCHG;
 	UWORD	t_s3,	a_dec,	t_s4;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220516
+
 	//讀取DLC相關參數
 	DLC_PrMgr(PR_RD);
 	
@@ -1530,30 +1530,8 @@ void DLC_Algorithm(void){
 		DLC_ulCurSpd = ulTmp;
 		DLC_LULD_Protect(DLC_btLU, DLC_btLUOld, DLC_btLD, DLC_btLDOld);
 
-		DLC_uwTmr = DLC_uwTmr+1;														//Rationa 362631, Special.Kung
-		DLC_ulCurAcc = abs(DLC_ulCurSpd-DLC_ulCurSpdOld)/(DLC_uwTmr-DLC_uwTmrOld);		//Rationa 362631, Special.Kung
-		DLC_ulCurSpdOld = DLC_ulCurSpd;													//Rationa 362631, Special.Kung
-		DLC_uwTmrOld = DLC_uwTmr;														//Rationa 362631, Special.Kung
-/*
-		ulCurAcc = abs(DLC_ulCurSpd-DLC_ulCurSpdOld)/(DLC_uwTmr-DLC_uwTmrOld);
-
-		if(k<5)
-		{
-			DLC_ulCurAccArray[4]=DLC_ulCurAccArray[3];
-			DLC_ulCurAccArray[3]=DLC_ulCurAccArray[2];
-			DLC_ulCurAccArray[2]=DLC_ulCurAccArray[1];
-			DLC_ulCurAccArray[1]=DLC_ulCurAccArray[0];
-			DLC_ulCurAccArray[0]=ulCurAcc;
-
-			k = k+1;
-
-    	}
-		else if(k>=4)
-		{
-			k=0;
-			DLC_ulCurAcc = (DLC_ulCurAccArray[0]+DLC_ulCurAccArray[1]+DLC_ulCurAccArray[2]+DLC_ulCurAccArray[3]+DLC_ulCurAccArray[4])/5;
-		}
-*/
+		DLC_ACCelerattion();			//[GFC  DLC speed cruve,Special.Kung]
+		DLC_uwNorTmr = DLC_uwNorTmr+1;		//[GFC  DLC speed cruve,Special.Kung]
 	}
 	else	//protection
 	{
@@ -4419,6 +4397,14 @@ void Sensor817_Protect(void)
 		}
 	}
 }
+
+//[GFC  DLC speed cruve,Special.Kung]
+void DLC_ACCelerattion(void)
+{
+	DLC_ulAcc = abs(DLC_ulCurSpd- DLC_ulCurSpdOld);
+	DLC_ulCurSpdOld = DLC_ulCurSpd;
+}
+//[GFC  DLC speed cruve,Special.Kung]
 
 #ifndef _DLC_C
 	#undef _DLC_C

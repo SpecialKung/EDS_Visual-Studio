@@ -687,11 +687,12 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 10-28 ZASRKI_P     */  RLD|WRUN|DOT3,                  0,          10000,            100,
 /* 10-29 FREQ_DIV     */  RLD|WRUN|DOT0,                  0,             31,              0,    //[Modify PG Type Define, Bernie, 12/05/2011]
 /* 10-30 PG_DIV_MODE  */  RLD|WRUN|DOT0|DPH,              0,              8,              0,    //[Modify PG Type Define, Bernie, 12/05/2011]
-/* 10-31 PG_C_TYPE	  */  RLD|WRUN|DOT0|DPH,			  0,		  65535,			  0,    //0x0400 3XX 10-31   Encoder C+/C- exchange	  //[change parameter to normal group, Bernie, 2014/02/14]
+/* 10-31 PG_C_TYPE    */  RLD|WRUN|DOT0|DPH,	          0,	      65535,              0,    //0x0400 3XX 10-31   Encoder C+/C- exchange	  //[change parameter to normal group, Bernie, 2014/02/14]
 /* 10-32 OVER_ACC_LEVEL*/ RLD|WRUN|DOT1,                  0,            200,              0,    //[Over Acceleration protection function, Bernie, 2017/02/13]
 /* 10-33 OVER_ACC_TIME*/  RLD|DOT2,                       1,            500,              5,    //[Over Acceleration protection function, Bernie, 2017/02/13]
 /* 10-34 OVER_ACC_SET */  RLD|DOT0,                       0,              1,              0,
-
+/* 10-35 ACCLPF       */  RLD|DOT0,                       0,          65535,              0,    //[Rationa 362631, Special.Kung]
+/* 10-36 ACCSampleRate*/  RLD|DOT1,                       0,          65535,              0,    //[Rationa 362631, Special.Kung]
 
 /*--------      GROUP 11        --------*/
 /* 11-00 SysControl   */  RLD|DOT0|DPH,                   0,          65535,              0,    //[change default value for support PGHSD-1, Bernie, 2014/07/31]
@@ -717,9 +718,9 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 11-20 PWM_MODE     */      WRUN|DOT0,                  0,          65535,              0,
 /* 11-21 LPF_LC01DISP */  RLD|WRUN|DOT3,                  1,          65535,            500,
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-/* 11-21 Lift_SPD_RPM */  READ|DOT0, 		        	  0, 		  65535, 			  0,
+/* 11-21 Lift_SPD_RPM */  READ|DOT0, 		          0, 	      65535,              0,
 #endif
-/* 11-22 Client_Mode  */  RLD|  DOT0,                    0,           65535,              0,
+/* 11-22 Client_Mode  */  RLD|DOT0,                       0,          65535,              0,
 
 /*--------    GROUP 12    --------*/
 /* 12-00 UMAP_ADD0    */  RLD|WRUN|DOT0,                  0,           9999,            616,

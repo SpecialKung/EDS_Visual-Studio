@@ -98,6 +98,9 @@ MonitorPr_EXT ULONG_UNION	fkey,			//Freq. Command
 #pragma address fkeyDisplay=0x0000a176      //[Address fixed, Special.Kung, 2022/11/4]
 MonitorPr_EXT UWORD         fkeyDisplay;    //Freq. Command for vfd-soft/ explore Display, Special.Kung, 2022/11/4
 
+#pragma address TB1_swAccOpt=0x0000a17A		//[Rationa 362631, Special.Kung]
+MonitorPr_EXT SWORD			TB1_swAccOpt;	//[Rationa 362631, Special.Kung]
+
 #pragma address VcmdLLPF=0x0000a10a         //[Address fixed, Aevin, 2017/06/28]
 MonitorPr_EXT SLONG_UNION	PHLbusReLPF,	//Dcbus (Vdc)	SCOTTY 09/05/2007
 							VcmdLLPF,		//Output Voltage (Vac)
@@ -117,8 +120,8 @@ MonitorPr_EXT UWORD		PIDsource,			//PID reference (%)
 MonitorPr_EXT ULONG_UNION					
 						PG2_ulSpdCmdLPF;	//PG2 velocity
 
-#pragma address swAVICalib=0x0000a112   //[Address fixed, Aevin, 2017/06/28]
-#pragma address swAUICalib=0x0000a114   //[Address fixed, Aevin, 2017/06/28]
+#pragma address swAVICalib=0x0000a112   	//[Address fixed, Aevin, 2017/06/28]
+#pragma address swAUICalib=0x0000a114   	//[Address fixed, Aevin, 2017/06/28]
 
 MonitorPr_EXT SWORD 	swAVICalib,			//AVI percent (%)
                     	swACICalib,			//ACI percent (%)
@@ -139,7 +142,7 @@ MonitorPr_EXT SLONG 	CRM_slFlxFreqPu,
                     	TB1_slSpdCmdPu,
                     	SpDt_slSpdFdbPu;
 
-#pragma address dcbusDC=0x0000a108      //[Address fixed, Aevin, 2017/06/28]
+#pragma address dcbusDC=0x0000a108			  //[Address fixed, Aevin, 2017/06/28]
 MonitorPr_EXT UWORD		Vcmd_LL,
 			            dcbusDC;
 
@@ -201,10 +204,10 @@ MonitorPr_EXT UWORD     uw_PGtest,             //[ED for HW test, Bernie, 2014/0
                         uw_PGReCoDer;
 
                         
-MonitorPr_EXT SLONG_UNION		DcbusDCLPF,		//Dcbus (Vdc)
-                                TqRefPuLPF;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+MonitorPr_EXT SLONG_UNION		
+						DcbusDCLPF,		//Dcbus (Vdc)
+                        TqRefPuLPF;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
-#pragma address DLC_swCurAcc=0x0000a17A
 
 /************************************************************************
  Copyright (c) 2005 EMBU DELTA

@@ -91,10 +91,12 @@ SpDtPG1_EXT UWORD   OverAccTimeSet,
                     uwOverAccCnt;
 
 
-SpDtPG1_EXT SLONG_UNION AccTemp_LPF;   //[Over Acceleration protection function, Bernie, 2017/02/13]
+SpDtPG1_EXT SLONG_UNION 
+					AccTemp_LPF;   		//[Over Acceleration protection function, Bernie, 2017/02/13]
 
-SpDtPG1_EXT SLONG SpDt_slPG1FdbPu_temp,
-                  SpDt_slPG1FdbPu_temp1;
+SpDtPG1_EXT SLONG 
+					SpDt_slPG1FdbPu_temp,
+                  	SpDt_slPG1FdbPu_temp1;
 
 					
 SpDtPG1_EXT SWORD	SpDt_swPG1LoSpdCNT_Err,
@@ -104,8 +106,8 @@ SpDtPG1_EXT SWORD	SpDt_swPG1LoSpdCNT_Err,
                     SpDt_sw40ms_tmp,
                     SpDt_sw200ms_Flag,
                     SpDt_swPGCDerr_Detect,
-                    SpDt_swNoground_CNT,//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-                    SpDt_swCDerrold; //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+                    SpDt_swNoground_CNT,	//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+                    SpDt_swCDerrold; 		//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
 SpDtPG1_EXT ULONG	SpDt_ulPG1Npulse,
 					SpDt_ulPG1NpulseNoMx,

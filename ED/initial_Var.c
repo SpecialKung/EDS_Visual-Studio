@@ -517,6 +517,9 @@ void  Initial_Var(void){
     SpDt_uwAccCalcul        =0;
     SpDt_uwAccOpt           =0;
     SpDt_uwAccCalculOld     =0;
+    TB1_swAccOpt            =0;     //[Rationa 362631, Special.Kung]
+    TB1_swAccCalculOld      =0;     //[Rationa 362631, Special.Kung]
+    TB1_uwSampleRate        =0;     //[Rationa 362631, Special.Kung]
     OverAccTimeSet          =0;
     uwOverAccLev            =0;
     uwOverAccCnt            =0;
@@ -805,6 +808,9 @@ void  Initial_Var(void){
     DLC_ulPosUL             =0;     
     COF_ulPls2MMgain        =0;
     DLC_ulCurSpd            =0;
+    DLC_ulCurSpdOld         =0;     //[GFC  DLC speed cruve,Special.Kung]
+    DLC_uwNorTmr            =0;     //[GFC  DLC speed cruve,Special.Kung]
+    DLC_ulAcc               =0;     //[GFC  DLC speed cruve,Special.Kung]
     PR_S4ACC1               =0;
     PR_S4ACC2               =0;
     PR_S4DEC1               =0;
@@ -888,10 +894,6 @@ void  Initial_Var(void){
     DLC_uwAutoTar           =0;
     DLC_uwEM.uw             =0;    
 	DLC_ubSpdLimFlag		=0;//Artemis speed limit, James, 20200220
-    DLC_swCurAcc            =0;
-    DLC_uwTmr               =0;
-    DLC_uwTmrOld            =0;
-    DLC_ulCurSpdOld         =0;
     /*IODLC======================================*/
     IODLC_ubArea_status     =0;
     IODLC_uwPR_J1           =0;

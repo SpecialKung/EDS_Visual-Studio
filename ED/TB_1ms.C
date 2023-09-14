@@ -1761,7 +1761,7 @@ void Run_Execute(void)
             {
                 if (pr[PM_AUTO_T]!= 2 )   // Debug BY SCOTTY 04/09/2007
                 {
-                    HOLD = 1;       // Hold Speed ï¿½Tï¿½ï¿½[ï¿½ï¿½t 
+                    HOLD = 1;       // Hold Speed ¸T¤î¥[´î³t
                 }
             }
             else
@@ -3100,58 +3100,67 @@ void TimeBase_500us(void)
   
   
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-      SIBO_STO_Safty();
+    SIBO_STO_Safty();
 #else
-      TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
+    TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
 #endif
    
-  if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM){   // [Warning initial, Lyabryan, 2015/03/12]
-      if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-          TB3_SpDtPG1_Err();
-      }
-  }
+    if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM)
+    {   
+        // [Warning initial, Lyabryan, 2015/03/12]
+        if ((pr[PROTBIT]&0x0040)==0x0000)
+        {  
+            //Bit 6: PGErr
+            TB3_SpDtPG1_Err();
+        }
+    }
   
-  if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-      PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+    if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+        PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
-  if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 ){
-      switch(pr[CTRLM]){
+    if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 )
+    {
+        switch(pr[CTRLM])
+        {
             case FOCPG:
-      case TQCPG:
+            case TQCPG:
                 TB3_SpDtPG1_LoIv();
-              TB3_FOCPG();
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                TB3_FOCPG();
+                if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();
+            break;
             case VFPG:
                 TB3_SpDtPG1_LoIv();
                 if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                    TB3_SpDtPG1_Err();
+            break;
 #if SCOTTY
-      case FOCPM:               //ADDED BY SCOTTY
-        TB3_SpDtPG1_LoIv();         //ADDED BY SCOTTY
-        TB3_FOCPM();            //ADDED BY SCOTTY
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();        
-        break;              //ADDED BY SCOTTY
+            case FOCPM:               //ADDED BY SCOTTY
+                TB3_SpDtPG1_LoIv();         //ADDED BY SCOTTY
+                TB3_FOCPM();            //ADDED BY SCOTTY
+                if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();        
+             break;              //ADDED BY SCOTTY
 #endif      
-      case SVC:
+            case SVC:
             case VF:                                
             case FOC:
             case DBCSECA:
             default:
                 TB3_SpDtPG1_LoIv();
-                if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-                  if (CTRLMCHG==1)
-                      TB3_SpDtPG1_Err();
-              }
+                if ((pr[PROTBIT]&0x0040)==0x0000)
+                {
+                    //Bit 6: PGErr
+                    if (CTRLMCHG==1)
+                        TB3_SpDtPG1_Err();
+                }
                 break;
-          }
-  }
-  else{
+        }
+    }
+    else
+    {
         TB3_SpDtPG1_LoIv();   
-  }
+    }
 
 // -FAN CONTROL ----- added by scotty 10/15/20007
     if (FAN_ENABLE){
@@ -3207,6 +3216,8 @@ void TimeBase_500us(void)
 
     TB_500us ^= 1;
 
+    AccFunction();
+
 	if(TB_500us == 1){
 		TimeBase_1ms();
 	}
@@ -3214,10 +3225,10 @@ void TimeBase_500us(void)
 		TimeBase_1msB();
 		//DLC function, Henry, 2016/07/20 [
 		DLC_uwPOWCnt=(DLC_uwPOWCnt<1000)?(DLC_uwPOWCnt+1):DLC_uwPOWCnt;
-		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
-		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 source
-		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
-		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 ï¿½ï¿½ï¿½tï¿½è¦³ï¿½ï¿½ï¿½ï¿½tï¿½Î¥ï¿½ï¿½hï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½D // Mitong 20220902 new
+		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
+		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
+		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
 			
 		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000)){ //[Gfc DLC modify,Henry,2018/05/23]	
 			if(DLC_uwInit == 0){			
@@ -3437,10 +3448,10 @@ void TimeBase_1ms(void)
     AUIadLPF.sl = lowpass_sl(AUI2In_LPG,AD_uwAUI2ad,AUIadLPF.sl); //AUI2
     PTCInLPF.sl = lowpass_sl(PTCIn_LPG,PTCInValue,PTCInLPF.sl);   //PTC
 */
-  AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
-  ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG; //ACI
-  AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
-  PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG; //PTC
+    AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
+    ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG; //ACI
+    AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
+    PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG; //PTC
 // ]
 
     //------ Display Low pass -----------------------------------//
@@ -3465,7 +3476,7 @@ void TimeBase_1ms(void)
 
 // [ Modify the LPF function by DINO, 03/07/2009
 //    ulDcbusReLPF.ul = lowpass_ul(dcbusLPG, dcbusDC, ulDcbusReLPF.ul); //SCOTTY 09/05/2007
-  PHLbusReLPF.sl += (SLONG)(dcbusDC - PHLbusReLPF.sw.hi) * dcbusLPG;  //DCbus for PHL detection
+    PHLbusReLPF.sl += (SLONG)(dcbusDC - PHLbusReLPF.sw.hi) * dcbusLPG;  //DCbus for PHL detection
 // ]
 
     if (RESTART){
@@ -3512,38 +3523,61 @@ void TimeBase_1ms(void)
     }// end of STOP function
     /*============End of STOP command ===========================================================*/
 
-  // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
-  if (RUNNING == RUN){
-    // [ Add condition, DINO, 08/25/2010
-    if (RUNDCI){
-      ZEROSTOP = 0;
+    // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
+    if (RUNNING == RUN)
+    {
+        // [ Add condition, DINO, 08/25/2010
+        if (RUNDCI)
+        {
+            ZEROSTOP = 0;
+        }
+        else if (STOPDCI)
+        {
+            ZEROSTOP = 1;
+        }
+        else
+        {
+            // ]
+            if (Fcmd > TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 0;
+            }
+            else if (Fcmd < TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 1;
+            }
+        }
     }
-    else if (STOPDCI){
-      ZEROSTOP = 1;
-    }
-    else{
-    // ]
-      if (Fcmd > TB1_uwFcmdOld){
+    else
+    {
         ZEROSTOP = 0;
-      }
-      else if (Fcmd < TB1_uwFcmdOld){
-        ZEROSTOP = 1;
-      }
     }
-  }
-  else{
-    ZEROSTOP = 0;
-  }
-  TB1_uwFcmdOld = Fcmd;
+    TB1_uwFcmdOld = Fcmd;
   // ]
-  if(IODLC_holdCNT == 1){ // [IODLC, Lyabryan, 2016/11/11]
-      IODLC_uwPR_Th_CNT++;
-  }	  
-  
-    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0)){
+    if(IODLC_holdCNT == 1)
+    { 
+        // [IODLC, Lyabryan, 2016/11/11]
+        IODLC_uwPR_Th_CNT++;
+    }
 
-        if(pr[OVER_ACC_SET]==0){
+    //[Rationa 362631, Special.Kung]
+    //if(CMDRUN==RUN)
+    //{
+        //AccFunction();
+    //}
+    //else
+    //{
+        //AccFunctionInit();
+    //}
+    //[Rationa 362631, Special.Kung]
+
+    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0))
+    {
+
+        if(pr[OVER_ACC_SET]==0)
+        {
             OverAccFunction();
+
         }
         else{                 //pr[OVER_ACC_SET] = 1;
             if((pr[OVER_ACC_SET]==1)&&(CMDRUN==RUN)){
@@ -4895,12 +4929,14 @@ void TimeBase_1msB(void){
         AFE_uwMOCNT = AFE_ERR_RST_CNT;
     }
   
-  if((Error == 0)&&((pr[DEBUG_PG]&0x0400)!=0x0400)&& Zphase_countAB_flag&&(pr[PG_TYPE]==SIN_SIN)){ //[Zphase broken, Lyabryan, 2015/09/17]  //[modify Error code,Lyabryan,2016/07/21]
-      WGOFF;
-      Error = PGAF_ERR;		  
-      stop();
-      Zphase_countAB_flag = 0;
-  }
+    if((Error == 0)&&((pr[DEBUG_PG]&0x0400)!=0x0400)&& Zphase_countAB_flag&&(pr[PG_TYPE]==SIN_SIN))
+    { 
+        //[Zphase broken, Lyabryan, 2015/09/17]  //[modify Error code,Lyabryan,2016/07/21]
+        WGOFF;
+        Error = PGAF_ERR;		  
+        stop();
+        Zphase_countAB_flag = 0;
+    }
         
     uwPGF5_Type = 0;
     if(IED_PG_ERR_OVERTIME)//[For IED PG-Card, Sampo, 02/25/2010]
@@ -4947,7 +4983,7 @@ void SIBO_STO_Safty(void){
     }
         
     STO_Truth_Table();
-	if(pr[SOFC]==4){ //ï¿½gï¿½ï¿½CAN_BUSï¿½ï¿½ï¿½wï¿½ï¿½V
+	if(pr[SOFC]==4){ //¸g¥ÑCAN_BUSµ¹©w¤è¦V
 		mfi_status_temp = (DLC_PDO_RX_DI.uw>>1)&0x003;
 	}
 	else{
@@ -5183,7 +5219,7 @@ void TB3_STO_Safty(void){
     uwSTOShortTime = pr[STO_SHORT_T] * 200;//(1.0(dot1) *  200) *500us = 1sec
     
 	//add STO run dir command source from CANbus, James, 2020/11/26
-	if(pr[SOFC]==4)//ï¿½gï¿½ï¿½CAN_BUSï¿½ï¿½ï¿½wï¿½ï¿½V
+	if(pr[SOFC]==4)//¸g¥ÑCAN_BUSµ¹©w¤è¦V
 	{ 
 		mfi_status_temp = (DLC_PDO_RX_DI.uw>>1)&0x0003;
 	}
@@ -6085,6 +6121,74 @@ void Torq_Tune_Process(void){  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
         }
     }
 }
+
+//[Rationa 362631, Special.Kung]
+void AccFunctionInit(void)
+{
+    TB1_uwSampleRate       = 0;
+    TB1_swAccOpt           = 0;
+    TB1_swAccCalculOld     = 0;
+    TB1_swAccCmdOpt        = 0;
+    TB1_swAccCmdCalculOld  = 0;
+}
+//[Rationa 362631, Special.Kung]
+
+//[Rationa 362631, Special.Kung]
+void AccFunction(void)
+{
+    UWORD uwAccTemp1, uwAccTemp2, uwCnt, uwLPF;
+    UWORD uwTemp1, uwTemp2;
+    SWORD swAccTemp1, swAccTemp2;
+    SLONG slAccTemp1, slAccTemp2;
+
+    uwCnt = pr[ACC_SampleRate]*0.2;
+    uwLPF = pr[ACC_LPF];
+
+    if(TB1_uwSampleRate<uwCnt)
+    {
+        TB1_uwSampleRate = TB1_uwSampleRate+1;
+    }
+    else
+    {
+        TB1_uwSampleRate = 0;
+
+        //if(SpDt_slSpdFdbPu >=0)
+        //{
+        //    uwAccTemp2 = abs((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
+        //}
+        //else
+        //{
+        //    uwAccTemp2 = abs((SLONG)COF_uwFbRe * (-SpDt_slSpdFdbPu>>15))>>14;
+        //}
+
+        //SpDt_uwAccOpt = abs(AccTemp_LPF.sw.hi - SpDt_uwAccCalculOld);
+        //SpDt_swAccOpt = AccFbTemp_LPF.sw.hi - SpDt_swAccCalculOld;
+		//SpDt_swAccCalculOld = AccFbTemp_LPF.sw.hi;
+
+        /************************************¥ý¶q¤Æ¦A­pºâAcc************************************/
+        swAccTemp1 = ((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
+        AccCmdTemp_LPF.sl += (swAccTemp1 - AccCmdTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+        
+		TB1_swAccCmdOpt  = AccCmdTemp_LPF.sw.hi - TB1_swAccCmdCalculOld;
+
+		TB1_swAccCmdCalculOld = AccCmdTemp_LPF.sw.hi;
+        /************************************¥ý¶q¤Æ¦A­pºâAcc************************************/
+
+
+        /************************************¥ý­pºâAcc¦A¶q¤Æ************************************/
+        slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
+        swAccTemp2 = ((SLONG)COF_uwFbRe * (slAccTemp2>>15))>>14;
+        AccFbTemp_LPF.sl += (swAccTemp2 - AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+
+        TB1_swAccOpt = AccFbTemp_LPF.sw.hi;
+
+        TB1_slAccCalculOld = SpDt_slSpdFdbPu;
+        /************************************¥ý­pºâAcc¦A¶q¤Æ************************************/
+
+
+    }    
+}
+//[Rationa 362631, Special.Kung]
 
 #ifdef _TB_1ms_C
   #undef _TB_1ms_C
