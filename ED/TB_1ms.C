@@ -3562,7 +3562,6 @@ void TimeBase_1ms(void)
 
     if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0))
     {
-        TB1_AccFunction();        //[Rationa 362631, Special.Kung]
 
         if(pr[OVER_ACC_SET]==0)
         {
@@ -6111,78 +6110,6 @@ void Torq_Tune_Process(void){  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
         }
     }
 }
-
-//[Rationa 362631, Special.Kung]
-void AccFunctionInit(void)
-{
-    TB1_uwSampleRate       = 0;
-    TB1_swAccOpt           = 0;
-    TB1_swAccCalculOld     = 0;
-    TB1_swAccCmdOpt        = 0;
-    TB1_swAccCmdCalculOld  = 0;
-}
-//[Rationa 362631, Special.Kung]
-
-//[Rationa 362631, Special.Kung]
-void TB1_AccFunction(void)
-{
-    UWORD uwAccTemp1, uwAccTemp2, uwCnt, uwLPF;
-    UWORD uwTemp1, uwTemp2;
-    SWORD swAccTemp1, swAccTemp2;
-    SLONG slAccTemp1, slAccTemp2;
-
-    uwCnt = pr[ACC_SampleRate];
-    uwLPF = pr[ACC_LPF];
-
-    if(TB1_uwSampleRate<uwCnt)
-    {
-        TB1_uwSampleRate = TB1_uwSampleRate+1;
-    }
-    else
-    {
-        TB1_uwSampleRate = 0;
-
-        //if(SpDt_slSpdFdbPu >=0)
-        //{
-        //    uwAccTemp2 = abs((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
-        //}
-        //else
-        //{
-        //    uwAccTemp2 = abs((SLONG)COF_uwFbRe * (-SpDt_slSpdFdbPu>>15))>>14;
-        //}
-
-        //SpDt_uwAccOpt = abs(AccTemp_LPF.sw.hi - SpDt_uwAccCalculOld);
-        //SpDt_swAccOpt = AccFbTemp_LPF.sw.hi - SpDt_swAccCalculOld;
-		//SpDt_swAccCalculOld = AccFbTemp_LPF.sw.hi;
-
-        /************************************先量化再計算Acc************************************/
-        swAccTemp1 = ((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
-        TB1_AccCmdTemp_LPF.sl += (swAccTemp1 - TB1_AccCmdTemp_LPF.sw.hi)*(uwLPF); // Lowpass
-        
-		TB1_swAccCmdOpt  = TB1_AccCmdTemp_LPF.sw.hi - TB1_swAccCmdCalculOld;
-
-		TB1_swAccCmdCalculOld = TB1_AccCmdTemp_LPF.sw.hi;
-        /************************************先量化再計算Acc************************************/
-
-
-        /************************************先計算Acc再量化************************************/
-        TB1_slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
-        TB1_swAccTemp2 = ((SLONG)COF_uwFbRe * (TB1_slAccTemp2>>15))>>14;
-
-        //slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
-        //swAccTemp2 = ((SLONG)COF_uwFbRe * (slAccTemp2>>15))>>14;
-
-        TB1_AccFbTemp_LPF.sl += (TB1_swAccTemp2 - TB1_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
-
-        TB1_swAccOpt = TB1_AccFbTemp_LPF.sw.hi;
-
-        TB1_slAccCalculOld = SpDt_slSpdFdbPu;
-        /************************************先計算Acc再量化************************************/
-
-
-    }    
-}
-//[Rationa 362631, Special.Kung]
 
 #ifdef _TB_1ms_C
   #undef _TB_1ms_C

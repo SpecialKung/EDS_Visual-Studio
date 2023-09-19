@@ -1125,11 +1125,10 @@ void PGDIR_Detect(void){	//[Encoder absulate position wrong detect, Lyabryan, 20
 //[Rationa 362631, Special.Kung]
 void TB3_AccFunction(void)
 {
-    UWORD uwAccTemp1, uwAccTemp2, uwCnt, uwLPF;
-    UWORD uwTemp1, uwTemp2;
-    SWORD swAccTemp1, swAccTemp2;
-    SLONG slAccTemp1, slAccTemp2;
-	SDOUBLE sdAccTemp1, sdAccTemp2, sdAccTemp3;
+    UWORD uwCnt, uwLPF;
+	SWORD swAccTemp1;
+    SLONG slAccTemp1, slAccTemp2, slAccTemp3;
+
 
     uwCnt = pr[ACC_SampleRate]/5;
     uwLPF = pr[ACC_LPF];
@@ -1160,16 +1159,15 @@ void TB3_AccFunction(void)
 
 
         /************************************先計算Acc再量化************************************/
-		TB3_slAccTemp1 = SpDt_slSpdFdbPu*1832;
-		TB3_slAccTemp2 = TB3_slAccCalculOld*1832;
+		slAccTemp1 = SpDt_slSpdFdbPu*1832;
+		slAccTemp2 = TB3_slAccCalculOld*1832;
 
-		TB3_slAccTemp3 = (TB3_slAccTemp1-TB3_slAccTemp2);
-		TB3_swAccTemp2 = ((SLONG)COF_uwFbRe * (TB3_slAccTemp3>>15))>>18;
-
+		slAccTemp3 = (slAccTemp1-slAccTemp2);
+		swAccTemp1 = ((SLONG)COF_uwFbRe * (slAccTemp3>>15))>>18;
         //TB3_slAccTemp2 = SpDt_slSpdFdbPu - TB3_slAccCalculOld;
         //TB3_swAccTemp2 = ((SLONG)COF_uwFbRe * (TB3_slAccTemp2>>15))>>14;
 
-        TB3_AccFbTemp_LPF.sl += (TB3_swAccTemp2 - TB3_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+        TB3_AccFbTemp_LPF.sl += (swAccTemp1 - TB3_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
 		TB3_swAccOpt = TB3_AccFbTemp_LPF.sw.hi;
 
         TB3_slAccCalculOld = SpDt_slSpdFdbPu;

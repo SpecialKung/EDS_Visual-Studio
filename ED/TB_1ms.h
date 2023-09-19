@@ -78,8 +78,6 @@ TB_1ms_EXT void OverAccInit(void);
 TB_1ms_EXT void Torq_Tune_Process(void); //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
 TB_1ms_EXT void VFGenOrMot_DIR(void);
 TB_1ms_EXT void EPS_NormalDetectCurrent(void);
-TB_1ms_EXT void TB1_AccFunction(void);		//[Rationa 362631, Special.Kung]
-TB_1ms_EXT void AccFunctionInit(void);		//[Rationa 362631, Special.Kung]
 
 /* Exported Variable List ======================================*/
 TB_1ms_EXT UBYTE		TB1_ub1msCnt,
@@ -328,25 +326,6 @@ TB_1ms_EXT UBYTE        ubPGrevCnt,         // JOSH don't revise SpdFdb continuo
                         ubRevise;           // JOSH revise SpdFdb flag
 TB_1ms_EXT UWORD		uwGFF_MaxVal;		// GFF Maximum Value Record, Jerry Yu, 2019/11/11
 TB_1ms_EXT UBYTE		ubIntervalSeted;	//[Add GFF and Ocx auto reset function, Jerry Yu, 2019/05/23]
-
-TB_1ms_EXT UWORD
-						TB1_uwSampleRate;		//[Rationa 362631, Special.Kung]
-
-TB_1ms_EXT SLONG_UNION
-						TB1_AccFbTemp_LPF,			//[Rationa 362631, Special.Kung]
-						TB1_AccCmdTemp_LPF;   		//[Rationa 362631, Special.Kung]
-
-TB_1ms_EXT SWORD
-						TB1_swAccTemp1,			//[Rationa 362631, Special.Kung]
-						TB1_swAccTemp2,			//[Rationa 362631, Special.Kung]
-						TB1_swAccCalculOld,		//[Rationa 362631, Special.Kung]
-						TB1_swAccCmdOpt,		//[Rationa 362631, Special.Kung]
-						TB1_swAccCmdCalculOld;	//[Rationa 362631, Special.Kung]
-
-TB_1ms_EXT SLONG
-						TB1_slAccTemp1,			//[Rationa 362631, Special.Kung]
-						TB1_slAccTemp2,			//[Rationa 362631, Special.Kung]
-						TB1_slAccCalculOld;		//[Rationa 362631, Special.Kung]
 
 /*== Local Variable List (Variables not open to other files)  ==*/
 

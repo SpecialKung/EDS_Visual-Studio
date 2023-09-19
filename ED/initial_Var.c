@@ -517,12 +517,9 @@ void  Initial_Var(void){
     SpDt_uwAccCalcul        =0;
     SpDt_uwAccOpt           =0;
     SpDt_uwAccCalculOld     =0;
-    TB1_swAccOpt            =0;     //[Rationa 362631, Special.Kung]
-    TB1_swAccCalculOld      =0;     //[Rationa 362631, Special.Kung]
-    TB1_uwSampleRate        =0;     //[Rationa 362631, Special.Kung]
     TB3_swAccOpt            =0;     //[Rationa 362631, Special.Kung]
-    TB3_swAccCalculOld      =0;     //[Rationa 362631, Special.Kung]
     TB3_uwSampleRate        =0;     //[Rationa 362631, Special.Kung]
+    TB3_slAccCalculOld      =0;     //[Rationa 362631, Special.Kung]
     OverAccTimeSet          =0;
     uwOverAccLev            =0;
     uwOverAccCnt            =0;
