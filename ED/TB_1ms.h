@@ -78,7 +78,7 @@ TB_1ms_EXT void OverAccInit(void);
 TB_1ms_EXT void Torq_Tune_Process(void); //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
 TB_1ms_EXT void VFGenOrMot_DIR(void);
 TB_1ms_EXT void EPS_NormalDetectCurrent(void);
-TB_1ms_EXT void AccFunction(void);			//[Rationa 362631, Special.Kung]
+TB_1ms_EXT void TB1_AccFunction(void);		//[Rationa 362631, Special.Kung]
 TB_1ms_EXT void AccFunctionInit(void);		//[Rationa 362631, Special.Kung]
 
 /* Exported Variable List ======================================*/
@@ -333,10 +333,12 @@ TB_1ms_EXT UWORD
 						TB1_uwSampleRate;		//[Rationa 362631, Special.Kung]
 
 TB_1ms_EXT SLONG_UNION
-						AccFbTemp_LPF,			//[Rationa 362631, Special.Kung]
-						AccCmdTemp_LPF;   		//[Rationa 362631, Special.Kung]
+						TB1_AccFbTemp_LPF,			//[Rationa 362631, Special.Kung]
+						TB1_AccCmdTemp_LPF;   		//[Rationa 362631, Special.Kung]
 
 TB_1ms_EXT SWORD
+						TB1_swAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB1_swAccTemp2,			//[Rationa 362631, Special.Kung]
 						TB1_swAccCalculOld,		//[Rationa 362631, Special.Kung]
 						TB1_swAccCmdOpt,		//[Rationa 362631, Special.Kung]
 						TB1_swAccCmdCalculOld;	//[Rationa 362631, Special.Kung]

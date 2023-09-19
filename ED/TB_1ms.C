@@ -3093,11 +3093,10 @@ void TimeBase_500us(void)
 	UDOUBLE	udTmp;
 
 
-// The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
-  //GPT5.GTCCRE = 0x04B0;
-  //GPT6.GTCCRE = 0x04B0;
-  //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count
-  
+    // The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
+    //GPT5.GTCCRE = 0x04B0;
+    //GPT6.GTCCRE = 0x04B0;
+    //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count  
   
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     SIBO_STO_Safty();
@@ -3162,6 +3161,8 @@ void TimeBase_500us(void)
         TB3_SpDtPG1_LoIv();   
     }
 
+    TB3_AccFunction();
+
 // -FAN CONTROL ----- added by scotty 10/15/20007
     if (FAN_ENABLE){
       if (pr[FAN_Dframe] == 1){  // Delete FAN Soft-Start Function, DINO, 06/01/2010
@@ -3215,8 +3216,6 @@ void TimeBase_500us(void)
     }
 
     TB_500us ^= 1;
-
-    AccFunction();
 
 	if(TB_500us == 1){
 		TimeBase_1ms();
@@ -3560,19 +3559,10 @@ void TimeBase_1ms(void)
         IODLC_uwPR_Th_CNT++;
     }
 
-    //[Rationa 362631, Special.Kung]
-    //if(CMDRUN==RUN)
-    //{
-        //AccFunction();
-    //}
-    //else
-    //{
-        //AccFunctionInit();
-    //}
-    //[Rationa 362631, Special.Kung]
 
     if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0))
     {
+        TB1_AccFunction();        //[Rationa 362631, Special.Kung]
 
         if(pr[OVER_ACC_SET]==0)
         {
@@ -6134,14 +6124,14 @@ void AccFunctionInit(void)
 //[Rationa 362631, Special.Kung]
 
 //[Rationa 362631, Special.Kung]
-void AccFunction(void)
+void TB1_AccFunction(void)
 {
     UWORD uwAccTemp1, uwAccTemp2, uwCnt, uwLPF;
     UWORD uwTemp1, uwTemp2;
     SWORD swAccTemp1, swAccTemp2;
     SLONG slAccTemp1, slAccTemp2;
 
-    uwCnt = pr[ACC_SampleRate]*0.2;
+    uwCnt = pr[ACC_SampleRate];
     uwLPF = pr[ACC_LPF];
 
     if(TB1_uwSampleRate<uwCnt)
@@ -6167,20 +6157,24 @@ void AccFunction(void)
 
         /************************************先量化再計算Acc************************************/
         swAccTemp1 = ((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
-        AccCmdTemp_LPF.sl += (swAccTemp1 - AccCmdTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+        TB1_AccCmdTemp_LPF.sl += (swAccTemp1 - TB1_AccCmdTemp_LPF.sw.hi)*(uwLPF); // Lowpass
         
-		TB1_swAccCmdOpt  = AccCmdTemp_LPF.sw.hi - TB1_swAccCmdCalculOld;
+		TB1_swAccCmdOpt  = TB1_AccCmdTemp_LPF.sw.hi - TB1_swAccCmdCalculOld;
 
-		TB1_swAccCmdCalculOld = AccCmdTemp_LPF.sw.hi;
+		TB1_swAccCmdCalculOld = TB1_AccCmdTemp_LPF.sw.hi;
         /************************************先量化再計算Acc************************************/
 
 
         /************************************先計算Acc再量化************************************/
-        slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
-        swAccTemp2 = ((SLONG)COF_uwFbRe * (slAccTemp2>>15))>>14;
-        AccFbTemp_LPF.sl += (swAccTemp2 - AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+        TB1_slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
+        TB1_swAccTemp2 = ((SLONG)COF_uwFbRe * (TB1_slAccTemp2>>15))>>14;
 
-        TB1_swAccOpt = AccFbTemp_LPF.sw.hi;
+        //slAccTemp2 = SpDt_slSpdFdbPu - TB1_slAccCalculOld;
+        //swAccTemp2 = ((SLONG)COF_uwFbRe * (slAccTemp2>>15))>>14;
+
+        TB1_AccFbTemp_LPF.sl += (TB1_swAccTemp2 - TB1_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
+
+        TB1_swAccOpt = TB1_AccFbTemp_LPF.sw.hi;
 
         TB1_slAccCalculOld = SpDt_slSpdFdbPu;
         /************************************先計算Acc再量化************************************/

@@ -98,8 +98,10 @@ MonitorPr_EXT ULONG_UNION	fkey,			//Freq. Command
 #pragma address fkeyDisplay=0x0000a176      //[Address fixed, Special.Kung, 2022/11/4]
 MonitorPr_EXT UWORD         fkeyDisplay;    //Freq. Command for vfd-soft/ explore Display, Special.Kung, 2022/11/4
 
-#pragma address TB1_swAccOpt=0x0000a17A		//[Rationa 362631, Special.Kung]
+//#pragma address TB1_swAccOpt=0x0000a17A		//[Rationa 362631, Special.Kung]
+#pragma address TB3_swAccOpt=0x0000a17A		//[Rationa 362631, Special.Kung]
 MonitorPr_EXT SWORD			TB1_swAccOpt;	//[Rationa 362631, Special.Kung]
+MonitorPr_EXT SWORD			TB3_swAccOpt;	//[Rationa 362631, Special.Kung]
 
 #pragma address VcmdLLPF=0x0000a10a         //[Address fixed, Aevin, 2017/06/28]
 MonitorPr_EXT SLONG_UNION	PHLbusReLPF,	//Dcbus (Vdc)	SCOTTY 09/05/2007

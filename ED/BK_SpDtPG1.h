@@ -37,7 +37,8 @@ SpDtPG1_EXT void TB3_PGErrProcess(void);
 SpDtPG1_EXT void TB3_SpDtPG1_LoIv(void);
 SpDtPG1_EXT void TB3_SpDtPG1_Err(void);
 SpDtPG1_EXT void TB2_SpDtPG1(void);
-SpDtPG1_EXT void PGDIR_Detect(void); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+SpDtPG1_EXT void PGDIR_Detect(void); 		//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+SpDtPG1_EXT void TB3_AccFunction(void);		//[Rationa 362631, Special.Kung]
 
 
 /* Exported Variable List ======================================*/
@@ -136,6 +137,37 @@ SpDtPG1_EXT SLONG_UNION  PGABerr_add,
                          PGABerr_LPF,
                          PGCDerr_LPF; //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
+SpDtPG1_EXT UWORD
+						TB3_uwSampleRate,		//[Rationa 362631, Special.Kung]
+						TB3_uwAccLPG;			//[Rationa 362631, Special.Kung]
+
+SpDtPG1_EXT SLONG_UNION
+						TB3_AccFbTemp_LPF,		//[Rationa 362631, Special.Kung]
+						TB3_AccCmdTemp_LPF;   	//[Rationa 362631, Special.Kung]
+
+SpDtPG1_EXT SWORD
+						TB3_swAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB3_swAccTemp2,			//[Rationa 362631, Special.Kung]
+						TB3_swAccTemp3,			//[Rationa 362631, Special.Kung]
+						TB3_swAccCalculOld,		//[Rationa 362631, Special.Kung]
+						TB3_swAccCmdOpt,		//[Rationa 362631, Special.Kung]
+						TB3_swAccCmdCalculOld;	//[Rationa 362631, Special.Kung]
+
+SpDtPG1_EXT SLONG
+						TB3_slAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB3_slAccTemp2,			//[Rationa 362631, Special.Kung]
+						TB3_slAccTemp3,			//[Rationa 362631, Special.Kung]
+						TB3_slAccCalculOld;		//[Rationa 362631, Special.Kung]
+
+SpDtPG1_EXT SDOUBLE
+						TB3_sdAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB3_sdAccTemp2,			//[Rationa 362631, Special.Kung]
+						TB3_sdAccTemp3;			//[Rationa 362631, Special.Kung]
+
+SpDtPG1_EXT UDOUBLE
+						TB3_udAccTemp1,			//[Rationa 362631, Special.Kung]
+						TB3_udAccTemp2,			//[Rationa 362631, Special.Kung]
+						TB3_udAccTemp3;			//[Rationa 362631, Special.Kung]
 
 /*== Local Variable List (Variables not open to other files)  ==*/
 
