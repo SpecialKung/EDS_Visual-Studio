@@ -1126,12 +1126,15 @@ void PGDIR_Detect(void){	//[Encoder absulate position wrong detect, Lyabryan, 20
 void TB3_AccFunction(void)
 {
     UWORD uwCnt, uwLPF;
+	ULONG ultmp;
 	SWORD swAccTemp1;
     SLONG slAccTemp1, slAccTemp2, slAccTemp3;
 
 
     uwCnt = pr[ACC_SampleRate]/5;
     uwLPF = pr[ACC_LPF];
+
+	ultmp = (ULONG)((pr[Lift_SPD])*100/(pr[FMAX]));	
 
 	TB3_uwSampleRate = TB3_uwSampleRate+1;
 
@@ -1169,6 +1172,8 @@ void TB3_AccFunction(void)
 
         TB3_AccFbTemp_LPF.sl += (swAccTemp1 - TB3_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
 		TB3_swAccOpt = TB3_AccFbTemp_LPF.sw.hi;
+
+		TB3_swAccOpt = (TB3_swAccOpt*ultmp)>>2;
 
         TB3_slAccCalculOld = SpDt_slSpdFdbPu;
         /************************************先計算Acc再量化************************************/
