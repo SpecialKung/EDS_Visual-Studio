@@ -1134,7 +1134,7 @@ void TB3_AccFunction(void)
     uwCnt = pr[ACC_SampleRate]/5;
     uwLPF = pr[ACC_LPF];
 
-	ultmp = (ULONG)((pr[Lift_SPD])*100/(pr[FMAX]));	
+	ultmp = (ULONG)((pr[Lift_SPD])*60/(pr[FMAX]));	
 
 	TB3_uwSampleRate = TB3_uwSampleRate+1;
 
