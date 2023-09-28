@@ -1134,7 +1134,7 @@ void TB3_AccFunction(void)
     uwCnt = pr[ACC_SampleRate]/5;
     uwLPF = pr[ACC_LPF];
 
-	ultmp = (ULONG)((pr[Lift_SPD])*60/(pr[FMAX]));	
+	ultmp = (ULONG)((pr[Lift_SPD])*60/(pr[FMAX]));		//for TB3_swAccOpt_GFC
 
 	TB3_uwSampleRate = TB3_uwSampleRate+1;
 
@@ -1151,16 +1151,6 @@ void TB3_AccFunction(void)
     {
         TB3_uwSampleRate = 0;
 
-        /************************************先量化再計算Acc************************************/
-        //swAccTemp1 = ((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>14;
-        //TB3_AccCmdTemp_LPF.sl += (swAccTemp1 - TB3_AccCmdTemp_LPF.sw.hi)*(uwLPF); // Lowpass
-        
-		//TB3_swAccCmdOpt  = TB3_AccCmdTemp_LPF.sw.hi - TB3_swAccCmdCalculOld;
-
-		//TB3_swAccCmdCalculOld = TB3_AccCmdTemp_LPF.sw.hi;
-        /************************************先量化再計算Acc************************************/
-
-
         /************************************先計算Acc再量化************************************/
 		slAccTemp1 = SpDt_slSpdFdbPu*1832;
 		slAccTemp2 = TB3_slAccCalculOld*1832;
@@ -1173,12 +1163,10 @@ void TB3_AccFunction(void)
         TB3_AccFbTemp_LPF.sl += (swAccTemp1 - TB3_AccFbTemp_LPF.sw.hi)*(uwLPF); // Lowpass
 		TB3_swAccOpt = TB3_AccFbTemp_LPF.sw.hi;
 
-		TB3_swAccOpt = (TB3_swAccOpt*ultmp)>>2;
+		TB3_swAccOpt_GFC = (TB3_swAccOpt*ultmp)>>2;
 
         TB3_slAccCalculOld = SpDt_slSpdFdbPu;
         /************************************先計算Acc再量化************************************/
-
-
     }    
 }
 //[Rationa 362631, Special.Kung]

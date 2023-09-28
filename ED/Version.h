@@ -14,7 +14,7 @@
     #else
         #define SWVERS_H      9111
         #define SWVERS_L         0
-        #define DateCode      23393	/* 20200803 Mon. */
+        #define DateCode      23394	/* 20200803 Mon. */
     #endif
 #endif
 /*============================================================================================
