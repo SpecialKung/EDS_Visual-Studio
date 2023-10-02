@@ -148,6 +148,7 @@ DLC_EXT ULONG_UNION         DLC_ulPosPar, // DLC position offset, Henryv
 					        DLC_ulPosTar, // Sean, 20181207
 					        DLC_ulDisTar, // Sean, 20181207
 					        ulLiftSpdFdb;
+
 DLC_EXT	ULONG		        ultest1,
                             ultest2,
                             ultest3,
@@ -198,10 +199,11 @@ DLC_EXT	UWORD	            PR_S4ACC1,
 							DLC_uwVd_Dec0S,	//等減速段要走的速度變化量	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_uwAd_Dec0S,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_uwVc_Dec0S;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+
 DLC_EXT	UWORD    			DLC_uwV3,			//real spd variable V3
 							DLC_uwV4,			//real spd variable V4
-							DLC_uwVc,		//real const spd
-							DLC_uwVd,		//real spd variable Vdec
+							DLC_uwVc,			//real const spd
+							DLC_uwVd,			//real spd variable Vdec
 							DLC_uwV4Dif,
 							DLC_uwS1Tmr,
 							DLC_uwAccTmr,
@@ -225,9 +227,9 @@ DLC_EXT	UWORD DLC_uwTra3,
 							DLC_uwTra5,
 							DLC_uwSpdTra,
 							DLC_uwEeprom,
-							DLC_uwSpdLim,  //(m/s, dot3)//Artemis speed limit, James, 20200220							
-							DLC_uwLuLdResetTimer,//#15977, LULD detect, James, 2021/08/03
-							DLC_uwLuLdTimer;//#15977, LULD detect, James, 2021/04/01
+							DLC_uwSpdLim,  			//(m/s, dot3)//Artemis speed limit, James, 20200220							
+							DLC_uwLuLdResetTimer,	//#15977, LULD detect, James, 2021/08/03
+							DLC_uwLuLdTimer;		//#15977, LULD detect, James, 2021/04/01
 							
 DLC_EXT	UWORD	DLC_uwTra3,
 							DLC_uwTra4,
@@ -240,9 +242,11 @@ DLC_EXT	UWORD	DLC_uwTra3,
 							DLC_uwPeriodCnt,
 							DLC_uwDCICnt,
 							DLC_uwSfbk;
+							
 DLC_EXT	SWORD				swRopeCmp;
 
-DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
+DLC_EXT	UBYTE	
+							DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
 							DLC_ubtra,
 							DLC_ubLevMax,
 							DLC_ubLevMin,

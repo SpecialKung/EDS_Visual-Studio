@@ -1761,7 +1761,7 @@ void Run_Execute(void)
             {
                 if (pr[PM_AUTO_T]!= 2 )   // Debug BY SCOTTY 04/09/2007
                 {
-                    HOLD = 1;       // Hold Speed 禁止加減速 
+                    HOLD = 1;       // Hold Speed 禁止加減速
                 }
             }
             else
@@ -1954,36 +1954,45 @@ void Run_Execute(void)
           uwBKRUNT = pr[BRK_RUNDT];
     }
 
-      if (pr[PM_AUTO_T]==2 || STtune==1 || TUN_SS==1){  // dino, 08/11/2008
-          BRK_RLS = 0;  //lock
-      }
-  // [ Don't release BRK in Static Tune, Add by DINO, 06/29/2009
-      else if (pr[AUTO_T] == 2){
-          BRK_RLS = 0;  //lock
-      }         
-      else{
-          // [ Flux Confirm, Add by DINO, 06/29/2009
-          if (I0CHK == 0){
-            BRK_RLS = 0;
-          }
-          // ]
-          else{
-            if (fcmd.uw.hi != 0){
-                BRK_RLS = 1;  //release
-                TB1_uwBrkRunCnt = uwBKRUNT+1;
-              }
-              else{
-                  if ( TB1_uwBrkRunCnt > uwBKRUNT )
-                      BRK_RLS = 1;  //release
-                  else {
-                      BRK_RLS = 0;  //lock
-                      if(UCMP == 0){    //[UCMP function, Bernie, 2016/06/14]
-                          TB1_uwBrkRunCnt++;
-                      }
-                  }
-              }
-          }
-      } 
+        if (pr[PM_AUTO_T]==2 || STtune==1 || TUN_SS==1)
+        {  // dino, 08/11/2008
+            BRK_RLS = 0;  //lock
+        }
+        // [ Don't release BRK in Static Tune, Add by DINO, 06/29/2009
+        else if (pr[AUTO_T] == 2)
+        {
+            BRK_RLS = 0;  //lock
+        }         
+        else
+        {
+            // [ Flux Confirm, Add by DINO, 06/29/2009
+            if (I0CHK == 0)
+            {
+                BRK_RLS = 0;
+            }
+            // ]
+            else
+            {
+                if (fcmd.uw.hi != 0)
+                {
+                    BRK_RLS = 1;  //release
+                    TB1_uwBrkRunCnt = uwBKRUNT+1;
+                }
+                else
+                {
+                    if ( TB1_uwBrkRunCnt > uwBKRUNT )
+                        BRK_RLS = 1;  //release
+                    else 
+                    {
+                        BRK_RLS = 0;  //lock
+                        if(UCMP == 0)
+                        {    //[UCMP function, Bernie, 2016/06/14]
+                            TB1_uwBrkRunCnt++;
+                        }
+                    }
+                }
+            }
+        } 
 
         /*-------- AVR function -----------------------*/
         if ((pr[AVR]==0)||((pr[AVR]==2)&&(ACCODEC==ACCON)))
@@ -3084,65 +3093,73 @@ void TimeBase_500us(void)
 	UDOUBLE	udTmp;
 
 
-// The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
-  //GPT5.GTCCRE = 0x04B0;
-  //GPT6.GTCCRE = 0x04B0;
-  //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count
-  
+    // The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
+    //GPT5.GTCCRE = 0x04B0;
+    //GPT6.GTCCRE = 0x04B0;
+    //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count  
   
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-      SIBO_STO_Safty();
+    SIBO_STO_Safty();
 #else
-      TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
+    TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
 #endif
    
-  if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM){   // [Warning initial, Lyabryan, 2015/03/12]
-      if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-          TB3_SpDtPG1_Err();
-      }
-  }
+    if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM)
+    {   
+        // [Warning initial, Lyabryan, 2015/03/12]
+        if ((pr[PROTBIT]&0x0040)==0x0000)
+        {  
+            //Bit 6: PGErr
+            TB3_SpDtPG1_Err();
+        }
+    }
   
-  if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-      PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+    if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+        PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
-  if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 ){
-      switch(pr[CTRLM]){
+    if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 )
+    {
+        switch(pr[CTRLM])
+        {
             case FOCPG:
-      case TQCPG:
+            case TQCPG:
                 TB3_SpDtPG1_LoIv();
-              TB3_FOCPG();
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                TB3_FOCPG();
+                if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();
+            break;
             case VFPG:
                 TB3_SpDtPG1_LoIv();
                 if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                    TB3_SpDtPG1_Err();
+            break;
 #if SCOTTY
-      case FOCPM:               //ADDED BY SCOTTY
-        TB3_SpDtPG1_LoIv();         //ADDED BY SCOTTY
-        TB3_FOCPM();            //ADDED BY SCOTTY
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();        
-        break;              //ADDED BY SCOTTY
+            case FOCPM:               //ADDED BY SCOTTY
+                TB3_SpDtPG1_LoIv();         //ADDED BY SCOTTY
+                TB3_FOCPM();            //ADDED BY SCOTTY
+                if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();        
+             break;              //ADDED BY SCOTTY
 #endif      
-      case SVC:
+            case SVC:
             case VF:                                
             case FOC:
             case DBCSECA:
             default:
                 TB3_SpDtPG1_LoIv();
-                if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-                  if (CTRLMCHG==1)
-                      TB3_SpDtPG1_Err();
-              }
+                if ((pr[PROTBIT]&0x0040)==0x0000)
+                {
+                    //Bit 6: PGErr
+                    if (CTRLMCHG==1)
+                        TB3_SpDtPG1_Err();
+                }
                 break;
-          }
-  }
-  else{
+        }
+    }
+    else
+    {
         TB3_SpDtPG1_LoIv();   
-  }
+    }
 
 // -FAN CONTROL ----- added by scotty 10/15/20007
     if (FAN_ENABLE){
@@ -3428,10 +3445,10 @@ void TimeBase_1ms(void)
     AUIadLPF.sl = lowpass_sl(AUI2In_LPG,AD_uwAUI2ad,AUIadLPF.sl); //AUI2
     PTCInLPF.sl = lowpass_sl(PTCIn_LPG,PTCInValue,PTCInLPF.sl);   //PTC
 */
-  AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
-  ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG; //ACI
-  AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
-  PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG; //PTC
+    AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
+    ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG; //ACI
+    AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
+    PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG; //PTC
 // ]
 
     //------ Display Low pass -----------------------------------//
@@ -3456,7 +3473,7 @@ void TimeBase_1ms(void)
 
 // [ Modify the LPF function by DINO, 03/07/2009
 //    ulDcbusReLPF.ul = lowpass_ul(dcbusLPG, dcbusDC, ulDcbusReLPF.ul); //SCOTTY 09/05/2007
-  PHLbusReLPF.sl += (SLONG)(dcbusDC - PHLbusReLPF.sw.hi) * dcbusLPG;  //DCbus for PHL detection
+    PHLbusReLPF.sl += (SLONG)(dcbusDC - PHLbusReLPF.sw.hi) * dcbusLPG;  //DCbus for PHL detection
 // ]
 
     if (RESTART){
@@ -3503,38 +3520,51 @@ void TimeBase_1ms(void)
     }// end of STOP function
     /*============End of STOP command ===========================================================*/
 
-  // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
-  if (RUNNING == RUN){
-    // [ Add condition, DINO, 08/25/2010
-    if (RUNDCI){
-      ZEROSTOP = 0;
+    // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
+    if (RUNNING == RUN)
+    {
+        // [ Add condition, DINO, 08/25/2010
+        if (RUNDCI)
+        {
+            ZEROSTOP = 0;
+        }
+        else if (STOPDCI)
+        {
+            ZEROSTOP = 1;
+        }
+        else
+        {
+            // ]
+            if (Fcmd > TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 0;
+            }
+            else if (Fcmd < TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 1;
+            }
+        }
     }
-    else if (STOPDCI){
-      ZEROSTOP = 1;
-    }
-    else{
-    // ]
-      if (Fcmd > TB1_uwFcmdOld){
+    else
+    {
         ZEROSTOP = 0;
-      }
-      else if (Fcmd < TB1_uwFcmdOld){
-        ZEROSTOP = 1;
-      }
     }
-  }
-  else{
-    ZEROSTOP = 0;
-  }
-  TB1_uwFcmdOld = Fcmd;
+    TB1_uwFcmdOld = Fcmd;
   // ]
-  if(IODLC_holdCNT == 1){ // [IODLC, Lyabryan, 2016/11/11]
-      IODLC_uwPR_Th_CNT++;
-  }	  
-  
-    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0)){
+    if(IODLC_holdCNT == 1)
+    { 
+        // [IODLC, Lyabryan, 2016/11/11]
+        IODLC_uwPR_Th_CNT++;
+    }
 
-        if(pr[OVER_ACC_SET]==0){
+
+    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0))
+    {
+
+        if(pr[OVER_ACC_SET]==0)
+        {
             OverAccFunction();
+
         }
         else{                 //pr[OVER_ACC_SET] = 1;
             if((pr[OVER_ACC_SET]==1)&&(CMDRUN==RUN)){
@@ -4886,12 +4916,14 @@ void TimeBase_1msB(void){
         AFE_uwMOCNT = AFE_ERR_RST_CNT;
     }
   
-  if((Error == 0)&&((pr[DEBUG_PG]&0x0400)!=0x0400)&& Zphase_countAB_flag&&(pr[PG_TYPE]==SIN_SIN)){ //[Zphase broken, Lyabryan, 2015/09/17]  //[modify Error code,Lyabryan,2016/07/21]
-      WGOFF;
-      Error = PGAF_ERR;		  
-      stop();
-      Zphase_countAB_flag = 0;
-  }
+    if((Error == 0)&&((pr[DEBUG_PG]&0x0400)!=0x0400)&& Zphase_countAB_flag&&(pr[PG_TYPE]==SIN_SIN))
+    { 
+        //[Zphase broken, Lyabryan, 2015/09/17]  //[modify Error code,Lyabryan,2016/07/21]
+        WGOFF;
+        Error = PGAF_ERR;		  
+        stop();
+        Zphase_countAB_flag = 0;
+    }
         
     uwPGF5_Type = 0;
     if(IED_PG_ERR_OVERTIME)//[For IED PG-Card, Sampo, 02/25/2010]

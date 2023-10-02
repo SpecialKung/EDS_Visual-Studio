@@ -117,8 +117,8 @@ MonitorPr_EXT UWORD		PIDsource,			//PID reference (%)
 MonitorPr_EXT ULONG_UNION					
 						PG2_ulSpdCmdLPF;	//PG2 velocity
 
-#pragma address swAVICalib=0x0000a112   //[Address fixed, Aevin, 2017/06/28]
-#pragma address swAUICalib=0x0000a114   //[Address fixed, Aevin, 2017/06/28]
+#pragma address swAVICalib=0x0000a112   	//[Address fixed, Aevin, 2017/06/28]
+#pragma address swAUICalib=0x0000a114   	//[Address fixed, Aevin, 2017/06/28]
 
 MonitorPr_EXT SWORD 	swAVICalib,			//AVI percent (%)
                     	swACICalib,			//ACI percent (%)
@@ -139,7 +139,7 @@ MonitorPr_EXT SLONG 	CRM_slFlxFreqPu,
                     	TB1_slSpdCmdPu,
                     	SpDt_slSpdFdbPu;
 
-#pragma address dcbusDC=0x0000a108      //[Address fixed, Aevin, 2017/06/28]
+#pragma address dcbusDC=0x0000a108			  //[Address fixed, Aevin, 2017/06/28]
 MonitorPr_EXT UWORD		Vcmd_LL,
 			            dcbusDC;
 
@@ -201,8 +201,10 @@ MonitorPr_EXT UWORD     uw_PGtest,             //[ED for HW test, Bernie, 2014/0
                         uw_PGReCoDer;
 
                         
-MonitorPr_EXT SLONG_UNION		DcbusDCLPF,		//Dcbus (Vdc)
-                                TqRefPuLPF;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+MonitorPr_EXT SLONG_UNION		
+						DcbusDCLPF,		//Dcbus (Vdc)
+                        TqRefPuLPF;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+
 
 /************************************************************************
  Copyright (c) 2005 EMBU DELTA

@@ -37,8 +37,7 @@ SpDtPG1_EXT void TB3_PGErrProcess(void);
 SpDtPG1_EXT void TB3_SpDtPG1_LoIv(void);
 SpDtPG1_EXT void TB3_SpDtPG1_Err(void);
 SpDtPG1_EXT void TB2_SpDtPG1(void);
-SpDtPG1_EXT void PGDIR_Detect(void); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-
+SpDtPG1_EXT void PGDIR_Detect(void); 		//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
 /* Exported Variable List ======================================*/
 SpDtPG1_EXT UBYTE	SpDt_ubT0OverCnt,
@@ -91,10 +90,12 @@ SpDtPG1_EXT UWORD   OverAccTimeSet,
                     uwOverAccCnt;
 
 
-SpDtPG1_EXT SLONG_UNION AccTemp_LPF;   //[Over Acceleration protection function, Bernie, 2017/02/13]
+SpDtPG1_EXT SLONG_UNION 
+					AccTemp_LPF;   		//[Over Acceleration protection function, Bernie, 2017/02/13]
 
-SpDtPG1_EXT SLONG SpDt_slPG1FdbPu_temp,
-                  SpDt_slPG1FdbPu_temp1;
+SpDtPG1_EXT SLONG 
+					SpDt_slPG1FdbPu_temp,
+                  	SpDt_slPG1FdbPu_temp1;
 
 					
 SpDtPG1_EXT SWORD	SpDt_swPG1LoSpdCNT_Err,
@@ -104,8 +105,8 @@ SpDtPG1_EXT SWORD	SpDt_swPG1LoSpdCNT_Err,
                     SpDt_sw40ms_tmp,
                     SpDt_sw200ms_Flag,
                     SpDt_swPGCDerr_Detect,
-                    SpDt_swNoground_CNT,//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-                    SpDt_swCDerrold; //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+                    SpDt_swNoground_CNT,	//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+                    SpDt_swCDerrold; 		//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
 SpDtPG1_EXT ULONG	SpDt_ulPG1Npulse,
 					SpDt_ulPG1NpulseNoMx,
@@ -133,7 +134,6 @@ SpDtPG1_EXT SLONG_UNION  PGABerr_add,
                          PGCDerr_add_old,
                          PGABerr_LPF,
                          PGCDerr_LPF; //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-
 
 /*== Local Variable List (Variables not open to other files)  ==*/
 

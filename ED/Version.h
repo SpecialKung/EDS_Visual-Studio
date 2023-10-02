@@ -1,6 +1,6 @@
 #define SIBO_ENABLE  0
 #define Artemis_ENABLE  0
-#define OFFICIAL_VERSION  1
+#define OFFICIAL_VERSION  0
 
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     #define SWVERS_H      1085  //[5=S for Sibocom]
@@ -8,13 +8,13 @@
     #define DateCode      20195	/* 20150615 Mon. */
 #else
     #if OFFICIAL_VERSION
-        #define SWVERS_H      112
+        #define SWVERS_H      111
         #define SWVERS_L         0
-        #define DateCode      23301	/* 20200803 Mon. */
+        #define DateCode      23311	/* 20200803 Mon. */
     #else
         #define SWVERS_H      9111
         #define SWVERS_L         0
-        #define DateCode      23301	/* 20200803 Mon. */
+        #define DateCode      23401	/* 20200803 Mon. */
     #endif
 #endif
 /*============================================================================================

@@ -617,14 +617,17 @@
 #define ZASRKI_L   		(GROUP10+26)	//	400	10-26	Ki gain of ASR in Zero speed of Landing, DINO, 08/02/2010
 #define ZASRKP_P		(GROUP10+27)	//	385	10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
 #define ZASRKI_P		(GROUP10+28)	//	386	10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-#define FREQ_DIV        (GROUP10+29)	//	386	10-29   PG Card Frequency Division Output    //[Modify PG Type Define, Bernie, 12/05/2011]
-#define PG_DIV_MODE     (GROUP10+30)	//	386	10-30   PG Card Frequency Division Mode setting                       //[Modify PG Type Define, Bernie, 12/05/2011]
-#define PG_C_TYPE       (GROUP10+31)    //  3XX  10-31   Encoder C+/C- exchange           //[change parameter to normal group, Bernie, 2014/02/14]
-#define OVER_ACC_LEVEL  (GROUP10+32)    //  3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-#define OVER_ACC_TIME   (GROUP10+33)    //  3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-#define OVER_ACC_SET    (GROUP10+34)    //  3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define FREQ_DIV                (GROUP10+29)	//	386	10-29   PG Card Frequency Division Output    //[Modify PG Type Define, Bernie, 12/05/2011]
+#define PG_DIV_MODE             (GROUP10+30)	//	386	10-30   PG Card Frequency Division Mode setting                       //[Modify PG Type Define, Bernie, 12/05/2011]
+#define PG_C_TYPE               (GROUP10+31)    //  3XX  10-31   Encoder C+/C- exchange           //[change parameter to normal group, Bernie, 2014/02/14]
+#define OVER_ACC_LEVEL          (GROUP10+32)    //  3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define OVER_ACC_TIME           (GROUP10+33)    //  3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define OVER_ACC_SET            (GROUP10+34)    //  3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define ACC_LPF                 (GROUP10+35)    //	420	11-23   //[Rationa 362631, Special.Kung]
+#define ACC_SampleRate          (GROUP10+36)    //	420	11-23   //[Rationa 362631, Special.Kung]
+
 /*------------	Group11	 --------*/
-#define	GROUP11			(GROUP10+35)
+#define	GROUP11			(GROUP10+37)
 #define	SysControl		(GROUP11+0)		//	401	11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo 
 #define Lift_SPD		(GROUP11+1)		//	402	11-01	Lift operation speed
 #define	SHEAVE_D		(GROUP11+2)		//	403	11-02	SHEAVE diameter			ADDED BY SCOTTY
@@ -644,16 +647,17 @@
 #define DATA_SEL		(GROUP11+16)	//	417	11-16	Display address,add by dino 2007/03/08
 #define SHOW_DATA		(GROUP11+17)	//	418	11-17	Display data,   add by dino 2007/03/08
 #define PROTBIT			(GROUP11+18)	//	419	11-18	Protect Bit	
-#define	ZSPDLPBW_L   	(GROUP11+19)	//	420	11-19	Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
+#define	ZSPDLPBW_L   	        (GROUP11+19)	//	420	11-19	Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
 #define	PWM_MODE		(GROUP11+20)	//	420	11-20	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	    //[move parameter to 11-20, Bernie, 2017/02/16]
-#define	LPF_LC01DISP	(GROUP11+21)    //	420	11-21   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	LPF_LC01DISP	        (GROUP11+21)    //	420	11-21   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 #define Lift_SPD_RPM  	(GROUP11+21)	//	10	11-21	LIFT_SPD_CMD	    //[SIBOCOM, Jason, 2019/12/31]
 /*------------ Group12 ----------*/
 //#define GROUP12			(GROUP11+22)
 #else
 
-#define Client_Mode     (GROUP11+22)    //	420	11-21   //Save Customer bit
+#define Client_Mode             (GROUP11+22)    //	420	11-22   //Save Customer bit
+
 /*------------ Group12 ----------*/
 
 #define GROUP12			(GROUP11+23)

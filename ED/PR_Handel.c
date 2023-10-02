@@ -705,6 +705,8 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
         P10_32,     //    3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
         P10_33,     //    3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
         updatepr,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+		updatepr,	//	421    10-35	//[Rationa 362631, Special.Kung]
+		updatepr,	//	421    10-36	//[Rationa 362631, Special.Kung]
 
 /*---- GROUP 11---------------------------------------*/
 		updatepr,	//	401    11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo
@@ -732,7 +734,8 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 		fnone   ,   //  4XX    11-21    lift spd cmd for Sibocom, Jason, 2019/12/31
 #endif
-        updatepr,	//	421    12-00	user define address	00
+        updatepr,	//	421    11-22	
+		
 /*---- GROUP 12 --------------------------------------*/
 		updatepr,	//	421    12-00	user define address	00
 		updatepr,	//	422    12-01	user define address 01

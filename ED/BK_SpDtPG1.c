@@ -287,11 +287,12 @@ void TB3_SpDtPG1_LoIv(void)
 	// ChanLeRe = 1/(Npulse*500us) * PolePair * 100, real frequency sacling is x100
 	//                      = 50000*4/Npulse * PolePair                             
     //if ((fcmd.uw.hi > SpDt_uwChanLeRe) && (pr[CTRLM] != TQCPG)){
-	if ((fcmd.uw.hi > SpDt_uwChanLeRe) && (TqSpdMode == 0)){
+	if ((fcmd.uw.hi > SpDt_uwChanLeRe) && (TqSpdMode == 0))
+	{
         TB3_SpDtPG1();
     }
-    else{
-    	
+    else
+	{    	
         //uwPG1LoSpdCNT = MTU21.TCNT;
         uwPG1LoSpdCNT = MTU1.TCNT;
 
@@ -654,7 +655,7 @@ Marked END ==================*/
         swErrTEST = (SpDt_slPG1FdbPu-slFdbOld)/(slFdbOld/100);
         slFdbOld = SpDt_slPG1FdbPu;
         // end of JOSH avoid speed drop 2017/05/08
-        
+
         SpDt_slSpdFdbPu = LowPass_Hz(SpDt_uwHiLPG, SpDt_slPG1FdbPu, SpDt_slSpdFdbPu);
 		PGFirst = 1; //first run
 		SpDt_uwPGLossCnt1 = 0;
