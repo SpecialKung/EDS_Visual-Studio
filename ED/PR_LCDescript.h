@@ -529,7 +529,7 @@ const string20 errinfo_sc[(ERRMAX+1)]={
     "减速中过电流    ocd ",    //2
     "定速运转中过电流ocn ",    //3
     "接地过电流      GFF ",    //4
-    "IGBT上下?哦搪?  occ ",    //5
+    "IGBT上下桥短路  occ ",    //5
     "停止中过电流    ocS ",    //6
     "加速中过电压    ovA ",    //7    
     "减速中过电压    ovd ",    //8
@@ -539,22 +539,22 @@ const string20 errinfo_sc[(ERRMAX+1)]={
     "减速中低电压    Lvd ",    //12
     "定速运转中低电压Lvn ",    //13
     "停止中低电压    LvS ",    //14
-    "?氲缜废啾；?    PHL ",    //15
+    "入电欠相保护    PHL ",    //15
     "IGBT温度过高    oH1 ",    //16
-    "电源电?菸露?过高oH2 ",    //17
+    "电源电容温度过高oH2 ",    //17
     "IGBT温度侦测异常tH1o",    //18
-    "电?菸露?侦测异常tH2o",    //19
+    "电容温度侦测异常tH2o",    //19
     "风扇异常        FAn ",    //20
-    "??动?鞴?载      oL  ",    //21
+    "驱动器过载      oL  ",    //21
     "电机过负载      EoL1",    //22
     "Thermal Realy 2 EoL2",    //23
-    "电机过??        oH3 ",    //24
+    "电机过热        oH3 ",    //24
     "Fuse Error      FuSE",    //25
     "过转矩1         ot1 ",    //26
     "过转矩2         ot2 ",    //27
     "Under Torque 1  uc1 ",    //28
     "Under Torque 2  uc2 ",    //29
-    "记忆体写?胍斐?  cF1 ",    //30
+    "记忆体写入异常  cF1 ",    //30
     "记忆体读出异常  cF2 ",    //31
     "Isum电流侦测异常cd0 ",    //32
     "U相电流侦测异常 cd1 ",    //33
@@ -573,49 +573,49 @@ const string20 errinfo_sc[(ERRMAX+1)]={
     "PG Ref Error    PGr1",    //46
     "PG Ref Loss     PGr2",    //47
     "ACI Loss        ACE ",    //48
-    "外部错误讯号输?隕F  ",    //49
+    "外部错误讯号输入EF  ",    //49
     "外部端子紧急停止EF1 ",    //50
     "Base Block      bb  ",    //51
-    "密码输?肴?次错误Pcod",    //52
+    "密码输入三次错误Pcod",    //52
     "SW Code Error   ccod",    //53
     "不合法通讯命令  cE01",    //54
     "不合法通讯位址  cE02",    //55
     "通讯资料长度错误cE03",    //56
-    "通讯写?胛ǘ廖恢胏E04",    //57
+    "通讯写入唯读位置cE04",    //57
     "MODBUS传输超时  cE10",    //58
     "KEYPAD传输超时  cP10",    //59
     "侦测煞车晶体异常BF  ",    //60
     "Y-Delta Connect ydc ",    //61   
     "Dec. Energy BackdEb ",    //62   
-    "安?芈芬斐?    SRY ",    //63  add by dino, 06/06/2007
+    "安全回路异常    SRY ",    //63  add by dino, 06/06/2007
     "机械煞车回授异常MBF ",    //64  add by dino, 05/14/2008
     "PG硬体侦测异常  PGF5",    //65
-    "电磁接触?饕斐?  MCF ",    //66
-    "输出?废?        MPHL",    //67  added by sampo, for MPHL Detect ,05/12/2009
+    "电磁接触器异常  MCF ",    //66
+    "输出欠相        MPHL",    //67  added by sampo, for MPHL Detect ,05/12/2009
     "CAN Bus 断线    CANF",    //68  [CAN Control, Sampo, 09/15/2010]
     "                    ",    //69  [Safty function, Bernie, 2013/10/29]
     "                    ",    //70  [Safty function, Bernie, 2013/10/29]
     "电梯过加速度    PGOA",    //71  [Safty function, Bernie, 2013/10/29]
-    "安?匾攀?1   STL1",    //72  [Safty function, Bernie, 2013/10/29]
+    "安全转矩遗失1   STL1",    //72  [Safty function, Bernie, 2013/10/29]
     "PG cd线路异常   PGcd",    //73
     "PG 绝对讯号异常 PGHL",    //74
     "PG Z相讯号遗失  PGAF",    //75
-    "安?厥涑鐾?止STO ",    //76
-    "安?匾攀?2   STL2",    //77
-    "安?匾攀?3   STL3",    //78
+    "安全转矩输出停止STO ",    //76
+    "安全转矩遗失2   STL2",    //77
+    "安全转矩遗失3   STL3",    //78
     "                    ",    //79
     "                    ",    //80
     "服务逾时        SERV",    //81
-    "输出?废? U相    OPHL",    //82
-    "输出?废? V相    OPHL",    //83
-    "输出?废? W相    OPHL",    //84
+    "输出欠相 U相    OPHL",    //82
+    "输出欠相 V相    OPHL",    //83
+    "输出欠相 W相    OPHL",    //84
     "DLC控制模式错误 DLCC",    //85  //#15266, Can't do Tuning without setting PG_TYPE, James, 20201201
-    "?讲憧囟搪?    LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
-    "?讲憧乜?    LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
+    "平层开关短路    LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
+    "平层开关开路    LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "电流环控制异常  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
-    "安?鼗芈氛答TL4",    //89  //#12225,STOL4 Short Error, power on to reset
-    "安?厥涑鐾?止STOr",    //90  //#12225,STO error at running 
-    "安?鼗芈氛答TOS",    //91  //#12225,STO Short error
+    "安全转矩回路沾黏STL4",    //89  //#12225,STOL4 Short Error, power on to reset
+    "安全转矩输出停止STOr",    //90  //#12225,STO error at running 
+    "安全转矩回路沾黏STOS",    //91  //#12225,STO Short error
     "Sensor817 错误  SnE7",	   //92  //[Artemis Add Sensor819 Function/Special/2022/06/06]
 	"Sensor818 错误  SnE8",	   //93  //[Artemis Add Sensor819 Function/Special/2022/06/06]
 	"BTT 失败         btt",    //94	 //[JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -822,9 +822,9 @@ const string20 errinfo_rus[(ERRMAX+1)]={
     "Lv Sensor Short LSS ",    //86  //#15977, LULD detect, James, 2021/04/01
     "Lv Sensor Open  LSO ",    //87  //#15977, LULD detect, James, 2021/04/01
     "Cur. Ctrl. Err  CLCE",    //88  //#16434 MPHL improvement, Jerry, 2021/06/30
-    "安?鼗芈氛答TL4",    //89  //#12225,STOL4 Short Error, power on to reset
-    "安?厥涑鐾?止STOr",    //90  //#12225,STO error at running 
-    "安?鼗芈氛答TOS",    //91  //#12225,STO Short error  
+    "安全转矩回路沾黏STL4",    //89  //#12225,STOL4 Short Error, power on to reset
+    "安全转矩输出停止STOr",    //90  //#12225,STO error at running 
+    "安全转矩回路沾黏STOS",    //91  //#12225,STO Short error  
     "Sensor817 Err   SnE7",	   //92  //[Artemis Add Sensor819 Function/Special/2022/06/06]
 	"Sensor818 Err   SnE8",	   //93  //[Artemis Add Sensor819 Function/Special/2022/06/06]
 	"BTTx Fail        btt",    //94	 //BTT Test Fail [JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -955,13 +955,13 @@ const string20 warninfo_sc[(WARNMAX+1)]={
     "不合法通讯命令  cE01", //warncode = 1                                                                       
     "不合法通讯位址  cE02", //warncode = 2                                                                       
     "通讯资料长度错误cE03", //warncode = 3                                                                       
-    "通讯写?胛ǘ廖恢穋E04", //warncode = 4                                                                       
+    "通讯写入唯读位址cE04", //warncode = 4                                                                       
     "Modbus传输超时  cE10", //warncode = 5                                                                       
     "Keypad传输超时  cP10", //warncode = 6                                                                       
     "参数复制错误    SE1 ", //warncode = 7                                                                       
     "参数复制失败    SE2 ", //warncode = 8                                                                       
-    "IGBT过??        oH1 ", //warncode = 9                                                                       
-    "电?莨???        oH2 ", //warncode = 10                                                                      
+    "IGBT过热        oH1 ", //warncode = 9                                                                       
+    "电容过热        oH2 ", //warncode = 10                                                                      
     "PID  回授异常   Pid ", //warncode = 11                                                                      
     "类比讯号异常    AnL ", //warncode = 12                                                                      
     "电流过低        uC  ", //warncode = 13                                                                      
@@ -970,30 +970,30 @@ const string20 warninfo_sc[(WARNMAX+1)]={
     "PG回授断线      PGF2", //warncode = 16                                                                      
     "PG回授失速      PGF3", //warncode = 17                                                                      
     "PG转差异常      PGF4", //warncode = 18                                                                      
-    "输?肭废?        PHL ", //warncode = 19                                                                      
+    "输入欠相        PHL ", //warncode = 19                                                                      
     "过转矩 1        ot1 ", //warncode = 20                                                                      
     "过转矩 2        ot2 ", //warncode = 21                                                                      
-    "电机过??        oH3 ", //warncode = 22                                                                      
+    "电机过热        oH3 ", //warncode = 22                                                                      
     "C.C Warning     c.c ", //warncode = 23                                                                      
     "滑差异常        oSL ", //warncode = 24                                                                      
     "参数自学习中    tUn ", //warncdoe = 25                                                                      
     "风扇异常        FAn ", //warncode = 26                                                                      
     "Can Bus 断线    dCAn", //warncode = 27  //[CAN Control, Sampo, 09/15/2010]                                //Sampo, 09/15/2010]
-    "安?匾攀Ь鍿TOA", //warncode = 28  //[STO function add Warning code and run rule, Bernie, 2016/03/22]//warncode = 28
+    "安全转矩遗失警告STOA", //warncode = 28  //[STO function add Warning code and run rule, Bernie, 2016/03/22]//warncode = 28
     "UCMP 执行警告   UCMP", //warncode = 29  //[UCMP function, Bernie, 2016/06/14]
     "机种不同复制错误SE3 ", //warncode = 30  COPY Fail 3, Model name Error   
     "服务逾时        SERV", //warncode = 31
-    "上1级?考豕?速   UDS1", //warncode = 33  // UD1_Vlim_WARN   //Artemis speed limit, James, 20200220
-    "上2级?考豕?速   UDS2", //warncode = 34  // UD2_Vlim_WARN    
-    "上3级?考豕?速   UDS3", //warncode = 35  // UD3_Vlim_WARN    
-    "上4级?考豕?速   UDS4", //warncode = 36  // UD4_Vlim_WARN    
-    "下1级?考豕?速   DDS1", //warncode = 37  // DD1_Vlim_WARN    
-    "下2级?考豕?速   DDS2", //warncode = 38  // DD2_Vlim_WARN    
-    "下3级?考豕?速   DDS3", //warncode = 39  // DD3_Vlim_WARN    
-    "下4级?考豕?速   DDS4", //warncode = 40  // DD4_Vlim_WARN  
+    "上1级强减过速   UDS1", //warncode = 33  // UD1_Vlim_WARN   //Artemis speed limit, James, 20200220
+    "上2级强减过速   UDS2", //warncode = 34  // UD2_Vlim_WARN    
+    "上3级强减过速   UDS3", //warncode = 35  // UD3_Vlim_WARN    
+    "上4级强减过速   UDS4", //warncode = 36  // UD4_Vlim_WARN    
+    "下1级强减过速   DDS1", //warncode = 37  // DD1_Vlim_WARN    
+    "下2级强减过速   DDS2", //warncode = 38  // DD2_Vlim_WARN    
+    "下3级强减过速   DDS3", //warncode = 39  // DD3_Vlim_WARN    
+    "下4级强减过速   DDS4", //warncode = 40  // DD4_Vlim_WARN  
     "Exist FWD & REV EFRn", //warncode = 41  //[exist FWD/REV Warn, Jason, 2019/10/07]
     "Stop Short STO  SOS ", //warncode = 42  //[Sibocom SOS Warn, James, 2020/04/28]
-    "?讲憧匦藕乓斐S  ", //warncode = 43  //#15977, LULD detect, James, 2021/04/01
+    "平层开关信号异常LS  ", //warncode = 43  //#15977, LULD detect, James, 2021/04/01
     "STO时序异常     STOb", //warncode = 44  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
     "STO沾黏         STOc", //warncode = 45  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14 
     "Sensor817 警告  SnW7",	//warncode = 46
@@ -2700,12 +2700,12 @@ const string20 prinfo_tc[EPMAX] = {
     "材琿硉        Hz  "	,   //  246 04-07   Multi-Speed 7
     "材琿硉        Hz  "	,   //  247 04-08   Multi-Speed 8
     "材琿硉        Hz  "	,   //  248 04-09   Multi-Speed 9
-    "材⑻琿硉        Hz  "	,   //  249 04-10   Multi-Speed 10 
-    "材⑻琿硉      Hz  "	,   //  250 04-11   Multi-Speed 11
-    "材⑻琿硉      Hz  "	,   //  251 04-12   Multi-Speed 12
-    "材⑻琿硉      Hz  "	,   //  252 04-13   Multi-Speed 13
-    "材⑻琿硉      Hz  "	,   //  253 04-14   Multi-Speed 14
-    "材⑻き琿硉      Hz  "	,   //  254 04-15   Multi-Speed 15
+    "材琿硉        Hz  "	,   //  249 04-10   Multi-Speed 10 
+    "材琿硉      Hz  "	,   //  250 04-11   Multi-Speed 11
+    "材琿硉      Hz  "	,   //  251 04-12   Multi-Speed 12
+    "材琿硉      Hz  "	,   //  252 04-13   Multi-Speed 13
+    "材琿硉      Hz  "	,   //  253 04-14   Multi-Speed 14
+    "材き琿硉      Hz  "	,   //  254 04-15   Multi-Speed 15
     
     "毕穿硉        m/s "  ,   //  2xx 04-16
     "キ糷硉        m/s "  ,   //  2xx 04-17
@@ -3033,8 +3033,8 @@ const string20 prinfo_tc[EPMAX] = {
     "筿辫筁硉非m/s2"  ,   //  3XX   10-32 Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
     "筁硉盎代丁sec "  ,   //  3XX   10-33     Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
     "筁硉盎匡拒      "  ,   //  3XX   10-34     Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
-    "ACC LPF             "  ,   //  422 10-35   //Rationa 362631, Special.Kung
-    "ACC SampleRate    ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
+    "硉耾猧        "  ,   //  422 10-35   //Rationa 362631, Special.Kung
+    "硉妓瞯      ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
@@ -3437,8 +3437,8 @@ const string20 prinfo_sc_ACC_ms2[11] = { //[Sibocom S curve, ACC unit,Jason,2019
 	"第一减速时间    m/s2"	,	//	157	01-13	1st Deceleration time
 	"第二加速时间    m/s2"	,	//	158	01-14	2nd Acceleration time
 	"第二减速时间    m/s2"	,	//	159	01-15	2nd Deceleration time
-	"第??加速时间    m/s2"	,	//	160	01-16	3rd Acceleration time
-	"第??减速时间    m/s2"	,	//	161	01-17	3rd Deceleration time
+	"第三加速时间    m/s2"	,	//	160	01-16	3rd Acceleration time
+	"第三减速时间    m/s2"	,	//	161	01-17	3rd Deceleration time
 	"第四加速时间    m/s2"	,	//	162	01-18	4th Acceleration time
 	"第四减速时间    m/s2"	,	//	163	01-19	4th Deceleration time
 	"寸动加速时间    m/s2"	,	//	164	01-20	JOG Acceleration time
@@ -3452,8 +3452,8 @@ const string20 prinfo_sc_ACC_fts2[11] = { //[S curve, ACC unit,Jason,2019/10/01]
 	"第一减速时间    f/s2"	,	//	157	01-13	1st Deceleration time
 	"第二加速时间    f/s2"	,	//	158	01-14	2nd Acceleration time
 	"第二减速时间    f/s2"	,	//	159	01-15	2nd Deceleration time
-	"第??加速时间    f/s2"	,	//	160	01-16	3rd Acceleration time
-	"第??减速时间    f/s2"	,	//	161	01-17	3rd Deceleration time
+	"第三加速时间    f/s2"	,	//	160	01-16	3rd Acceleration time
+	"第三减速时间    f/s2"	,	//	161	01-17	3rd Deceleration time
 	"第四加速时间    f/s2"	,	//	162	01-18	4th Acceleration time
 	"第四减速时间    f/s2"	,	//	163	01-19	4th Deceleration time
 	"寸动加速时间    f/s2"	,	//	164	01-20	JOG Acceleration time
@@ -3620,59 +3620,59 @@ const string20 prinfo_sc[EPMAX] = {
 /*---- GROUP 00---------------------------------------*/
    //12345678901234561234
     "机种标识符          "	,	//	128 00-00	Model Type of Drive 
-    "变?灯鞫疃ǖ缌?  Amps"	,	//	129 00-01	Rated Current
+    "变频器额定电流  Amps"	,	//	129 00-01	Rated Current
     "参数重置设定        "	,	//	130 00-02	Parameter Reset
     "开机显示画面选择    "	,	//	131 00-03	Start up Display        //chinese 
     "多功能显示选择      "	,	//	132 00-04	User Display            //chinese 
     "定义比例设定        "	,	//	133 00-05	User Coefficient        //chinese 
-    "?砑?版本            "	,	//	134 00-06	Software Version
-    "参数保护密码输??    "	,	//	135 00-07	Password Input
+    "软件版本            "	,	//	134 00-06	Software Version
+    "参数保护密码输入    "	,	//	135 00-07	Password Input
     "参数保护密码设定    "	,	//	136 00-08	Password Input
     "控制模式            "	,	//	137 00-09	Control Methods
     "速度单位            "	,	//	138 00-10	Velocity Unit Select
-    "??动?魇涑龇较?      "	,	//	139 00-11   Change Output Direction, Added by 
-    "载波?德?        KHz "	,	//	140 00-12	Carry Frequency
+    "驱动器输出方向      "	,	//	139 00-11   Change Output Direction, Added by 
+    "载波频率        KHz "	,	//	140 00-12	Carry Frequency
     "自动稳压功能        "	,	//	141 00-13	AVR
     "速度指令来源        "	,	//	142 00-14	Source of Freq. Command
     "运转指令来源        "	,	//	143 00-15	Source of Oper. Command
     
 /*---- GROUP 01---------------------------------------*/
 /*  "12345678901234561234"	*/
-	"最大操作?德?    Hz  "	,	//	144	01-00 Max Output Freq.
-	"电机额定?德?    Hz  "	,	//	145	01-01 Motor Base Frequency 1
+	"最大操作频率    Hz  "	,	//	144	01-00 Max Output Freq.
+	"电机额定频率    Hz  "	,	//	145	01-01 Motor Base Frequency 1
 	"电机额定电压    V   "	,	//	146	01-02 Max Output Voltage
-	"第二输出?德?    Hz  "	,	//	147	01-03 Mid Output Freq.1
+	"第二输出频率    Hz  "	,	//	147	01-03 Mid Output Freq.1
 	"第二输出电压    V   "	,	//	148	01-04 Mid Output Voltage 1
-	"第??输出?德?    Hz  "	,	//	149	01-05 Mid Output Freq.2
-	"第??输出电压    V   "	,	//	150	01-06 Mid Output Voltage 2
-	"第四输出?德?    Hz  "	,	//	151	01-07 Min Output Freq.
+	"第三输出频率    Hz  "	,	//	149	01-05 Mid Output Freq.2
+	"第三输出电压    V   "	,	//	150	01-06 Mid Output Voltage 2
+	"第四输出频率    Hz  "	,	//	151	01-07 Min Output Freq.
 	"第四输出电压    V   "	,	//	152	01-08 Min Output Voltage
-	"?舳德?        Hz  "	,	//	153	01-09 Start Frequency
-	"输出?德噬舷拗?  Hz  "	,	//	154	01-10 Upper Bound Freq.
-	"输出?德氏孪拗?  Hz  "	,	//	155	01-11 Lower Bound Freq.
+	"启动频率        Hz  "	,	//	153	01-09 Start Frequency
+	"输出频率上限值  Hz  "	,	//	154	01-10 Upper Bound Freq.
+	"输出频率下限值  Hz  "	,	//	155	01-11 Lower Bound Freq.
 	"第一加速时间    sec "	,	//	156	01-12 1st Acceleration time      //chinese 
 	"第一减速时间    sec "	,	//	157	01-13 1st Deceleration time      //chinese 
 	"第二加速时间    sec "	,	//	158	01-14 2nd Acceleration time      //chinese 
 	"第二减速时间    sec "	,	//	159	01-15 2nd Deceleration time      //chinese 
-	"第??加速时间    sec "	,	//	160	01-16 3rd Acceleration time      //chinese 
-	"第??减速时间    sec "	,	//	161	01-17 3rd Deceleration time      //chinese 
+	"第三加速时间    sec "	,	//	160	01-16 3rd Acceleration time      //chinese 
+	"第三减速时间    sec "	,	//	161	01-17 3rd Deceleration time      //chinese 
 	"第四加速时间    sec "	,	//	162	01-18 4th Acceleration time      //chinese 
 	"第四减速时间    sec "	,	//	163	01-19 4th Deceleration time      //chinese 
 	"寸动加速时间    sec "	,	//	164	01-20 JOG Acceleration time
 	"寸动减速时间    sec "	,	//	165	01-21 JOG Deceleration time
-	"寸动?德?        Hz  "	,	//	166	01-22 JOG Frequency
-	"1-4加速?谢?     Hz  "	,	//	167	01-23 Transition Frequency ACC1/DEC1 to 
+	"寸动频率        Hz  "	,	//	166	01-22 JOG Frequency
+	"1-4加速切换     Hz  "	,	//	167	01-23 Transition Frequency ACC1/DEC1 to 
 	"加速开始S1时间  sec "	,	//	168	01-24 S curve Accel time 1
 	"加速开始S2时间  sec "	,	//	169	01-25 S curve Accel time 2
 	"加速开始S3时间  sec "	,	//	170	01-26 S curve Decel time 1
 	"加速开始S4时间  sec "	,	//	171	01-27 S curve Decel time 2
-	"小于第四?德誓?式    "	,	//	172	01-28 Select Zero Speed
-	"?讲闼俣??谢?    Hz  "	,	//	173	01-29 Landing Frequency 
-	"低于?讲闼俣?S5  sec "	,	//	174	01-30 S curve Decel time 3
+	"小于第四频率模式    "	,	//	172	01-28 Select Zero Speed
+	"平层速度切换    Hz  "	,	//	173	01-29 Landing Frequency 
+	"低于平层速度S5  sec "	,	//	174	01-30 S curve Decel time 3
 	"停车减速时间    sec "	,	//	175	01-31 Stop Deceleration time	
-    "终端?恐?减速度  m/s "	,	//  1xx 01-32
+    "终端强制减速度  m/s "	,	//  1xx 01-32
     "端子直停高速时间sec "	,	//	1xx	01-33 IODHT IO direct hold time   
-    "端子直停?讲闶奔鋝ec "	,	//	1xx	01-34 IODLT IO direct landing freq
+    "端子直停平层时间sec "	,	//	1xx	01-34 IODLT IO direct landing freq
     "端子直停冲量限制    "	,	//	1xx	01-35 IODLT IO direct landing time
     "端子直停减速距离cm  "	,	//	1xx	01-36 IODLT IO direct DistancE
     "直停参考减速距离m   "	,	//	1xx	01-37 IODLT IO direct DistancE
@@ -3695,8 +3695,8 @@ const string20 prinfo_sc[EPMAX] = {
     "MI6功能选择         "	,	//	182	02-06 Multi-Function Input 6          
     "MI7功能选择         "	,	//	183	02-07 Multi-Function Input 7          
     "MI8功能选择         "	,	//	184	02-08 Multi-Function Input 8		    
-    "数字输?胂煊κ奔鋝ec "	,	//	185	02-09 Digital in response time		
-    "数字输?敕较?        "	,	//	186	02-10 Multi-Function Input Inverse	
+    "数字输入响应时间sec "	,	//	185	02-09 Digital in response time		
+    "数字输入方向        "	,	//	186	02-10 Multi-Function Input Inverse	
     "RA 功能选择         "	,	//	187	02-11 Multi-Function Relay 1		    
     "MRA功能选择         "	,	//	188	02-12 Multi-Function Relay 2		    
     "R1A功能选择         "	,	//	189	02-13 Multi-Function Output 1		    
@@ -3710,20 +3710,20 @@ const string20 prinfo_sc[EPMAX] = {
     "MO7功能选择         "	,	//	197	02-21 Multi-Function Output 9		    
     "MO8功能选择         "	,	//	198	02-22 Multi-Function Output 10		    
     "数字输出方向        "	,	//	199	02-23 Multi-Function Output inverse	
-    "?舳藕拍?式选择    "  ,   //  200 02-24 Sequence start mode
-    "?我馄德实酱?1   Hz  "	,	//	201	02-25 Desired Frequency 1		        
-    "?我馄德实酱?1宽 Hz  "	,	//	202	02-26 Band of Desired Frequency 1		
-    "?我馄德实酱?2   Hz  "	,	//	203	02-27 Desired Frequency 2		        
-    "?我馄德实酱?2宽 Hz  "	,	//	204	02-28 Band of Desired Frequency 2		
+    "启动信号模式选择    "  ,   //  200 02-24 Sequence start mode
+    "任意频率到达1   Hz  "	,	//	201	02-25 Desired Frequency 1		        
+    "任意频率到达1宽 Hz  "	,	//	202	02-26 Band of Desired Frequency 1		
+    "任意频率到达2   Hz  "	,	//	203	02-27 Desired Frequency 2		        
+    "任意频率到达2宽 Hz  "	,	//	204	02-28 Band of Desired Frequency 2		
     "机械刹车释放延时sec "	,	//	205	02-29 Brake Delay Timer at run
     "机械刹车抱闸延时sec "	,	//	206	02-30 Brake Delay Timer at stop
     "电磁阀导通延时  sec "	,	//	207	02-31 Mech Contact Delay Timer run
     "电磁阀断开延时  sec "	,	//	208	02-32 Mech Contact Delay Timer stop		
     "电流准位设定    %   "	,	//	209	02-33 Isum Current Output Detect	    
-    "速度?紊瓒?    Hz  "	,	//	210	02-34 Speed Area
+    "速度区段设定    Hz  "	,	//	210	02-34 Speed Area
     "机械刹车检出时间sec "	,	//	211	02-35 Mechanical Brake Checking Time
     "电磁阀检出时间  sec "	,	//	212 02-36 Magnetic Contactor Checking Time
-    "转矩?啡隙餮≡?    "  ,   //  213 02-37 Mechanical Brake Checking Current Enable
+    "转矩确认动作选择    "  ,   //  213 02-37 Mechanical Brake Checking Current Enable
     "电磁阀导通延时  sec "	,	//	207	02-38 Mech Contact Delay Timer run
     "电磁阀断开延时  sec "	,	//	208	02-39 Mech Contact Delay Timer stop	
 	"LU/LD异常选择       "  ,   //  2xx 02-40 LU/LD error  Selection	  //#15977, LULD detect, James, 2021/04/01
@@ -3738,15 +3738,15 @@ const string20 prinfo_sc[EPMAX] = {
     "AUI1功能选择        "	,	//	214	03-00 AUI1 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "保留                "	,	//	215	03-01 ACI  selection                    //[ACI function remove, Bernie, 01/20/2012] 
     "AUI2功能选择        "	,	//	216	03-02 AUI2 selection                    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1输?肫?    %   "	,	//	217	03-03 AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1输入偏压    %   "	,	//	217	03-03 AUI1 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "保留                "	,	//	218	03-04 ACI  input Bias                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2输?肫?    %   "	,	//	219	03-05 AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1正负?鼓?式    "	,	//	220 03-06 AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2输入偏压    %   "	,	//	219	03-05 AUI2 input Bias                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1正负偏压模式    "	,	//	220 03-06 AUI1 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "保留                "	,	//	221 03-07 ACI  input Polarity               //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2正负?鼓?式    "	,	//	222 03-08 AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI1输?朐鲆?    %   "	,	//	223 03-09 AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2正负偏压模式    "	,	//	222 03-08 AUI2 input Polarity               //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI1输入增益    %   "	,	//	223 03-09 AUI1 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "保留                "	,	//	224 03-10 ACI  input Gain                   //[ACI function remove, Bernie, 01/20/2012]
-    "AUI2输?朐鲆?    %   "	,	//	225 03-11 AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2输入增益    %   "	,	//	225 03-11 AUI2 input Gain                   //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "AUI1滤波时间    sec "	,	//	226 03-12 Low pass filter of AUI1 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "保留                "	,	//	227 03-13 Low pass filter of ACI  input     //[ACI function remove, Bernie, 01/20/2012]
     "AUI2滤波时间    sec "	,	//	228 03-14 Low pass filter of AUI2 input     //[AI chenge to AUI, Lyabryan, 03/27/2015]
@@ -3758,53 +3758,53 @@ const string20 prinfo_sc[EPMAX] = {
     "AO2 输出选项        "	,	//	234 03-20 Analong Output 2
     "AO2 输出增益    %   "	,	//	235 03-21 Analong Output 2 Gain
     "AO2 输出反向使能    "	,	//	236 03-22 AO2 in minus value
-    "AUI1模拟输?肽?式    "	,	//	237 03-23 AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    "AUI2模拟输?肽?式    "	,	//	238 03-24 AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    //"AUI1输?肷瓒?        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-    //"AUI2输?肷瓒?        "	,	//	238  03-26    AUI2 Communciate
+    "AUI1模拟输入模式    "	,	//	237 03-23 AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    "AUI2模拟输入模式    "	,	//	238 03-24 AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
+    //"AUI1输入设定        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+    //"AUI2输入设定        "	,	//	238  03-26    AUI2 Communciate
 
 /*---- GROUP 04---------------------------------------*/
 /*  "12345678901234561234"	*/
     "第零段速        Hz  "	,	//	239 04-00 Multi-Speed 0
     "第一段速        Hz  "	,	//	240 04-01 Multi-Speed 1
     "第二段速        Hz  "	,	//	241 04-02 Multi-Speed 2
-    "第??段速        Hz  "	,	//	242 04-03 Multi-Speed 3
+    "第三段速        Hz  "	,	//	242 04-03 Multi-Speed 3
     "第四段速        Hz  "	,	//	243 04-04 Multi-Speed 4
     "第五段速        Hz  "	,	//	244 04-05 Multi-Speed 5
     "第六段速        Hz  "	,	//	245 04-06 Multi-Speed 6
-    "第?叨嗡?        Hz  "	,	//	246 04-07 Multi-Speed 7
+    "第七段速        Hz  "	,	//	246 04-07 Multi-Speed 7
     "第八段速        Hz  "	,	//	247 04-08 Multi-Speed 8
     "第九段速        Hz  "	,	//	248 04-09 Multi-Speed 9
     "第十段速        Hz  "	,	//	249 04-10 Multi-Speed 10 
     "第十一段速      Hz  "	,	//	250 04-11 Multi-Speed 11
     "第十二段速      Hz  "	,	//	251 04-12 Multi-Speed 12
-    "第十??段速      Hz  "	,	//	252 04-13 Multi-Speed 13
+    "第十三段速      Hz  "	,	//	252 04-13 Multi-Speed 13
     "第十四段速      Hz  "	,	//	253 04-14 Multi-Speed 14
     "第十五段速      Hz  "	,	//	254 04-15 Multi-Speed 15
     
     "救援速度        m/s "  ,   //    2xx 04-16
-    "?讲闼俣?        m/s "  ,   //    2xx 04-17
+    "平层速度        m/s "  ,   //    2xx 04-17
     "反基站速度      m/s "  ,   //    2xx 04-18
     "钢索打滑补偿    mm  "  ,   //    2xx 04-19 GFC Rope compensation, 2021/03/30
     "TABST0 Status       "  ,   //    2xx 04-20
     "TABST2 Status       "  ,   //    2xx 04-21
     "最高物理楼层        "  ,   //    2xx 04-22
-    "目?奥ゲ?            "  ,   //    2xx 04-23
+    "目前楼层            "  ,   //    2xx 04-23
     "脉冲校正条件    %   "  ,   //    2xx 04-24
     "开关延迟补偿    sec "  ,   //    2xx 04-25
-    "等速?哂嗍奔?    ms  "  ,   //    2xx 04-26
+    "等速冗余时间    ms  "  ,   //    2xx 04-26
     "着床板长度      mm  "  ,   //    2xx 04-27 
-    "目?拔恢? 高     m   "  ,   //    2xx 04-28
-    "目?拔恢? 低     mm  "  ,   //    2xx 04-29
-    "目?奥龀? H          "  ,   //    2xx 04-30 
-    "目?奥龀? L          "  ,   //    2xx 04-31
+    "目前位置 高     m   "  ,   //    2xx 04-28
+    "目前位置 低     mm  "  ,   //    2xx 04-29
+    "目前脉冲 H          "  ,   //    2xx 04-30 
+    "目前脉冲 L          "  ,   //    2xx 04-31
     "着床板脉冲 H        "  ,   //    2xx 04-32
     "着床板脉冲 L        "  ,   //    2xx 04-33
     "光电间距脉冲H       "  ,   //    2xx 04-34
     "光电间距脉冲L       "  ,   //    2xx 04-35
     "DLC功能集           "  ,   //    2xx 04-36
     "PDO显示型态         "  ,   //    2xx 04-37
-    "减速开关?菪砦蟛頼m  "  ,   //    2xx 04-38
+    "减速开关容许误差mm  "  ,   //    2xx 04-38
     "最大梯速百分比  %   "  ,   //    2xx 04-39 //[ADCO EPS Modify]
     "弹簧延伸补偿    mm  "  ,   //    2xx 04-40//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
     "EST Status          "  ,   //    2xx 04-41
@@ -3891,15 +3891,15 @@ const string20 prinfo_sc[EPMAX] = {
     "累计电机运转时间Mins"	,	//	273 05-18 Accumulative Motor Operation Min
     "累计电机运转    Days"	,	//	274 05-19 Accumulative Motor Operation Day
     "铁芯损失补偿    %   "	,	//	275 05-20 Coreloss % of output Power	    
-    "变?灯魃系缡奔?  Mins"	,	//	276 05-21 Power On Min
-    "变?灯魃系缣焓?  Days"	,	//	277 05-22 Power On Day    
+    "变频器上电时间  Mins"	,	//	276 05-21 Power On Min
+    "变频器上电天数  Days"	,	//	277 05-22 Power On Day    
     "回生滑差补偿增益%   "  ,   //  2XX 05-23 Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
 	"电动滑差补偿增益%   "	,	//	2XX 05-24 RESERVED
 	
 /*---- GROUP 06----------------------------------------*/
 /*  "12345678901234561234"	*/
     "低电压准位      V   "	,	//  278  06-00 Low voltage level
-    "?废啾；?            "	,	//  279  06-01 Phase loss
+    "欠相保护            "	,	//  279  06-01 Phase loss
     "加速过电流失速  %   "	,	//	280  06-02 OC stall during Accel
     "定速过电流失速  %   "	,	//	281  06-03 OC stall during Decel
     "过电流失速处理      "	,	//	282  06-04 Stall preventation Accel/Decel time selection
@@ -3910,16 +3910,16 @@ const string20 prinfo_sc[EPMAX] = {
     "过转矩OT2准位   %   "	,	//	287  06-09 Over-Torque 2 level	                         
     "过转矩OT2检出   sec "	,	//	288  06-10 Over-Torque 2 Time	                         
     "电流限制        %   "	,	//	289  06-11 Current Limit
-    "电子??电驿选择      "	,	//	290  06-12 Thermal Relay 1 Selection
-    "??电驿作用时间  sec "	,	//	291  06-13 Thermal Relay 1 Time
-    "过??警告温度准位C   "	,	//	292  06-14 OH Warning Level
+    "电子热电驿选择      "	,	//	290  06-12 Thermal Relay 1 Selection
+    "热电驿作用时间  sec "	,	//	291  06-13 Thermal Relay 1 Time
+    "过热警告温度准位C   "	,	//	292  06-14 OH Warning Level
     "失速防止限制准位%   "	,	//	293  06-15 Stall preventation Limit Level
     "最近一次故障记录    "	,	//	294  06-16 1st Fault Record
-    "2次?暗墓收霞?录     "	,	//	295  06-17 2nd Fault Record
-    "3次?暗墓收霞?录     "	,	//	296  06-18 3rd Fault Record
-    "4次?暗墓收霞?录     "	,	//	297  06-19 4th Fault Record
-    "5次?暗墓收霞?录     "	,	//	298  06-20 5th Fault Record
-    "6次?暗墓收霞?录     "	,	//	299  06-21 6th Fault Record
+    "2次前的故障记录     "	,	//	295  06-17 2nd Fault Record
+    "3次前的故障记录     "	,	//	296  06-18 3rd Fault Record
+    "4次前的故障记录     "	,	//	297  06-19 4th Fault Record
+    "5次前的故障记录     "	,	//	298  06-20 5th Fault Record
+    "6次前的故障记录     "	,	//	299  06-21 6th Fault Record
     "异常输出选择 1      "	,	//	300  06-22 Fault Option 1
     "异常输出选择2       "	,	//	301  06-23 Fault Option 2
     "异常输出选择3       "	,	//	302  06-24 Fault Option 3
@@ -3929,40 +3929,40 @@ const string20 prinfo_sc[EPMAX] = {
     "PTC检出时间     sec "	,	//	306  06-28 PTC Detect Filter time
     "紧急运行电源电压V   "	,	//	307  06-29 EPS voltage level
     "错误输出选择        "	,	//	308  06-30 Fault Option Mode
-    "ED 输出?废嗾觳?     "	,	//	309  06-31 Motor Phase Detection Mode, Add by DINO, 05/12/2009
-    "?耙淮我斐?运转  Mins"	,	//	310  06-32 1st Fault Time(MIN)
-    "?耙淮我斐?运转  Days"	,	//	311  06-33 1st Fault Time(DAY)
-    "2次?耙斐?运转   Mins"	,	//	312  06-34 2nd Fault Time(MIN)
-    "2次?耙斐?运转   Days"	,	//	313  06-35 2nd Fault Time(DAY)
-    "3次?耙斐?运转   Mins"	,	//	314  06-36 3rd Fault Time(MIN)
-    "3次?耙斐?运转   Days"	,	//	315  06-37 3rd Fault Time(DAY)
-    "4次?耙斐?运转   Mins"	,	//	316  06-38 4th Fault Time(MIN)
-    "4次?耙斐?运转   Days"	,	//	317  06-39 4th Fault Time(DAY)
-    "5次?耙斐?运转   Mins"	,	//	318  06-40 5th Fault Time(MIN)
-    "5次?耙斐?运转   Days"	,	//	319  06-41 5th Fault Time(DAY)
-    "6次?耙斐?运转   Mins"	,	//	320  06-42 6th Fault Time(MIN)
-    "6次?耙斐?运转   Days"	,	//	321  06-43 6th Fault Time(DAY)
+    "ED 输出欠相侦测     "	,	//	309  06-31 Motor Phase Detection Mode, Add by DINO, 05/12/2009
+    "前一次异常运转  Mins"	,	//	310  06-32 1st Fault Time(MIN)
+    "前一次异常运转  Days"	,	//	311  06-33 1st Fault Time(DAY)
+    "2次前异常运转   Mins"	,	//	312  06-34 2nd Fault Time(MIN)
+    "2次前异常运转   Days"	,	//	313  06-35 2nd Fault Time(DAY)
+    "3次前异常运转   Mins"	,	//	314  06-36 3rd Fault Time(MIN)
+    "3次前异常运转   Days"	,	//	315  06-37 3rd Fault Time(DAY)
+    "4次前异常运转   Mins"	,	//	316  06-38 4th Fault Time(MIN)
+    "4次前异常运转   Days"	,	//	317  06-39 4th Fault Time(DAY)
+    "5次前异常运转   Mins"	,	//	318  06-40 5th Fault Time(MIN)
+    "5次前异常运转   Days"	,	//	319  06-41 5th Fault Time(DAY)
+    "6次前异常运转   Mins"	,	//	320  06-42 6th Fault Time(MIN)
+    "6次前异常运转   Days"	,	//	321  06-43 6th Fault Time(DAY)
     "紧急电源运行速度Hz  "  ,   //  322  06-44 EPS Frequency
     "错误动作选择        "  ,	//  323  06-45 LV Option Mode
     "EPS 模式选择        "  ,	//  324  06-46 EPS Option Mode
     "发点方向搜索时间sec "  ,   //  325  06-47 Generation Operation Detected Time
-    "紧急运行电源?萘縆VA "  ,   //  326  06-48 UPS Capacity (0.1KVA)
+    "紧急运行电源容量KVA "  ,   //  326  06-48 UPS Capacity (0.1KVA)
     "STO功能选择         "  ,   //  3xx  06-49 STO Lock selection     //[Safty function, Bernie]   
     "故障重试时MO动作    "  ,   //  356  06-50 Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
     "故障重试次数        "  ,   //  356  06-51 Auto restart times after fault     
     "故障重试时间    sec "  ,   //  356  06-52 Auto restart interval
-    "异常时?德拭?令  Hz  "  ,   //  3xx  06-53 Fkey Record
-    "异常时?德适涑?  Hz  "  ,   //  3xx  06-54 Fcmd Record
+    "异常时频率命令  Hz  "  ,   //  3xx  06-53 Fkey Record
+    "异常时频率输出  Hz  "  ,   //  3xx  06-54 Fcmd Record
     "异常时输出电流  Amps"  ,   //  3xx  06-55 Isum Record
-    "异常时马达?德?  Hz  "  ,   //  3xx  06-56 Fout Record
+    "异常时马达频率  Hz  "  ,   //  3xx  06-56 Fout Record
     "异常时输出电压  V   "  ,   //  3xx  06-57 Vout Record
     "异常时DCBus电压 V   "  ,   //  3xx  06-58 Dcbus Record    
     "异常时输出功率  KW  "  ,   //  3xx  06-59 Power Record
     "异常时输出转矩  %   "  ,   //  3xx  06-60 Torque Record
     "异常时IGBT温度  C   "  ,   //  3xx  06-61 IGBT Temperature Record   
-    "异常时输?攵俗?  Hex "  ,   //  3xx  06-62 MFI State Record
+    "异常时输入端子  Hex "  ,   //  3xx  06-62 MFI State Record
     "异常时输出端子  Hex "  ,   //  3xx  06-63 MFO State Record
-    "异常时??动?髯刺琀ex "  ,   //  3xx  06-64 Drive State Record
+    "异常时驱动器状态Hex "  ,   //  3xx  06-64 Drive State Record
     "UCMP电流限制准位%   "  ,   //  3XX  06-65 Current limitation for UCMP function            //[UCMP function, Bernie, 2016/06/14]
     "飨动噪服务次数      "  ,   //  3xx  06-66 Service time count                              //[Service time function, Bernie, 2017/03/14]
     "飨动噪服务设定      "  ,   //  3xx  06-67 Service time function Enable                    //[Service time function, Bernie, 2017/03/14]
@@ -3978,23 +3978,23 @@ const string20 prinfo_sc[EPMAX] = {
     "单次运行重置次数    "	,   //	3xx  06-77 Temp running reset count
     "运行方向限制次数k   "	,   //	3xx  06-78 Running life
     "运行次数功能选项    "	,   //	3xx  06-79 Running function
-    "异常2时?德适涑?  Hz  " ,   //  3xx  06-80 Fcmd Record1
+    "异常2时频率输出  Hz  " ,   //  3xx  06-80 Fcmd Record1
     "异常2时DCBus电压 V   " ,   //  3xx  06-81 Dcbus Record1
     "异常2时输出电流  Amps" ,   //  3xx  06-82 Isum Record1
     "异常2时IGBT温度  C   "	,   //  3xx  06-83 IGBT Temperature Record1
-    "异常3时?德适涑?  Hz  " ,   //  3xx  06-84 Fcmd Record2
+    "异常3时频率输出  Hz  " ,   //  3xx  06-84 Fcmd Record2
     "异常3时DCBus电压 V   " ,   //  3xx  06-85 Dcbus Record2
     "异常3时输出电流  Amps" ,   //  3xx  06-86 Isum Record2
     "异常3时IGBT温度  C   " ,   //  3xx  06-87 IGBT Temperature Record2
-    "异常4时?德适涑?  Hz  " ,   //  3xx  06-88 Fcmd Record3
+    "异常4时频率输出  Hz  " ,   //  3xx  06-88 Fcmd Record3
     "异常4时DCBus电压 V   " ,   //  3xx  06-89 Dcbus Record3
     "异常4时输出电流  Amps" ,   //  3xx  06-90 Isum Record3
     "异常4时IGBT温度  C   " ,   //  3xx  06-91 IGBT Temperature Record3
-    "异常5时?德适涑?  Hz  " ,   //  3xx  06-92 Fcmd Record4
+    "异常5时频率输出  Hz  " ,   //  3xx  06-92 Fcmd Record4
     "异常5时DCBus电压 V   " ,   //  3xx  06-93 Dcbus Record4
     "异常5时输出电流  Amps" ,   //  3xx  06-94 Isum Record4
     "异常5时IGBT温度  C   " ,   //  3xx  06-95 IGBT Temperature Record4
-    "异常6时?德适涑?  Hz  " ,   //  3xx  06-96 Fcmd Record5
+    "异常6时频率输出  Hz  " ,   //  3xx  06-96 Fcmd Record5
     "异常6时DCBus电压 V   " ,   //  3xx  06-97 Dcbus Record5
     "异常6时输出电流  Amps" ,   //  3xx  06-98 Isum Record5
     "异常6时IGBT温度  C   " ,   //  3xx  06-99 IGBT Temperature Record5
@@ -4002,15 +4002,15 @@ const string20 prinfo_sc[EPMAX] = {
 /*  "12345678901234561234"	*/
     "刹车晶体放电准位V   "	,	//	327   07-00 SW Braking Level
     "煞车晶体迟滞电压V   "  ,   //	328   07-01 DB Enable Duty, add by dino 2007/02/12  //[RESERVED parameter, Bernie, 2012/05/21]
-    "?舳绷髦?动准位%   "	,	//	329   07-02 DCI Current Level    //[DCI Level when stop, Bernie, 05/21/2012]
-    "?舳绷髦?动时间sec "	,	//	330   07-03 DCI Time at Start 
+    "启动直流制动准位%   "	,	//	329   07-02 DCI Current Level    //[DCI Level when stop, Bernie, 05/21/2012]
+    "启动直流制动时间sec "	,	//	330   07-03 DCI Time at Start 
     "停车直流制动时间sec "	,	//	331   07-04 DCI Time at STOP
-    "停车制动?鹗计德蔋z  "	,	//	332   07-05 DCI Freq. At start
+    "停车制动起始频率Hz  "	,	//	332   07-05 DCI Freq. At start
     "直流制动I增益       "	,	//	333   07-06 DCI KI
     "齿系加速中断时间sec "	,	//	334   07-07 Gear wait time when acceleration
-    "齿系加速中断?德蔋z  "	,	//	335   07-08 Gear wait frequency when acceleration
+    "齿系加速中断频率Hz  "	,	//	335   07-08 Gear wait frequency when acceleration
     "齿系减速中断时间sec "	,	//	336   07-09 Gear wait time when deceleration
-    "齿系减速中断?德蔋z  "	,	//	337   07-10 Gear wait frequency when deceleration
+    "齿系减速中断频率Hz  "	,	//	337   07-10 Gear wait frequency when deceleration
     "风扇控制方式        "	,	//	338   07-11 Fan Control
     "转矩命令        %   "	,	//	339   07-12 TQC Reference from RS485
     "转矩命令来源        "	,	//	340   07-13 Source of Torque Command
@@ -4019,16 +4019,16 @@ const string20 prinfo_sc[EPMAX] = {
     "速度限制选择        "	,	//	343   07-16 Speed Limit selection
     "转矩模式+SPD限制%   "	,	//	344   07-17 Torque mode positive speed limit
     "转矩模式-SPD限制%   "	,	//	345   07-18 Torque mode negative speed limit
-    "转矩命令?估丛?    "	,	//	346   07-19 Torque offset selection
-    "转矩命令?股瓒?%   "	,	//	347   07-20 Torque offset setting level
-    "高转矩??      %   "	,	//	348   07-21 Torque offset setting level High
-    "中转矩??      %   "	,	//	349   07-22 Torque offset setting level Middle
-    "低转矩??      %   "	,	//	350   07-23 Torque offset setting level Low
+    "转矩命令偏压来源    "	,	//	346   07-19 Torque offset selection
+    "转矩命令偏压设定%   "	,	//	347   07-20 Torque offset setting level
+    "高转矩偏量      %   "	,	//	348   07-21 Torque offset setting level High
+    "中转矩偏量      %   "	,	//	349   07-22 Torque offset setting level Middle
+    "低转矩偏量      %   "	,	//	350   07-23 Torque offset setting level Low
     "正转电动转矩限制%   "	,	//	351   07-24 FWD Motoring Tq Limit
     "反转回生转矩限制%   "	,	//	352   07-25 FWD Regeneration Tq Limit
     "正转电动转矩限制%   "	,	//	353   07-26 REV Motoring Tq Limit
     "反转回生转矩限制%   "	,	//	354   07-27 REV Regeneration Tq Limit
-    "?恐?停机检出方式    "	,	//	355   07-28 Emergency Stop & Forced Stop selection
+    "强制停机检出方式    "	,	//	355   07-28 Emergency Stop & Forced Stop selection
     "停车转矩减速时间sec "	,	//	356   07-29 Torque Decrease Time
     "停止直流制动准位%   "  ,   //  356   07-30 STOP DC Inject Level       //[DCI Level when stop, Bernie, 05/21/2012]
     "BTT100             %"  ,   //  357   07-31  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -4050,7 +4050,7 @@ const string20 prinfo_sc[EPMAX] = {
     "PM电机参数 Ld   mH  "	,	//	363   08-06 PMotor Ld           
     "PM电机参数 Lq   mH  "	,	//	364   08-07 PMotor Lq           
     "电机反电动势    Vrms"	,	//	365   08-08 PMotor Bemf coff	
-    "磁极??角      deg "	,	//	366   08-09 PM Z-pulse offset angle, 0.1 degree, dino
+    "磁极偏移角      deg "	,	//	366   08-09 PM Z-pulse offset angle, 0.1 degree, dino
     "磁极重新定位        "	,	//	367   08-10 //ADDED BY DINO    
 	
 /*---- GROUP 09-----------------------------------------*/							
@@ -4065,17 +4065,17 @@ const string20 prinfo_sc[EPMAX] = {
     "CAN PDO交握时间 ms  "	,   //  3XX   09-07 CAN PDO Handshaking Period
     "CAN PDO通讯逾时 ms  "	,   //  3XX   09-08 CAN Communiction Timeout	
     "上位机识别码        "  ,   //  3XX   09-09 
-    "FHM 暂存??          "  ,   //  3XX   09-10   
-    "DLC 暂存??1         "  ,   //  3XX   09-11   
-    "DLC 暂存??2         "  ,   //  3XX   09-12    
-    "DLC 暂存??3         "  ,   //  3XX   09-13   
+    "FHM 暂存器          "  ,   //  3XX   09-10   
+    "DLC 暂存器1         "  ,   //  3XX   09-11   
+    "DLC 暂存器2         "  ,   //  3XX   09-12    
+    "DLC 暂存器3         "  ,   //  3XX   09-13   
 	"PDO传送间隔     ms  "	,	//	3XX   09-14 CAN fail rate---aevin 6/12/2017
 
 /*---- GROUP 10------------------------------------------*/						
 /*  "12345678901234561234"	*/
-	"编码?髦掷嘌≡?      "	,	//	374   10-00 Encoder TYPE                             
-	"编码?髀龀宓闶?  ppr "	,	//	375   10-01 Encoder pulses	                    
-	"编码?魇淙胄问?      "	,	//	376   10-02 PG input setting	                
+	"编码器种类选择      "	,	//	374   10-00 Encoder TYPE                             
+	"编码器脉冲点数  ppr "	,	//	375   10-01 Encoder pulses	                    
+	"编码器输入形式      "	,	//	376   10-02 PG input setting	                
 	"PG错误动作选择      "	,	//	377   10-03 PG fbk fault treatment	            
 	"PG错误检出时间  sec "	,	//	378   10-04 PG fbk Error Detection Time	        
 	"PG失速准位      %   "	,	//	379   10-05 PG fbk overspeed detection level	
@@ -4084,26 +4084,26 @@ const string20 prinfo_sc[EPMAX] = {
 	"PG转差检出时间  sec "	,	//	382   10-08 Deviation Detect Time	            
 	"PG失速动作选择      "	,	//	383   10-09 Operation at overspeed	            
 	"HALL信号模式选择    "  ,   //  384   10-10 Hall Input Types
-	"?舳闼僭鲆鍼       "	,	//	385   10-11 KP gain of ASR in Zero speed	
-	"?舳闼倩?分I   sec "	,	//	386   10-12 Ki gain of ASR in Zero speed	
+	"启动零速增益P       "	,	//	385   10-11 KP gain of ASR in Zero speed	
+	"启动零速积分I   sec "	,	//	386   10-12 Ki gain of ASR in Zero speed	
 	"低速增益P           "	,	//	387   10-13 ASR P Gain 1	                
 	"低速积分时间I   sec "	,	//	388   10-14 ASR I Gain 1	                
 	"高速增益P           "	,	//	389   10-15 ASR P Gain 2	                
 	"高速积分时间I   sec "	,	//	390   10-16 ASR I Gain 2	                
-	"低/高速?谢黄德? Hz  "	,	//	391   10-17 ASR1/ASR2 switch freq	        
+	"低/高速切换频率 Hz  "	,	//	391   10-17 ASR1/ASR2 switch freq	        
 	"ASR低通滤波增益 sec "	,	//	392   10-18 Primary LowPass filter Gain 
 	"位置控制ASR增益 P   "  ,	//	393   10-19 position control Kp Gain  
     "零/低速带宽调整 Hz  "  ,   //  394   10-20 Low Spd band
     "低/高速带宽调整 Hz  "  ,   //  395   10-21 High Spd band
 	"位置控制ASR积分Isec "	,	//	396   10-22 Position control time
-	"?舳恢每刂?低通sec "	,	//	397   10-23 Position control LOW POSS FILTER
+	"启动位置控制低通sec "	,	//	397   10-23 Position control LOW POSS FILTER
 	"位置控制模式选择    "	,	//	398   10-24 Source of position control, add by dino, 
-	"?讲懔闼僭鲆鍼   %   "	,	//	399   10-25 KP gain of ASR in Zero speed of 
-	"?讲懔闼倩?分I   sec "	,	//	400   10-26 Ki gain of ASR in Zero speed of Landing
+	"平层零速增益P   %   "	,	//	399   10-25 KP gain of ASR in Zero speed of 
+	"平层零速积分I   sec "	,	//	400   10-26 Ki gain of ASR in Zero speed of Landing
 	"位置控制零速增益%   "	,	//	385   10-27 KP gain of ASR in Zero speed during 
 	"位置控制零速积分sec "	,	//	386   10-28 Ki gain of ASR in Zero speed during 
-    "PG卡除?凳涑鲋?      "	,   //  4xx   10-29 PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
-    "PG卡除?凳涑鲂褪?    "	,   //  4xx   10-30 PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
+    "PG卡除频输出值      "	,   //  4xx   10-29 PG Card Frequency Division Output   //[Modify PG Type Define, Bernie, 12/05/2011]
+    "PG卡除频输出型式    "	,   //  4xx   10-30 PG Card Mode setting                      //[DCI Level when stop, Bernie, 05/21/2012]    
     "PG C+/C-选择        "  ,   //  110   10-31 RESERVED     //[change parameter to normal group, Bernie, 2014/02/14]
     "电梯过加速度准位m/s2"  ,   //  3XX   10-32 Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
     "过加速度侦测时间sec "  ,   //  3XX   10-33 Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
@@ -4114,18 +4114,18 @@ const string20 prinfo_sc[EPMAX] = {
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
     "系统控制        Hex "	,	//	401   11-00 system control bit0:auto, bit1:Jm tunning, 
-    "最大?德识杂μ菟賛/s "  ,   //  402   11-01 Lift operation speed                                        
+    "最大频率对应梯速m/s "  ,   //  402   11-01 Lift operation speed                                        
     "曳引轮直径      mm  "  ,   //  403   11-02 SHEAVE diameter		                
     "齿轮比              "  ,   //  404   11-03 Gear Ratio                                              
     "悬挂比              "  ,   //  405   11-04 Suspension ratio	                                        
     "机械惯量百分比  %   "  ,   //  406   11-05 inertia	percent		                  
-    "?舳闼俅?    Hz  "	,	//	407   11-06 Zero Speed Loop BandWidth	                                
+    "启动零速带宽    Hz  "	,	//	407   11-06 Zero Speed Loop BandWidth	                                
     "低速带宽        Hz  "	,	//	408   11-07 Speed Loop BandWidth1		                                
     "高速带宽        Hz  "	,	//	409   11-08 Speed Loop BandWidth2		                                
     "PDFF增益值      %   "	,	//	410   11-09 PDFFKr		                                                
-    "速度控制?袄≡鲆?%   "	,	//	411   11-10 SPEED FFD GAIN		                    
+    "速度控制前馈增益%   "	,	//	411   11-10 SPEED FFD GAIN		                    
     "凹陷滤波深度    db  "	,	//	412   11-11 Netch filter deep(db)	                                    
-    "凹陷滤波?德?    Hz  "	,	//	413   11-12 Netch filter frequency	                                    
+    "凹陷滤波频率    Hz  "	,	//	413   11-12 Netch filter frequency	                                    
     "面板显示滤波时间sec "	,	//	414   11-13 Low Pass Filter for display	                                
     "加速时最大电流  %   "	,	//	415   11-14 ACC Max current                                             
     "电梯最大加速度  m/s2"  ,	//	416   11-15 max meter/sec	                                            
@@ -4787,8 +4787,8 @@ const string20 prinfo_tur[EPMAX] = {
     "AO2 Ters Yon        "	,	//	236  03-22 AO2 in minus value
     "AUI1 Polarite       "	,	//	237  03-23 AUI1 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
     "AUI2 Polarite       "	,	//	238  03-24 AUI2 Input Polar    //[AI chenge to AUI, Lyabryan, 03/27/2015]
-    //"AUI1输?肷瓒?        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
-    //"AUI2输?肷瓒?        "	,	//	238  03-26    AUI2 Communciate
+    //"AUI1输入设定        "	,	//	237  03-25    AUI1 Communciate    //[DLC, Bernie, 2014/10/06]
+    //"AUI2输入设定        "	,	//	238  03-26    AUI2 Communciate
 
 /*---- GROUP 04---------------------------------------*/
 /*  "12345678901234561234"	*/
@@ -5166,7 +5166,6 @@ const string20 prinfo_tur[EPMAX] = {
     "Motor SPD RPM       "  ,   //  420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
 #endif
     "Client_Mode         "  ,   //  422 11-22   //[Rational 332450 Artemis Warn Issue, Jerry.sk.Tseng 2023/03/31]
-
 /*---- GROUP 12-----------------------------------------*/
 /*	"12345678901234561234"	*/
 	"UMAP_ADD0			 "	,	//	421   12-00
@@ -5731,7 +5730,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"勒重氵嘈役蛰仫     "	,	//	137	00-09	Control Methods
 	"翟剌劓. 嶷捺掎庳	  "	,	//	138	00-10	Velocity Unit Select
 	"叫哙幸. 侧虚蛰仫     "	,	//	139 00-11   Change Output Direction, Added by sampo , 06/11/2009
-	"?嗅廪馊?     KHz "	,	//	140	00-12	Carry Frequency
+	"切徕掴雀     KHz "	,	//	140	00-12	Carry Frequency
 	"袄                 "	,	//	141	00-13	AVR
 	"羔廪巛刳 缧徕掴    "	,	//	142	00-14	Source of Freq. Command
 	"羔廪巛刳 谵苄菰      "	,	//	143	00-15	Source of Oper. Command
@@ -5746,7 +5745,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"拎.菪哙镏.2 砸.1V   "	,	//	150	01-06	Mid Output Voltage 2
 	"钾缧徕掴砸.1Hz  "	,	//	151	01-07	Min Output Freq.
 	"钾菪哙镏. 砸.1V   "	,	//	152	01-08	Min Output Voltage
-	"菱朽 ?嗅廪? Hz  "	,	//	153	01-09	Start Frequency
+	"菱朽 切徕掴 Hz  "	,	//	153	01-09	Start Frequency
 	"舱噱.余休劓.缧徕Hz  "	,	//	154	01-10	Upper Bound Freq.
 	"截州.余休劓.缧徕Hz  "	,	//	155	01-11	Lower Bound Freq.
 	"侧哲汜谵嗾葚sec "	,	//	156	01-12	1st Acceleration time
@@ -5759,7 +5758,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"侧哲仔苷咱蛰.4sec "	,	//	163	01-19	4th Deceleration time
 	"侧哲汜谵 JOGsec "	,	//	164	01-20	JOG Acceleration time
 	"侧哲仔苷咱.JOGsec "	,	//	165	01-21	JOG Deceleration time
-	"?嗅廪釰OG     Hz  "	,	//	166	01-22	JOG Frequency
+	"切徕掴JOG     Hz  "	,	//	166	01-22	JOG Frequency
 	"空嗾冕沸-4Hz  "	,	//	167	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4
 	"S 卩匾酗 1      sec "	,	//	168	01-24	S curve Accel time 1
 	"S 卩匾酗 2      sec "	,	//	169	01-25	S curve Accel time 2
@@ -5811,15 +5810,15 @@ const string20 prinfo_rus[EPMAX] = {
 	"摆庳倚 译遛赞   "	,	//	199	02-23	Multi-Function Output inverse	
     "菱朽咿巅赵-徕   "  ,   //  200 02-24   Sequence start mode
 	"恨葩噢缧徕掴Hz  "	,	//	201	02-25	Desired Frequency 1		        
-	"?剜剌? 缧徕掴 Hz  "	,	//	202	02-26	Band of Desired Frequency 1		
+	"蓉嘭菪 缧徕掴 Hz  "	,	//	202	02-26	Band of Desired Frequency 1		
 	"恨葩噢缧徕掴Hz  "	,	//	203	02-27	Desired Frequency 2		        
-	"?剜剌? 缧徕掴 Hz  "	,	//	204	02-28	Band of Desired Frequency 2		
+	"蓉嘭菪 缧徕掴 Hz  "	,	//	204	02-28	Band of Desired Frequency 2		
 	"沸哉嗬嗅廪嗦捺sec "	,	//	205	02-29	Brake Delay Timer at run
 	"沸哉嘟雄拗罗嘬. sec "	,	//	206	02-30	Brake Delay Timer at stop
 	"恨葩汹廪嗖夯. sec "	,	//	207	02-31	Mech Contact Delay Timer run
 	"恨葩汹廪嗖撕sec "	,	//	208	02-32	Mech Contact Delay Timer stop				            
 	"罗诓谯.簇嶷译   "	,	//	209	02-33	Isum Current Output Detect	    
-	"?嗅?.糙簇嶷搽錒z  "	,	//	210	02-34	Speed Area
+	"切徕.糙簇嶷搽錒z  "	,	//	210	02-34	Speed Area
 	"苦抟锗佬徕.廪嘬.sec "	,	//	211	02-35	Mechanical Brake Checking Time
 	"苦抟糙酆掭庑阝捺sec "	,	//	212 02-36   Magnetic Contactor Checking Time
 	"苦抟.译苻苷葩   "  ,   //  213 02-37   Mechanical Brake Checking Current Enable
@@ -5974,7 +5973,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"睫 廪按     Amps"	,	//	256 05-01	Motor 1 rated Current           
 	"睫苻檩掎忪 按 Kw  "	,	//	257 05-02	Motor 1 Rated Power             
 	"睫 缧徕掴按 RPM "	,	//	258 05-03	Motor 1 Rated RPM               
-	"?蒯圻捋钺薨?    "	,	//	259 05-04	Motor 1 pole No.                
+	"秦巅咿垲徂按    "	,	//	259 05-04	Motor 1 pole No.                
 	"罗遛 遛孕 按Amps"	,	//	260 05-05	Motor 1 No-Load Current         
 	"Rs 砸赜锈折   ohm "	,	//	261 05-06	Motor 1 Rs                      
 	"Rr 砸赜锈折   ohm "	,	//	262 05-07	Motor 1 Rr                      
@@ -6054,7 +6053,7 @@ const string20 prinfo_rus[EPMAX] = {
     "沸缧徕掴.仔 Hz  "	,	//	99  15-99   Fkey Record
     "搽缧徕掴.仔 Hz  "	,	//	94 	 15-94   Fcmd Record"Out Freq. REC.  Hz  "	,	//	94 	15-94   Fcmd Record
     "搽廪仔    Amps"	,	//	82   15-82	 Isum Record
-    "?嗅廪?.砸赜.仔Hz  "	,	//	79   15-79	Fout Record
+    "切徕掴.砸赜.仔Hz  "	,	//	79   15-79	Fout Record
     "搽菪哙.仔   V   "	,	//	80   15-80	Vout Record
 	"叫哙.滓蛰蠨C.仔遃   "	,   //  81   15-81	Dcbus Record  
 	"搽苻檩.仔   KW  "	,	//	100 15-100  Power Record
@@ -6106,7 +6105,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"罗贒C-廪嘬.徕朽   "	,	//	329   07-02	DCI Current Level      //[DCI Level when stop, Bernie, 05/21/2012]
 	"侧哲DC罗嘬C庑噔 sec "	,	//	330   07-03	DCI Time at Start 
 	"侧哲DC罗嘬菱捱  sec "	,	//	331   07-04	DCI Time at STOP
-	"?嗅廪釪C剌终阪. Hz  "	,	//	332   07-05	DCI Freq. At start
+	"切徕掴DC剌终阪. Hz  "	,	//	332   07-05	DCI Freq. At start
 	"恨礓.汜刿.菪哙Ki    "	,	//	333   07-06	DCI KI
 	"沸哉汜谵亦哲sec "	,	//	334   07-07	Gear wait time when acceleration
 	"沸哉汜谵缧徕Hz  "	,	//	335   07-08	Gear wait frequency when acceleration
@@ -6146,7 +6145,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"睫 廪链     Amps"	,	//	358   08-01	PMotor rated Current
 	"睫苻檩掎忪 链 Kw  "	,	//	359   08-02	PMotor Rated Power  
 	"睫 嶷捺掎忪 链RPM "	,	//	360   08-03	PMotor Rated RPM    
-	"?蒯坜哭垲徂? 链     "	,	//	361   08-04	PMotor pole No.     
+	"秦巅蘅捋钺抟 链     "	,	//	361   08-04	PMotor pole No.     
 	"Rs 嶝蒎.砸赜.   ohm "	,	//	362   08-05	PMotor Rs           
 	"Ld 嶝蒎.砸赜.       "	,	//	363   08-06	PMotor Ld           
 	"Lq 嶝蒎.砸赜.   mH  "	,	//	364   08-07	PMotor Lq           
@@ -6173,7 +6172,7 @@ const string20 prinfo_rus[EPMAX] = {
 /*---- GROUP 10------------------------------------------*/						
 /*  "12345678901234561234"	*/
 	"仑磔谵哉嘈        "	,	//	374   10-00	Encoder TYPE                             
-	"?蒯圬苓阚燹裵pr "	,	//	375   10-01	Encoder pulses	                    
+	"秦巅剀咩垤扪ppr "	,	//	375   10-01	Encoder pulses	                    
 	"仑吡赜菪坌洼谵脏    "	,	//	376   10-02	PG input setting	                
 	"勒汹掼匮谪 磔   "	,	//	377   10-03	PG fbk fault treatment	            
 	"沸哉嘀捐匮谪洼sec "	,	//	378   10-04	PG fbk Error Detection Time	        
@@ -6192,8 +6191,8 @@ const string20 prinfo_rus[EPMAX] = {
 	"袄/2哒嗾谯.   Hz  "	,	//	391   10-17	ASR1/ASR2 switch freq	        
 	"空嘁.袄慕 sec "	,	//	392   10-18	Primary LowPass filter Gain 
 	"恨葩汔.咿棕 亨%   "  ,	//	393   10-19     position control Kp Gain  
-    "?剜袄淋嗅?-庳 Hz  "  ,   //    394   10-20     Low Spd band
-    "?剜袄裂掎?-庳 Hz  "  ,   //    395   10-21     High Spd band
+    "蓉喟懒苄嶷-庳 Hz  "  ,   //    394   10-20     Low Spd band
+    "蓉喟懒艳嶷-庳 Hz  "  ,   //    395   10-21     High Spd band
 	"迷锗.咿棕亦哲飐ec "	,	//	396   10-22     Position control time
 	"迷锗.咿慕   sec "	,	//	397   10-23     Position control LOW POSS FILTER
 	"勒重氵咿棕    "	,	//	398   10-24     Source of position control, add by dino, 06/30/2008
@@ -6232,7 +6231,7 @@ const string20 prinfo_rus[EPMAX] = {
     "簇徇孕葺胝        "  ,	//	418   11-17	Display data,   add by dino 2007/03/08                      
     "沸樨廨.沿         "  ,   //  419   11-18   Protect Bit	                                                
 	"姐嶷.译嘈褺W  Hz  "	,	//	420   11-19	Zero Speed Loop BandWidth of Landing
-	"嗾重??          "	,	//	10    15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM    PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
+	"嗾重雀          "	,	//	10    15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM    PWM MODE, 0=SVPWM+DPWM,1=SVPWM	 //[move parameter to 11-20, Bernie, 2017/02/16]
     "LPF for LC01    sec "	,	//	422 11-21	Low Pass Filter for LC01 only APR_uwPGPosition  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     "Motor SPD RPM       "  ,   //  420   11-21 Lift_SPD_Hz Sibocom, Jason, 2019/12/31
@@ -6471,7 +6470,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"邻捺.谯幸.Up/Dwn    "	,	//	508   14-23	up/down key speed
 	"叫徕徵这缲谛      "	,	//	509   14-24	Counter Value Set (Complete)
 	"冕庑徵这缲谛      "	,	//	510   14-25	Counter Value Reach (Preset)
-	"?谛坜余休?      "	,	//	511   14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
+	"融雄抻嘈葚      "	,	//	511   14-26	LIMIT_SCALE      //[weak magnet, Sampo, 03/31/2011]
 	"簇嶷嗾廨. 义拊 9    "	,	//	512   14-27	Multi-Function Input 9
 	"簇嶷嗾廨. 义拊 A    "	,	//	513   14-28	Multi-Function Input 10
 	"簇嶷嗾廨. 义拊 B    "	,	//	514   14-29	Multi-Function Input 11
@@ -6502,7 +6501,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"睫廪 砸赜.2 Amps"	,	//	539   14-54	Motor 2 rated Current
 	"嫁檩掎忪 砸赜.2 Kw  "	,	//	540   14-55	Motor 2 Rated Power
 	"睫缧徕掴砸.2RPM "	,	//	541   14-56	Motor 2 Rated RPM
-	"?蒯圻捋钤?.2    "	,	//	542   14-57	Motor 2 pole No.
+	"秦巅咿垲砸.2    "	,	//	542   14-57	Motor 2 pole No.
 	"罗遛孕 砸.2 Amps"	,	//	543   14-58	Motor 2 No-Load Current
 	"Rs 砸赜锈折   ohm "	,	//	544   14-59	Motor 2 Rs
 	"Rr  砸赜锈折2 ohm "	,	//	545   14-60	Motor 2 Rr
@@ -6557,7 +6556,7 @@ const string20 prinfo_rus[EPMAX] = {
 	"APR Decel Time  sec "	,	//	594   14-109 Decelerate time of APR
 	"FMAX by VcomAPR Hz  "	,	//	595   14-110 FMax Target by Vcommand Position
 	"勒渍嘁              "	,	//	596   14-111 Accel. Time for Position
-	"?蒯圬?.嗾糟阝. A    "	,	//	597   14-112 PG Mechanical Gear A
+	"秦巅剽.嗾糟阝. A    "	,	//	597   14-112 PG Mechanical Gear A
 	"份熊蛰锈.嗾糟   "	,	//	598   14-113 PG Mechanical Gear B
 	"Jm 嶝徕哲 PU  PU  "	,	//	599   14-114 Interia of motor PU
 	"M1IdsRef 哙赵折  %  "	,	//	600   14-115 Motor1 IdsRef Limit
