@@ -140,7 +140,8 @@ DLC_EXT	ULONG	            DLC_ulDacc,
 							DLC_ulPosUL,
 							COF_ulPls2MMgain,	
 							DLC_ulPosRopeCmp,	// Mitong 20220513 add
-							DLC_ulPgRopeCmp;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
+							DLC_ulPgRopeCmp,	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
+							DLC_ulPG_Position;	//[Rationa 368994, Special.Kung]
 							
 							
 							

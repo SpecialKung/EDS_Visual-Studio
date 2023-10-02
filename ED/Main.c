@@ -4965,119 +4965,143 @@ void main(void)
     FIRST_FLAG = 1;     //[PG quality function, Bernie, 2017/06/20]
 
     while(1)
-    {    
-     //===================== Encoder quality ====================//
-      if(TB1_uwPGQuality_1sec>=1000 && FIRST_FLAG==0){                                           //[PG quality function, Bernie, 2017/06/20]
-          TB1_swPGQualityDsp = 1000-(SWORD)((SPR_ulPGQualityCnt*1000)/SpDt_ulPG1NpulseNoMx);
-          if((TB1_swPGQualityDsp<=5)){
-          //if(FIRST_FLAG==1){
-              TB1_swPGQualityDsp = 0;   //dot1
-          }
-          //uwtest24++;
-          TB1_uwPGQuality_1sec = 0;
-      }
+    {
+        //===================== Encoder quality ====================//
+        if(TB1_uwPGQuality_1sec>=1000 && FIRST_FLAG==0)
+        {
+            //[PG quality function, Bernie, 2017/06/20]
+            TB1_swPGQualityDsp = 1000-(SWORD)((SPR_ulPGQualityCnt*1000)/SpDt_ulPG1NpulseNoMx);
+            if((TB1_swPGQualityDsp<=5))
+            {
+                //if(FIRST_FLAG==1){
+                TB1_swPGQualityDsp = 0;   //dot1
+            }
+            //uwtest24++;
+            TB1_uwPGQuality_1sec = 0;
+        }
 
     
-      /*================= Service Times function ===================*/
-      if(((RUN_SENSOR0 == 1) && (RUN_SENSOR1 == 0))&&(pr[SERVICE_ENABLE]==1)&&(RUNNING==RUN)){   //[Service time function, Bernie, 2017/03/14]
-          if(pr[SERVICE_COUNT]!=0){
-              pr[SERVICE_COUNT]--;
-              write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
-              RUN_SENSOR1 = 1;
-          }
-          else{
-              SERVICE_KEYRESET = 1;
-              Error = SERVICE_ERR;
-              write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
-          }
-      }
-      //[ //[Running Dir Count,Special,2018/08/17]
-	  /*================= Running Dir Count function ===================*/
-	  if((CMDDIR_OLD != CMDDIR)&&(RUNNING == RUN)){
-	  	
-		  if(pr[IR_COUNT_L] == 9999){
-			  pr[IR_COUNT_L]=0;
-			  pr[IR_COUNT_H]=pr[IR_COUNT_H]+1;
-              write_ep(0,IR_COUNT_H ,pr[IR_COUNT_H]);
-		  }
-		  else{
-			  pr[IR_COUNT_L]=pr[IR_COUNT_L]+1;
-              write_ep(0,IR_COUNT_L ,pr[IR_COUNT_L]);
-		  }
-          if(IRF_ENABLE){    
-          	  if(pr[IR_TCOUNT_L] == 9999){
-          		  pr[IR_TCOUNT_L]=0;
-          		  pr[IR_TCOUNT_H]=pr[IR_TCOUNT_H]+1;
-                  write_ep(0,IR_TCOUNT_H ,pr[IR_TCOUNT_H]);
-          	  }
-          	  else{
-          		  pr[IR_TCOUNT_L]=pr[IR_TCOUNT_L]+1;
-                  write_ep(0,IR_TCOUNT_L ,pr[IR_TCOUNT_L]);
-          	  }
-			  IR_ulTcount = pr[IR_TCOUNT_H]*10000+pr[IR_TCOUNT_L];
-          }
+        /*================= Service Times function ===================*/
+        if(((RUN_SENSOR0 == 1) && (RUN_SENSOR1 == 0))&&(pr[SERVICE_ENABLE]==1)&&(RUNNING==RUN))
+        {
+            //[Service time function, Bernie, 2017/03/14]
+            if(pr[SERVICE_COUNT]!=0)
+            {
+                pr[SERVICE_COUNT]--;
+                write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
+                RUN_SENSOR1 = 1;
+            }
+            else
+            {
+                SERVICE_KEYRESET = 1;
+                Error = SERVICE_ERR;
+                write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
+            }
+        }
+        //[ //[Running Dir Count,Special,2018/08/17]
+	    /*================= Running Dir Count function ===================*/
+	    if((CMDDIR_OLD != CMDDIR)&&(RUNNING == RUN))
+        {
+            if(pr[IR_COUNT_L] == 9999)
+            {
+                pr[IR_COUNT_L]=0;
+                pr[IR_COUNT_H]=pr[IR_COUNT_H]+1;
+                write_ep(0,IR_COUNT_H ,pr[IR_COUNT_H]);
+            }
+            else
+            {
+                pr[IR_COUNT_L]=pr[IR_COUNT_L]+1;
+                write_ep(0,IR_COUNT_L ,pr[IR_COUNT_L]);
+            }
+            if(IRF_ENABLE)
+            {
+                if(pr[IR_TCOUNT_L] == 9999)
+                {
+                    pr[IR_TCOUNT_L]=0;
+                    pr[IR_TCOUNT_H]=pr[IR_TCOUNT_H]+1;
+                    write_ep(0,IR_TCOUNT_H ,pr[IR_TCOUNT_H]);
+                }
+                else
+                {
+                    pr[IR_TCOUNT_L]=pr[IR_TCOUNT_L]+1;
+                    write_ep(0,IR_TCOUNT_L ,pr[IR_TCOUNT_L]);
+                }
+                IR_ulTcount = pr[IR_TCOUNT_H]*10000+pr[IR_TCOUNT_L];
+            }
           
-          CMDDIR_OLD=CMDDIR;
-	  }
+            CMDDIR_OLD=CMDDIR;
+	    }
 	  
-      if(pr[IR_COUNT_H] == 60000){
-          WGOFF;
-          Error = SERVICE_ERR;
-          WGOFF;
-          TB1_uwMCStopCnt = pr[MCDELAY_STOP];
-          LIFT_ENABLE = 0;
-          CMDFREE = 1;
-      }
-      
-      if(IR_ulTcount==209999){
-          IRF_Error = 1;
-      }
+        if(pr[IR_COUNT_H] == 60000)
+        {
+            WGOFF;
+            Error = SERVICE_ERR;
+            WGOFF;
+            TB1_uwMCStopCnt = pr[MCDELAY_STOP];
+            LIFT_ENABLE = 0;
+            CMDFREE = 1;
+        }
+
+        if(IR_ulTcount==209999)
+        {
+            IRF_Error = 1;
+        }
         
 
-	  if(IR_ulTcount>(pr[IR_LIFE]*10)){
-   	  	  if(IRF_Warning == 1){
-   			  WarnDisplaySave();
-   			  WarnCode = SERVICE_WARN;
-   		  }
-   		  else if(IRF_Error == 1 ){
-              WGOFF;
-   			  Error = SERVICE_ERR;
-   			  WGOFF;
-   			  TB1_uwMCStopCnt = pr[MCDELAY_STOP];
-              LIFT_ENABLE = 0;
-   			  CMDFREE = 1;
-              IR_KEYRESET = 1;
-   		  }
-	  }
-      //] //[Running Dir Count,Special,2018/08/17]				
+        if(IR_ulTcount>(pr[IR_LIFE]*10))
+        {
+            if(IRF_Warning == 1)
+            {
+                WarnDisplaySave();
+                WarnCode = SERVICE_WARN;
+            }
+            else if(IRF_Error == 1 )
+            {
+                WGOFF;
+                Error = SERVICE_ERR;
+                WGOFF;
+                TB1_uwMCStopCnt = pr[MCDELAY_STOP];
+                LIFT_ENABLE = 0;
+                CMDFREE = 1;
+                IR_KEYRESET = 1;
+            }
+        }
+        //] //[Running Dir Count,Special,2018/08/17]				
 	  
 	  
-  //=====================EPS MO Output======================// //[EPS MO Output,Lyabryan,2018/06/19]
-        if((MI_EPS_SWITCH == 1)||((Error==LvA_ERR)||(Error==Lvd_ERR)||(Error==Lvn_ERR)||(Error==LvS_ERR))){ 
-            if(MO_EPS_SWITCH == 1){
-                if(EPS == 1){
+        //=====================EPS MO Output======================// //[EPS MO Output,Lyabryan,2018/06/19]
+        if((MI_EPS_SWITCH == 1)||((Error==LvA_ERR)||(Error==Lvd_ERR)||(Error==Lvn_ERR)||(Error==LvS_ERR)))
+        {
+            if(MO_EPS_SWITCH == 1)
+            {
+                if(EPS == 1)
+                {
                     EPS_MO_JUDGEMENT = 1;
                 }
             }
         }
-        if(EPS == 0 && EPS_MO_JUDGEMENT==1){ 
+        if(EPS == 0 && EPS_MO_JUDGEMENT==1)
+        {
             //EPS_MO_JUDGEMENT = 0;
-            if(uwEPS_Off_CNT>=pr[EPS_MO_OFF]*100){
+            if(uwEPS_Off_CNT>=pr[EPS_MO_OFF]*100)
+            {
                 MO_EPS_SWITCH = 0;
                 uwEPS_Delay_CNT = 0;
                 uwEPS_Off_CNT = 0;
             }
         }
-  //========================================================// //[EPS MO Output,Lyabryan,2018/06/19]
-      if(DLC_uwEeprom == 1){
-    		
-    		WelTun_eeprom();
-    		DLC_uwEeprom = 0;
-      }
+        //========================================================// //[EPS MO Output,Lyabryan,2018/06/19]
+        if(DLC_uwEeprom == 1)
+        {
+            WelTun_eeprom();
+            DLC_uwEeprom = 0;
+        }
     
-    /*================= PGABD ===================*/  //[PGABD function, Bernie, 10/13/2011]
-        if ((pr[DEBUG_F1]&0x0008) != 0x0008){
-            if(pr[PG_TYPE] == ABZ_ONLY || pr[PG_TYPE] == ABZ_UVW){
+        /*================= PGABD ===================*/  //[PGABD function, Bernie, 10/13/2011]
+        if ((pr[DEBUG_F1]&0x0008) != 0x0008)
+        {
+            if(pr[PG_TYPE] == ABZ_ONLY || pr[PG_TYPE] == ABZ_UVW)
+            {
                 //ubPGData = (pr[PG_MODE] & 0x001F) + ((pr[PG_MODE] & 0x100) >> 3) + ((pr[PG_MODE] & 0x200) >> 3) + 0x80;
                 ubPGData = pr[FREQ_DIV]+
                           ((pr[PG_DIV_MODE]&0x0001)<<5)+
@@ -5096,46 +5120,53 @@ void main(void)
                     ubPGData = ubPGData << 1;    // left shift
                     SCI0_TxD = 1 ;          // B4(P9.3)
         
-                }    
+                }
                 SCI0_DIR = !0;             // B8(P9.5)=0 -> load keypad data //
                 SCI0_TxD = 0;
                 SCI0_DIR = !1;             // P9.5 Low to High, latch 74595 data //
             }
         }
-    /*================= CAN Protocol for DLC ===================*/	
+        /*================= CAN Protocol for DLC ===================*/	
 //#if 1
     	//if((pr[DEBUG_F1]&0x0008) != 0x0008){
             
-        if(CAN_RX3_OK == 1 || CAN_RX5_OK == 1 ||CAN_RX7_OK == 1){  // [CAN Protocol for High Cap , Sampo,  2011/09/05]
+        if(CAN_RX3_OK == 1 || CAN_RX5_OK == 1 ||CAN_RX7_OK == 1)
+        {
+            // [CAN Protocol for High Cap , Sampo,  2011/09/05]
             CAN_SDO_RX_Decode();
         }
 
         //[Gfc DLC modify,Henry,2018/05/23]
-        if((pr[SOFC]==4)||(pr[SOFC]==5)){
+        if((pr[SOFC]==4)||(pr[SOFC]==5))
+        {
         	// [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-            if((uwCAN_ChkTime!=0)&&(uwPDO_CNT >= uwCAN_ChkTime)){    
-    					//DLC function, Henry, 2016/07/20 [
+            if((uwCAN_ChkTime!=0)&&(uwPDO_CNT >= uwCAN_ChkTime))
+            {
+    			//DLC function, Henry, 2016/07/20 [
                 Keypad_Page = WarnPAGE;	   
                 WarnCode = CANOFF_WARN;
     					
-    					//[Those codes fixed keypad can't diaplay warn code, Bernie, 2016/01/29]
-    				  //warndisp(CANOFF_WARN);
-    					//]
+    			//[Those codes fixed keypad can't diaplay warn code, Bernie, 2016/01/29]
+    			//warndisp(CANOFF_WARN);
+    			//]
     					
-    					//Error = CAN_ERR;
-            //uwPDO_CNT = 0;             //[CAN ERR can't clear after pr[CAN_HC]=0, Bernie, 2013/04/11]
+    			//Error = CAN_ERR;
+                //uwPDO_CNT = 0;             //[CAN ERR can't clear after pr[CAN_HC]=0, Bernie, 2013/04/11]
             }
-            else{
-          	//DLC function, Henry, 2016/07/20
-          	    if(WarnCode == CANOFF_WARN){
+            else
+            {
+                //DLC function, Henry, 2016/07/20
+          	    if(WarnCode == CANOFF_WARN)
+                {
               		InitCAN();
               		WarnCode = 0;
               		uwPDO_CNT = 0;
                 }
             }
           
-          // PDO CANOFF_WARN reset init, v0.05
-            if(CAN1.STR.BIT.EST == 1){
+            // PDO CANOFF_WARN reset init, v0.05
+            if(CAN1.STR.BIT.EST == 1)
+            {
                 CAN_UWEST_COUNT++;
                 //CAN_UWEST_STATUS = CAN1.STR.BIT.EST ;
                 CAN_UWEST_STATUS &=0X0000;
@@ -5145,15 +5176,18 @@ void main(void)
                 InitCAN();
             }
         
-            if(CAN1.STR.BIT.TABST == 1){
-                if(CAN1.MCTL[0].BIT.TX.TRMABT == 1){
+            if(CAN1.STR.BIT.TABST == 1)
+            {
+                if(CAN1.MCTL[0].BIT.TX.TRMABT == 1)
+                {
                     CAN_UWTABST0_COUNT++;
                     CAN_UWTABST0_STATUS = CAN1.ECSR.BYTE;
                     CAN1.MCTL[0].BIT.TX.TRMABT = 0;
                     pr[TABST0_COUNT] = CAN_UWTABST0_COUNT;
                     pr[TABST0_STATUS] = CAN_UWTABST0_STATUS;
                 }
-                if(CAN1.MCTL[2].BIT.TX.TRMABT == 1){
+                if(CAN1.MCTL[2].BIT.TX.TRMABT == 1)
+                {
                     CAN_UWTABST1_COUNT++;
                     CAN_UWTABST1_STATUS = CAN1.ECSR.BYTE;
                     CAN1.MCTL[2].BIT.TX.TRMABT = 0;
@@ -5164,27 +5198,28 @@ void main(void)
         }
         //}
 //#endif
-    /*================= PG Card for Sinusoidal type ===================*/    
-        
+        /*================= PG Card for Sinusoidal type ===================*/    
     	if ( pr[PG_TYPE]==SIN_SIN )
         	Sinusoidal_Position();
     
-/*================= Keypad Communication Control ===================*/			
-
+        /*================= Keypad Communication Control ===================*/
         CHK_PUID2();
 
-        if (ASC_RTU2==1){          //RTU mode
+        if (ASC_RTU2==1)
+        {
+            //RTU mode
             RTU_RxOKChk_2();                
         }
 
-        if (RX_OK2==1){
-                //if ((pr[DEBUG_F1]&0x0008) == 0x0008){      //[ICT Test, Bernie, 08/11/2011]       
-                    //for(i=0; i<=Rx2CNT; i++){
-                        //RxBuf_2[i] = 0xff - RxBuf_2[i];    
-                    //}
-                    //SCIDIR2Flag = 0;	// Transmit    
-                    //Init_TxData_2(Rx2CNT-2);
+        if (RX_OK2==1)
+        {
+            //if ((pr[DEBUG_F1]&0x0008) == 0x0008){      //[ICT Test, Bernie, 08/11/2011]       
+                //for(i=0; i<=Rx2CNT; i++){
+                    //RxBuf_2[i] = 0xff - RxBuf_2[i];    
                 //}
+                //SCIDIR2Flag = 0;	// Transmit    
+                //Init_TxData_2(Rx2CNT-2);
+            //}
 #if BOOTLOADER_ENABLE	// Bootloader enable, Sean, 20141022
             if(RxBuf_2[0] == 0x3A && 
                RxBuf_2[7] == 0x55 && 
@@ -5192,7 +5227,8 @@ void main(void)
                RxBuf_2[9] == 0x55 && 
                RxBuf_2[10] == 0x55 && 
                RxBuf_2[15] == 0x0D && 
-               RxBuf_2[16] == 0x0A){
+               RxBuf_2[16] == 0x0A)
+            {
             		
             	// Transmit DIR flag	
                 SCIDIR2Flag = 0;      
@@ -5204,8 +5240,10 @@ void main(void)
                 switch_TxDon = 1;
                 LV_REC();
             }
-            else{
-				if (Rx2CNT >= 7){
+            else
+            {
+				if (Rx2CNT >= 7)
+                {
     		        #if 1
 					RxDecoder_2();	//[force to stop scope mode,Aevin,2016/08/03]
 					#else
@@ -5219,29 +5257,32 @@ void main(void)
     				}
 					#endif			
     	        }
-    	        else{
-    		         InitSCI2();
+    	        else
+                {
+    		        InitSCI2();
     	        }
             }
 #else
-    	        if (Rx2CNT >= 7){
+            if (Rx2CNT >= 7)
+            {
 
 #if 1
-					RxDecoder_2();	//[force to stop scope mode,Aevin,2016/08/03]
+                RxDecoder_2();	//[force to stop scope mode,Aevin,2016/08/03]
 #else
-					//----use modbus structure---4/26/2016
-					//keypad is work ,soft is work too
-					RxDataCheck_2();
-    				if (ADDR_MATCH2==1){
-						Rx2CNT	= modbus_decode(&RxBuf_2[1],Rx2CNT);							
-						memcpy(TxBuf_2,RxBuf_2,Rx2CNT+1); //ID+DATA							
-						Init_TxData_2(Rx2CNT);
-    				}
+                //----use modbus structure---4/26/2016
+                //keypad is work ,soft is work too
+                RxDataCheck_2();
+                if (ADDR_MATCH2==1){
+                    Rx2CNT	= modbus_decode(&RxBuf_2[1],Rx2CNT);							
+                    memcpy(TxBuf_2,RxBuf_2,Rx2CNT+1); //ID+DATA							
+                    Init_TxData_2(Rx2CNT);
+                }
 #endif				
-    	        }
-    	        else{
-    		         InitSCI2();
-    	        }			
+            }
+            else
+            {
+                    InitSCI2();
+            }			
 #endif
             SCI2_TodCNT = 0;
             RX_OK2 = 0;			
@@ -5254,7 +5295,8 @@ void main(void)
         EINT();
 	    
 #if BOOTLOADER_ENABLE	// Bootloader enable, Sean, 20141022
-    	if(switch_TxDonWait>1000){	//wait 1sec	// bootloader over usb for online mode, Sean, 20141030	
+    	if(switch_TxDonWait>1000)
+        {	//wait 1sec	// bootloader over usb for online mode, Sean, 20141030	
     		switch_TxDon = 0;
     		switchFlag = 0;
     		switch_TxDonWait = 0;
@@ -5266,24 +5308,32 @@ void main(void)
 
      /*================= JSG3 Communication Control ===================*/			
 
-        if (ASC_RTU3==1){          //RTU mode
+        if (ASC_RTU3==1)
+        {
+            //RTU mode
             RTU_RxOKChk_3();
         }
 
-        if (RX_OK3==1){	
-            if ((pr[DEBUG_F1]&0x0008) == 0x0008){      //[ICT Test, Bernie, 08/11/2011]       
-                for(i=0; i<=Rx3CNT; i++){
+        if (RX_OK3==1)
+        {
+            if ((pr[DEBUG_F1]&0x0008) == 0x0008)
+            {
+                //[ICT Test, Bernie, 08/11/2011]       
+                for(i=0; i<=Rx3CNT; i++)
+                {
                     RxBuf_3[i] = 0xff - RxBuf_3[i];    
                 }
                 SCIDIR3Flag = 0;	// Transmit    
                 Init_TxData_3(Rx3CNT-2);
             }
-    		
-            else{ 
-         	    if (Rx3CNT >= 7){
+            else
+            {
+         	    if (Rx3CNT >= 7)
+                {
     	            RxDecoder_3();
                 }
-                else{
+                else
+                {
                     InitSCI3();
                 }
             }
@@ -5291,8 +5341,10 @@ void main(void)
             RX_OK3 = 0;			
         }
 
-        if ((pr[DEBUG_F1]&0x0001) == 0x0001){      //[ICT Test, Bernie, 08/11/2011]  
-             ICT4SCI3();
+        if ((pr[DEBUG_F1]&0x0001) == 0x0001)
+        {
+            //[ICT Test, Bernie, 08/11/2011]  
+            ICT4SCI3();
         }
 
         TxD_Data_3();
@@ -5302,9 +5354,12 @@ void main(void)
         EINT();
 
 
-       if (vfd_btPGHSD1Set==1){	// fix pghsd1 code, Sean, 06/01/2012
+        if (vfd_btPGHSD1Set==1)
+        {
+            // fix pghsd1 code, Sean, 06/01/2012
     		/*testing for  EMED-PGHSD*/
-    		switch(pr[PG_TYPE]){
+    		switch(pr[PG_TYPE])
+            {
     			case SIN_ENDAT:	hsd_stIedSendIn.ubEndTyp = HSD_PGT_ENDAT;	break;
     			case SIN_SIN:	hsd_stIedSendIn.ubEndTyp = HSD_PGT_SIN;		break;
     			case SIN_HIPER:	hsd_stIedSendIn.ubEndTyp = HSD_PGT_HIPER;	break;
@@ -5316,7 +5371,9 @@ void main(void)
     		hsd_ProssTxRxTb1(&hsd_stIedSendIn,&hsd_stPgReplyOut);
     		hsd_uwAbsAngle = hsd_stPgReplyOut.uwAngle;
     	}
-    	else{     //[delete PGHSD, Lyabryan, 2015/12/17]
+    	else
+        {
+            //[delete PGHSD, Lyabryan, 2015/12/17]
     		SCI0_PGHSD_Comm();
     	}
 
@@ -5337,10 +5394,10 @@ void main(void)
 //---END 06/21/2007---------------	
 
         
-        if(COPYEN){
-
+        if(COPYEN)
+        {
             if((COPYFAIL)||(COM2Err!=0)||(Com_WatchDog2>=50))
-            {    
+            {
                 // 50*40ms = 2sec  //[modify watchdog to SCI2, Bernie, 2017/08/10]
                 InitValue();
                 copy_status.ub = 0;
@@ -5348,15 +5405,18 @@ void main(void)
                 WarnCode = SE1_WARN;        // Copy Fail 1, SE1
                 KC23xx[0x05] &= 0xefff;     // clear bit12 Enable to Copy
             }
-            else if(COPYOK){
-
-                for(ax=GROUP0; ax<GROUP13; ax++){
+            else if(COPYOK)
+            {
+                for(ax=GROUP0; ax<GROUP13; ax++)
+                {
                 	uwTemp = GetParAttr(ax);
-                    if( (uwTemp&(HIDE|S2EEP|READ))==0 ){	// Modify by DINO, 10/28/2008
-
+                    if( (uwTemp&(HIDE|S2EEP|READ))==0 )
+                    {
+                        // Modify by DINO, 10/28/2008
                         bx = pr_copy[ax];
                         write_pr(ax,bx);
-                        if(KEYEND == ERR){
+                        if(KEYEND == ERR)
+                        {
                             COPYFAIL = 1;
                             break;
                         }
@@ -5364,61 +5424,78 @@ void main(void)
                 }
                 
 
-                if(COPYFAIL){
+                if(COPYFAIL)
+                {
                     InitValue();    			// clr COPYOK(b7), COPYFAIL(b6), COPYOK(b5)
     				copy_status.ub = 0;
                     WarnDisplaySave();
                     WarnCode = SE2_WARN;        // Copy Fail 1, SE2
                     KC23xx[0x05] &= 0xefff;     // clear bit12 Enable to Copy                    
                 }
-                else {  // COPYFAIL=0
+                else 
+                {
+                    // COPYFAIL=0
                     InitValue();    			// clr COPYOK(b7), COPYFAIL(b6), COPYOK(b5)
                     C21xx[0x20] |= 0x1000;	    // [For VFD-Cx reload chinese parameter information, Bernie, 10/06/2011]
     				copy_status.ub = 0;
                 }                
             }
         }
-        else{  // Non copy mode
-
-
-//            if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]!=3)) {            // Enable Time out Detection //SCOTTY delete 09/03/2007 
-            if((pr[CTODT2]!=0)&&(pr[C_FAULT2]<2)){		//SCOTTY ADD 09/03/2007
-                if(SCI2_TodCNT > pr[CTODT2]){ 
+        else
+        {  
+            // Non copy mode
+//          if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]!=3)) {            // Enable Time out Detection //SCOTTY delete 09/03/2007 
+            if((pr[CTODT2]!=0)&&(pr[C_FAULT2]<2))
+            {
+                //SCOTTY ADD 09/03/2007
+                if(SCI2_TodCNT > pr[CTODT2])
+                {
                     if (PUON2LINE)
                         COM2Err = CP_CE10;
                     else
                         COM2Err = PC_CE10;    
                     SCI2_ComFault();
                 }
-                else{
-                    if((Error==0)&&(WarnCode<=CP_CE10 && WarnCode>=PC_CE01)){
+                else
+                {
+                    if((Error==0)&&(WarnCode<=CP_CE10 && WarnCode>=PC_CE01))
+                    {
                         Keypad_Page = Keypad_PageTmp;
                         WarnCode = 0;
                     }    
                 }
             }
 
-	        if(Com_WatchDog2>50){   // WatchDog Timer > 5.0 sec
+	        if(Com_WatchDog2>50)
+            {
+                // WatchDog Timer > 5.0 sec
 	            InitSCI2();
-            }   
+            }
 
-            if((pr[CTODT3]!=0)&&(pr[C_FAULT3]<2)){		//SCOTTY ADD 09/03/2007
-                if (SCI3_TodCNT > pr[CTODT3]){ 
+            if((pr[CTODT3]!=0)&&(pr[C_FAULT3]<2))
+            {	
+                //SCOTTY ADD 09/03/2007
+                if (SCI3_TodCNT > pr[CTODT3])
+                {
                     if (PUON3LINE)
                         COM3Err = CP_CE10;
                     else
                         COM3Err = PC_CE10;    
                     SCI3_ComFault();
                 }
-                else{
-                    if((Error==0)&&(WarnCode<=CP_CE10 && WarnCode>=PC_CE01)){
+                else
+                {
+                    if((Error==0)&&(WarnCode<=CP_CE10 && WarnCode>=PC_CE01))
+                    {
                         Keypad_Page = Keypad_PageTmp;
                         WarnCode = 0;
                     }    
                 }
             }
 
-	        if(Com_WatchDog3>50){   // WatchDog Timer > 5.0 sec
+	        if(Com_WatchDog3>50)
+            {
+                // WatchDog Timer > 5.0 sec
 	            InitSCI3();
             }                         
         }
@@ -5438,36 +5515,50 @@ void main(void)
 		mfo_process();
 		
 		//------ LED KEYPAD Program, DINO, 03/09/2010 -----------//
-		if (COPYEN == 0){  // KEYPAD is invalid during Save, DINO, 03/16/2010
+		if (COPYEN == 0)
+        {
+            // KEYPAD is invalid during Save, DINO, 03/16/2010
 			key_prog();
 			// [ Initial Page, DINO, 06/01/2010
 			KEY_ubPrno[grno] = prno;
 			// ]
 		}
 		
-        if((pr[IODEN]&0x0001)==0x0001){ // [IODLC, Lyabryan, 2016/11/11]
+        if((pr[IODEN]&0x0001)==0x0001)
+        {
+            // [IODLC, Lyabryan, 2016/11/11]
             IODLC_Distance_calculate(); // [IODLC, Lyabryan, 2016/11/11]
         }
         ////[EPS, Sampo, 03/27/2011]
-        if(EPS && pr[CTRLM]<=SVC && RUNNING==STOP && GEN_START && EPS_STOP){
+        if(EPS && pr[CTRLM]<=SVC && RUNNING==STOP && GEN_START && EPS_STOP)
+        {
             EPS_STOP = 0;
-            if(uwEPScnt>1){
-                if(PR_ubEpsOptMod==1){           //[Modify EPS function, Bernie, 2012/11/27 ]         
-                    if (uwFWDPFangle > uwREVPFangle){
+            if(uwEPScnt>1)
+            {
+                if(PR_ubEpsOptMod==1)
+                {
+                    //[Modify EPS function, Bernie, 2012/11/27 ]         
+                    if (uwFWDPFangle > uwREVPFangle)
+                    {
                	        CMDDIR = FORWARD;
                         GEN_OK3 = 1;               //be used to control CMDDIR in EPS function
                         GEN_OK2_DIR = FORWARD;  
      	            }
-    			    else {
+    			    else
+                    {
         		        CMDDIR = REVERSE;
                         GEN_OK3 = 1;                //be used to control CMDDIR in EPS function
                         GEN_OK2_DIR = REVERSE;  
     			    }		        
-                    if(pr[CHG_DIR]==1){             //GENDIR related to para 00-11, Henry, 2017/05/24
+                    if(pr[CHG_DIR]==1)
+                    {
+                        //GENDIR related to para 00-11, Henry, 2017/05/24
 					    CMDDIR ^= 1; //GENDIR related to para 00-11, James, 2019/12/20
                     }
                 }
-                else if(PR_ubEpsOptMod==4){ //[EPS autodetect dir,Lyabryan,2018/07/02]
+                else if(PR_ubEpsOptMod==4)
+                {
+                    //[EPS autodetect dir,Lyabryan,2018/07/02]
                     CMDDIR = pr[EPS_DIR];
                 }
                 GEN_OK = 1;
@@ -5478,7 +5569,9 @@ void main(void)
                 else
     		        GENDIR = pr[EPS_DIR];
                 
-		        if(pr[CHG_DIR]==1){             //GENDIR related to para 00-11, Henry, 2017/05/24
+		        if(pr[CHG_DIR]==1)
+                {
+                    //GENDIR related to para 00-11, Henry, 2017/05/24
                     GENDIR ^= 1;
                 }
             }
@@ -5487,7 +5580,8 @@ void main(void)
             run();
         
             
-            if(uwEPScnt>1){  
+            if(uwEPScnt>1)
+            {  
                 GEN_START = 0;
                 uwEPScnt = 0;
             }
@@ -5499,7 +5593,8 @@ void main(void)
 		swTemp2 = ACICalculate();
 		swTemp3 = AUI2Calculate(); 
 
-		if (pr[AISUM]==0){
+		if (pr[AISUM]==0)
+        {
    		    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
    		    AVIslFunVar = (*mfai_ptr)(1,swTemp1);	    	
 	    	
@@ -5509,9 +5604,12 @@ void main(void)
 		    mfai_ptr = mfai_tbl[pr[AUI2_SL]];
    		    AUIslFunVar = (*mfai_ptr)(3,swTemp3);
    		}
-   		else{   			
-		    if (pr[AUI1_SL]==pr[ACI_SL]){
-		    	if (pr[ACI_SL]==pr[AUI2_SL]){
+   		else
+        {   			
+		    if (pr[AUI1_SL]==pr[ACI_SL])
+            {
+		    	if (pr[ACI_SL]==pr[AUI2_SL])
+                {
 		            // AVI = ACI = AUI
 		    	    swTemp1 = swTemp1 + swTemp2 + swTemp3;
 		    	    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
@@ -5519,7 +5617,8 @@ void main(void)
 		    	    ACIslFunVar = AVIslFunVar;
 		    	    AUIslFunVar = AVIslFunVar;
 		    	}
-		    	else{
+		    	else
+                {
 		    	    // AVI = ACI != AUI
 		    	    swTemp1 = swTemp1 + swTemp2;
 		    	    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
@@ -5529,8 +5628,10 @@ void main(void)
 			    	AUIslFunVar = (*mfai_ptr)(3,swTemp3);
 				}
 		    }
-		    else if (pr[AUI1_SL]==pr[AUI2_SL]){
-				if (pr[AUI2_SL]==pr[ACI_SL]){
+		    else if (pr[AUI1_SL]==pr[AUI2_SL])
+            {
+				if (pr[AUI2_SL]==pr[ACI_SL])
+                {
 			    // AVI = ACI = AUI
 		    	    swTemp1 = swTemp1 + swTemp2 + swTemp3;
 		    	    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
@@ -5538,7 +5639,8 @@ void main(void)
 		    	    ACIslFunVar = AVIslFunVar;
 		    	    AUIslFunVar = AVIslFunVar;
 				}
-				else{
+				else
+                {
 			    // AVI = AUI = !ACI
 		    	    swTemp1 = swTemp1 + swTemp3;
 		    	    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
@@ -5549,8 +5651,10 @@ void main(void)
 			    	ACIslFunVar = (*mfai_ptr)(2,swTemp2);				
 				}
 		    }
-		    else if (pr[AUI2_SL]==pr[ACI_SL]){
-				if (pr[ACI_SL]==pr[AUI1_SL]){
+		    else if (pr[AUI2_SL]==pr[ACI_SL])
+            {
+				if (pr[ACI_SL]==pr[AUI1_SL])
+                {
 			    // AVI = ACI = AUI
 		    	    swTemp1 = swTemp1 + swTemp2 + swTemp3;
 		    	    mfai_ptr = mfai_tbl[pr[AUI1_SL]];
@@ -5558,7 +5662,8 @@ void main(void)
 		    	    ACIslFunVar = AVIslFunVar;
 		    	    AUIslFunVar = AVIslFunVar;
 				}
-				else{
+				else
+                {
 			    	// ACI = AUI != AVI
 			    	swTemp2 = swTemp2 + swTemp3;
 			    	mfai_ptr = mfai_tbl[pr[AUI2_SL]];
@@ -5572,7 +5677,8 @@ void main(void)
 		    }			
 		}
         //-------------AUI Slope and offset calculate------------// //[ //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
-        if((AUI_TUNE_FINISH==1)&&(pr[LOCELTUN]==2)){
+        if((AUI_TUNE_FINISH==1)&&(pr[LOCELTUN]==2))
+        {
             aa = (AUI_swem_T*AUI_swfl_V)-(AUI_swfl_T*AUI_swem_V);//em_T*fl_V-fl_T*em_V
             swTemp2 = (AUI_swem_T-AUI_swfl_T);//em_T - fl_T
             if(swTemp2!=0)
@@ -5587,10 +5693,12 @@ void main(void)
             
             swTemp1 = AUI_swem_T;//em_T
             swTemp2 = AUI_swem_V-AUI_swoffset; //em_V - AUI_swoffset
-            if(swTemp2!=0){
+            if(swTemp2!=0)
+            {
                 if(pr[CTRLM]==FOCPM)
                     AUI_swgain = S16xS16divS16(swTemp1,100,swTemp2);
-                else if(pr[CTRLM]==FOCPG){
+                else if(pr[CTRLM]==FOCPG)
+                {
                     AUI_swgain = S16xS16divS16(swTemp1,1000,swTemp2);
                     //AUI_swgain= AUI_swgain*100/ pr[TQRMAX];
                 }
@@ -5617,15 +5725,19 @@ void main(void)
 #endif
 		//------ TQC mode Speed limit //6a17j **
 		//for Torque control	  	
-		if (TqSpdMode == 1){
+		if (TqSpdMode == 1)
+        {
 		        swSpdP_tmp = U16xU16divU16(TqC_uwPSpdLimRe,0x7FFF,COF_uwFbRe);        
 		        swSpdN_tmp = 0 - U16xU16divU16(TqC_uwNSpdLimRe,0x7FFF,COF_uwFbRe);
 		        
-		    if (pr[SPLIMIT_SL]==1){
-		        if (CMDDIR==FORWARD){
+		    if (pr[SPLIMIT_SL]==1)
+            {
+		        if (CMDDIR==FORWARD)
+                {
 		            swSpdP_tmp = U16xU16divU16(fcmd.uw.hi,0x7FFF,COF_uwFbRe);
 		        }
-		        else{
+		        else
+                {
 		            swSpdN_tmp = 0 - U16xU16divU16(fcmd.uw.hi,0x7FFF,COF_uwFbRe);
 		        }  	
 		    }
@@ -5649,18 +5761,23 @@ void main(void)
         }
 		
 		//------ PTC Input Detect -------------------------------//
-		if (pr[AUI1_SL]==6){
+		if (pr[AUI1_SL]==6)
+        {
 			PTCInValue = AVIslFunVar;
 		}
-		else if (pr[ACI_SL]==6){
+		else if (pr[ACI_SL]==6)
+        {
 			PTCInValue = ACIslFunVar;            
 		}
-		else if (pr[AUI2_SL]==6){
+		else if (pr[AUI2_SL]==6)
+        {
 			PTCInValue = AUIslFunVar;
 		}
         
-		if (PTCInLPF.sw.hi > pr[PTC_LEVEL]){
-			switch (pr[PTC_TREAM]){
+		if (PTCInLPF.sw.hi > pr[PTC_LEVEL])
+        {
+			switch (pr[PTC_TREAM])
+            {
 				default:
     	            case 0:
     	                Keypad_PageTmp = Keypad_Page;
@@ -5681,16 +5798,21 @@ void main(void)
     	            break;
 			}   
 		}
-		else{
-			if (WarnCode == oH3_WARN){
+		else
+        {
+			if (WarnCode == oH3_WARN)
+            {
 				WarnCode = 0;
 				Keypad_Page = Keypad_PageTmp;
 			}   
 		}
 		
-		if ((LOOPFlag==0)&&(RUNNING==RUN)){		
-			if (APR_ZChkFlag==0){
-				if (APR_ubZChkCnt==8){
+		if ((LOOPFlag==0)&&(RUNNING==RUN))
+        {		
+			if (APR_ZChkFlag==0)
+            {
+				if (APR_ubZChkCnt==8)
+                {
 					ulTemp = 0;
 					for (i=0;i<=7;i++){
 						ulTemp += (ULONG)APR_uwZarray[i];
@@ -5719,7 +5841,8 @@ void main(void)
 		       		}
 				}        		
 			}
-			if (APRFirstGo==0){
+			if (APRFirstGo==0)
+            {
 		        //---------------------------------------------------------//
 		        //Power On, APR First Go Flag = 0, First Run to APR,       //
 				//must to search position of Z, after double check Z value //
@@ -5738,20 +5861,24 @@ void main(void)
 
 // [ Move from TimeBase_1ms(), DINO, 03/09/2009
 		// SpDt_slSpdFdbPu: Q31
-        if (pr[PGINPUT]!=0){
-	        if (SpDt_slSpdFdbPu >=0){
+        if (pr[PGINPUT]!=0)
+        {
+	        if (SpDt_slSpdFdbPu >=0)
+            {
 	            uwTemp = ((SLONG)COF_uwFbRe * (SpDt_slSpdFdbPu>>15))>>16;
 	            slMotorHz = (SLONG)uwTemp;
 	            swMotorRpm = (SWORD)U16xU16divU16(uwTemp, 120, (COF_uwPole*100));
 	        }
-	        else{
+	        else
+            {
 	            uwTemp = ((ULONG)COF_uwFbRe * (-SpDt_slSpdFdbPu>>15))>>16;
 	            slMotorHz = (SLONG)(-uwTemp);
 	            swMotorRpm = (SWORD)(-U16xU16divU16(uwTemp, 120, (COF_uwPole*100)));
 	        }
 	        SpDt_uwFfbk = uwTemp;
 		}
-		else{
+		else
+        {
 			slMotorHz = 0;
 			swMotorRpm = 0;
 			SpDt_uwFfbk = 0;
@@ -5759,10 +5886,14 @@ void main(void)
 
       	// [ Velocity Unit Change, Add by DINO, 05/25/2009
       	uwTemp = (UWORD)(abs(slMotorHz));
-		if (pr[UNITSEL] == 1){		// Hz->m/s
+		if (pr[UNITSEL] == 1)
+        {
+            // Hz->m/s
 			uwTemp = Hz2Metric(uwTemp);
 		}
-		else if(pr[UNITSEL] == 2){	// Hz->ft/s
+		else if(pr[UNITSEL] == 2)
+        {
+            // Hz->ft/s
 			uwTemp = Hz2Ft(uwTemp);
 		}
         //else if(pr[UNITSEL] == 3){	// Hz->ft/s
@@ -5773,10 +5904,12 @@ void main(void)
 
 
 		swTemp1 = (SWORD)(U16xU16divU16(TB1_CmdRpm.uw.hi, 120, (COF_uwPole*100)));
-	   	if(WGDIR==FORWARD){
+	   	if(WGDIR==FORWARD)
+        {
 	   		swCmdRpm = swTemp1;
 	   	}
-	   	else{
+	   	else
+        {
 	   		swCmdRpm = -swTemp1;
 		}
 
@@ -5817,24 +5950,29 @@ void main(void)
         }
 // ]
 		
-		if(TB_100ms==1){
+		if(TB_100ms==1)
+        {
 	    	TB_100ms = 0;
 
 			// [ Add by DINO, 11/30/2009
-		  if(((pr[DEBUG_PG]&0x0020)!=0)||pr[PG_TYPE]==SIN_ENDAT || pr[PG_TYPE]==SIN_HIPER || pr[PG_TYPE]==SIN_SIN){  	
-			if (Cnt_ubPGWait < 10){  //[For IED PG-Card, Sampo, 01/11/2010]
-				Cnt_ubPGWait++;
-			}
-			else if(Cnt_ubPGWait < 20){  //[For IED PG-Card, Sampo, 01/11/2010]
-				Cnt_ubPGWait++;
-				IED_PG_START = 1;
-			}
-			else{
-			
-					EDT_READY = 1;
-				
-			}
-		  }
+		    if(((pr[DEBUG_PG]&0x0020)!=0)||pr[PG_TYPE]==SIN_ENDAT || pr[PG_TYPE]==SIN_HIPER || pr[PG_TYPE]==SIN_SIN)
+            {  	
+                if (Cnt_ubPGWait < 10)
+                {
+                    //[For IED PG-Card, Sampo, 01/11/2010]
+                    Cnt_ubPGWait++;
+                }
+                else if(Cnt_ubPGWait < 20)
+                {
+                    //[For IED PG-Card, Sampo, 01/11/2010]
+                    Cnt_ubPGWait++;
+                    IED_PG_START = 1;
+                }
+                else
+                {
+                    EDT_READY = 1;
+                }
+		    }
 			// ]
 
 			Temp_vs_fpwm();     //update cf_swOHCarry every 20sec
@@ -5844,20 +5982,24 @@ void main(void)
 			DownCFBbyOverLoad();
 		}
 
-		if(TB_1sec==1){
+		if(TB_1sec==1)
+        {
 			VFD_Timer();
 		}
 
-		if(SHOW_ALLPR){
+		if(SHOW_ALLPR)
+        {
     	    Update_CFFxx();
     	}
 
-    	if(Error!=0){
+    	if(Error!=0)
+        {
 
         	FaultLED = 1;               			//Fault LED Turn ON, DINO, 03/03/2010
 
 			// [ LED KEYPAD, DINO, 03/12/2010
-			if(KEY_ubDispTmp ==0){
+			if(KEY_ubDispTmp ==0)
+            {
 				KEY_ubDispMode = ErrPAGE2;
 				KEY_ubWarnTmp = 0;
 			}
@@ -5865,16 +6007,19 @@ void main(void)
 			//-- Update Buffer & RAM Data
 			// [ LV Option Mode, Add by DINO, 11/30/2009
 			uwTemp = Error;
-			if(Error==LvS_ERR || Error==bb_ERR || (LVMOD==1 && (Error==LvA_ERR || Error==Lvd_ERR || Error==Lvn_ERR))){
+			if(Error==LvS_ERR || Error==bb_ERR || (LVMOD==1 && (Error==LvA_ERR || Error==Lvd_ERR || Error==Lvn_ERR)))
+            {
 				uwTemp = 0;
 			}
 
-			if(uwTemp != 0){
+			if(uwTemp != 0)
+            {
 				Fault_Record();
 			}
 			// ]
 
-			if(WRINFO==0){
+			if(WRINFO==0)
+            {
 				rec_uwPWRmin = pr[PWR_MIN];
 				rec_uwRUNmin = pr[RUNMIN];
 				TQRCMemswPer = (SWORD)pr[TQREF];
@@ -5884,9 +6029,10 @@ void main(void)
         	Error_Handel();
 
     	}
-    	else{
+    	else
+        {
     	    FaultLED = 0;               			//Fault LED, Active Low
-		    WRINFO = 0;                 		// write infomation into eprom.
+		    WRINFO = 0;                 		    // write infomation into eprom.
 		    ERR_LOG = 0;
 		    err_uwFfbk = (UWORD)(abs(slMotorHz));	// Motor Speed
 		    err_uwFcmd = fcmd.uw.hi;				// Output Frequency, add by dino, 10/31/2007
@@ -5897,7 +6043,7 @@ void main(void)
 		    err_uwFkey = fkey.uw.hi;				// Frequency Command
 		    err_uwPower = Pinput.uw.hi;				// Output Power
 		    // [ Change to save toruqe pu, DINO, 09/30/2009
-		    err_uwTorq = swTqRefPu;				// Output Torque
+		    err_uwTorq = swTqRefPu;				    // Output Torque
 		    // ]
 		    err_uwMFI = mfi_now;					// Input Terminal State
 		    err_uwMFO = mfo_now;					// Output Terminal State
@@ -5905,14 +6051,18 @@ void main(void)
 		    // ]
 		    // [ LED KEYPAD, DINO, 03/12/2010
 		    KEY_ubDispTmp = 0;
-		    if(WarnCode != 0){
-				if(KEY_ubWarnTmp ==0){
+		    if(WarnCode != 0)
+            {
+				if(KEY_ubWarnTmp ==0)
+                {
 					KEY_ubDispMode = WarnPAGE2;
 				}
 			}
-			else{
+			else
+            {
 				// [ Add by DINO, 05/31/2010
-				if(KEY_ubDispMode == ErrPAGE2){
+				if(KEY_ubDispMode == ErrPAGE2)
+                {
 					// [ DINO, 11/18/2010
 					//KEY_ubDispMode = pr[S_DISP];
     				KEY_ubDispMode = /*FunPAGE2*/0;
@@ -5922,7 +6072,8 @@ void main(void)
 					Keypad_PageTmp = 0;
 				}
 				// ]
-				else if(KEY_ubDispMode == WarnPAGE2){
+				else if(KEY_ubDispMode == WarnPAGE2)
+                {
 					// [ DINO, 11/18/2010
 					//KEY_ubDispMode = pr[S_DISP];
     				KEY_ubDispMode = /*FunPAGE2*/0;
@@ -5937,24 +6088,31 @@ void main(void)
     	}    
      
 		// [ Low Voltage Record, Modify by DINO, 05/31/2010
-		if(RelayOFF==1 && WRITE_PR_ATONCE==0){  // [EDS parameter at once, sampo,2018/02/05]
-	     if(WRITE_LVEEP == 1){
+		if(RelayOFF==1 && WRITE_PR_ATONCE==0)
+        {
+            // [EDS parameter at once, sampo,2018/02/05]
+	        if(WRITE_LVEEP == 1)
+            {
 				LV_REC();
 				WRITE_LVEEP = 0;
 			}
 		}
-		else{
-			if(WRITE_PR_ATONCE==1 && uwWritePrCnt>=200){  //[EDS parameter at once,sampo,2018/02/05]
-   	     frm_vdDLCWrite();
-         frm_vdWrite();
-   	     WRITE_PR_ATONCE = 0;
-		  }
-		  else
+		else
+        {
+			if(WRITE_PR_ATONCE==1 && uwWritePrCnt>=200)
+            {  
+                //[EDS parameter at once,sampo,2018/02/05]
+   	            frm_vdDLCWrite();
+                frm_vdWrite();
+   	            WRITE_PR_ATONCE = 0;
+		    }
+		    else
 		  		WRITE_LVEEP = 1;
 		}
 		// ]
     
-    	if(WRITE_TUNPR==1){
+    	if(WRITE_TUNPR==1)
+        {
     	    /*--------------------------------------------------------------
     	    // COF_uwRsPu = U16xU16divU16(pr[Rs1], 16384, COF_uwRbRe);	//Q15
 		    // COF_uwRrPu = U16xU16divU16(pr[Rr1], 16384, COF_uwRbRe);	//Q15
@@ -5962,7 +6120,9 @@ void main(void)
 		    // COF_uwLmPu = U16xU16divU16(pr[Lm1], 3200, COF_uwLbRe);	//Q6
 		    // COF_uwI0Pu = U16xU16divU16(pr[MI_NL1] ,46341, COF_uwIbRe);	
     	    ----------------------------------------------------------------*/       	
-    	    if((EXT_MOTOR1to2==1)||(pr[MOTORSEL]==2)){	// motor 2 highest priority
+    	    if((EXT_MOTOR1to2==1)||(pr[MOTORSEL]==2))
+            {
+                // motor 2 highest priority
     	        COF_uwIm2Pu = TUN_uwI0Pu;
     	        COF_uwRs2Pu = TUN_uwRsPu;   //Q15
     	        COF_uwRr2Pu = TUN_uwRrPu;   //Q15
@@ -5988,7 +6148,9 @@ void main(void)
             	COF_uwMRsRe = pr[Rs2];
 #endif	        
         	}
-        	else{									// motor 1
+        	else
+            {
+                // motor 1
         	    COF_uwIm1Pu = TUN_uwI0Pu;
         	    COF_uwRs1Pu = TUN_uwRsPu;   //Q15
         	    COF_uwRr1Pu = TUN_uwRrPu;   //Q15
@@ -6014,7 +6176,8 @@ void main(void)
 
 			MotorPrSel();	// Add by DINO, 09/09/2008
 
-        	if (WRITE_FLUXPR==1){
+        	if (WRITE_FLUXPR==1)
+            {
         	    write_ep(BLK_WRITE,LMPU6, pr[LMPU6]);
         	    write_ep(BLK_WRITE,EMFPU6, pr[EMFPU6]);
         	    write_ep(BLK_WRITE,LMPU5, pr[LMPU5]);
@@ -6028,34 +6191,37 @@ void main(void)
 		    
         	    WRITE_FLUXPR = 0;
 	    	}
-          WRITE_PR_ATONCE = 1;   // [EDS parameter at once, sampo,2018/02/05]
-          uwWritePrCnt = 200;    // [EDS parameter at once, sampo,2018/02/05]
+            WRITE_PR_ATONCE = 1;   // [EDS parameter at once, sampo,2018/02/05]
+            uwWritePrCnt = 200;    // [EDS parameter at once, sampo,2018/02/05]
     	    WRITE_TUNPR = 0;    		
     	    set_Rs();    
     	    set_VcmpMax();
     	}
     
-    	if (WRITE_DBCPR==1){
+    	if (WRITE_DBCPR==1)
+        {
     	    write_ep(BLK_WRITE,DBC1, DBC_uwDuty_t_10K);
     	    pr[DBC1] = DBC_uwDuty_t_10K;
     	    write_ep(BLK_WRITE,DBC2, DBC_uwD_u_10KUcom);
     	    pr[DBC2] = DBC_uwD_u_10KUcom;
     	    WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
-          uwWritePrCnt = 0;    //[EDS parameter at once,sampo,2018/02/05]
+            uwWritePrCnt = 0;    //[EDS parameter at once,sampo,2018/02/05]
     	    WRITE_DBCPR = 0;            
     	    DBC_COEFInit();
     	}
     
-    	if (WRITE_CCBPR==1){
+    	if (WRITE_CCBPR==1)
+        {
     	    write_ep(BLK_WRITE,CALI_REF,uwCurCalibRatio);
     	    pr[CALI_REF] = uwCurCalibRatio;
     	    WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
-          uwWritePrCnt = 0;    //[EDS parameter at once,sampo,2018/02/05]
+            uwWritePrCnt = 0;    //[EDS parameter at once,sampo,2018/02/05]
     	    WRITE_CCBPR = 0;
     	}
         
 // add scotty 2007/08/27         
-    	if(WRITE_TUNPMPR == 1){
+    	if(WRITE_TUNPMPR == 1)
+        {
 #if OLD_SETTING  // Modify by DINO, 09/09/2008
 			COF_uwRs1Pu = TUN_uwRsPu;   //Q15
 			COF_uwLx1Pu = TUN_uwL1sigmaPu;	//Q10
@@ -6086,7 +6252,9 @@ void main(void)
         	uwTemp = (UWORD)(ulTemp >> 14);
         	// [ Save 2 times BEMF to EEPROM in 220V types, Modify by DINO, 07/13/2009
         	pr[PM_Bemf] = uwTemp;
-			if ((pr[HPSPEC]&VFD440V) == VFD220V){		// 220V class
+			if ((pr[HPSPEC]&VFD440V) == VFD220V)
+            {
+                // 220V class
 				uwTemp <<= 1;
 			}
 			// End on 07/13/2009 ]
@@ -6095,14 +6263,15 @@ void main(void)
    			// End on 06/03/2009 ]
 
 			MotorPrSel();	// Add by DINO, 09/09/2008
-      WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
-      uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
+            WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
+            uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
 			WRITE_TUNPMPR = 0;    		
     	} 
     
 // add scotty 2007/06/07        
 #if SCOTTY 
-		if(WRITE_TUNZOFFSET == 1){
+		if(WRITE_TUNZOFFSET == 1)
+        {
 			uwTemp = U16xU16divU16(PG_Zoffset, 3600, SpDt_uwAnglePeriod);	//ADD 09/17/2007	SC
 			if (uwTemp == 3600){uwTemp = 0;}		//3600 reverse for Z phase tuning	09/28/2007
 			write_ep(BLK_WRITE,Z_OFFSET, uwTemp);		//ADD 09/17/2007	SC
@@ -6137,13 +6306,15 @@ void main(void)
         		write_ep(BLK_WRITE,Z_SECT, ax);  // Pr15-90
         		pr[Z_SECT] = ax;
         	}
-      WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
-      uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
+            WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
+            uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
 			WRITE_TUNZOFFSET = 0;
 //---- End 06/07/2007 ---------
 		}
         
-        if((WRITE_Z_1387 == 1) && (uwSt1387cnt>1500)){     // [IED 1387 static Tune, 2011/07/06]
+        if((WRITE_Z_1387 == 1) && (uwSt1387cnt>1500))
+        {
+            // [IED 1387 static Tune, 2011/07/06]
         	PG_Zoffset_1387 = uwPGThetaE_COM;
         	uwTemp = U16xU16divU16(PG_Zoffset_1387, 3600, SpDt_uwAnglePeriod);	
 			if (uwTemp == 3600){uwTemp = 0;}		
@@ -6156,30 +6327,35 @@ void main(void)
 // end 2007/06/07 
 
 //---- Save UVW Standstill Tunning datas to EEPROM, Add by DINO, 07/09/2008
-		if(WRITE_ZSECT==1){
+		if(WRITE_ZSECT==1)
+        {
 //--- EnDat Static tuning, Add by DINO, 08/29/2008
 			// pr[PG_TYPE]==SIN_ENDAT || pr[PG_TYPE]==SIN_HIPER
 			uwTemp = U16xU16divU16(PG_Zoffset, 3600, SpDt_uwAnglePeriod);	//ADD 09/17/2007	SC
-			if(uwTemp == 3600){
+			if(uwTemp == 3600)
+            {
 			    uwTemp = 0;
 			}		//3600 reverse for Z phase tuning	09/28/2007
 			write_ep(BLK_WRITE,Z_OFFSET, uwTemp);		//ADD 09/17/2007	SC
 			pr[Z_OFFSET] = uwTemp ;						//ADD 09/17/2007	SC
 //--- End on 08/29/2008
-      WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
-      uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
+            WRITE_PR_ATONCE = 1;   //[EDS parameter at once,sampo,2018/02/05]
+            uwWritePrCnt = 200;    //[EDS parameter at once,sampo,2018/02/05]
 			WRITE_ZSECT = 0;
 		}
 //---- End on 07/09/2008
 
         if ((pr[DEBUG_F1]&0x0008) == 0x0008)
-        {   // Bit 3: Enable all ICT test
-            if (pr[PG_TYPE] == SIN_ENDAT){
+        {
+            // Bit 3: Enable all ICT test
+            if (pr[PG_TYPE] == SIN_ENDAT)
+            {
                 DINT();
                 SCI0_DIR = SCIDIR0Flag;
                 EINT();
 
-                if (RX_OK0==1){
+                if (RX_OK0==1)
+                {
                     SCIDIR0Flag = 0;
                     Init_TxData_0(Rx0CNT);
                     SCI0_TodCNT = 0;
@@ -6189,11 +6365,14 @@ void main(void)
 				if (Com_WatchDog0>50)    	// WatchDog Timer > 5.0 sec
 					InitSCI0();
         	}
-            if(pr[PG_TYPE] == ABZ_UVW){           //[Used For PG ABD Test, Bernie, 10/28/2011]
+            if(pr[PG_TYPE] == ABZ_UVW)
+            {           //[Used For PG ABD Test, Bernie, 10/28/2011]
                 STtune =1;
 			    PGSEL = 0;
 			    ulPGSWCnt = 0;
-                while(ulPGSWCnt < 90000){ // waiting for ABZ->UVW 7000us(At least 3914us+100us), turn on 4ms, sample UVW 100us, DINO, 03/09/2010
+                while(ulPGSWCnt < 90000)
+                {
+                    // waiting for ABZ->UVW 7000us(At least 3914us+100us), turn on 4ms, sample UVW 100us, DINO, 03/09/2010
                     ulPGSWCnt++;
                     nop();
                     nop();
@@ -6212,7 +6391,9 @@ void main(void)
             }
         	//else{
      			// [ Modify ICT Test Method, DINO, 03/03/2010
-            if((pr[DEBUG_F1]&0x0010)==0x0010){	// Bit 4: for ICT test
+            if((pr[DEBUG_F1]&0x0010)==0x0010)
+            {
+                // Bit 4: for ICT test
                 DO_RLY1_PIN  = 0;   
                 DO_RLY2_PIN  = 1;
                 DO_RLY3_PIN  = 0;
@@ -6230,7 +6411,9 @@ void main(void)
                 //DOE_RLY7_PIN = 0;
                 //DOE_RLY8_PIN = 1;
             }
-            else if((pr[DEBUG_F1]&0x0010)==0x0000){// Bit 4: for ICT test
+            else if((pr[DEBUG_F1]&0x0010)==0x0000)
+            {
+                // Bit 4: for ICT test
                 DO_RLY1_PIN  = 1;
                 DO_RLY2_PIN  = 0;
                 DO_RLY3_PIN  = 1;
@@ -6252,18 +6435,21 @@ void main(void)
 //--- Add by DINO, 12/14/2007
 		else
         {
-    	    if(pr[PG_TYPE]<ABZ_UVW){    //[Modify PG Type Define, Bernie, 12/05/2011]
-    	       if((pr[DEBUG_F1]&0x0020)==0x0020)	// Bit 5: change PGSEL
-                   PGSEL = 0;	// Read UVW, DINO, 03/09/2010
-    	       else
-                   PGSEL = 1;   // Read ABZ, DINO, 03/09/2010
+    	    if(pr[PG_TYPE]<ABZ_UVW)
+            {
+                //[Modify PG Type Define, Bernie, 12/05/2011]
+    	        if((pr[DEBUG_F1]&0x0020)==0x0020)	// Bit 5: change PGSEL
+                    PGSEL = 0;	// Read UVW, DINO, 03/09/2010
+    	        else
+                    PGSEL = 1;   // Read ABZ, DINO, 03/09/2010
     	    }
 
     	}
 //--- End by DINO, 12/14/2007
 
 #if DINO	// dino, 03/08/2007
-		if (pr[PRRESET] == 0x0002){
+		if (pr[PRRESET] == 0x0002)
+        {
 			DATASEL = pr[DATA_SEL];
 			DATASEL |=0x00000000; //for test
 #if 1	// RAM read parameter by ReadRamDataRX63T, Sean, 20141225
@@ -6455,32 +6641,38 @@ void Sinusoidal_Position(void)
     swCOS = Pgc_uwDpo;
       //} 
                         
-    if(swSIN>=4095){
+    if(swSIN>=4095)
+    {
         swSIN = 4095;
     }
-    else if(swSIN<=0){
+    else if(swSIN<=0)
+    {
         swSIN = 1;
     }
 
                                         
-    if(swCOS>=4095){
+    if(swCOS>=4095)
+    {
         swCOS = 4095;
     }
-    else if(swCOS<=0){
+    else if(swCOS<=0)
+    {
         swCOS = 1;
     }
 
 
     swSIN = swSIN - st_swSINmean;                               
     swS = swSIN;
-    if(swSIN<0){
+    if(swSIN<0)
+    {
         swSIN = -swSIN;
     }
     swSIN = ((SLONG)swSIN<<12) / (4095 - st_swSINmean);	        
 
     swCOS = swCOS - st_swCOSmean;                              
     swC = swCOS;
-    if(swCOS<0){
+    if(swCOS<0)
+    {
         swCOS = -swCOS;
     }
     swCOS = ((SLONG)swCOS<<12) / (4095 - st_swCOSmean);	        
@@ -6527,48 +6719,62 @@ void Sinusoidal_Position(void)
   stage   0  1  2  3 4  5  6  7
 */
 
-    if(swS > 0){
+    if(swS > 0)
+    {
         if(swC > 0){
-        	if(swSIN < swCOS){
+        	if(swSIN < swCOS)
+            {
         	    ubStage = 0;
         	}
-        	else{
+        	else
+            {
         	    ubStage = 1;
         	}
         }
-        else{
-        	if(swSIN < swCOS){
+        else
+        {
+        	if(swSIN < swCOS)
+            {
         	    ubStage = 3;
         	}
-        	else{
+        	else
+            {
         	    ubStage = 2;
         	}
         }
     } 
-    else{
-        if(swC > 0){
-        	if(swSIN < swCOS){
+    else
+    {
+        if(swC > 0)
+        {
+        	if(swSIN < swCOS)
+            {
         	    ubStage = 7;
         	}
-        	else{
+        	else
+            {
         	    ubStage = 6;
         	}
         }
         else{
-        	if(swSIN < swCOS){
+        	if(swSIN < swCOS)
+            {
         	    ubStage = 4;
         	}
-        	else{
+        	else
+            {
         	    ubStage = 5;
         	}
         }
     }
 
-    if(swSIN<swCOS){
+    if(swSIN<swCOS)
+    {
         swX = swSIN;
         swY = swCOS;
     }
-    else{
+    else
+    {
         swX = swCOS;
         swY = swSIN;
     }
@@ -6581,47 +6787,57 @@ void Sinusoidal_Position(void)
 	    
     uwTan = ((SLONG)swX << 10) / swY;							// Q10
 
-    if(uwTan>1023){
+    if(uwTan>1023)
+    {
         uwTan = 1023;
     }							// max = sin/cos =1 = 45
     
     st_uwAngle = arctan[uwTan];  								// Mechanical angle, 0~45, Q10
  
-    if(ubStage & 0x0001){
+    if(ubStage & 0x0001)
+    {
         uwOffset = 46080 - st_uwAngle;
     }      // 0~45 => decreasing  46080 = (360<<7)
-    else{
+    else
+    {
         uwOffset = st_uwAngle;
     }                                // 0~45 => increasing
    
    
-    if(vfd_btPGHSD1Set==1){	// fix pghsd1 code, Sean, 06/01/2012
+    if(vfd_btPGHSD1Set==1)
+    {
+        // fix pghsd1 code, Sean, 06/01/2012
         st_uwAbsAngle = (UWORD)(((ULONG)hsd_stPgReplyOut.uwAngle * 45) >> 3);	// down scaling to 360: 45=(360,Q10/8192(res)), then shift to Q7
 	}
-	else{  //[delete PGHSD, Lyabryan, 2015/12/17]
+	else
+    {
+        //[delete PGHSD, Lyabryan, 2015/12/17]
     	st_uwAbsAngle = ((UWORD)ubStage * 45 << 7) + (uwOffset>>3);    // Mechanical angle, 0~360 Q7 (46080 vs 360, normal Heidmain Zpulse:180*128=23040 )
 	}
 //    st_uwPGThetaM = st_uwAbsAngle % ( (360<<7) / (pr[PM_POLES]>>1) ); // PG pulse corresponding to mechanical angle, Q7,
 
-     st_uwAbsAngleTune = st_uwAbsAngle;                        //[Fix state tune problem, Bernie, 2014/09/02 ]
-     if(st_uwAbsAngleTune>=23040)                              //if Absangle >= 180    23040 = (180<<7)
-         st_uwAbsAngleTune = st_uwAbsAngleTune - 23040;        //Absangle - 180
-     else
-         st_uwAbsAngleTune = st_uwAbsAngleTune + 23040;        //Absangle + 180
+    st_uwAbsAngleTune = st_uwAbsAngle;                        //[Fix state tune problem, Bernie, 2014/09/02 ]
+    if(st_uwAbsAngleTune>=23040)                              //if Absangle >= 180    23040 = (180<<7)
+        st_uwAbsAngleTune = st_uwAbsAngleTune - 23040;        //Absangle - 180
+    else
+        st_uwAbsAngleTune = st_uwAbsAngleTune + 23040;        //Absangle + 180
 
-     //ulPGThetaE_COMtemp = (((ULONG)(st_uwAbsAngle) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7); // [IED 1387 static Tune, 2011/07/06]
-     ulPGThetaE_COMtemp = (((ULONG)(st_uwAbsAngleTune) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7); // [IED 1387 static Tune, 2011/07/06]
-     uwPGThetaE_COM2 = ulPGThetaE_COMtemp % SpDt_uwAnglePeriod;                          // [IED 1387 static Tune, 2011/07/06]
+    //ulPGThetaE_COMtemp = (((ULONG)(st_uwAbsAngle) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7); // [IED 1387 static Tune, 2011/07/06]
+    ulPGThetaE_COMtemp = (((ULONG)(st_uwAbsAngleTune) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7); // [IED 1387 static Tune, 2011/07/06]
+    uwPGThetaE_COM2 = ulPGThetaE_COMtemp % SpDt_uwAnglePeriod;                          // [IED 1387 static Tune, 2011/07/06]
 
 
 //-- Add by DINO, 08/13/2007
-	if(PGDIR==1){
+	if(PGDIR==1)
+    {
 
-		if(st_uwAbsAngle >= (180<<7)){
+		if(st_uwAbsAngle >= (180<<7))
+        {
 			uwPGThetaE = (UWORD)(((ULONG)(st_uwAbsAngle - (180<<7)) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7);
 			st_uwAnaPGInit = ( uwPGThetaE + PG_Zoffset) % SpDt_uwAnglePeriod;
 		}
-		else{
+		else
+        {
 			uwPGThetaE = (UWORD)(((ULONG)((180<<7) - st_uwAbsAngle) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7);
 			if(uwPGThetaE >= PG_Zoffset)
 				st_uwAnaPGInit = SpDt_uwAnglePeriod - (( uwPGThetaE - PG_Zoffset) % SpDt_uwAnglePeriod);
@@ -6629,16 +6845,18 @@ void Sinusoidal_Position(void)
 				st_uwAnaPGInit = SpDt_uwAnglePeriod - (( uwPGThetaE + SpDt_uwAnglePeriod - PG_Zoffset) % SpDt_uwAnglePeriod);
 		}
 	}
-	else{
-		
-		if(st_uwAbsAngle >= (180<<7)){
+	else
+    {
+		if(st_uwAbsAngle >= (180<<7))
+        {
 			uwPGThetaE = (UWORD)(((ULONG)(st_uwAbsAngle - (180<<7)) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7);
 			if(uwPGThetaE >= PG_Zoffset)
 				st_uwAnaPGInit = ( uwPGThetaE - PG_Zoffset) % SpDt_uwAnglePeriod;
 			else
 				st_uwAnaPGInit = ( uwPGThetaE + SpDt_uwAnglePeriod - PG_Zoffset) % SpDt_uwAnglePeriod;
 		}
-		else{
+		else
+        {
 			uwPGThetaE = (UWORD)(((ULONG)((180<<7) - st_uwAbsAngle) * SpDt_ulPG1NpulseNoMx / 360 ) >> 7);
 			st_uwAnaPGInit = SpDt_uwAnglePeriod - (( uwPGThetaE + PG_Zoffset) % SpDt_uwAnglePeriod);
 		}
@@ -6680,24 +6898,31 @@ void ICT4SCI3(void){
 void Recent_Setting_Parameter(UWORD prx){ //[Last Key parameter,Lyabryan,2020/02/05]
     SWORD i;
     
-    if(PRUPDATE==1){
+    if(PRUPDATE==1)
+    {
         RSP_uwRecent_pr = prx;
         if(RSP_uwRecent_prold!=RSP_uwRecent_pr){
             RSP_uwRecent_prinfo = Group_Check(RSP_uwRecent_pr);
             RSP_uwRecent_no = 0;
-            for(i=0;i<=49;i++){
-                if(pr[UMAP_ADD99-i]==RSP_uwRecent_prinfo){
+            for(i=0;i<=49;i++)
+            {
+                if(pr[UMAP_ADD99-i]==RSP_uwRecent_prinfo)
+                {
                     RSP_uwRecent_no = i;
                     break;
                 }
             }
-            if(RSP_uwRecent_no!=0){
-                for(i=(RSP_uwRecent_no-1);i>=0;i--){
+            if(RSP_uwRecent_no!=0)
+            {
+                for(i=(RSP_uwRecent_no-1);i>=0;i--)
+                {
                     RSP_uwRecent[i+1] = RSP_uwRecent[i];
                 }
             }
-            else{
-                for(i=49;i>=0;i--){
+            else
+            {
+                for(i=49;i>=0;i--)
+                {
                     RSP_uwRecent[i+1] = RSP_uwRecent[i];
                 }
             }
@@ -6710,67 +6935,83 @@ void Recent_Setting_Parameter(UWORD prx){ //[Last Key parameter,Lyabryan,2020/02
 }
 UWORD Group_Check(UWORD prx){
     UWORD group,number;
-    if(prx>=GROUP14){
+    if(prx>=GROUP14)
+    {
         number = 0;
         group = 0;
     }
-    else if(prx>=GROUP13){
+    else if(prx>=GROUP13)
+    {
         number = 0;
         group = 0;
     }
-    else if(prx>=GROUP12){
+    else if(prx>=GROUP12)
+    {
         number = 0;
         group = 0;
     }
-    else if(prx>=GROUP11){
+    else if(prx>=GROUP11)
+    {
         number = prx -  GROUP11;
         group = 11;
     }
-    else if(prx>=GROUP10){
+    else if(prx>=GROUP10)
+    {
         number = prx -  GROUP10;
         group = 10;
     }
-    else if(prx>=GROUP9){
+    else if(prx>=GROUP9)
+    {
         number = prx -  GROUP9;
         group = 9;
     }
-    else if(prx>=GROUP8){
+    else if(prx>=GROUP8)
+    {
         number = prx -  GROUP8;
         group = 8;
     }
-    else if(prx>=GROUP7){
+    else if(prx>=GROUP7)
+    {
         number = prx -  GROUP7;
         group = 7;
     }
-    else if(prx>=GROUP6){
+    else if(prx>=GROUP6)
+    {
         number = prx -  GROUP6;
         group = 6;
     }
-    else if(prx>=GROUP5){
+    else if(prx>=GROUP5)
+    {
         number = prx -  GROUP5;
         group = 5;
     }
-    else if(prx>=GROUP4){
+    else if(prx>=GROUP4)
+    {
         number = prx -  GROUP4;
         group = 4;
     }
-    else if(prx>=GROUP3){
+    else if(prx>=GROUP3)
+    {
         number = prx -  GROUP3;
         group = 3;
     }
-    else if(prx>=GROUP2){
+    else if(prx>=GROUP2)
+    {
         number = prx -  GROUP2;
         group = 2;
     }
-    else if(prx>=GROUP1){
+    else if(prx>=GROUP1)
+    {
         number = prx -  GROUP1;
         group = 1;
     }
-    else if(prx>=GROUP0){
+    else if(prx>=GROUP0)
+    {
         number = prx -  GROUP0;
         group = 0;
     }
-    else{
+    else
+    {
         number = 0;
         group = 0;
     }
@@ -6781,18 +7022,22 @@ void LV_REC(void)
 {
 	UWORD uwEEPData, uwBuffer, uwEEPData1,i;
 
-	if ( EPS==0){  // Don't write EEPROM when EPS==1
+	if (EPS==0)
+    {
+        // Don't write EEPROM when EPS==1
 
 		//uwEEPData = MTU21.TCNT;
 		uwEEPData = MTU1.TCNT;
-		if(PGDIR!=1){
-    		uwEEPData = 65535 - uwEEPData + 1;
+		if(PGDIR!=1)
+        {
+    	    uwEEPData = 65535 - uwEEPData + 1;
 		}
 		uwBuffer = uwEEPData - SpDt_uwPG1CNT_Save;
 		
 		write_ep(BLK_WRITE,PG_POSatLV,uwBuffer);
 		pr[PG_POSatLV] = uwBuffer;
-		for(i=0;i<=49;i++){
+		for(i=0;i<=49;i++)
+        {
             write_ep(0,(UMAP_ADD50+i),pr[(UMAP_ADD50+i)]);
 		}
     	write_ep(0,FFBK_REC,pr[FFBK_REC]);
@@ -6882,11 +7127,11 @@ void LV_REC(void)
 		write_ep(0,EST_COUNT ,pr[EST_COUNT ]);
 
         write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);    //[Service time function, Bernie, 2017/03/14]
-          //DLC para initial error
-          //[
-		          //fram_buf[CUR_PG_H] = pr[CUR_PG_H];   //Bernie
-		          //fram_buf[CUR_PG_L] = pr[CUR_PG_L];   //Bernie      
-          //]	
+        //DLC para initial error
+        //[
+                //fram_buf[CUR_PG_H] = pr[CUR_PG_H];   //Bernie
+                //fram_buf[CUR_PG_L] = pr[CUR_PG_L];   //Bernie      
+        //]	
 			
 #if FRAM_BUF	// Fram_Buf added and FRAM read/write to Fram_Buf instead, Sean, 06/30/2010 
     frm_vdDLCWrite();

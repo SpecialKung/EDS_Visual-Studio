@@ -801,6 +801,9 @@ void DLC_Algorithm(void){
 	UWORD	t_s3,	a_dec,	t_s4;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220516
 	//讀取DLC相關參數
 	DLC_PrMgr(PR_RD);
+
+	//DLC_ulPG_Position = pr[CUR_PG_H]*10000+pr[CUR_PG_L];	//[Rationa 368994, Special.Kung]
+	DLC_ulPG_Position = MTU1.TCNT;							//[Rationa 368994, Special.Kung]
 	
 	//讀取方向信號
 	if(DLC_btUP == 1 && DLC_btDN == 1){

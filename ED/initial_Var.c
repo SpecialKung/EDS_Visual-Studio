@@ -887,7 +887,8 @@ void  Initial_Var(void){
     DLC_ubDecel             =0;
     DLC_uwAutoTar           =0;
     DLC_uwEM.uw             =0;    
-	DLC_ubSpdLimFlag		=0;//Artemis speed limit, James, 20200220
+	DLC_ubSpdLimFlag		=0;     //Artemis speed limit, James, 20200220
+    DLC_ulPG_Position       =0;     //[Rationa 368994, Special.Kung]
     /*IODLC======================================*/
     IODLC_ubArea_status     =0;
     IODLC_uwPR_J1           =0;

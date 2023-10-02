@@ -623,11 +623,12 @@
 #define OVER_ACC_LEVEL          (GROUP10+32)    //  3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
 #define OVER_ACC_TIME           (GROUP10+33)    //  3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
 #define OVER_ACC_SET            (GROUP10+34)    //  3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
-#define ACC_LPF                 (GROUP10+35)    //	420	11-23   //[Rationa 362631, Special.Kung]
-#define ACC_SampleRate          (GROUP10+36)    //	420	11-23   //[Rationa 362631, Special.Kung]
+#define ACC_LPF                 (GROUP10+35)    //	420	10-35   //[Rationa 362631, Special.Kung]
+#define ACC_SampleRate          (GROUP10+36)    //	420	10-36   //[Rationa 362631, Special.Kung]
+#define PG_Position             (GROUP10+37)    //	420	10-37   //[Rationa 368994, Special.Kung]
 
 /*------------	Group11	 --------*/
-#define	GROUP11			(GROUP10+37)
+#define	GROUP11			(GROUP10+38)
 #define	SysControl		(GROUP11+0)		//	401	11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo 
 #define Lift_SPD		(GROUP11+1)		//	402	11-01	Lift operation speed
 #define	SHEAVE_D		(GROUP11+2)		//	403	11-02	SHEAVE diameter			ADDED BY SCOTTY
