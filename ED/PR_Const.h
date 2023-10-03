@@ -693,7 +693,8 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 10-34 OVER_ACC_SET */  RLD|DOT0,                       0,              1,              0,
 /* 10-35 ACCLPF       */  RLD|DOT0,                       0,          65535,              0,    //[Rationa 362631, Special.Kung]
 /* 10-36 ACCSampleRate*/  RLD|DOT1,                       0,          65535,              0,    //[Rationa 362631, Special.Kung]
-/* 10-36 PG_Position  */  RLD|DOT0,                       0,          65535,              0,    //[Rationa 368994, Special.Kung]
+/* 10-37 PG_Position_H*/  RLD|DOT0,                       0,          65535,              0,    //[Rationa 368994, Special.Kung]
+/* 10-38 PG_Position_L*/  RLD|DOT0,                       0,          65535,              0,    //[Rationa 368994, Special.Kung]
 
 /*--------      GROUP 11        --------*/
 /* 11-00 SysControl   */  RLD|DOT0|DPH,                   0,          65535,              0,    //[change default value for support PGHSD-1, Bernie, 2014/07/31]

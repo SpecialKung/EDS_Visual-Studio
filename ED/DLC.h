@@ -171,7 +171,7 @@ DLC_EXT	UWORD	            PR_S4ACC1,
 							DLC_uwT3,		//運算後, S3的時間
 							DLC_uwT4,		//運算後, S4的時間
 							DLC_uwTd,		//運算後, eq dec的時間
-							DLC_uwTc,	//等速段時間
+							DLC_uwTc,		//等速段時間
 							DLC_uwRateSpd,
 							DLC_uwRateSpdMax,
 							DLC_uwTRa,		//idea Tacc
@@ -179,25 +179,25 @@ DLC_EXT	UWORD	            PR_S4ACC1,
 							DLC_uwTd,
 							DLC_uwAa,		//idea Aacc
 							DLC_uwAd,		//idea Adec
-							DLC_uwJR1,	//idea Jerk1
-							DLC_uwJR2,	//idea Jerk2
-							DLC_uwJR3,	//idea Jerk3
-							DLC_uwJR4,	//idea Jerk4
+							DLC_uwJR1,		//idea Jerk1
+							DLC_uwJR2,		//idea Jerk2
+							DLC_uwJR3,		//idea Jerk3
+							DLC_uwJR4,		//idea Jerk4
 							DLC_uwJ4,
-							DLC_uwVR1,	//idea spd variable V1
-							DLC_uwVR2,	//idea spd variable V2
-							DLC_uwVR3,	//idea spd variable V3
-							DLC_uwVR4,	//idea spd variable V4
-							DLC_uwV1,			//real spd variable V1
+							DLC_uwVR1,		//idea spd variable V1
+							DLC_uwVR2,		//idea spd variable V2
+							DLC_uwVR3,		//idea spd variable V3
+							DLC_uwVR4,		//idea spd variable V4
+							DLC_uwV1,		//real spd variable V1
 							DLC_uwV2,		//real spd variable V2	//以目前的速度開始計算,當S2結束後,速度會是多少,單位mm/s
-							DLC_uwJR3_Dec0S,//idea Jerk3	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwJR4_Dec0S,//idea Jerk4	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwT3_Dec0S,	//運算後S3實際要走的時間	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwT4_Dec0S,	//運算後S4實際要走的時間	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwJR3_Dec0S,//idea Jerk3								// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwJR4_Dec0S,//idea Jerk4								// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwT3_Dec0S,	//運算後S3實際要走的時間					// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwT4_Dec0S,	//運算後S4實際要走的時間					// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_uwV3_Dec0S,	//從S3開始到S3結束,速度會減少多少,單位mm/s	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwV4_Dec0S,	//S4開始時的速度	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwTd_Dec0S,	//等減速段要走的時間 ms	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_uwVd_Dec0S,	//等減速段要走的速度變化量	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwV4_Dec0S,	//S4開始時的速度							// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwTd_Dec0S,	//等減速段要走的時間 ms						// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_uwVd_Dec0S,	//等減速段要走的速度變化量					// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_uwAd_Dec0S,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 							DLC_uwVc_Dec0S;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 
@@ -259,13 +259,13 @@ DLC_EXT	UBYTE
 							DLC_ubWelTuntra,	//map WelTuntra addr, H=PgPosClr, L=WelTuntra
 							DLC_ubDIR,
 							DLC_ubCnt,
-							DLC_ubDecel,  //20180612
-							DLC_ubSpdLimMode,//bit6&5 over speed treatment>>00:disable 01:Force stop 10:re-leveling
-							DLC_ubSpdLimFlag,//Artemis speed limit, James, 20200220
-							DLC_ubLuLdError,//#15977, LULD detect, James, 2021/04/01
-							DLC_ubLuLdProtectState,//#15977, LULD detect, James, 2021/04/01
-							DLC_ubDec0SModeTmr,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_ubDec0SMode;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_ubDecel,  				//20180612
+							DLC_ubSpdLimMode,			//bit6&5 over speed treatment>>00:disable 01:Force stop 10:re-leveling
+							DLC_ubSpdLimFlag,			//Artemis speed limit, James, 20200220
+							DLC_ubLuLdError,			//#15977, LULD detect, James, 2021/04/01
+							DLC_ubLuLdProtectState,		//#15977, LULD detect, James, 2021/04/01
+							DLC_ubDec0SModeTmr,			// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_ubDec0SMode;			// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
 
 DLC_EXT	UBYTE	DLC_EPS_Source,//1:MI, 2:CAN
 				DLC_uwAutoTar;

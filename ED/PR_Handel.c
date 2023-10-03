@@ -708,6 +708,7 @@ void (*const pr_tbl[PRMAX])(UWORD prx, UWORD prvalue) = {
 		updatepr,	//	421    10-35	//[Rationa 362631, Special.Kung]
 		updatepr,	//	421    10-36	//[Rationa 362631, Special.Kung]
 		updatepr,	//	421    10-37	//[Rationa 368994, Special.Kung]
+		updatepr,	//	421    10-38	//[Rationa 368994, Special.Kung]
 
 /*---- GROUP 11---------------------------------------*/
 		updatepr,	//	401    11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo

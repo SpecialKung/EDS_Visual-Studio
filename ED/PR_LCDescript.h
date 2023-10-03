@@ -1958,7 +1958,8 @@ const string20 prinfo[EPMAX] = {
     "Over Acc setting    "  ,   //  408 10-34   Over acc detect rule setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
     "ACC LPF             "  ,   //  422 10-35   //Rationa 362631, Special.Kung
     "ACC SampleRate    ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
-    "PG Position      ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_H    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_L    ppr"  ,   //  422 10-38   //Rationa 368994, Special.Kung
 
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
@@ -3036,7 +3037,8 @@ const string20 prinfo_tc[EPMAX] = {
     "過加速度偵選擇      "  ,   //  3XX   10-34     Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
     "加速度濾波值        "  ,   //  422 10-35   //Rationa 362631, Special.Kung
     "加速度取樣率      ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
-    "PG現在位置       ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG現在位置 高    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG現在位置 低    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
@@ -4112,7 +4114,8 @@ const string20 prinfo_sc[EPMAX] = {
     "徹樓厒僅淈聆恁寁    "  ,   //  3XX   10-34 Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
     "ACC LPF             "  ,   //  422 10-35   //Rationa 362631, Special.Kung
     "ACC SampleRate    ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
-    "PG Position      ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_H    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_L    ppr"  ,   //  422 10-38   //Rationa 368994, Special.Kung
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
@@ -5140,7 +5143,8 @@ const string20 prinfo_tur[EPMAX] = {
     "AsiriHizlan Ayar    "  ,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
     "ACC LPF             "  ,   //  422 10-35   //Rationa 362631, Special.Kung
     "ACC SampleRate    ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
-    "PG Position      ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_H    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_L    ppr"  ,   //  422 10-38   //Rationa 368994, Special.Kung
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/
@@ -6212,7 +6216,8 @@ const string20 prinfo_rus[EPMAX] = {
     "賴梑.蝁筊楅摵   "  ,   //    3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
     "ACC LPF             "  ,   //  422 10-35   //Rationa 362631, Special.Kung
     "ACC SampleRate    ms"  ,   //  422 10-36   //Rationa 362631, Special.Kung
-    "PG Position      ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_H    ppr"  ,   //  422 10-37   //Rationa 368994, Special.Kung
+    "PG Position_L    ppr"  ,   //  422 10-38   //Rationa 368994, Special.Kung
     
 /*---- GROUP 11-----------------------------------------*/						
 /*  "12345678901234561234"	*/

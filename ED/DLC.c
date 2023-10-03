@@ -7,174 +7,196 @@
 //DLC function, Henry, 2016/07/20
 
 void DLC_Initial_value(void){
-  UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
-  
-  pr[UNITSEL] = 3;   //00-10 = 3
-  pr[SOFC]    = 4;   //00-14 = 4
-  pr[SOOC]    = 2;   //00-15 = 2
-  
-  pr[ACCEL1] = 50;   //01-12 = 0.5
-  pr[DECEL1] = 50;   //01-13 = 0.5
-  pr[JOGACC] = 15;   //01-20 = 0.15
-  pr[JOGDEC] = 50;   //01-21 = 0.5
-  pr[JOGF]   = 15;   //01-22 = 0.15
-  pr[S4ACC1] = 200;  //01-24 = 2.00
-  pr[S4ACC2] = 200;  //01-25 = 2.00
-  pr[S4DEC1] = 200;  //01-26 = 2.00
-  pr[S4DEC2] = 200;  //01-27 = 2.00
-  pr[DECEL5] = 0;    //01-31 = 0.00
+	UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
 
-  pr[MI1] = 45;      //02-01 = 45
-  pr[MI2] = 46;      //02-02 = 46
-  pr[MI3] = 0;       //02-03 = 0
-  pr[MI4] = 0;       //02-04 = 0
-  pr[MI5] = 0;       //02-05 = 0
-  pr[MI6] = 0;       //02-06 = 0
-  pr[MI7] = 0;       //02-07 = 0
-  pr[MI8] = 0;       //02-08 = 0
-  pr[MO1] = 9;       //02-09
-  
-  pr[RSQ_SPD]       = 10;  //04-16
-  pr[LEV_SPD]       = 3;   //04-17
-  pr[AH_SPD]        = 50;  //04-18
-  pr[MAX_FLOOR]     = 8;   //04-22
-  pr[LEV_CUR]       = 1;   //04-23
-  pr[PG_RST_MODE]   = 100; //04-24
-  pr[LAND_DLY_TIME] = 500; //04-26
-  pr[LEV_BRD_PG_H]  = 0;   //04-32
-  pr[LEV_BRD_PG_L]  = 0;   //04-33
-  pr[SENSOR_H]      = 0;   //04-34
-  pr[SENSOR_L]      = 0;   //04-35
+	pr[UNITSEL] = 3;   //00-10 = 3
+	pr[SOFC]    = 4;   //00-14 = 4
+	pr[SOOC]    = 2;   //00-15 = 2
+
+	pr[ACCEL1] = 50;   //01-12 = 0.5
+	pr[DECEL1] = 50;   //01-13 = 0.5
+	pr[JOGACC] = 15;   //01-20 = 0.15
+	pr[JOGDEC] = 50;   //01-21 = 0.5
+	pr[JOGF]   = 15;   //01-22 = 0.15
+	pr[S4ACC1] = 200;  //01-24 = 2.00
+	pr[S4ACC2] = 200;  //01-25 = 2.00
+	pr[S4DEC1] = 200;  //01-26 = 2.00
+	pr[S4DEC2] = 200;  //01-27 = 2.00
+	pr[DECEL5] = 0;    //01-31 = 0.00
+
+	pr[MI1] = 45;      //02-01 = 45
+	pr[MI2] = 46;      //02-02 = 46
+	pr[MI3] = 0;       //02-03 = 0
+	pr[MI4] = 0;       //02-04 = 0
+	pr[MI5] = 0;       //02-05 = 0
+	pr[MI6] = 0;       //02-06 = 0
+	pr[MI7] = 0;       //02-07 = 0
+	pr[MI8] = 0;       //02-08 = 0
+	pr[MO1] = 9;       //02-09
+
+	pr[RSQ_SPD]       = 10;  //04-16
+	pr[LEV_SPD]       = 3;   //04-17
+	pr[AH_SPD]        = 50;  //04-18
+	pr[MAX_FLOOR]     = 8;   //04-22
+	pr[LEV_CUR]       = 1;   //04-23
+	pr[PG_RST_MODE]   = 100; //04-24
+	pr[LAND_DLY_TIME] = 500; //04-26
+	pr[LEV_BRD_PG_H]  = 0;   //04-32
+	pr[LEV_BRD_PG_L]  = 0;   //04-33
+	pr[SENSOR_H]      = 0;   //04-34
+	pr[SENSOR_L]      = 0;   //04-35
   
 //#if Artemis_ENABLE//04-36 //Enable for Artemis
-  //pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
+	//pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
 //#else
-  //pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
+	//pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
 //#endif
 
-  //[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
-  if(btArtemisEnable)
-  {
-    pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
-    pr[CAN_BURD] = 2;   // Jerry.sk.Tseng 2023/04/01 For initial Pr09-06
-    write_ep(BLK_WRITE,CAN_BURD, 2);
-  }
-  else
-  {
-    pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
-  }    
-  pr[PDO_TYPE] = 0;  //04-37
-  pr[DS_LEN]   = 0;    //04-38
-  //Artemis speed limit, James, 20200220
-  pr[DD1_Vlim] = pr[Lift_SPD]; //UDS1/DDS1 Speed Limit  04-45 = 3.0m/s(Lift speed)  
-  pr[DD2_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-46 = 3.0m/s(Lift speed)  
-  pr[DD3_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-47 = 3.0m/s(Lift speed)  
-  pr[DD4_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-48 = 3.0m/s(Lift speed)  
+	//[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
+	if(btArtemisEnable)
+	{
+		pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
+		pr[CAN_BURD] = 2;   // Jerry.sk.Tseng 2023/04/01 For initial Pr09-06
+		write_ep(BLK_WRITE,CAN_BURD, 2);
+	}
+	else
+	{
+		pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
+	}    
+	pr[PDO_TYPE] = 0;  //04-37
+	pr[DS_LEN]   = 0;    //04-38
+	//Artemis speed limit, James, 20200220
+	pr[DD1_Vlim] = pr[Lift_SPD]; //UDS1/DDS1 Speed Limit  04-45 = 3.0m/s(Lift speed)  
+	pr[DD2_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-46 = 3.0m/s(Lift speed)  
+	pr[DD3_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-47 = 3.0m/s(Lift speed)  
+	pr[DD4_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-48 = 3.0m/s(Lift speed)  
       
-  //04-50 to 04-99
-  for(i=1; i<=0x4B; i++){
-    DLC_ulPosLev[i] = 0;
-  }
-  
-   for(i=0; i<DLCMAX; i++){
-    DLCxx[i] = 0;
-  }
+	//04-50 to 04-99
+	for(i=1; i<=0x4B; i++)
+	{
+		DLC_ulPosLev[i] = 0;
+	}
 
-  if(pr[FLOOR_PAGE] == 0){
-    for(i=0; i<DLC_25ADDR; i++){
-      pr[FL_POSIT_1H+i]= DLCxx[i];
-    }
-  }    
-  else if(pr[FLOOR_PAGE] == 1){   // JINGDO   
-    for(i=DLC_25ADDR; i<DLC_50ADDR; i++){
-      pr[FL_POSIT_1H+i-DLC_25ADDR]= DLCxx[i];
-    }
-  }
-  else if(pr[FLOOR_PAGE] == 2){		// JINGDO
-    for(i=DLC_50ADDR; i<DLC_75ADDR; i++){
-      pr[FL_POSIT_1H+i-DLC_50ADDR]= DLCxx[i];
-    }
-  }
-  else if(pr[FLOOR_PAGE] == 3){		// floor adjustment Aevin 6/192/2018
-      for(i=DLC_75ADDR; i<DLC_LimADDR; i++){
-        pr[FL_POSIT_1H+i-DLC_75ADDR]= DLCxx[i];
-      }
-  }
-  else if(pr[FLOOR_PAGE] == 4){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_LimADDR; i<DLC_Adj50ADDRUP; i++){
-        pr[FL_POSIT_1H+i-DLC_LimADDR]= DLCxx[i];
-      }
-  }
-  else if(pr[FLOOR_PAGE] == 5){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_Adj50ADDRUP; i<DLC_Adj50ADDRDN; i++){
-        pr[FL_POSIT_1H+i-DLC_Adj50ADDRUP]= DLCxx[i];
-      }
-  }  
-  else if(pr[FLOOR_PAGE] == 6){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_Adj50ADDRDN; i<DLC_Adj5175ADDRUPDN; i++){
-        pr[FL_POSIT_1H+i-DLC_Adj50ADDRDN]= DLCxx[i];
-      }
-  }
-  
-  pr[EV_ID] = 0;     //09-09
-  pr[CAN_FUN] = 0;   //09-10
+	for(i=0; i<DLCMAX; i++)
+	{
+		DLCxx[i] = 0;
+	}
 
-  pr[PRRESET] = 0;   //00-02 = 0
-  write_ep(BLK_WRITE,PRRESET, 0);
-  write_ep(BLK_WRITE,UNITSEL, 3);
-  write_ep(BLK_WRITE,SOFC, 4);
-  write_ep(BLK_WRITE,SOOC, 2);
-  write_ep(BLK_WRITE,ACCEL1, 50);
-  write_ep(BLK_WRITE,DECEL1, 50);
-  write_ep(BLK_WRITE,JOGACC, 15);
-  write_ep(BLK_WRITE,JOGDEC, 50);
-  write_ep(BLK_WRITE,JOGF, 15);
-  write_ep(BLK_WRITE,S4ACC1, 200);
-  write_ep(BLK_WRITE,S4ACC2, 200);
-  write_ep(BLK_WRITE,S4DEC1, 200);
-  write_ep(BLK_WRITE,S4DEC2, 200);
-  write_ep(BLK_WRITE,DECEL5, 0);
-  write_ep(BLK_WRITE,MI1, 45);
-  write_ep(BLK_WRITE,MI2, 46);
-  write_ep(BLK_WRITE,MI3, 0);
-  write_ep(BLK_WRITE,MI4, 0);
-  write_ep(BLK_WRITE,MI5, 0);
-  write_ep(BLK_WRITE,MI6, 0);
-  write_ep(BLK_WRITE,MI7, 0);
-  write_ep(BLK_WRITE,MI8, 0);
-  write_ep(BLK_WRITE,MO1, 9);
-  write_ep(BLK_WRITE,RSQ_SPD, 10);
-  write_ep(BLK_WRITE,LEV_SPD, 3);
-  write_ep(BLK_WRITE,AH_SPD, 50);
-  write_ep(BLK_WRITE,MAX_FLOOR, 8);
-  write_ep(BLK_WRITE,LEV_CUR, 1);
-  write_ep(BLK_WRITE,PG_RST_MODE, 100);
-  write_ep(BLK_WRITE,LAND_DLY_TIME, 500);
-  write_ep(BLK_WRITE,LEV_BRD_PG_H, 0);
-  write_ep(BLK_WRITE,LEV_BRD_PG_L, 0);
-  write_ep(BLK_WRITE,SENSOR_H, 0);
-  write_ep(BLK_WRITE,SENSOR_L, 0);
+	if(pr[FLOOR_PAGE] == 0)
+	{
+		for(i=0; i<DLC_25ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i]= DLCxx[i];
+		}
+	}    
+	else if(pr[FLOOR_PAGE] == 1)
+	{
+		// JINGDO   
+		for(i=DLC_25ADDR; i<DLC_50ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_25ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 2)
+	{
+		// JINGDO
+		for(i=DLC_50ADDR; i<DLC_75ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_50ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 3)
+	{
+		// floor adjustment Aevin 6/192/2018
+		for(i=DLC_75ADDR; i<DLC_LimADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_75ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 4)
+	{
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_LimADDR; i<DLC_Adj50ADDRUP; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_LimADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 5)
+	{
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_Adj50ADDRUP; i<DLC_Adj50ADDRDN; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_Adj50ADDRUP]= DLCxx[i];
+		}
+	}  
+	else if(pr[FLOOR_PAGE] == 6)
+	{
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_Adj50ADDRDN; i<DLC_Adj5175ADDRUPDN; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_Adj50ADDRDN]= DLCxx[i];
+		}
+	}
+  
+	pr[EV_ID] = 0;     //09-09
+	pr[CAN_FUN] = 0;   //09-10
+
+	pr[PRRESET] = 0;   //00-02 = 0
+	write_ep(BLK_WRITE,PRRESET, 0);
+	write_ep(BLK_WRITE,UNITSEL, 3);
+	write_ep(BLK_WRITE,SOFC, 4);
+	write_ep(BLK_WRITE,SOOC, 2);
+	write_ep(BLK_WRITE,ACCEL1, 50);
+	write_ep(BLK_WRITE,DECEL1, 50);
+	write_ep(BLK_WRITE,JOGACC, 15);
+	write_ep(BLK_WRITE,JOGDEC, 50);
+	write_ep(BLK_WRITE,JOGF, 15);
+	write_ep(BLK_WRITE,S4ACC1, 200);
+	write_ep(BLK_WRITE,S4ACC2, 200);
+	write_ep(BLK_WRITE,S4DEC1, 200);
+	write_ep(BLK_WRITE,S4DEC2, 200);
+	write_ep(BLK_WRITE,DECEL5, 0);
+	write_ep(BLK_WRITE,MI1, 45);
+	write_ep(BLK_WRITE,MI2, 46);
+	write_ep(BLK_WRITE,MI3, 0);
+	write_ep(BLK_WRITE,MI4, 0);
+	write_ep(BLK_WRITE,MI5, 0);
+	write_ep(BLK_WRITE,MI6, 0);
+	write_ep(BLK_WRITE,MI7, 0);
+	write_ep(BLK_WRITE,MI8, 0);
+	write_ep(BLK_WRITE,MO1, 9);
+	write_ep(BLK_WRITE,RSQ_SPD, 10);
+	write_ep(BLK_WRITE,LEV_SPD, 3);
+	write_ep(BLK_WRITE,AH_SPD, 50);
+	write_ep(BLK_WRITE,MAX_FLOOR, 8);
+	write_ep(BLK_WRITE,LEV_CUR, 1);
+	write_ep(BLK_WRITE,PG_RST_MODE, 100);
+	write_ep(BLK_WRITE,LAND_DLY_TIME, 500);
+	write_ep(BLK_WRITE,LEV_BRD_PG_H, 0);
+	write_ep(BLK_WRITE,LEV_BRD_PG_L, 0);
+	write_ep(BLK_WRITE,SENSOR_H, 0);
+	write_ep(BLK_WRITE,SENSOR_L, 0);
   
 //#if Artemis_ENABLE
-  //write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	//write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
 //#else
-  //write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	//write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
 //#endif
 
-  //[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
-  if(btArtemisEnable)
-  {
-    write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
-  }
-  else
-  {
-    write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
-  }
+	//[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
+	if(btArtemisEnable)
+	{
+	write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	}
+	else
+	{
+	write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	}
   
-  write_ep(BLK_WRITE,PDO_TYPE, 0);
-  write_ep(BLK_WRITE,DS_LEN, 0);
-  write_ep(BLK_WRITE,EV_ID, 0);
-  write_ep(BLK_WRITE,CAN_FUN, 0);
+	write_ep(BLK_WRITE,PDO_TYPE, 0);
+	write_ep(BLK_WRITE,DS_LEN, 0);
+	write_ep(BLK_WRITE,EV_ID, 0);
+	write_ep(BLK_WRITE,CAN_FUN, 0);
 }
 
 void DLC_Init(void){
@@ -199,18 +221,19 @@ void DLC_PrMgr(UBYTE Val){
 	UDOUBLE ud1, ud2, ud3;
 	UWORD uwLift_SPD,uwSpeedLimit_Temp;
 	
-	if(Val == PR_INIT_RD){	
+	if(Val == PR_INIT_RD)
+	{	
 		//基本參數
-    //DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
-    //DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-    DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		//DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
+		//DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+		DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 
-    DLC_ulPgCnt = pr[CUR_PG_H]*10000+pr[CUR_PG_L];
-    DLC_ulPgBrd = pr[LEV_BRD_PG_H]*10000+pr[LEV_BRD_PG_L];
-    DLC_ulPgSen = pr[SENSOR_H]*10000+pr[SENSOR_L];
+		DLC_ulPgCnt = pr[CUR_PG_H]*10000+pr[CUR_PG_L];
+		DLC_ulPgBrd = pr[LEV_BRD_PG_H]*10000+pr[LEV_BRD_PG_L];
+		DLC_ulPgSen = pr[SENSOR_H]*10000+pr[SENSOR_L];
 
-    //pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// brd length Aevin 7/6/2018	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
-    pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+    	//pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// brd length Aevin 7/6/2018	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
+    	pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 
 		// DLC pos initial fail over 32F, Henry, 20170621
 		//for(i = 1; i <= 32; i ++){
@@ -263,42 +286,43 @@ void DLC_PrMgr(UBYTE Val){
 			}
 		}
 
-    //JINGDO
-    //decel switch protection trigger, Henry, 2016/08/18
-    DLC_ulPosDD1 = DLCxx[DD1_H]*1000+DLCxx[DD1_L]; // JINGDO
-    DLC_ulPosDD2 = DLCxx[DD2_H]*1000+DLCxx[DD2_L]; // JINGDO
-    DLC_ulPosDD3 = DLCxx[DD3_H]*1000+DLCxx[DD3_L]; // JINGDO
-    DLC_ulPosDD4 = DLCxx[DD4_H]*1000+DLCxx[DD4_L]; // JINGDO
-    DLC_ulPosUD1 = DLCxx[UD1_H]*1000+DLCxx[UD1_L]; // JINGDO
-    DLC_ulPosUD2 = DLCxx[UD2_H]*1000+DLCxx[UD2_L]; // JINGDO
-    DLC_ulPosUD3 = DLCxx[UD3_H]*1000+DLCxx[UD3_L]; // JINGDO
-    DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
-    DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
-			
-    DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD1 = DLC_ulPgDD1*10;
-    DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD2 = DLC_ulPgDD2*10;
-    DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD3 = DLC_ulPgDD3*10;
-    DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD4 = DLC_ulPgDD4*10;
-    DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD1 = DLC_ulPgUD1*10;
-    DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD2 = DLC_ulPgUD2*10;
-    DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD3 = DLC_ulPgUD3*10;
-    DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD4 = DLC_ulPgUD4*10;
-    DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUL = DLC_ulPgUL*10;
+		//JINGDO
+		//decel switch protection trigger, Henry, 2016/08/18
+		DLC_ulPosDD1 = DLCxx[DD1_H]*1000+DLCxx[DD1_L]; // JINGDO
+		DLC_ulPosDD2 = DLCxx[DD2_H]*1000+DLCxx[DD2_L]; // JINGDO
+		DLC_ulPosDD3 = DLCxx[DD3_H]*1000+DLCxx[DD3_L]; // JINGDO
+		DLC_ulPosDD4 = DLCxx[DD4_H]*1000+DLCxx[DD4_L]; // JINGDO
+		DLC_ulPosUD1 = DLCxx[UD1_H]*1000+DLCxx[UD1_L]; // JINGDO
+		DLC_ulPosUD2 = DLCxx[UD2_H]*1000+DLCxx[UD2_L]; // JINGDO
+		DLC_ulPosUD3 = DLCxx[UD3_H]*1000+DLCxx[UD3_L]; // JINGDO
+		DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
+		DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
+				
+		DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD1 = DLC_ulPgDD1*10;
+		DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD2 = DLC_ulPgDD2*10;
+		DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD3 = DLC_ulPgDD3*10;
+		DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD4 = DLC_ulPgDD4*10;
+		DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD1 = DLC_ulPgUD1*10;
+		DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD2 = DLC_ulPgUD2*10;
+		DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD3 = DLC_ulPgUD3*10;
+		DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD4 = DLC_ulPgUD4*10;
+		DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUL = DLC_ulPgUL*10;
 
-    DLC_ubLevMax = pr[MAX_FLOOR];
-    DLC_ubLevMin = 1;
-    DLC_ubLevCur = pr[LEV_CUR];
+		DLC_ubLevMax = pr[MAX_FLOOR];
+		DLC_ubLevMin = 1;
+		DLC_ubLevCur = pr[LEV_CUR];
 	}
-	else if(Val == PR_RD){ 
+	else if(Val == PR_RD)
+	{ 
 		// Decoder PDO msg
 		DLC_btErr = (DLC_PDO_RX_EM.uw&0x0001)?1:0;        // bit0
 		DLC_btRdy = (DLC_PDO_RX_EM.uw&0x0002)?1:0;        // bit1
@@ -575,21 +599,19 @@ void DLC_PrMgr(UBYTE Val){
 		DLC_btWelRst = (pr[CAN_FUN]&0x0010)?1:0;
 			
 		//04-36 DLC Function
-		DLC_btADCO = (pr[DLC_FUN]&0x0001)?1:0;   //bit0
-		DLC_btEPSDir = (pr[DLC_FUN]&0x0002)?1:0; //bit1
-		DLC_btDznMd = (pr[DLC_FUN]&0x0004)?1:0;  //bit2  // adco
-		DLC_btWelDec = (pr[DLC_FUN]&0x0008)?1:0; //bit3
-		DLC_btCanEmStp = (pr[DLC_FUN]&0x0010)?1:0; //bit4  //Gfc DLC modify , Henry, 2018/05/23
-		DLC_ubSpdLimMode = (pr[DLC_FUN]&0x0060)>>5; //bit6&5 over speed treatment>>00:disable 01:Force stop 10:re-leveling
-		DLC_btTorOfsDir = (pr[DLC_FUN]&0x0080)?1:0; //bit7	// Sean, 20181210
+		DLC_btADCO             = (pr[DLC_FUN]&0x0001)?1:0;	//bit0
+		DLC_btEPSDir           = (pr[DLC_FUN]&0x0002)?1:0;	//bit1
+		DLC_btDznMd            = (pr[DLC_FUN]&0x0004)?1:0;	//bit2  // adco
+		DLC_btWelDec           = (pr[DLC_FUN]&0x0008)?1:0;	//bit3
+		DLC_btCanEmStp         = (pr[DLC_FUN]&0x0010)?1:0;	//bit4  			//Gfc DLC modify , Henry, 2018/05/23
+		DLC_ubSpdLimMode       = (pr[DLC_FUN]&0x0060)>>5;	//bit6&5 over speed treatment>>00:disable 01:Force stop 10:re-leveling
+		DLC_btTorOfsDir        = (pr[DLC_FUN]&0x0080)?1:0;	//bit7				// Sean, 20181210
 
-		DLC_btPosLULDCal = (pr[DLC_FUN]&0x0200)?1:0; //bit9	//James, 20210421
-		DLC_btParkTooFar = (pr[DLC_FUN]&0x0400)?1:0;	//bit10 停車過頭	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220516
+		DLC_btPosLULDCal       = (pr[DLC_FUN]&0x0200)?1:0;	//bit9				//James, 20210421
+		DLC_btParkTooFar       = (pr[DLC_FUN]&0x0400)?1:0;	//bit10 停車過頭	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220516
+		DLC_btPDO_ID005_Enable = (pr[DLC_FUN]&0x0100)?1:0;	//bit8 				//Artemis Speed &Position PDO transmition , James, 20200603
 
-		
-		DLC_btPDO_ID005_Enable = (pr[DLC_FUN]&0x0100)?1:0;//bit8 //Artemis Speed &Position PDO transmition , James, 20200603
 		//expand handshaking time for PDO_ID005	, James, 20201201	 
-		
 		if(DLC_btPDO_ID005_Enable)
 		{
 			if(pr[PDO_TX_Time] < 3)
@@ -597,6 +619,9 @@ void DLC_PrMgr(UBYTE Val){
 				pr[PDO_TX_Time] = 3;
 			}
 		}
+
+		//[Rationa 368994, Special.Kung]
+		DLC_ulPG_Position =pr[PG_Position_H]*10000+pr[PG_Position_L];
 	}
 	else if(Val == PR_WR){
 		
@@ -802,8 +827,6 @@ void DLC_Algorithm(void){
 	//讀取DLC相關參數
 	DLC_PrMgr(PR_RD);
 
-	//DLC_ulPG_Position = pr[CUR_PG_H]*10000+pr[CUR_PG_L];	//[Rationa 368994, Special.Kung]
-	DLC_ulPG_Position = MTU1.TCNT;							//[Rationa 368994, Special.Kung]
 	
 	//讀取方向信號
 	if(DLC_btUP == 1 && DLC_btDN == 1){
@@ -883,24 +906,46 @@ void DLC_Algorithm(void){
 	slPgDif = (SWORD)(uwPgTmp - MTU1_Old);
 	MTU1_Old = MTU1.TCNT;
 	
-	if(PGDIR == 1){
+	if(PGDIR == 1)
+	{
 		if (pr[CHG_DIR] == 0)
+		{
 			DLC_ulPgCnt += slPgDif;
+			DLC_ulPG_Position = DLC_ulPG_Position+slPgDif;			//[Rationa 368994, Special.Kung]
+		}
 		else
+		{
 			DLC_ulPgCnt -= slPgDif;
+			DLC_ulPG_Position = DLC_ulPG_Position-slPgDif;			//[Rationa 368994, Special.Kung]
+		}
 	}
-	else{
+	else
+	{
 		if (pr[CHG_DIR] == 0)
+		{
 			DLC_ulPgCnt -= slPgDif;
+			DLC_ulPG_Position = DLC_ulPG_Position-slPgDif;			//[Rationa 368994, Special.Kung]
+		}
 		else
+		{
 			DLC_ulPgCnt += slPgDif;
+			DLC_ulPG_Position = DLC_ulPG_Position+slPgDif;			//[Rationa 368994, Special.Kung]
+		}
 	}
+
 	// encoder pulse protection, Henry, 2016/08/18
 	if(DLC_ulPgCnt > 100000000000000)
+	{
 		DLC_ulPgCnt = 0;
+	}
 	if(DLC_ulPgCnt < PGBS)//fix Ayra bug, Aevin yu, 2017/12/13
+	{
 		DLC_ulPgCnt = PGBS;
+	}
 	
+	pr[PG_Position_H] = DLC_ulPG_Position/10000;	//[Rationa 368994, Special.Kung]
+	pr[PG_Position_L] = DLC_ulPG_Position%10000;	//[Rationa 368994, Special.Kung]
+
 	// level position correction
 	ulTmp = 100*pr[Lift_SPD]*pr[PG_RST_MODE]/100;
 	/*  // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source --------------------------------
@@ -1013,7 +1058,7 @@ void DLC_Algorithm(void){
 				}
 				else if((DLC_btLU == 1)&&(DLC_btLD == 1)&&(DLC_btLDOld == 0))//2nd landing Calibration //進入水平前15mm,當LU On,LD Off變On
 				{	
-					if(DLC_btPosLULDCal)	//04-36 Bit8==1
+					if(DLC_btPosLULDCal)	//04-36 Bit9==1
 					{
 						//DLC_ulPgCnt = DLC_ulPgLev[DLC_ubLevCur]-(DLC_ulPgBrd>>1)+(DLC_ulPgSen>>1)+ulDelayCmpPg;//#16023 advance landing	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 						DLC_ulPgCnt = DLC_ulPgLev[DLC_ubLevCur]-((DLC_ulPgBrd-DLC_ulPgSen+1)>>1)+ulDelayCmpPg;//#16023 advance landing	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
@@ -1062,7 +1107,7 @@ void DLC_Algorithm(void){
 				}
 				else if((DLC_btLD == 1)&&(DLC_btLU == 1)&&(DLC_btLUOld == 0))//2nd landing Calibration, //進入水平前15mm,當LD On,LU Off變On
 				{
-					if(DLC_btPosLULDCal)	//04-36 Bit8==1
+					if(DLC_btPosLULDCal)	//04-36 Bit9==1
 					{
 						//DLC_ulPgCnt = DLC_ulPgLev[DLC_ubLevCur]+(DLC_ulPgBrd>>1)-(DLC_ulPgSen>>1)-ulDelayCmpPg ;//#16023 advance landing	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source						
 						DLC_ulPgCnt = DLC_ulPgLev[DLC_ubLevCur]+((DLC_ulPgBrd-DLC_ulPgSen+1)>>1)-ulDelayCmpPg ;//#16023 advance landing	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
@@ -4054,16 +4099,16 @@ void WelTun_eeprom(void){
 //    write_ep(0,DLS_POSIT_L,pr[DLS_POSIT_L]);	
 //    write_ep(0,ULS_POSIT_H,pr[ULS_POSIT_H]);	
 //    write_ep(0,ULS_POSIT_L,pr[ULS_POSIT_L]);
-  write_ep(0,LEV_BRD_PG_H,pr[LEV_BRD_PG_H]);	
-  write_ep(0,LEV_BRD_PG_L,pr[LEV_BRD_PG_L]);	
-  write_ep(0,SENSOR_H,pr[SENSOR_H]);	
-  write_ep(0,SENSOR_L,pr[SENSOR_L]);
-  write_ep(0,CUR_PG_H,pr[CUR_PG_H]);	
-  write_ep(0,CUR_PG_L,pr[CUR_PG_L]);
-  write_ep(0,DD1_Vlim,pr[DD1_Vlim]);//Artemis speed limit, James, 20200220
-  write_ep(0,DD2_Vlim,pr[DD2_Vlim]);
-  write_ep(0,DD3_Vlim,pr[DD3_Vlim]);
-  write_ep(0,DD4_Vlim,pr[DD4_Vlim]);
+	write_ep(0,LEV_BRD_PG_H,pr[LEV_BRD_PG_H]);	
+	write_ep(0,LEV_BRD_PG_L,pr[LEV_BRD_PG_L]);	
+	write_ep(0,SENSOR_H,pr[SENSOR_H]);	
+	write_ep(0,SENSOR_L,pr[SENSOR_L]);
+	write_ep(0,CUR_PG_H,pr[CUR_PG_H]);	
+	write_ep(0,CUR_PG_L,pr[CUR_PG_L]);
+	write_ep(0,DD1_Vlim,pr[DD1_Vlim]);//Artemis speed limit, James, 20200220
+	write_ep(0,DD2_Vlim,pr[DD2_Vlim]);
+	write_ep(0,DD3_Vlim,pr[DD3_Vlim]);
+	write_ep(0,DD4_Vlim,pr[DD4_Vlim]);
 	
 }
 
