@@ -10,7 +10,7 @@
 #define	FACTORY2		(GROUP15+7)		//	7	15-07	Only for Factory 2	
 #define	FACTORY3		(GROUP15+8)		//	8	15-08	Only for Factory 3	
 #define	FACTORY4		(GROUP15+9)		//	9	15-09	Only for Factory 4	
-#define	PWM_MODE		(GROUP15+10)	//	10	15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	
+#define	RESEVER 		(GROUP15+10)	//	10	15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	    //clear Warning, Special.kung, 03/08/2023
 #define	SKIP_DT			(GROUP15+11)	//	11	15-11	Skip Dead Time	
 #define	DCB_AD1			(GROUP15+12)	//	12	15-12	DCBUS 210.0 VDC ad value	
 #define	DCB_AD2			(GROUP15+13)	//	13	15-13	DCBUS 310.0 VDC ad value	

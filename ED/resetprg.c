@@ -35,6 +35,9 @@
 #include	"typedefine.h"		// Define Types
 #include	"stacksct.h"		// Stack Sizes (Interrupt and User)
 
+extern void HardwareSetup(void);
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

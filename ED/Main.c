@@ -28,6 +28,11 @@ History:
 #include "PR_SinTable.h"
 //#include "PR_ACosTable.h"		// Add by dino, 06/08/2007
 
+//clear Warning, Special.kung, 03/08/2023
+extern uint16_t modbus_device_init(void);
+extern uint16_t modbus_usr_init( void );
+
+
 SLONG (*const mfai_tbl[12])(UBYTE AIsel,SWORD AIsumvar) = {
 #if NEWPARA
 	AI_no_func,			//0: no function, Modify for new toolchain, DINO, 09/30/2010

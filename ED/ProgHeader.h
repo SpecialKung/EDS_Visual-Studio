@@ -1,5 +1,8 @@
 #include <machine.h>
 #include <stdio.h>
+#include <stdlib.h>         //clear Warning, Special.kung, 03/08/2023
+#include <string.h>         //clear Warning, Special.kung, 03/08/2023
+
 
 #include "iodefine.h"
 #include "TypeDefine.h"
@@ -78,6 +81,8 @@
 #include "DLC.h"      //[DLC, Bernie, 2014/10/06]
 
 #include "switch.h"		// Bootloader enable, Sean, 20141022
+
+#include "SYSInit.h"    //clear Warning, Special.kung, 03/08/2023
 
 #include "modbus_dec.h"	// modbus framework, Sean, 20141225
 

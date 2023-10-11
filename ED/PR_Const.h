@@ -70,7 +70,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 15-07  FACTORY2    */      WRUN|DOT0,                  0,          65535,              0,       
 /* 15-08  FACTORY3    */      WRUN|DOT0,                  0,          65535,              0,       
 /* 15-09  FACTORY4    */      WRUN|DOT0,                  0,          65535,              0,       
-/* 15-10  PWM_MODE    */      WRUN|DOT0,                  0,          65535,              0,
+/* 15-10  RESERVE     */      WRUN|DOT0,                  0,          65535,              0,        //clear Warning, Special.kung, 03/08/2023
 /* 15-11  SKIP_DT     */  RLD|WRUN|DOT0,                  0,   DeadTime_2*2,     DeadTime_2,       
 /* 15-12  DCB_AD1     */      WRUN|DOT0,                220,           2441,           1638,       
 /* 15-13  DCB_AD2     */      WRUN|DOT0,               1389,           3081,           2441,       
@@ -370,7 +370,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 04-22 MAX_FLOOR    */  RLD|DOT0,                       1,             75,              8,  
 /* 04-23 LEV_CUR      */  RLD|DOT0,                       0,             75,              0, 
 /* 04-24 PG_RST_MODE  */  RLD|DOT0,                       0,            100,            100,
-/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 È´òÈÄüÊ¢ØÊúâÊãñÂ∞æÈÄüÂèäÂπ≥Â±§‰∏çÊ∫ñÁöÑÂïèÈ°å // Mitong 20220902 new
+/* 04-25 DelayCmp	  */  RLD|DOT3, 					  0,		  10000,			  3,    // Issue 277400 ∞™≥t±Ë¶≥©Ïß¿≥t§Œ•≠ºh§£∑«™∫∞›√D // Mitong 20220902 new
 /* 04-26 LAND_DLY_TIME*/  RLD|DOT0,                       0,           3000,            500,   
 /* 04-27 LEV_LEN      */  READ|RLD|DOT0,                  0,            800,            215,
 /* 04-28 INV_POS_H    */  READ|RLD|DOT0,                  0,          65535,              0,   

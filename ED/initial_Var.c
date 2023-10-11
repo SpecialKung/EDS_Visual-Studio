@@ -125,7 +125,7 @@ void  Initial_Var(void){
     APR_uwZarray[5]         =0;
     APR_uwZarray[6]         =0;
     APR_uwZarray[7]         =0;
-    APR_uwZarray[8]         =0;
+    //APR_uwZarray[8]         =0;     //clear Warning, Special.kung, 03/08/2023
     APR_uwTheta             =0;
     APR_uwThetaNoMx         =0;
     APR_uwThetaPu           =0;
@@ -476,7 +476,7 @@ void  Initial_Var(void){
     SPR_uwPGDIRRec          =0;
     TB1_uwPGQuality_1sec    =0;
     TB1_uwPGQualityZcnt     =0;
-    swTqInPu_Mon            =0;  //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
+    swTqInPu_Mon            =0;     //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
     /*BK_SpDtPG1======================================*/ 
     SpDt_ubT0OverCnt        =0;
     SpDt_ubT0OvCnt_New      =0;
@@ -577,7 +577,7 @@ void  Initial_Var(void){
     TqC_swPSpdLimPu         =0;
     TqC_swNSpdLimPu         =0;
     TqC_slTqCmdPuLPF        =0;
-    TqC_slTqOfstPu.sl       =0; //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
+    TqC_slTqOfstPu.sl       =0;     //[Pre-Torque with Load-Cell,Lyabryan,2019/01/08]
     /*BK_TStat2Syn======================================*/
     TsE_swIqssInPu          =0;
     TsE_swIdssInPu          =0;
@@ -667,7 +667,7 @@ void  Initial_Var(void){
     AD_AVIadChkCnt          =0;
     COF_uwVbRe              =0;
     COF_uwFbRe              =0;
-    COF_ulIbRe              =0; // Jerry.sk.tseng for GFC High elecator 2021/08/17
+    COF_ulIbRe              =0;     // Jerry.sk.tseng for GFC High elecator 2021/08/17
     COF_uwRbRe              =0;
     COF_uwLbRe              =0;
     COF_uwTbRe              =0;
@@ -772,7 +772,7 @@ void  Initial_Var(void){
     DLC_ulD4                =0;
     DLC_ulDStop             =0;
     for(i=0;i<0x4B;i++){
-        DLC_ulPgLev[i]=0;     //unit - pg pulse
+        DLC_ulPgLev[i]=0;           //unit - pg pulse
     }
     DLC_ulPgBrd             =0;
     DLC_ulPgSen             =0;     //LD, LU PG¯ß½Ä¼Æ
@@ -789,10 +789,10 @@ void  Initial_Var(void){
     DLC_ulPgUD4             =0; 
     DLC_ulPgUL              =0;
     for(i=0;i<=DLCFLOORMAX;i++){
-        DLC_ulPosLev[i]=0;     //unit - 0.1mm
+        DLC_ulPosLev[i]=0;          //unit - 0.1mm
     }
     DLC_ulPosVal            =0;
-    DLC_ulPosPar.ul            =0;     // DLC position offset
+    DLC_ulPosPar.ul         =0;     // DLC position offset
     DLC_ulOffset            =0;     // DLC position offset
     DLC_ulPosDD1            =0;
     DLC_ulPosDD2            =0;
@@ -887,7 +887,7 @@ void  Initial_Var(void){
     DLC_ubDecel             =0;
     DLC_uwAutoTar           =0;
     DLC_uwEM.uw             =0;    
-	DLC_ubSpdLimFlag		=0;//Artemis speed limit, James, 20200220
+	DLC_ubSpdLimFlag		=0;     //Artemis speed limit, James, 20200220
     /*IODLC======================================*/
     IODLC_ubArea_status     =0;
     IODLC_uwPR_J1           =0;
@@ -1253,7 +1253,7 @@ void  Initial_Var(void){
     rtm_ubTimeRd[4]         =0;
     rtm_ubTimeRd[5]         =0;
     rtm_ubTimeRd[6]         =0;
-    rtm_ubTimeRd[7]         =0;
+    //rtm_ubTimeRd[7]         =0;     //clear Warning, Special.kung, 03/08/2023
     rtm_ubTimeWr[0]         =0;
     rtm_ubTimeWr[1]         =0;
     rtm_ubTimeWr[2]         =0;
@@ -1261,7 +1261,7 @@ void  Initial_Var(void){
     rtm_ubTimeWr[4]         =0;
     rtm_ubTimeWr[5]         =0;
     rtm_ubTimeWr[6]         =0;
-    rtm_ubTimeWr[7]         =0;
+    //rtm_ubTimeWr[7]         =0;     //clear Warning, Special.kung, 03/08/2023
     /*PH_KeyPad======================================*/
     key_ubPageCnt           =0;
     KPDdot                  =0;
@@ -1511,10 +1511,11 @@ void  Initial_Var(void){
     Tx3CNT                  =0;
     SendCNT3                =0;
     for(i=0;i<RX_LENGTH;i++){
-        RxBuf_3[i]=0;     //RX_LENGTH = 100
+        RxBuf_3[i]=0;               //RX_LENGTH = 100
     }
     for(i=0;i<TX_LENGTH;i++){
-        TxBuf_3[TX_LENGTH]=0;     //RX_LENGTH = 100
+        //TxBuf_3[TX_LENGTH]=0;       //RX_LENGTH = 100
+        TxBuf_3[i]=0;               //RX_LENGTH = 100
     }
     RTU_Silent3             =0;
     Com_WatchDog3           =0;
@@ -1534,7 +1535,7 @@ void  Initial_Var(void){
         C22xx[i]=0;
     }
     for(i=0;i<=CALIMAX;i++){
-        CFFxx[i]=0;     // address ffxx  //for calibration
+        CFFxx[i]=0;                 // address ffxx  //for calibration
     }
     for(i=0;i<=C23MAX;i++){
         KC23xx[i]=0;
@@ -1560,10 +1561,10 @@ void  Initial_Var(void){
     Tx2CNT                  =0;
     SendCNT2                =0;
     for(i=0;i<RX_LENGTH;i++){
-        RxBuf_2[i]=0;     //RX_LENGTH = 100
+        RxBuf_2[i]=0;               //RX_LENGTH = 100
     }
     for(i=0;i<TX_LENGTH;i++){
-        TxBuf_2[i]=0;     //RX_LENGTH = 100
+        TxBuf_2[i]=0;               //RX_LENGTH = 100
     }
     RTU_Silent2             =0;
     Com_WatchDog2           =0;
@@ -1600,13 +1601,13 @@ void  Initial_Var(void){
     PID_LPG                 =0;
     AFMOut[0]               =0;
     AFMOut[1]               =0;    
-    AFMOut[2]               =0;
+    //AFMOut[2]               =0;     //clear Warning, Special.kung, 03/08/2023
     uwIsDtL                 =0;
     PGScaleDataTmp          =0;
     PGScaleData             =0;
     TB1_uwSTORSETCnt        =0;
-    TB1_uwSTObRESETCnt        =0;
-    TB1_uwSTOARESETCnt        =0;
+    TB1_uwSTObRESETCnt      =0;
+    TB1_uwSTOARESETCnt      =0;
     uw_STOStatus            =0;
     uw_STOStatusOld         =0;
     uwSIN_data              =0;
@@ -1765,7 +1766,7 @@ void  Initial_Var(void){
     swErrTEST               =0;
     ubPGrevCnt              =0;
     ubRevise                =0;
-	uwGFF_MaxVal			=0;	// GFF Maximum Value Record, Jerry Yu, 2019/11/11
+	uwGFF_MaxVal			=0;	    // GFF Maximum Value Record, Jerry Yu, 2019/11/11
 	ubIntervalSeted			=0;		//[Add GFF and Ocx auto reset function, Jerry Yu, 2019/05/23]
 
     OPHL_swIqss             =0;

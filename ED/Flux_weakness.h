@@ -102,7 +102,7 @@
 #define VF_MODE ((UWORD) 16) /* Description: VF operation mode */
 #define WITH_PG ((UWORD) 32) /* Description: PG operation mode */
 	
-#define ACCON ((Bool) 1) /* Description: acceleration condition */
+//#define ACCON ((Bool) 1) /* Description: acceleration condition */        //clear Warning, Special.kung, 03/08/2023
 #define AUTO_CT_GAIN ((UBYTE) 10) /* Description: Gain of Current Sensor Calibration Testing */
 #define AUTO_CURCALIB ((UBYTE) 11) /* Description: New Current Gain Calibration */
 #define AUTO_DBCSECA ((UBYTE) 7) /* Description: Dead Band Compensation SElf CAlibration testing */
@@ -120,29 +120,29 @@
 #define BELOW_LOW_LIM ((UBYTE) 2) /* Description: Input is below lower limit. */
 #define BRAKE ((Bool) 0)
 //#define CLR ((Bool) 0)
-#define DECON ((Bool) 0) /* Description: deceleration condition */
-#define END ((Bool) 1) /* Description: end condition */
-#define ERR ((Bool) 0) /* Description: error condition */
-	//#define FALSE ((Bool) 0)
-#define FORWARD ((Bool) 0)
+//#define DECON ((Bool) 0) /* Description: deceleration condition */        //clear Warning, Special.kung, 03/08/2023
+//#define END ((Bool) 1) /* Description: end condition */
+//#define ERR ((Bool) 0) /* Description: error condition */
+//#define FALSE ((Bool) 0)
+//#define FORWARD ((Bool) 0)                                                //clear Warning, Special.kung, 03/08/2023
 #define HI ((Bool) 1)
 #define LO ((Bool) 0)
 #define NEG_TORQ_LIMIT ((UBYTE) 8) /* Description: Analog input seletion for negtive torque limit. */
 #define NORMAL ((UBYTE) 0) /* Description: Normal state, no saturation occurs. */
-	#define OFF ((Bool) 0)
-	#define ON ((Bool) 1)
+#define OFF ((Bool) 0)
+#define ON ((Bool) 1)
 #define OVER_UP_LIM ((UBYTE) 1) /* Description: Input is over upper limit. */
 #define POSNEG_TORQ_LIMIT ((UBYTE) 10) /* Description: Analog input seletion for positive and negtive torque limit. */
 #define POS_TORQ_LIMIT ((UBYTE) 7) /* Description: Analog input seletion for positive torque limit. */
 #define REG_TORQ_LIMIT ((UBYTE) 9) /* Description: Analog input seletion for regenerative torque limit. */
 #define RELEASE ((Bool) 1)
-#define REVERSE ((Bool) 1)
-#define RUN ((Bool) 1)
+//#define REVERSE ((Bool) 1)        //clear Warning, Special.kung, 03/08/2023
+//#define RUN ((Bool) 1)            //clear Warning, Special.kung, 03/08/2023
 #define SET ((Bool) 1)
 #define SPD_MODE ((Bool) 0)
 //#define STOP ((Bool) 0)
 #define TORQ_MODE ((Bool) 1)
-	//#define TRUE ((Bool) 1)
+//#define TRUE ((Bool) 1)
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------*\
   INCLUDES
