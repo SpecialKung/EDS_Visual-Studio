@@ -246,11 +246,11 @@
 
 //------ Safty Relay Pin Define --------------------------------------------// 
 
-//#define SRY_A           PC.DR.BIT.B4	// Point A input  ¥\¯à²¾°£
-//#define SRY_B           PC.DR.BIT.B5	// Point B input  ¥\¯à²¾°£
-//#define SRY_C           PC.DR.BIT.B6	// Point C input  ¥\¯à²¾°£
-//#define SRY_D           PC.DR.BIT.B7	// Point D input  ¥\¯à²¾°£
-//#define SRY_T           PC.DR.BIT.B8	// Function test output  ¥\¯à²¾°£
+//#define SRY_A           PC.DR.BIT.B4	// Point A input  ï¿½\ï¿½à²¾ï¿½ï¿½
+//#define SRY_B           PC.DR.BIT.B5	// Point B input  ï¿½\ï¿½à²¾ï¿½ï¿½
+//#define SRY_C           PC.DR.BIT.B6	// Point C input  ï¿½\ï¿½à²¾ï¿½ï¿½
+//#define SRY_D           PC.DR.BIT.B7	// Point D input  ï¿½\ï¿½à²¾ï¿½ï¿½
+//#define SRY_T           PC.DR.BIT.B8	// Function test output  ï¿½\ï¿½à²¾ï¿½ï¿½
 
 //SH7286 Added pin, Sean, 01/25/2010
 //------ Parrallel to Serial Input -----------------------------------------//
@@ -268,7 +268,7 @@
 #endif
 
 //------ USB Enable --------------------------------------------------------//
-//#define USBEN			PB.DR.BIT.B10	// USB Enable Pin  ¥\¯à²¾°£
+//#define USBEN			PB.DR.BIT.B10	// USB Enable Pin  ï¿½\ï¿½à²¾ï¿½ï¿½
 
 //------ PG Status Pin -----------------------------------------------------//
 #if 0
@@ -523,7 +523,7 @@
 
 #define F4CHWGM         1500                    // 15.00Hz for CHANGE WG MODE
 
-#define C20MAX          (0x16+1)                	// MAX ITEM C20XX//2000H~2006H /¥¼³B²z??
+#define C20MAX          (0x16+1)                	// MAX ITEM C20XX//2000H~2006H /ï¿½ï¿½ï¿½Bï¿½z??
 #define C21MAX          (0x2b+1)                	// MAX ITEM C21XX//2100H~212bH
 #define C22MAX          (0x2b+1)                	// MAX ITEM C22XX          //[for test adding maxmum value to 16, Bernie, 08/12/2011]
 #define C23MAX          (0x09+1)                	// MAX ITEM C23XX//2300H~2309H
@@ -1575,13 +1575,13 @@ worst latency you could accept. It should never timeout. Do not set to 0. */
 /*-------------------------------------------------------------------------------------------*/
 /*------ LED EQUATION                   ;DECIMAL TO 7 SEGMENTS
          ___4___
-       |             |
-     3|             | 5
-       |___2___|
-       |             |
-     1|             | 6
-       |___0___|   o
-                           7
+        |       |
+       3|       | 5
+        |___2___|
+        |       |
+       1|       | 6
+        |___0___|   o
+                    7
 
                 76543210	*/
 #define CHAR_Ubar	0x53    //.EQU    0101 0011B    ;u_
@@ -1622,13 +1622,13 @@ worst latency you could accept. It should never timeout. Do not set to 0. */
 #define CHAR_y      0x6d	//.EQU    0110 1101B    ;y
 /*
         ___4___
-       |             |
-     3|             | 5
+       |       |
+      3|       | 5
        |___2___|
-       |             |
-     1|             | 6
+       |       |
+      1|       | 6
        |___0___|   o
-                           7
+                   7
 
 */
 

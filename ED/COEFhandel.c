@@ -270,9 +270,11 @@ void Motor2Pr(void)
 
 void TQRBaseInit(void)
 {	
-    UWORD COF_uwTbReTmp, uw_temp, COF_uwJbRetable, uw_temp1, uw_ItoAcc;    
+    UWORD uw_temp1, uw_ItoAcc;    
     ULONG ul_SPDFFDtemp, ultmp1, ultmp2, ulAlphaRe;
     ULONG_UNION	ul_temp, ulJbRe;
+
+	//UWORD COF_uwTbReTmp, uw_temp, COF_uwJbRetable, uw_temp1, uw_ItoAcc;				//clear Warning, Special.kung, 03/08/2023
 
 // [ Add by DINO, 03/06/2009
 	COF_uwVBase1_4  = vbase >> 2;
@@ -442,7 +444,7 @@ void TQRBaseInit(void)
 }
 void TQRMaxInit(void)
 {
-    ULONG ul_temp;
+    //ULONG ul_temp;				//clear Warning, Special.kung, 03/08/2023
     
     if ((pr[CTRLM] == FOCPM)){
    		// Calculate Rated Torque of PM, Add by DINO, 09/30/2009
@@ -468,9 +470,12 @@ void TQRMaxInit(void)
 
 void MotorPrInit(void)
 {
-    UWORD PuTemp, uw_temp, uwIrated, uw_temp1, uw_ItoAcc;
+    UWORD uwIrated, uw_temp1, uw_ItoAcc;
     ULONG ulAlphaRe;
     ULONG_UNION ul_temp, ulJbRe;
+
+	//UWORD PuTemp, uw_temp, uwIrated, uw_temp1, uw_ItoAcc;				//clear Warning, Special.kung, 03/08/2023
+
     /*------------------------ Add by dino 11.07.2006 ---------------------------------
     -- Calculate the current AD level for Stnadstill                                 --
     -- COF_uwSSIratedPu = COF_uwMIrRe * 1.6 / pr[I_RATE] / sqrt(2) / 2.5 * 512 * 2^6 --

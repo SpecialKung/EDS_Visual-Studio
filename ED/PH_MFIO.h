@@ -165,53 +165,57 @@ MFIO_EXT UWORD mfo_fault_rst(UWORD pin,UWORD k);     //[Add auto restart after f
 MFIO_EXT UWORD mfo_star_Contactor(UWORD pin,UWORD k);//[Add star Contactor]
 MFIO_EXT UWORD mfo_EPS_MODE(UWORD pin,UWORD k);      //[EPS MO Output,Lyabryan,2018/06/19]  // Lift enable, WTL, 20170621
 MFIO_EXT UWORD mfo_Torq_Detect(UWORD pin,UWORD k);   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-MFIO_EXT UWORD mfo_AFE_RST(UWORD pin,UWORD k);      //[AFE Error Handle/Lyabryan/2022/03/24]
+MFIO_EXT UWORD mfo_AFE_RST(UWORD pin,UWORD k);       //[AFE Error Handle/Lyabryan/2022/03/24]
 
 //DLC function, Henry, 2016/07/20
 MFIO_EXT UWORD mfo_DLCLevOn(UWORD pin,UWORD k);
 
 #pragma address mfi_status=0x0000a116    //[Address fixed, Aevin, 2017/06/28]
 #pragma address mfo_status=0x0000a118
-MFIO_EXT UWORD trg_cnt,
-               mfi_old,			  
-//			     mfi_now,			// Move to A_Monitor.h, 11/04/2008
-			   mfi_buf,
-			   mfi_status,
-//			     mfo_now,			// Move to A_Monitor.h, 11/04/2008
-			   mfo_status,
-               YOnCNT,
-               DOnCNT,
-               DIstCNT,
-			   uwFaultBitCode,
-			   uwPcomClkMI,
-			   uwPcomDataMI,
-			   uwSPIPcom;
+MFIO_EXT UWORD 
+				trg_cnt,
+				mfi_old,			  
+				//mfi_now,			// Move to A_Monitor.h, 11/04/2008
+				mfi_buf,
+				mfi_status,
+				//mfo_now,			// Move to A_Monitor.h, 11/04/2008
+				mfo_status,
+				YOnCNT,
+				DOnCNT,
+				DIstCNT,
+				uwFaultBitCode,
+				uwPcomClkMI,
+				uwPcomDataMI,
+				uwSPIPcom;
 
-MFIO_EXT UWORD swmaxT1,
-	           swmaxT2,
-	           swmaxT3;
+MFIO_EXT UWORD 
+				swmaxT1,
+				swmaxT2,
+				swmaxT3;
 
-MFIO_EXT ULONG slmaxT1,
-               slmaxT2,
-               mio_ulMfiSta;
+MFIO_EXT ULONG 
+				slmaxT1,
+				slmaxT2,
+				mio_ulMfiSta;
 
-MFIO_EXT UWORD_UNION		vfd_uwFunSel2;				// VFD Functions Selection 2
+MFIO_EXT UWORD_UNION		
+				vfd_uwFunSel2;				// VFD Functions Selection 2
 
 MFIO_EXT UBYTE EXT_AISEL,
-               speed,
-               acc_dec,
-               YDSetBit,
-               YCONChkCNT,
-               DCONChkCNT,
-               MFI_TQCSel,
-			   SPIPcomBit,
-			   SPIPcomCNT,		// CalUBYTE: 10 UBYTE
-			   MFI_ubFaultBit,
-			   prt_ubWgEna,  // add wgoff interception flag, Sean, 11/18/2010
-			   Speed_old,
-			   Speed_priority,
-			   Speed_INS,
-			   Speed_RELEVEL;				
+				speed,
+				acc_dec,
+				YDSetBit,
+				YCONChkCNT,
+				DCONChkCNT,
+				MFI_TQCSel,
+				SPIPcomBit,
+				SPIPcomCNT,		// CalUBYTE: 10 UBYTE
+				MFI_ubFaultBit,
+				prt_ubWgEna,  // add wgoff interception flag, Sean, 11/18/2010
+				Speed_old,
+				Speed_priority,
+				Speed_INS,
+				Speed_RELEVEL;				
 			 
 
 #ifdef _MFIO_C              

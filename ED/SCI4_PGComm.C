@@ -660,9 +660,11 @@ void hsd_TxStaPro(void)
 *********************************************************************************************/
 void hsd_RxStaPro(void)
 {
-	UBYTE  ubTmep1;
 	UWORD_UNION  uwTemp1,uwTemp2,uwTemp3 ;
 	UBYTE_UNION  ubTemp1;
+
+	//UBYTE  ubTmep1;				//clear Warning, Special.kung, 03/08/2023
+	
 	/* genrater the  CRC */
 	uwTemp1.uw = CRC16(&hsd_ubRxBuf[0], 5) ;
 	/* read  receive data CRC */

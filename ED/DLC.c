@@ -6,154 +6,178 @@
 
 //DLC function, Henry, 2016/07/20
 
-void DLC_Initial_value(void){
-  UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
-  
-  pr[UNITSEL] = 3;   //00-10 = 3
-  pr[SOFC]    = 4;   //00-14 = 4
-  pr[SOOC]    = 2;   //00-15 = 2
-  
-  pr[ACCEL1] = 50;   //01-12 = 0.5
-  pr[DECEL1] = 50;   //01-13 = 0.5
-  pr[JOGACC] = 15;   //01-20 = 0.15
-  pr[JOGDEC] = 50;   //01-21 = 0.5
-  pr[JOGF]   = 15;   //01-22 = 0.15
-  pr[S4ACC1] = 200;  //01-24 = 2.00
-  pr[S4ACC2] = 200;  //01-25 = 2.00
-  pr[S4DEC1] = 200;  //01-26 = 2.00
-  pr[S4DEC2] = 200;  //01-27 = 2.00
-  pr[DECEL5] = 0;    //01-31 = 0.00
+void DLC_Initial_value(void)
+{
+	UWORD i; //[for loop die because UBYTE,Lyabryan,2020/09/09]
 
-  pr[MI1] = 45;      //02-01 = 45
-  pr[MI2] = 46;      //02-02 = 46
-  pr[MI3] = 0;       //02-03 = 0
-  pr[MI4] = 0;       //02-04 = 0
-  pr[MI5] = 0;       //02-05 = 0
-  pr[MI6] = 0;       //02-06 = 0
-  pr[MI7] = 0;       //02-07 = 0
-  pr[MI8] = 0;       //02-08 = 0
-  pr[MO1] = 9;       //02-09
-  
-  pr[RSQ_SPD]       = 10;  //04-16
-  pr[LEV_SPD]       = 3;   //04-17
-  pr[AH_SPD]        = 50;  //04-18
-  pr[MAX_FLOOR]     = 8;   //04-22
-  pr[LEV_CUR]       = 1;   //04-23
-  pr[PG_RST_MODE]   = 100; //04-24
-  pr[LAND_DLY_TIME] = 500; //04-26
-  pr[LEV_BRD_PG_H]  = 0;   //04-32
-  pr[LEV_BRD_PG_L]  = 0;   //04-33
-  pr[SENSOR_H]      = 0;   //04-34
-  pr[SENSOR_L]      = 0;   //04-35
-  
+	//UWORD i, j;		//clear Warning, Special.kung, 03/08/2023
+
+	pr[UNITSEL] = 3;   //00-10 = 3
+	pr[SOFC]    = 4;   //00-14 = 4
+	pr[SOOC]    = 2;   //00-15 = 2
+
+	pr[ACCEL1] = 50;   //01-12 = 0.5
+	pr[DECEL1] = 50;   //01-13 = 0.5
+	pr[JOGACC] = 15;   //01-20 = 0.15
+	pr[JOGDEC] = 50;   //01-21 = 0.5
+	pr[JOGF]   = 15;   //01-22 = 0.15
+	pr[S4ACC1] = 200;  //01-24 = 2.00
+	pr[S4ACC2] = 200;  //01-25 = 2.00
+	pr[S4DEC1] = 200;  //01-26 = 2.00
+	pr[S4DEC2] = 200;  //01-27 = 2.00
+	pr[DECEL5] = 0;    //01-31 = 0.00
+
+	pr[MI1] = 45;      //02-01 = 45
+	pr[MI2] = 46;      //02-02 = 46
+	pr[MI3] = 0;       //02-03 = 0
+	pr[MI4] = 0;       //02-04 = 0
+	pr[MI5] = 0;       //02-05 = 0
+	pr[MI6] = 0;       //02-06 = 0
+	pr[MI7] = 0;       //02-07 = 0
+	pr[MI8] = 0;       //02-08 = 0
+	pr[MO1] = 9;       //02-09
+
+	pr[RSQ_SPD]       = 10;  //04-16
+	pr[LEV_SPD]       = 3;   //04-17
+	pr[AH_SPD]        = 50;  //04-18
+	pr[MAX_FLOOR]     = 8;   //04-22
+	pr[LEV_CUR]       = 1;   //04-23
+	pr[PG_RST_MODE]   = 100; //04-24
+	pr[LAND_DLY_TIME] = 500; //04-26
+	pr[LEV_BRD_PG_H]  = 0;   //04-32
+	pr[LEV_BRD_PG_L]  = 0;   //04-33
+	pr[SENSOR_H]      = 0;   //04-34
+	pr[SENSOR_L]      = 0;   //04-35
+
 //#if Artemis_ENABLE//04-36 //Enable for Artemis
   //pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
 //#else
   //pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
 //#endif
 
-  //[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
-  if(btArtemisEnable)
-  {
-    pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
-    pr[CAN_BURD] = 2;   // Jerry.sk.Tseng 2023/04/01 For initial Pr09-06
-    write_ep(BLK_WRITE,CAN_BURD, 2);
-  }
-  else
-  {
-    pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
-  }    
-  pr[PDO_TYPE] = 0;  //04-37
-  pr[DS_LEN]   = 0;    //04-38
-  //Artemis speed limit, James, 20200220
-  pr[DD1_Vlim] = pr[Lift_SPD]; //UDS1/DDS1 Speed Limit  04-45 = 3.0m/s(Lift speed)  
-  pr[DD2_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-46 = 3.0m/s(Lift speed)  
-  pr[DD3_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-47 = 3.0m/s(Lift speed)  
-  pr[DD4_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-48 = 3.0m/s(Lift speed)  
-      
-  //04-50 to 04-99
-  for(i=1; i<=0x4B; i++){
-    DLC_ulPosLev[i] = 0;
-  }
-  
-   for(i=0; i<DLCMAX; i++){
-    DLCxx[i] = 0;
-  }
+	//[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
+	if(btArtemisEnable)
+	{
+		pr[DLC_FUN] = 0x0100|0x0040;// DLC_btPDO_ID005_Enable | DLC_ubSpdLimMode=2:re-leveling
+		pr[CAN_BURD] = 2;   // Jerry.sk.Tseng 2023/04/01 For initial Pr09-06
+		write_ep(BLK_WRITE,CAN_BURD, 2);
+	}
+	else
+	{
+		pr[DLC_FUN] = 0x0200|0x0040;//04-36 //DLC_btPosLULDCal |DLC_ubSpdLimMode=2:re-leveling
+	}    
+	pr[PDO_TYPE] = 0;  //04-37
+	pr[DS_LEN]   = 0;    //04-38
+	//Artemis speed limit, James, 20200220
+	pr[DD1_Vlim] = pr[Lift_SPD]; //UDS1/DDS1 Speed Limit  04-45 = 3.0m/s(Lift speed)  
+	pr[DD2_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-46 = 3.0m/s(Lift speed)  
+	pr[DD3_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-47 = 3.0m/s(Lift speed)  
+	pr[DD4_Vlim] = pr[Lift_SPD];//UDS1/DDS1 Speed Limit  04-48 = 3.0m/s(Lift speed)  
+		
+	//04-50 to 04-99
+	for(i=1; i<=0x4B; i++)
+	{
+		DLC_ulPosLev[i] = 0;
+	}
 
-  if(pr[FLOOR_PAGE] == 0){
-    for(i=0; i<DLC_25ADDR; i++){
-      pr[FL_POSIT_1H+i]= DLCxx[i];
-    }
-  }    
-  else if(pr[FLOOR_PAGE] == 1){   // JINGDO   
-    for(i=DLC_25ADDR; i<DLC_50ADDR; i++){
-      pr[FL_POSIT_1H+i-DLC_25ADDR]= DLCxx[i];
-    }
-  }
-  else if(pr[FLOOR_PAGE] == 2){		// JINGDO
-    for(i=DLC_50ADDR; i<DLC_75ADDR; i++){
-      pr[FL_POSIT_1H+i-DLC_50ADDR]= DLCxx[i];
-    }
-  }
-  else if(pr[FLOOR_PAGE] == 3){		// floor adjustment Aevin 6/192/2018
-      for(i=DLC_75ADDR; i<DLC_LimADDR; i++){
-        pr[FL_POSIT_1H+i-DLC_75ADDR]= DLCxx[i];
-      }
-  }
-  else if(pr[FLOOR_PAGE] == 4){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_LimADDR; i<DLC_Adj50ADDRUP; i++){
-        pr[FL_POSIT_1H+i-DLC_LimADDR]= DLCxx[i];
-      }
-  }
-  else if(pr[FLOOR_PAGE] == 5){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_Adj50ADDRUP; i<DLC_Adj50ADDRDN; i++){
-        pr[FL_POSIT_1H+i-DLC_Adj50ADDRUP]= DLCxx[i];
-      }
-  }  
-  else if(pr[FLOOR_PAGE] == 6){		//adjust floor position,Henry,2019/01/07
-      for(i=DLC_Adj50ADDRDN; i<DLC_Adj5175ADDRUPDN; i++){
-        pr[FL_POSIT_1H+i-DLC_Adj50ADDRDN]= DLCxx[i];
-      }
-  }
-  
-  pr[EV_ID] = 0;     //09-09
-  pr[CAN_FUN] = 0;   //09-10
+	for(i=0; i<DLCMAX; i++)
+	{
+		DLCxx[i] = 0;
+	}
 
-  pr[PRRESET] = 0;   //00-02 = 0
-  write_ep(BLK_WRITE,PRRESET, 0);
-  write_ep(BLK_WRITE,UNITSEL, 3);
-  write_ep(BLK_WRITE,SOFC, 4);
-  write_ep(BLK_WRITE,SOOC, 2);
-  write_ep(BLK_WRITE,ACCEL1, 50);
-  write_ep(BLK_WRITE,DECEL1, 50);
-  write_ep(BLK_WRITE,JOGACC, 15);
-  write_ep(BLK_WRITE,JOGDEC, 50);
-  write_ep(BLK_WRITE,JOGF, 15);
-  write_ep(BLK_WRITE,S4ACC1, 200);
-  write_ep(BLK_WRITE,S4ACC2, 200);
-  write_ep(BLK_WRITE,S4DEC1, 200);
-  write_ep(BLK_WRITE,S4DEC2, 200);
-  write_ep(BLK_WRITE,DECEL5, 0);
-  write_ep(BLK_WRITE,MI1, 45);
-  write_ep(BLK_WRITE,MI2, 46);
-  write_ep(BLK_WRITE,MI3, 0);
-  write_ep(BLK_WRITE,MI4, 0);
-  write_ep(BLK_WRITE,MI5, 0);
-  write_ep(BLK_WRITE,MI6, 0);
-  write_ep(BLK_WRITE,MI7, 0);
-  write_ep(BLK_WRITE,MI8, 0);
-  write_ep(BLK_WRITE,MO1, 9);
-  write_ep(BLK_WRITE,RSQ_SPD, 10);
-  write_ep(BLK_WRITE,LEV_SPD, 3);
-  write_ep(BLK_WRITE,AH_SPD, 50);
-  write_ep(BLK_WRITE,MAX_FLOOR, 8);
-  write_ep(BLK_WRITE,LEV_CUR, 1);
-  write_ep(BLK_WRITE,PG_RST_MODE, 100);
-  write_ep(BLK_WRITE,LAND_DLY_TIME, 500);
-  write_ep(BLK_WRITE,LEV_BRD_PG_H, 0);
-  write_ep(BLK_WRITE,LEV_BRD_PG_L, 0);
-  write_ep(BLK_WRITE,SENSOR_H, 0);
-  write_ep(BLK_WRITE,SENSOR_L, 0);
+	if(pr[FLOOR_PAGE] == 0)
+	{
+		for(i=0; i<DLC_25ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i]= DLCxx[i];
+		}
+	}    
+	else if(pr[FLOOR_PAGE] == 1)
+	{   
+		// JINGDO   
+		for(i=DLC_25ADDR; i<DLC_50ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_25ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 2)
+	{		// JINGDO
+		for(i=DLC_50ADDR; i<DLC_75ADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_50ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 3)
+	{		
+		// floor adjustment Aevin 6/192/2018
+		for(i=DLC_75ADDR; i<DLC_LimADDR; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_75ADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 4)
+	{		
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_LimADDR; i<DLC_Adj50ADDRUP; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_LimADDR]= DLCxx[i];
+		}
+	}
+	else if(pr[FLOOR_PAGE] == 5)
+	{		
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_Adj50ADDRUP; i<DLC_Adj50ADDRDN; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_Adj50ADDRUP]= DLCxx[i];
+		}
+	}  
+	else if(pr[FLOOR_PAGE] == 6)
+	{		
+		//adjust floor position,Henry,2019/01/07
+		for(i=DLC_Adj50ADDRDN; i<DLC_Adj5175ADDRUPDN; i++)
+		{
+			pr[FL_POSIT_1H+i-DLC_Adj50ADDRDN]= DLCxx[i];
+		}
+	}
+  
+	pr[EV_ID] = 0;     //09-09
+	pr[CAN_FUN] = 0;   //09-10
+
+	pr[PRRESET] = 0;   //00-02 = 0
+	write_ep(BLK_WRITE,PRRESET, 0);
+	write_ep(BLK_WRITE,UNITSEL, 3);
+	write_ep(BLK_WRITE,SOFC, 4);
+	write_ep(BLK_WRITE,SOOC, 2);
+	write_ep(BLK_WRITE,ACCEL1, 50);
+	write_ep(BLK_WRITE,DECEL1, 50);
+	write_ep(BLK_WRITE,JOGACC, 15);
+	write_ep(BLK_WRITE,JOGDEC, 50);
+	write_ep(BLK_WRITE,JOGF, 15);
+	write_ep(BLK_WRITE,S4ACC1, 200);
+	write_ep(BLK_WRITE,S4ACC2, 200);
+	write_ep(BLK_WRITE,S4DEC1, 200);
+	write_ep(BLK_WRITE,S4DEC2, 200);
+	write_ep(BLK_WRITE,DECEL5, 0);
+	write_ep(BLK_WRITE,MI1, 45);
+	write_ep(BLK_WRITE,MI2, 46);
+	write_ep(BLK_WRITE,MI3, 0);
+	write_ep(BLK_WRITE,MI4, 0);
+	write_ep(BLK_WRITE,MI5, 0);
+	write_ep(BLK_WRITE,MI6, 0);
+	write_ep(BLK_WRITE,MI7, 0);
+	write_ep(BLK_WRITE,MI8, 0);
+	write_ep(BLK_WRITE,MO1, 9);
+	write_ep(BLK_WRITE,RSQ_SPD, 10);
+	write_ep(BLK_WRITE,LEV_SPD, 3);
+	write_ep(BLK_WRITE,AH_SPD, 50);
+	write_ep(BLK_WRITE,MAX_FLOOR, 8);
+	write_ep(BLK_WRITE,LEV_CUR, 1);
+	write_ep(BLK_WRITE,PG_RST_MODE, 100);
+	write_ep(BLK_WRITE,LAND_DLY_TIME, 500);
+	write_ep(BLK_WRITE,LEV_BRD_PG_H, 0);
+	write_ep(BLK_WRITE,LEV_BRD_PG_L, 0);
+	write_ep(BLK_WRITE,SENSOR_H, 0);
+	write_ep(BLK_WRITE,SENSOR_L, 0);
   
 //#if Artemis_ENABLE
   //write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
@@ -161,66 +185,73 @@ void DLC_Initial_value(void){
   //write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
 //#endif
 
-  //[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
-  if(btArtemisEnable)
-  {
-    write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
-  }
-  else
-  {
-    write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
-  }
-  
-  write_ep(BLK_WRITE,PDO_TYPE, 0);
-  write_ep(BLK_WRITE,DS_LEN, 0);
-  write_ep(BLK_WRITE,EV_ID, 0);
-  write_ep(BLK_WRITE,CAN_FUN, 0);
+	//[btArtemisEnable at pr[00-02]=200, Special.Kung, 2022/12/02]
+	if(btArtemisEnable)
+	{
+		write_ep(BLK_WRITE,DLC_FUN, 0x0100|0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	}
+	else
+	{
+		write_ep(BLK_WRITE,DLC_FUN, 0x0040);   //04-36 //Enable for Artemis-->DLC_btPDO_ID005_Enable & DLC_ubSpdLimMode=2:re-leveling
+	}
+
+	write_ep(BLK_WRITE,PDO_TYPE, 0);
+	write_ep(BLK_WRITE,DS_LEN, 0);
+	write_ep(BLK_WRITE,EV_ID, 0);
+	write_ep(BLK_WRITE,CAN_FUN, 0);
 }
 
-void DLC_Init(void){
-  DLC_uwJ4 = 0;
-  DLC_uwTD = 0;
-  DLC_uwTDCnt = 0;
+void DLC_Init(void)
+{
+	DLC_uwJ4 = 0;
+	DLC_uwTD = 0;
+	DLC_uwTDCnt = 0;
 
-  DLC_uwS1Tmr = 0;
-  DLC_uwAccTmr = 0;
-  DLC_uwS2Tmr = 0;
-  DLC_uwConTmr = 0;
-  DLC_uwS3Tmr = 0;
-  DLC_uwDecTmr = 0;
-  DLC_uwS4Tmr = 0;
-  DLC_ubMode = MODE_NULL;		// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 add
-  DLC_ulSpd0p1mm = 0;			// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 add
+	DLC_uwS1Tmr = 0;
+	DLC_uwAccTmr = 0;
+	DLC_uwS2Tmr = 0;
+	DLC_uwConTmr = 0;
+	DLC_uwS3Tmr = 0;
+	DLC_uwDecTmr = 0;
+	DLC_uwS4Tmr = 0;
+	DLC_ubMode = MODE_NULL;		// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 add
+	DLC_ulSpd0p1mm = 0;			// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 add
 }
 
-void DLC_PrMgr(UBYTE Val){
+void DLC_PrMgr(UBYTE Val)
+{
 	UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
-	ULONG ulTmp,ulTmp2;
-	UDOUBLE ud1, ud2, ud3;
+	UDOUBLE ud1;
 	UWORD uwLift_SPD,uwSpeedLimit_Temp;
+
+	//ULONG ulTmp,ulTmp2;				//clear Warning, Special.kung, 03/08/2023
+	//UDOUBLE ud1, ud2, ud3;			//clear Warning, Special.kung, 03/08/2023
 	
-	if(Val == PR_INIT_RD){	
+	if(Val == PR_INIT_RD)
+	{	
 		//°ò¥»°Ñ¼Æ
-    //DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source   
-    //DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
-    DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+		//DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source   
+		//DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
+		DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
 
-    DLC_ulPgCnt = pr[CUR_PG_H]*10000+pr[CUR_PG_L];
-    DLC_ulPgBrd = pr[LEV_BRD_PG_H]*10000+pr[LEV_BRD_PG_L];
-    DLC_ulPgSen = pr[SENSOR_H]*10000+pr[SENSOR_L];
+		DLC_ulPgCnt = pr[CUR_PG_H]*10000+pr[CUR_PG_L];
+		DLC_ulPgBrd = pr[LEV_BRD_PG_H]*10000+pr[LEV_BRD_PG_L];
+		DLC_ulPgSen = pr[SENSOR_H]*10000+pr[SENSOR_L];
 
-    //pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// brd length Aevin 7/6/2018	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source   
-    pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
+    	//pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// brd length Aevin 7/6/2018	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source   
+    	pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
 
 		// DLC pos initial fail over 32F, Henry, 20170621
 		//for(i = 1; i <= 32; i ++){
-		for(i = 1; i <= 0x4B; i ++){
+		for(i = 1; i <= 0x4B; i ++)
+		{
 		    j = i - 1;
 			DLC_ulPosLev[i]	= DLCxx[j<<1]*1000;
 			DLC_ulPosLev[i] = DLC_ulPosLev[i]+DLCxx[((j<<1)+1)];
 		}
 
-        for(i = 1; i <= 0x4B; i ++){
+        for(i = 1; i <= 0x4B; i ++)
+		{
 		    //DLC_ulPgLev[i] = (U32xU32divU32(DLC_ulPosLev[i], 65536, COF_ulPls2MMgain))<<2;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
 		    //DLC_ulPgLev[i] = DLC_ulPgLev[i]*10;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
 			DLC_ulPgLev[i] = (ULONG)(((UDOUBLE)DLC_ulPosLev[i] * 2621440 + (UDOUBLE)(COF_ulPls2MMgain >> 1)) / (UDOUBLE)COF_ulPls2MMgain);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
@@ -230,73 +261,85 @@ void DLC_PrMgr(UBYTE Val){
 		Update_C40xx();
 		
 		// DLC position offset, Henry
-		if(pr[FLOOR_PAGE] == 0){
+		if(pr[FLOOR_PAGE] == 0)
+		{
 		    for(i=0; i<DLC_25ADDR; i++)
     		    pr[FL_POSIT_1H+i]= DLCxx[i];
 		}    
-		else if(pr[FLOOR_PAGE] == 1){    //prvalue = 1    
+		else if(pr[FLOOR_PAGE] == 1)
+		{    
+			//prvalue = 1    
 		    for(i=DLC_25ADDR; i<DLC_50ADDR; i++)
 		        pr[FL_POSIT_1H+i-DLC_25ADDR]= DLCxx[i];
 		}
-		else if(pr[FLOOR_PAGE] == 2){
+		else if(pr[FLOOR_PAGE] == 2)
+		{
 		    for(i=DLC_50ADDR; i<DLC_75ADDR; i++)
 		        pr[FL_POSIT_1H+i-DLC_50ADDR]= DLCxx[i];
 		}
-		else if(pr[FLOOR_PAGE] == 3){		// floor adjustment Aevin 6/192/2018
+		else if(pr[FLOOR_PAGE] == 3)
+		{		
+			// floor adjustment Aevin 6/192/2018
 		    for(i=DLC_75ADDR; i<DLC_LimADDR; i++){
 		        pr[FL_POSIT_1H+i-DLC_75ADDR]= DLCxx[i];
 		    }
 		}
-		else if(pr[FLOOR_PAGE] == 4){		//adjust floor position,Henry,2019/01/07
+		else if(pr[FLOOR_PAGE] == 4)
+		{		
+			//adjust floor position,Henry,2019/01/07
 			for(i=DLC_LimADDR; i<DLC_Adj50ADDRUP; i++){
 			    pr[FL_POSIT_1H+i-DLC_LimADDR]= DLCxx[i];
 			}
 		}
-		else if(pr[FLOOR_PAGE] == 5){		//adjust floor position,Henry,2019/01/07
+		else if(pr[FLOOR_PAGE] == 5)
+		{		
+			//adjust floor position,Henry,2019/01/07
 			for(i=DLC_Adj50ADDRUP; i<DLC_Adj50ADDRDN; i++){
 			    pr[FL_POSIT_1H+i-DLC_Adj50ADDRUP]= DLCxx[i];
 			}
 		}
-		else if(pr[FLOOR_PAGE] == 6){		//adjust floor position,Henry,2019/01/07
+		else if(pr[FLOOR_PAGE] == 6)
+		{		
+			//adjust floor position,Henry,2019/01/07
 			for(i=DLC_Adj50ADDRDN; i<DLC_Adj5175ADDRUPDN; i++){
 			    pr[FL_POSIT_1H+i-DLC_Adj50ADDRDN]= DLCxx[i];
 			}
 		}
 
-    //JINGDO
-    //decel switch protection trigger, Henry, 2016/08/18
-    DLC_ulPosDD1 = DLCxx[DD1_H]*1000+DLCxx[DD1_L]; // JINGDO
-    DLC_ulPosDD2 = DLCxx[DD2_H]*1000+DLCxx[DD2_L]; // JINGDO
-    DLC_ulPosDD3 = DLCxx[DD3_H]*1000+DLCxx[DD3_L]; // JINGDO
-    DLC_ulPosDD4 = DLCxx[DD4_H]*1000+DLCxx[DD4_L]; // JINGDO
-    DLC_ulPosUD1 = DLCxx[UD1_H]*1000+DLCxx[UD1_L]; // JINGDO
-    DLC_ulPosUD2 = DLCxx[UD2_H]*1000+DLCxx[UD2_L]; // JINGDO
-    DLC_ulPosUD3 = DLCxx[UD3_H]*1000+DLCxx[UD3_L]; // JINGDO
-    DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
-    DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
-			
-    DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD1 = DLC_ulPgDD1*10;
-    DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD2 = DLC_ulPgDD2*10;
-    DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD3 = DLC_ulPgDD3*10;
-    DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
-    DLC_ulPgDD4 = DLC_ulPgDD4*10;
-    DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD1 = DLC_ulPgUD1*10;
-    DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD2 = DLC_ulPgUD2*10;
-    DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD3 = DLC_ulPgUD3*10;
-    DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUD4 = DLC_ulPgUD4*10;
-    DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;		
-    DLC_ulPgUL = DLC_ulPgUL*10;
+		//JINGDO
+		//decel switch protection trigger, Henry, 2016/08/18
+		DLC_ulPosDD1 = DLCxx[DD1_H]*1000+DLCxx[DD1_L]; // JINGDO
+		DLC_ulPosDD2 = DLCxx[DD2_H]*1000+DLCxx[DD2_L]; // JINGDO
+		DLC_ulPosDD3 = DLCxx[DD3_H]*1000+DLCxx[DD3_L]; // JINGDO
+		DLC_ulPosDD4 = DLCxx[DD4_H]*1000+DLCxx[DD4_L]; // JINGDO
+		DLC_ulPosUD1 = DLCxx[UD1_H]*1000+DLCxx[UD1_L]; // JINGDO
+		DLC_ulPosUD2 = DLCxx[UD2_H]*1000+DLCxx[UD2_L]; // JINGDO
+		DLC_ulPosUD3 = DLCxx[UD3_H]*1000+DLCxx[UD3_L]; // JINGDO
+		DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
+		DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
+				
+		DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD1 = DLC_ulPgDD1*10;
+		DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD2 = DLC_ulPgDD2*10;
+		DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD3 = DLC_ulPgDD3*10;
+		DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
+		DLC_ulPgDD4 = DLC_ulPgDD4*10;
+		DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD1 = DLC_ulPgUD1*10;
+		DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD2 = DLC_ulPgUD2*10;
+		DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD3 = DLC_ulPgUD3*10;
+		DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUD4 = DLC_ulPgUD4*10;
+		DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;		
+		DLC_ulPgUL = DLC_ulPgUL*10;
 
-    DLC_ubLevMax = pr[MAX_FLOOR];
-    DLC_ubLevMin = 1;
-    DLC_ubLevCur = pr[LEV_CUR];
+		DLC_ubLevMax = pr[MAX_FLOOR];
+		DLC_ubLevMin = 1;
+		DLC_ubLevCur = pr[LEV_CUR];
 	}
 	else if(Val == PR_RD){ 
 		// Decoder PDO msg
@@ -682,8 +725,8 @@ void DLC_PrMgr(UBYTE Val){
 		
 		//®Ú¾ÚDLC_ulPgCnt¥h´«ºâ¥XDLC_ulPosVal (mm), DLC_ubLevCur
 		//mod pulse to mm
-//		ulTmp = DLC_ulPgBrd/pr[LEV_BRD];
-//		DLC_ulPosVal = DLC_ulPgCnt/ulTmp;
+		//ulTmp = DLC_ulPgBrd/pr[LEV_BRD];
+		//DLC_ulPosVal = DLC_ulPgCnt/ulTmp;
 		//DLC_ulPosVal = U32xU32divU32((DLC_ulPgCnt>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
 		//DLC_ulPosVal = DLC_ulPosVal/10;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 source
 		DLC_ulPosVal = (ULONG)(((UDOUBLE)DLC_ulPgCnt * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 new
@@ -789,16 +832,25 @@ void DLC_PDO_Byte67(void){
 	}	
 }
 
-void DLC_Algorithm(void){
-    UWORD ubDILow, ax, ubPgDir, i, j, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
-    UWORD uwDI, uwPgTmp, uwTmp; // 0504 JINGDO
-    UWORD uwPgDif,uwadjstVal;
-    ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm;
+void DLC_Algorithm(void)
+{
+    UWORD ax, i, ubTmp; //[for loop die because UBYTE,Lyabryan,2020/09/09]
+    UWORD uwPgTmp, uwTmp; // 0504 JINGDO
+    UWORD uwadjstVal;
+    ULONG ulTmp, ulDisTar, uladjstVal, ulDelayCmpPg, ulDelayCmpmm;
     SLONG slPgDif;
-    UDOUBLE ud1, ud2, ud3, ulspeed, ud4;
-    double d1, d2, d3, d4;	
+    UDOUBLE ud1, ud2, ulspeed, ud4;	
     Bool blCHG;
 	UWORD	t_s3,	a_dec,	t_s4;	// Task 268638 ª½±µ°±¾a-¦h¬q³t¥[´î³t¤ÎS¦±½u Mitong 20220516
+
+	//UWORD ubDILow, ax, ubPgDir, i, j, ubTmp;										//clear Warning, Special.kung, 03/08/2023
+	//UWORD uwDI, uwPgTmp, uwTmp;													//clear Warning, Special.kung, 03/08/2023
+	//UWORD uwPgDif,uwadjstVal;														//clear Warning, Special.kung, 03/08/2023									
+	//ULONG ulTmp, ulDisTar, ul_1, ul_2,uladjstVal,ulDelayCmpPg, ulDelayCmpmm;		//clear Warning, Special.kung, 03/08/2023
+	//UDOUBLE ud1, ud2, ud3, ulspeed, ud4;											//clear Warning, Special.kung, 03/08/2023
+	//double d1, d2, d3, d4;														//clear Warning, Special.kung, 03/08/2023
+
+
 	//Åª¨úDLC¬ÛÃö°Ñ¼Æ
 	DLC_PrMgr(PR_RD);
 	
@@ -1804,11 +1856,15 @@ void DLC_Decel_Protect(void){
 	}	
 }
 
-ULONG DLC_Decel_Protect_SpdLim(ULONG ulCurSpd){ //Artemis speed limit, James, 20200220
+ULONG DLC_Decel_Protect_SpdLim(ULONG ulCurSpd)
+{ 
+	//Artemis speed limit, James, 20200220
 	ULONG ulCurSpd_Tmp;
-	UWORD uwCurSpd, uwSpdLim;
+	UWORD uwCurSpd;
 	UBYTE ubSpdCheckFlag;
-	UDOUBLE ud1;
+
+	//UWORD uwCurSpd, uwSpdLim;				//clear Warning, Special.kung, 03/08/2023
+	//UDOUBLE ud1;							//clear Warning, Special.kung, 03/08/2023
 	
 	uwCurSpd = ulCurSpd/10;//ulCurSpd(m/s, dot4)
 	//uwSpdLim = 100*pr[Lift_SPD];//pr[Lift_SPD](m/s, dot2)
@@ -2222,9 +2278,12 @@ UBYTE DLC_LULD_Protect(Bool LU, Bool LUOld, Bool LD, Bool LDOld)//#15977, LULD d
 //calculate Accepted Landing Floor
 UBYTE DLC_LevStop(ULONG ulDis)
 {
-	ULONG ulTmp,uladjstVal;
+	ULONG uladjstVal;
     UWORD uwadjstVal;
-	UBYTE	ubStpLev, ubLev, ubCnt;
+	UBYTE ubStpLev, ubLev, ubCnt;
+
+	//ULONG ulTmp, uladjstVal;		//clear Warning, Special.kung, 03/08/2023
+
 	if(DLC_btModNor == 1 && BRK_RLS == 1){
         #if 0
 		if(DLC_ubDIR == DIR_UP){
@@ -2322,9 +2381,12 @@ UBYTE DLC_LevStop(ULONG ulDis)
 	return ubStpLev;
 }
 
-void DLC_LevCur(void){
+void DLC_LevCur(void)
+{
 	ULONG ulUp, ulDn;
-	UBYTE ubCur, i;
+	UBYTE i;
+
+	//UBYTE ubCur, i;					//clear Warning, Special.kung, 03/08/2023
 	
 	if(DLC_ulPosVal > DLC_ulPosLev[DLC_ubLevMax] ){
 		DLC_ubLevCur = DLC_ubLevMax;
@@ -2369,15 +2431,21 @@ void DLC_LevCur(void){
 }
 
 ULONG Spd_NOR(ULONG ulCurSpd){
-	UDOUBLE  udJ1, udJ2, udJ3, udJ4, udAa, udAd,
-	         udV1, udVa, udV2, udVc, udV3, udVd, udV4,
-	         udT1, udTa, udT2, udTc, udT3, udTd, udT4,
-	         ud1, ud2, ud3;
-	ULONG    ulTmp, ulSpd, uladjstVal = 0;
-	ULONG	   ulD2, ulDacc, ulDcon, ulD3, ulDdec, ulD4, ulDisStp, ulDisTar;
-	UWORD    uw1, uwVcon, uwReg, uwCurSpd, uwSpd, uwTmr, uwNewJ4,uwadjstVal, uwDecDynJ, uwDecPct, uwPosPct;	
-	UBYTE	   i, ubj;
+	UDOUBLE	udJ1, udJ2, udJ3, udJ4, udAa, udAd,
+	        udV1, udVc, udV3,udT4,ud1, ud2, ud3;
+	ULONG   uladjstVal = 0;
+	ULONG	ulD2, ulDcon, ulD3, ulDdec, ulD4, ulDisStp, ulDisTar;
+	UWORD   uw1, uwCurSpd, uwSpd, uwadjstVal;	
 	SWORD	swadjstVal;	// Issue 277400 °ª³t±è¦³©ì§À³t¤Î¥­¼h¤£·Çªº°ÝÃD // Mitong 20220902 add
+
+	//UDOUBLE	udJ1, udJ2, udJ3, udJ4, udAa, udAd,																	//clear Warning, Special.kung, 03/08/2023
+	//			udV1, udVa, udV2, udVc, udV3, udVd, udV4,															//clear Warning, Special.kung, 03/08/2023
+	//			udT1, udTa, udT2, udTc, udT3, udTd, udT4,															//clear Warning, Special.kung, 03/08/2023
+	//			ud1, ud2, ud3;																						//clear Warning, Special.kung, 03/08/2023
+	//ULONG   ulTmp, ulSpd, uladjstVal = 0;																			//clear Warning, Special.kung, 03/08/2023
+	//ULONG	  ulD2, ulDacc, ulDcon, ulD3, ulDdec, ulD4, ulDisStp, ulDisTar;											//clear Warning, Special.kung, 03/08/2023
+	//UWORD   uw1, uwVcon, uwReg, uwCurSpd, uwSpd, uwTmr, uwNewJ4,uwadjstVal, uwDecDynJ, uwDecPct, uwPosPct;		//clear Warning, Special.kung, 03/08/2023
+	//UBYTE	i, ubj;																									//clear Warning, Special.kung, 03/08/2023
 
 	fdec5.ul = cal_time(pr[FMAX],0);
 
@@ -3020,9 +3088,11 @@ ULONG Spd_Dec0S(UWORD uwS3, UWORD uwDec, UWORD uwS4)	//¦³S3 S4´î³t¨ì0³t,S3 S3ªº³
 {
 // uwS3 uwS4³æ¦ì0.00s
 // uwDec ³æ¦ì0.00m/s^2
-	UDOUBLE	udJ3, udAd,	udVc, udV3, ud1, ud2, ud3;
+	UDOUBLE	udJ3, udAd,	udVc, ud1, ud2, ud3;
 	ULONG	ulSpd;
-	UWORD	uwCurSpd, uwSpd;	
+	UWORD	uwCurSpd, uwSpd;
+
+	//UDOUBLE	udJ3, udAd,	udVc, udV3, ud1, ud2, ud3;		//clear Warning, Special.kung, 03/08/2023
 	
 
 	fdec5.ul = cal_time(pr[FMAX],0);	// Mitong ?
@@ -3340,9 +3410,12 @@ ULONG Spd_Dec0S(UWORD uwS3, UWORD uwDec, UWORD uwS4)	//¦³S3 S4´î³t¨ì0³t,S3 S3ªº³
 
 ULONG Spd_Linear(UWORD uwTarSpd, UWORD uwAcc, UWORD uwDec)
 {
-	UDOUBLE ud1, ud2, ud3;
-	ULONG ulCurSpd, ulMaxSpd, ulSpd;
-	UWORD uwSpdOut, uwTmr, uwAa, uwAd;
+	ULONG ulCurSpd, ulSpd;
+	UWORD uwAa, uwAd;
+
+	//UDOUBLE ud1, ud2, ud3;						//clear Warning, Special.kung, 03/08/2023
+	//ULONG ulCurSpd, ulMaxSpd, ulSpd;				//clear Warning, Special.kung, 03/08/2023
+	//UWORD uwSpdOut, uwTmr, uwAa, uwAd;			//clear Warning, Special.kung, 03/08/2023
 
 	ulSpd = 0;
 	ulCurSpd = DLC_ulCurSpd;		//0.1mm
@@ -3555,10 +3628,13 @@ ULONG EqCal_Dcon(UWORD uwVcon){
 }
 
 //Dd=(V4+V4+Vd)*Td/2;	
-ULONG EqCal_Ddec(void){
-	UDOUBLE  udV4, udVd, udTd,
-	         ud1, ud2, ud3;
+ULONG EqCal_Ddec(void)
+{
+	UDOUBLE  udV4, udVd, udTd, ud1;
 	ULONG    L1;
+
+	//UDOUBLE  udV4, udVd, udTd, ud1, ud2, ud3;					//clear Warning, Special.kung, 03/08/2023
+
 	
 	udV4 = (UDOUBLE)DLC_uwV4;
 	udVd = (UDOUBLE)DLC_uwVd;
@@ -3572,9 +3648,9 @@ ULONG EqCal_Ddec(void){
 }
 
 //T3, Td, T4
-void EqCal_T3_Tdec_T4(UWORD uwVcon){
-	UDOUBLE udVc, udV3, udVd, udV4, udT3, udTd, udT4, udAd, udJ3, udJ4,
-	        ud1, ud2, ud3;
+void EqCal_T3_Tdec_T4(UWORD uwVcon)
+{
+	UDOUBLE udVc, udV3, udVd, udV4, udT3, udTd, udT4, udAd, udJ3, udJ4, ud1, ud2, ud3;
 	ULONG   L1;
 
 	udVc = (UDOUBLE)uwVcon;
@@ -3644,11 +3720,14 @@ void EqCal_T3_Tdec_T4(UWORD uwVcon){
 	}	
 }
 
-void WelTunProc(void){
-	ULONG ulTmp, ulVal;
-	UBYTE i, j, k, ErrFlag=0;
+void WelTunProc(void)
+{
+
 	ULONG ulDelayCmpmm, ulDelayCmpPg;
 	UDOUBLE	udTmp;
+
+	//ULONG ulTmp, ulVal;				//clear Warning, Special.kung, 03/08/2023
+	//UBYTE i, j, k, ErrFlag=0;			//clear Warning, Special.kung, 03/08/2023
 	
 	// Reset PG Pulse Matrix
 	if(DLC_btWelRst == 1){	

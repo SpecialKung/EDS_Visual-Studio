@@ -226,7 +226,7 @@ void TxD_Data_EnDat(void)
 //-- Decoder EnDat RX data, called by 100ms
 void RxDecoder_EnDat(void)
 {
-	UBYTE ubError1, ubCRCEnDat;
+	//UBYTE ubError1, ubCRCEnDat;				//clear Warning, Special.kung, 03/08/2023
 	
 
 	if (vfd_btPGHSD1Set==1)	// fix pghsd1 code, Sean, 06/01/2012
@@ -264,22 +264,22 @@ The function MakeCrcPos generates the CRC code for the following mode commands:
 
 Parameters
 clocks 	:	Data width in bits
-		 	For the mode command °ßEncoder to send position values,°® this value
+		 	For the mode command ‚ÄúEncoder to send position values,‚Äù this value
 			is specific to the encoder and can be transferred from word 13 of the
 			parameter area for the encoder manufacturer.
-			For the mode command °ßEncoder to send test values,°® the data width is
+			For the mode command ‚ÄúEncoder to send test values,‚Äù the data width is
 			always 40 bits.
 error1 	: 	Error message 1
 error2 	:	Error message 2 (any for EnDat 2.1)
-endat22 :	0 = CRC calculation for °ßEncoder to send position value°® (EnDat 2.1)
-			1 = CRC calculation for °ßEncoder to send position value°® (EnDat 2.2)
+endat22 :	0 = CRC calculation for ‚ÄúEncoder to send position value‚Äù (EnDat 2.1)
+			1 = CRC calculation for ‚ÄúEncoder to send position value‚Äù (EnDat 2.2)
 highpos :	Bits 32 to 63 of the position value or of the test value
 lowpos 	:	Bits 0 to 31 of the position value or of the test value
 
 Return code
 CRC code (5-bit ?? see section 2.3.1 Transferring the Position Value)
 
-Example: CRC calculation for °ßEncoder to send position value°® (EnDat 2.2)
+Example: CRC calculation for ‚ÄúEncoder to send position value‚Äù (EnDat 2.2)
 clocks 	= 25
 error1 	= 0
 error2 	= 1 // any for EnDat 2.1

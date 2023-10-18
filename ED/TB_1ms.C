@@ -828,8 +828,11 @@ void ScurveAcc(void)
 void ScurveDec_CRIPLS(void) // [IODLC, Lyabryan, 2016/11/11]
 {
     UWORD fx, ssdino;
-    ULONG_UNION  fdec_t1,fdec_t3;
+    ULONG_UNION  fdec_t3;
     SLONG delta_f;
+
+    //ULONG_UNION  fdec_t1,fdec_t3;           //clear Warning, Special.kung, 03/08/2023
+
     fx = MAX(Fcmd,fmin);
     delta_f = ((ftemp.ul - (fx<<16))>>1);
 
@@ -3080,99 +3083,116 @@ void TB1_YDSwitchFun(void)
 void TimeBase_500us(void)
 {
     UWORD uwTemp;
-    ULONG	ulTmp;
 	UDOUBLE	udTmp;
 
+    //ULONG	ulTmp;          //clear Warning, Special.kung, 03/08/2023
 
-// The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
-  //GPT5.GTCCRE = 0x04B0;
-  //GPT6.GTCCRE = 0x04B0;
-  //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count
+
+    // The PG Card Type Detact function move to Pr_Handle.c pr10-00 and main loop      //[Modify PG Type Define, Bernie, 12/05/2011]
+    //GPT5.GTCCRE = 0x04B0;
+    //GPT6.GTCCRE = 0x04B0;
+    //GPTB.GTSTR.WORD = 0x06;  // GPT5 start count
   
   
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-      SIBO_STO_Safty();
+    SIBO_STO_Safty();
 #else
-      TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
+    TB3_STO_Safty(); //[Safty function, Bernie, 2013/10/29]
 #endif
    
-  if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM){   // [Warning initial, Lyabryan, 2015/03/12]
-      if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-          TB3_SpDtPG1_Err();
-      }
-  }
+    if (((!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0)|| pr[CTRLM]==FOCPM)
+    {
+        // [Warning initial, Lyabryan, 2015/03/12]
+        if ((pr[PROTBIT]&0x0040)==0x0000)
+        {
+            //Bit 6: PGErr
+            TB3_SpDtPG1_Err();
+        }
+    }
   
-  if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
-      PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+    if(((pr[DEBUG_PG]&0x0200)!=0x0200)&&(pr[PG_TYPE]==SIN_SIN))  //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
+        PGDIR_Detect(); //[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
-  if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 ){
-      switch(pr[CTRLM]){
+    if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& STtune==0 )
+    {
+        switch(pr[CTRLM])
+        {
             case FOCPG:
-      case TQCPG:
+            case TQCPG:
                 TB3_SpDtPG1_LoIv();
-              TB3_FOCPG();
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                TB3_FOCPG();
+                if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();
+            break;
             case VFPG:
                 TB3_SpDtPG1_LoIv();
                 if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();
-              break;
+                    TB3_SpDtPG1_Err();
+            break;
 #if SCOTTY
-      case FOCPM:               //ADDED BY SCOTTY
-        TB3_SpDtPG1_LoIv();         //ADDED BY SCOTTY
-        TB3_FOCPM();            //ADDED BY SCOTTY
-              if ((pr[PROTBIT]&0x0040)==0x0000) //Bit 6: PGErr
-                TB3_SpDtPG1_Err();        
-        break;              //ADDED BY SCOTTY
+            case FOCPM:                             //ADDED BY SCOTTY
+                TB3_SpDtPG1_LoIv();                 //ADDED BY SCOTTY
+                TB3_FOCPM();                        //ADDED BY SCOTTY
+                if ((pr[PROTBIT]&0x0040)==0x0000)   //Bit 6: PGErr
+                    TB3_SpDtPG1_Err();        
+            break;                                   //ADDED BY SCOTTY
 #endif      
-      case SVC:
+            case SVC:
             case VF:                                
             case FOC:
             case DBCSECA:
             default:
                 TB3_SpDtPG1_LoIv();
-                if ((pr[PROTBIT]&0x0040)==0x0000){  //Bit 6: PGErr
-                  if (CTRLMCHG==1)
-                      TB3_SpDtPG1_Err();
-              }
-                break;
-          }
-  }
-  else{
+                if ((pr[PROTBIT]&0x0040)==0x0000)
+                {
+                    //Bit 6: PGErr
+                    if (CTRLMCHG==1)
+                    TB3_SpDtPG1_Err();
+                }
+            break;
+        }
+    }
+    else
+    {
         TB3_SpDtPG1_LoIv();   
-  }
+    }
 
 // -FAN CONTROL ----- added by scotty 10/15/20007
-    if (FAN_ENABLE){
-      if (pr[FAN_Dframe] == 1){  // Delete FAN Soft-Start Function, DINO, 06/01/2010
-        TB1_uwFanCnt1++;
-        if (TB1_uwFanCnt < 500 ){
-          if ((TB1_uwFanCnt1&0x03) == 0x03){
-            TB1_uwFanCnt++;
-            //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?1:0;  // frame E fan control fix, Sean, 12/30/2010
-            FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A ||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?1:0;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
-          }
-          else
+    if (FAN_ENABLE)
+    {
+        if (pr[FAN_Dframe] == 1)
+        {
+            // Delete FAN Soft-Start Function, DINO, 06/01/2010
+            TB1_uwFanCnt1++;
+            if (TB1_uwFanCnt < 500 )
+            {
+                if ((TB1_uwFanCnt1&0x03) == 0x03)
+                {
+                    TB1_uwFanCnt++;
+                    //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?1:0;  // frame E fan control fix, Sean, 12/30/2010
+                    FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A ||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?1:0;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
+                }
+                else
+                    //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?0:1;  // frame E fan control fix, Sean, 12/30/2010
+                    FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?0:1;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
+            }
+            else
+                //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?0:1;  // frame E fan control fix, Sean, 12/30/2010
+                FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?0:1;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
+        }
+        // else
+        {
             //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?0:1;  // frame E fan control fix, Sean, 12/30/2010
             FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?0:1;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
+            TB1_uwFanCnt = 500;
         }
-        else
-          //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?0:1;  // frame E fan control fix, Sean, 12/30/2010
-          FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?0:1;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
-      }
-      else{
-        //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?0:1;  // frame E fan control fix, Sean, 12/30/2010
-        FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?0:1;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
-        TB1_uwFanCnt = 500;
-      }
     }
-    else{
-      TB1_uwFanCnt = 0;
-      TB1_uwFanCnt1 = 0;
-      //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?1:0;  // frame E fan control fix, Sean, 12/30/2010
-      FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?1:0;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
+    else
+    {
+        TB1_uwFanCnt = 0;
+        TB1_uwFanCnt1 = 0;
+        //FAN_SWITCH = (pr[HPSPEC]<=VFD300V23A)?1:0;  // frame E fan control fix, Sean, 12/30/2010
+        FAN_SWITCH = (pr[HPSPEC]<VFD300V23A ||pr[HPSPEC]==VFD300V43A||pr[HPSPEC]==VFD022V21A ||pr[HPSPEC]==VFD037V21A)?1:0;  // 300V43A chg to frame D, Sean, 03/14/2011   //[Single phase input, Bernie, 01/19/2012]
     }
  // - END FAN CONTROL -----
    
@@ -3198,10 +3218,12 @@ void TimeBase_500us(void)
 
     TB_500us ^= 1;
 
-	if(TB_500us == 1){
+	if(TB_500us == 1)
+    {
 		TimeBase_1ms();
 	}
-	else{
+	else
+    {
 		TimeBase_1msB();
 		//DLC function, Henry, 2016/07/20 [
 		DLC_uwPOWCnt=(DLC_uwPOWCnt<1000)?(DLC_uwPOWCnt+1):DLC_uwPOWCnt;
@@ -3210,8 +3232,11 @@ void TimeBase_500us(void)
 		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 			
-		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000)){ //[Gfc DLC modify,Henry,2018/05/23]	
-			if(DLC_uwInit == 0){			
+		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000))
+        {
+            //[Gfc DLC modify,Henry,2018/05/23]	
+			if(DLC_uwInit == 0)
+            {			
 				DLC_PrMgr(PR_INIT_RD);
 				DLC_uwInit = 1;
 			}
@@ -3221,7 +3246,8 @@ void TimeBase_500us(void)
 		
 		//]
 		}
-		else{
+		else
+        {
 			DLC_uwInit = 0;
 		}
 	}
@@ -3236,7 +3262,9 @@ void TimeBase_1ms(void)
     ULONG Vsquare, ulTemp;
     ULONG_UNION EleAng;
     UWORD uwIrms;  // 0~32767=>0~300% Rated current, add by dino, 08/21/2007
-    UWORD uwI0DtLPu,uwCAN,uwCAN2;
+    UWORD uwI0DtLPu, uwCAN;
+
+    //UWORD uwI0DtLPu,uwCAN,uwCAN2;           //clear Warning, Special.kung, 03/08/2023
 
 
   // [ Move from ReadAD() of 100us, Add by DINO, 03/06/2009
@@ -3357,9 +3385,11 @@ void TimeBase_1ms(void)
     {
         TB1_uw1secCnt++;
     }
-    else{
+    else
+    {
         TB1_uw1secCnt = 0;
-        if((CC4KeyPad == 1) && (prt_CCcnt==0)){
+        if((CC4KeyPad == 1) && (prt_CCcnt==0))
+        {
             CC4KeyPad = 0;
         }
     }
@@ -3396,7 +3426,9 @@ void TimeBase_1ms(void)
     }
     // ]
     
-    if(!EPS){ //[EPS autodetect dir,Lyabryan,2018/07/02]
+    if(!EPS)
+    {
+        //[EPS autodetect dir,Lyabryan,2018/07/02]
         EPS_NormalDetectCurrent();
     }
     //------ Calculate PGLOSS ( dino, 09/23/2008 )----------//
@@ -3409,14 +3441,17 @@ void TimeBase_1ms(void)
     TH1adLPF.sl += (SLONG)( (SWORD)AN03 - TH1adLPF.sw.hi ) * 655;  // 100ms (base 1ms)
     TH2adLPF.sl += (SLONG)( (SWORD)AN02 - TH2adLPF.sw.hi ) * 655;  // 100ms (base 1ms)
     //------ Analog GFF Low pass ( dino, 03/21/2007 )-----------//
-    if ( STtune ){  // Dom't calculate GFF_AD when Standstill
-      uwGffAD   = 0;
-      GFFIn_LPG = 6554;  // 10ms
+    if ( STtune )
+    { 
+        // Dom't calculate GFF_AD when Standstill
+        uwGffAD   = 0;
+        GFFIn_LPG = 6554;  // 10ms
     }
-    else {
-    //uwGffAD   = AN4;
-    uwGffAD   = AN100;
-    GFFIn_LPG = 655;   // 100ms
+    else 
+    {
+        //uwGffAD   = AN4;
+        uwGffAD   = AN100;
+        GFFIn_LPG = 655;   // 100ms
     }
     GFFadLPF.sl += (SLONG)(uwGffAD-GFFadLPF.sw.hi)*GFFIn_LPG;
 
@@ -3428,10 +3463,10 @@ void TimeBase_1ms(void)
     AUIadLPF.sl = lowpass_sl(AUI2In_LPG,AD_uwAUI2ad,AUIadLPF.sl); //AUI2
     PTCInLPF.sl = lowpass_sl(PTCIn_LPG,PTCInValue,PTCInLPF.sl);   //PTC
 */
-  AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
-  ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG; //ACI
-  AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
-  PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG; //PTC
+    AVIadLPF.sl += (SLONG)(AD_uwAUI1ad - AVIadLPF.sw.hi) * AUI1In_LPG;  //AUI1
+    ACIadLPF.sl += (SLONG)(AD_uwACIad  - ACIadLPF.sw.hi) * ACIIn_LPG;   //ACI
+    AUIadLPF.sl += (SLONG)(AD_uwAUI2ad - AUIadLPF.sw.hi) * AUI2In_LPG;  //AUI2
+    PTCInLPF.sl += (SLONG)(PTCInValue  - PTCInLPF.sw.hi) * PTCIn_LPG;   //PTC
 // ]
 
     //------ Display Low pass -----------------------------------//
@@ -3441,8 +3476,8 @@ void TimeBase_1ms(void)
     slIrmsReLPF  = lowpass_sl(DisplayLPG, IrmsRe, slIrmsReLPF);
     slDcbusDCLPF = lowpass_sl(DisplayLPG, dcbusDC, slDcbusDCLPF);
 */
-    VcmdLLPF.sl   += (SLONG)(Vcmd_LL - VcmdLLPF.sw.hi) * DisplayLPG;  //Vcmd_LL
-    IrmsReLPF.sl  += (SLONG)(IrmsRe  - IrmsReLPF.sw.hi) * DisplayLPG; //Irms
+    VcmdLLPF.sl   += (SLONG)(Vcmd_LL - VcmdLLPF.sw.hi) * DisplayLPG;    //Vcmd_LL
+    IrmsReLPF.sl  += (SLONG)(IrmsRe  - IrmsReLPF.sw.hi) * DisplayLPG;   //Irms
     DcbusDCLPF.sl += (SLONG)(dcbusDC - DcbusDCLPF.sw.hi) * DisplayLPG;  //DCbus
 
     TqRefPuLPF.sl += (SLONG)(swTqRefPu - TqRefPuLPF.sw.hi) * LC01DisplayLPG;  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -3459,37 +3494,49 @@ void TimeBase_1ms(void)
   PHLbusReLPF.sl += (SLONG)(dcbusDC - PHLbusReLPF.sw.hi) * dcbusLPG;  //DCbus for PHL detection
 // ]
 
-    if (RESTART){
+    if (RESTART)
+    {
         Restart_Prog();
     }
-    else if ((SPSEARCH)&&(RUNDCI==0)){
+    else if ((SPSEARCH)&&(RUNDCI==0))
+    {
         Speed_Search();
     }
  
-    if((pr[SysControl]&0x0800)==0x0800){
-        if(MODE2 &&((fcmd.uw.hi==0)/*||(IrmsRe==0)*/) ){    //[DIN time sequence, Bernie, 2013/03/07]
+    if((pr[SysControl]&0x0800)==0x0800)
+    {
+        if(MODE2 &&((fcmd.uw.hi==0)/*||(IrmsRe==0)*/) )
+        {
+            //[DIN time sequence, Bernie, 2013/03/07]
             MODE3 = 1;   
         }
     }
-    else{
+    else
+    {
         MODE3 = 0;
     }
 
     /*================ Run Command ==============================================================*/
-    if (LIFT_ENABLE && (MODE3==0)){
-        if (CMDRUN == RUN){
-            if ((Error==0)||(Error==DEB_ERR)){
+    if (LIFT_ENABLE && (MODE3==0))
+    {
+        if (CMDRUN == RUN)
+        {
+            if ((Error==0)||(Error==DEB_ERR))
+            {
                 // [ Short_Circuit Detection, DINO, 05/19/2010
-                if (BEFORERUN == 1){
+                if (BEFORERUN == 1)
+                {
                 }
                 // ]
                 // [ MPHL Detection, Added by Sampo, 05/12/2009 
-                else if ( MPHL_DET && pr[HPSPEC]!=VFD022V23A ){  // 220V23A MPHL detect bypass, Sean,03/14/2011  //[Ocd Error occurred when BeforeRun, Lyabryan, 2015/01/05]
+                else if ( MPHL_DET && pr[HPSPEC]!=VFD022V23A )
+                {
+                    // 220V23A MPHL detect bypass, Sean,03/14/2011  //[Ocd Error occurred when BeforeRun, Lyabryan, 2015/01/05]
                     MPHL_Detect();
                 }
                 // ]
-                else{
-                    
+                else
+                {
                     TB1_uw0p5secCnt = 0;
                     TB_500ms = 0;
                     Run_Execute();
@@ -3503,113 +3550,138 @@ void TimeBase_1ms(void)
     }// end of STOP function
     /*============End of STOP command ===========================================================*/
 
-  // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
-  if (RUNNING == RUN){
-    // [ Add condition, DINO, 08/25/2010
-    if (RUNDCI){
-      ZEROSTOP = 0;
+    // [ Add Zero Speed Gain of Landing, DINO, 08/02/2010
+    if (RUNNING == RUN)
+    {
+        // [ Add condition, DINO, 08/25/2010
+        if (RUNDCI)
+        {
+            ZEROSTOP = 0;
+        }
+        else if (STOPDCI)
+        {
+            ZEROSTOP = 1;
+        }
+        else
+        {
+        // ]
+            if (Fcmd > TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 0;
+            }
+            else if (Fcmd < TB1_uwFcmdOld)
+            {
+                ZEROSTOP = 1;
+            }
+        }
     }
-    else if (STOPDCI){
-      ZEROSTOP = 1;
-    }
-    else{
-    // ]
-      if (Fcmd > TB1_uwFcmdOld){
+    else
+    {
         ZEROSTOP = 0;
-      }
-      else if (Fcmd < TB1_uwFcmdOld){
-        ZEROSTOP = 1;
-      }
     }
-  }
-  else{
-    ZEROSTOP = 0;
-  }
-  TB1_uwFcmdOld = Fcmd;
-  // ]
-  if(IODLC_holdCNT == 1){ // [IODLC, Lyabryan, 2016/11/11]
-      IODLC_uwPR_Th_CNT++;
-  }	  
+    TB1_uwFcmdOld = Fcmd;
+    // ]
+    if(IODLC_holdCNT == 1)
+    {
+        // [IODLC, Lyabryan, 2016/11/11]
+        IODLC_uwPR_Th_CNT++;
+    }	  
   
-    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0)){
-
-        if(pr[OVER_ACC_SET]==0){
+    if (((pr[CTRLM]==FOCPG) || (pr[CTRLM]==FOCPM))&&(pr[OVER_ACC_LEVEL]!=0))
+    {
+        if(pr[OVER_ACC_SET]==0)
+        {
             OverAccFunction();
         }
-        else{                 //pr[OVER_ACC_SET] = 1;
-            if((pr[OVER_ACC_SET]==1)&&(CMDRUN==RUN)){
+        else
+        {
+            //pr[OVER_ACC_SET] = 1;
+            if((pr[OVER_ACC_SET]==1)&&(CMDRUN==RUN))
+            {
                 OverAccFunction();
             }
             else{
                 OverAccInit();
             }
-        }
-        
+        }   
     }
 
-    if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& BEFORERUN==0){
-            if ((pr[AUTO_T]!=0)||(pr[CTRLM]>2)||(pr[PM_AUTO_T]!=0)){
-                ulTemp = fcmd.ul;
-            }
-            else{
-              if (fhunt.sl<0){
+    if ((RUNNING)&&(!STANDBY)&&((Error==0)||((Error!=0)&&(WARNSTOPREC==1)))&& BEFORERUN==0)
+    {
+        if ((pr[AUTO_T]!=0)||(pr[CTRLM]>2)||(pr[PM_AUTO_T]!=0))
+        {
+            ulTemp = fcmd.ul;
+        }
+        else
+        {
+            if (fhunt.sl<0)
+            {
                 if (fcmd_vf.ul<abs(fhunt.sl))
-                  ulTemp = 0;
+                    ulTemp = 0;
                 else
-                  ulTemp = fcmd_vf.ul + fhunt.sl;
-              }
-              else
-                ulTemp = fcmd_vf.ul + fhunt.sl;
-                    
+                    ulTemp = fcmd_vf.ul + fhunt.sl;
             }
+            else
+                ulTemp = fcmd_vf.ul + fhunt.sl;    
+        }
 
-            if (ulTemp>0xFFDC0000)
-                ulTemp = 0xFFDC0000;
+        if (ulTemp>0xFFDC0000)
+            ulTemp = 0xFFDC0000;
 
-            //Calculate acc command                 //01252007  
-            ffd_swtmp = (SWORD)(Fcmd - fcmd.uw.hi);             // Feedforward bug
-            if (abs(ffd_swtmp)<1){
-              TB1_slSpdAcc = 0;
-            }
-            else {
-              TB1_slSpdAcc = (SLONG)(fcmd.ul - TB1_ulSpdtempPu.ul); // Feedforward compensation SCOTTY 01/04/2007                       
-            }     
-            TB1_ulSpdtempPu.ul = fcmd.ul;               // Feedforward compensation SCOTTY 01/04/2007
+        //Calculate acc command                 //01252007  
+        ffd_swtmp = (SWORD)(Fcmd - fcmd.uw.hi);             // Feedforward bug
+        if (abs(ffd_swtmp)<1)
+        {
+            TB1_slSpdAcc = 0;
+        }
+        else
+        {
+            TB1_slSpdAcc = (SLONG)(fcmd.ul - TB1_ulSpdtempPu.ul); // Feedforward compensation SCOTTY 01/04/2007                       
+        }     
+        TB1_ulSpdtempPu.ul = fcmd.ul;               // Feedforward compensation SCOTTY 01/04/2007
               
-            if (WGDIR==FORWARD){
-                //Calculate TB1_slSpdCmdPu = (Double unsigned long)fcmd.ul * 4 / pr[FB]; in Q31
-                f1 = U32xU32divU32(ulTemp,0x8000,COF_uwFbRe);
-            }
-            else{
-                //Calculate TB1_slSpdCmdPu = (Double unsigned long)fcmd.ul * 4 / pr[FB]; in Q31
-                f1 = 0 - U32xU32divU32(ulTemp,0x8000,COF_uwFbRe);
-                TB1_slSpdAcc = 0 - TB1_slSpdAcc;      //ADDED BY SCOTTY 02/05/2007
-            }
+        if (WGDIR==FORWARD)
+        {
+            //Calculate TB1_slSpdCmdPu = (Double unsigned long)fcmd.ul * 4 / pr[FB]; in Q31
+            f1 = U32xU32divU32(ulTemp,0x8000,COF_uwFbRe);
+        }
+        else
+        {
+            //Calculate TB1_slSpdCmdPu = (Double unsigned long)fcmd.ul * 4 / pr[FB]; in Q31
+            f1 = 0 - U32xU32divU32(ulTemp,0x8000,COF_uwFbRe);
+            TB1_slSpdAcc = 0 - TB1_slSpdAcc;      //ADDED BY SCOTTY 02/05/2007
+        }
 
         // [ Change CHGDIR Function, DINO, 08/02/2010
-            if (pr[CHG_DIR] == 0){
-                  TB1_slSpdCmdPu = f1;
-            }
-            else{
-                  TB1_slSpdCmdPu = -f1;
-                  TB1_slSpdAcc   = -TB1_slSpdAcc;
-            }
+        if (pr[CHG_DIR] == 0)
+        {
+            TB1_slSpdCmdPu = f1;
+        }
+        else
+        {
+            TB1_slSpdCmdPu = -f1;
+            TB1_slSpdAcc   = -TB1_slSpdAcc;
+        }
         // ]
 
         TB1_CmdRpm.ul = ulTemp;
 
             
-            uwTemp = pr[AUTO_T] + pr[PM_AUTO_T];        // ADDED by SCOTTY, 09/04/2007
-        if((uwTemp==0)||(TUN_ROLLING==1)||(TUN_POS_DC_OK==1)||(MPHL_DET==1)){  // modify by SCOTTY, 09/04/2007
+        uwTemp = pr[AUTO_T] + pr[PM_AUTO_T];        // ADDED by SCOTTY, 09/04/2007
+        if((uwTemp==0)||(TUN_ROLLING==1)||(TUN_POS_DC_OK==1)||(MPHL_DET==1))
+        {  
+            // modify by SCOTTY, 09/04/2007
 
             //Vcmd_LL = sqrt(Ud^2+Uq^2)/32767 * Vb * sqrt(3/2) (L-L RMS)
             //        = sqrt(Ud^2+Uq^2)/32767 * (pr[VMAX]*sqrt(2/3)) * sqrt(3/2)
             //        = sqrt(Ud^2+Uq^2)/32767 * pr[VMAX]
             //sqrt(3/2)*2^15=40132,Q15
-            if ((pr[CTRLM]==FOCPG) || (pr[CTRLM]==TQCPG)){
+            if ((pr[CTRLM]==FOCPG) || (pr[CTRLM]==TQCPG))
+            {
                 vcmdPu_tmp = FLX_swVoutPu;
             }
-            else{
+            else
+            {
                 Vsquare = ((SLONG)TeS_swUdseInPu*TeS_swUdseInPu) + ((SLONG)TeS_swUqseInPu*TeS_swUqseInPu);    
                 if (Vsquare >= 0x3FFFFFFF)
                     Vsquare = 0x3FFFFFFF;
@@ -3618,7 +3690,8 @@ void TimeBase_1ms(void)
             }
 
             // [ Add Voltage Limit, DINO, 08/20/2009
-            if (vcmdPu_tmp > FLX_swVsMaxPu){
+            if (vcmdPu_tmp > FLX_swVsMaxPu)
+            {
                 vcmdPu_tmp = FLX_swVsMaxPu;
             }
             // ]
@@ -3626,14 +3699,15 @@ void TimeBase_1ms(void)
             vcmdPu_tmp = ((ULONG)vcmdPu_tmp * COF_uwVbRe + 32768)>>15; //Q0=Q(15-15)
             Vcmd_LL = ((ULONG)vcmdPu_tmp * 40132)>>15; //Q0=Q(0+15-15)
 
-              // [ Calculate Irms by Ia & Ic when MPHL Detection, Modify by Sampo, 05/06/2009 
-            if (pr[CTRLM]>=2 && MPHL_DET==0){
+            // [ Calculate Irms by Ia & Ic when MPHL Detection, Modify by Sampo, 05/06/2009 
+            if (pr[CTRLM]>=2 && MPHL_DET==0)
+            {
             // ]
-            // Is = sqrt(Ids^2+Iqs^2)/sqrt(2)
+                // Is = sqrt(Ids^2+Iqs^2)/sqrt(2)
                 IsquarePu = ((SLONG)TsE_swIdseOutPu*TsE_swIdseOutPu + (SLONG)TsE_swIqseOutPu*TsE_swIqseOutPu);
                 Ismax_uwPu = uw_Sqrt32c(IsquarePu); //Q15
                 uwIrms = (ULONG)Ismax_uwPu * 5 / 6; // Ismax_uwPu:0~32767=>0~250%, uwIrms:0~32767=>0~300%, add by dino, 08/21/2007
-            //            Is_uwPu = ((ULONG)Ismax_uwPu * 46341)>>16;  //46341 = 1/sqrt(2) * 2^16
+                //Is_uwPu = ((ULONG)Ismax_uwPu * 46341)>>16;  //46341 = 1/sqrt(2) * 2^16
                 if(pr[HPSPEC] > VFD_SINGLEPHASE) //[Single phase input, Bernie, 01/19/2012]
                     IrmsRe = U32xU16shlr16(((ULONG)Ismax_uwPu*5),CTispecSingle[pr[HPSPEC]-VFD_SINGLEPHASE]);  //where 5 = 2.5 << 1, Modify by dino, 08/21/2007
                 else
@@ -3680,7 +3754,8 @@ void TimeBase_1ms(void)
             // where P = I^2 * R                                                                                                                                 //
             //=================================================================//
     //        if ((pr[CTRLM] == FOCPG) || (pr[CTRLM] == TQCPG)){    //SCOTTY 09/05/2007
-        if ((pr[CTRLM] == FOCPG) || (pr[CTRLM] == TQCPG)||(pr[CTRLM] == FOCPM) ){
+        if ((pr[CTRLM] == FOCPG) || (pr[CTRLM] == TQCPG)||(pr[CTRLM] == FOCPM) )
+        {
         //------ Pin = (3/2)*(Ide*Ude + Iqe*Uqe),In Q28                         //
             f1 = (((SLONG)TeS_swUqseInPu*CUR_swIqseRefPu)+((SLONG)TeS_swUdseInPu*CUR_swIdseRefPu))>>2;
             PowerIn = ((SLONG)f1 *3)>>1;
@@ -3690,7 +3765,8 @@ void TimeBase_1ms(void)
             f1 = ((SLONG)TeS_swUqseInPu*CUR_swIdseRefPu)-((SLONG)TeS_swUdseInPu*CUR_swIqseRefPu);
             QowerIn = ((SLONG)f1 * 3) >> 1;
         }
-        else{
+        else
+        {
             //------ Pin = (3/2)*(Ide*Ude + Iqe*Uqe),In Q28                         //
             f1 = (((SLONG)CUR_swUqseOutPu*TsE_swIqseOutPu)+((SLONG)CUR_swUdseOutPu*TsE_swIdseOutPu))>>2;
             PowerIn = ((SLONG)f1 *3)>>1;
@@ -3708,9 +3784,9 @@ void TimeBase_1ms(void)
 
         TB1_swCosphi = S32xS32divS32(PowerIn, 2, Power_S); //Q14
             //=======================================================//
-            // TB1_swCosphi => 16384 => 90 degree                                                                        //
-            // arccos()     => 125 => 90 degree                                                                                 //
-            // arccos() * 6 => 125 * 6 = 750 => 90degree                                                                 //
+            // TB1_swCosphi => 16384 => 90 degree                    //
+            // arccos()     => 125 => 90 degree                      //
+            // arccos() * 6 => 125 * 6 = 750 => 90degree             //
             //=======================================================//
     // [ Modify the LPF function by DINO, 03/07/2009
     //    cosphiLPF.sl = lowpass_sl(cosphi_uwLPG, TB1_swCosphi, (SLONG)cosphiLPF.sl);
@@ -3722,25 +3798,27 @@ void TimeBase_1ms(void)
         PF_ANGLE =  ((ULONG)TB1_uwPhi * 78643)>>16;                
                 
           // [ Calculate MPHL Detected Output Voltage, Add by Sampo, 05/12/2009
-            if ( MPHL_DET ){
+        if ( MPHL_DET )
+        {
 
-                VFTB1_swUoutPu = U16xU16divU16(VF_Vcmd , 26755, COF_uwVbRe);    //26754 = sqrt(2/3) * 32767 
+            VFTB1_swUoutPu = U16xU16divU16(VF_Vcmd , 26755, COF_uwVbRe);    //26754 = sqrt(2/3) * 32767 
 
-                if ((UWORD)VFTB1_swUoutPu >= COF_uwVratePu){
-                    VFTB1_swUoutPu = COF_uwVratePu;
-                }
-
-                if ( EPS ){
-                    if ((UWORD)VFTB1_swUoutPu >= COF_uwVEPSPu){
-                        VFTB1_swUoutPu = COF_uwVEPSPu;
-                    }
-                }
-
-                VF_swUout = VFTB1_swUoutPu;
-
+            if ((UWORD)VFTB1_swUoutPu >= COF_uwVratePu){
+                VFTB1_swUoutPu = COF_uwVratePu;
             }
+
+            if ( EPS ){
+                if ((UWORD)VFTB1_swUoutPu >= COF_uwVEPSPu){
+                    VFTB1_swUoutPu = COF_uwVEPSPu;
+                }
+            }
+
+            VF_swUout = VFTB1_swUoutPu;
+
+        }
         // ]
-        else if ( pr[AUTO_T]==0 && STtune==0 && pr[PM_AUTO_T]==0){
+        else if ( pr[AUTO_T]==0 && STtune==0 && pr[PM_AUTO_T]==0)
+        {
             switch(pr[CTRLM]){  
                 default:
                 case VF:
@@ -3763,16 +3841,19 @@ void TimeBase_1ms(void)
             }
         }
         else{
-            switch(pr[AUTO_T]){
+            switch(pr[AUTO_T])
+            {
                 case 1:
-                    if (TUN_ROTARY_OK==1){
+                    if (TUN_ROTARY_OK==1)
+                    {
                         TUN_NLRotary_OK();
                     } 
                 break;
                 case 2:
                 break;
                 case 3:
-                    if (TUN_LFSL==1){
+                    if (TUN_LFSL==1)
+                    {
                         TB1_CurrentReg();
                         TUN_LFSLTB1();
                     } 
@@ -3783,7 +3864,8 @@ void TimeBase_1ms(void)
                 break;    
             }
 
-            switch(pr[PM_AUTO_T]){
+            switch(pr[PM_AUTO_T])
+            {
                 case 1:       //ADDED BY dino, 05/29/2007
                 break;
                 case 2:       //ADDED BY scotty 2006/09/04
@@ -3835,25 +3917,32 @@ void TimeBase_1ms(void)
         }
     }
 
-    if((uwStartSource == 1) && (STAR_CONTACTOR==1) && TB1_uwStarConRunCnt<=pr[SCDELAY_RUN]){
+    if((uwStartSource == 1) && (STAR_CONTACTOR==1) && TB1_uwStarConRunCnt<=pr[SCDELAY_RUN])
+    {
         STAR_OUTPUT = 1;                                        //[Star contactor function, Bernie, 2017/03/22]
-        if (TB1_uwStarConRunCnt <= pr[SCDELAY_RUN]){
+        if (TB1_uwStarConRunCnt <= pr[SCDELAY_RUN])
+        {
             TB1_uwStarConRunCnt ++;                             //[Star contactor function, Bernie, 2017/03/22]
         }  
     }
     else{
-        if (uwStartSource == 1){
+        if (uwStartSource == 1)
+        {
             MOTORCONNECTOR = 1;
             // [ Clear uwStartSource, DINO, 08/24/2009
             TB1_uwMCStopCnt = 0;
             TB1_uwStarConStopCnt = 0;
             // ]
-            if (TB1_uwMCRunCnt <= pr[MCDELAY_RUN]){
+            if (TB1_uwMCRunCnt <= pr[MCDELAY_RUN])
+            {
                 TB1_uwMCRunCnt ++;
             }
-            else{
-                if (LIFT_ENABLE==1){
-                    if (RUN_GOING==0){
+            else
+            {
+                if (LIFT_ENABLE==1)
+                {
+                    if (RUN_GOING==0)
+                    {
                         CMDRUN = RUN;
                         RUNNING = RUN;
                         RUN_GOING = 1;
@@ -3862,29 +3951,37 @@ void TimeBase_1ms(void)
             }
         }
     }
-  if(RUN_DETECT == RUN){            //[Russia time srequence for IM, Bernie, 2015/07/13]
-      MOTORCONNECTOR2 = 1;
-  }
+    if(RUN_DETECT == RUN)
+    {
+        //[Russia time srequence for IM, Bernie, 2015/07/13]
+        MOTORCONNECTOR2 = 1;
+    }
 
-  if (TB1_uwMCRunCnt>=0 && uwStartSource==0 && RUNNING==STOP){
-      TB1_uwMCStopCnt++;
-      if (TB1_uwMCStopCnt >= pr[MCDELAY_STOP]){   
-          TB1_uwMCRunCnt  = 0;
-          TB1_uwMCStopCnt = 0; 
-          MOTORCONNECTOR  = 0;
-          MOTORCONNECTOR2 = 0;          //[Russia time srequence for IM, Bernie, 2015/07/13]
-      }
-  }
-  if((uwStartSource == 0) && (STAR_CONTACTOR==1) && (MOTORCONNECTOR ==0)&&(TB1_uwStarConRunCnt>0)){
-      if (TB1_uwStarConStopCnt <= pr[SCDELAY_STOP]){                                      //[Star contactor function, Bernie, 2017/03/22]
-          TB1_uwStarConStopCnt ++;
-      }  
-      else{
-         STAR_OUTPUT = 0;               //[Star contactor function, Bernie, 2017/03/22]
-         TB1_uwStarConStopCnt = 0;
-         TB1_uwStarConRunCnt = 0;
-      }
-  }
+    if (TB1_uwMCRunCnt>=0 && uwStartSource==0 && RUNNING==STOP)
+    {
+        TB1_uwMCStopCnt++;
+        if (TB1_uwMCStopCnt >= pr[MCDELAY_STOP])
+        {   
+            TB1_uwMCRunCnt  = 0;
+            TB1_uwMCStopCnt = 0; 
+            MOTORCONNECTOR  = 0;
+            MOTORCONNECTOR2 = 0;          //[Russia time srequence for IM, Bernie, 2015/07/13]
+        }
+    }
+    if((uwStartSource == 0) && (STAR_CONTACTOR==1) && (MOTORCONNECTOR ==0)&&(TB1_uwStarConRunCnt>0))
+    {
+        if (TB1_uwStarConStopCnt <= pr[SCDELAY_STOP])
+        {
+            //[Star contactor function, Bernie, 2017/03/22]
+            TB1_uwStarConStopCnt ++;
+        }  
+        else
+        {
+            STAR_OUTPUT = 0;               //[Star contactor function, Bernie, 2017/03/22]
+            TB1_uwStarConStopCnt = 0;
+            TB1_uwStarConRunCnt = 0;
+        }
+    }
   
 //END--01/09/2008 ]
 
@@ -3895,190 +3992,235 @@ void TimeBase_1ms(void)
     //if (Com_WatchDog4<250)//[For IED PG-Card, Sampo, 01/11/2010]
        //Com_WatchDog4++;
     if (Com_WatchDog0<250)//[For IED PG-Card, Sampo, 01/11/2010]
-       Com_WatchDog0++;
+        Com_WatchDog0++;
     //  [ kb(onboard)pin test, Sean, 08/09/2010
 
-  if ((pr[DEBUG_F1]&0x0008) == 0x0008){ // Bit 3: Enable all ICT test
-    if ((pr[DEBUG_F1]&0x0010)==0x0010){ // Bit 4: for ICT test
-      LEDDI   = 0;  //TP37
-      LEDLCH  = 1;  //TP41
-      LEDCLK  = 1;  //TP38
-      KEYCLK  = 0;  //TP40  
+    if ((pr[DEBUG_F1]&0x0008) == 0x0008)
+    { 
+        // Bit 3: Enable all ICT test
+        if ((pr[DEBUG_F1]&0x0010)==0x0010)
+        {
+            // Bit 4: for ICT test
+            LEDDI   = 0;  //TP37
+            LEDLCH  = 1;  //TP41
+            LEDCLK  = 1;  //TP38
+            KEYCLK  = 0;  //TP40  
+        }
+        else if ((pr[DEBUG_F1]&0x0010)==0x0000)
+        {
+            // Bit 4: for ICT test
+            LEDDI   = 1;  //TP37
+            LEDLCH  = 0;  //TP41
+            LEDCLK  = 0;  //TP38
+            KEYCLK  = 1;  //TP40      
+        }
+        else
+        {
+            LEDDI   = 0;  //TP37
+            LEDLCH  = 0;  //TP41
+            LEDCLK  = 0;  //TP38
+            KEYCLK  = 0;  //TP40        
+        }
     }
-    else if ((pr[DEBUG_F1]&0x0010)==0x0000){// Bit 4: for ICT test
-      LEDDI   = 1;  //TP37
-      LEDLCH  = 0;  //TP41
-      LEDCLK  = 0;  //TP38
-      KEYCLK  = 1;  //TP40      
+    else
+    {
+        // [ LED KEYPAD Out, DINO, 03/09/2010
+        TB_2ms ^= 1;
+        if ( TB_2ms )
+        {
+            // PORTE.PODR.BIT.B4 ^= 1;
+            LED_OUT();
+        }
+        // ]
     }
-    else{
-      LEDDI   = 0;  //TP37
-      LEDLCH  = 0;  //TP41
-      LEDCLK  = 0;  //TP38
-      KEYCLK  = 0;  //TP40        
-    }
-  }
-  else{
-    // [ LED KEYPAD Out, DINO, 03/09/2010
-    TB_2ms ^= 1;
-    if ( TB_2ms ){
-       // PORTE.PODR.BIT.B4 ^= 1;
-      LED_OUT();
-    }
-    // ]
-  }
-  //  ] kb(onboard)pin test, Sean, 08/09/2010
+    //  ] kb(onboard)pin test, Sean, 08/09/2010
 
-//    bb_check(); //disable bb  SCOTTY  08/31/2007
+    //bb_check(); //disable bb  SCOTTY  08/31/2007
     AFM_Output();
     //AFM_Output_GFC();            //[APP01 IO carde support, Bernie, 2013/03/20]
 //#if SH7149  // dino, 03/08/2007
  //   TB1_Scale_PG();
 //#endif
-    if ((pr[YDSWEN]==1)&&(pr[AUTO_T]==0)&&((YDSetBit&0x33)==0x33)&&(EXT_EF==0)){
+    if ((pr[YDSWEN]==1)&&(pr[AUTO_T]==0)&&((YDSetBit&0x33)==0x33)&&(EXT_EF==0))
+    {
         TB1_YDSwitchFun();
     }
-    else{
+    else
+    {
         YDWGON = 1;
     }
   
-  //-------- Position Control ------------------------------------------------//  
+    //-------- Position Control ------------------------------------------------//  
     //if ((RUNNING==RUN)&&(pr[CTRLM]==FOCPG)){
-    if (RUNNING==RUN){
-      // [ 15-21 bit5=1, disable PHL detection, DINO, 08/15/2009
-      if ((pr[CTRLSEL]&0x0020) == 0){ //CTRLSEL bit5 = 1
-        PROTECT_PHL();    //SCOTTY 09/05/2007
-      }
-      // ]
+    if (RUNNING==RUN)
+    {
+        // [ 15-21 bit5=1, disable PHL detection, DINO, 08/15/2009
+        if ((pr[CTRLSEL]&0x0020) == 0)
+        {
+            //CTRLSEL bit5 = 1
+            PROTECT_PHL();    //SCOTTY 09/05/2007
+        }
+        // ]
       
-    TB1_PositionControl();
+        TB1_PositionControl();
     
-    if (MFI_APRbyVcom==1){
-      ulTemp = Pfdec.ul;
-            if (ulTemp==0){
-              VcomFmax.uw.hi = pr[FMAX];
+        if (MFI_APRbyVcom==1)
+        {
+            ulTemp = Pfdec.ul;
+            if (ulTemp==0)
+            {
+                VcomFmax.uw.hi = pr[FMAX];
                 VcomFmax.uw.low = 0;
             }
-            else{
-        if (VcomFmax.uw.hi>pr[VCOMFT]){
-          if (VcomFmax.ul<ulTemp)
-                  VcomFmax.ul = 0;
-                else
-            VcomFmax.ul = VcomFmax.ul - ulTemp;
-        }
-        else if (VcomFmax.uw.hi<=pr[VCOMFT]){
-          VcomFmax.ul = pr[VCOMFT]<<16;
-          VPHOLD = 0;
-        }  
+            else
+            {
+                if (VcomFmax.uw.hi>pr[VCOMFT])
+                {
+                    if (VcomFmax.ul<ulTemp)
+                        VcomFmax.ul = 0;
+                    else
+                        VcomFmax.ul = VcomFmax.ul - ulTemp;
+                }
+                else if (VcomFmax.uw.hi<=pr[VCOMFT])
+                {
+                    VcomFmax.ul = pr[VCOMFT]<<16;
+                    VPHOLD = 0;
+                }  
             }
-    }
-    else{
-      if (Pfdec.ul==0)
-        ulTemp = 65535;
-      else
-        ulTemp = Pfdec.ul;
-        
-            if (((VcomFmax.ul + ulTemp)>>16)>=pr[FMAX]){
-              VcomFmax.uw.hi = pr[FMAX];
+        }
+        else
+        {
+            if (Pfdec.ul==0)
+                ulTemp = 65535;
+            else
+                ulTemp = Pfdec.ul;
+
+            if (((VcomFmax.ul + ulTemp)>>16)>=pr[FMAX])
+            {
+                VcomFmax.uw.hi = pr[FMAX];
                 VcomFmax.uw.low = 0;
                 VPHOLD = 0;
             }
-            else{
-        if (VcomFmax.uw.hi<pr[FMAX]){
-          VcomFmax.ul = VcomFmax.ul + ulTemp;
-        }
-        else if (VcomFmax.uw.hi==pr[FMAX]){
-          VPHOLD = 0;
-        }
+            else
+            {
+                if (VcomFmax.uw.hi<pr[FMAX]){
+                    VcomFmax.ul = VcomFmax.ul + ulTemp;
+                }
+                else if (VcomFmax.uw.hi==pr[FMAX]){
+                    VPHOLD = 0;
+                }
             }
+        }
     }
-  }
 
-  // [ Flux Confirm, Add by DINO, 06/29/2009
-  if (pr[CTRLM] == FOCPG){
-    uwI0DtLPu = COF_uwI0DtLPu;  // Iflux = Pr.05_05 * 70%
-  }
-  else{
-    uwI0DtLPu = 0;        // Iflux = 0
-  }
+    // [ Flux Confirm, Add by DINO, 06/29/2009
+    if (pr[CTRLM] == FOCPG)
+    {
+        uwI0DtLPu = COF_uwI0DtLPu;  // Iflux = Pr.05_05 * 70%
+    }
+    else{
+        uwI0DtLPu = 0;        // Iflux = 0
+    }
     
-  /*-------------------------------------------
-  --  I0CHK = 0: Confirm not okay => Lock
-  --        = 1: Confirm okay     => Release
-  -------------------------------------------*/
-  uwTemp = pr[AUTO_T] + pr[PM_AUTO_T];
+    /*-------------------------------------------
+    --  I0CHK = 0: Confirm not okay => Lock
+    --        = 1: Confirm okay     => Release
+    -------------------------------------------*/
+    uwTemp = pr[AUTO_T] + pr[PM_AUTO_T];
 
-  if (pr[BRK_CHKTQR]==0 || uwTemp!=0 || BRK_RLS==1){
-    I0CHK = 1;
-  }
-  else {  // pr[BRK_CHKTQR]==1, Torque Prove Enable
-    if (IrmsRe >= uwIsDtL){
-      if (CUR_swIdseFdbPu >= uwI0DtLPu){
+    if (pr[BRK_CHKTQR]==0 || uwTemp!=0 || BRK_RLS==1)
+    {
         I0CHK = 1;
-      }
-      else{
-        I0CHK = 0;
-      }
     }
-    else{
-      I0CHK = 0;
+    else 
+    { 
+        // pr[BRK_CHKTQR]==1, Torque Prove Enable
+        if (IrmsRe >= uwIsDtL)
+        {
+            if (CUR_swIdseFdbPu >= uwI0DtLPu)
+            {
+                I0CHK = 1;
+            }
+            else
+            {
+                I0CHK = 0;
+            }
+        }
+        else
+        {
+            I0CHK = 0;
+        }
     }
-  }
-  // ]
+    // ]
 
-  // [ Waiting for absoulte signal ready (Move from run()), DINO, 12/23/2009
-  // [ Wait for EnDat ready, DINO, 08/24/2009
-  if (pr[PG_TYPE]==SIN_ENDAT || pr[PG_TYPE]==SIN_HIPER || pr[PG_TYPE]==SIN_SIN){  // Add SIN_SIN Mode, DINO, 11/30/2009
-    if (EDT_READY == 1){
-      PGREADY = 1;
+    // [ Waiting for absoulte signal ready (Move from run()), DINO, 12/23/2009
+    // [ Wait for EnDat ready, DINO, 08/24/2009
+    if (pr[PG_TYPE]==SIN_ENDAT || pr[PG_TYPE]==SIN_HIPER || pr[PG_TYPE]==SIN_SIN)
+    {  
+        // Add SIN_SIN Mode, DINO, 11/30/2009
+        if (EDT_READY == 1)
+        {
+            PGREADY = 1;
+        }
+        else
+        {
+            PGREADY = 0;
+        }
     }
-    else{
-      PGREADY = 0;
+    else
+    {
+        PGREADY = 1;
     }
-  }
-  else{
-    PGREADY = 1;
-  }
-  // ]
-  // ]
-  if(WRITE_Z_1387 == 1)  // [IED 1387 static Tune, 2011/07/06]
-      uwSt1387cnt++;
-  else
-      uwSt1387cnt = 0;
+    // ]
+    // ]
+    if(WRITE_Z_1387 == 1)  // [IED 1387 static Tune, 2011/07/06]
+        uwSt1387cnt++;
+    else
+        uwSt1387cnt = 0;
 
-  //==========================================================================//    
-	if (pr[ZCAB_MODE]==0){	//[Z cab mode, Jerry Yu, 2019/06/05]
-	
+    //==========================================================================//    
+	if (pr[ZCAB_MODE]==0)
+    {
+        //[Z cab mode, Jerry Yu, 2019/06/05]
 		// [ Dynamic Z-pulse calibrate, Add by DINO, 08/11/2010
 		if (RUNNING == RUN){
-			if (zcal_swThetaErr != 0){
+			if (zcal_swThetaErr != 0)
+            {
 				uwTemp = (SpDt_uwAnglePeriod + 512) >> 15;	// Npulse divided to 512
-				if (uwTemp == 0){
+				if (uwTemp == 0)
+                {
 					uwTemp = 1;
 				}
 
 				vcmdPu_tmp = MTU1.TCNT;
 				zcal_uwPulseDiff += uwTemp;
 				
-				if (zcal_uwPulseDiff > zcal_uwPulseErr){
+				if (zcal_uwPulseDiff > zcal_uwPulseErr)
+                {
 					uwTemp = zcal_uwPulseErr - (zcal_uwPulseDiff - uwTemp);
 					zcal_swThetaErr = 0;
 					zcal_uwPulseErr = 0;
 				}
 
-				if (PGDIR==1){
-					if (zcal_swThetaErr>=0){
+				if (PGDIR==1)
+                {
+					if (zcal_swThetaErr>=0)
+                    {
 						uwTemp = vcmdPu_tmp - uwTemp;
 					}
-					else{
+					else
+                    {
 						uwTemp = vcmdPu_tmp + uwTemp;
 					}
 				}
-				else{
-					if(zcal_swThetaErr>=0){
+				else
+                {
+					if(zcal_swThetaErr>=0)
+                    {
 						uwTemp = vcmdPu_tmp + uwTemp;
 					}
-					else{
+					else
+                    {
 						uwTemp = vcmdPu_tmp - uwTemp;
 					}
 				}
@@ -4091,40 +4233,47 @@ void TimeBase_1ms(void)
     /* ------ LED 7-segment Display & keyin function ------ */
     TB1_ub1msCnt ++;
 
-    if(TB1_ub1msCnt==10) {
-      /* ------ 10ms timer ------*/      
+    if(TB1_ub1msCnt==10)
+    {
+        /* ------ 10ms timer ------*/      
         TB1_ub1msCnt = 0;
         ErrorAutoReset();       //[Add auto restart after fault, Bernie, 06/06/12]
 
         TB_20ms ^= 1; // Add by dino, 04/12/2007
         
-        if ( TB_20ms ){
+        if ( TB_20ms )
+        {
+            if (pr[ZCAB_MODE]==1)
+            {
+                //[Z cab mode, Jerry Yu, 2019/06/05]
 
-            if (pr[ZCAB_MODE]==1){	//[Z cab mode, Jerry Yu, 2019/06/05]
-
-            // [ Dynamic Z-pulse calibrate, Add by DINO, 08/11/2010
-                if (RUNNING == RUN){
-                    if (zcal_swThetaErr != 0){
-
+                // [ Dynamic Z-pulse calibrate, Add by DINO, 08/11/2010
+                if (RUNNING == RUN)
+                {
+                    if (zcal_swThetaErr != 0)
+                    {
                         uwTemp = (SpDt_uwAnglePeriod + 512) >> 10;  // Npulse divided to 512
                         if (uwTemp == 0){ uwTemp = 1; }
                         //vcmdPu_tmp = MTU21.TCNT;
                         vcmdPu_tmp = MTU1.TCNT;
 
                         zcal_uwPulseDiff += uwTemp;
-                        if (zcal_uwPulseDiff > zcal_uwPulseErr){
+                        if (zcal_uwPulseDiff > zcal_uwPulseErr)
+                        {
                             uwTemp = zcal_uwPulseErr - (zcal_uwPulseDiff - uwTemp);
                             zcal_swThetaErr = 0;
                             zcal_uwPulseErr = 0;
                         }
 
-                        if (PGDIR==1){
+                        if (PGDIR==1)
+                        {
                             if (zcal_swThetaErr>=0)
                                 uwTemp = vcmdPu_tmp - uwTemp;
                             else
                                 uwTemp = vcmdPu_tmp + uwTemp;
                         }
-                        else{
+                        else
+                        {
                             if(zcal_swThetaErr>=0) 
                                 uwTemp = vcmdPu_tmp + uwTemp;
                             else
@@ -4138,117 +4287,131 @@ void TimeBase_1ms(void)
             // ]
             }
             /* ------ 20ms timer ------*/
-      SWDetectPHL();    //SCOTTY 09/05/2007
+            SWDetectPHL();    //SCOTTY 09/05/2007
       
             if ( TB1_ubErrCnt < 25 ){ TB1_ubErrCnt++; }
             TB_40ms ^= 1;
 
 //---ADDED BY DINO 10/16/2007---
         //--- Siwtch SIN/COS signals every 20ms
-        if ( pr[PG_TYPE]==SIN_SIN ){  // Initial position is gotten from SIN/COS signal
+            if ( pr[PG_TYPE]==SIN_SIN )
+            {
+            // Initial position is gotten from SIN/COS signal
 #if SH7286 //Sean, 01/25/2010
-      #if NEWIEDCB  // IO Define, Sean, 06/25/2010
+    #if NEWIEDCB  // IO Define, Sean, 06/25/2010
       
-#if 1 // add pghs01, Sean, 12/06/2010
-        uwSIN_data = Pgc_uwCne;
-        uwCOS_data = Pgc_uwDpo;
-#else     
-          if ( TB_40ms )  // Inverse SIN/COS, DINO, 09/28/2010, Modify for New PG Card, DINO, 10/20/2010
-            uwSIN_data = AN7;  // SIN_data(PGSEL=1), // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
-          else
-            uwCOS_data = AN7;  // COS_data(PGSEL=0), // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
-#endif 
+        #if 1 // add pghs01, Sean, 12/06/2010
+                uwSIN_data = Pgc_uwCne;
+                uwCOS_data = Pgc_uwDpo;
+        #else     
+                if ( TB_40ms )  // Inverse SIN/COS, DINO, 09/28/2010, Modify for New PG Card, DINO, 10/20/2010
+                    uwSIN_data = AN7;  // SIN_data(PGSEL=1), // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
+                else
+                    uwCOS_data = AN7;  // COS_data(PGSEL=0), // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
+        #endif 
             
-        #else
-          if ( TB_40ms )
-            //uwSIN_data = AN8;  // SIN_data(PGSEL=0)
-            uwSIN_data = AN02;  // SIN_data(PGSEL=0)
-          else
-            //uwCOS_data = AN8;  // COS_data(PGSEL=1)
-            uwCOS_data = AN02;  // COS_data(PGSEL=1)
-        #endif
-        if ( (pr[DEBUG_F1]&0x0008)!=0x0008 && TUN_START==0 )  // Not for ICT test, not Z-phase tunning
-          PGSEL = TB_40ms;  // Switch SCS2  // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
+    #else
+                if ( TB_40ms )
+                    //uwSIN_data = AN8;  // SIN_data(PGSEL=0)
+                    uwSIN_data = AN02;  // SIN_data(PGSEL=0)
+                else
+                    //uwCOS_data = AN8;  // COS_data(PGSEL=1)
+                    uwCOS_data = AN02;  // COS_data(PGSEL=1)
+    #endif
+                if ( (pr[DEBUG_F1]&0x0008)!=0x0008 && TUN_START==0 )  // Not for ICT test, not Z-phase tunning
+                    PGSEL = TB_40ms;  // Switch SCS2  // SIN/COS Signal is changed to AN7, DINO, 08/12/2010
 #else         
-          if ( TB_40ms )
-            //uwSIN_data = AN10;  // SIN_data(SCI2_DIR=0)
-            uwSIN_data = AN102;  // SIN_data(SCI2_DIR=0)
-          else
-            //uwCOS_data = AN10;  // COS_data(SCI2_DIR=1)
-            uwCOS_data = AN102;  // COS_data(SCI2_DIR=1)
-        if ( (pr[DEBUG_F1]&0x0008)!=0x0008 && TUN_START==0 )  // Not for ICT test, not Z-phase tunning
-          SCI2_DIR = TB_40ms; // Switch SCS2            
+                if ( TB_40ms )
+                    //uwSIN_data = AN10;  // SIN_data(SCI2_DIR=0)
+                    uwSIN_data = AN102;  // SIN_data(SCI2_DIR=0)
+                else
+                    //uwCOS_data = AN10;  // COS_data(SCI2_DIR=1)
+                    uwCOS_data = AN102;  // COS_data(SCI2_DIR=1)
+                if ( (pr[DEBUG_F1]&0x0008)!=0x0008 && TUN_START==0 )  // Not for ICT test, not Z-phase tunning
+                    SCI2_DIR = TB_40ms; // Switch SCS2            
 #endif
-      }
+            }
 //---END 10/16/2007---------------
 
-            if ( TB_40ms ){
-              /* ------ 40ms timer ------*/
-              Thermal_OLCHK();  
-          }
-
-          else {
-              /* ------ 40ms timer ------*/
-//---ADDED BY DINO 10/16/2007---
-//              if ( RUNNING==STOP ){
-                //------ Calculate Sin_data and Cos_data --------------------//
-            SINadLPF.sl += (SLONG)( (SWORD)uwSIN_data - SINadLPF.sw.hi ) * 13107; // 200ms (base 40ms)
-            COSadLPF.sl += (SLONG)( (SWORD)uwCOS_data - COSadLPF.sw.hi ) * 13107; // 200ms (base 40ms)
-//          }
-//---END 10/16/2007---------------
-                   
+            if ( TB_40ms )
+            {
+                /* ------ 40ms timer ------*/
+                Thermal_OLCHK();  
+            }
+            else
+            {
+                /* ------ 40ms timer ------*/
+                //---ADDED BY DINO 10/16/2007---
+//          if ( RUNNING==STOP ){
+//------ Calculate Sin_data and Cos_data --------------------//
+                SINadLPF.sl += (SLONG)( (SWORD)uwSIN_data - SINadLPF.sw.hi ) * 13107; // 200ms (base 40ms)
+                COSadLPF.sl += (SLONG)( (SWORD)uwCOS_data - COSadLPF.sw.hi ) * 13107; // 200ms (base 40ms)
+                //}
+                //---END 10/16/2007---------------     
             }
 
         }
-        else{
-          
-          //  [ kb(onboard)pin test, Sean, 08/09/2010
-      if ((pr[DEBUG_F1]&0x0008) == 0x0008){ // Bit 3: Enable all ICT test
-        pr[_47th_DISP] = /*PORT9.PIDR.BIT.B5*/KEYDI;
-      }
-      else{
-            // [ LED KEYPAD Input, DINO, 03/09/2010
-            KEY_IN();
-          } 
-      //  ] kb(onboard)pin test, Sean, 08/09/2010
+        else
+        {
+            //  [ kb(onboard)pin test, Sean, 08/09/2010
+            if ((pr[DEBUG_F1]&0x0008) == 0x0008){ // Bit 3: Enable all ICT test
+                pr[_47th_DISP] = /*PORT9.PIDR.BIT.B5*/KEYDI;
+            }
+            else
+            {
+                // [ LED KEYPAD Input, DINO, 03/09/2010
+                KEY_IN();
+            } 
+            //  ] kb(onboard)pin test, Sean, 08/09/2010
 
-      // [ Initial Page, DINO, 06/01/2010
-      if (KEY_uwPWRCnt < 150){  // 3sec/20ms=150
-        KEY_uwPWRCnt++;
-        if (KEY_uwPWRCnt == 150){
-          if (KEY_ubDispMode == FunPAGE2){
-            KEYPRESS = 1;
-            keyinx = PROGKEY;
-          }
-        }
-      }
-      // ]
+            // [ Initial Page, DINO, 06/01/2010
+            if (KEY_uwPWRCnt < 150)
+            {
+                // 3sec/20ms=150
+                KEY_uwPWRCnt++;
+                if (KEY_uwPWRCnt == 150)
+                {
+                    if (KEY_ubDispMode == FunPAGE2)
+                    {
+                        KEYPRESS = 1;
+                        keyinx = PROGKEY;
+                    }
+                }
+            }
+            // ]
 
-          Update_LEDKeyDisp();
-          // ]
+            Update_LEDKeyDisp();
+            // ]
           
           
             /* ------ 20ms timer ------*/               
-          if (TB1_ub100msCnt !=0){
-              /* ------ 20ms timer ------*/
-              TB1_ub100msCnt --;        
+            if (TB1_ub100msCnt !=0)
+            {
+                /* ------ 20ms timer ------*/
+                TB1_ub100msCnt --;        
 //-- Communication Encoder EnDat & Hiperface, Add by DINO, 08/15/2008
-        if ( TB1_ub100msCnt==0 ){
+                if ( TB1_ub100msCnt==0 )
+                {
 #if SH7286  //[For IED PG-Card, Sampo
-          if (RUNNING==STOP || pr[PM_AUTO_T]!=0){ // Add by DINO, 10/07/2008
-            if ((pr[DEBUG_F1]&0x0008)!=0x0008 && TB_2sec==1){  // Not TE test and Encoder Ready
-              if ( pr[PG_TYPE]==SIN_ENDAT )
-                RxDecoder_EnDat();
-              //-- Add by DINO, 10/08/2008
-              else if ( pr[PG_TYPE]==SIN_HIPER )
-                RxDecoder_Hiper();
-            }
-          }
+                    if (RUNNING==STOP || pr[PM_AUTO_T]!=0)
+                    { 
+                        // Add by DINO, 10/07/2008
+                        if ((pr[DEBUG_F1]&0x0008)!=0x0008 && TB_2sec==1)
+                        {  
+                            // Not TE test and Encoder Ready
+                            if ( pr[PG_TYPE]==SIN_ENDAT )
+                                RxDecoder_EnDat();
+                            //-- Add by DINO, 10/08/2008
+                            else if ( pr[PG_TYPE]==SIN_HIPER )
+                                RxDecoder_Hiper();
+                        }
+                    }
 #endif
-              }
+                }
 //-- End on 08/15/2008
             }
-          else{
+            else
+            {
                 TB1_ub100msCnt = 4;
                 /* ------ 100ms timer ------*/
                 TB_100ms = 1;
@@ -4258,7 +4421,7 @@ void TimeBase_1ms(void)
 
 
 
-//              if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]!=3)) {            // Enable Time out Detection
+                //if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]!=3)) {            // Enable Time out Detection
                 if ((pr[CTODT2]!=0)&&(pr[C_FAULT2]<2)) 
                 {            // SCOTTY 09/03/2007
                     if (SCI2_TodCNT <= pr[CTODT2])      //tod_cnt, Time out detection count
@@ -4275,12 +4438,12 @@ void TimeBase_1ms(void)
                 }
 
                 //if (Com_WatchDog3<250)    
-                   //Com_WatchDog3++;
-                   
+                    //Com_WatchDog3++;
+                    
                 //if (Com_WatchDog4<250)    
-                   //Com_WatchDog4++;
+                    //Com_WatchDog4++;
 
-                  
+                    
                 //if (Com_WatchDog2<250)
                 //[JES SE1_ERR, Rational 282940, Special.Kung, 2022/08/24]
                 if((Com_WatchDog2<250) && (COPYFLAG==0))
@@ -4302,7 +4465,7 @@ void TimeBase_1ms(void)
                 {
                     TB1_uwOT2Cnt ++;
                 }
-                    
+                        
                 if (OVERSLIP==1)
                 {
                     if ((UWORD)TB1_ubOverWsCnt<=pr[SLIPDEVT])
@@ -4310,10 +4473,10 @@ void TimeBase_1ms(void)
                         TB1_ubOverWsCnt++;
                     }
                 }         
-              
+                
                 if (TB1_ub1secCnt!=0)
                 {
-                  TB1_ub1secCnt --;
+                    TB1_ub1secCnt --;
                 }
                 else
                 {               
@@ -4339,67 +4502,77 @@ void TimeBase_1ms(void)
         }// 20ms End
     }// 10ms End   
 
-   if ((pr[DEBUG_F1]&0x0002) == 0x0002){      //[ICT Test, Bernie, 08/11/2011]   
-         RCAN_Timer++;
-         if(RCAN_Timer == 10){
-             RCAN_Timer = 0;
-             CAN_ICT_TX();
-             if (CAN1.EIFR.BYTE != 0){
-                 CAN1.EIFR.BYTE = 0;
-                 //RCAN_ubErr4Rgst = CAN1.EIFR.BYTE;
-                 //CAN_uwErrNo = 0x06;
-                 //Error = CAN_ERR;
-             }
-         }
-         if(CAN1.EIFR.BYTE != 0){
-             CAN1.EIFR.BYTE = 0;
-         }
-         RCAN_RX_Count++;
-         if(RCAN_RX_Count > uwCAN_ChkTime){
+   if ((pr[DEBUG_F1]&0x0002) == 0x0002)
+   {
+        //[ICT Test, Bernie, 08/11/2011]   
+        RCAN_Timer++;
+        if(RCAN_Timer == 10)
+        {
+            RCAN_Timer = 0;
+            CAN_ICT_TX();
+            if (CAN1.EIFR.BYTE != 0)
+            {
+                CAN1.EIFR.BYTE = 0;
+                //RCAN_ubErr4Rgst = CAN1.EIFR.BYTE;
+                //CAN_uwErrNo = 0x06;
+                //Error = CAN_ERR;
+            }
+        }
+        if(CAN1.EIFR.BYTE != 0)
+        {
+            CAN1.EIFR.BYTE = 0;
+        }
+        RCAN_RX_Count++;
+        if(RCAN_RX_Count > uwCAN_ChkTime)
+        {
             CAN_uwErrNo = 0x06;
             Error = CAN_ERR;
-         }
-         
+        }
    }
-   else{
-       if((Error != CAN_ERR)){
-           if((uwPDO_CNT < uwCAN_ChkTime)&&(pr[CAN_ChkTime]!=0)){
-               uwPDO_CNT++;        // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
-           }
-       }
-		//#if 1
-	   //-----aevin add CAN fail rate--6/12/2017        //[CAN fail rate function, Aevin, 2017/06/14]
-	   uwPDOfailCNT++;     
-	   //if(!(uwPDOfailCNT % pr[CAN_ChkTime]) && uwPDOfailCNT!=0){
-	   if(uwPDOfailCNT == 1000){
-	       //uwCAN=(uwPDO_CNT>=pr[PDO_TX_Time])?uwPDO_CNT - pr[PDO_TX_Time]:pr[PDO_TX_Time]-uwPDO_CNT;
-		   //uwCAN2 = pr[CAN_ChkTime]>=pr[PDO_TX_Time]?pr[CAN_ChkTime] - pr[PDO_TX_Time]:pr[PDO_TX_Time]-pr[CAN_ChkTime];
+   else
+   {
+        if((Error != CAN_ERR))
+        {
+            if((uwPDO_CNT < uwCAN_ChkTime)&&(pr[CAN_ChkTime]!=0))
+            {
+                uwPDO_CNT++;        // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
+            }
+        }
+        //#if 1
+        //-----aevin add CAN fail rate--6/12/2017        //[CAN fail rate function, Aevin, 2017/06/14]
+        uwPDOfailCNT++;     
+        //if(!(uwPDOfailCNT % pr[CAN_ChkTime]) && uwPDOfailCNT!=0){
+        if(uwPDOfailCNT == 1000)
+        {
+            //uwCAN=(uwPDO_CNT>=pr[PDO_TX_Time])?uwPDO_CNT - pr[PDO_TX_Time]:pr[PDO_TX_Time]-uwPDO_CNT;
+            //uwCAN2 = pr[CAN_ChkTime]>=pr[PDO_TX_Time]?pr[CAN_ChkTime] - pr[PDO_TX_Time]:pr[PDO_TX_Time]-pr[CAN_ChkTime];
 
-		   //uwPDOfailBuf += (uwCAN * 100)/uwCAN2;
-		   //pr[CANFAILRATE] = (uwPDO_CNT * 100)/pr[CAN_ChkTime];
-		   //uwPDOfailBuf = (uwPDO_CNT * 100)/pr[CAN_ChkTime];
-		   uwCAN = 1000 / pr[CANPDOTXTIME];           //[CAN fail rate function, Aevin, 2017/06/14]
-		   uwPDOfailBuf = (uwPDOInCnt *100)/uwCAN;
-		   if(uwPDOfailBuf>100)
-		   	uwPDOfailBuf = 100;
-		   uwPDOfailCNT = 0;
-		   uwPDOInCnt = 0;
-	   }
-	   //---------------------------------------
-       //#endif
-	   ubPDO_TxCNT++;
-       //[claer state when Error occur ,Bernie, 2015/05/12]    
-       if (((ubPDO_TxCNT >= pr[PDO_TX_Time])&&( pr[PDO_TX_Time]!=0))/* && (pr[SOFC]==4||pr[SOFC]==5)*/)
-       {
-           CAN_PDO_TX_return();
-           ubPDO_TxCNT = 0;
-       }
-   }
- #if BOOTLOADER_ENABLE	// Bootloader enable, Sean, 20141022
-  
-   	if (switch_TxDon==1){
-		switch_TxDonWait=(switch_TxDonWait<1100)?switch_TxDonWait+1:switch_TxDonWait;	// bootloader over usb for online mode, Sean, 20141030
-	} 
+            //uwPDOfailBuf += (uwCAN * 100)/uwCAN2;
+            //pr[CANFAILRATE] = (uwPDO_CNT * 100)/pr[CAN_ChkTime];
+            //uwPDOfailBuf = (uwPDO_CNT * 100)/pr[CAN_ChkTime];
+            uwCAN = 1000 / pr[CANPDOTXTIME];           //[CAN fail rate function, Aevin, 2017/06/14]
+            uwPDOfailBuf = (uwPDOInCnt *100)/uwCAN;
+            if(uwPDOfailBuf>100)
+            uwPDOfailBuf = 100;
+            uwPDOfailCNT = 0;
+            uwPDOInCnt = 0;
+        }
+        //---------------------------------------
+        //#endif
+        ubPDO_TxCNT++;
+        //[claer state when Error occur ,Bernie, 2015/05/12]    
+        if (((ubPDO_TxCNT >= pr[PDO_TX_Time])&&( pr[PDO_TX_Time]!=0))/* && (pr[SOFC]==4||pr[SOFC]==5)*/)
+        {
+            CAN_PDO_TX_return();
+            ubPDO_TxCNT = 0;
+        }
+    }
+    #if BOOTLOADER_ENABLE	// Bootloader enable, Sean, 20141022
+
+    if (switch_TxDon==1)
+    {
+        switch_TxDonWait=(switch_TxDonWait<1100)?switch_TxDonWait+1:switch_TxDonWait;	// bootloader over usb for online mode, Sean, 20141030
+    } 
 
 
 #endif
@@ -4408,55 +4581,70 @@ void TimeBase_1ms(void)
 
 
 #if 0   //CAN FUNCTION BERNIE
-   if(pr[CAN_HC]==0)             // [CAN Protocol for High Cap , Sampo,  2011/09/05]
-       car_vdRcan();             // [Can function, Bernie, 08/16/2011]
+    if(pr[CAN_HC]==0)             // [CAN Protocol for High Cap , Sampo,  2011/09/05]
+        car_vdRcan();             // [Can function, Bernie, 08/16/2011]
 
-  if(pr[CAN_CTRL]==1){      //[CAN Control, Sampo, 09/15/2010]
-    if( ubCanWarnCnt > 50 ){
-      if(pr[CAN_FAULT]==0){
-        if ((Error==0)&&(WarnCode==0)){
-          Keypad_PageTmp = Keypad_Page;
-          Keypad_Page = WarnPAGE;                       
-          WarnCode = CANOFF_WARN;
+    if(pr[CAN_CTRL]==1)
+    {      
+        //[CAN Control, Sampo, 09/15/2010]
+        if( ubCanWarnCnt > 50 )
+        {
+            if(pr[CAN_FAULT]==0)
+            {
+                if ((Error==0)&&(WarnCode==0))
+                {
+                    Keypad_PageTmp = Keypad_Page;
+                    Keypad_Page = WarnPAGE;                       
+                    WarnCode = CANOFF_WARN;
+                }
+            }
+            else if(pr[CAN_FAULT]==1)
+            {
+                if (Error==0)
+                {
+                    Error = CAN_ERR;
+                }
+            }
+            else
+            { 
+                //pr[CAN_FAULT] = 2 or 3    
+            }
         }
-      }
-      else if(pr[CAN_FAULT]==1){
-        if (Error==0){
-          Error = CAN_ERR;
+        else if( WarnCode == CANOFF_WARN)
+        {
+            Keypad_Page = Keypad_PageTmp;
+            WarnCode = 0;
         }
-      }
-      else{ //pr[CAN_FAULT] = 2 or 3    
-      }
+        else 
+            ubCanWarnCnt++;
     }
-    else if( WarnCode == CANOFF_WARN){
-      Keypad_Page = Keypad_PageTmp;
-      WarnCode = 0;
-    }
-    else 
-      ubCanWarnCnt++;
-
-  }
-    if(pr[CAN_HC]==1){  
-                                 //[CAN Communication PDO count, Bernie, 09/22/2011]
-        if(uwPDO_CNT < uwCAN_ChkTime){
+    if(pr[CAN_HC]==1)
+    {  
+        //[CAN Communication PDO count, Bernie, 09/22/2011]
+        if(uwPDO_CNT < uwCAN_ChkTime)
+        {
             uwPDO_CNT++;        // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
         }
     
         ubPDO_TxCNT++;
     
-        if ( ubPDO_TxCNT == pr[PDO_TX_Time] ){
+        if ( ubPDO_TxCNT == pr[PDO_TX_Time] )
+        {
             PDO_TX_Decode();
             ubPDO_TxCNT = 0;
         }
     }
 #endif
-    if(pr[CTRLM]<= SVC /*&& GEN_MOT_START == 1*/){   //[Add Generator or Motor Direction, Bernie, 05/21/2012]
+    if(pr[CTRLM]<= SVC /*&& GEN_MOT_START == 1*/)
+    {   
+        //[Add Generator or Motor Direction, Bernie, 05/21/2012]
         VFGenOrMot_DIR();
     }
 
-    if(IODLC_ubArea_status!=Arealand){
-        if(IODLC_MIinput==MI_ON){
-            
+    if(IODLC_ubArea_status!=Arealand)
+    {
+        if(IODLC_MIinput==MI_ON)
+        {
             if((pr[CTRLM]!=FOCPM)&&(pr[CTRLM]!=FOCPG)&&(pr[CTRLM]!=VFPG))
                 IODLC_ulSFDistance += (speed_tmp+fcmd.uw.hi)/20;
             else

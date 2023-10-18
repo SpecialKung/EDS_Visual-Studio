@@ -69,7 +69,8 @@ void TxD_Data_Hiper(void)
 
 void RxDecoder_Hiper(void)
 {
-	UBYTE i, ubChecksum, ubError;
+	//UBYTE i, ubChecksum, ubError;				//clear Warning, Special.kung, 03/08/2023
+
 #if 1 //[For IED PG-Card, Sampo, 02/14/2010]
 
 	if (vfd_btPGHSD1Set==1)	// fix pghsd1 code, Sean, 06/01/2012

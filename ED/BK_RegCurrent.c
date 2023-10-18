@@ -109,28 +109,31 @@ void CurrentReg_daxis(void)
 {
     SWORD CUR_swIdseErrPu,swErrtmp;
     SLONG dkptemp;
-  //CUR_swIdseErrPu = CUR_swIdseRefPu - CUR_swIdseFdbPu;                                 // revise overflow JOSH 2017/03/15
-	CUR_swIdseErrPu = (SWORD)sl_limit_modify(CUR_swIdseRefPu, -CUR_swIdseFdbPu, 0x7FFF); // revise overflow JOSH 2017/03/15
+  	
+	//CUR_swIdseErrPu = CUR_swIdseRefPu - CUR_swIdseFdbPu;                                 	// revise overflow JOSH 2017/03/15
+	CUR_swIdseErrPu = (SWORD)sl_limit_modify(CUR_swIdseRefPu, -CUR_swIdseFdbPu, 0x7FFF); 	// revise overflow JOSH 2017/03/15
 	// Proportional Gain
     //dkptemp = sl_limit(((SLONG)CUR_swIdseErrPu * CUR_uwdKpPu), 0, 0x1FFFFFF); //Q25 = Q(15+10)       // revise (dkptemp<<6) underflow by JOSH 2017/03/15
 	dkptemp = sl_limit_modify(((SLONG)CUR_swIdseErrPu * CUR_uwdKpPu), 0, 0x1FFFFFF); //Q25 = Q(15+10)  // revise (dkptemp<<6) underflow by JOSH 2017/03/15
 	
-	if (VolSat_flag==0){	
-	// Integral Time
+	if (VolSat_flag==0)
+	{	
+		// Integral Time
 		CUR_slIdInteg = sl_limit(CUR_slIdInteg ,((SLONG)CUR_swIdseErrPu * CUR_uwdKiPu), 0x7FFFFFFF);  //Q31 = Q(15+16)
         CUR_slWindUp = 0;
 	}
-	else{
+	else
+	{
         swErrtmp = FLX_swVoutPu - FLX_swVsMaxPu; //Q15
-      //CUR_slWindUp = CUR_slWindUp + ((SLONG)swErrtmp*7168)>>10;    // revise anti-windup by JOSH 2017/03/15
+      	//CUR_slWindUp = CUR_slWindUp + ((SLONG)swErrtmp*7168)>>10;    // revise anti-windup by JOSH 2017/03/15
         //CUR_slWindUp = CUR_slWindUp + (SLONG)swErrtmp*7;             // revise anti-windup by JOSH 2017/03/15
-//       CUR_slWindUp = sl_limit_modify(CUR_slWindUp,  (SLONG)swErrtmp*7, 0x7FFFFFFF);      // revise anti-windup by JOSH 2017/03/15  //[Voltage saturate, Howard, 2018/10/23]
-	   CUR_slWindUp =0;  // revise anti-windup by JJ 2018/11/02
+		//CUR_slWindUp = sl_limit_modify(CUR_slWindUp,  (SLONG)swErrtmp*7, 0x7FFFFFFF);      // revise anti-windup by JOSH 2017/03/15  //[Voltage saturate, Howard, 2018/10/23]
+	   	CUR_slWindUp =0;  // revise anti-windup by JJ 2018/11/02
 
 
 #if 0		
         if (CUR_slIdInteg >= 0)	
-           CUR_slIdInteg = CUR_slIdInteg - CUR_slWindUp;	
+           	CUR_slIdInteg = CUR_slIdInteg - CUR_slWindUp;	
         else
             CUR_slIdInteg = CUR_slIdInteg + CUR_slWindUp;
     
@@ -138,18 +141,22 @@ void CurrentReg_daxis(void)
 	 //[Voltage saturate, Howard, 2018/10/23]
         // slIdIntegtemp = CUR_slIdInteg;
 
-       if (CUR_slIdInteg > 0) {
-         CUR_slIdInteg = sl_limit_modify(CUR_slIdInteg,  - CUR_slWindUp, 0x7FFFFFFF);
-	     if(CUR_slIdInteg <= 0) {
-		   CUR_slIdInteg = 0;
-		 }
-       }
-       else  if (CUR_slIdInteg < 0){
-	     CUR_slIdInteg = sl_limit_modify( CUR_slIdInteg, CUR_slWindUp, 0x7FFFFFFF);
-	     if(CUR_slIdInteg >= 0) {
-		   CUR_slIdInteg = 0;
-		 }
-       }
+		if (CUR_slIdInteg > 0)
+		{
+			CUR_slIdInteg = sl_limit_modify(CUR_slIdInteg,  - CUR_slWindUp, 0x7FFFFFFF);
+			if(CUR_slIdInteg <= 0)
+			{
+				CUR_slIdInteg = 0;
+			}
+		}
+		else  if (CUR_slIdInteg < 0)
+		{
+			CUR_slIdInteg = sl_limit_modify( CUR_slIdInteg, CUR_slWindUp, 0x7FFFFFFF);
+			if(CUR_slIdInteg >= 0)
+			{
+				CUR_slIdInteg = 0;
+			}
+		}
 
          //CUR_slIdInteg = slIdIntegtemp;
 

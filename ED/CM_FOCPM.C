@@ -33,7 +33,8 @@ History:
 void TB1_FOCPM(void) //1ms
 {
 	UWORD uwTemp;
-    float flTemp;
+
+    //float flTemp;				//clear Warning, Special.kung, 03/08/2023
 
     TB1_SpeedReg();				//calculate speed loop kp/ki gain
 	TB1_CurrentReg();			//calculate current loop kp/ki gain
@@ -60,7 +61,7 @@ void TB1_FOCPM(void) //1ms
         //uwTemp = uwTemp+(uwTemp*((pr[BTTx_TestTorq]*0.01)-1));
 
         //[Special.Kung, 2022/12/12]
-        //Torque should 0.1¡A0.2 multiple increase
+        //Torque should 0.1ï¿½A0.2 multiple increase
         uwTemp = (uwTemp*(BTTx_uwTestStep*0.1));
     }
 	else
@@ -134,7 +135,7 @@ void TB2_FOCPM(void) //100us
 	if (SpDt_uwPGErrTmp==0)
 		CRM_ulThetaR = SpDt_ulThetaR;	
     
-    CurrentMod_PMPG();					//Àò±oSIN¡BCOS¬dªí­È
+    CurrentMod_PMPG();					//ï¿½ï¿½oSINï¿½BCOSï¿½dï¿½ï¿½ï¿½ï¿½
 
     T32_swIasInPu = AD_swIAPu;
     T32_swIbsInPu = AD_swIBPu;

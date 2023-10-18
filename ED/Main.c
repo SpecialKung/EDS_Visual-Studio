@@ -918,10 +918,11 @@ void InitValue(void)
 {
     UBYTE ubMCChk, ubBKChk1,ubBKChk2, HPSPEC_temp;  //[change for EN81-1+A3, Bernie, 2015/03/16]				
     UWORD i;
-    UWORD ax, bx;
     UWORD k, px, j;
     SLONG slSpdLimRe;
     SWORD swTemp;
+
+    //UWORD ax, bx;           //clear Warning, Special.kung, 03/08/2023
 
     void (*mfi_ptr)(UWORD ,UWORD);
 
@@ -3871,7 +3872,7 @@ void Temp_vs_fpwm(void)
 }
 
 //-------- (TempAD-xl)/(xh-xl) * a + b, where a is (TempHi-TempLow), b is TempLow 
-UWORD AD2Temp(UWORD xl, UWORD xh, UWORD TempAD,UWORD a, UWORD b)
+UWORD AD2Temp(UWORD xl, UWORD xh, UWORD TempAD, UWORD a, UWORD b)
 {
     return ((((ULONG)(xh-TempAD)*a)/(UWORD)(xh-xl))+b);    
 }    
@@ -4377,15 +4378,16 @@ void VFD_Timer(void)
         
     /*---------[ oH ]---------------*/
     //Real Temperature is small when AD value is big.
-      HPSPEC_temp = pr[HPSPEC];            //[Single phase input, Bernie, 01/19/2012]
-      if(pr[HPSPEC]>VFD_SINGLEPHASE)
-          HPSPEC_temp -= VFD_SINGLEPHASE;
-      //if (pr[HPSPEC]>=VFD300V23A && pr[HPSPEC]!=VFD300V43A){		    	// Over 40HP have Thermo in Heat sink	// 300V43A chg to frame D, Sean, 03/14/2011
-      if (HPSPEC_temp>=VFD300V23A && HPSPEC_temp!=VFD300V43A){	
+    HPSPEC_temp = pr[HPSPEC];            //[Single phase input, Bernie, 01/19/2012]
+    if(pr[HPSPEC]>VFD_SINGLEPHASE)
+        HPSPEC_temp -= VFD_SINGLEPHASE;
+    //if (pr[HPSPEC]>=VFD300V23A && pr[HPSPEC]!=VFD300V43A){		    	// Over 40HP have Thermo in Heat sink	// 300V43A chg to frame D, Sean, 03/14/2011
+    if (HPSPEC_temp>=VFD300V23A && HPSPEC_temp!=VFD300V43A)
+    {	
 #if SH7149
 	    HS_Temp = Vth_to_Temp(AN2, HS_Temp);    // Heat Sink Temperature
 #else
-	   HS_Temp = Vth_to_Temp(TH2adLPF.sw.hi, HS_Temp); // Sean, 11/24/2010
+	    HS_Temp = Vth_to_Temp(TH2adLPF.sw.hi, HS_Temp); // Sean, 11/24/2010
 #endif
 	    
     	if ( (pr[PROTBIT]&0x8000)==0 ){             // Bit15, OH2, dino, 05/24/2007
@@ -4539,31 +4541,37 @@ void ErrorResetInit(void)
 void main(void)
 {
     UWORD ax, bx;
-    UBYTE i,ubRxCnt;  //[For IED PG-Card, Sampo, 02/14/2010]
+    UBYTE i;  //[For IED PG-Card, Sampo, 02/14/2010]
     SWORD swTemp1,swTemp2,swTemp3;
     SWORD swSpdP_tmp,swSpdN_tmp;   //6a17j
     SLONG (*mfai_ptr)(UBYTE,SWORD);
     UWORD uwTemp;
     ULONG ulTemp;	
     ULONG DATASEL;	// dino, 03/08/2007
-    ULONG_UNION FDisplay;
-	UBYTE ubReturn;    //[For IED PG-Card, Sampo, 02/14/2010]
-    UWORD_UNION uwCRC; //[For IED PG-Card, Sampo, 02/14/2010]
     UWORD uwPGA, uwPGB, uwPGZ, uwHall;    //[Used For PG ABD Test, Bernie, 10/28/2011]
     ULONG ulPGSWCnt;                      //[Used For PG ABD Test, Bernie, 10/28/2011]
     UBYTE ubPGCard;                       //[Modify PG Type Define, Bernie, 12/05/2011]
     UWORD uwHi, uwLow, uwMid;             //[Modify PG Type Define, Bernie, 12/05/2011]
-    SWORD swAD_temp;
     SLONG aa;
-    UWORD wait, j;
+    UWORD j;
+
+    //UBYTE i,ubRxCnt;                        //clear Warning, Special.kung, 03/08/2023
+    //ULONG_UNION FDisplay;                   //clear Warning, Special.kung, 03/08/2023
+    //UBYTE ubReturn;                         //clear Warning, Special.kung, 03/08/2023
+    //UWORD_UNION uwCRC;                      //clear Warning, Special.kung, 03/08/2023
+    //SWORD swAD_temp;                        //clear Warning, Special.kung, 03/08/2023
+    //UWORD wait, j;                          //clear Warning, Special.kung, 03/08/2023
+
 	//[ //[DLC function, Henry, 2016/07/20]
 	#if FRAM_BUF	// Fram_Buf added and FRAM read/write to Fram_Buf instead, Sean, 06/30/2010 
 	frm_vdRead();
     #endif	
 	frm_vdDLCRead(); //[DLC function, Henry, 2016/07/20]
     ax = read_ep(FLOOR_PAGE);
-    if(ax ==0){
-        for(bx = 0; bx<EPMAX; bx++){
+    if(ax ==0)
+    {
+        for(bx = 0; bx<EPMAX; bx++)
+        {
             //attr[bx].ati = attr1[bx].ati;
             //attr[bx].min = attr1[bx].min;
             //attr[bx].max = attr1[bx].max;
@@ -4571,65 +4579,94 @@ void main(void)
             attr[bx] = attr1[bx];
         }
     }
-    else if(ax == 1){
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 1)
+    {
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC1[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC1[bx-DLC_PR];
-        }
-      }
     }
-    else if(ax == 2){// JINGDO
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 2)
+    {
+        // JINGDO
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC2[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC2[bx-DLC_PR];
-        }
-      }
   	}
-    else if(ax == 3){  //[adjust floor position adjust,Aevin,2018/06/19]
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 3)
+    {  
+        //[adjust floor position adjust,Aevin,2018/06/19]
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC3[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC3[bx-DLC_PR];
-        }
-      }
   	}
-    else if(ax == 4){  //[ //[adjust floor position,Henry,2019/01/07]
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 4)
+    {  
+        //[ //[adjust floor position,Henry,2019/01/07]
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC_adjst[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC_adjst[bx-DLC_PR];
-        }
-      }
   	}    
-    else if(ax == 5){  //[ //[adjust floor position,Henry,2019/01/07]
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 5)
+    {  
+        //[ //[adjust floor position,Henry,2019/01/07]
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC_adjst2[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC_adjst2[bx-DLC_PR];
-        }
-      }
   	}    
-    else if(ax == 6){  //[ //[adjust floor position,Henry,2019/01/07]
-      for(bx = 0; bx<EPMAX; bx++){
-        if((bx < DLC_PR) || (bx >= GROUP5)){
-          attr[bx] = attr1[bx];
+    else if(ax == 6)
+    {  
+        //[ //[adjust floor position,Henry,2019/01/07]
+        for(bx = 0; bx<EPMAX; bx++)
+        {
+            if((bx < DLC_PR) || (bx >= GROUP5))
+            {
+                attr[bx] = attr1[bx];
+            }
+            else
+            {
+                attr[bx] = attr_DLC_adjst3[bx-DLC_PR];
+            }
         }
-        else{
-      	  attr[bx] = attr_DLC_adjst3[bx-DLC_PR];
-        }
-      }
   	}
 	//] //[adjust floor position,Henry,2019/01/07]
     
@@ -4842,20 +4879,22 @@ void main(void)
 	// ]
 	
 
-  //if ((POE2.ICSR1.WORD&0x7000)!=0)
-	    //POE2.ICSR1.WORD &= 0xFFFF;		//FFFF:POE3 added, Sean, 01/25/2010
-  //if ((POE2.ICSR2.WORD&0x7000)!=0)
-	    //POE2.ICSR2.WORD &= 0x8FFF;
-  if((POE.ICSR1.WORD&0x1000)!=0 ||((POE.ICSR2.WORD&0x1000)!=0)/*||(POE.ICSR3.WORD&0x1000)*/){
-      POE.ICSR1.WORD &= 0x1103;
-      POE.ICSR2.WORD &= 0x1103; 
-     
-  }
-  if(((POE.ICSR3.WORD&0x1000)!=0) ||((POE.ICSR4.WORD&0x1000)!=0)||((POE.ICSR5.WORD&0x1000)!=0)){
-      POE.ICSR3.WORD &= 0x1303;
-      POE.ICSR4.WORD &= 0x1303;
-      POE.ICSR5.WORD &= 0x1303;
-  }
+    //if ((POE2.ICSR1.WORD&0x7000)!=0)
+            //POE2.ICSR1.WORD &= 0xFFFF;		//FFFF:POE3 added, Sean, 01/25/2010
+    //if ((POE2.ICSR2.WORD&0x7000)!=0)
+            //POE2.ICSR2.WORD &= 0x8FFF;
+    if((POE.ICSR1.WORD&0x1000)!=0 ||((POE.ICSR2.WORD&0x1000)!=0)/*||(POE.ICSR3.WORD&0x1000)*/)
+    {
+        POE.ICSR1.WORD &= 0x1103;
+        POE.ICSR2.WORD &= 0x1103; 
+        
+    }
+    if(((POE.ICSR3.WORD&0x1000)!=0) ||((POE.ICSR4.WORD&0x1000)!=0)||((POE.ICSR5.WORD&0x1000)!=0))
+    {
+        POE.ICSR3.WORD &= 0x1303;
+        POE.ICSR4.WORD &= 0x1303;
+        POE.ICSR5.WORD &= 0x1303;
+    }
     //POE2.ICSR1.BIT.PIE1 = 1;
     //POE2.ICSR2.BIT.PIE2 = 1;
     POE.ICSR1.BIT.PIE1 = 1;
@@ -4898,26 +4937,27 @@ void main(void)
         
     //}
 
-   if((pr[PG_TYPE] != ABZ_ONLY)&&(pr[PG_TYPE] != ABZ_UVW)&&(pr[PG_TYPE] != NOPG)){ // [PGABD Output error, Lyabryan, 2015/08/13] 
-	  InitSCI0();
-	  TB_2ms = 0;	        // Add by DINO, 10/09/2008
-	  edt_ubStep = 0; // Add by DINO, 10/09/2008
-        }
-   else{
-
-       PORT2.PMR.BIT.B3 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
-       PORT2.PMR.BIT.B2 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
-       PORT3.PMR.BIT.B0 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
-       PORT2.PDR.BIT.B3 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
-       PORT2.PDR.BIT.B2 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
-       PORT3.PDR.BIT.B0 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
-       PORT2.PODR.BIT.B2 = 0; // Initial PORD Output is zero.
-       PORT2.PODR.BIT.B3 = 0; // Initial PORD Output is zero.
-       PORT3.PODR.BIT.B0 = 0; // Initial PORD Output is zero.
-       
+   if((pr[PG_TYPE] != ABZ_ONLY)&&(pr[PG_TYPE] != ABZ_UVW)&&(pr[PG_TYPE] != NOPG))
+   { 
+    // [PGABD Output error, Lyabryan, 2015/08/13] 
+        InitSCI0();
+        TB_2ms = 0;	        // Add by DINO, 10/09/2008
+        edt_ubStep = 0; // Add by DINO, 10/09/2008
+    }
+   else
+   {
+        PORT2.PMR.BIT.B3 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
+        PORT2.PMR.BIT.B2 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
+        PORT3.PMR.BIT.B0 = 0; //[0: Uses the pin as a general I/O pin.];[1: Uses the pin as an I/O port for peripheral functions.]
+        PORT2.PDR.BIT.B3 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
+        PORT2.PDR.BIT.B2 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
+        PORT3.PDR.BIT.B0 = 1; //[0: Input (Functions as an input pin.)];[1: Output (Functions as an output pin.)]
+        PORT2.PODR.BIT.B2 = 0; // Initial PORD Output is zero.
+        PORT2.PODR.BIT.B3 = 0; // Initial PORD Output is zero.
+        PORT3.PODR.BIT.B0 = 0; // Initial PORD Output is zero.
     }
    
-  /*=========== PG Card type detact  ===========   //[Modify PG Type Define, Bernie, 12/05/2011]
+    /*=========== PG Card type detact  ===========   //[Modify PG Type Define, Bernie, 12/05/2011]
                                   AN5
                           PGHSD  3.133V
                            ---------- 2.5V
@@ -4971,93 +5011,109 @@ void main(void)
 
     while(1)
     {    
-     //===================== Encoder quality ====================//
-      if(TB1_uwPGQuality_1sec>=1000 && FIRST_FLAG==0){                                           //[PG quality function, Bernie, 2017/06/20]
-          TB1_swPGQualityDsp = 1000-(SWORD)((SPR_ulPGQualityCnt*1000)/SpDt_ulPG1NpulseNoMx);
-          if((TB1_swPGQualityDsp<=5)){
-          //if(FIRST_FLAG==1){
-              TB1_swPGQualityDsp = 0;   //dot1
-          }
-          //uwtest24++;
-          TB1_uwPGQuality_1sec = 0;
-      }
+        //===================== Encoder quality ====================//
+        if(TB1_uwPGQuality_1sec>=1000 && FIRST_FLAG==0)
+        {                                           
+            //[PG quality function, Bernie, 2017/06/20]
+            TB1_swPGQualityDsp = 1000-(SWORD)((SPR_ulPGQualityCnt*1000)/SpDt_ulPG1NpulseNoMx);
+            if((TB1_swPGQualityDsp<=5))
+            {
+                //if(FIRST_FLAG==1){
+                TB1_swPGQualityDsp = 0;   //dot1
+            }
+            TB1_uwPGQuality_1sec = 0;
+        }
 
     
-      /*================= Service Times function ===================*/
-      if(((RUN_SENSOR0 == 1) && (RUN_SENSOR1 == 0))&&(pr[SERVICE_ENABLE]==1)&&(RUNNING==RUN)){   //[Service time function, Bernie, 2017/03/14]
-          if(pr[SERVICE_COUNT]!=0){
-              pr[SERVICE_COUNT]--;
-              write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
-              RUN_SENSOR1 = 1;
-          }
-          else{
-              SERVICE_KEYRESET = 1;
-              Error = SERVICE_ERR;
-              write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
-          }
-      }
-      //[ //[Running Dir Count,Special,2018/08/17]
-	  /*================= Running Dir Count function ===================*/
-	  if((CMDDIR_OLD != CMDDIR)&&(RUNNING == RUN)){
+        /*================= Service Times function ===================*/
+        if(((RUN_SENSOR0 == 1) && (RUN_SENSOR1 == 0))&&(pr[SERVICE_ENABLE]==1)&&(RUNNING==RUN))
+        {
+            //[Service time function, Bernie, 2017/03/14]
+            if(pr[SERVICE_COUNT]!=0)
+            {
+                pr[SERVICE_COUNT]--;
+                write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
+                RUN_SENSOR1 = 1;
+            }
+            else
+            {
+                SERVICE_KEYRESET = 1;
+                Error = SERVICE_ERR;
+                write_ep(0,SERVICE_COUNT ,pr[SERVICE_COUNT]);
+            }
+        }
+        //[ //[Running Dir Count,Special,2018/08/17]
+        /*================= Running Dir Count function ===================*/
+	    if((CMDDIR_OLD != CMDDIR)&&(RUNNING == RUN))
+        {
 	  	
-		  if(pr[IR_COUNT_L] == 9999){
-			  pr[IR_COUNT_L]=0;
-			  pr[IR_COUNT_H]=pr[IR_COUNT_H]+1;
-              write_ep(0,IR_COUNT_H ,pr[IR_COUNT_H]);
-		  }
-		  else{
-			  pr[IR_COUNT_L]=pr[IR_COUNT_L]+1;
-              write_ep(0,IR_COUNT_L ,pr[IR_COUNT_L]);
-		  }
-          if(IRF_ENABLE){    
-          	  if(pr[IR_TCOUNT_L] == 9999){
-          		  pr[IR_TCOUNT_L]=0;
-          		  pr[IR_TCOUNT_H]=pr[IR_TCOUNT_H]+1;
-                  write_ep(0,IR_TCOUNT_H ,pr[IR_TCOUNT_H]);
-          	  }
-          	  else{
-          		  pr[IR_TCOUNT_L]=pr[IR_TCOUNT_L]+1;
-                  write_ep(0,IR_TCOUNT_L ,pr[IR_TCOUNT_L]);
-          	  }
-			  IR_ulTcount = pr[IR_TCOUNT_H]*10000+pr[IR_TCOUNT_L];
-          }
-          
-          CMDDIR_OLD=CMDDIR;
-	  }
+            if(pr[IR_COUNT_L] == 9999)
+            {
+                pr[IR_COUNT_L]=0;
+                pr[IR_COUNT_H]=pr[IR_COUNT_H]+1;
+                write_ep(0,IR_COUNT_H ,pr[IR_COUNT_H]);
+            }
+            else
+            {
+                pr[IR_COUNT_L]=pr[IR_COUNT_L]+1;
+                write_ep(0,IR_COUNT_L ,pr[IR_COUNT_L]);
+            }
+            if(IRF_ENABLE)
+            {    
+                if(pr[IR_TCOUNT_L] == 9999)
+                {
+                    pr[IR_TCOUNT_L]=0;
+                    pr[IR_TCOUNT_H]=pr[IR_TCOUNT_H]+1;
+                    write_ep(0,IR_TCOUNT_H ,pr[IR_TCOUNT_H]);
+                }
+                else
+                {
+                    pr[IR_TCOUNT_L]=pr[IR_TCOUNT_L]+1;
+                    write_ep(0,IR_TCOUNT_L ,pr[IR_TCOUNT_L]);
+                }
+                IR_ulTcount = pr[IR_TCOUNT_H]*10000+pr[IR_TCOUNT_L];
+            }
+
+            CMDDIR_OLD=CMDDIR;
+	    }
 	  
-      if(pr[IR_COUNT_H] == 60000){
-          WGOFF;
-          Error = SERVICE_ERR;
-          WGOFF;
-          TB1_uwMCStopCnt = pr[MCDELAY_STOP];
-          LIFT_ENABLE = 0;
-          CMDFREE = 1;
-      }
-      
-      if(IR_ulTcount==209999){
-          IRF_Error = 1;
-      }
+        if(pr[IR_COUNT_H] == 60000)
+        {
+            WGOFF;
+            Error = SERVICE_ERR;
+            WGOFF;
+            TB1_uwMCStopCnt = pr[MCDELAY_STOP];
+            LIFT_ENABLE = 0;
+            CMDFREE = 1;
+        }
+        
+        if(IR_ulTcount==209999){
+            IRF_Error = 1;
+        }
         
 
-	  if(IR_ulTcount>(pr[IR_LIFE]*10)){
-   	  	  if(IRF_Warning == 1){
-   			  WarnDisplaySave();
-   			  WarnCode = SERVICE_WARN;
-   		  }
-   		  else if(IRF_Error == 1 ){
-              WGOFF;
-   			  Error = SERVICE_ERR;
-   			  WGOFF;
-   			  TB1_uwMCStopCnt = pr[MCDELAY_STOP];
-              LIFT_ENABLE = 0;
-   			  CMDFREE = 1;
-              IR_KEYRESET = 1;
-   		  }
-	  }
-      //] //[Running Dir Count,Special,2018/08/17]				
+        if(IR_ulTcount>(pr[IR_LIFE]*10))
+        {
+            if(IRF_Warning == 1)
+            {
+                WarnDisplaySave();
+                WarnCode = SERVICE_WARN;
+            }
+            else if(IRF_Error == 1 )
+            {
+                WGOFF;
+                Error = SERVICE_ERR;
+                WGOFF;
+                TB1_uwMCStopCnt = pr[MCDELAY_STOP];
+                LIFT_ENABLE = 0;
+                CMDFREE = 1;
+                IR_KEYRESET = 1;
+            }
+        }
+        //] //[Running Dir Count,Special,2018/08/17]				
 	  
 	  
-  //=====================EPS MO Output======================// //[EPS MO Output,Lyabryan,2018/06/19]
+    //=====================EPS MO Output======================// //[EPS MO Output,Lyabryan,2018/06/19]
         if((MI_EPS_SWITCH == 1)||((Error==LvA_ERR)||(Error==Lvd_ERR)||(Error==Lvn_ERR)||(Error==LvS_ERR))){ 
             if(MO_EPS_SWITCH == 1){
                 if(EPS == 1){
@@ -5073,21 +5129,22 @@ void main(void)
                 uwEPS_Off_CNT = 0;
             }
         }
-  //========================================================// //[EPS MO Output,Lyabryan,2018/06/19]
-      if(DLC_uwEeprom == 1){
-    		
+    //========================================================// //[EPS MO Output,Lyabryan,2018/06/19]
+        if(DLC_uwEeprom == 1)
+        {
     		WelTun_eeprom();
     		DLC_uwEeprom = 0;
-      }
+        }
     
     /*================= PGABD ===================*/  //[PGABD function, Bernie, 10/13/2011]
         if ((pr[DEBUG_F1]&0x0008) != 0x0008){
-            if(pr[PG_TYPE] == ABZ_ONLY || pr[PG_TYPE] == ABZ_UVW){
+            if(pr[PG_TYPE] == ABZ_ONLY || pr[PG_TYPE] == ABZ_UVW)
+            {
                 //ubPGData = (pr[PG_MODE] & 0x001F) + ((pr[PG_MODE] & 0x100) >> 3) + ((pr[PG_MODE] & 0x200) >> 3) + 0x80;
                 ubPGData = pr[FREQ_DIV]+
-                          ((pr[PG_DIV_MODE]&0x0001)<<5)+
-                          ((pr[PG_DIV_MODE]&0x0002)<<5)+
-                           0x80;                                  //[Modify PG Type Define, Bernie, 12/05/2011]
+                            ((pr[PG_DIV_MODE]&0x0001)<<5)+
+                            ((pr[PG_DIV_MODE]&0x0002)<<5)+
+                            0x80;                                  //[Modify PG Type Define, Bernie, 12/05/2011]
                 ubPGData = ~ubPGData;           //inverse the signal 
                 for (i = 0; i<8; i++) {      // send data to 74595
             
@@ -6439,9 +6496,12 @@ void function_chk(void)
 void Sinusoidal_Position(void)
 {
     UBYTE ubStage;
-    SWORD swSIN, swCOS, swX, swY, swS, swC, swPGInit;
-    UWORD uwTan, uwOffset,uw_Z90angle,uw_Xangle,uw_temp, uwPGThetaE;
+    SWORD swSIN, swCOS, swX, swY, swS, swC;
+    UWORD uwTan, uwOffset, uwPGThetaE;
     ULONG ulPGThetaE_COMtemp;     // [IED 1387 static Tune, 2011/07/06]
+    
+    //SWORD swSIN, swCOS, swX, swY, swS, swC, swPGInit;                           //clear Warning, Special.kung, 03/08/2023
+    //UWORD uwTan, uwOffset,uw_Z90angle,uw_Xangle,uw_temp, uwPGThetaE;            //clear Warning, Special.kung, 03/08/2023
 
 #if 1/*IED_PG_ERN1387*/ //[For ERN1387, Sampo, 01/08/2010]
    
@@ -6784,7 +6844,9 @@ UWORD Group_Check(UWORD prx){
 }
 void LV_REC(void)
 {
-	UWORD uwEEPData, uwBuffer, uwEEPData1,i;
+	UWORD uwEEPData, uwBuffer, i;
+
+    //UWORD uwEEPData, uwBuffer, uwEEPData1,i;      //clear Warning, Special.kung, 03/08/2023
 
 	if ( EPS==0){  // Don't write EEPROM when EPS==1
 

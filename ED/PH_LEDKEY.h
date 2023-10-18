@@ -148,13 +148,13 @@ typedef struct{
 
 /*------ LED EQUATION                   ;DECIMAL TO 7 SEGMENTS
         ___1___
-       |             |
-    2 |             | 0
+       |       |
+     2 |       | 0
        |___3___|
-       |             |
-    6 |             | 4
+       |       |
+     6 |       | 4
        |___5___|   o
-                            7
+                    7
 
                 76543210	*/
 #define CHAR2_Ubar	0x72    //.EQU    0101 0011B    ;u_
@@ -241,29 +241,30 @@ LEDKEY_EXT void D1toD4_Display(void);   //[Added D1 to D4 on board display, Bern
 LEDKEY_EXT void LED_MIMO_Display(void);
 
 /* Exported Variable List ======================================*/
-LEDKEY_EXT UBYTE	keyinx,
-					keyin1,
-   					keyct0,
-   					keyct1,
-   					keyct2,
-   					keyct3,
-					ledx,
-					KEY_ubDispMode,
-					KEY_ubDispTmp,
-					KEY_ubWarnTmp,
-					disptemp,
-					dot,
-					endct,
-					spdispx,
-					msg_page,
-					grno,
-					prno,
-					blinks,
-					blinkf,
-					blinku,
-					KEY_ubPrno[(GRALL+1)],
-					rst_det,	// reset key detecting and excuting, Sean, 08/19/2010
-					recent_pr; //[add RecentPG,Lyabryan,2020/03/14]
+LEDKEY_EXT UBYTE	
+                  keyinx,
+                  keyin1,
+                  keyct0,
+                  keyct1,
+                  keyct2,
+                  keyct3,
+                  ledx,
+                  KEY_ubDispMode,
+                  KEY_ubDispTmp,
+                  KEY_ubWarnTmp,
+                  disptemp,
+                  dot,
+                  endct,
+                  spdispx,
+                  msg_page,
+                  grno,
+                  prno,
+                  blinks,
+                  blinkf,
+                  blinku,
+                  KEY_ubPrno[(GRALL+1)],
+                  rst_det,	// reset key detecting and excuting, Sean, 08/19/2010
+                  recent_pr; //[add RecentPG,Lyabryan,2020/03/14]
 LEDKEY_EXT UWORD	recent_no;
 LEDKEY_EXT UWORD_UNION     Recentflag; //[add RecentPG,Lyabryan,2020/03/14]
 
@@ -284,11 +285,12 @@ LEDKEY_EXT UWORD_UNION     Recentflag; //[add RecentPG,Lyabryan,2020/03/14]
 //#define GPMODE         Recentflag.bit.b14
 //#define GPMODE         Recentflag.bit.b15
 
-LEDKEY_EXT UWORD	relprno,
-                    relprno13,
-					userfkey,
-					KEY_uwPrData,
-					KEY_uwPWRCnt;
+LEDKEY_EXT UWORD	
+                  relprno,
+                  relprno13,
+                  userfkey,
+                  KEY_uwPrData,
+                  KEY_uwPWRCnt;
 
 //LEDKEY_EXT SWORD    KEY_uwPrData;
 					
@@ -310,10 +312,10 @@ LEDKEY_EXT LEDSEG	led;
 
 // Warn Code Table for LED Display
 const LEDDATASEG WarnMSG[WARNMAX/*+IED_ERRMAX-ERRMAX)*/] = {  // IED Error Display, DINO, 08/13/2010
-	  _C,    _E,    _0,   _1,	// cE1     001  CE-01 - illegal command code
-	  _C,    _E,    _0,   _2,	// cE1     001  CE-01 - illegal command code
-      _C,    _E,    _0,   _3,   // cE1     001  CE-01 - illegal command code
-      _C,    _E,    _0,   _4,   // cE1     001  CE-01 - illegal command code
+	  _C,    _E,    _0,   _1,	  // cE1     001  CE-01 - illegal command code
+	  _C,    _E,    _0,   _2,	  // cE1     001  CE-01 - illegal command code
+    _C,    _E,    _0,   _3,   // cE1     001  CE-01 - illegal command code
+    _C,    _E,    _0,   _4,   // cE1     001  CE-01 - illegal command code
 	  _C,    _E,    _1,   _0,   // cE10    005  CE-10 - time out
 	  _C,    _P,    _1,   _0,   // cP10    006  CP-10 - Keypad Time out
 	_BLK,    _S,    _E,   _1,   // SE1     007  Copy Failure
@@ -338,28 +340,28 @@ const LEDDATASEG WarnMSG[WARNMAX/*+IED_ERRMAX-ERRMAX)*/] = {  // IED Error Displ
 	_BLK,    _F,    _A,   _n,   // FAn     026  FanLock warning
 	  _d,    _C,    _A,   _n,   // CAn     027  CAN warning
 	  _S,    _t,    _o,   _A,   // STO     028  STO Warning    //[STO function add Warning code and run rule, Bernie, 2016/03/22]
-      _U,    _C,    _M,   _P,   // UCMP    029  UCMP Warning   //[UCMP function, Bernie, 2016/06/14]
-    _BLK,    _S,    _E,   _3,   // SE3     030  COPY Fail 3, Model name Error	
-      _S,    _E,    _r,   _v,   // serv    031  Service time function //[Running Dir Count,Special,2018/08/17]
-    _BLK,    _d,	_i,	  _r,   // DLCDIR_WARN      032  //Artemis DLC Reverse direction command Issue, James, 2020/01/16
-	  _U,    _d,	_S,	  _1,   // UD1_Vlim_WARN	033  //Artemis speed limit, James, 20200220
-	  _U,    _d,	_S,	  _2,   // UD2_Vlim_WARN	034  
-	  _U,    _d,	_S,	  _3,   // UD3_Vlim_WARN	035  
-	  _U,    _d,	_S,	  _4,   // UD4_Vlim_WARN	036  
-	  _d,    _d,	_S,	  _1,   // DD1_Vlim_WARN	037  
-	  _d,    _d,	_S,	  _2,   // DD2_Vlim_WARN	038  
-	  _d,    _d,	_S,	  _3,   // DD3_Vlim_WARN	039  
-	  _d,    _d,	_S,	  _4,   // DD4_Vlim_WARN	040  	
+    _U,    _C,    _M,   _P,   // UCMP    029  UCMP Warning   //[UCMP function, Bernie, 2016/06/14]
+  _BLK,    _S,    _E,   _3,   // SE3     030  COPY Fail 3, Model name Error	
+    _S,    _E,    _r,   _v,   // serv    031  Service time function //[Running Dir Count,Special,2018/08/17]
+  _BLK,    _d,	  _i,	  _r,   // DLCDIR_WARN      032  //Artemis DLC Reverse direction command Issue, James, 2020/01/16
+	  _U,    _d,	  _S,	  _1,   // UD1_Vlim_WARN	033  //Artemis speed limit, James, 20200220
+	  _U,    _d,	  _S,	  _2,   // UD2_Vlim_WARN	034  
+	  _U,    _d,	  _S,	  _3,   // UD3_Vlim_WARN	035  
+	  _U,    _d,	  _S,	  _4,   // UD4_Vlim_WARN	036  
+	  _d,    _d,	  _S,	  _1,   // DD1_Vlim_WARN	037  
+	  _d,    _d,	  _S,	  _2,   // DD2_Vlim_WARN	038  
+	  _d,    _d,	  _S,	  _3,   // DD3_Vlim_WARN	039  
+	  _d,    _d,	  _S,	  _4,   // DD4_Vlim_WARN	040  	
 	  _E,    _F,    _r,   _n,   // EFrn	        041  Exist FWD/REV Warn  //[Sibocom exist FWD/REV Warn, Jason, 2019/10/07]
 	_BLK,    _S,    _o,   _S,   // SOS	        042  //[Sibocom SOS Warn, James, 2020/04/28]
-    _BLK,    _L,    _S, _BLK,   // LS           043  //#15977, LULD detect, James, 2021/04/01
-      _S,    _t,    _o,   _b,   // STOb         044  STO Sequence Warning  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14 
-      _S,    _t,    _o,   _c,   // STOc         045  STO Short Warning     //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
-    _BLK,    _S,	_n,	  _7,   // Sensor817	046  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-    _BLK,    _S,	_n,	  _8,   // Sensor818	047  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-      _b,    _t,    _t,   _A,   // bttA	        048  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-      _b,    _t,    _t,   _n,   // bttn	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-      _b,    _t,    _t,   _S,   // btts	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+  _BLK,    _L,    _S, _BLK,   // LS           043  //#15977, LULD detect, James, 2021/04/01
+    _S,    _t,    _o,   _b,   // STOb         044  STO Sequence Warning  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14 
+    _S,    _t,    _o,   _c,   // STOc         045  STO Short Warning     //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
+  _BLK,    _S,	  _n,	  _7,   // Sensor817	046  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+  _BLK,    _S,	 _n,	  _8,   // Sensor818	047  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+    _b,    _t,    _t,   _A,   // bttA	        048  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    _b,    _t,    _t,   _n,   // bttn	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+    _b,    _t,    _t,   _S,   // btts	        049  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 };
     
 	/*_BLK,  _BLK,    _c,   _t,	// ct		E68	 CAN Tx Error
@@ -449,8 +451,8 @@ const LEDDATASEG ErrMSG[ERRMAX] = {
     _BLK,    _E,    _F, _BLK,   //  EF          049  //External Fault                                
     _BLK,    _E,    _F,   _1,   //  EF1         050  //External Fault 1                              
     _BLK,    _b,    _b, _BLK,   //  bb          051  //Base Block                                    
-    _P  ,	 _c,    _o,   _d,   // PcodE        052  //Password                                      
-    _c  ,	 _c,    _d,   _E,   // ccodE        053  //SW                                            
+    _P  ,	   _c,    _o,   _d,   // PcodE        052  //Password                                      
+    _c  ,	   _c,    _d,   _E,   // ccodE        053  //SW                                            
     _C  ,    _E,    _0,   _1,   //  CE1         054  //PC Communication Error (illegal command code) 
     _C  ,    _E,    _0,   _2,   //  CE2         055  //PC Communication Error (illegal data address) 
     _C  ,    _E,    _0,   _3,   //  CE3         056  //PC Communication Error (illegal data value)   
@@ -489,12 +491,12 @@ const LEDDATASEG ErrMSG[ERRMAX] = {
     _S  ,    _t,    _L,   _4,   // STOL4        089  //STOL4 Short Error, power on to reset//#12225,STO short detect, James for 04-49=4~7, 2021/10/14
     _S  ,    _t,    _o,   _r,   // STOr         090  //STOr error at running //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
     _S  ,    _t,    _o,   _S,   // STOS         091  //STOS Short error  //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
-	_S	,	 _n,	_E,   _7,	// Sensor817	092  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-	_S	,	 _n,	_E,   _8,	// Sensor818	093  //[Artemis Add Sensor819 Function/Special/2022/06/06]
-	_BLK,    _b,    _t,   _t,   // BBT          094  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+	  _S	,	   _n,	  _E,   _7,	  // Sensor817	  092  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+	  _S	,	   _n,	  _E,   _8,	  // Sensor818	  093  //[Artemis Add Sensor819 Function/Special/2022/06/06]
+	  _BLK,    _b,    _t,   _t,   // BBT          094  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
     _b  ,    _t,    _t,   _E,   // BBTE         095  //BTT Test Error for reset FWD/REV [JES Torq Detect Function, Special.Kung, 2022/09/01]
     _b  ,    _t,    _t,   _n,   // BBTn         096  //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-	_BLK,    _A,    _E,   _L,   // AEL          097  //[AFE Error Handle/Lyabryan/2022/03/24]
+	  _BLK,    _A,    _E,   _L,   // AEL          097  //[AFE Error Handle/Lyabryan/2022/03/24]
 };
 
 #else

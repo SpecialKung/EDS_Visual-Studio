@@ -47,7 +47,6 @@ Includes   <System Includes> , "Project Includes"
 #include <machine.h>
 #include "modbus_dec_usr.h"
 
-
 /******************************************************************************
 Typedef definitions
 ******************************************************************************/
@@ -426,7 +425,7 @@ extern  void    usb_cpu_LcdDisp(uint8_t position, uint8_t *string);
 
 
 //=====================================================
-//---extern®É ¥²­n¥[¤J¸ê®Æ«¬ºA  §_«h °õ·|¶Ã±¼-----7/3/2015
+//---externï¿½ï¿½ ï¿½ï¿½ï¿½nï¿½[ï¿½Jï¿½ï¿½Æ«ï¿½ï¿½A  ï¿½_ï¿½h ï¿½ï¿½ï¿½|ï¿½Ã±ï¿½-----7/3/2015
 extern UWORD uwVfd_Explorer_Flag,uwVfd_Explorer_Count;//Aevin add--7/2/2015
 
 
@@ -11340,7 +11339,7 @@ int32_t usb_pcdc_read_data( int16_t fn, void *buf, uint32_t length )
     USB_MH_t            p_blf;
     USB_ER_t            err;
     USB_CLSINFO_t       *cp;
-
+    
     /* Get mem pool blk */
     if( R_USB_PGET_BLK(USB_PCDC_MPL, &p_blf) == USB_E_OK )
     {
@@ -17266,7 +17265,7 @@ void USB_vdRxDecoder(void){
 			
 			//--------bug happened , so MOdi to use down below method-------------Aevin 7/1/2015		
 				#if 0	
-				//¤£¯à³s¥Î3¦¸memcpy
+				//ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½3ï¿½ï¿½memcpy
     			/* TX Reply Data Assemble*/	
     			memcpy(USB_ubTxData_0,&ubLen,1);				//LEN
 				memcpy(USB_ubTxData_0+1,ubBuf,USB_ubRxCnt);		//ID+DATA

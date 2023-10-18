@@ -944,8 +944,10 @@ void TB3_SpDtPG1_Err(void)
 
 void TB2_SpDtPG1(void)	//100us obtain:SpDt_ulThetaR
 {    
-    SWORD SpDt_swtheatTmp, swTemp, sw100usCNT_Err;
-    UWORD uwTemp;
+    SWORD SpDt_swtheatTmp, sw100usCNT_Err;
+
+	//SWORD SpDt_swtheatTmp, swTemp, sw100usCNT_Err;
+	//UWORD uwTemp;
 
 	if (ALIGN == 0){			//2007/08/06	SCOTTY
         //MTU21.TCNT = 0;
@@ -1045,11 +1047,13 @@ void TB2_SpDtPG1(void)	//100us obtain:SpDt_ulThetaR
 void PGDIR_Detect(void){	//[Encoder absulate position wrong detect, Lyabryan, 2015/08/21]
 
 
-    SWORD swPGCDerr,swPGABerr,swPGABerr_LPF_err,swPGCDerr_LPF_err;
+    SWORD swPGCDerr,swPGABerr;
     UWORD uwPGABin;
     UWORD uwPGCDin;
-    UBYTE i,j;
     //UWORD PGCDinn_C[100];
+
+	//SWORD swPGCDerr,swPGABerr,swPGABerr_LPF_err,swPGCDerr_LPF_err;			//clear Warning, Special.kung, 03/08/2023
+	//UBYTE i,j;																//clear Warning, Special.kung, 03/08/2023
 
 
     uwPGABin = MTU1.TCNT;

@@ -74,7 +74,7 @@ void DBC_COEFInit(void)
 
 void DBC_Open(void)
 {
-	UWORD uw_dbwtemp;
+	//UWORD uw_dbwtemp;						//clear Warning, Special.kung, 03/08/2023
 
 #if SCOTTY	
 	if (CRM_swThetaStep>0)

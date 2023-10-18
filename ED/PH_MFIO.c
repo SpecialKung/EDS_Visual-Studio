@@ -26,114 +26,114 @@ void (*const mfi0_tbl[3])(UWORD chg,UWORD k) = {
 void (*const mfi1_tbl[(MFIMAX+1)])(UWORD chg,UWORD k) = {
 
 #if NEWPARA
-		no_func,        //0: No Function
-        mispeed1,       //1: MI speed 1
-        mispeed2,		//2: MI speed 2        
-        mispeed3,       //3: MI speed 3
-        mispeed4,       //4: MI speed 4
-		extreset,       //5: Reset
-		extjog,			//6: JOG
-		speedhold,      //7: Speed Hold
-		acc_dec_chg1,	//8: Accel_1/decel_1 change to Accel_2/ decel_2
-		acc_dec_chg2,	//9: Accel_3/decel_3 change to Accel_4/ decel_4
-        efnc,           //10:Exteral Fault, EF normal close
-        no_func,        //11:Base Block
-        outputoff,		//12:Output OFF
-        cancel_AAAD,	//13:Cancel Auto-Accel/Decel  function
-        no_func,		//14:Motor 1 change to motor 2
-        AUI1_SOFC,		//15:Frequency Command from AUI1
-        no_func,        //ACI_SOFC,//16:Frequency Command from ACI      //[ACI function remove, Bernie, 01/20/2012]
-        AUI2_SOFC,		//17:Frequency Command from AUI2
-        ForceRampStop,	//18:Force Ramp Stop
-        no_func,		//19:Up command
-        no_func,		//20:Down command
-        no_func,		//21:PID disable
-        no_func,		//22:Counter input
-        no_func,		//23:Cleat Counter
-        FWD_JOG,		//24:FWD JOG
-        REV_JOG,		//25:REV JOG
-        no_func,		//26:Torque mode t0 Speed mode
-        ASR1_ASR2,		//27:ASR1 to ASR2
-        ef1nc,  		//28:Emergency Stop (EF1)
-        no_func,		//29:Y-Connected check(MFI_YCONCHK)
-        no_func,		//30:Delta-Connected Check(MFI_DCONCHK)
-        TqOfstHigh,     //31:Torque offset compensation High
-        TqOfstMiddle,   //32:Torque offset compensation Middle
-        TqOfstLow,      //33:Torque offset compensation Low
-        no_func,		//34:MI Speed/MI Position
-        no_func,		//35:APR Control Enable
-        no_func,		//36:MI position Enter
-        no_func,		//37:PG Ref2 ON (Position Mode)
-        WriteEPDisable,	//38:Write to EEPROM disable
-        TqSetDirection,	//39:direction of Torque command
-        ForceCoastStop,	//40:Force Coast Stop
-        MCCHKEnable,	//41:Megnetic Contactor Signal
-        BKCHKEnable1,	//42:Mechanical Brake Signal  1   //[change for EN81-1+A3, Bernie, 2015/03/16]
-        EPSEnable,		//43:EPS enable
-        BKCHKEnable2,	//44:Mechanical Brake Signal  2   //[change for EN81-1+A3, Bernie, 2015/03/16]
-       	
-       	//DLC function, Henry, 2016/07/20 [
-       	DLC_LU,         //45:DLC LU
-       	DLC_LD,	        //46:DLC LD         
-       	DLC_CANOFF,     //47:DLC CAN Off  
-       	DLC_LOW_SPD,    //48:DLC Low Speed
-       	DLC_FSD,        //49:FSD Mode
-       	DLC_DDS,        //50:DDS1
-       	DLC_UDS,        //51:UDS1
-       	DLC_DZN,        //52:DZN   adco
-       	//]  
-        IODLC_CRPLS_IO, //53:IODLC_CRPLS // [IODLC, Lyabryan, 2016/11/11]
-        EPS_MI_DETCT,   //54:EPS_MI_DETCT //[EPS MO Output,Lyabryan,2018/06/19]
-        SMTRISE_ESD,    //55:ESD //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
-        SMTRISE_ETS,    //56:ETS //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
-        MI_Sensor819,	//57Sensor819 //[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
-        Torq_Detect,	//58:Torq Detect [JES Torq Detect Function, Special.Kung, 2022/09/01]
-		AFE_ERRFBK,	    //59:AFE Error Triger //[AFE Error Handle/Lyabryan/2022/03/24]
+    no_func,        //0: No Function
+    mispeed1,       //1: MI speed 1
+    mispeed2,		//2: MI speed 2        
+    mispeed3,       //3: MI speed 3
+    mispeed4,       //4: MI speed 4
+    extreset,       //5: Reset
+    extjog,			//6: JOG
+    speedhold,      //7: Speed Hold
+    acc_dec_chg1,	//8: Accel_1/decel_1 change to Accel_2/ decel_2
+    acc_dec_chg2,	//9: Accel_3/decel_3 change to Accel_4/ decel_4
+    efnc,           //10:Exteral Fault, EF normal close
+    no_func,        //11:Base Block
+    outputoff,		//12:Output OFF
+    cancel_AAAD,	//13:Cancel Auto-Accel/Decel  function
+    no_func,		//14:Motor 1 change to motor 2
+    AUI1_SOFC,		//15:Frequency Command from AUI1
+    no_func,        //ACI_SOFC,//16:Frequency Command from ACI      //[ACI function remove, Bernie, 01/20/2012]
+    AUI2_SOFC,		//17:Frequency Command from AUI2
+    ForceRampStop,	//18:Force Ramp Stop
+    no_func,		//19:Up command
+    no_func,		//20:Down command
+    no_func,		//21:PID disable
+    no_func,		//22:Counter input
+    no_func,		//23:Cleat Counter
+    FWD_JOG,		//24:FWD JOG
+    REV_JOG,		//25:REV JOG
+    no_func,		//26:Torque mode t0 Speed mode
+    ASR1_ASR2,		//27:ASR1 to ASR2
+    ef1nc,  		//28:Emergency Stop (EF1)
+    no_func,		//29:Y-Connected check(MFI_YCONCHK)
+    no_func,		//30:Delta-Connected Check(MFI_DCONCHK)
+    TqOfstHigh,     //31:Torque offset compensation High
+    TqOfstMiddle,   //32:Torque offset compensation Middle
+    TqOfstLow,      //33:Torque offset compensation Low
+    no_func,		//34:MI Speed/MI Position
+    no_func,		//35:APR Control Enable
+    no_func,		//36:MI position Enter
+    no_func,		//37:PG Ref2 ON (Position Mode)
+    WriteEPDisable,	//38:Write to EEPROM disable
+    TqSetDirection,	//39:direction of Torque command
+    ForceCoastStop,	//40:Force Coast Stop
+    MCCHKEnable,	//41:Megnetic Contactor Signal
+    BKCHKEnable1,	//42:Mechanical Brake Signal  1   //[change for EN81-1+A3, Bernie, 2015/03/16]
+    EPSEnable,		//43:EPS enable
+    BKCHKEnable2,	//44:Mechanical Brake Signal  2   //[change for EN81-1+A3, Bernie, 2015/03/16]
+    
+    //DLC function, Henry, 2016/07/20 [
+    DLC_LU,         //45:DLC LU
+    DLC_LD,	        //46:DLC LD         
+    DLC_CANOFF,     //47:DLC CAN Off  
+    DLC_LOW_SPD,    //48:DLC Low Speed
+    DLC_FSD,        //49:FSD Mode
+    DLC_DDS,        //50:DDS1
+    DLC_UDS,        //51:UDS1
+    DLC_DZN,        //52:DZN   adco
+    //]  
+    IODLC_CRPLS_IO, //53:IODLC_CRPLS // [IODLC, Lyabryan, 2016/11/11]
+    EPS_MI_DETCT,   //54:EPS_MI_DETCT //[EPS MO Output,Lyabryan,2018/06/19]
+    SMTRISE_ESD,    //55:ESD //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
+    SMTRISE_ETS,    //56:ETS //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
+    MI_Sensor819,	//57Sensor819 //[Artemis Add top and ground floor Switch Function/Special/2022/06/06]
+    Torq_Detect,	//58:Torq Detect [JES Torq Detect Function, Special.Kung, 2022/09/01]
+    AFE_ERRFBK,	    //59:AFE Error Triger //[AFE Error Handle/Lyabryan/2022/03/24]
 #else
-		no_func,        //0: No Function
-        mispeed1,       //1: MI speed 1
-        mispeed2,		//2: MI speed 2        
-        mispeed3,       //3: MI speed 3
-        mispeed4,       //4: MI speed 4
-		extreset,       //5: Reset
-		extjog,			//6: JOG
-		speedhold,      //7: Speed Hold
-		acc_dec_chg1,	//8: Accel_1/decel_1 change to Accel_2/ decel_2
-		acc_dec_chg2,	//9: Accel_3/decel_3 change to Accel_4/ decel_4
-        efnc,           //10:Exteral Fault, EF normal close
-        bb_up,          //11:Base Block
-        outputoff,      //12:Output OFF
-        cancel_AAAD,	//13:Cancel Auto-Accel/Decel  function
-        motor1_2,		//14:Motor 1 change to motor 2
-        AUI1_SOFC,		//15:Frequency Command from AUI1
-        ACI_SOFC,		//16:Frequency Command from ACI
-        AUI2_SOFC,		//17:Frequency Command from AUI2
-        ForceRampStop,	//18:Force Ramp Stop
-        incspeed,		//19:Up command
-        decspeed,       //20:Down command
-        piddis,       	//21:PID disable
-        CNT_CLR,		//22:Counter input
-        CNT_IN,	        //23:Cleat Counter
-        FWD_JOG,		//24:FWD JOG
-        REV_JOG,		//25:REV JOG
-        TRQ_2_SPD,		//26:Torque mode t0 Speed mode
-        ASR1_ASR2,		//27:ASR1 to ASR2
-        ef1nc,  		//28:Emergency Stop (EF1)
-        YconnectCHK,    //29:Y-Connected check(MFI_YCONCHK)
-        DconnectCHK,    //30:Delta-Connected Check(MFI_DCONCHK)
-        TqOfstHigh,     //31:Torque offset compensation High
-        TqOfstMiddle,   //32:Torque offset compensation Middle
-        TqOfstLow,      //33:Torque offset compensation Low
-        MISpdPosChang,	//34:MI Speed/MI Position
-        APREnable,		//35:APR Control Enable
-        MIPosEnter,		//36:MI position Enter
-        PG2RefPosMode,	//37:PG Ref2 ON (Position Mode)
-        WriteEPDisable,	//38:Write to EEPROM disable
-        TqSetDirection,	//39:direction of Torque command
-        ForceCoastStop,	//40:Force Coast Stop
-        no_func,		//41:Position Command Clock
-        no_func,		//42:Position Data 
-        VcomPosition,	//43:Position by Vcom
+    no_func,        //0: No Function
+    mispeed1,       //1: MI speed 1
+    mispeed2,		//2: MI speed 2        
+    mispeed3,       //3: MI speed 3
+    mispeed4,       //4: MI speed 4
+    extreset,       //5: Reset
+    extjog,			//6: JOG
+    speedhold,      //7: Speed Hold
+    acc_dec_chg1,	//8: Accel_1/decel_1 change to Accel_2/ decel_2
+    acc_dec_chg2,	//9: Accel_3/decel_3 change to Accel_4/ decel_4
+    efnc,           //10:Exteral Fault, EF normal close
+    bb_up,          //11:Base Block
+    outputoff,      //12:Output OFF
+    cancel_AAAD,	//13:Cancel Auto-Accel/Decel  function
+    motor1_2,		//14:Motor 1 change to motor 2
+    AUI1_SOFC,		//15:Frequency Command from AUI1
+    ACI_SOFC,		//16:Frequency Command from ACI
+    AUI2_SOFC,		//17:Frequency Command from AUI2
+    ForceRampStop,	//18:Force Ramp Stop
+    incspeed,		//19:Up command
+    decspeed,       //20:Down command
+    piddis,       	//21:PID disable
+    CNT_CLR,		//22:Counter input
+    CNT_IN,	        //23:Cleat Counter
+    FWD_JOG,		//24:FWD JOG
+    REV_JOG,		//25:REV JOG
+    TRQ_2_SPD,		//26:Torque mode t0 Speed mode
+    ASR1_ASR2,		//27:ASR1 to ASR2
+    ef1nc,  		//28:Emergency Stop (EF1)
+    YconnectCHK,    //29:Y-Connected check(MFI_YCONCHK)
+    DconnectCHK,    //30:Delta-Connected Check(MFI_DCONCHK)
+    TqOfstHigh,     //31:Torque offset compensation High
+    TqOfstMiddle,   //32:Torque offset compensation Middle
+    TqOfstLow,      //33:Torque offset compensation Low
+    MISpdPosChang,	//34:MI Speed/MI Position
+    APREnable,		//35:APR Control Enable
+    MIPosEnter,		//36:MI position Enter
+    PG2RefPosMode,	//37:PG Ref2 ON (Position Mode)
+    WriteEPDisable,	//38:Write to EEPROM disable
+    TqSetDirection,	//39:direction of Torque command
+    ForceCoastStop,	//40:Force Coast Stop
+    no_func,		//41:Position Command Clock
+    no_func,		//42:Position Data 
+    VcomPosition,	//43:Position by Vcom
 #endif         
 };
 
@@ -430,7 +430,9 @@ void CHK_DI_State(void)        // Execute once 1ms
 void mfi_process(void)
 {
     UBYTE j;
-    UWORD  mix_chg,k, uwtemp;
+    UWORD  mix_chg,k;
+
+    //UWORD  mix_chg,k, uwtemp;               //clear Warning, Special.kung, 03/08/2023
 
     void (*mfi_ptr)(UWORD ,UWORD);
 
@@ -1193,8 +1195,8 @@ void mispeed4(UWORD chg,UWORD k)
 
 void extreset(UWORD chg,UWORD k)
 {
-        if (k!=0)
-          reset();
+    if (k!=0)
+        reset();
 }
 
 void extjog(UWORD chg,UWORD k)
@@ -1220,13 +1222,13 @@ void extjog(UWORD chg,UWORD k)
 
 void speedhold(UWORD chg,UWORD k)
 {
-	if (k!=0){
-   		if (HOLD==0)
-   			HOLD = 1;
-   	}
+    if (k!=0){
+        if (HOLD==0)
+            HOLD = 1;
+    }
     else{
-   		if (HOLD==1)
-   			HOLD = 0;
+        if (HOLD==1)
+            HOLD = 0;
     }
 }
 
@@ -1234,167 +1236,167 @@ void acc_dec_chg1(UWORD chg,UWORD k)
 {
     if (MFI_REMOTE==0){
         if (k==0){
-        	acc_dec &= 0xFE;
+            acc_dec &= 0xFE;
         }
         else{
-        	acc_dec |= 0x01;
+            acc_dec |= 0x01;
         }
     }  	
 }
 
 void acc_dec_chg2(UWORD chg,UWORD k)
 {
-    if (MFI_REMOTE==0){
-		if (k==0){
-        	acc_dec &= 0xFD;
-        }
-        else{
-        	acc_dec |= 0x02;
-        }
-    }    
+if (MFI_REMOTE==0){
+    if (k==0){
+        acc_dec &= 0xFD;
+    }
+    else{
+        acc_dec |= 0x02;
+    }
+}    
 }
 
 void efnc(UWORD chg,UWORD k)
 {
-        if (k!=0){
-        	if (EXT_EF==0)
-       			EXT_EF = 1;
-        }
-        else{
-        	if (EXT_EF==1)
-       			EXT_EF = 0;
-        }
+    if (k!=0){
+        if (EXT_EF==0)
+            EXT_EF = 1;
+    }
+    else{
+        if (EXT_EF==1)
+            EXT_EF = 0;
+    }
 
 }
 void ef1nc(UWORD chg,UWORD k)
 {
-        if (k!=0){
-        	if (EXT_EF1==0)
-       			EXT_EF1 = 1;
-        }
-        else{
-        	if (EXT_EF1==1)
-       			EXT_EF1 = 0;
-        }
+    if (k!=0){
+        if (EXT_EF1==0)
+            EXT_EF1 = 1;
+    }
+    else{
+        if (EXT_EF1==1)
+            EXT_EF1 = 0;
+    }
 }
 
 void bb_up(UWORD chg,UWORD k)
 {
 
-        if (k!=0){
-        	if (MFI_BB==0)
-        		MFI_BB = 1;
-        }
-        else{
-        	if (MFI_BB==1)
-          		MFI_BB = 0;
-        }
+    if (k!=0){
+        if (MFI_BB==0)
+            MFI_BB = 1;
+    }
+    else{
+        if (MFI_BB==1)
+            MFI_BB = 0;
+    }
         
 }
 
 void outputoff(UWORD chg, UWORD k)                   // Output OFF
 {
-        if (k!=0)
-            MFI_WG = 1;
-        else
-            MFI_WG = 0;
+    if (k!=0)
+        MFI_WG = 1;
+    else
+        MFI_WG = 0;
 }
 
 void cancel_AAAD(UWORD chg,UWORD k)
 {
 
-        if (k!=0)
-            MFI_AAADDIS = 1;
-        else
-            MFI_AAADDIS = 0;
+    if (k!=0)
+        MFI_AAADDIS = 1;
+    else
+        MFI_AAADDIS = 0;
 
 }
 
 void motor1_2(UWORD chg,UWORD k)
 {
 
-		if (k!=0){
-        	if ((EXT_MOTOR1to2==0)&&(RUNNING==STOP)){
-        		EXT_MOTOR1to2 = 1;  // Select Motor 2
-        		Motor2Pr();
-    			TQRBaseInit();
-    			TQRMaxInit();
-    			MotorPrInit();
-            }
+    if (k!=0){
+        if ((EXT_MOTOR1to2==0)&&(RUNNING==STOP)){
+            EXT_MOTOR1to2 = 1;  // Select Motor 2
+            Motor2Pr();
+            TQRBaseInit();
+            TQRMaxInit();
+            MotorPrInit();
         }
-        else{
-        	if ((EXT_MOTOR1to2==1)&&(RUNNING==STOP)){
-          		EXT_MOTOR1to2 = 0;	// Select Motor 1
-          		Motor1Pr();
-    			TQRBaseInit();
-    			TQRMaxInit();
-    			MotorPrInit();
-          	}
+    }
+    else{
+        if ((EXT_MOTOR1to2==1)&&(RUNNING==STOP)){
+            EXT_MOTOR1to2 = 0;	// Select Motor 1
+            Motor1Pr();
+            TQRBaseInit();
+            TQRMaxInit();
+            MotorPrInit();
         }
+    }
 
 }
 
 void AUI1_SOFC(UWORD chg,UWORD k)
 {
-		if (k!=0){
-        	EXT_AISEL |= 0x01;
-        }
-        else{
-        	EXT_AISEL &= 0xFE;
-    	}
+    if (k!=0){
+        EXT_AISEL |= 0x01;
+    }
+    else{
+        EXT_AISEL &= 0xFE;
+    }
 }
 
 void ACI_SOFC(UWORD chg,UWORD k)
 {
-		if (k!=0){
-        	EXT_AISEL |= 0x02;
-        }
-        else{
-        	EXT_AISEL &= 0xFD;
-    	}
+    if (k!=0){
+        EXT_AISEL |= 0x02;
+    }
+    else{
+        EXT_AISEL &= 0xFD;
+    }
 }
 
 void AUI2_SOFC(UWORD chg,UWORD k)
 {
-		if (k!=0){
-        	EXT_AISEL |= 0x04;
-        }
-        else{
-        	EXT_AISEL &= 0xFB;
-    	}
+    if (k!=0){
+        EXT_AISEL |= 0x04;
+    }
+    else{
+        EXT_AISEL &= 0xFB;
+    }
 }
 
 void ForceRampStop(UWORD chg,UWORD k)
 {
-	    if (k!=0){
-	    	EXT_FORCESTOP = 1;
-	    	EXT_COASTSTOP = 0;
-		    stop();	    
-	    }
+    if (k!=0){
+        EXT_FORCESTOP = 1;
+        EXT_COASTSTOP = 0;
+        stop();	    
+    }
 }
 
 void ForceCoastStop(UWORD chg,UWORD k)
 {
 
-	    if (k==0){
-	    	EXT_FORCESTOP = 1;
-	    	EXT_COASTSTOP = 1;
-	    	EXT_ENABLE    = 1;
-		    stop();	    
-	    }
-	    else
-			EXT_ENABLE    = 0;
+    if (k==0){
+        EXT_FORCESTOP = 1;
+        EXT_COASTSTOP = 1;
+        EXT_ENABLE    = 1;
+        stop();	    
+    }
+    else
+        EXT_ENABLE    = 0;
 
 }
 
 void ForceCoastStop1(UWORD chg,UWORD k)
 {
 
-	    if (k==0){
-	    	EXT_FORCESTOP = 1;
-	    	EXT_COASTSTOP = 1;
-		    stop();	    
-	    }
+    if (k==0){
+        EXT_FORCESTOP = 1;
+        EXT_COASTSTOP = 1;
+        stop();	    
+    }
 
 
 }
@@ -1402,36 +1404,36 @@ void ForceCoastStop1(UWORD chg,UWORD k)
 void incspeed(UWORD chg,UWORD k)
 {
 
-        if (k!=0){                   
-            MFI_UP = 1;
-        }
-        else{
-            MFI_UP = 0;
-        }
+    if (k!=0){                   
+        MFI_UP = 1;
+    }
+    else{
+        MFI_UP = 0;
+    }
 
 }
 
 void decspeed(UWORD chg,UWORD k)
 {
 
-        if (k!=0){                       
-            MFI_DOWN= 1;
-		}          
-        else{
-            MFI_DOWN = 0;
-        }
+    if (k!=0){                       
+        MFI_DOWN= 1;
+    }          
+    else{
+        MFI_DOWN = 0;
+    }
 
 }
 
 void piddis(UWORD chg,UWORD k)
 {
 
-        if (pr[PIDSL]!=0){
-            if (k!=0)
-                MFI_PIDDIS = 1;
-            else
-                MFI_PIDDIS = 0;
-        }
+    if (pr[PIDSL]!=0){
+        if (k!=0)
+            MFI_PIDDIS = 1;
+        else
+            MFI_PIDDIS = 0;
+    }
 
 }
 
@@ -1808,13 +1810,13 @@ void AFE_ERRFBK(UWORD chg,UWORD k)
 }
 
 void ef_check(void){
-     if(Error==0){
+    if(Error==0){
         if(EXT_EF){
-        	Error = EF_ERR;
-        	Keypad_Page = ErrPAGE;
-			WARNSTOPREC = 1;		//09/10/2007        	
-		}
-		else if (ACI_EF){
+            Error = EF_ERR;
+            Keypad_Page = ErrPAGE;
+            WARNSTOPREC = 1;		//09/10/2007        	
+        }
+        else if (ACI_EF){
             Error = ACE_ERR;
             Keypad_Page = ErrPAGE;
         }
@@ -1822,7 +1824,7 @@ void ef_check(void){
             Error = EF1_ERR;
             Keypad_Page = ErrPAGE;
         }
-     }
+    }
 /*  Move to Error_Handel(), Modify by DINO, 11/28/2008
      else {
 		if((Error==EF_ERR)&&(EXT_EF==0))
@@ -2097,14 +2099,14 @@ UWORD mfo_none(UWORD pin,UWORD k){          // Not used
 }
 UWORD mfo_running(UWORD pin,UWORD k){       // Inverter Running //
 
-       if (RUNNING)
-         return (pin^k);
-       else
-         return (0^k);
+    if (RUNNING)
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_atmaxf(UWORD pin,UWORD k){        // At Setpoint Speed (disable output at STOP)
 
-       UWORD bx;
+    UWORD bx;
 	
 	if (RUNNING==RUN){
     	if (fout.uw.hi >= fkey.uw.hi)
@@ -2125,7 +2127,7 @@ UWORD mfo_atmaxf(UWORD pin,UWORD k){        // At Setpoint Speed (disable output
 }
 UWORD mfo_atmaxf_Band(UWORD pin,UWORD k){        // At Setpoint Speed (disable output at STOP)//Band of Speed Agree Function #18572	
 
-       UWORD bx;
+    UWORD bx;
 	
 	if((RUNNING==RUN) && (btGearFlag==0))       //[JES Gear no output MO=2, Special.Kung, 2022/10/12]
     {
@@ -2155,67 +2157,67 @@ UWORD mfo_atmaxf_Band(UWORD pin,UWORD k){        // At Setpoint Speed (disable o
 
 UWORD mfo_atspeed1(UWORD pin,UWORD k)       // At Speed 1 //
 {
-       UWORD bx;
+    UWORD bx;
 
-       if (fout.uw.hi >= pr[DESIRE_F1])
-         bx = fout.uw.hi - pr[DESIRE_F1] ;
-       else
-         bx = pr[DESIRE_F1] - fout.uw.hi ;
+    if (fout.uw.hi >= pr[DESIRE_F1])
+        bx = fout.uw.hi - pr[DESIRE_F1] ;
+    else
+        bx = pr[DESIRE_F1] - fout.uw.hi ;
 
-       if (bx <= pr[DESIRE_F1B])            //+- 2.0Hz
-         return (pin^k);
-       else if (bx > pr[DESIRE_F1B])        //+- 4.0Hz
-         return (0^k);
-       else 
-         return (pin&mfo_now);
+    if (bx <= pr[DESIRE_F1B])            //+- 2.0Hz
+        return (pin^k);
+    else if (bx > pr[DESIRE_F1B])        //+- 4.0Hz
+        return (0^k);
+    else 
+        return (pin&mfo_now);
          
 }
 UWORD mfo_atspeed2(UWORD pin,UWORD k)       // At Speed 2 //
 {
-       UWORD bx;
+    UWORD bx;
 
-       if (fout.uw.hi >= pr[DESIRE_F2])
-         bx = fout.uw.hi - pr[DESIRE_F2] ;
-       else
-         bx = pr[DESIRE_F2] - fout.uw.hi ;
+    if (fout.uw.hi >= pr[DESIRE_F2])
+        bx = fout.uw.hi - pr[DESIRE_F2] ;
+    else
+        bx = pr[DESIRE_F2] - fout.uw.hi ;
 
-       if (bx <= pr[DESIRE_F2B])            //+- 2.0Hz
-         return (pin^k);
-       else if (bx > pr[DESIRE_F2B])        //+- 4.0Hz
-         return (0^k);
-       else 
-         return (pin&mfo_now);
+    if (bx <= pr[DESIRE_F2B])            //+- 2.0Hz
+        return (pin^k);
+    else if (bx > pr[DESIRE_F2B])        //+- 4.0Hz
+        return (0^k);
+    else 
+        return (pin&mfo_now);
          
 }
 UWORD mfo_fcmdzero(UWORD pin,UWORD k){	// Zero Speed //
 
-        //2006/5/26 下午 04:49:10 if ((fout.uw.hi == 0)&&(RUNNING==RUN))
-        if ((fcmd.uw.hi==0)&&(RUNNING==RUN))
-          return (pin^k);
-        else
-          return (0^k);
+    //2006/5/26 下午 04:49:10 if ((fout.uw.hi == 0)&&(RUNNING==RUN))
+    if ((fcmd.uw.hi==0)&&(RUNNING==RUN))
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_fcmdzerostp(UWORD pin,UWORD k){	// Zero Speed, include drive stop
 
-        //2006/5/24 下午 04:49:09if (fout.uw.hi == 0)
-        if (fcmd.uw.hi==0)
-          return (pin^k);
-        else
-          return (0^k);
+    //2006/5/24 下午 04:49:09if (fout.uw.hi == 0)
+    if (fcmd.uw.hi==0)
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_overtq1(UWORD pin,UWORD k){        // Over Torque Dectted 1) //
 
-       if (((OT1CST==1)&&(TB1_uwOT1Cnt>=pr[OTDT]))||(Error==ot1_ERR))
-         return (pin^k);
-       else
-         return (0^k);
+    if (((OT1CST==1)&&(TB1_uwOT1Cnt>=pr[OTDT]))||(Error==ot1_ERR))
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_overtq2(UWORD pin,UWORD k){        // Over Torque Dectted 2) //
 
-       if (((OT2CST==1)&&(TB1_uwOT2Cnt>=pr[OTDT2]))||(Error==ot2_ERR))
-         return (pin^k);
-       else
-         return (0^k);
+    if (((OT2CST==1)&&(TB1_uwOT2Cnt>=pr[OTDT2]))||(Error==ot2_ERR))
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_ready(UWORD pin,UWORD k){         // Ready
 
@@ -2229,23 +2231,23 @@ UWORD mfo_lv(UWORD pin,UWORD k){            // Low voltage indication
 
     UWORD uwTemp;
 
-      if ((Error==LvA_ERR)||(Error==Lvd_ERR)||(Error==Lvn_ERR)||(Error==LvS_ERR)){
-          //return (pin^k);
-          if((Error>=LvA_ERR && Error<=LvS_ERR) || Error==PHL_ERR || (Error>=ovA_ERR && Error<=ovS_ERR)){  //disable Lvs  //[Add auto restart after fault, Bernie, 06/06/12]
-	          if((pr[RESET_SLT]==0)||(pr[RESETCNT]==0)){
-                  uwTemp = 1;
-                    //RST_EN = 0;
-              }    
-              else{
-                  uwTemp = 0;
-                    //RST_EN = 1;
-              }
-          }
-      }
-      else{
-          //return (0^k);
-          uwTemp = 0;
-      }
+    if ((Error==LvA_ERR)||(Error==Lvd_ERR)||(Error==Lvn_ERR)||(Error==LvS_ERR)){
+        //return (pin^k);
+        if((Error>=LvA_ERR && Error<=LvS_ERR) || Error==PHL_ERR || (Error>=ovA_ERR && Error<=ovS_ERR)){  //disable Lvs  //[Add auto restart after fault, Bernie, 06/06/12]
+            if((pr[RESET_SLT]==0)||(pr[RESETCNT]==0)){
+                uwTemp = 1;
+                //RST_EN = 0;
+            }    
+            else{
+                uwTemp = 0;
+                //RST_EN = 1;
+            }
+        }
+    }
+    else{
+        //return (0^k);
+        uwTemp = 0;
+    }
 
     if (uwTemp != 0)
     	return (pin^k);
@@ -2331,10 +2333,10 @@ UWORD mfo_LiftEnable(UWORD pin,UWORD k){
 
 UWORD mfo_pidalarm(UWORD pin,UWORD k){      // PID Deviation Alarm //
 
-        if (PIDDEVF)
-          return (pin^k);
-        else
-          return (0^k);
+    if (PIDDEVF)
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_overslip(UWORD pin,UWORD k){  		// Over Slip
 
@@ -2507,17 +2509,17 @@ UWORD mfo_chg2D(UWORD pin,UWORD k){      // Change to Delta-connected
 }
 UWORD mfo_foutzero(UWORD pin,UWORD k){		// fout, Zero Speed
 
-        if ((fout.uw.hi==0)&&(RUNNING==RUN))
-          return (pin^k);
-        else
-          return (0^k);
+    if ((fout.uw.hi==0)&&(RUNNING==RUN))
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_foutzerostp(UWORD pin,UWORD k){	// fout, Zero Speed, include drive stop
 
-        if (fout.uw.hi==0)
-          return (pin^k);
-        else
-          return (0^k);
+    if (fout.uw.hi==0)
+        return (pin^k);
+    else
+        return (0^k);
 }
 UWORD mfo_faultoption1(UWORD pin,UWORD k){
 
@@ -2585,52 +2587,52 @@ UWORD mfo_OnPosition(UWORD pin,UWORD k){
 
 UWORD mfo_atFSET(UWORD pin,UWORD k){        // At Setpoint Speed
 
-       UWORD bx;
-	
-    	if (fout.uw.hi >= fkey.uw.hi)
-			bx = fout.uw.hi - fkey.uw.hi;
-    	else
-			bx = fkey.uw.hi - fout.uw.hi ;
+    UWORD bx;
 
-		if (bx <= 200)            //+- 2.0Hz
-        	return (pin^k);
-    	else if (bx > 400)        //+- 4.0Hz
-        	return (0^k);
-		else 
-			return (pin&mfo_now);
+    if (fout.uw.hi >= fkey.uw.hi)
+        bx = fout.uw.hi - fkey.uw.hi;
+    else
+        bx = fkey.uw.hi - fout.uw.hi ;
+
+    if (bx <= 200)            //+- 2.0Hz
+        return (pin^k);
+    else if (bx > 400)        //+- 4.0Hz
+        return (0^k);
+    else 
+        return (pin&mfo_now);
 }
 UWORD mfo_atFSET_Band(UWORD pin,UWORD k){        // At Setpoint Speed//Band of Speed Agree Function #18572
 
-       UWORD bx;
-        
-        if(btGearFlag==0)      //[JES Gear no output MO=2, Special.Kung, 2022/10/12]
-        {
-        	//if (fout.uw.hi >= fkey.uw.hi)
-        		//bx = fout.uw.hi - fkey.uw.hi;
-        	//else
-        		//bx = fkey.uw.hi - fout.uw.hi ;
+    UWORD bx;
+    
+    if(btGearFlag==0)      //[JES Gear no output MO=2, Special.Kung, 2022/10/12]
+    {
+        //if (fout.uw.hi >= fkey.uw.hi)
+            //bx = fout.uw.hi - fkey.uw.hi;
+        //else
+            //bx = fkey.uw.hi - fout.uw.hi ;
 
-            //[JES test IM with slip and Relay(MO=2) will always ON/OFF, Special.Kung, 2022/12/21]
-            if (fcmd.uw.hi >= fkey.uw.hi)
-    			bx = fcmd.uw.hi - fkey.uw.hi;
-        	else
-    			bx = fkey.uw.hi - fcmd.uw.hi ;
+        //[JES test IM with slip and Relay(MO=2) will always ON/OFF, Special.Kung, 2022/12/21]
+        if (fcmd.uw.hi >= fkey.uw.hi)
+            bx = fcmd.uw.hi - fkey.uw.hi;
+        else
+            bx = fkey.uw.hi - fcmd.uw.hi ;
 
-		if (bx <= pr[SpdAgree_B])            
-        	return (pin^k);
-    	else if (bx > pr[SpdAgree_B])       
-        	return (0^k);
-		else 
-			return (pin&mfo_now);
-        }
+        if (bx <= pr[SpdAgree_B])            
+            return (pin^k);
+        else if (bx > pr[SpdAgree_B])       
+            return (0^k);
+        else 
+            return (pin&mfo_now);
+    }
 }
 
 UWORD mfo_EPS_MODE(UWORD pin,UWORD k){ //[EPS MO Output,Lyabryan,2018/06/19]
 
     if (MO_EPS_SWITCH)
-            return (pin^k);
-        else
-            return (0^k);
+        return (pin^k);
+    else
+        return (0^k);
 }
 
 UWORD mfo_multiposition(UWORD pin,UWORD k){	// Multi-position
@@ -2675,29 +2677,29 @@ UWORD mfo_AFE_RST(UWORD pin,UWORD k){ //[AFE Error Handle/Lyabryan/2022/03/24]
 }
 
 UWORD mfo_STO_OUT(UWORD pin,UWORD k){  
-	//#12225,STO short detect, James for 04-49=4~7, 2021/10/14
-     if((pr[STO_LOCK] == 0x0000) || (pr[STO_LOCK] == 0x0002))//06-49=0,2
-     {
-         if((Error ==STOL_ERR) || (Error ==STOL1_ERR) || (Error ==STOL2_ERR) || (Error ==STOL3_ERR))
-         {
+    //#12225,STO short detect, James for 04-49=4~7, 2021/10/14
+    if((pr[STO_LOCK] == 0x0000) || (pr[STO_LOCK] == 0x0002))//06-49=0,2
+    {
+        if((Error ==STOL_ERR) || (Error ==STOL1_ERR) || (Error ==STOL2_ERR) || (Error ==STOL3_ERR))
+        {
             return (pin^k);  
-         }
-         else
-         {
+        }
+        else
+        {
             return (0^k);
-         }
-     }
-     else//06-49=1,3~7
-     {
-         if((STOLOSS ==1) && (TB1_uwSTOErrCnt >= STO_ERR_CNT))//STO delay, James, 2021/10/25
-         {
+        }
+    }
+    else//06-49=1,3~7
+    {
+        if((STOLOSS ==1) && (TB1_uwSTOErrCnt >= STO_ERR_CNT))//STO delay, James, 2021/10/25
+        {
             return (pin^k);  
-         }
-         else
-         {
+        }
+        else
+        {
             return (0^k);
-         }
-     }
+        }
+    }
 }
 
 UWORD mfo_IMEnable(UWORD pin,UWORD k){

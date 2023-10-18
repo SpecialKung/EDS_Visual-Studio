@@ -4002,9 +4002,9 @@ void RemoteCmd10_2(void)
 void RemoteCmd17_2(void)     //[APP01 IO carde support, Bernie, 2013/03/20]
 {
   
-  UBYTE TxCntTemp;
-  UWORD bx;
-   UWORD ax;
+    UBYTE TxCntTemp;
+    UWORD bx;
+    UWORD ax;
     
     TxCntTemp = 2;
 

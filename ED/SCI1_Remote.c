@@ -3056,110 +3056,113 @@ void RemoteCmd65_3_WrData(void)         //[UD protocal, Bernie, 2012/12/05]
 
 }
 void RemoteCmd65_3_RdData(void)             //[UD protocal, Bernie, 2012/12/05]
-    {
-            UBYTE TxCntTemp=0, bx, ubCHGFlag, ubGrNum, ubPrNum, HPSPEC_temp,gpno;
-            UWORD TempValue, ax, rxdata, uwAddr;
-            UWORD_UNION umap_addr, uwEEPData;
-            
-            umap_addr.uw = 0;
+{
+    UBYTE TxCntTemp=0, bx, ubCHGFlag, ubGrNum, ubPrNum, gpno;
+    UWORD ax, rxdata, uwAddr;
+    UWORD_UNION umap_addr, uwEEPData;
+
+    //UBYTE TxCntTemp=0, bx, ubCHGFlag, ubGrNum, ubPrNum, HPSPEC_temp, gpno;      //clear Warning, Special.kung, 03/08/2023
+    //UWORD TempValue, ax, rxdata, uwAddr;                                        //clear Warning, Special.kung, 03/08/2023
     
-            if (RxBuf_3[2] == 0x20){            // Communication Memory Address 20xxH               
-                ax = RxBuf_3[3];
-                if ((C20MAX >= (ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
-                    RxBuf_3[2] = RxBuf_3[5]<<1;         // word->byte data_count
-                    //TxCntTemp = 2;
-                    TxCntTemp = 3;
-                    //bx = RxBuf_1[5];                  // data count //
-                    do {                          // prepare data //
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp] = (UBYTE)(C20xx[ax]>>8);
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp] = (UBYTE)(C20xx[ax]);
-                        ax++;
-                        bx--;
-                    } while(bx!=0);
-                }
-                else
-                    COM3Err = PC_CE03;
-            }
-            else if (RxBuf_3[2]==0x21){
-                ax = RxBuf_3[3];
-                if ((C21MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)){
-                    Update_C21xx();
-                    RxBuf_3[2] = RxBuf_3[5]<<1;           // word->byte data_count
-                    //TxCntTemp = 2;
-                    //bx = RxBuf_1[5];                    // data count //
-                    TxCntTemp = 3;
-                    do {                            // prepare data //
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp] = ((UWORD)C21xx[ax]>>8);
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp] = ((UWORD)C21xx[ax] & 0x00ff);
-                        ax++;
-                        bx--;
-                    } while(bx!=0);
-                }
-                else
-                    COM3Err = PC_CE03;
-            }
-            else if (RxBuf_3[2]==0x22) {
-                ax = RxBuf_3[3];
-                if ((C22MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
-                    RxBuf_3[2]=RxBuf_3[5]<<1;
-                    //TxCntTemp = 2;
-                    //bx = RxBuf_1[5];
-                    TxCntTemp = 3;
-                    Update_C22xx();
-                    do {                            // prepare data //
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(C22xx[ax]>>8);
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(C22xx[ax]);
-                        ax++;
-                        bx--;
-                    } while(bx!=0);
-                }
-                else
-                    COM3Err = PC_CE03;
-            }
-            else if (RxBuf_3[2]==0x23) {
-                ax = RxBuf_3[3];
-                if ((C23MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
-                    RxBuf_3[2]=RxBuf_3[5]<<1;
-                    TxCntTemp = 2;
-                    bx = RxBuf_3[5];
-                    Update_KeypadDisp();
-                    do {                            // prepare data //
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(KC23xx[ax]>>8);
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(KC23xx[ax]);
-                        ax++;
-                        bx--;
-                    } while(bx!=0);
-                }
-                else
-                    COM3Err = PC_CE03;
-            }
-            else if (RxBuf_3[2]==0x24){
-                    ax = RxBuf_3[3];
-                    if ((DESMAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
-                    RxBuf_3[2] = RxBuf_3[5]<<1;
-                    TxCntTemp = 2;
-                    bx = RxBuf_3[5];
-                    Update_LCDescription();
-                    do {                            // prepare data //
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(Descript[ax]>>8);
-                        TxCntTemp++;
-                        RxBuf_3[TxCntTemp]=(UBYTE)(Descript[ax]);
-                        ax++;
-                        bx--;
-                    } while(bx!=0);
-                }
-                else
-                    COM3Err = PC_CE03;
-            }
+    umap_addr.uw = 0;
+
+    if (RxBuf_3[2] == 0x20){            // Communication Memory Address 20xxH               
+        ax = RxBuf_3[3];
+        if ((C20MAX >= (ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
+            RxBuf_3[2] = RxBuf_3[5]<<1;         // word->byte data_count
+            //TxCntTemp = 2;
+            TxCntTemp = 3;
+            //bx = RxBuf_1[5];                  // data count //
+            do {                          // prepare data //
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp] = (UBYTE)(C20xx[ax]>>8);
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp] = (UBYTE)(C20xx[ax]);
+                ax++;
+                bx--;
+            } while(bx!=0);
+        }
+        else
+            COM3Err = PC_CE03;
+    }
+    else if (RxBuf_3[2]==0x21){
+        ax = RxBuf_3[3];
+        if ((C21MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)){
+            Update_C21xx();
+            RxBuf_3[2] = RxBuf_3[5]<<1;           // word->byte data_count
+            //TxCntTemp = 2;
+            //bx = RxBuf_1[5];                    // data count //
+            TxCntTemp = 3;
+            do {                            // prepare data //
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp] = ((UWORD)C21xx[ax]>>8);
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp] = ((UWORD)C21xx[ax] & 0x00ff);
+                ax++;
+                bx--;
+            } while(bx!=0);
+        }
+        else
+            COM3Err = PC_CE03;
+    }
+    else if (RxBuf_3[2]==0x22) {
+        ax = RxBuf_3[3];
+        if ((C22MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
+            RxBuf_3[2]=RxBuf_3[5]<<1;
+            //TxCntTemp = 2;
+            //bx = RxBuf_1[5];
+            TxCntTemp = 3;
+            Update_C22xx();
+            do {                            // prepare data //
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(C22xx[ax]>>8);
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(C22xx[ax]);
+                ax++;
+                bx--;
+            } while(bx!=0);
+        }
+        else
+            COM3Err = PC_CE03;
+    }
+    else if (RxBuf_3[2]==0x23) {
+        ax = RxBuf_3[3];
+        if ((C23MAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
+            RxBuf_3[2]=RxBuf_3[5]<<1;
+            TxCntTemp = 2;
+            bx = RxBuf_3[5];
+            Update_KeypadDisp();
+            do {                            // prepare data //
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(KC23xx[ax]>>8);
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(KC23xx[ax]);
+                ax++;
+                bx--;
+            } while(bx!=0);
+        }
+        else
+            COM3Err = PC_CE03;
+    }
+    else if (RxBuf_3[2]==0x24){
+            ax = RxBuf_3[3];
+            if ((DESMAX>=(ax+RxBuf_3[5]))&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
+            RxBuf_3[2] = RxBuf_3[5]<<1;
+            TxCntTemp = 2;
+            bx = RxBuf_3[5];
+            Update_LCDescription();
+            do {                            // prepare data //
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(Descript[ax]>>8);
+                TxCntTemp++;
+                RxBuf_3[TxCntTemp]=(UBYTE)(Descript[ax]);
+                ax++;
+                bx--;
+            } while(bx!=0);
+        }
+        else
+            COM3Err = PC_CE03;
+    }
 
     //---Add BY Dino 06/25/2007---
             /*else if (RxBuf_1[2]==0xff){
@@ -4062,7 +4065,7 @@ void RemoteCmd65_3_RdData(void)             //[UD protocal, Bernie, 2012/12/05]
                             else
                                 COM3Err = PC_CE03;
                         }
-                     else{//Normal read parameter value
+                        else{//Normal read parameter value
                             if ((RxBuf_3[3]+RxBuf_3[5]<=ax)&&(RxBuf_3[5]!=0)&&(RxBuf_3[5]<=DATA_LEN)&&(RxBuf_3[4]==0)) {
                                 // [ Modify Read Function of Mapping Group, DINO, 07/02/2010
                                 ubGrNum = RxBuf_3[2];   // PR. Group
@@ -4182,19 +4185,20 @@ void RemoteCmd65_3_RdData(void)             //[UD protocal, Bernie, 2012/12/05]
 UWORD CRC_CHECK_UD(UBYTE CRC_CNT)
 {
     UWORD_UNION CRC_Result;
-    UWORD  uIndex ; /* will index into CRC lookup table */
+    UWORD  uIndex ;
     UBYTE i,j;
+
     CRC_Result.uw = 0xffff;
 
     for (i=0;i<=CRC_CNT; i++){
         //TxBuf_1[i] = RxBuf_1[i];
       
-      #if CRC_Table      
+    #if CRC_Table      
         uIndex = CRC_Result.ub.low ^ RxBuf_3[i];
         CRC_Result.ub.low  = CRC_Result.ub.hi ^ auchCRCLo[uIndex] ;
         CRC_Result.ub.hi = auchCRCHi[uIndex] ;
-      
-      #else
+    
+    #else
         CRC_Result.ub.low ^= TxBuf_3[i];   
         for (j=0;j<8;j++) {
             if (CRC_Result.uw & 0x01)
@@ -4202,7 +4206,7 @@ UWORD CRC_CHECK_UD(UBYTE CRC_CNT)
             else
                 CRC_Result.uw = CRC_Result.uw >> 1;
         }
-      #endif     
+    #endif     
     }
 
     return(CRC_Result.uw);

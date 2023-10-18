@@ -17,8 +17,11 @@
 void ADInitCalib(void)
 {
     UBYTE i;
-    ULONG ul_Itemp1, ul_Itemp2;
-    SWORD sw_Itemp, sw_Itemp1, swIAtemp, swICtemp;
+    ULONG ul_Itemp1;
+    SWORD sw_Itemp, swIAtemp, swICtemp;
+
+    //ULONG ul_Itemp1, ul_Itemp2;                                   //clear Warning, Special.kung, 03/08/2023
+    //SWORD sw_Itemp, sw_Itemp1, swIAtemp, swICtemp;                //clear Warning, Special.kung, 03/08/2023
 	
 
 
@@ -125,10 +128,12 @@ void ADInitCalib(void)
 
 void ReadAD(void)
 {
-    SWORD swIbTemp, swIAtemp, swICtemp;
+    SWORD swIbTemp;
     SLONG sltmp;
-    ULONG ul_Itemp1, ul_Itemp2;
-    SWORD sw_Itemp, sw_Itemp1;
+    
+    //SWORD swIbTemp, swIAtemp, swICtemp;                   //clear Warning, Special.kung, 03/08/2023
+    //ULONG ul_Itemp1, ul_Itemp2;                           //clear Warning, Special.kung, 03/08/2023
+    //SWORD sw_Itemp, sw_Itemp1;                            //clear Warning, Special.kung, 03/08/2023
 
 
 

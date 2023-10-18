@@ -325,10 +325,11 @@ void TB1_VFWsl_byEst(void)
 void TB1_VFWsl_byAmp(void){  // [VF Slip compensator,Lyabryan,2016/05/12]
 
     UWORD InlAD, IflAD, InowAD, ax, bx;
-    UBYTE ubGenSlGain, ubMotSlGain;
-    UWORD uwSilpGain;
-    SWORD Iu, Iw;
-    UBYTE imaskValue;    
+    SWORD Iu, Iw;  
+
+    //UBYTE ubGenSlGain, ubMotSlGain;       //clear Warning, Special.kung, 03/08/2023
+    //UWORD uwSilpGain;                     //clear Warning, Special.kung, 03/08/2023
+    //UBYTE imaskValue;                     //clear Warning, Special.kung, 03/08/2023
     /*-------------------------------------------------------------------------
     - ISUM = ASUM = 1.67V~5V (Rate~3Rate)                                     -
     - Rated current of INV IrmsAD = 341                                       -
@@ -751,9 +752,10 @@ void TB2_VF(void)
 #if StandStill
 void TB2_PM(void)
 {
-    UBYTE n;
     SWORD swImax, swImin;
 //    SWORD PM_swTcos[6];
+
+    //UBYTE n;                    //clear Warning, Special.kung, 03/08/2023
 
 //    PM_swTmax = experiod + DeadTime;  /* delete by dino, 04/03/2007 */
 //    PM_swTmin = (SWORD)(experiod + DeadTime) - (SWORD)((ULONG)experiod*uwTGain>>8);  /* delete by dino, 04/03/2007 */

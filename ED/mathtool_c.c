@@ -673,9 +673,10 @@ SLONG sl_limit_modify(SLONG x, SLONG y, SLONG z){  // revise negative limit by J
     return (SLONG)sdcalcul;
 }
 
-UWORD ReadRamData(UWORD uwAddr){
+UWORD ReadRamData(UWORD uwAddr)
+{
+    UWORD uwData;
 
-	UWORD uwData;
 	if (uwAddr < 0x2000){		// On-chip RAM, DINO, 07/05/2010
 		uwData = memadd_rd(uwAddr);
 	}
@@ -687,44 +688,46 @@ UWORD ReadRamData(UWORD uwAddr){
 
 UWORD memadd_rd(UWORD x)
 {
-  UWORD yn;
-  ULONG *mptr;
-  ULONG Bmap;
-  ULONG Read_Address_ptr;
-  UWORD *data_ptr;
-  UWORD ubVariable;
-  
-  Read_Address_ptr = 0x00000000+x;
+    ULONG Read_Address_ptr;
+    UWORD *data_ptr;
+    UWORD ubVariable;
+
+    //UWORD yn;           //clear Warning, Special.kung, 03/08/2023
+    //ULONG *mptr;        //clear Warning, Special.kung, 03/08/2023
+    //ULONG Bmap;         //clear Warning, Special.kung, 03/08/2023
+
+    Read_Address_ptr = 0x00000000+x;
 
 
-  data_ptr = (UWORD *)Read_Address_ptr;
-  ubVariable = *data_ptr;
+    data_ptr = (UWORD *)Read_Address_ptr;
+    ubVariable = *data_ptr;
 
-//uwtest8 = *mptr;
-//uwtest9 = (UWORD)((ULONG*)Bmap);
+    //uwtest8 = *mptr;
+    //uwtest9 = (UWORD)((ULONG*)Bmap);
 
-  return ubVariable;
+    return ubVariable;
 }
 
 UWORD memadd_rd1(UWORD x)
 {
-  UWORD yn;
-  ULONG *mptr;
-  ULONG Bmap;
-  ULONG Read_Address_ptr;
-  UWORD *data_ptr;
-  UWORD ubVariable;
-  
-  Read_Address_ptr = 0x00080000+x;
+    ULONG Read_Address_ptr;
+    UWORD *data_ptr;
+    UWORD ubVariable;
+
+    //UWORD yn;           //clear Warning, Special.kung, 03/08/2023
+    //ULONG *mptr;        //clear Warning, Special.kung, 03/08/2023
+    //ULONG Bmap;         //clear Warning, Special.kung, 03/08/2023
+
+    Read_Address_ptr = 0x00080000+x;
 
 
-  data_ptr = (UWORD *)Read_Address_ptr;
-  ubVariable = *data_ptr;
+    data_ptr = (UWORD *)Read_Address_ptr;
+    ubVariable = *data_ptr;
 
-//uwtest8 = *mptr;
-//uwtest9 = (UWORD)((ULONG*)Bmap);
+    //uwtest8 = *mptr;
+    //uwtest9 = (UWORD)((ULONG*)Bmap);
 
-  return ubVariable;
+    return ubVariable;
 }
 
 

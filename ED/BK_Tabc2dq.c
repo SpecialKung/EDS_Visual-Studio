@@ -57,7 +57,9 @@ void Init_TransferValue(void)
 
 void abc2dq(void)
 {
-    SLONG slIqssOutPu, slIdssOutPu;
+    SLONG slIdssOutPu;
+
+    //SLONG slIqssOutPu, slIdssOutPu;         //clear Warning, Special.kung, 03/08/2023
 
     /*--------SCOTTY TYPE----------------------
 	fqss = fas 

@@ -387,7 +387,9 @@ void PCRemote2000H(UWORD datac)
 void Update2116(void)
 {
 	UWORD_UNION Unit;
-	UWORD uwFkey, uwFout;
+
+	//UWORD uwFkey, uwFout;			//clear Warning, Special.kung, 03/08/2023
+
 	C21xx[0x17] = 0x00A0;	// DINO,03/03/2010
 
 	// [ Unit Description of User Page, DINO, 08/13/2010

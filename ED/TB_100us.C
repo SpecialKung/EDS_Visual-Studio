@@ -32,9 +32,11 @@ UWORD uwWdtCnt;
 void TimeBase_100us(void)
 {
     UBYTE ubRxCnt;    
-    UWORD uw_temp,uwIrmsTmp/*,vcmdPu_tmp*/; //[weak magnet, Sampo, 03/31/2011]
-    ULONG ul_Itemp1;  
-    SWORD swIAtemp,swICtemp,sw_Itemp;
+    UWORD uw_temp/*,vcmdPu_tmp*/;         //[weak magnet, Sampo, 03/31/2011]
+
+    //UWORD uw_temp,uwIrmsTmp/*,vcmdPu_tmp*/;         //clear Warning, Special.kung, 03/08/2023
+    //ULONG ul_Itemp1;                                //clear Warning, Special.kung, 03/08/2023
+    //SWORD swIAtemp,swICtemp,sw_Itemp;               //clear Warning, Special.kung, 03/08/2023
     
 #if DINO  // Read UVW state, 10/09/2007
     UWORD uwPGA, uwPGB, uwPGZ, uwHall;

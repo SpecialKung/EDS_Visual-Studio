@@ -83,7 +83,8 @@ Main_EXT UWORD Sibocom_Speed_Priority(UWORD ax);
 #endif
 
 Main_EXT void Temp_vs_fpwm(void);
-Main_EXT UWORD AD2Temp(UWORD xh, UWORD xl, UWORD TempAD,UWORD a, UWORD b);
+//Main_EXT UWORD AD2Temp(UWORD xh, UWORD xl, UWORD TempAD, UWORD a, UWORD b);
+Main_EXT UWORD AD2Temp(UWORD xh, UWORD xl, SWORD TempAD, SWORD a, SWORD b);
 Main_EXT UWORD Vth_to_Temp(UWORD TempAD, UWORD RealTemp);
 Main_EXT SWORD thermal(UBYTE frame, SWORD TempAD);
 Main_EXT void FanControl(void);
@@ -104,7 +105,8 @@ Main_EXT void TorqDetect_Init(void);        	//[JES Torq Detect Function, Specia
 #pragma address hsd_uwAbsAngle=0x0000a174     	//[Address fixed, Aevin, 2017/06/28]
 
 
-Main_EXT UWORD    checkValue,
+Main_EXT UWORD    
+                  checkValue,
                   uwFkeypad,
                   uwFcan,    //[CAN Control, Sampo, 09/15/2010]
                   Fkeypad_Buf,
@@ -137,15 +139,17 @@ Main_EXT UWORD    checkValue,
                   err_uwVout,
                   err_uwDcbus,
                   err_uwIsum,
-                    // [ Add Fault Record Data, DINO, 06/11/2009
+                  // [ Add Fault Record Data, DINO, 06/11/2009
                   err_uwFkey,
                   err_uwPower,
                   err_uwTorq,
                   err_uwMFI,
                   err_uwMFO,
                   err_uwState;
-                    // ]
-Main_EXT UWORD    rec_uwFfbk,
+                  // ]
+
+Main_EXT UWORD    
+                  rec_uwFfbk,
                   rec_uwFcmd,
                   rec_uwVout,
                   rec_uwDcbus,
@@ -198,7 +202,8 @@ Main_EXT UWORD    rec_uwFfbk,
                   rec_uwTorq,
                   rec_uwMFI;
                     
-Main_EXT UWORD    rec_uwMFO,
+Main_EXT UWORD    
+                  rec_uwMFO,
                   rec_uwState,
                   // ]
                   PrTorqueRe,
@@ -221,10 +226,12 @@ Main_EXT UWORD    rec_uwMFO,
                   RSP_uwRecent_prold,
                   RSP_uwRecent_prinfo;
 
-Main_EXT UWORD    uwPGThetaE_COM,    		// [IED 1387 static Tune, 2011/07/06]
-			  	  uwPGThetaE_COM2;   		// [IED 1387 static Tune, 2011/07/06]
+Main_EXT UWORD    
+                  uwPGThetaE_COM,    		// [IED 1387 static Tune, 2011/07/06]
+			  	      uwPGThetaE_COM2;   		// [IED 1387 static Tune, 2011/07/06]
 
-Main_EXT SWORD    n_period,
+Main_EXT SWORD    
+                  n_period,
                   experiod,
                   cf_swCFReal,
                   cf_swCFSet,
@@ -233,9 +240,9 @@ Main_EXT SWORD    n_period,
                   cf_swChgTemp,
                   cf_step1,
                   cf_swCFDerate,
-//                  swAVICalib,   // Move to A_Monitor.h, 11/04/2008
-//                  swACICalib,   // Move to A_Monitor.h, 11/04/2008
-//                  swAUICalib,   // Move to A_Monitor.h, 11/04/2008
+                  //swAVICalib,           // Move to A_Monitor.h, 11/04/2008
+                  //swACICalib,           // Move to A_Monitor.h, 11/04/2008
+                  //swAUICalib,           // Move to A_Monitor.h, 11/04/2008
                   PTCInValue,
                   TorqueOut,       		 	//6a16j
                   HS_Temp,
@@ -249,44 +256,49 @@ Main_EXT SWORD    n_period,
                   zcal_swThetaErr,  		// Electrical Theta of Z pulse calibration
                   uwAbsMotorHz,
                   zcal_uwPulseDiff, 		// DINO, 08/11/2010
-                  BTTx_swDelatPGPosition; 
+                  BTTx_swDelatPGPosition;
 
-Main_EXT UBYTE    Delay4oc,
+Main_EXT UBYTE    
+                  Delay4oc,
                   cfstep,
                   z0_cnt,
                   z1_cnt,
                   z2_cnt,
-                  GROUPTmp,     			// CalUBYTE: 6 UBYTE
+                  GROUPTmp,     			      // CalUBYTE: 6 UBYTE
                   ubPGData,
                   Speed_check,
-                  BTTx_ubTorqDetectRst,     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-                  BTTx_ubTestCase;          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  BTTx_ubTorqDetectRst,      //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  BTTx_ubTestCase;           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
-Main_EXT UWORD    TUNEPMLSLOW_V,  			//ADDED BY SCOTTY 01/29/2007
-                  st_uwInterval,  			// StandStill falling counts, Added by dino, 04/03/2007
+Main_EXT UWORD    
+                  TUNEPMLSLOW_V,  			   //ADDED BY SCOTTY 01/29/2007
+                  st_uwInterval,  			   // StandStill falling counts, Added by dino, 04/03/2007
                   ol_uwDeraCnt,
-                  uwEPS_SpdLimt,            //[User can change speed when used EPS function, Bernie, 2013/04/16]
-				  AFE_uwMOCNT,    			//[AFE Error Handle/Lyabryan/2022/03/24]
-				  BTTx_uwFMI0Temp,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-				  BTTx_uwTestTorq,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-                  BTTx_uwTestStep,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-                  BTTx_uwPGPositionNow,     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-                  BTTx_uwPGPositionOrg;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  uwEPS_SpdLimt,             //[User can change speed when used EPS function, Bernie, 2013/04/16]
+				      AFE_uwMOCNT,    			   //[AFE Error Handle/Lyabryan/2022/03/24]
+				      BTTx_uwFMI0Temp,           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				      BTTx_uwTestTorq,           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  BTTx_uwTestStep,           //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  BTTx_uwPGPositionNow,      //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+                  BTTx_uwPGPositionOrg;      //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
-Main_EXT SLONG    SpdMaxPu,
+Main_EXT SLONG    
+                  SpdMaxPu,
                   AVIslFunVar,
-                  AVIslFunVar_1,            //[UD protocal, Bernie, 2012/12/05]
+                  AVIslFunVar_1,             //[UD protocal, Bernie, 2012/12/05]
                   ACIslFunVar,
                   AUIslFunVar,
                   slMotorHz,
-                  ss4,                      // [IODLC, Lyabryan, 2016/11/11]
-                  slSINsquarePu;            // Add by DINO, 09/05/2008
+                  ss4,                       // [IODLC, Lyabryan, 2016/11/11]
+                  slSINsquarePu;             // Add by DINO, 09/05/2008
                   
-Main_EXT ULONG    IR_ulTcount,              //[Running Dir Count,Special,2018/08/17]
-                  BTTx_ulClearbttnCount,    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-				  BTTx_ulTestCount;         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+Main_EXT ULONG    
+                  IR_ulTcount,               //[Running Dir Count,Special,2018/08/17]
+                  BTTx_ulClearbttnCount,     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				      BTTx_ulTestCount;          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
-Main_EXT UBYTE    CPUError,
+Main_EXT UBYTE    
+                  CPUError,
                   Error,
                   WarnCode,
                   PSW_CNT,
@@ -297,90 +309,95 @@ Main_EXT UBYTE    CPUError,
                   Cnt_ubPGWait,
                   Driver_ID;                //[IEDS vs. EDS deriver,Lyabryan,2016/07/14]
 
-Main_EXT UBYTE_UNION    mfi0_status,
-                        mfi1_status,
-                        mfi2_status,
-                        inv_status,
-                        inv1_status,
-                        inv2_status,
-                        inv3_status,        // DIN function
-                        warn_status,
-//                                         err_status,
-//                                         err1_status,  //SCOTTY 09/05/2007
-                        com1_status,
-                        com2_status,
-                        com3_status,
-                        copy_status,
-                        lock_status,
-                        kpd1_status,
-                        kpd2_status,
-                        kpd3_status,
-                        ext_status,
-                        ext1_status,
-                        ext2_status,
-                        ext3_status,
-                        led_status,
-//                                        cmd_status,
-//                                        sys_status,
-//                                        dir1_status,
-//                                         dir2_status,
-//                                         wg_status,
-//                                         wg1_status,
-//                                         tun_status,
-//                                         tun1_status,
-//                                         pre_status,
-//                                         pre1_status,
-                        pg_status,
-                        DBC_status,
-                        Con_status,
-                        Con1_status,
-                        WREP_status,
-//                                         APR_status,
-//                                         APR_status1,
-                        PMstart_status,     //ADDED BY SCOTTY 2007/01/29
-                        exto_status,        //ADDED BY Dino, 2008/02/29
-                        edt_status,
-                        SMTRISE_status,     //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
-                        FAN_status,         //ADDED BY SCOTTY   2007/10/15
-                        VH_status,          // CalUBYTE: 37 UBYTE
-                        WREP_status2,       // [IED 1387 static Tune, 2011/07/06]
-                        Time_srquence,      //[DIN time sequence, Bernie, 2013/03/07]
-                        SPD_PG_quality,     //[PG quality function, Bernie, 2017/06/20]
-                        BTTx_status,
-						AFE_Handle_Flag;
+Main_EXT UBYTE_UNION    
+                  mfi0_status,
+                  mfi1_status,
+                  mfi2_status,
+                  inv_status,
+                  inv1_status,
+                  inv2_status,
+                  inv3_status,        // DIN function
+                  warn_status,
+                  //err_status,
+                  //err1_status,     //SCOTTY 09/05/2007
+                  com1_status,
+                  com2_status,
+                  com3_status,
+                  copy_status,
+                  lock_status,
+                  kpd1_status,
+                  kpd2_status,
+                  kpd3_status,
+                  ext_status,
+                  ext1_status,
+                  ext2_status,
+                  ext3_status,
+                  led_status,
+                  //cmd_status,
+                  //sys_status,
+                  //dir1_status,
+                  //dir2_status,
+                  //wg_status,
+                  //wg1_status,
+                  //tun_status,
+                  //tun1_status,
+                  //pre_status,
+                  //pre1_status,
+                  pg_status,
+                  DBC_status,
+                  Con_status,
+                  Con1_status,
+                  WREP_status,
+                  //APR_status,
+                  //APR_status1,
+                  PMstart_status,     //ADDED BY SCOTTY 2007/01/29
+                  exto_status,        //ADDED BY Dino, 2008/02/29
+                  edt_status,
+                  SMTRISE_status,     //[KEB ESD&ETS Function/Lyabryan/2018/08/10]
+                  FAN_status,         //ADDED BY SCOTTY   2007/10/15
+                  VH_status,          // CalUBYTE: 37 UBYTE
+                  WREP_status2,       // [IED 1387 static Tune, 2011/07/06]
+                  Time_srquence,      //[DIN time sequence, Bernie, 2013/03/07]
+                  SPD_PG_quality,     //[PG quality function, Bernie, 2017/06/20]
+                  BTTx_status,
+                  AFE_Handle_Flag;
                         
-Main_EXT UWORD          st_uwAbsAngleTune,  //[Fix state tune problem, Bernie, 2014/09/02 ]
-                        hsd_uwAbsAngle,     //[PGHSD-1 abs angle,Lyabryan,2017/07/17]
-                        zcal_uwMTU1cnt;     //[PG count for annoy,Lyabryan,2017/07/17]
+Main_EXT UWORD          
+                  st_uwAbsAngleTune,  //[Fix state tune problem, Bernie, 2014/09/02 ]
+                  hsd_uwAbsAngle,     //[PGHSD-1 abs angle,Lyabryan,2017/07/17]
+                  zcal_uwMTU1cnt;     //[PG count for annoy,Lyabryan,2017/07/17]
 
-Main_EXT UWORD_UNION    dir_status,
-                        err_status,
-                        cmd_status,
-                        wg_status,
-                        tun_status,
-                        key_status,
-                        pre_status,
-                        pre_status2,
-                        IEDPG_status,
-                        APR_status,
-                        wg_status_CC,       //[CC Display, Bernie, 2017/04/12]
-                        tb_status,
-                        EPS_POWER_SWITCH,   //[EPS MO Output,Lyabryan,2018/06/19]
-                        Sibocom_spflag,
-                        Sibocom_ENflag;
+Main_EXT UWORD_UNION    
+                  dir_status,
+                  err_status,
+                  cmd_status,
+                  wg_status,
+                  tun_status,
+                  key_status,
+                  pre_status,
+                  pre_status2,
+                  IEDPG_status,
+                  APR_status,
+                  wg_status_CC,       //[CC Display, Bernie, 2017/04/12]
+                  tb_status,
+                  EPS_POWER_SWITCH,   //[EPS MO Output,Lyabryan,2018/06/19]
+                  Sibocom_spflag,
+                  Sibocom_ENflag;
 
 
 #pragma address fcmd=0x0000a100             //[Address fixed, Aevin, 2017/06/28]
-Main_EXT ULONG_UNION    fcmd,
-                        fcmd_vf,
-                        ftemp,
-                        fexternal,
-                        fslip,
-                        mcount,
-                        Pinput;
+Main_EXT ULONG_UNION    
+                  fcmd,
+                  fcmd_vf,
+                  ftemp,
+                  fexternal,
+                  fslip,
+                  mcount,
+                  Pinput;
 
-Main_EXT UWORD_UNION    Service_time,     //
-                        Star_con_status;
+Main_EXT UWORD_UNION    
+                  Service_time,
+                  Star_con_status;
 
 
 Main_EXT PARAM_ATTR attr[PRMAX];

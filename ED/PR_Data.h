@@ -1,197 +1,197 @@
 /*------------	Group15	 --------*/						
 #define	GROUP15			0					
-#define	DEBUG_F1		(GROUP15+0)		//	0	15-00	Debug Flag 1	
-#define	DBCCHG_F		(GROUP15+1)		//	1	15-01	DBC CHANGE FREQ	
-#define	PFEF			(GROUP15+2)		//	2	15-02	efficiency of Motor	
-#define DC_ZSEARCH		(GROUP15+3)		//	3	15-03	Z Phase search current level
-#define	AD_IRATE		(GROUP15+4)		//	4	15-04	AD value at Rated Current	
-#define	IDQELPFG		(GROUP15+5)		//	5	15-05	Id*,Iq* LPF	
-#define	FACTORY1		(GROUP15+6)		//	6	15-06	Only for Factory 1	
-#define	FACTORY2		(GROUP15+7)		//	7	15-07	Only for Factory 2	
-#define	FACTORY3		(GROUP15+8)		//	8	15-08	Only for Factory 3	
-#define	FACTORY4		(GROUP15+9)		//	9	15-09	Only for Factory 4	
-#define	RESEVER 		(GROUP15+10)	//	10	15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	    //clear Warning, Special.kung, 03/08/2023
-#define	SKIP_DT			(GROUP15+11)	//	11	15-11	Skip Dead Time	
-#define	DCB_AD1			(GROUP15+12)	//	12	15-12	DCBUS 210.0 VDC ad value	
-#define	DCB_AD2			(GROUP15+13)	//	13	15-13	DCBUS 310.0 VDC ad value	
-#define	DCB_AD3			(GROUP15+14)	//	14	15-14	DCBUS 390.0 VDC ad value	
-#define	TRQ_P			(GROUP15+15)	//	15	15-15	Torque control Kp	
-#define	TRQ_I			(GROUP15+16)	//	16	15-16	Torque Control Ki	
-#define	FLUX_P			(GROUP15+17)	//	17	15-17	Flux Control Kp	
-#define	FLUX_I			(GROUP15+18)	//	18	15-18	Flux Control Ki	
-#define	SpdSlop_P		(GROUP15+19)	//	19	15-19	Speed slop Control Kp gain	
-#define	SpdSlop_I		(GROUP15+20)	//	20	15-20	Speed slop Control Ki gain	
-#define	CTRLSEL			(GROUP15+21)	//	21	15-21	Control Selection	
-#define	TESTAmp			(GROUP15+22)	//	22	15-22	Test Source Value Amplitude	
-#define	HiSpd_LPG		(GROUP15+23)	//	23	15-23	High Speed Low pass Filter Gain	
-#define	LoSpd_LPG		(GROUP15+24)	//	24	15-24	Low Speed Low pass filter Gain	
-#define	TESTBias		(GROUP15+25)	//	25	15-25	Test Source Value Bias	
-#define	EstJ_LPG		(GROUP15+26)	//	26	15-26	Estimate J Low pass Filter Gain	
-#define	CALI_REF		(GROUP15+27)	//	27	15-27	Calibration current REF	
-#define	CALI_P			(GROUP15+28)	//	28	15-28	Calibration P	
-#define	CALI_I			(GROUP15+29)	//	29	15-29	Calibration I	
-#define	DCTUN_P			(GROUP15+30)	//	30	15-30	Auto tuning DC test Kp gain	
-#define	DCTUN_I			(GROUP15+31)	//	31	15-31	Auto Tuning DC test Ki gain	
-#define	HFTUN_P			(GROUP15+32)	//	32	15-32	Auto tuning High Freq. Lock test Kp gain	
-#define	DCBUSLPG		(GROUP15+33)	//	33	15-33	ADcbus Low Pass Gain	
-#define VCMP_K			(GROUP15+34)	//	34	15-34	Select Zero Speed	
-#define NLBOOST			(GROUP15+35)	//	35	15-35	No Load Boost Gain	
-#define	AKP			    (GROUP15+36)	//	36	15-36	Acceleration AKP	
-#define	AKI			    (GROUP15+37)	//	37	15-37	Acceleration AKI	
-#define	CULPBW 			(GROUP15+38)	//	38	15-38	Current Loop BandWidth
-#define	DBLEAD2     	(GROUP15+39)	//	39	15-39	DBC Leading 2
-#define	DBRATIO2		(GROUP15+40)	//	40	15-40	DBC Ratio 2 with close loop
-#define	DBC1			(GROUP15+41)	//	41	15-41	DBC Coef.
-#define	DBC2			(GROUP15+42)	//	42	15-42	DBC Dcbus Coef.
-#define	DBLEAD			(GROUP15+43)	//	43	15-43	DBC leading 1
-#define	DBRATIO			(GROUP15+44)	//	44	15-44	DBC Linear Ratio 1
-#define DBC_MODE		(GROUP15+45)	//	45	15-45	DBC MODE
-#define	LMPU1			(GROUP15+46)	//	46	15-46	magnitization inductance 1
-#define	EMFPU1			(GROUP15+47)	//	47	15-47	main flux linkage 1
-#define	LMPU2			(GROUP15+48)	//	48	15-48	magnitization inductance 2
-#define	EMFPU2			(GROUP15+49)	//	49	15-49	main flux linkage 2
-#define	LMPU3			(GROUP15+50)	//	50	15-50	magnitization inductance 3
-#define	EMFPU3			(GROUP15+51)	//	51	15-51	main flux linkage 3
-#define	LMPU4			(GROUP15+52)	//	52	15-52	magnitization inductance 4
-#define	EMFPU4			(GROUP15+53)	//	53	15-53	main flux linkage 4
-#define	LMPU5			(GROUP15+54)	//	54	15-54	magnitization inductance 5
-#define	EMFPU5			(GROUP15+55)	//	55	15-55	main flux linkage 5
-#define	LMPU6			(GROUP15+56)	//	56	15-56	magnitization inductance 6
-#define	EMFPU6			(GROUP15+57)	//	57	15-57	main flux linkage 6
-#define	MOD_INDEX		(GROUP15+58)	//	58	15-58	Modulation Index
-#define	IZEROLPG		(GROUP15+59)	//	59	15-59	Current Zero Low Pass Gain
-#define	COSPHILPG		(GROUP15+60)	//	60	15-60	cos(TB1_uwPhi) low pass gain
-#define	DATECODE		(GROUP15+61)	//	61	15-61	reserved // Datecode para change, Henry, 2016/07/20
-#define	CAUI2ZERO		(GROUP15+62)	//	62	15-62	calibration for AUI ZeroPoint (0V)
-#define	CAUI2MAX		(GROUP15+63)	//	63	15-63	calibration for AUI2 max (+10V)
-#define	CAUI2MIN		(GROUP15+64)	//	64	15-64	calibration for AUI2 min (-10V)
-#define	CACIMAX			(GROUP15+65)	//	65	15-65	calibration for ACI2 max (20mA)
-#define	CACIMID			(GROUP15+66)	//	66	15-66	calibration for ACI mid (12mA)
-#define	CACIMIN			(GROUP15+67)	//	67	15-67	calibration for ACI min (4mA)
-#define	CAUI1ZERO		(GROUP15+68)	//	68	15-68	calibration for AUI1 ZeroPoint (0V)
-#define	CAUI1MAX		(GROUP15+69)	//	69	15-69	calibration for AUI1 max (+10V)
-#define	CAUI1MIN		(GROUP15+70)	//	70	15-70	calibration for AUI1 min (-10V)
-#define	DKP				(GROUP15+71)	//	71	15-71	Deceleration DKP
-#define	DKI				(GROUP15+72)	//	72	15-72	Deceleration DKI
-#define	LOW_SPEED		(GROUP15+73)	//	73	15-73	more volt. comp. below this freq.
-#define	PGDETCNT		(GROUP15+74)	//	74	15-74	PGLOSS Detect Counter
-#define	FMAIN			(GROUP15+75)	//	75	15-75	Main Frequency
-#define	PWR_CNT			(GROUP15+76)	//	76	15-76	Power On Counter
-#define	GFF_REC_SW		(GROUP15+77)	//	77	15-77	GFF Maximum Value Record, Jerry Yu, 2019/11/11
-#define	BLD_VER	        (GROUP15+78)	//	78  15-78   BLD Version //[BootLoader Version, Special.Kung, 2022/10/31]		
-#define SIBO_EPS_FRMODE	(GROUP15+79)	//	79	15-79	SIBOCOM EPS FWD/REV EPS Mode, Jason, 191231
-#define	OPHL_SPER 		(GROUP15+80)    //  80	15-80   [New OPHL Function,Jerry.SK,2019/12/28]
-#define	OPHL_CURER		(GROUP15+81)    //  81	15-81   [New OPHL Function,Jerry.SK,2019/12/28]
-#define	OPHL_ERCNT		(GROUP15+82)    //  82	15-82   [New OPHL Function,Jerry.SK,2019/12/28]
-#define	BLD_DATECODE	(GROUP15+83)	//	82	15-83   BLD Date Code //[BootLoader DataCode, Special.Kung, 2022/10/31]
-#define	FAUIZERO		(GROUP15+84)	//	84	15-84	calibration for AUI ZeroPoint (0V)
-#define	FAUIMAX			(GROUP15+85)	//	85	15-85	calibration for AUI max (+2V)
-#define	FAUIMIN			(GROUP15+86)	//	86	15-86	calibration for AUI min (-2V)
-#define	SINMAX			(GROUP15+87)	//	87	15-87	calibration for SIN max, add by dino, 06/01/2007
-#define	SINMIN			(GROUP15+88)	//	88	15-88	calibration for SIN min, add by dino, 06/01/2007
-#define	COSMAX			(GROUP15+89)	//	89	15-89	calibration for COS max, add by dino, 06/01/2007
-#define	COSMIN			(GROUP15+90)	//	90	15-90	calibration for COS min, add by dino, 06/01/2007
-#define	MINI_PULSE		(GROUP15+91)	//	91	15-91	minimum pulse, ADDED BY SCOTTY,2007/07/11
-#define	FAN_Dframe		(GROUP15+92)	//  92	15-92	D frame FAN Control
-#define Z_SECT			(GROUP15+93)	//  93  15-93	Z phase UVW Section when PG_TYPE = 2, add by dino, 10/29/2007
-#define RESEVER  		(GROUP15+94)	//      15-94	RESEVER
-#define PG_POSatLV		(GROUP15+95)	//	95 	15-95	PG Position Record, add by scotty, 12/07/2007
-#define DAMAX			(GROUP15+96)	//	96 	15-96	AFM max. value
-#define DAMIN			(GROUP15+97)	//	97 	15-97	AFM min. value
-#define	RLY_TIME		(GROUP15+98)	//	98	15-98	Softstart Delay Time
-#define DEBUG_F2  		(GROUP15+99)	//      15-99	Debug Flag 2    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
-#define	ZCAB_MODE		(GROUP15+100)	//	100	15-100	//[Z-calibration compensation speed,Jerry Yu,2019/06/05] 
-#define	Qer_min			(GROUP15+101)	//	101	15-101  Qer_min  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
-#define	Qer_Shift		(GROUP15+102)	//	102	15-102  Qer_Shift  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
-#define Sin_HS_Tab		(GROUP15+103)	//	103	15-103  Sin_HS_Tab //[Sin Table extend,Jason,2019/09/02]
-#define PSW_2006H		(GROUP15+105)	//  105 15-105  User Password, Write form 2006H, Read from 21FFH, DINO, 12/23/2009
-#define CAN_CTRL		(GROUP15+106)	//  106 15-106  Can Control       //[CAN Control, Sampo, 09/15/2010]
-#define CAN_FAULT		(GROUP15+107)	//  106 15-107  Can Fault handle  //[CAN Control, Sampo, 09/15/2010]
-#define DEBUG_PG		(GROUP15+108)
-#define _47th_DISP		(GROUP15+109)
-#define PG_MODE		    (GROUP15+110)
-#define	WDT_DIV			(GROUP15+111)	//  109 15-111  WDT Divider Value     //[ICT WDT test, Bernie, 08/16/2011]
-#define AFM1_P10CNT     (GROUP15+112)   //  110 15-112  AFM1_P10CNT for AFM1 +10V output
-#define AFM1_0CNT       (GROUP15+113)   //  111 15-113  AFM1_0CNT for AFM1 0V output
-#define AFM1_M10CNT     (GROUP15+114)   //  110 15-114  AFM1_M10CNT for AFM1 -10V output
-#define AFM2_P10CNT     (GROUP15+115)   //  110 15-115  AFM2_P10CNT for AFM2 +10V output
-#define AFM2_0CNT       (GROUP15+116)   //  110 15-116  AFM2_0CNT for AFM2 0V output
-#define AFM2_M10CNT     (GROUP15+117)   //  110 15-117  AFM2_M10CNT for AFM2 -10V output
-#define PROTECT_BIT     (GROUP15+118)   //  XXX 15-118  The switch of Protect finction    //[The switch of Protect finction, Bernie, 2015/05/21]
-#define OPH2_CNT        (GROUP15+119)   //  XXX 15-119  The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_IRMS       (GROUP15+120)   //  XXX 15-120  The IRMS value of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_GAIN       (GROUP15+121)   //  XXX 15-121  The Gain value of Protect finction     //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define PPI_C   		(GROUP15+122)	//	122 15-122  Test parameter, add by dino, 02/20/2008
-#define MBF_ERR_REC     (GROUP15+123)   //  1XX 12-123  MBF record after power down         //[MBF can be recorded after power down, Bernie, 2016/02/19]
-#define	EOL_RECODHI     (GROUP15+124)   //  [add for UL EoL Verification,Bernie, 2013/04/22]
-#define	EOL_RECODLO     (GROUP15+125)   //  [add for UL EoL Verification,Bernie, 2013/04/22]
-#define	Par126  		(GROUP15+126)	//	126 15-126	Test parameter, add by dino, 02/20/2008
-#define Unavaliable		(GROUP15+127)	//	126 15-127	Test parameter, add by dino, 02/20/2008
+#define	DEBUG_F1		(GROUP15+0)	//	15-00	Debug Flag 1	
+#define	DBCCHG_F		(GROUP15+1)	//	15-01	DBC CHANGE FREQ	
+#define	PFEF			(GROUP15+2)	//	15-02	efficiency of Motor	
+#define DC_ZSEARCH		(GROUP15+3)	//	15-03	Z Phase search current level
+#define	AD_IRATE		(GROUP15+4)	//	15-04	AD value at Rated Current	
+#define	IDQELPFG		(GROUP15+5)	//	15-05	Id*,Iq* LPF	
+#define	FACTORY1		(GROUP15+6)	//	15-06	Only for Factory 1	
+#define	FACTORY2		(GROUP15+7)	//	15-07	Only for Factory 2	
+#define	FACTORY3		(GROUP15+8)	//	15-08	Only for Factory 3	
+#define	FACTORY4		(GROUP15+9)	//	15-09	Only for Factory 4	
+//#define	RESEVER 		(GROUP15+10)	//	15-10	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	    //clear Warning, Special.kung, 03/08/2023
+#define	SKIP_DT			(GROUP15+11)	//	15-11	Skip Dead Time	
+#define	DCB_AD1			(GROUP15+12)	//	15-12	DCBUS 210.0 VDC ad value	
+#define	DCB_AD2			(GROUP15+13)	//	15-13	DCBUS 310.0 VDC ad value	
+#define	DCB_AD3			(GROUP15+14)	//	15-14	DCBUS 390.0 VDC ad value	
+#define	TRQ_P			(GROUP15+15)	//	15-15	Torque control Kp	
+#define	TRQ_I			(GROUP15+16)	//	15-16	Torque Control Ki	
+#define	FLUX_P			(GROUP15+17)	//	15-17	Flux Control Kp	
+#define	FLUX_I			(GROUP15+18)	//	15-18	Flux Control Ki	
+#define	SpdSlop_P		(GROUP15+19)	//	15-19	Speed slop Control Kp gain	
+#define	SpdSlop_I		(GROUP15+20)	//	15-20	Speed slop Control Ki gain	
+#define	CTRLSEL			(GROUP15+21)	//	15-21	Control Selection	
+#define	TESTAmp			(GROUP15+22)	//	15-22	Test Source Value Amplitude	
+#define	HiSpd_LPG		(GROUP15+23)	//	15-23	High Speed Low pass Filter Gain	
+#define	LoSpd_LPG		(GROUP15+24)	//	15-24	Low Speed Low pass filter Gain	
+#define	TESTBias		(GROUP15+25)	//	15-25	Test Source Value Bias	
+#define	EstJ_LPG		(GROUP15+26)	//	15-26	Estimate J Low pass Filter Gain	
+#define	CALI_REF		(GROUP15+27)	//	15-27	Calibration current REF	
+#define	CALI_P			(GROUP15+28)	//	15-28	Calibration P	
+#define	CALI_I			(GROUP15+29)	//	15-29	Calibration I	
+#define	DCTUN_P			(GROUP15+30)	//	15-30	Auto tuning DC test Kp gain	
+#define	DCTUN_I			(GROUP15+31)	//	15-31	Auto Tuning DC test Ki gain	
+#define	HFTUN_P			(GROUP15+32)	//	15-32	Auto tuning High Freq. Lock test Kp gain	
+#define	DCBUSLPG		(GROUP15+33)	//	15-33	ADcbus Low Pass Gain	
+#define VCMP_K			(GROUP15+34)	//	15-34	Select Zero Speed	
+#define NLBOOST			(GROUP15+35)	//	15-35	No Load Boost Gain	
+#define	AKP			(GROUP15+36)	//	15-36	Acceleration AKP	
+#define	AKI			(GROUP15+37)	//	15-37	Acceleration AKI	
+#define	CULPBW 			(GROUP15+38)	//	15-38	Current Loop BandWidth
+#define	DBLEAD2                 (GROUP15+39)	//	15-39	DBC Leading 2
+#define	DBRATIO2		(GROUP15+40)	//	15-40	DBC Ratio 2 with close loop
+#define	DBC1			(GROUP15+41)	//	15-41	DBC Coef.
+#define	DBC2			(GROUP15+42)	//	15-42	DBC Dcbus Coef.
+#define	DBLEAD			(GROUP15+43)	//	15-43	DBC leading 1
+#define	DBRATIO			(GROUP15+44)	//	15-44	DBC Linear Ratio 1
+#define DBC_MODE		(GROUP15+45)	//	15-45	DBC MODE
+#define	LMPU1			(GROUP15+46)	//	15-46	magnitization inductance 1
+#define	EMFPU1			(GROUP15+47)	//	15-47	main flux linkage 1
+#define	LMPU2			(GROUP15+48)	//	15-48	magnitization inductance 2
+#define	EMFPU2			(GROUP15+49)	//	15-49	main flux linkage 2
+#define	LMPU3			(GROUP15+50)	//	15-50	magnitization inductance 3
+#define	EMFPU3			(GROUP15+51)	//	15-51	main flux linkage 3
+#define	LMPU4			(GROUP15+52)	//	15-52	magnitization inductance 4
+#define	EMFPU4			(GROUP15+53)	//	15-53	main flux linkage 4
+#define	LMPU5			(GROUP15+54)	//	15-54	magnitization inductance 5
+#define	EMFPU5			(GROUP15+55)	//	15-55	main flux linkage 5
+#define	LMPU6			(GROUP15+56)	//	15-56	magnitization inductance 6
+#define	EMFPU6			(GROUP15+57)	//	15-57	main flux linkage 6
+#define	MOD_INDEX		(GROUP15+58)	//	15-58	Modulation Index
+#define	IZEROLPG		(GROUP15+59)	//	15-59	Current Zero Low Pass Gain
+#define	COSPHILPG		(GROUP15+60)	//	15-60	cos(TB1_uwPhi) low pass gain
+#define	DATECODE		(GROUP15+61)	//	15-61	reserved // Datecode para change, Henry, 2016/07/20
+#define	CAUI2ZERO		(GROUP15+62)	//	15-62	calibration for AUI ZeroPoint (0V)
+#define	CAUI2MAX		(GROUP15+63)	//	15-63	calibration for AUI2 max (+10V)
+#define	CAUI2MIN		(GROUP15+64)	//	15-64	calibration for AUI2 min (-10V)
+#define	CACIMAX			(GROUP15+65)	//	15-65	calibration for ACI2 max (20mA)
+#define	CACIMID			(GROUP15+66)	//	15-66	calibration for ACI mid (12mA)
+#define	CACIMIN			(GROUP15+67)	//	15-67	calibration for ACI min (4mA)
+#define	CAUI1ZERO		(GROUP15+68)	//	15-68	calibration for AUI1 ZeroPoint (0V)
+#define	CAUI1MAX		(GROUP15+69)	//	15-69	calibration for AUI1 max (+10V)
+#define	CAUI1MIN		(GROUP15+70)	//	15-70	calibration for AUI1 min (-10V)
+#define	DKP			(GROUP15+71)	//	15-71	Deceleration DKP
+#define	DKI			(GROUP15+72)	//	15-72	Deceleration DKI
+#define	LOW_SPEED		(GROUP15+73)	//	15-73	more volt. comp. below this freq.
+#define	PGDETCNT		(GROUP15+74)	//	15-74	PGLOSS Detect Counter
+#define	FMAIN			(GROUP15+75)	//	15-75	Main Frequency
+#define	PWR_CNT			(GROUP15+76)	//	15-76	Power On Counter
+#define	GFF_REC_SW		(GROUP15+77)	//	15-77	GFF Maximum Value Record, Jerry Yu, 2019/11/11
+#define	BLD_VER	                (GROUP15+78)	//	15-78	BLD Version //[BootLoader Version, Special.Kung, 2022/10/31]		
+#define SIBO_EPS_FRMODE	        (GROUP15+79)	//	15-79	SIBOCOM EPS FWD/REV EPS Mode, Jason, 191231
+#define	OPHL_SPER 		(GROUP15+80)    //	15-80	[New OPHL Function,Jerry.SK,2019/12/28]
+#define	OPHL_CURER		(GROUP15+81)    //	15-81	[New OPHL Function,Jerry.SK,2019/12/28]
+#define	OPHL_ERCNT		(GROUP15+82)    //	15-82	[New OPHL Function,Jerry.SK,2019/12/28]
+#define	BLD_DATECODE	        (GROUP15+83)	//	15-83	BLD Date Code //[BootLoader DataCode, Special.Kung, 2022/10/31]
+#define	FAUIZERO		(GROUP15+84)	//	15-84	calibration for AUI ZeroPoint (0V)
+#define	FAUIMAX			(GROUP15+85)	//	15-85	calibration for AUI max (+2V)
+#define	FAUIMIN			(GROUP15+86)	//	15-86	calibration for AUI min (-2V)
+#define	SINMAX			(GROUP15+87)	//	15-87	calibration for SIN max, add by dino, 06/01/2007
+#define	SINMIN			(GROUP15+88)	//	15-88	calibration for SIN min, add by dino, 06/01/2007
+#define	COSMAX			(GROUP15+89)	//	15-89	calibration for COS max, add by dino, 06/01/2007
+#define	COSMIN			(GROUP15+90)	//	15-90	calibration for COS min, add by dino, 06/01/2007
+#define	MINI_PULSE		(GROUP15+91)	//	15-91	minimum pulse, ADDED BY SCOTTY,2007/07/11
+#define	FAN_Dframe		(GROUP15+92)	//	15-92	D frame FAN Control
+#define Z_SECT			(GROUP15+93)	//	15-93	Z phase UVW Section when PG_TYPE = 2, add by dino, 10/29/2007
+//#define RESEVER			(GROUP15+94)	//	15-94	RESEVER
+#define PG_POSatLV		(GROUP15+95)	//	15-95	PG Position Record, add by scotty, 12/07/2007
+#define DAMAX			(GROUP15+96)	//	15-96	AFM max. value
+#define DAMIN			(GROUP15+97)	//	15-97	AFM min. value
+#define	RLY_TIME		(GROUP15+98)	//	15-98	Softstart Delay Time
+#define DEBUG_F2  		(GROUP15+99)	//	15-99	Debug Flag 2    //Rational 341544, Pr[15-99] replace Pr[15-09], Special 05/22/2023
+#define	ZCAB_MODE		(GROUP15+100)	//	15-100	//[Z-calibration compensation speed,Jerry Yu,2019/06/05] 
+#define	Qer_min			(GROUP15+101)	//	15-101	Qer_min  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
+#define	Qer_Shift		(GROUP15+102)	//	15-102	Qer_Shift  //[Current Low Frequency Ripple,JerrySK,2019/09/05]
+#define Sin_HS_Tab		(GROUP15+103)	//	15-103	Sin_HS_Tab //[Sin Table extend,Jason,2019/09/02]
+#define PSW_2006H		(GROUP15+105)	//	15-105	User Password, Write form 2006H, Read from 21FFH, DINO, 12/23/2009
+#define CAN_CTRL		(GROUP15+106)	//	15-106	Can Control       //[CAN Control, Sampo, 09/15/2010]
+#define CAN_FAULT		(GROUP15+107)	//	15-107	Can Fault handle  //[CAN Control, Sampo, 09/15/2010]
+#define DEBUG_PG		(GROUP15+108)   //	15-108
+#define _47th_DISP		(GROUP15+109)   //	15-109
+#define PG_MODE		        (GROUP15+110)   //	15-110
+#define	WDT_DIV			(GROUP15+111)	//	15-111	WDT Divider Value     //[ICT WDT test, Bernie, 08/16/2011]
+#define AFM1_P10CNT             (GROUP15+112)   //	15-112	AFM1_P10CNT for AFM1 +10V output
+#define AFM1_0CNT               (GROUP15+113)   //	15-113	AFM1_0CNT for AFM1 0V output
+#define AFM1_M10CNT             (GROUP15+114)   //	15-114	AFM1_M10CNT for AFM1 -10V output
+#define AFM2_P10CNT             (GROUP15+115)   //	15-115	AFM2_P10CNT for AFM2 +10V output
+#define AFM2_0CNT               (GROUP15+116)   //	15-116	AFM2_0CNT for AFM2 0V output
+#define AFM2_M10CNT             (GROUP15+117)   //	15-117	AFM2_M10CNT for AFM2 -10V output
+#define PROTECT_BIT             (GROUP15+118)   //	15-118	The switch of Protect finction    //[The switch of Protect finction, Bernie, 2015/05/21]
+#define OPH2_CNT                (GROUP15+119)   //	15-119	The Count of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_IRMS               (GROUP15+120)   //	15-120	The IRMS value of Protect finction    //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_GAIN               (GROUP15+121)   //	15-121	The Gain value of Protect finction     //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define PPI_C   		(GROUP15+122)	//	15-122	Test parameter, add by dino, 02/20/2008
+#define MBF_ERR_REC             (GROUP15+123)   //	15-123	MBF record after power down         //[MBF can be recorded after power down, Bernie, 2016/02/19]
+#define	EOL_RECODHI             (GROUP15+124)   //	15-124	[add for UL EoL Verification,Bernie, 2013/04/22]
+#define	EOL_RECODLO             (GROUP15+125)   //	15-125	[add for UL EoL Verification,Bernie, 2013/04/22]
+#define	Par126  		(GROUP15+126)	//	15-126	Test parameter, add by dino, 02/20/2008
+#define Unavaliable		(GROUP15+127)	//	15-127	Test parameter, add by dino, 02/20/2008
 /*------------	Group0	 --------*/
 #define	GROUP0			(GROUP15+128)
-#define	HPSPEC			(GROUP0+0)      //  128 00-00   Model Type of Drive
-#define	I_RATE2		    (GROUP0+1)      //  129	00-01   Rated Current
-#define	PRRESET			(GROUP0+2)      //  130	00-02   Parameter Reset
-#define	S_DISP			(GROUP0+3)      //  131	00-03   Start up Display
-#define	U_DISP			(GROUP0+4)      //  132	00-04   User Display
-#define	U_SET			(GROUP0+5)      //  133	00-05   User Coefficient
-#define	SW_VER			(GROUP0+6)      //  134	00-06   Software Version
-#define	PSW_IN			(GROUP0+7)      //  135	00-07   Password Input
-#define	PSW_SET			(GROUP0+8)      //  136	00-08   Password Input
-#define	CTRLM			(GROUP0+9)      //  137	00-09   Control Methods
-#define UNITSEL			(GROUP0+10)	    //  138	00-10   Velocity Unit Select, Add by DINO, 05/25/2009
-#define CHG_DIR		    (GROUP0+11)	    //  139	00-11   Change Output Direction, Added by sampo , 06/11/2009
-#define	SETCRF			(GROUP0+12)	    //  140	00-12   Carry Frequency
-#define	AVR			    (GROUP0+13)	    //  141	00-13   AVR
-#define	SOFC			(GROUP0+14)	    //  142	00-14   Source of Freq. Command
-#define	SOOC			(GROUP0+15)	    //  143	00-15   Source of Oper. Command
+#define	HPSPEC			(GROUP0+0)      //	00-00	Model Type of Drive
+#define	I_RATE2		        (GROUP0+1)      //	00-01	Rated Current
+#define	PRRESET			(GROUP0+2)      //	00-02	Parameter Reset
+#define	S_DISP			(GROUP0+3)      //	00-03	Start up Display
+#define	U_DISP			(GROUP0+4)      //	00-04	User Display
+#define	U_SET			(GROUP0+5)      //	00-05	User Coefficient
+#define	SW_VER			(GROUP0+6)      //	00-06	Software Version
+#define	PSW_IN			(GROUP0+7)      //	00-07	Password Input
+#define	PSW_SET			(GROUP0+8)      //	00-08	Password Input
+#define	CTRLM			(GROUP0+9)      //	00-09	Control Methods
+#define UNITSEL			(GROUP0+10)	//	00-10	Velocity Unit Select, Add by DINO, 05/25/2009
+#define CHG_DIR		        (GROUP0+11)	//	00-11	Change Output Direction, Added by sampo , 06/11/2009
+#define	SETCRF			(GROUP0+12)	//	00-12	Carry Frequency
+#define	AVR			(GROUP0+13)	//	00-13	AVR
+#define	SOFC			(GROUP0+14)	//	00-14	Source of Freq. Command
+#define	SOOC			(GROUP0+15)	//	00-15	Source of Oper. Command
 /*------------	Group1	 --------*/
 #define	GROUP1			(GROUP0+16)
-#define	FMAX			(GROUP1+0)      //  144	01-00   Max Output Freq.
-#define	MFBASE1			(GROUP1+1)      //  145	01-01   Motor Base Frequency 1
-#define	VMAX1			(GROUP1+2)      //  146	01-02   Max Output Voltage
-#define	FMID1_1			(GROUP1+3)      //  147	01-03   Mid Output Freq.1
-#define	VMID1_1			(GROUP1+4)      //  148	01-04   Mid Output Voltage 1
-#define	FMID1_2			(GROUP1+5)      //  149	01-05   Mid Output Freq.2
-#define	VMID1_2			(GROUP1+6)      //  150	01-06   Mid Output Voltage 2
-#define	FMIN1			(GROUP1+7)      //  151	01-07   Min Output Freq.
-#define	VMIN1			(GROUP1+8)      //  152	01-08   Min Output Voltage
-#define	FSTART			(GROUP1+9)      //  153	01-09   Start Frequency
-#define	FUPPER			(GROUP1+10)	    //  154	01-10   Upper Bound Freq.
-#define	FLOWER			(GROUP1+11)	    //  155	01-11   Lower Bound Freq.
-#define	ACCEL1			(GROUP1+12)	    //  156	01-12   1st Acceleration time
-#define	DECEL1			(GROUP1+13)	    //  157	01-13   1st Deceleration time
-#define	ACCEL2			(GROUP1+14)	    //  158	01-14   2nd Acceleration time
-#define	DECEL2			(GROUP1+15)	    //  159	01-15   2nd Deceleration time
-#define	ACCEL3			(GROUP1+16)	    //  160	01-16   3rd Acceleration time
-#define	DECEL3			(GROUP1+17)	    //  161	01-17   3rd Deceleration time
-#define	ACCEL4			(GROUP1+18)	    //  162	01-18   4th Acceleration time
-#define	DECEL4			(GROUP1+19)	    //  163	01-19   4th Deceleration time
-#define	JOGACC			(GROUP1+20)	    //  164	01-20   JOG Acceleration time	
-#define	JOGDEC			(GROUP1+21)	    //  165	01-21   JOG Deceleration time	
-#define	JOGF			(GROUP1+22)	    //  166	01-22   JOG Frequency	
-#define	FAD1_AD4		(GROUP1+23)	    //  167	01-23   Transition Frequency ACC1/DEC1 to ACC4/DEC4	
-#define	S4ACC1			(GROUP1+24)	    //  168	01-24   S curve Accel time 1	
-#define	S4ACC2			(GROUP1+25)	    //  169	01-25   S curve Accel time 2	
-#define	S4DEC1			(GROUP1+26)	    //  170	01-26   S curve Decel time 1	
-#define	S4DEC2			(GROUP1+27)	    //  171	01-27   S curve Decel time 2
-#define SL_ZSP			(GROUP1+28)     //  172	01-28   Select Zero Speed		
-#define	FLAND			(GROUP1+29)	    //  173	01-29   Landing Frequency
-#define	S4DEC3			(GROUP1+30)	    //  174	01-30   S curve Decel time 3
-#define	DECEL5			(GROUP1+31)	    //  175	01-31   Stop Deceleration time
-#define	FSD			    (GROUP1+32)	    //  175	01-32   FSD
-#define	IODHT		    (GROUP1+33)	    //  175	01-33   IODHT IO direct hold time
-#define	IODLT           (GROUP1+34)	    //  175	01-34   IODLT IO direct landing freq
-#define	CRPLS_Jlim		(GROUP1+35)	    //  175	01-35   IODLT IO direct landing time
-#define	IODDE		    (GROUP1+36)	    //  175	01-36   IODLT IO direct DistancE
-#define	IODDER		    (GROUP1+37)	    //  175	01-36   IODLT IO direct DistancE
-#define	IODEN		    (GROUP1+38)	    //  175	01-36   IODLT IO direct DistancE
-#define	FETS    		(GROUP1+39)	    //  175	01-31   Stop Deceleration time
-#define	DECEL_ESD       (GROUP1+40)	    //  175	01-31   Stop Deceleration time
+#define	FMAX			(GROUP1+0)      // 	01-00	Max Output Freq.
+#define	MFBASE1			(GROUP1+1)      //	01-01	Motor Base Frequency 1
+#define	VMAX1			(GROUP1+2)      //	01-02	Max Output Voltage
+#define	FMID1_1			(GROUP1+3)      //	01-03	Mid Output Freq.1
+#define	VMID1_1			(GROUP1+4)      //	01-04	Mid Output Voltage 1
+#define	FMID1_2			(GROUP1+5)      //	01-05	Mid Output Freq.2
+#define	VMID1_2			(GROUP1+6)      //	01-06	Mid Output Voltage 2
+#define	FMIN1			(GROUP1+7)      //	01-07	Min Output Freq.
+#define	VMIN1			(GROUP1+8)      //	01-08	Min Output Voltage
+#define	FSTART			(GROUP1+9)      //	01-09	Start Frequency
+#define	FUPPER			(GROUP1+10)	//	01-10	Upper Bound Freq.
+#define	FLOWER			(GROUP1+11)	//	01-11	Lower Bound Freq.
+#define	ACCEL1			(GROUP1+12)	//	01-12	1st Acceleration time
+#define	DECEL1			(GROUP1+13)	//	01-13	1st Deceleration time
+#define	ACCEL2			(GROUP1+14)	//	01-14	2nd Acceleration time
+#define	DECEL2			(GROUP1+15)	//	01-15	2nd Deceleration time
+#define	ACCEL3			(GROUP1+16)	//	01-16	3rd Acceleration time
+#define	DECEL3			(GROUP1+17)	//	01-17	3rd Deceleration time
+#define	ACCEL4			(GROUP1+18)	//	01-18	4th Acceleration time
+#define	DECEL4			(GROUP1+19)	//	01-19	4th Deceleration time
+#define	JOGACC			(GROUP1+20)	//	01-20	JOG Acceleration time	
+#define	JOGDEC			(GROUP1+21)	//	01-21	JOG Deceleration time	
+#define	JOGF			(GROUP1+22)	//	01-22	JOG Frequency	
+#define	FAD1_AD4		(GROUP1+23)	//	01-23	Transition Frequency ACC1/DEC1 to ACC4/DEC4	
+#define	S4ACC1			(GROUP1+24)	//	01-24	S curve Accel time 1	
+#define	S4ACC2			(GROUP1+25)	//	01-25	S curve Accel time 2	
+#define	S4DEC1			(GROUP1+26)	//	01-26	S curve Decel time 1	
+#define	S4DEC2			(GROUP1+27)	//	01-27	S curve Decel time 2
+#define SL_ZSP			(GROUP1+28)     //	01-28	Select Zero Speed		
+#define	FLAND			(GROUP1+29)	//	01-29	Landing Frequency
+#define	S4DEC3			(GROUP1+30)	//	01-30	S curve Decel time 3
+#define	DECEL5			(GROUP1+31)	//	01-31	Stop Deceleration time
+#define	FSD			(GROUP1+32)	//	01-32	FSD
+#define	IODHT		        (GROUP1+33)	//	01-33	IODHT IO direct hold time
+#define	IODLT                   (GROUP1+34)	//	01-34	IODLT IO direct landing freq
+#define	CRPLS_Jlim		(GROUP1+35)	//	01-35	IODLT IO direct landing time
+#define	IODDE		        (GROUP1+36)	//	01-36	IODLT IO direct DistancE
+#define	IODDER		        (GROUP1+37)	//	01-37	IODLT IO direct DistancE
+#define	IODEN		        (GROUP1+38)	//	01-38	IODLT IO direct DistancE
+#define	FETS    		(GROUP1+39)	//	01-39	Stop Deceleration time
+#define	DECEL_ESD               (GROUP1+40)	//	01-40	Stop Deceleration time
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-#define	SIBO_DECEMY  	(GROUP1+41)		//	286	03-85
-#define	SIBO_S3EMY 		(GROUP1+42)		//	289	03-88
-#define	SIBO_S4EMY 		(GROUP1+43)		//	290	03-89
+#define	SIBO_DECEMY  	        (GROUP1+41)	//	01-41
+#define	SIBO_S3EMY 		(GROUP1+42)	//	01-41
+#define	SIBO_S4EMY 		(GROUP1+43)	//	01-43
 /*------------	Group2	 --------*/	
 #define	GROUP2			(GROUP1+44)	
 
@@ -199,392 +199,392 @@
 #else				
 #define	GROUP2			(GROUP1+41)	
 #endif			
-#define	WIRE2_3			(GROUP2+0)	    //	176	02-00	2/3 wire control
-#define	MI1			    (GROUP2+1)	    //	177	02-01	Multi-Function Input 1
-#define	MI2			    (GROUP2+2)	    //	178	02-02	Multi-Function Input 2
-#define	MI3			    (GROUP2+3)	    //	179	02-03	Multi-Function Input 3
-#define	MI4			    (GROUP2+4)	    //	180	02-04	Multi-Function Input 4
-#define	MI5			    (GROUP2+5)	    //	181	02-05	Multi-Function Input 5
-#define	MI6			    (GROUP2+6)	    //	182	02-06	Multi-Function Input 6
-#define	MI7			    (GROUP2+7)	    //	183	02-07	Multi-Function Input 7
-#define	MI8			    (GROUP2+8)	    //	184	02-08	Multi-Function Input 8		
-#define	DIN_RES			(GROUP2+9)	    //	185	02-09	Digital in response time		
-#define	MI_INV			(GROUP2+10)		//	186	02-10	Multi-Function Input Inverse		
-#define	RLY1			(GROUP2+11)		//	187	02-11	Multi-Function Relay 1		
-#define	RLY2			(GROUP2+12)		//	188	02-12	Multi-Function Relay 2		
-#define	MO1			    (GROUP2+13)		//	189	02-13	Multi-Function Output 1		
-#define	MO2			    (GROUP2+14)		//	190	02-14	Multi-Function Output 2		
-#define	MO3			    (GROUP2+15)		//	191	02-15	Multi-Function Output 1		
-#define	MO4			    (GROUP2+16)		//	192	02-16	Multi-Function Output 2		
-#define	MO5			    (GROUP2+17)		//	193	02-17	Multi-Function Output 1		
-#define	MO6			    (GROUP2+18)		//	194	02-18	Multi-Function Output 2		
-#define	MO7			    (GROUP2+19)		//	195	02-19	Multi-Function Output 1		
-#define	MO8			    (GROUP2+20)		//	196	02-20	Multi-Function Output 2		
-#define	MO9			    (GROUP2+21)		//	197	02-21	Multi-Function Output 1		
-#define	MO10		    (GROUP2+22)		//	198	02-22	Multi-Function Output 2		
-#define	MO_INV			(GROUP2+23)		//	199	02-23   Multi-Function Output inverse
-#define SEQMOD			(GROUP2+24)     // 	200 02-24   Sequence start mode
-#define	DESIRE_F1		(GROUP2+25)		//	201	02-25	Desired Frequency 1		
-#define	DESIRE_F1B		(GROUP2+26)		//	202	02-26	Band of Desired Frequency 1		
-#define	DESIRE_F2		(GROUP2+27)		//	203	02-27	Desired Frequency 2		
-#define	DESIRE_F2B		(GROUP2+28)		//	204	02-28	Band of Desired Frequency 2		
-#define	BRK_RUNDT		(GROUP2+29)		//	205	02-29	Brake Delay Timer Run
-#define	BRK_STOPDT		(GROUP2+30)		//	206	02-30	Brake Delay Timer Stop
-#define	MCDELAY_RUN		(GROUP2+31)		//	207 02-31	Mech Contact delay time at run
-#define	MCDELAY_STOP	(GROUP2+32)		//	208	02-32	Mech Contact delay time at stop	
-#define	IS_DETECT		(GROUP2+33)		//	209	02-33	Isum Current Output Detect	
-#define	SP_AREA			(GROUP2+34)		//	210	02-34	Speed Area	
-#define BRK_CHKTIME		(GROUP2+35)		//  211 02-35	Mechanical Brake Checking Time
-#define MC_CHKTIME		(GROUP2+36)		//  212 02-36	Magnetic Contactor Checking Time
-#define BRK_CHKTQR		(GROUP2+37)		//	213 02-37   Mechanical Brake Checking Current Enable
-#define SCDELAY_RUN     (GROUP2+38)	    //  214 02-38   Star Contactor delay time when driver run    //[Star contactor function, Bernie, 2017/03/22]
-#define SCDELAY_STOP    (GROUP2+39)	    //  215 02-39   Star Contactor delay time when driver stop  //[Star contactor function, Bernie, 2017/03/22]
-#define LS_Method       (GROUP2+40)	    //  216 02-40   //#15977, LULD detect, James, 2021/04/01
-#define LS_OPEN_TIME    (GROUP2+41)	    //  217 02-41   //#15977, LULD detect, James, 2021/04/01
-#define LS_SHORT_TIME   (GROUP2+42)	    //  217 02-42   //#15977, LULD detect, James, 2021/04/01
-#define	SpdAgree_B      (GROUP2+43)	    //  202 02-43   //#18572, Band of Speed Agree Function 	
-#define	STO_SHORT_T     (GROUP2+44)	    //  218 02-44 STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
-#define Sensor819       (GROUP2+45)		//  2xx 02-45	//[Artemis Add Sensor819 Function/Special/2022/06/06]
-#define Speed_Limit     (GROUP2+46)		//  2xx 02-46	//[Artemis Add Sensor819 Function/Special/2022/06/06]
+#define	WIRE2_3			(GROUP2+0)      //	02-00	2/3 wire control
+#define	MI1			(GROUP2+1)	//	02-01	Multi-Function Input 1
+#define	MI2			(GROUP2+2)	//	02-02	Multi-Function Input 2
+#define	MI3			(GROUP2+3)	//	02-03	Multi-Function Input 3
+#define	MI4			(GROUP2+4)	//	02-04	Multi-Function Input 4
+#define	MI5			(GROUP2+5)	//	02-05	Multi-Function Input 5
+#define	MI6			(GROUP2+6)	//	02-06	Multi-Function Input 6
+#define	MI7			(GROUP2+7)	//	02-07	Multi-Function Input 7
+#define	MI8			(GROUP2+8)	//	02-08	Multi-Function Input 8		
+#define	DIN_RES			(GROUP2+9)	//	02-09	Digital in response time		
+#define	MI_INV			(GROUP2+10)	//	02-10	Multi-Function Input Inverse		
+#define	RLY1			(GROUP2+11)	//	02-11	Multi-Function Relay 1		
+#define	RLY2			(GROUP2+12)	//	02-12	Multi-Function Relay 2		
+#define	MO1			(GROUP2+13)	//	02-13	Multi-Function Output 1		
+#define	MO2			(GROUP2+14)	//	02-14	Multi-Function Output 2		
+#define	MO3			(GROUP2+15)	//	02-15	Multi-Function Output 1		
+#define	MO4			(GROUP2+16)	//	02-16	Multi-Function Output 2		
+#define	MO5			(GROUP2+17)	//	02-17	Multi-Function Output 1		
+#define	MO6			(GROUP2+18)	//	02-18	Multi-Function Output 2		
+#define	MO7			(GROUP2+19)	//	02-19	Multi-Function Output 1		
+#define	MO8			(GROUP2+20)	//	02-20	Multi-Function Output 2		
+#define	MO9			(GROUP2+21)	//	02-21	Multi-Function Output 1		
+#define	MO10		        (GROUP2+22)	//	02-22	Multi-Function Output 2		
+#define	MO_INV			(GROUP2+23)	//	02-23   Multi-Function Output inverse
+#define SEQMOD			(GROUP2+24)     // 	02-24   Sequence start mode
+#define	DESIRE_F1		(GROUP2+25)	//	02-25	Desired Frequency 1		
+#define	DESIRE_F1B		(GROUP2+26)	//	02-26	Band of Desired Frequency 1		
+#define	DESIRE_F2		(GROUP2+27)	//	02-27	Desired Frequency 2		
+#define	DESIRE_F2B		(GROUP2+28)	//	02-28	Band of Desired Frequency 2		
+#define	BRK_RUNDT		(GROUP2+29)	//	02-29	Brake Delay Timer Run
+#define	BRK_STOPDT		(GROUP2+30)	//	02-30	Brake Delay Timer Stop
+#define	MCDELAY_RUN		(GROUP2+31)	//	02-31	Mech Contact delay time at run
+#define	MCDELAY_STOP	        (GROUP2+32)	//	02-32	Mech Contact delay time at stop	
+#define	IS_DETECT		(GROUP2+33)	//	02-33	Isum Current Output Detect	
+#define	SP_AREA			(GROUP2+34)	//	02-34	Speed Area	
+#define BRK_CHKTIME		(GROUP2+35)	//      02-35	Mechanical Brake Checking Time
+#define MC_CHKTIME		(GROUP2+36)	//      02-36	Magnetic Contactor Checking Time
+#define BRK_CHKTQR		(GROUP2+37)	//      02-37   Mechanical Brake Checking Current Enable
+#define SCDELAY_RUN             (GROUP2+38)	//      02-38   Star Contactor delay time when driver run    //[Star contactor function, Bernie, 2017/03/22]
+#define SCDELAY_STOP            (GROUP2+39)	//      02-39   Star Contactor delay time when driver stop  //[Star contactor function, Bernie, 2017/03/22]
+#define LS_Method               (GROUP2+40)	//      02-40   //#15977, LULD detect, James, 2021/04/01
+#define LS_OPEN_TIME            (GROUP2+41)	//      02-41   //#15977, LULD detect, James, 2021/04/01
+#define LS_SHORT_TIME           (GROUP2+42)	//      02-42   //#15977, LULD detect, James, 2021/04/01
+#define	SpdAgree_B              (GROUP2+43)	//      02-43   //#18572, Band of Speed Agree Function 	
+#define	STO_SHORT_T             (GROUP2+44)	//      02-44   STO shor detect time //#18196  STO new function for SIL2, James, 2021/10/06
+#define Sensor819               (GROUP2+45)	//      02-45	//[Artemis Add Sensor819 Function/Special/2022/06/06]
+#define Speed_Limit             (GROUP2+46)	//      02-46	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 
 
 
 /*------------	Group3	 --------*/
 #define	GROUP3			(GROUP2+47)
-#define AUI1_SL			(GROUP3+0)	    //	214	03-00	AVI selection	
-#define ACI_SL 			(GROUP3+1)	    //	215	03-01	ACI selection	
-#define AUI2_SL			(GROUP3+2)	    //	216	03-02	AUI selection	
-#define	AUI1BIAS		(GROUP3+3)	    //	217	03-03	AVI input Bias	
-#define	ACIBIAS			(GROUP3+4)	    //	218	03-04	ACI input Bias	
-#define	AUI2BIAS		(GROUP3+5)	    //	219	03-05	AUI input Bias	
-#define	AUI1_PN			(GROUP3+6)	    //	220 03-06	AVI input Polarity	
-#define	ACI_PN			(GROUP3+7)	    //	221 03-07	ACI input Polarity	
-#define	AUI2_PN			(GROUP3+8)	    //	222 03-08	AUI input Polarity	
-#define	AUI1GA			(GROUP3+9)	    //	223 03-09	AVI input Gain	
-#define	ACIGA			(GROUP3+10)		//	224 03-10	ACI input Gain	
-#define	AUI2GA			(GROUP3+11)		//	225 03-11	AUI input Gain	
-#define	AUI1_LPG		(GROUP3+12)		//	226 03-12	Low pass filter of Analong input	
-#define	ACI_LPG			(GROUP3+13)		//	227 03-13	Low pass filter of Analong input	
-#define	AUI2_LPG		(GROUP3+14)		//	228 03-14	Low pass filter of Analong input	
-#define	LOCELTUN		(GROUP3+15)		//	229 03-15	Loss of ACI	
-#define AFMCALIB		(GROUP3+16)     // 	230 03-16	Analog output calibration Flag	
-#define	AFM1		    (GROUP3+17)		//	231 03-17	Analong Output 1	
-#define	AFMGA1			(GROUP3+18)		//	232 03-18	Analong Output 1 Gain
-#define	AFM1_MINUS		(GROUP3+19)		//	233 03-19	AO1 in minus value
-#define	AFM2		    (GROUP3+20)		//	234 03-20	Analong Output 1	
-#define	AFMGA2			(GROUP3+21)		//	235 03-21	Analong Output 1 Gain
-#define	AFM2_MINUS		(GROUP3+22)		//	236 03-22	AO1 in minus value
-#define AUI1_POLAR		(GROUP3+23)		//  237 03-23	AUI1 Input Polar
-#define AUI2_POLAR		(GROUP3+24)		//  238 03-24	AUI2 Input Polar
-//#define AUI1_COMMUN     (GROUP3+25)     //	23X 03-25 AUI1 Communciate   //[DLC, Bernie, 2014/10/06]
-//#define AUI2_COMMUN     (GROUP3+26)     //	23X 03-26 AUI2 Communciate
+#define AUI1_SL			(GROUP3+0)      //	03-00	AVI selection	
+#define ACI_SL 			(GROUP3+1)	//	03-01	ACI selection	
+#define AUI2_SL			(GROUP3+2)	//	03-02	AUI selection	
+#define	AUI1BIAS		(GROUP3+3)	//	03-03	AVI input Bias	
+#define	ACIBIAS			(GROUP3+4)	//	03-04	ACI input Bias	
+#define	AUI2BIAS		(GROUP3+5)	//	03-05	AUI input Bias	
+#define	AUI1_PN			(GROUP3+6)	//	03-06	AVI input Polarity	
+#define	ACI_PN			(GROUP3+7)	//	03-07	ACI input Polarity	
+#define	AUI2_PN			(GROUP3+8)	//	03-08	AUI input Polarity	
+#define	AUI1GA			(GROUP3+9)	//	03-09	AVI input Gain	
+#define	ACIGA			(GROUP3+10)	//	03-10	ACI input Gain	
+#define	AUI2GA			(GROUP3+11)	//	03-11	AUI input Gain	
+#define	AUI1_LPG		(GROUP3+12)	//	03-12	Low pass filter of Analong input	
+#define	ACI_LPG			(GROUP3+13)	//	03-13	Low pass filter of Analong input	
+#define	AUI2_LPG		(GROUP3+14)	//	03-14	Low pass filter of Analong input	
+#define	LOCELTUN		(GROUP3+15)	//	03-15	Loss of ACI	
+#define AFMCALIB		(GROUP3+16)     // 	03-16	Analog output calibration Flag	
+#define	AFM1		        (GROUP3+17)	//	03-17	Analong Output 1	
+#define	AFMGA1			(GROUP3+18)	//	03-18	Analong Output 1 Gain
+#define	AFM1_MINUS		(GROUP3+19)	//	03-19	AO1 in minus value
+#define	AFM2		        (GROUP3+20)	//	03-20	Analong Output 1	
+#define	AFMGA2			(GROUP3+21)	//	03-21	Analong Output 1 Gain
+#define	AFM2_MINUS		(GROUP3+22)	//	03-22	AO1 in minus value
+#define AUI1_POLAR		(GROUP3+23)	//	03-23	AUI1 Input Polar
+#define AUI2_POLAR		(GROUP3+24)	//      03-24	AUI2 Input Polar
+//#define AUI1_COMMUN             (GROUP3+25)     //	03-25   AUI1 Communciate   //[DLC, Bernie, 2014/10/06]
+//#define AUI2_COMMUN             (GROUP3+26)     //	03-26   AUI2 Communciate
 
 /*------------	Group4	 --------*/
 #define	GROUP4			(GROUP3+25)
-#define	FMI0			(GROUP4+0)	    //  239	04-00	Multi-Speed 0
-#define	FMI1			(GROUP4+1)	    //  240	04-01	Multi-Speed 1	
-#define	FMI2			(GROUP4+2)	    //  241	04-02	Multi-Speed 2	
-#define	FMI3			(GROUP4+3)	    //  242	04-03	Multi-Speed 3	
-#define	FMI4			(GROUP4+4)	    //  243 04-04	Multi-Speed 4	
-#define	FMI5			(GROUP4+5)	    //  244 04-05	Multi-Speed 5	
-#define	FMI6			(GROUP4+6)	    //  245 04-06	Multi-Speed 6	
-#define	FMI7			(GROUP4+7)	    //  246 04-07	Multi-Speed 7	
-#define	FMI8			(GROUP4+8)	    //  247 04-08	Multi-Speed 8	
-#define	FMI9			(GROUP4+9)	    //  248 04-09	Multi-Speed 9	
-#define	FMI10			(GROUP4+10)     //  249 04-10	Multi-Speed 10  	
-#define	FMI11			(GROUP4+11)     //  250 04-11	Multi-Speed 11  	
-#define	FMI12			(GROUP4+12)     //  251 04-12	Multi-Speed 12  
-#define	FMI13			(GROUP4+13)     //  252 04-13	Multi-Speed 13  
-#define	FMI14			(GROUP4+14)     //  253 04-14	Multi-Speed 14  
-#define	FMI15			(GROUP4+15)     //  254 04-15	Multi-Speed 15
+#define	FMI0			(GROUP4+0)	//	04-00	Multi-Speed 0
+#define	FMI1			(GROUP4+1)	//	04-01	Multi-Speed 1	
+#define	FMI2			(GROUP4+2)	//	04-02	Multi-Speed 2	
+#define	FMI3			(GROUP4+3)	//	04-03	Multi-Speed 3	
+#define	FMI4			(GROUP4+4)	//	04-04	Multi-Speed 4	
+#define	FMI5			(GROUP4+5)	//	04-05	Multi-Speed 5	
+#define	FMI6			(GROUP4+6)	//	04-06	Multi-Speed 6	
+#define	FMI7			(GROUP4+7)	//	04-07	Multi-Speed 7	
+#define	FMI8			(GROUP4+8)	//	04-08	Multi-Speed 8	
+#define	FMI9			(GROUP4+9)	//	04-09	Multi-Speed 9	
+#define	FMI10			(GROUP4+10)     //	04-10	Multi-Speed 10  	
+#define	FMI11			(GROUP4+11)     //	04-11	Multi-Speed 11  	
+#define	FMI12			(GROUP4+12)     //	04-12	Multi-Speed 12  
+#define	FMI13			(GROUP4+13)     //	04-13	Multi-Speed 13  
+#define	FMI14			(GROUP4+14)     //	04-14	Multi-Speed 14  
+#define	FMI15			(GROUP4+15)     //	04-15	Multi-Speed 15
 
-#define RSQ_SPD         (GROUP4+16)		//  2XX 04-16 Rescue Speed 
-#define LEV_SPD         (GROUP4+17)		//  2XX 04-17 Re-Leveling Speed
-#define AH_SPD          (GROUP4+18)
-#define ROPE_CMP   		(GROUP4+19)     //  2XX 04-19 GFC Rope compensation, 2021/03/30
-#define TABST0_STATUS   (GROUP4+20)     //  2XX 04-20 Leveling Plank Length
-#define TABST1_STATUS   (GROUP4+21)     //  2XX 04-21 Maximum Floor
-#define MAX_FLOOR       (GROUP4+22)
-#define LEV_CUR  	    (GROUP4+23)
-#define	PG_RST_MODE     (GROUP4+24)
-#define	DelayCmp        (GROUP4+25)
-#define LAND_DLY_TIME   (GROUP4+26)
-#define LEV_LEN         (GROUP4+27)
-#define INV_POS_H       (GROUP4+28)
-#define INV_POS_L       (GROUP4+29)
-#define CUR_PG_H        (GROUP4+30)
-#define CUR_PG_L        (GROUP4+31)
-#define LEV_BRD_PG_H    (GROUP4+32)
-#define LEV_BRD_PG_L    (GROUP4+33)
-#define SENSOR_H        (GROUP4+34)
-#define SENSOR_L        (GROUP4+35)
-#define DLC_FUN         (GROUP4+36)
-#define PDO_TYPE        (GROUP4+37)
-#define DS_LEN          (GROUP4+38)
-#define RATIO           (GROUP4+39)     //[ADCO EPS Modify]
-#define DisDly          (GROUP4+40)//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13 
-#define EST_STATUS      (GROUP4+41)
-#define EST_COUNT       (GROUP4+42)
-#define TABST0_COUNT    (GROUP4+43)
-#define TABST1_COUNT    (GROUP4+44)
-#define DD1_Vlim        (GROUP4+45)     //Artemis speed limit, James, 20200220
-#define DD2_Vlim        (GROUP4+46)     //Artemis speed limit, James, 20200220
-#define DD3_Vlim        (GROUP4+47)     //Artemis speed limit, James, 20200220
-#define DD4_Vlim        (GROUP4+48)     //Artemis speed limit, James, 20200220
+#define RSQ_SPD                 (GROUP4+16)	//	04-16	Rescue Speed 
+#define LEV_SPD                 (GROUP4+17)	//	04-17	Re-Leveling Speed
+#define AH_SPD                  (GROUP4+18)     //	04-18
+#define ROPE_CMP   		(GROUP4+19)     //	04-19	GFC Rope compensation, 2021/03/30
+#define TABST0_STATUS           (GROUP4+20)     //	04-20	Leveling Plank Length
+#define TABST1_STATUS           (GROUP4+21)     //	04-21	Maximum Floor
+#define MAX_FLOOR               (GROUP4+22)     //	04-22
+#define LEV_CUR  	        (GROUP4+23)     //	04-23
+#define	PG_RST_MODE             (GROUP4+24)     //	04-24
+#define	DelayCmp                (GROUP4+25)     //	04-25
+#define LAND_DLY_TIME           (GROUP4+26)     //	04-26
+#define LEV_LEN                 (GROUP4+27)     //	04-27
+#define INV_POS_H               (GROUP4+28)     //	04-28
+#define INV_POS_L               (GROUP4+29)     //	04-29
+#define CUR_PG_H                (GROUP4+30)     //	04-30
+#define CUR_PG_L                (GROUP4+31)     //	04-31
+#define LEV_BRD_PG_H            (GROUP4+32)     //	04-32
+#define LEV_BRD_PG_L            (GROUP4+33)     //	04-33
+#define SENSOR_H                (GROUP4+34)     //	04-34
+#define SENSOR_L                (GROUP4+35)     //	04-35
+#define DLC_FUN                 (GROUP4+36)     //	04-36
+#define PDO_TYPE                (GROUP4+37)     //	04-37
+#define DS_LEN                  (GROUP4+38)     //	04-38
+#define RATIO                   (GROUP4+39)     //	04-39	[ADCO EPS Modify]
+#define DisDly                  (GROUP4+40)     //	04-40	#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13 
+#define EST_STATUS              (GROUP4+41)     //	04-41
+#define EST_COUNT               (GROUP4+42)     //	04-42
+#define TABST0_COUNT            (GROUP4+43)     //	04-43
+#define TABST1_COUNT            (GROUP4+44)     //	04-44
+#define DD1_Vlim                (GROUP4+45)     //	04-45	Artemis speed limit, James, 20200220
+#define DD2_Vlim                (GROUP4+46)     //	04-46	Artemis speed limit, James, 20200220
+#define DD3_Vlim                (GROUP4+47)     //	04-37	Artemis speed limit, James, 20200220
+#define DD4_Vlim                (GROUP4+48)     //	04-38	Artemis speed limit, James, 20200220
 
-#define FLOOR_PAGE      (GROUP4+49)     //  2XX 04-49 Floor information for DLC function 
+#define FLOOR_PAGE              (GROUP4+49)     //	04-39   Floor information for DLC function 
 
-#define FL_POSIT_1H     (GROUP4+50)     //  2XX 04-50 1Floor Position H 
-#define FL_POSIT_1L     (GROUP4+51)     //  2XX 04-51 1Floor Position L 
-#define FL_POSIT_2H     (GROUP4+52)     //  2XX 04-52 2Floor Position H 
-#define FL_POSIT_2L     (GROUP4+53)     //  2XX 04-53 2Floor Position L 
-#define FL_POSIT_3H     (GROUP4+54)     //  2XX 04-54 3Floor Position H 
-#define FL_POSIT_3L     (GROUP4+55)     //  2XX 04-55 3Floor Position L 
-#define FL_POSIT_4H     (GROUP4+56)     //  2XX 04-56 4Floor Position H 
-#define FL_POSIT_4L     (GROUP4+57)     //  2XX 04-57 4Floor Position L 
-#define FL_POSIT_5H     (GROUP4+58)     //  2XX 04-58 5Floor Position H 
-#define FL_POSIT_5L     (GROUP4+59)     //  2XX 04-59 5Floor Position L 
-#define FL_POSIT_6H     (GROUP4+60)     //  2XX 04-60 6Floor Position H 
-#define FL_POSIT_6L     (GROUP4+61)     //  2XX 04-61 6Floor Position L 
-#define FL_POSIT_7H     (GROUP4+62)     //  2XX 04-62 7Floor Position H 
-#define FL_POSIT_7L     (GROUP4+63)     //  2XX 04-63 7Floor Position L 
-#define FL_POSIT_8H     (GROUP4+64)     //  2XX 04-64 8Floor Position H 
-#define FL_POSIT_8L     (GROUP4+65)     //  2XX 04-65 8Floor Position L 
-#define FL_POSIT_9H     (GROUP4+66)     //  2XX 04-66 9Floor Position H 
-#define FL_POSIT_9L     (GROUP4+67)     //  2XX 04-67 9Floor Position L 
-#define FL_POSIT_10H    (GROUP4+68)     //  2XX 04-68 10Floor Position H
-#define FL_POSIT_10L    (GROUP4+69)     //  2XX 04-69 10Floor Position L
-#define FL_POSIT_11H    (GROUP4+70)     //  2XX 04-70 11Floor Position H
-#define FL_POSIT_11L    (GROUP4+71)     //  2XX 04-71 11Floor Position L
-#define FL_POSIT_12H    (GROUP4+72)     //  2XX 04-72 12Floor Position H
-#define FL_POSIT_12L    (GROUP4+73)     //  2XX 04-73 12Floor Position L
-#define FL_POSIT_13H    (GROUP4+74)     //  2XX 04-74 13Floor Position H
-#define FL_POSIT_13L    (GROUP4+75)     //  2XX 04-75 13Floor Position L
-#define FL_POSIT_14H    (GROUP4+76)     //  2XX 04-76 14Floor Position H
-#define FL_POSIT_14L    (GROUP4+77)     //  2XX 04-77 14Floor Position L
-#define FL_POSIT_15H    (GROUP4+78)     //  2XX 04-78 15Floor Position H
-#define FL_POSIT_15L    (GROUP4+79)     //  2XX 04-79 15Floor Position L
-#define FL_POSIT_16H    (GROUP4+80)     //  2XX 04-80 16Floor Position H
-#define FL_POSIT_16L    (GROUP4+81)     //  2XX 04-81 16Floor Position L
-#define FL_POSIT_17H    (GROUP4+82)     //  2XX 04-82 17Floor Position H
-#define FL_POSIT_17L    (GROUP4+83)     //  2XX 04-83 17Floor Position L
-#define FL_POSIT_18H    (GROUP4+84)     //  2XX 04-84 18Floor Position H
-#define FL_POSIT_18L    (GROUP4+85)     //  2XX 04-85 18Floor Position L
-#define FL_POSIT_19H    (GROUP4+86)     //  2XX 04-86 19Floor Position H
-#define FL_POSIT_19L    (GROUP4+87)     //  2XX 04-87 19Floor Position L
-#define FL_POSIT_20H    (GROUP4+88)     //  2XX 04-88 20Floor Position H
-#define FL_POSIT_20L    (GROUP4+89)     //  2XX 04-89 20Floor Position L
-#define FL_POSIT_21H    (GROUP4+90)     //  2XX 04-90 21Floor Position H
-#define FL_POSIT_21L    (GROUP4+91)     //  2XX 04-91 21Floor Position L
-#define FL_POSIT_22H    (GROUP4+92)     //  2XX 04-92 22Floor Position H
-#define FL_POSIT_22L    (GROUP4+93)     //  2XX 04-93 22Floor Position L
-#define FL_POSIT_23H    (GROUP4+94)     //  2XX 04-94 23Floor Position H
-#define FL_POSIT_23L    (GROUP4+95)     //  2XX 04-95 23Floor Position L
-#define FL_POSIT_24H    (GROUP4+96)     //  2XX 04-96 24Floor Position H
-#define FL_POSIT_24L    (GROUP4+97)     //  2XX 04-97 24Floor Position L
-#define FL_POSIT_25H    (GROUP4+98)     //  2XX 04-98 25Floor Position H
-#define FL_POSIT_25L    (GROUP4+99)     //  2XX 04-99 25Floor Position L
+#define FL_POSIT_1H             (GROUP4+50)     //      305     04-50   1Floor Position H 
+#define FL_POSIT_1L             (GROUP4+51)     //      306     04-51   1Floor Position L 
+#define FL_POSIT_2H             (GROUP4+52)     //      307     04-52   2Floor Position H 
+#define FL_POSIT_2L             (GROUP4+53)     //      308     04-53   2Floor Position L 
+#define FL_POSIT_3H             (GROUP4+54)     //      309     04-54   3Floor Position H 
+#define FL_POSIT_3L             (GROUP4+55)     //      310     04-55   3Floor Position L 
+#define FL_POSIT_4H             (GROUP4+56)     //      311     04-56   4Floor Position H 
+#define FL_POSIT_4L             (GROUP4+57)     //      312     04-57   4Floor Position L 
+#define FL_POSIT_5H             (GROUP4+58)     //      313     04-58   5Floor Position H 
+#define FL_POSIT_5L             (GROUP4+59)     //      314     04-59   5Floor Position L 
+#define FL_POSIT_6H             (GROUP4+60)     //      315     04-60   6Floor Position H 
+#define FL_POSIT_6L             (GROUP4+61)     //      316     04-61   6Floor Position L 
+#define FL_POSIT_7H             (GROUP4+62)     //      317     04-62   7Floor Position H 
+#define FL_POSIT_7L             (GROUP4+63)     //      318     04-63   7Floor Position L 
+#define FL_POSIT_8H             (GROUP4+64)     //      319     04-64   8Floor Position H 
+#define FL_POSIT_8L             (GROUP4+65)     //      320     04-65   8Floor Position L 
+#define FL_POSIT_9H             (GROUP4+66)     //      321     04-66   9Floor Position H 
+#define FL_POSIT_9L             (GROUP4+67)     //      322     04-67   9Floor Position L 
+#define FL_POSIT_10H            (GROUP4+68)     //      323     04-68   10Floor Position H
+#define FL_POSIT_10L            (GROUP4+69)     //      324     04-69   10Floor Position L
+#define FL_POSIT_11H            (GROUP4+70)     //      325     04-70   11Floor Position H
+#define FL_POSIT_11L            (GROUP4+71)     //      326     04-71   11Floor Position L
+#define FL_POSIT_12H            (GROUP4+72)     //      327     04-72   12Floor Position H
+#define FL_POSIT_12L            (GROUP4+73)     //      328     04-73   12Floor Position L
+#define FL_POSIT_13H            (GROUP4+74)     //      329     04-74   13Floor Position H
+#define FL_POSIT_13L            (GROUP4+75)     //      330     04-75   13Floor Position L
+#define FL_POSIT_14H            (GROUP4+76)     //      331     04-76   14Floor Position H
+#define FL_POSIT_14L            (GROUP4+77)     //      332     04-77   14Floor Position L
+#define FL_POSIT_15H            (GROUP4+78)     //      333     04-78   15Floor Position H
+#define FL_POSIT_15L            (GROUP4+79)     //      334     04-79   15Floor Position L
+#define FL_POSIT_16H            (GROUP4+80)     //      335     04-80   16Floor Position H
+#define FL_POSIT_16L            (GROUP4+81)     //      336     04-81   16Floor Position L
+#define FL_POSIT_17H            (GROUP4+82)     //      337     04-82   17Floor Position H
+#define FL_POSIT_17L            (GROUP4+83)     //      338     04-83   17Floor Position L
+#define FL_POSIT_18H            (GROUP4+84)     //      339     04-84   18Floor Position H
+#define FL_POSIT_18L            (GROUP4+85)     //      340     04-85   18Floor Position L
+#define FL_POSIT_19H            (GROUP4+86)     //      341     04-86   19Floor Position H
+#define FL_POSIT_19L            (GROUP4+87)     //      342     04-87   19Floor Position L
+#define FL_POSIT_20H            (GROUP4+88)     //      343     04-88   20Floor Position H
+#define FL_POSIT_20L            (GROUP4+89)     //      344     04-89   20Floor Position L
+#define FL_POSIT_21H            (GROUP4+90)     //      345     04-90   21Floor Position H
+#define FL_POSIT_21L            (GROUP4+91)     //      346     04-91   21Floor Position L
+#define FL_POSIT_22H            (GROUP4+92)     //      347     04-92   22Floor Position H
+#define FL_POSIT_22L            (GROUP4+93)     //      348     04-93   22Floor Position L
+#define FL_POSIT_23H            (GROUP4+94)     //      349     04-94   23Floor Position H
+#define FL_POSIT_23L            (GROUP4+95)     //      350     04-95   23Floor Position L
+#define FL_POSIT_24H            (GROUP4+96)     //      351     04-96   24Floor Position H
+#define FL_POSIT_24L            (GROUP4+97)     //      352     04-97   24Floor Position L
+#define FL_POSIT_25H            (GROUP4+98)     //      353     04-98   25Floor Position H
+#define FL_POSIT_25L            (GROUP4+99)     //      354     04-99   25Floor Position L
 
 /*------------	Grop5	 --------*/					
-#define	GROUP5          (GROUP4+100)				
-#define	AUTO_T			(GROUP5+0)      //	255	05-00	Motor Auto-Tuning
-#define	MI_RAT1			(GROUP5+1)	    //	256	05-01	Motor 1 rated Current
-#define	P_RATED1		(GROUP5+2)	    //	257	05-02	Motor 1 Rated Power
-#define	RPM_RATED1		(GROUP5+3)	    //	258	05-03	Motor 1 Rated RPM
-#define	POLES1			(GROUP5+4)	    //	259	05-04	Motor 1 pole No.
-#define	MI_NL1			(GROUP5+5)	    //	260	05-05	Motor 1 No-Load Current
-#define	Rs1			    (GROUP5+6)	    //	261	05-06	Motor 1 Rs
-#define	Rr1			    (GROUP5+7)	    //	262	05-07	Motor 1 Rr
-#define	Lm1			    (GROUP5+8)	    //	263	05-08	Motor 1 Lm
-#define	Lx1			    (GROUP5+9)	    //	264	05-09	Motor 1 Lx
-#define	SVC_VLPG		(GROUP5+10)		//	265	05-10	Vector Voltage Filter	
-#define	SVC_SLPG		(GROUP5+11)		//	266	05-11	Vector Slip Filter	
-#define	TQRC_G			(GROUP5+12)		//	267	05-12	Torque Compensation Gain	
-#define	SLIPC			(GROUP5+13)		//	268	05-13	Slip Compensation Gain	  //[slip compensation function, Bernie, 2012/06/20]
-#define	SLIPDEVL		(GROUP5+14)		//	269	05-14	Slip Deviation level	
-#define	SLIPDEVT		(GROUP5+15)		//	270	05-15	Slip Deviation Detect Time	
-#define	OSLIPWAY		(GROUP5+16)		//	271	05-16	Over Slip treatment	
-#define	K_HUNT			(GROUP5+17)		//	272	05-17	Coeff for hunting disable	
-#define	RUNMIN			(GROUP5+18)		//	273	05-18	Accumulative Motor Operation Min	
-#define	RUNDAY			(GROUP5+19)		//	274	05-19	Accumulative Motor Operation Day	
-#define	CORELOSS		(GROUP5+20)		//	275	05-20	Coreloss % of output Power	
-#define	PWR_MIN			(GROUP5+21)		//	276 05-21  	Power On Min
-#define	PWR_DAY			(GROUP5+22)		//	277	05-22	Power On Day
-#define GENSL_G         (GROUP5+23)     //  2XX 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
-#define SLIPC_G         (GROUP5+24)     //  2XX 05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
+#define	GROUP5                  (GROUP4+100)				
+#define	AUTO_T			(GROUP5+0)	//	05-00	Motor Auto-Tuning
+#define	MI_RAT1			(GROUP5+1)	//	05-01	Motor 1 rated Current
+#define	P_RATED1		(GROUP5+2)	//	05-02	Motor 1 Rated Power
+#define	RPM_RATED1		(GROUP5+3)	//	05-03	Motor 1 Rated RPM
+#define	POLES1			(GROUP5+4)	//	05-04	Motor 1 pole No.
+#define	MI_NL1			(GROUP5+5)	//	05-05	Motor 1 No-Load Current
+#define	Rs1			(GROUP5+6)	//	05-06	Motor 1 Rs
+#define	Rr1			(GROUP5+7)	//	05-07	Motor 1 Rr
+#define	Lm1			(GROUP5+8)	//	05-08	Motor 1 Lm
+#define	Lx1			(GROUP5+9)	//	05-09	Motor 1 Lx
+#define	SVC_VLPG		(GROUP5+10)	//	05-10	Vector Voltage Filter	
+#define	SVC_SLPG		(GROUP5+11)	//	05-11	Vector Slip Filter	
+#define	TQRC_G			(GROUP5+12)	//	05-12	Torque Compensation Gain	
+#define	SLIPC			(GROUP5+13)	//	05-13	Slip Compensation Gain	  //[slip compensation function, Bernie, 2012/06/20]
+#define	SLIPDEVL		(GROUP5+14)	//	05-14	Slip Deviation level	
+#define	SLIPDEVT		(GROUP5+15)	//	05-15	Slip Deviation Detect Time	
+#define	OSLIPWAY		(GROUP5+16)	//	05-16	Over Slip treatment	
+#define	K_HUNT			(GROUP5+17)	//	05-17	Coeff for hunting disable	
+#define	RUNMIN			(GROUP5+18)	//	05-18	Accumulative Motor Operation Min	
+#define	RUNDAY			(GROUP5+19)	//	05-19	Accumulative Motor Operation Day	
+#define	CORELOSS		(GROUP5+20)	//	05-20	Coreloss % of output Power	
+#define	PWR_MIN			(GROUP5+21)	//	05-21  	Power On Min
+#define	PWR_DAY			(GROUP5+22)	//	05-22	Power On Day
+#define GENSL_G                 (GROUP5+23)	//	05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
+#define SLIPC_G                 (GROUP5+24)	//	05-23   Generator Slip Compensation percent    //[slip compensation function, Bernie, 2012/06/20]
 /*------------	Group6	 --------*/						
 #define	GROUP6			(GROUP5+25)
-#define	LVL			    (GROUP6+0)	    //	278	06-00	Low voltage level	
-#define	PHL				(GROUP6+1)	    //	279	06-01	Phase loss	
-#define	OCA			    (GROUP6+2)	    //	280	06-02	OC stall during Accel	
-#define	OCN			    (GROUP6+3)	    //	281	06-03	OC stall during Decel	
-#define	STALLSPD		(GROUP6+4)	    //	282	06-04	Stall preventation Accel/Decel time selection	
-#define	OTDM			(GROUP6+5)	    //	283	06-05	Over-Torque 1 Selection	
-#define	OTDL			(GROUP6+6)	    //	284	06-06	Over-Torque 1 level	
-#define	OTDT			(GROUP6+7)	    //	285	06-07	Over-Torque 1 Time	
-#define	OTDM2			(GROUP6+8)	    //	286	06-08	Over-Torque 2 Selection	
-#define	OTDL2			(GROUP6+9)	    //	287	06-09	Over-Torque 2 level	
-#define	OTDT2			(GROUP6+10)		//	288	06-10	Over-Torque 2 Time	
-#define	CURRENT_LIM		(GROUP6+11)		//	289	06-11	Current Limit	
-#define	EOL1_SL			(GROUP6+12)		//	290	06-12	Thermal Relay 1 Selection	
-#define	EOL1_T			(GROUP6+13)		//	291	06-13	Thermal Relay 1 Time	
-#define	OHWL			(GROUP6+14)		//	292	06-14	OH Warning Level	
-#define	STALLIMIT		(GROUP6+15)		//	293	06-15	Stall preventation Limit Level	
-#define	ERR_REC1		(GROUP6+16)		//	294	06-16	1st Fault Record	
-#define	ERR_REC2		(GROUP6+17)		//	295	06-17	2nd Fault Record	
-#define	ERR_REC3		(GROUP6+18)		//	296	06-18	3rd Fault Record	
-#define	ERR_REC4		(GROUP6+19)		//	297	06-19	4th Fault Record	
-#define	ERR_REC5		(GROUP6+20)		//	298	06-20	5th Fault Record	
-#define	ERR_REC6		(GROUP6+21)		//	299	06-21	6th Fault Record	
-#define	ERR_OPT1		(GROUP6+22)		//	300	06-22	Fault Option 1	
-#define	ERR_OPT2		(GROUP6+23)		//	301 06-23	Fault Option 2	
-#define	ERR_OPT3		(GROUP6+24)		//	302	06-24	Fault Option 3	
-#define	ERR_OPT4		(GROUP6+25)		//	303	06-25	Fault Option 4	
-#define	PTC_TREAM		(GROUP6+26)		//	304	06-26	PTC over Treatments	
-#define	PTC_LEVEL		(GROUP6+27)		//	305	06-27	PTC Level	
-#define	PTC_DFT  		(GROUP6+28)		//	306	06-28	PTC Detect Filter time	
-#define	VEPS     		(GROUP6+29)		//	307	06-29	EPS voltage level, add by dino, 2008/02/15
-#define	ERR_OPTM 		(GROUP6+30)		//	308	06-30	Fault Option Mode, add by dino, 2008/02/15
-#define MPHLM			(GROUP6+31)		//	309	06-31	Motor Phase Detection Mode, Add by DINO, 05/12/2009
-#define ERR_MIN1		(GROUP6+32)		//	310 06-32	1st Fault Time(MIN)
-#define ERR_DAY1        (GROUP6+33)     //	311 06-33	1st Fault Time(DAY)
-#define ERR_MIN2        (GROUP6+34)     //	312 06-34	2nd Fault Time(MIN)
-#define ERR_DAY2        (GROUP6+35)     //	313 06-35	2nd Fault Time(DAY)
-#define ERR_MIN3        (GROUP6+36)     //	314 06-36	3rd Fault Time(MIN)
-#define ERR_DAY3        (GROUP6+37)     //	315 06-37	3rd Fault Time(DAY)
-#define ERR_MIN4        (GROUP6+38)     //	316 06-38	4th Fault Time(MIN)
-#define ERR_DAY4        (GROUP6+39)     //	317 06-39	4th Fault Time(DAY)
-#define ERR_MIN5        (GROUP6+40)     //	318 06-40	5th Fault Time(MIN)
-#define ERR_DAY5        (GROUP6+41)     //	319 06-41	5th Fault Time(DAY)
-#define ERR_MIN6        (GROUP6+42)     //	320 06-42	6th Fault Time(MIN)
-#define ERR_DAY6        (GROUP6+43)     //	321 06-43	6th Fault Time(DAY)
-#define FEPS            (GROUP6+44)     //	322 06-44	EPS Frequency, add by DINO, 06/24/2009
-#define LV_OPTM			(GROUP6+45)		//  323 06-45   LV Option Mode, Add by DINO, 11/30/2009
-#define EPS_OPTM		(GROUP6+46)		//  324 06-46   EPS Operation Mode
-#define GEN_T			(GROUP6+47)		//  325 06-47   Generation Operation Detected Time
-#define UPS_CAP			(GROUP6+48)		//  326 06-48   UPS Capacity (0.1KVA)
-#define STO_LOCK        (GROUP6+49)		//  326 06-49   STO Lock selection    //[Safty function, Bernie]
-#define RESET_SLT       (GROUP6+50)     //  3xx 06-50   Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
-#define RESETCNT        (GROUP6+51)     //  3xx 06-51   Auto restart times after fault
-#define RESETINTERVAL   (GROUP6+52)     //  3xx 06-52   Auto restart interval
-#define	FKEY_REC		(GROUP6+53)	    //	99	15-99	Fkey Record
-#define	FOUT_REC        (GROUP6+54)	    //  94  15-94   Fcmd Record, add by dino, 10/31/2007
-#define	ISUM_REC        (GROUP6+55)	    //  82  15-82   Isum Record
-#define	FFBK_REC        (GROUP6+56)	    //	79	15-79	Fout Record
-#define	VOUT_REC        (GROUP6+57)	    //	80	15-80	Vout Record
-#define	DCBUS_REC       (GROUP6+58)  	//	81	15-81	Dcbus Record
-#define POWER_REC       (GROUP6+59)     //  100 15-100	Power Record
-#define TQ_REC          (GROUP6+60)     //  101 15-101	Torque Record
-#define	TH_TEMP         (GROUP6+61)	    //	83	15-83	IGBT Temperature Record
-#define MFI_REC         (GROUP6+62)     //	102	15-102	MFI State Record
-#define MFO_REC         (GROUP6+63)     //	103	15-103	MFO State Record
-#define STATE_REC       (GROUP6+64)     //	104	15-104	Drive State Record
-#define CUR_LIM_UCMP    (GROUP6+65)     //  3XX 06-65  Current limitation for UCMP function  //[UCMP function, Bernie, 2016/06/14]
-#define SERVICE_COUNT   (GROUP6+66)     //  3xx 06-66   Service time count                       //[Service time function, Bernie, 2017/03/14]
-#define SERVICE_ENABLE  (GROUP6+67)     //  3XX 06-67   Service time function Enable
-#define	EPS_PF	        (GROUP6+68)	    //	EPS Detect Current    
-#define	EPS_PFREF	    (GROUP6+69)	    //	EPS Detect Current Ref
-#define	EPS_DIR	        (GROUP6+70)	    //	EPS Detect direction
-#define	EPS_MO_DELAY    (GROUP6+71)	    //	EPS MO Off Time
-#define	EPS_MO_OFF	    (GROUP6+72)    	//	EPS MO Off Time
-#define	IR_COUNT_H      (GROUP6+73)	    //	Running direction count high
-#define	IR_COUNT_L      (GROUP6+74)	    //	Running direction count low
-#define	IR_TCOUNT_H	    (GROUP6+75)    	//	Temp running direction count high
-#define	IR_TCOUNT_L     (GROUP6+76)	    //	Temp running direction count low
-#define	IR_RESTEC       (GROUP6+77)	    //	Temp running reset count 
-#define	IR_LIFE  	    (GROUP6+78)    	//  Running life 
-#define	IR_ENABLE	    (GROUP6+79)		//  Running function
-#define	FOUT_REC1	    (GROUP6+80)		//  increase FOUT error record1
-#define	DCBUS_REC1	    (GROUP6+81)		//  increase DCBUS error record1
-#define	ISUM_REC1	    (GROUP6+82)		//  increase ISUM error record1
-#define	TH_TEMP1	    (GROUP6+83)		//  increase TH_TEMP error record1
-#define	FOUT_REC2	    (GROUP6+84)		//  increase FOUT error record2
-#define	DCBUS_REC2	    (GROUP6+85)		//  increase DCBUS error record2
-#define	ISUM_REC2	    (GROUP6+86)		//  increase ISUM error record2
-#define	TH_TEMP2	    (GROUP6+87)		//  increase TH_TEMP error record2
-#define	FOUT_REC3	    (GROUP6+88)		//  increase FOUT error record3
-#define	DCBUS_REC3	    (GROUP6+89)		//  increase DCBUS error record3
-#define	ISUM_REC3	    (GROUP6+90)		//  increase ISUM error record3
-#define	TH_TEMP3	    (GROUP6+91)		//  increase TH_TEMP error record3
-#define	FOUT_REC4	    (GROUP6+92)		//  increase FOUT error record4
-#define	DCBUS_REC4	    (GROUP6+93)		//  increase DCBUS error record4
-#define	ISUM_REC4	    (GROUP6+94)		//  increase ISUM error record4
-#define	TH_TEMP4	    (GROUP6+95)		//  increase TH_TEMP error record4
-#define	FOUT_REC5	    (GROUP6+96)		//  increase FOUT error record5
-#define	DCBUS_REC5	    (GROUP6+97)		//  increase DCBUS error record5
-#define	ISUM_REC5	    (GROUP6+98)		//  increase ISUM error record5
-#define	TH_TEMP5	    (GROUP6+99)		//  increase TH_TEMP error record5
-/*------------	Group7	 --------*/						
+#define	LVL			(GROUP6+0)	//	06-00	Low voltage level	
+#define	PHL			(GROUP6+1)	//	06-01	Phase loss	
+#define	OCA			(GROUP6+2)	//	06-02	OC stall during Accel	
+#define	OCN			(GROUP6+3)	//	06-03	OC stall during Decel	
+#define	STALLSPD		(GROUP6+4)	//	06-04	Stall preventation Accel/Decel time selection	
+#define	OTDM			(GROUP6+5)	//	06-05	Over-Torque 1 Selection	
+#define	OTDL			(GROUP6+6)	//	06-06	Over-Torque 1 level	
+#define	OTDT			(GROUP6+7)	//	06-07	Over-Torque 1 Time	
+#define	OTDM2			(GROUP6+8)	//	06-08	Over-Torque 2 Selection	
+#define	OTDL2			(GROUP6+9)	//	06-09	Over-Torque 2 level	
+#define	OTDT2			(GROUP6+10)	//	06-10	Over-Torque 2 Time	
+#define	CURRENT_LIM		(GROUP6+11)	//	06-11	Current Limit	
+#define	EOL1_SL			(GROUP6+12)	//	06-12	Thermal Relay 1 Selection	
+#define	EOL1_T			(GROUP6+13)	//	06-13	Thermal Relay 1 Time	
+#define	OHWL			(GROUP6+14)	//	06-14	OH Warning Level	
+#define	STALLIMIT		(GROUP6+15)	//	06-15	Stall preventation Limit Level	
+#define	ERR_REC1		(GROUP6+16)	//	06-16	1st Fault Record	
+#define	ERR_REC2		(GROUP6+17)	//	06-17	2nd Fault Record	
+#define	ERR_REC3		(GROUP6+18)	//	06-18	3rd Fault Record	
+#define	ERR_REC4		(GROUP6+19)	//	06-19	4th Fault Record	
+#define	ERR_REC5		(GROUP6+20)	//	06-20	5th Fault Record	
+#define	ERR_REC6		(GROUP6+21)	//	06-21	6th Fault Record	
+#define	ERR_OPT1		(GROUP6+22)	//	06-22	Fault Option 1	
+#define	ERR_OPT2		(GROUP6+23)	//	06-23	Fault Option 2	
+#define	ERR_OPT3		(GROUP6+24)	//	06-24	Fault Option 3	
+#define	ERR_OPT4		(GROUP6+25)	//	06-25	Fault Option 4	
+#define	PTC_TREAM		(GROUP6+26)	//	06-26	PTC over Treatments	
+#define	PTC_LEVEL		(GROUP6+27)	//	06-27	PTC Level	
+#define	PTC_DFT  		(GROUP6+28)	//	06-28	PTC Detect Filter time	
+#define	VEPS     		(GROUP6+29)	//	06-29	EPS voltage level, add by dino, 2008/02/15
+#define	ERR_OPTM 		(GROUP6+30)	//	06-30	Fault Option Mode, add by dino, 2008/02/15
+#define MPHLM			(GROUP6+31)	//	06-31	Motor Phase Detection Mode, Add by DINO, 05/12/2009
+#define ERR_MIN1		(GROUP6+32)	//	06-32	1st Fault Time(MIN)
+#define ERR_DAY1                (GROUP6+33)     //	06-33	1st Fault Time(DAY)
+#define ERR_MIN2                (GROUP6+34)     //	06-34	2nd Fault Time(MIN)
+#define ERR_DAY2                (GROUP6+35)     //	06-35	2nd Fault Time(DAY)
+#define ERR_MIN3                (GROUP6+36)     //	06-36	3rd Fault Time(MIN)
+#define ERR_DAY3                (GROUP6+37)     //	06-37	3rd Fault Time(DAY)
+#define ERR_MIN4                (GROUP6+38)     //	06-38	4th Fault Time(MIN)
+#define ERR_DAY4                (GROUP6+39)     //	06-39	4th Fault Time(DAY)
+#define ERR_MIN5                (GROUP6+40)     //	06-40	5th Fault Time(MIN)
+#define ERR_DAY5                (GROUP6+41)     //	06-41	5th Fault Time(DAY)
+#define ERR_MIN6                (GROUP6+42)     //	06-42	6th Fault Time(MIN)
+#define ERR_DAY6                (GROUP6+43)     //	06-43	6th Fault Time(DAY)
+#define FEPS                    (GROUP6+44)     //	06-44	EPS Frequency, add by DINO, 06/24/2009
+#define LV_OPTM			(GROUP6+45)	//	06-45	LV Option Mode, Add by DINO, 11/30/2009
+#define EPS_OPTM		(GROUP6+46)	//	06-46	EPS Operation Mode
+#define GEN_T			(GROUP6+47)	//	06-47	Generation Operation Detected Time
+#define UPS_CAP			(GROUP6+48)	//	06-48	UPS Capacity (0.1KVA)
+#define STO_LOCK                (GROUP6+49)	//	06-49	STO Lock selection    //[Safty function, Bernie]
+#define RESET_SLT               (GROUP6+50)     //	06-50	Base Block Speed Search (oc,ov,occ.......)     //[Add auto restart after fault, Bernie, 06/06/12]
+#define RESETCNT                (GROUP6+51)     //	06-51	Auto restart times after fault
+#define RESETINTERVAL           (GROUP6+52)     //	06-52	Auto restart interval
+#define	FKEY_REC		(GROUP6+53)	//	06-53	Fkey Record
+#define	FOUT_REC                (GROUP6+54)	//	06-54	Fcmd Record, add by dino, 10/31/2007
+#define	ISUM_REC                (GROUP6+55)	//	06-55	Isum Record
+#define	FFBK_REC                (GROUP6+56)	//	06-56	Fout Record
+#define	VOUT_REC                (GROUP6+57)	//	06-57	Vout Record
+#define	DCBUS_REC               (GROUP6+58)  	//	06-58	Dcbus Record
+#define POWER_REC               (GROUP6+59)     //	06-59	Power Record
+#define TQ_REC                  (GROUP6+60)     //	06-60	Torque Record
+#define	TH_TEMP                 (GROUP6+61)	//	06-61	IGBT Temperature Record
+#define MFI_REC                 (GROUP6+62)     //	06-62	MFI State Record
+#define MFO_REC                 (GROUP6+63)     //	06-63	MFO State Record
+#define STATE_REC               (GROUP6+64)     //	06-64	Drive State Record
+#define CUR_LIM_UCMP            (GROUP6+65)     //	06-65	Current limitation for UCMP function  //[UCMP function, Bernie, 2016/06/14]
+#define SERVICE_COUNT           (GROUP6+66)     //	06-66	Service time count                       //[Service time function, Bernie, 2017/03/14]
+#define SERVICE_ENABLE          (GROUP6+67)     //	06-67	Service time function Enable
+#define	EPS_PF	                (GROUP6+68)	//	06-68	EPS Detect Current    
+#define	EPS_PFREF	        (GROUP6+69)	//	06-69	EPS Detect Current Ref
+#define	EPS_DIR	                (GROUP6+70)	//	06-70	EPS Detect direction
+#define	EPS_MO_DELAY            (GROUP6+71)	//	06-71	EPS MO Off Time
+#define	EPS_MO_OFF	        (GROUP6+72)    	//	06-72	EPS MO Off Time
+#define	IR_COUNT_H              (GROUP6+73)	//	06-73	Running direction count high
+#define	IR_COUNT_L              (GROUP6+74)	//	06-74	Running direction count low
+#define	IR_TCOUNT_H	        (GROUP6+75)	//	06-75	Temp running direction count high
+#define	IR_TCOUNT_L             (GROUP6+76)	//	06-76	Temp running direction count low
+#define	IR_RESTEC               (GROUP6+77)	//	06-77	Temp running reset count 
+#define	IR_LIFE  	        (GROUP6+78)	//	06-78	Running life 
+#define	IR_ENABLE	        (GROUP6+79)	//	06-79	Running function
+#define	FOUT_REC1	        (GROUP6+80)	//	06-80	increase FOUT error record1
+#define	DCBUS_REC1	        (GROUP6+81)	//	06-81	increase DCBUS error record1
+#define	ISUM_REC1	        (GROUP6+82)	//	06-82	increase ISUM error record1
+#define	TH_TEMP1	        (GROUP6+83)	//	06-83	increase TH_TEMP error record1
+#define	FOUT_REC2	        (GROUP6+84)	//	06-84	increase FOUT error record2
+#define	DCBUS_REC2	        (GROUP6+85)	//	06-85	increase DCBUS error record2
+#define	ISUM_REC2	        (GROUP6+86)	//	06-86	increase ISUM error record2
+#define	TH_TEMP2	        (GROUP6+87)	//	06-87	increase TH_TEMP error record2
+#define	FOUT_REC3	        (GROUP6+88)	//	06-88	increase FOUT error record3
+#define	DCBUS_REC3	        (GROUP6+89)	//	06-89	increase DCBUS error record3
+#define	ISUM_REC3	        (GROUP6+90)	//	06-90	increase ISUM error record3
+#define	TH_TEMP3	        (GROUP6+91)	//	06-91	increase TH_TEMP error record3
+#define	FOUT_REC4	        (GROUP6+92)	//	06-92	increase FOUT error record4
+#define	DCBUS_REC4	        (GROUP6+93)	//	06-93	increase DCBUS error record4
+#define	ISUM_REC4	        (GROUP6+94)	//	06-94	increase ISUM error record4
+#define	TH_TEMP4	        (GROUP6+95)	//	06-95	increase TH_TEMP error record4
+#define	FOUT_REC5	        (GROUP6+96)	//	06-96	increase FOUT error record5
+#define	DCBUS_REC5	        (GROUP6+97)	//	06-97	increase DCBUS error record5
+#define	ISUM_REC5	        (GROUP6+98)	//	06-98	increase ISUM error record5
+#define	TH_TEMP5	        (GROUP6+99)	//	06-99	increase TH_TEMP error record5
+/*------------	Group7	 --------*/					
 #define	GROUP7			(GROUP6+100)
-#define	DCBRK4V			(GROUP7+0)      //  327  07-00    SW Braking Level	
-#define DCBRK_BAND		(GROUP7+1)      //  328  07-01    DB Enable Duty, add by dino 2007/02/12
-#define	DCICL			(GROUP7+2)      //  329  07-01    DCI Current Level	
-#define	DCISTA			(GROUP7+3)      //  330  07-02    DCI Time at Start 	
-#define	DCISTP			(GROUP7+4)      //  331  07-03    DCI Time at STOP	
-#define	DCIFSTA			(GROUP7+5)      //  332  07-04    DCI Freq. At start	
-#define	DCI_KI			(GROUP7+6)      //  333  07-05    DCI KI	
-#define	GEAR_ACCT		(GROUP7+7)      //  334  07-07    Gear wait time when acceleration		
-#define	GEAR_ACCF		(GROUP7+8)      //  335  07-08    Gear wait frequency when acceleration		
-#define	GEAR_DECT		(GROUP7+9)      //  336  07-09    Gear wait time when deceleration		
-#define	GEAR_DECF		(GROUP7+10)	    //  337  07-10    Gear wait frequency when deceleration		
-#define	FAN			    (GROUP7+11)	    //  338  07-11    Fan Control		
-#define	TQREF    		(GROUP7+12)	    //  339  07-12    TQC Reference from RS485		
-#define	TQRSOOC			(GROUP7+13)	    //  340  07-13    Source of Torque Command		
-#define	TQRMAX			(GROUP7+14)	    //  341  07-14    Torque max. level	
-#define	TQRLPG			(GROUP7+15)	    //  342  07-15    Torque command filter	
-#define	SPLIMIT_SL 		(GROUP7+16)	    //  343  07-16    Speed Limit selection	
-#define	TQPSPDLIM		(GROUP7+17)	    //  344  07-17    Torque mode positive speed limit	
-#define	TQNSPDLIM   	(GROUP7+18)	    //  345  07-18    Torque mode negative speed limit	
-#define	TQROFSE			(GROUP7+19)	    //  346  07-19    Torque offset selection	
-#define	TQOFSEV			(GROUP7+20)	    //  347  07-20    Torque offset setting level	
-#define	TQOFSEVH		(GROUP7+21)	    //  348  07-21    Torque offset setting level High	
-#define	TQOFSEVM		(GROUP7+22)	    //  349  07-22    Torque offset setting level Middle	
-#define	TQOFSEVL		(GROUP7+23)	    //  350  07-23    Torque offset setting level Low	
-#define	FWDM_TQLIM		(GROUP7+24)	    //  351  07-24    FWD Motoring Tq Limit	
-#define	FWDR_TQLIM		(GROUP7+25)	    //  352  07-25    FWD Regeneration Tq Limit	
-#define	REVM_TQLIM		(GROUP7+26)	    //  353  07-26    REV Motoring Tq Limit	
-#define	REVR_TQLIM		(GROUP7+27)	    //  354  07-27    REV Regeneration Tq Limit	
-#define	FORSTPWAY		(GROUP7+28)	    //  355  07-28    Emergency Stop & Forced Stop selection	
-#define TQ_LPG			(GROUP7+29)	    //  356  07-29    Torque Decrease Time, add by dino, 05/29/2008
-#define STOP_DCICL      (GROUP7+30)     //  3xx  07-30    STOP DC Inject Level                  //[DCI Level when stop, Bernie, 05/21/2012]
-#define	BTT100			(GROUP7+31)		//	3xx  07-31    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define	BTTx_Test		(GROUP7+32)		//	3xx  07-32    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define	BTTx_TestDist	(GROUP7+33)		//	3xx  07-33    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define BTTx_TestTime	(GROUP7+34)		//	3xx  07-34    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define	BTTx_TestTorq	(GROUP7+35)		//	3xx  07-35    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define	BTTx_MinTorq	(GROUP7+36)		//	3xx  07-36    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-#define	BTTx_MaxTorq	(GROUP7+37)		//	3xx  07-36    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	DCBRK4V			(GROUP7+0)	//	07-00	SW Braking Level	
+#define DCBRK_BAND		(GROUP7+1)	//	07-01	DB Enable Duty, add by dino 2007/02/12
+#define	DCICL			(GROUP7+2)	//	07-01	DCI Current Level	
+#define	DCISTA			(GROUP7+3)	//	07-02	DCI Time at Start 	
+#define	DCISTP			(GROUP7+4)	//	07-03	DCI Time at STOP	
+#define	DCIFSTA			(GROUP7+5)	//	07-04	DCI Freq. At start	
+#define	DCI_KI			(GROUP7+6)	//	07-05	DCI KI	
+#define	GEAR_ACCT		(GROUP7+7)	//	07-07	Gear wait time when acceleration		
+#define	GEAR_ACCF		(GROUP7+8)	//	07-08	Gear wait frequency when acceleration		
+#define	GEAR_DECT		(GROUP7+9)	//	07-09	Gear wait time when deceleration		
+#define	GEAR_DECF		(GROUP7+10)	//	07-10	Gear wait frequency when deceleration		
+#define	FAN			(GROUP7+11)	//	07-11	Fan Control		
+#define	TQREF    		(GROUP7+12)	//	07-12	TQC Reference from RS485		
+#define	TQRSOOC			(GROUP7+13)	//	07-13	Source of Torque Command		
+#define	TQRMAX			(GROUP7+14)	//	07-14	Torque max. level	
+#define	TQRLPG			(GROUP7+15)	//	07-15	Torque command filter	
+#define	SPLIMIT_SL 		(GROUP7+16)	//	07-16	Speed Limit selection	
+#define	TQPSPDLIM		(GROUP7+17)	//	07-17	Torque mode positive speed limit	
+#define	TQNSPDLIM   	        (GROUP7+18)	//	07-18	Torque mode negative speed limit	
+#define	TQROFSE			(GROUP7+19)	//	07-19	Torque offset selection	
+#define	TQOFSEV			(GROUP7+20)	//	07-20	Torque offset setting level	
+#define	TQOFSEVH		(GROUP7+21)	//	07-21	Torque offset setting level High	
+#define	TQOFSEVM		(GROUP7+22)	//	07-22	Torque offset setting level Middle	
+#define	TQOFSEVL		(GROUP7+23)	//	07-23	Torque offset setting level Low	
+#define	FWDM_TQLIM		(GROUP7+24)	//	07-24	FWD Motoring Tq Limit	
+#define	FWDR_TQLIM		(GROUP7+25)	//	07-25	FWD Regeneration Tq Limit	
+#define	REVM_TQLIM		(GROUP7+26)	//	07-26	REV Motoring Tq Limit	
+#define	REVR_TQLIM		(GROUP7+27)	//	07-27	REV Regeneration Tq Limit	
+#define	FORSTPWAY		(GROUP7+28)	//	07-28	Emergency Stop & Forced Stop selection	
+#define TQ_LPG			(GROUP7+29)	//	07-29	Torque Decrease Time, add by dino, 05/29/2008
+#define STOP_DCICL              (GROUP7+30)	//	07-30	STOP DC Inject Level                  //[DCI Level when stop, Bernie, 05/21/2012]
+#define	BTT100			(GROUP7+31)	//	07-31	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	BTTx_Test		(GROUP7+32)	//	07-32	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	BTTx_TestDist	        (GROUP7+33)	//	07-33	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define BTTx_TestTime	        (GROUP7+34)	//	07-34	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	BTTx_TestTorq	        (GROUP7+35)	//	07-35	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	BTTx_MinTorq	        (GROUP7+36)	//	07-36	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	BTTx_MaxTorq	        (GROUP7+37)	//	07-37	//[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
 /*------------	Group8	 --------*/	
 #define	GROUP8			(GROUP7+38)				
-#define	PM_AUTO_T		(GROUP8+0)		//	357	08-00	PMotor Auto-Tuning
-#define	PM_MI_RAT		(GROUP8+1)		//	358	08-01	PMotor rated Current
-#define	PM_P_RATED		(GROUP8+2)		//	359	08-02	PMotor Rated Power
-#define	PM_RPM_RATED	(GROUP8+3)		//	360	08-03	PMotor Rated RPM
-#define	PM_POLES		(GROUP8+4)		//	361	08-04	PMotor pole No.
-#define	PM_Rs			(GROUP8+5)		//	362	08-05	PMotor Rs
-#define	PM_Ld			(GROUP8+6)		//	363	08-06	PMotor Ld
-#define	PM_Lq			(GROUP8+7)		//	364	08-07	PMotor Lq
-#define	PM_Bemf			(GROUP8+8)		//	365	08-08	PMotor Bemf coff				
-#define Z_OFFSET		(GROUP8+9)		//	366	08-09	PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
-#define	ST_TUNE			(GROUP8+10)		//	367	08-10	//ADDED BY DINO
+#define	PM_AUTO_T		(GROUP8+0)	//	08-00	PMotor Auto-Tuning
+#define	PM_MI_RAT		(GROUP8+1)	//	08-01	PMotor rated Current
+#define	PM_P_RATED		(GROUP8+2)	//	08-02	PMotor Rated Power
+#define	PM_RPM_RATED	        (GROUP8+3)	//	08-03	PMotor Rated RPM
+#define	PM_POLES		(GROUP8+4)	//	08-04	PMotor pole No.
+#define	PM_Rs			(GROUP8+5)	//	08-05	PMotor Rs
+#define	PM_Ld			(GROUP8+6)	//	08-06	PMotor Ld
+#define	PM_Lq			(GROUP8+7)	//	08-07	PMotor Lq
+#define	PM_Bemf			(GROUP8+8)	//	08-08	PMotor Bemf coff				
+#define Z_OFFSET		(GROUP8+9)	//	08-09	PM Z-pulse offset angle, 0.1 degree, dino, 2007/01/03
+#define	ST_TUNE			(GROUP8+10)	//	08-10	//ADDED BY DINO
 /*------------	Group9	 --------*/					
 #define	GROUP9			(GROUP8+11)				
-#define	ADDRS3			(GROUP9+0)		//  368	09-00	Comm Address
-#define	BPS3			(GROUP9+1)		//  369	09-01	Tranmission speed
-#define	C_FAULT3		(GROUP9+2)		//  370	09-02	Comm fault Treatment
-#define	CTODT3			(GROUP9+3)		//  371	09-03	Comm Time out
-#define	PROTOCOL3		(GROUP9+4)		//  372	09-04	Comm Protocol
-#define	REM_DT3			(GROUP9+5)		//  373	09-05	ASC remote Response Delay Time, 1=100us
-#define CAN_BURD        (GROUP9+6)      //  3XX 09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
-#define PDO_TX_Time     (GROUP9+7)      //  3XX 09-07   CAN PDO Handshaking Period
-#define CAN_ChkTime     (GROUP9+8)      //  3XX 09-08   CAN Communiction Timeout
-#define EV_ID           (GROUP9+9)      //  3XX 09-09   Elevator Control Identification Code
-#define CAN_FUN         (GROUP9+10)     //  3XX 09-10   Factory Function
-#define DLC_MODE1       (GROUP9+11)     //  3XX 09-11   RD Function
-#define DLC_MODE2       (GROUP9+12)     //  3XX 09-12   DLC Mode
-#define	DLC_MODE3       (GROUP9+13)     //  3XX 09-13
-#define	CANPDOTXTIME    (GROUP9+14)     //  3XX 09-14   CAN Fail rate aevin add--6/12/2017
+#define	ADDRS3			(GROUP9+0)	//	09-00	Comm Address
+#define	BPS3			(GROUP9+1)	//	09-01	Tranmission speed
+#define	C_FAULT3		(GROUP9+2)	//	09-02	Comm fault Treatment
+#define	CTODT3			(GROUP9+3)	//	09-03	Comm Time out
+#define	PROTOCOL3		(GROUP9+4)	//	09-04	Comm Protocol
+#define	REM_DT3			(GROUP9+5)	//	09-05	ASC remote Response Delay Time, 1=100us
+#define CAN_BURD                (GROUP9+6)	//	09-06   CAN Bus Tranmission Baudrate      //[DLC, Bernie, 2014/10/06]
+#define PDO_TX_Time             (GROUP9+7)	//	09-07   CAN PDO Handshaking Period
+#define CAN_ChkTime             (GROUP9+8)	//	09-08   CAN Communiction Timeout
+#define EV_ID                   (GROUP9+9)	//	09-09   Elevator Control Identification Code
+#define CAN_FUN                 (GROUP9+10)	//	09-10   Factory Function
+#define DLC_MODE1               (GROUP9+11)	//	09-11   RD Function
+#define DLC_MODE2               (GROUP9+12)	//	09-12   DLC Mode
+#define	DLC_MODE3               (GROUP9+13)	//	09-13
+#define	CANPDOTXTIME            (GROUP9+14)	//	09-14   CAN Fail rate aevin add--6/12/2017
 
 /*------------	Group10	 --------*/
 #define	GROUP10			(GROUP9+15)
@@ -608,7 +608,7 @@
 #define	ASR_F1			(GROUP10+17)	//	391	10-17	ASR1/ASR2 switch freq	
 #define	PriLPG			(GROUP10+18)	//	392	10-18	Primary LowPass filter Gain
 #define PPI_P			(GROUP10+19) 	//	393	10-19	PPI P Gain
-#define SPI1BAND        (GROUP10+20)    //  394 10-20   SPI1 Band
+#define SPI1BAND                (GROUP10+20)    //  394 10-20   SPI1 Band
 #define	SPI2BAND		(GROUP10+21)	//	395	10-21	SPI2 Band
 #define POS_CTIME		(GROUP10+22)	//	396	10-22	position control time
 #define	ZSPLowpass		(GROUP10+23)	//	397	10-23	position control LOW POSS FILTER
@@ -617,12 +617,12 @@
 #define ZASRKI_L   		(GROUP10+26)	//	400	10-26	Ki gain of ASR in Zero speed of Landing, DINO, 08/02/2010
 #define ZASRKP_P		(GROUP10+27)	//	385	10-27	KP gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
 #define ZASRKI_P		(GROUP10+28)	//	386	10-28	Ki gain of ASR in Zero speed during Position Control, DINO, 05/16/2011
-#define FREQ_DIV        (GROUP10+29)	//	386	10-29   PG Card Frequency Division Output    //[Modify PG Type Define, Bernie, 12/05/2011]
-#define PG_DIV_MODE     (GROUP10+30)	//	386	10-30   PG Card Frequency Division Mode setting                       //[Modify PG Type Define, Bernie, 12/05/2011]
-#define PG_C_TYPE       (GROUP10+31)    //  3XX  10-31   Encoder C+/C- exchange           //[change parameter to normal group, Bernie, 2014/02/14]
-#define OVER_ACC_LEVEL  (GROUP10+32)    //  3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
-#define OVER_ACC_TIME   (GROUP10+33)    //  3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
-#define OVER_ACC_SET    (GROUP10+34)    //  3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define FREQ_DIV                (GROUP10+29)	//	386	10-29   PG Card Frequency Division Output    //[Modify PG Type Define, Bernie, 12/05/2011]
+#define PG_DIV_MODE             (GROUP10+30)	//	386	10-30   PG Card Frequency Division Mode setting                       //[Modify PG Type Define, Bernie, 12/05/2011]
+#define PG_C_TYPE               (GROUP10+31)    //  3XX  10-31   Encoder C+/C- exchange           //[change parameter to normal group, Bernie, 2014/02/14]
+#define OVER_ACC_LEVEL          (GROUP10+32)    //  3XX  10-32   Over acc level setting        //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define OVER_ACC_TIME           (GROUP10+33)    //  3XX  10-33   Over acc detect time          //[Over Acceleration protection function, Bernie, 2017/02/13]
+#define OVER_ACC_SET            (GROUP10+34)    //  3XX  10-34   Over acc detect rule setting  //[Over Acceleration protection function, Bernie, 2017/02/13]
 /*------------	Group11	 --------*/
 #define	GROUP11			(GROUP10+35)
 #define	SysControl		(GROUP11+0)		//	401	11-00	system control bit0:auto, bit1:Jm tunning, bit2:Zero Servo 
@@ -644,16 +644,16 @@
 #define DATA_SEL		(GROUP11+16)	//	417	11-16	Display address,add by dino 2007/03/08
 #define SHOW_DATA		(GROUP11+17)	//	418	11-17	Display data,   add by dino 2007/03/08
 #define PROTBIT			(GROUP11+18)	//	419	11-18	Protect Bit	
-#define	ZSPDLPBW_L   	(GROUP11+19)	//	420	11-19	Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
+#define	ZSPDLPBW_L   	        (GROUP11+19)	//	420	11-19	Zero Speed Loop BandWidth of Landing, DINO, 08/02/2010
 #define	PWM_MODE		(GROUP11+20)	//	420	11-20	PWM MODE, 0=SVPWM+DPWM,1=SVPWM	    //[move parameter to 11-20, Bernie, 2017/02/16]
-#define	LPF_LC01DISP	(GROUP11+21)    //	420	11-21   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+#define	LPF_LC01DISP	        (GROUP11+21)    //	420	11-21   //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-#define Lift_SPD_RPM  	(GROUP11+21)	//	10	11-21	LIFT_SPD_CMD	    //[SIBOCOM, Jason, 2019/12/31]
+#define Lift_SPD_RPM  	        (GROUP11+21)	//	10	11-21	LIFT_SPD_CMD	    //[SIBOCOM, Jason, 2019/12/31]
 /*------------ Group12 ----------*/
 //#define GROUP12			(GROUP11+22)
 #else
 
-#define Client_Mode     (GROUP11+22)    //	420	11-21   //Save Customer bit
+#define Client_Mode             (GROUP11+22)    //	420	11-21   //Save Customer bit
 /*------------ Group12 ----------*/
 
 #define GROUP12			(GROUP11+23)
@@ -888,7 +888,7 @@
 #define	UPDNKEYS		(GROUP14+23)	//	508	14-23	up/down key speed
 #define	CNTCPL			(GROUP14+24)	//	509	14-24	Counter Value Set (Complete)		
 #define	CNTPRS			(GROUP14+25)	//	510	14-25	Counter Value Reach (Preset)		
-#define	LIMIT_SCALE	    (GROUP14+26)	//	511	14-26	LIMIT_SCALE  //[weak magnet, Sampo, 03/31/2011]		
+#define	LIMIT_SCALE	        (GROUP14+26)	//	511	14-26	LIMIT_SCALE  //[weak magnet, Sampo, 03/31/2011]		
 #define	MI9	    		(GROUP14+27)	//	512	14-27	Multi-Function Input 9	
 #define	MI10    		(GROUP14+28)	//	513	14-28	Multi-Function Input 10	
 #define	MI11    		(GROUP14+29)	//	514	14-29	Multi-Function Input 11	
@@ -921,10 +921,10 @@
 #define	RPM_RATED2		(GROUP14+56)	//	541	14-56	Motor 2 Rated RPM	
 #define	POLES2			(GROUP14+57)	//	542	14-57	Motor 2 pole No.	
 #define	MI_NL2			(GROUP14+58)	//	543	14-58	Motor 2 No-Load Current	
-#define	Rs2			    (GROUP14+59)	//	544	14-59	Motor 2 Rs	
-#define	Rr2			    (GROUP14+60)	//	545	14-60	Motor 2 Rr	
-#define	Lm2			    (GROUP14+61)	//	546	14-61	Motor 2 Lm	
-#define	Lx2			    (GROUP14+62)	//	547	14-62	Motor 2 Lx
+#define	Rs2			(GROUP14+59)	//	544	14-59	Motor 2 Rs	
+#define	Rr2			(GROUP14+60)	//	545	14-60	Motor 2 Rr	
+#define	Lm2			(GROUP14+61)	//	546	14-61	Motor 2 Lm	
+#define	Lx2			(GROUP14+62)	//	547	14-62	Motor 2 Lx
 #define	YDDELAYT		(GROUP14+63)	//	548	14-63	Y-Delta On delay time	
 #define	STALL4V			(GROUP14+64)	//	549	14-64	OV stall level
 #define	EOL2_SL			(GROUP14+65)	//	550	14-65	Thermal Relay 2 Selection	
@@ -977,8 +977,8 @@
 #define MPGGA			(GROUP14+112)	//	597	14-112	PG Mechanical Gear A		
 #define MPGGB			(GROUP14+113)	//	598	14-113	PG Mechanical Gear B
 #define	JmPu			(GROUP14+114)	//	599	14-114	Interia of motor PU		
-#define	M1_IdsRefLim	(GROUP14+115)	//	600	14-115	Motor1 IdsRef Limit		
-#define	M2_IdsRefLim	(GROUP14+116)	//	601	14-116	Motor2 IdsRef Limit		
+#define	M1_IdsRefLim	        (GROUP14+115)	//	600	14-115	Motor1 IdsRef Limit		
+#define	M2_IdsRefLim	        (GROUP14+116)	//	601	14-116	Motor2 IdsRef Limit		
 #define	PHL_T			(GROUP14+117)	//	602	14-117	Phase Loss Time	
 #define	OH_IN			(GROUP14+118)	//	603	14-118	Thermo inside Temp	
 #define	SpdFFD			(GROUP14+119)	//	604	14-119	Speed feed forword
@@ -994,10 +994,10 @@
 #define	APRCURVET		(GROUP14+129)	//	614	14-129	Time of APR Curve
 #define Jm_SELECT		(GROUP14+130)	//	615	14-130	IM control use inertia source				
 #define PHL_L			(GROUP14+131)   //	616 14-131  Level of Phase Loss
-#define MI_STATE        (GROUP14+132)   //  617 14-132  MI9 ~MI14 State
+#define MI_STATE                (GROUP14+132)   //  617 14-132  MI9 ~MI14 State
 #define	STI   			(GROUP14+133)	//	618	14-133	Standstill Current, add by dino, 12/19/2007
 #define	PGSCALE			(GROUP14+134)	//	619	14-134  Division factor of PG	
-#define I_RATE          (GROUP14+135)   
+#define I_RATE                  (GROUP14+135)   
 //#define CAN_HC          (GROUP14+136)   //      14-136 [CAN Protocol for High Cap , Sampo,  2011/09/05]  
 //#define CAN_BURD        (GROUP14+137)   //      14-136 [CAN Protocol for High Cap , Sampo,  2011/09/05]  
 //#define CAN_ChkTime     (GROUP14+138)   //    623 14-138 // [CAN Protocol for High Cap, Bernie, 09/22/2011] 
@@ -1009,14 +1009,14 @@
 #define	PROTOCOL2		(GROUP14+144)	//	372	09-04	Comm Protocol for Keypad
 #define	REM_DT2			(GROUP14+145)	//	373	09-05	ASC remote Response Delay Time, 1=100us for Keypad
 
-#define OPH2_10HzCNT    (GROUP14+146)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_5HzCNT     (GROUP14+147)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_1HzCNT     (GROUP14+148)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_0p5HzCNT   (GROUP14+149)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_0p2HzCNT   (GROUP14+150)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_IGAIN_1    (GROUP14+151)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_IGAIN_2    (GROUP14+152)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
-#define OPH2_IGAIN_3    (GROUP14+153)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_10HzCNT            (GROUP14+146)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_5HzCNT             (GROUP14+147)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_1HzCNT             (GROUP14+148)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_0p5HzCNT           (GROUP14+149)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_0p2HzCNT           (GROUP14+150)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_IGAIN_1            (GROUP14+151)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_IGAIN_2            (GROUP14+152)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
+#define OPH2_IGAIN_3            (GROUP14+153)   //    3XX  //[Output Phase Loss 2, Sampo, 2015/05/21]
 
 #define	EPMAX			(GROUP14+154)				
 /*-----	--------------		---------------------------*/				
