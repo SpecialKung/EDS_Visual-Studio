@@ -218,8 +218,8 @@
           <Option>-nologo</Option>
           <Option>-end</Option>
           <Option>-input=%BuildModeName%\%ProjectName%.abs</Option>
-          <Option>-output=%BuildModeName%\ED_RX63T_DLC.bin</Option>
-          <Option>-form=binary</Option>
+          <Option>-output=%BuildModeName%\ED_RX63T_DLC.mot</Option>
+          <Option>-form=stype</Option>
           <Option>-exit</Option>
           <PreLinker>Auto</PreLinker>
         </LinkOptions>

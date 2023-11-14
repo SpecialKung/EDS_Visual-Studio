@@ -9,13 +9,13 @@
     #define DateCode      20195	/* 20150615 Mon. */
 #else
     #if OFFICIAL_VERSION
-        #define SWVERS_H      111
+        #define SWVERS_H      112
         #define SWVERS_L         1
         #define DateCode      23301	/* 20200803 Mon. */
     #else
-        #define SWVERS_H      9111
+        #define SWVERS_H      9112
         #define SWVERS_L         0
-        #define DateCode      23223	/* 20200803 Mon. */
+        #define DateCode      23462	/* 20200803 Mon. */
     #endif
 #endif
 /*============================================================================================
