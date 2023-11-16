@@ -103,9 +103,9 @@ DLC_EXT UBYTE DLC_LULD_Protect(Bool LU, Bool LUOld, Bool LD, Bool LDOld);//#1597
 DLC_EXT void Sensor817_Protect(void);	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 DLC_EXT void Sensor818_Protect(void);	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 
-DLC_EXT UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val);	// GFC1test
+DLC_EXT UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val);		// GFC1test
 DLC_EXT UDOUBLE pos_PGto1MM(UDOUBLE pg_val);		// GFC1test
-DLC_EXT UDOUBLE pos_0d1MMtoPG(UDOUBLE len);		// GFC1test
+DLC_EXT UDOUBLE pos_0d1MMtoPG(UDOUBLE len);			// GFC1test
 DLC_EXT UDOUBLE pos_1MMtoPG(UDOUBLE len);			// GFC1test
 
 

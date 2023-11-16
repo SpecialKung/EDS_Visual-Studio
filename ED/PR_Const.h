@@ -304,7 +304,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 02-37 BRK_CHKTQR   */  RLD|DOT0,                       0,              1,              0,
 /* 02-38 SCDELAY_RUN  */  RLD|WRUN|DOT3,                 10,          65000,            200,
 /* 02-39 SCDELAY_STOP */  RLD|WRUN|DOT3,                 10,          65000,            200,
-/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              0,    //#15977, LULD detect, James, 2021/04/01
+/* 02-40 LSM          */  RLD|WRUN|DOT0,                  0,              2,              2,    //#15977, LULD detect, James, 2021/04/01
 /* 02-41 LS_OPEN_TIME */  RLD|WRUN|DOT1,                  0,            100,             30,    //#15977, LULD detect, James, 2021/04/01
 /* 02-42 LS_SHORT_TIME*/  RLD|WRUN|DOT1, 				  0, 		    100, 			 30,    //#15977, LULD detect, James, 2021/04/01
 /* 02-43 SpdAgree_B   */  CHG|RLD|WRUN|DOT2,              0,           MAXF,            200,    // 202 02-40   Band of Speed Agree Function #18572 
@@ -652,7 +652,7 @@ const PARAM_ATTR attr1[PRMAX] = {
 /* 09-10 CAN_FUN      */  RLD|DOT0|DPH,                   0,          65535,              0,    // 3XX 09-10 Factory Function  
 /* 09-11 DLC_MODE1    */  RLD|DOT0|DPH,                   0,          65535,              0,    // 3XX 09-11 RD Function
 /* 09-12 DLC_MODE2    */  READ|RLD|DOT0|DPH,              0,          65535,              0,    // 3XX 09-12 DLC Mode
-/* 09-13 DLC_MODE3    */  RLD|DOT0|DPH,              0,          65535,              0,
+/* 09-13 DLC_MODE3    */  READ|RLD|DOT0|DPH,              0,          65535,              0,
 /* 09-14 CANPDOTXTIME */  RLD|DOT0,		            	  0,		  65535,		      0,    //CANPDOTXTIME--aevin 6/12/2017
 
 /*--------      GROUP 10     -----------*/

@@ -2537,6 +2537,7 @@ void P00_02(UWORD prx, UWORD prvalue)
                 updatepr(BRK_STOPDT,25);   //02-30=0.025
                 updatepr(MCDELAY_RUN,25);  //02-31=0.025
                 updatepr(MCDELAY_STOP,25); //02-32=0.025
+				updatepr(LS_Method,0);	   //02-40=0
                 updatepr(AFM1,2);          //03-17=2
                 updatepr(AFM2,3);          //03-20=3
                 updatepr(RSQ_SPD,16);      //04-16=0.16
@@ -4683,26 +4684,14 @@ void P04_50(UWORD prx, UWORD prvalue){
             //get brd's length mm
     	    //ulBrdLen = U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 	        //ulBrdLen = ulBrdLen/10;//get borad's length								// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-
-            //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-            //{
-            //    ulBrdLen = (DLC_ulPgBrd + 1) >> 1;
-            //}
-            //else
-            //{
-            //    ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-            //} 
-			ulBrdLen = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgBrd);	// GFC1test
-
+	        ulBrdLen = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 	        if(DLC_ulPgSen && (DLC_ulPgSen<DLC_ulPgBrd)){
                 //ulSenLen = U32xU32divU32((DLC_ulPgSen>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 	            //ulSenLen = ulBrdLen/10;//get sensors distance							// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-	            //ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-	            ulSenLen = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgSen);	// GFC1test
+	            ulSenLen = (ULONG)(((UDOUBLE)DLC_ulPgSen * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
             }
-            else{
-                ulSenLen = 0; 
-            }
+            else
+                ulSenLen = 0;            
             swval = (SWORD)prvalue;
             swval = (swval < 0) ? swval*(-1) : swval;
             if(/*prvalue*/swval <= ((ulBrdLen/2) - (ulSenLen/2))){                

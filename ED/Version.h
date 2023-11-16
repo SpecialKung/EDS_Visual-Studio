@@ -1,6 +1,6 @@
 #define SIBO_ENABLE  0
 #define Artemis_ENABLE  0
-#define OFFICIAL_VERSION  0
+#define OFFICIAL_VERSION  1
 
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
     #define SWVERS_H      1085  //[5=S for Sibocom]
@@ -8,19 +8,15 @@
     #define DateCode      20195	/* 20150615 Mon. */
 #else
     #if OFFICIAL_VERSION
-        #define SWVERS_H      110
+        #define SWVERS_H      112
         #define SWVERS_L         0
-        #define DateCode      23032	/* 20200803 Mon. */
+        #define DateCode      23301	/* 20200803 Mon. */
     #else
         #define SWVERS_H      9111
         #define SWVERS_L         0
-        #define DateCode      23344	/* 20230824 Thu. */
+        #define DateCode      23205	/* 20200803 Mon. */
     #endif
 #endif
-
-//DLC_PDO_ID004_B4
-// test
-
 /*============================================================================================
 History:
 Version    Date    - Notes
