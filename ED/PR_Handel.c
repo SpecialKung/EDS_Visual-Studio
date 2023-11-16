@@ -2537,6 +2537,7 @@ void P00_02(UWORD prx, UWORD prvalue)
                 updatepr(BRK_STOPDT,25);   //02-30=0.025
                 updatepr(MCDELAY_RUN,25);  //02-31=0.025
                 updatepr(MCDELAY_STOP,25); //02-32=0.025
+				updatepr(LS_Method,0);	   //02-40=0
                 updatepr(AFM1,2);          //03-17=2
                 updatepr(AFM2,3);          //03-20=3
                 updatepr(RSQ_SPD,16);      //04-16=0.16

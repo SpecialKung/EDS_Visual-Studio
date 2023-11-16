@@ -5798,16 +5798,21 @@ void main(void)
         }
 
         // #16698 PG speed Above Speed Area for NRG//James, 2021/08/09
-        if(pr[SP_AREA] == 0 || (abs(slMotorHz) < pr[SP_AREA]))
+        if((pr[SP_AREA]==0) || (abs(slMotorHz)<pr[SP_AREA]))
         {
 		    ABV_PGSPDA = 0;
         }
         else
         {
-            if(Error == 0)
-            {
-                Error = PGF3_ERR;
-            }
+            // Rationa l351466, Special.Kung, 2023/07/10
+            /*															//[Special.Kung, 2023/07/10]
+            if(Error == 0)												//[Special.Kung, 2023/07/10]
+            {															//[Special.Kung, 2023/07/10]
+                Error = PGF3_ERR;										//[Special.Kung, 2023/07/10]
+            }															//[Special.Kung, 2023/07/10]
+            */
+			// Rationa l351466, Special.Kung, 2023/07/10
+			
             ABV_PGSPDA = 1;
         }
 // ]
