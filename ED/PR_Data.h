@@ -1,4 +1,4 @@
- /*------------	Group15	 --------*/						
+/*------------	Group15	 --------*/						
 #define	GROUP15			0					
 #define	DEBUG_F1		(GROUP15+0)		//	0	15-00	Debug Flag 1	
 #define	DBCCHG_F		(GROUP15+1)		//	1	15-01	DBC CHANGE FREQ	

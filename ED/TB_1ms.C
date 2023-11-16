@@ -3205,11 +3205,11 @@ void TimeBase_500us(void)
 		TimeBase_1msB();
 		//DLC function, Henry, 2016/07/20 [
 		DLC_uwPOWCnt=(DLC_uwPOWCnt<1000)?(DLC_uwPOWCnt+1):DLC_uwPOWCnt;
-	
 		//ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 		//COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-// GFC1test		//udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-// GFC1test		//COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		udTmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		COF_ulPls2MMgain = (ULONG)(((UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_ubMPolePair * 2621440000 + (udTmp>>1)) / udTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+			
 		if(((pr[SOFC]==4)||(pr[SOFC]==5))&&(DLC_uwPOWCnt>=1000)){ //[Gfc DLC modify,Henry,2018/05/23]	
 			if(DLC_uwInit == 0){			
 				DLC_PrMgr(PR_INIT_RD);

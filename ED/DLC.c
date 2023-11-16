@@ -196,39 +196,21 @@ void DLC_Init(void){
 void DLC_PrMgr(UBYTE Val){
 	UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
 	ULONG ulTmp,ulTmp2;
-	ULONG_UNION	ulTmp3;
 	UDOUBLE ud1, ud2, ud3;
 	UWORD uwLift_SPD,uwSpeedLimit_Temp;
 	
-	DLC_btAPS_Mode = ((pr[DLC_MODE3] & 0x01) != 0);	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 	if(Val == PR_INIT_RD){	
 		//基本參數
     //DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
     //DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
-    //{
-    //    DLC_ulOffset = (PGBS + 1) >> 1;
-    //}
-    //else
-    //{
-    //    DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-    //}
-	DLC_ulOffset = (ULONG)pos_PGto1MM((UDOUBLE)PGBS);	// GFC1test
+    DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 
     DLC_ulPgCnt = pr[CUR_PG_H]*10000+pr[CUR_PG_L];
     DLC_ulPgBrd = pr[LEV_BRD_PG_H]*10000+pr[LEV_BRD_PG_L];
     DLC_ulPgSen = pr[SENSOR_H]*10000+pr[SENSOR_L];
 
     //pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// brd length Aevin 7/6/2018	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source   
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
-    //{
-    //    pr[LEV_LEN] = (DLC_ulPgBrd + 1) >> 1;
-    //}
-    //else
-    //{
-    //    pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-    //}
-	pr[LEV_LEN] = (UWORD)pos_PGto1MM((UDOUBLE)DLC_ulPgBrd);	// GFC1test
+    pr[LEV_LEN] = (UWORD)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 
 		// DLC pos initial fail over 32F, Henry, 20170621
 		//for(i = 1; i <= 32; i ++){
@@ -241,15 +223,7 @@ void DLC_PrMgr(UBYTE Val){
         for(i = 1; i <= 0x4B; i ++){
 		    //DLC_ulPgLev[i] = (U32xU32divU32(DLC_ulPosLev[i], 65536, COF_ulPls2MMgain))<<2;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 		    //DLC_ulPgLev[i] = DLC_ulPgLev[i]*10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-            //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
-            //{
-            //    DLC_ulPgLev[i] = DLC_ulPosLev[i] << 1;
-            //}
-            //else
-            //{
-            //    DLC_ulPgLev[i] = (ULONG)(((UDOUBLE)DLC_ulPosLev[i] * 2621440 + (UDOUBLE)(COF_ulPls2MMgain >> 1)) / (UDOUBLE)COF_ulPls2MMgain);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-            //}
-			DLC_ulPgLev[i] = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosLev[i]);	// GFC1test
+			DLC_ulPgLev[i] = (ULONG)(((UDOUBLE)DLC_ulPosLev[i] * 2621440 + (UDOUBLE)(COF_ulPls2MMgain >> 1)) / (UDOUBLE)COF_ulPls2MMgain);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
         }
 
 		//DLC position offset, Henry
@@ -300,82 +274,25 @@ void DLC_PrMgr(UBYTE Val){
     DLC_ulPosUD3 = DLCxx[UD3_H]*1000+DLCxx[UD3_L]; // JINGDO
     DLC_ulPosUD4 = DLCxx[UD4_H]*1000+DLCxx[UD4_L]; // JINGDO
     DLC_ulPosUL = DLCxx[UL_H]*1000+DLCxx[UL_L];		
-
-
-	/* //Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source ---------
-    if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
-    {
-        DLC_ulPgDD1 = DLC_ulPosDD1 << 1;
-        DLC_ulPgDD2 = 0;
-        DLC_ulPgDD3 = 0;
-        DLC_ulPgDD4 = 0;
-        DLC_ulPgUD1 = DLC_ulPosUD1 << 1;      
-        DLC_ulPgUD2 = 0;      
-        DLC_ulPgUD3 = 0;      
-        DLC_ulPgUD4 = 0;      
-        DLC_ulPgUL  = 0;        
-
-    }
-    else
-    {
-        //DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
-        //DLC_ulPgDD1 = DLC_ulPgDD1*10;
-		DLC_ulPgDD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD1);	// GFC1test
-        //DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
-        //DLC_ulPgDD2 = DLC_ulPgDD2*10;
-		DLC_ulPgDD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD2);
-        //DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
-        //DLC_ulPgDD3 = DLC_ulPgDD3*10;
-        DLC_ulPgDD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD3);
-        //DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
-        //DLC_ulPgDD4 = DLC_ulPgDD4*10;
-        DLC_ulPgDD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD4);
-        //DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;      
-        //DLC_ulPgUD1 = DLC_ulPgUD1*10;
-        DLC_ulPgUD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD1);
-        //DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;      
-        //DLC_ulPgUD2 = DLC_ulPgUD2*10;
-        DLC_ulPgUD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD2);
-        //DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;      
-        //DLC_ulPgUD3 = DLC_ulPgUD3*10;
-        DLC_ulPgUD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD3);
-        //DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;      
-        //DLC_ulPgUD4 = DLC_ulPgUD4*10;
-        DLC_ulPgUD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD4);
-        //DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;        
-        //DLC_ulPgUL = DLC_ulPgUL*10;
-        DLC_ulPgUL = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUL);
-    }
-	*/ // -----------------------------------------------------------------------------------------
-
-	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new ---------------
-	DLC_ulPgDD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD1);
-	DLC_ulPgUD1 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD1);
-	if(DLC_btAPS_Mode)
-	{
-		DLC_ulPgDD2 = 0;
-        DLC_ulPgDD3 = 0;
-        DLC_ulPgDD4 = 0;  
-        DLC_ulPgUD2 = 0;      
-        DLC_ulPgUD3 = 0;      
-        DLC_ulPgUD4 = 0;      
-        DLC_ulPgUL  = 0;
-		DLC_udApsCnt = pr[SENSOR_H];	//04-34	//20230829
-		DLC_udEncCnt = pr[SENSOR_L];	//04-35 //20230829
-	}
-	else
-	{
-		DLC_ulPgDD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD2);  
-        DLC_ulPgDD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD3);
-        DLC_ulPgDD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosDD4);
-        DLC_ulPgUD2 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD2);
-        DLC_ulPgUD3 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD3);
-        DLC_ulPgUD4 = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUD4);
-        DLC_ulPgUL =  (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosUL);
-		//DLC_udApsCnt = 0;	//04-34	//20230829
-		//DLC_udEncCnt = 0;	//04-35 //20230829
-	}		
-	// ------------------------------------------------------------------------------------------------
+			
+    DLC_ulPgDD1 = (U32xU32divU32(DLC_ulPosDD1,65536,COF_ulPls2MMgain))<<2;
+    DLC_ulPgDD1 = DLC_ulPgDD1*10;
+    DLC_ulPgDD2 = (U32xU32divU32(DLC_ulPosDD2,65536,COF_ulPls2MMgain))<<2;
+    DLC_ulPgDD2 = DLC_ulPgDD2*10;
+    DLC_ulPgDD3 = (U32xU32divU32(DLC_ulPosDD3,65536,COF_ulPls2MMgain))<<2;
+    DLC_ulPgDD3 = DLC_ulPgDD3*10;
+    DLC_ulPgDD4 = (U32xU32divU32(DLC_ulPosDD4,65536,COF_ulPls2MMgain))<<2;
+    DLC_ulPgDD4 = DLC_ulPgDD4*10;
+    DLC_ulPgUD1 = (U32xU32divU32(DLC_ulPosUD1,65536,COF_ulPls2MMgain))<<2;		
+    DLC_ulPgUD1 = DLC_ulPgUD1*10;
+    DLC_ulPgUD2 = (U32xU32divU32(DLC_ulPosUD2,65536,COF_ulPls2MMgain))<<2;		
+    DLC_ulPgUD2 = DLC_ulPgUD2*10;
+    DLC_ulPgUD3 = (U32xU32divU32(DLC_ulPosUD3,65536,COF_ulPls2MMgain))<<2;		
+    DLC_ulPgUD3 = DLC_ulPgUD3*10;
+    DLC_ulPgUD4 = (U32xU32divU32(DLC_ulPosUD4,65536,COF_ulPls2MMgain))<<2;		
+    DLC_ulPgUD4 = DLC_ulPgUD4*10;
+    DLC_ulPgUL = (U32xU32divU32(DLC_ulPosUL,65536,COF_ulPls2MMgain))<<2;		
+    DLC_ulPgUL = DLC_ulPgUL*10;
 
     DLC_ubLevMax = pr[MAX_FLOOR];
     DLC_ubLevMin = 1;
@@ -523,21 +440,7 @@ void DLC_PrMgr(UBYTE Val){
         i = mio_btUD4;   // JINGDO                 // byte4 bit5
         j = (DLC_PDO_RX_RC.ub&0x20)?1:0;
         DLC_btUD4 = (i||j)?1:0;
-
-		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del ----------------
-		/*
-        i = (pr[DLC_MODE3] & 0x01)?1:0;         // byte4 bit6
-        j = (DLC_PDO_RX_RC.ub&0x40)?1:0;
-        DLC_PDO_DLC_Mode = (i&&j)?1:0;
-
-        //i = (DLC_PDO_DLC_Mode & 0x01)?1:0;   // byte4 bit7
-        //j = (DLC_PDO_RX_RC.ub&0x80)?1:0;
-        //DLC_PDO_RX_Data_Mode = (i&&j)?1:0;	
-		*/
-		// ---------------------------------------------------------------------------------------------
-
-
-                                        
+    									
 		//DLC速度基本參數讀取 (單位:ms)
 		DLC_uwTR1 = pr[S4ACC1]*10;	  //01-24 DOT2
 		DLC_uwTR2 = pr[S4ACC2]*10;	  //01-25	DOT2
@@ -666,31 +569,11 @@ void DLC_PrMgr(UBYTE Val){
 		//參數讀取
 		pr[LEV_CUR] = DLC_ubLevCur; 
 		DLC_btPRChk = (pr[CAN_FUN]&0x0001)?1:0;
-		//DLC_btWelDone = (pr[CAN_FUN]&0x0002)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		DLC_btWelDoneAux = (pr[CAN_FUN]&0x0002)?1:0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-		//DLC_btWelExc = (pr[CAN_FUN]&0x0004)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		DLC_btWelExcAux = (pr[CAN_FUN]&0x0004)?1:0;		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
+		DLC_btWelDone = (pr[CAN_FUN]&0x0002)?1:0;
+		DLC_btWelExc = (pr[CAN_FUN]&0x0004)?1:0;
 		DLC_btWelRec = (pr[CAN_FUN]&0x0008)?1:0;
 		DLC_btWelRst = (pr[CAN_FUN]&0x0010)?1:0;
-
-		//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add -----------------
-		DLC_btWelExc = DLC_btWelExcAux || DLC_btWelRec || DLC_btWelRst;	//mitong 20230818
-		if(!DLC_btWelExc)
-		{
-			if(DLC_ubWelExcTmr < 255)
-			{
-				DLC_ubWelExcTmr++;
-			}
-		}
-		else
-		{
-			DLC_ubWelExcTmr = 0;
-		}
-		DLC_btWelDone = DLC_btWelDoneAux && (DLC_ubWelExcTmr > 20);
-		// ----------------------------------------------------------------------------------------------
-
-
-		
+			
 		//04-36 DLC Function
 		DLC_btADCO = (pr[DLC_FUN]&0x0001)?1:0;   //bit0
 		DLC_btEPSDir = (pr[DLC_FUN]&0x0002)?1:0; //bit1
@@ -803,47 +686,19 @@ void DLC_PrMgr(UBYTE Val){
 //		DLC_ulPosVal = DLC_ulPgCnt/ulTmp;
 		//DLC_ulPosVal = U32xU32divU32((DLC_ulPgCnt>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 		//DLC_ulPosVal = DLC_ulPosVal/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		if(DLC_btAPS_Mode)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-        {
-            //DLC_ulPosVal = (ulDLC_PDO_RX_APS_Pu + 1) >> 1; //The APS data is 0.5mm
-            DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu);	// GFC1test
- 
-        }
-		else
-        {
-            //DLC_ulPosVal = (ULONG)(((UDOUBLE)DLC_ulPgCnt * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-            DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgCnt);	// GFC1test
-        }
+		DLC_ulPosVal = (ULONG)(((UDOUBLE)DLC_ulPgCnt * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 		
 #if 1	// Sean, 20181210
 		//DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 		//DLC_ulOffset = DLC_ulOffset/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)
-        //{
-        //    DLC_ulOffset = (PGBS + 1) >> 1;
-        //}
-        //else
-        //{
-        //    DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);    // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-        //}
-		DLC_ulOffset = (ULONG)pos_PGto1MM((UDOUBLE)PGBS);	// GFC1test
-
+		DLC_ulOffset = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 #endif		
 		// DLC position offset, Henry
 #if 0
 		pr[INV_POS_H] = DLC_ulPosVal/1000;	//m
 		pr[INV_POS_L] = DLC_ulPosVal%1000;	//mm
 #else
-		//if((DLC_PDO_DLC_Mode == DLC_MODE_APS) || (Driver_ID == IEDS_DRIVER))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		if(DLC_btAPS_Mode || (Driver_ID == IEDS_DRIVER))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-		{
-			DLC_ulPosPar.ul = DLC_ulPosVal;
-		}
-		else
-		{
-			DLC_ulPosPar.ul = DLC_ulPosVal-DLC_ulOffset;
-		}
+		DLC_ulPosPar.ul = DLC_ulPosVal-DLC_ulOffset;
 		pr[INV_POS_H] = DLC_ulPosPar.ul/1000;	//m
 		pr[INV_POS_L] = DLC_ulPosPar.ul%1000;	//mm
 #endif
@@ -880,29 +735,6 @@ void DLC_PrMgr(UBYTE Val){
 			DLC_PDO_ID005_B6.ub = DLC_ulDisTar.ub.b2;//m, byte2+byte3
 			DLC_PDO_ID005_B7.ub = DLC_ulDisTar.ub.b3;
 		}
-		//else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)   // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		else if(DLC_btAPS_Mode)   // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-        {
-
-            DLC_PDO_ID004_B4.ub |= 0x40;    // Set Byte4 bit 6 as 1
-            
-            if(DLC_PDO_TX_Data_Mode)
-            {
-                DLC_PDO_ID004_B4.ub |= 0x80;    // Set Byte4 bit 7 as 1
-                ulTmp3.ul = ulDLC_PDO_RX_APS_Pu;	// GFC1test
-                DLC_PDO_ID004_B5.ub = ulTmp3.ub.b2;     //APS Hi Byte
-                DLC_PDO_ID004_B6.ub = ulTmp3.ub.b1;     //APS Med Byte
-                DLC_PDO_ID004_B7.ub = ulTmp3.ub.b0;     //APS Lo Byte
-
-                
-            }else
-            {
-                DLC_PDO_ID004_B4.ub &= 0x7F;    // Set Byte4 bit 7 as 0
-                DLC_PDO_ID004_B5.ub = DLC_ubLevTar;     //TF
-                DLC_PDO_ID004_B6.ub = 0x00;     //0
-                DLC_PDO_ID004_B7.ub = 0x00;     //0                
-            }
-       }      
 		
 		pr[LEV_CUR] = DLC_ubLevCur;
 		
@@ -1048,109 +880,18 @@ void DLC_Algorithm(void){
 	slPgDif = (SWORD)(uwPgTmp - MTU1_Old);
 	MTU1_Old = MTU1.TCNT;
 	
-
-
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-    {
-        DLC_ulPgCnt = ulDLC_PDO_RX_APS_Pu;
-		// ------------------------------------------------------------------------------------------------------------------------------------
-		//求井道學習時從底部啟動到頂部停止的距離,APS求得的mm 與Encoder求得的mm 的差別,用於速度校正
-		//if(DLC_btWelRst)	//井道學習上行瞬間			//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		if(DLC_btWelExc && (DLC_ubDIR == DIR_UP) && !DLC_btWelUpOld)	//井道學習上行瞬間	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-		{
-			DLC_udEncCnt = 0x0ffffffff;
-			DLC_udApsCnt = (UDOUBLE)ulDLC_PDO_RX_APS_Pu;
-			DLC_ubLevCur = 0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
-		}
-		else if(!DLC_btWelExc && DLC_btWelExcOld)	//井道學習上行結束
-		{
-			DLC_btWelEnd = 1;
-			//DLC_ubWelEndTmr = 0;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
-		}	
-		DLC_btWelExcOld = DLC_btWelExc;
-		DLC_btWelUpOld = (DLC_ubDIR == DIR_UP);			//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
-		//
-		if(DLC_btWelExc || DLC_btWelEnd)	//井道學習
-		{
-			if(PGDIR == 1)
-			{
-            	if (pr[CHG_DIR] == 0)
-            	{
-                	DLC_udEncCnt += (UDOUBLE)slPgDif;
-            	}
-            	else
-            	{
-                	DLC_udEncCnt -= (UDOUBLE)slPgDif;
-            	}
-        	}
-        	else
-			{
-            	if (pr[CHG_DIR] == 0)
-            	{
-                	DLC_udEncCnt -= (UDOUBLE)slPgDif;
-            	}
-            	else
-            	{
-                	DLC_udEncCnt += (UDOUBLE)slPgDif;
-            	}
-        	}
-		}
-		//
-		//if(DLC_btWelEnd)										//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		//{														//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		//	DLC_ubWelEndTmr++;									//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		//	if(DLC_ubWelEndTmr > 250)							//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		if(DLC_btWelEnd && ((ulDLC_PDO_RX_APS_Pu - DLC_udApsCnt) > 100))	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-		{
-			DLC_btWelEnd = 0;
-			//
-			DLC_udApsCnt = pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu - DLC_udApsCnt);
-			//
-			if(DLC_udEncCnt > 0x0ffffffff)
-			{
-				DLC_udEncCnt = DLC_udEncCnt - 0x0ffffffff;
-			}
-			else
-			{
-				DLC_udEncCnt = 0x0ffffffff - DLC_udEncCnt;
-			}
-			ud1 = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];
-			DLC_udEncCnt = ((DLC_udEncCnt * (UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_uwPole * 500) + (ud1 >> 1)) / ud1;
-			//
-			i = DLC_udApsCnt / 65536;	//此值不可四捨五入
-			j = DLC_udEncCnt / 65536;	//此值不可四捨五入
-			if(i < j)
-			{
-				i = j+1;
-			}
-			else
-			{
-				i = i+1;
-			}
-			DLC_udApsCnt = (DLC_udApsCnt + (i>>1)) / i;
-			DLC_udEncCnt = (DLC_udEncCnt + (i>>1)) / i;
-			pr[SENSOR_H] = (UWORD)DLC_udApsCnt;
-			pr[SENSOR_L] = (UWORD)DLC_udEncCnt;
-		}
-		// -----------------------------------------------------------------------------------------------------------------------------------------
-    }	
-    else
-    {
-        if(PGDIR == 1){
-            if (pr[CHG_DIR] == 0)
-                DLC_ulPgCnt += slPgDif;
-            else
-                DLC_ulPgCnt -= slPgDif;
-        }
-        else{
-            if (pr[CHG_DIR] == 0)
-                DLC_ulPgCnt -= slPgDif;
-            else
-                DLC_ulPgCnt += slPgDif;
-        }
-    }
-    
+	if(PGDIR == 1){
+		if (pr[CHG_DIR] == 0)
+			DLC_ulPgCnt += slPgDif;
+		else
+			DLC_ulPgCnt -= slPgDif;
+	}
+	else{
+		if (pr[CHG_DIR] == 0)
+			DLC_ulPgCnt -= slPgDif;
+		else
+			DLC_ulPgCnt += slPgDif;
+	}
 	// encoder pulse protection, Henry, 2016/08/18
 	if(DLC_ulPgCnt > 100000000000000)
 		DLC_ulPgCnt = 0;
@@ -1178,21 +919,11 @@ void DLC_Algorithm(void){
 	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new -------------------------------------
 	//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
 	//04-40(開關延遲補償    sec)
-	//ulDelayCmpmm = DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]);//m/s(dot4)*sec(dot3)-->mm(dot7), 4+3=7	//將  開關延遲補償  與  MI濾波時間分開
+	ulDelayCmpmm = DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]);//m/s(dot4)*sec(dot3)-->mm(dot7), 4+3=7	//將  開關延遲補償  與  MI濾波時間分開
 	//ulDelayCmpPg = U32xU32divU32(ulDelayCmpmm , 65536, COF_ulPls2MMgain)/250;//mm(dot7)*Q16/gain*Q2/1000	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-	//if(DLC_PDO_DLC_Mode != DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(!DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		ulDelayCmpmm = (DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]) + 5000) / 10000;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-		ulDelayCmpPg = (ULONG)pos_1MMtoPG((UDOUBLE)ulDelayCmpmm);	// GFC1test			// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-	}
-	//else if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	else	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		ulDelayCmpPg = 0;
-	}
+	ud4 = (UDOUBLE)COF_ulPls2MMgain * 250;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+	ulDelayCmpPg = (ULONG)(((UDOUBLE)ulDelayCmpmm * 65536 + (ud4>>1)) / ud4);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 	// --------------------------------------------------------------------------------------------
-	
 	if((DLC_btWelExc == 0)&&(DLC_ulCurSpd <= ulTmp))
 	{
 	    if(DLC_btDznMd == 1)// adco
@@ -1232,25 +963,8 @@ void DLC_Algorithm(void){
 	                if(DLC_ubLevTar == DLC_ubLevCur){  //進入水平前185mm	
     	                DLC_ulPosRopeCmp = (ULONG)pr[ROPE_CMP] * 10 * (DLC_ulPosLev[pr[MAX_FLOOR]] - DLC_ulPosLev[DLC_ubLevTar]) / 
                                 (DLC_ulPosLev[pr[MAX_FLOOR]] - DLC_ulPosLev[DLC_ubLevMin]); // 0.1mm
-
-                        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-                        //{
-                        //    DLC_ulPgRopeCmp = (DLC_ulPosRopeCmp << 1);
-                        //}
-                        //else
-                        //{
-         	            //    DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse                       
-                        //}
-                        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-						if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-                        {
-							DLC_ulPgRopeCmp = 0;
-                        }
-						else
-						{
-							DLC_ulPgRopeCmp = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosRopeCmp);	// GFC1test	//鋼索延伸補償的Pulse
-						}
-                    }
+        	            DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse
+            	    }
                 	else{
                     	DLC_ulPgRopeCmp = 0;
 	                }
@@ -1325,30 +1039,13 @@ void DLC_Algorithm(void){
                     if(DLC_ubLevTar == DLC_ubLevCur){  //進入水平前185mm
                         DLC_ulPosRopeCmp = (ULONG)pr[ROPE_CMP] * 10 * (DLC_ulPosLev[pr[MAX_FLOOR]] - DLC_ulPosLev[DLC_ubLevTar]) / 
                                     (DLC_ulPosLev[pr[MAX_FLOOR]] - DLC_ulPosLev[DLC_ubLevMin]); // 0.1mm
-
-                        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-                        //{
-                        //    DLC_ulPgRopeCmp =  DLC_ulPosRopeCmp << 1;
-                        //}
-                        //else
-                        //{
-                        //    DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse                       
-                        //}
-						//if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-						if(DLC_btAPS_Mode) // GFC APS Jerry.Sk.Tseng 2022/12/23//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-                        {
-                            DLC_ulPgRopeCmp =  0;
-                        }
-                        else
-                        {
-                            DLC_ulPgRopeCmp = (ULONG)pos_1MMtoPG((UDOUBLE)DLC_ulPosRopeCmp);	// GFC1test  //鋼索延伸補償的Pulse                       
-                        }
+                        DLC_ulPgRopeCmp = ((U32xU32divU32(DLC_ulPosRopeCmp, 65536, COF_ulPls2MMgain))<<2);  //鋼索延伸補償的Pulse
                     }
                     else{
                         DLC_ulPgRopeCmp = 0;
                     }
                     // -------------------------------------------------------------------------------------------------------------
-//ulDLC_PDO_RX_APS_ClipPu                    
+                    
 					if((DLC_ulPosDD1 != 0)&&(DLC_btDD1 == 1) && (Driver_ID == IEDS_DRIVER))//#13761 position calibration on DDS1, James, 2020/03/03
 					{
 						/*   [Artemis Add Sensor819 Function/Special/2022/06/06]
@@ -1396,38 +1093,17 @@ void DLC_Algorithm(void){
 	else{
 		//DLC_ulPosVal = U32xU32divU32((DLC_ulPgCnt>>2), COF_ulPls2MMgain, 65536);
 		//DLC_ulPosVal = DLC_ulPosVal/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-		if(DLC_btAPS_Mode)    // GFC APS Jerry.Sk.Tseng 2022/12/23	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-        {
-            //DLC_ulPosVal = (ulDLC_PDO_RX_APS_Pu + 1) >> 1; //The APS data is 0.5mm
-            DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)ulDLC_PDO_RX_APS_Pu);	// GFC1test
- 
-        }
-		else
-        {
-            //DLC_ulPosVal = (ULONG)(((UDOUBLE)DLC_ulPgCnt * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-            DLC_ulPosVal = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgCnt);	// GFC1test
-        }
+		DLC_ulPosVal = (ULONG)(((UDOUBLE)DLC_ulPgCnt * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 	}
 	//]
 
 	//樓層脈衝紀錄
     //if((DLC_btModIns==1)&&((DLC_btWelRec==1)||(DLC_btWelExc==1)))
     if((DLC_btWelRec==1)||(DLC_btWelExc==1))
-        {
-            //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-			if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-            {
-                WelTunProcAPS();   //WelTun Proc
-            }else
-            {
-                WelTunProc();   //WelTun Proc
-            }
-        }
-
+	    WelTunProc();	//WelTun Proc
 	
 	//Wel-Tune中, 不利用此方法更新樓層
-	if(DLC_btWelExc == 0){	
+	if(DLC_btWelExc == 0){
 		DLC_LevCur();
 		pr[LEV_CUR] = DLC_ubLevCur;
 	}
@@ -2004,22 +1680,10 @@ void DLC_Algorithm(void){
 	//ulspeed = ud1/100;
     // ---------------------------------------------------------------------
     // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new 四捨五入 ------
-    //if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && DLC_btModNor)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode && DLC_btModNor)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-    	//ud1 = (UDOUBLE)DLC_ulCurSpd * (UDOUBLE)pr[FMAX];	// GFC1test
-    	//ud2 = (UDOUBLE)pr[Lift_SPD] * 100;
-    	ud1 = (UDOUBLE)DLC_ulCurSpd * (UDOUBLE)pr[FMAX] * DLC_udApsCnt;	// GFC1test
-    	ud2 = (UDOUBLE)pr[Lift_SPD] * 100 * DLC_udEncCnt;
-    	ulspeed = (ULONG)((ud1 + (ud2>>1)) / ud2);  // Mitong 四捨五入
-    }
-	else
-	{
-		ud1 = (UDOUBLE)DLC_ulCurSpd * (UDOUBLE)pr[FMAX];
-    	ud2 = (UDOUBLE)pr[Lift_SPD] * 100;
-    	ulspeed = (ULONG)((ud1 + (ud2>>1)) / ud2);  // Mitong 四捨五入
-	}
-	// ---------------------------------------------------------
+    ud1 = (UDOUBLE)DLC_ulCurSpd*(UDOUBLE)pr[FMAX];
+    ud2 = (UDOUBLE)pr[Lift_SPD] * 100;
+    ulspeed = (ud1 + (ud2>>1)) / ud2;  // Mitong 四捨五入
+    // --------------------------------------------------------------------
 	
 #else	
 	ud1 = (UDOUBLE)DLC_ulCurSpd*(UDOUBLE)0xffff*(UDOUBLE)pr[FMAX];
@@ -3138,13 +2802,10 @@ ULONG Spd_NOR(ULONG ulCurSpd){
 			}
 			// -----------------------------------------------------
 			
-			//if(DLC_uwPeriodCnt > 0){	// GFC1test source
-			if((DLC_uwPeriodCnt > 0) || (DLC_ulDisTar_Old == ulDisTar)){	// GFC1test new 位置有改變才重新計算動態J
-				if(DLC_uwPeriodCnt > 0)	// GFC1test
-				{
-					DLC_uwPeriodCnt --;
-				}
-				DLC_uwTDCnt = (DLC_uwTDCnt<DLC_uwTD)?(DLC_uwTDCnt+1):DLC_uwTD;
+			if(DLC_uwPeriodCnt > 0){
+				DLC_uwPeriodCnt --;
+				
+					DLC_uwTDCnt = (DLC_uwTDCnt<DLC_uwTD)?(DLC_uwTDCnt+1):DLC_uwTD;
 					
 				//spd output
 				udJ4 = (UDOUBLE)DLC_uwJD;						//DLC_uwJD為S4的動態J,單位mm/s3
@@ -3155,8 +2816,7 @@ ULONG Spd_NOR(ULONG ulCurSpd){
 				DLC_ulSpd0p1mm = (ULONG)ud1;			// Issue 277400 高速梯有拖尾速及平層不準的問題 Mitong new
 				DLC_ubSubtra = 0x20;	
 			}
-			else{		// GFC1test new 位置有改變才重新計算動態J
-				DLC_ulDisTar_Old = ulDisTar;			// GFC1test
+			else{
 				DLC_uwPeriodCnt = 9;
 				DLC_uwTDCnt = 0;
 				if(!DLC_btDisTar0mm && (ulCurSpd > 50)){
@@ -3216,39 +2876,19 @@ ULONG Spd_NOR(ULONG ulCurSpd){
         	
 					//動態J限制					
 					if(DLC_uwJD > uw1){
-						if((DLC_uwJD - uw1) > 5000){	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 15改1000 // GFC1test
-							DLC_uwJD = uw1 + 5000;
+						if((DLC_uwJD - uw1) > 2000){	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 15改1000
+							DLC_uwJD = uw1 + 2000;
 						}
 					}
 
 					if(DLC_uwJD > 50000){	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 add
 						DLC_uwJD = 50000;
 					}
-					else
-					{
-						//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-						if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-						{	
-							//20230829 source
-							//if(DLC_uwJD < 20)
-							//{
-							//	DLC_uwJD = 20;
-							//}
-							//20230829 new
-							if(DLC_uwJD < 1)
-							{
-								DLC_uwJD = 1;
-							}
-						}
-						else
-						{
-							if(DLC_uwJD < 100)
-							{
-								DLC_uwJD = 100;
-							}
-						}
+					else if(DLC_uwJD < 100){
+						DLC_uwJD = 100;
 					}
-					// -----------------------------------------------------
+					
+						// -----------------------------------------------------
 					
                     //uwtest12 = DLC_uwJD;
 					//動態J限制
@@ -3257,8 +2897,7 @@ ULONG Spd_NOR(ULONG ulCurSpd){
 					
 				}
 				else{
-					if(DLC_uwJD < 100)
-					{
+					if(DLC_uwJD < 100){
 						DLC_uwJD = 100;
 					}
 				}
@@ -4030,19 +3669,10 @@ void WelTunProc(void){
 	// DIR_UP and do the well-tune
 	else{	
 		//#16386 optimization for over landing cause from leveling sensor calibration , James, 2021/04/13
-		//ulDelayCmpmm = DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]);//pr[DIN_RES];//m/s(dot4)*sec(dot3)-->mm(dot7), 4+3=7	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		ulDelayCmpmm = DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES]);//pr[DIN_RES];//m/s(dot4)*sec(dot3)-->mm(dot7), 4+3=7	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 		//ulDelayCmpPg = U32xU32divU32(ulDelayCmpmm , 65536, COF_ulPls2MMgain)/250;//mm(dot7)*Q16/gain*Q2/1000 // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source		
-		ulDelayCmpmm = ((DLC_ulCurSpd * (pr[DelayCmp] + pr[DIN_RES])) + 5000) / 10000;		
-        //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-        //{
-        //    udTmp = (250 + 1) >> 1;		
-        //}
-        //else
-        //{
-        //    udTmp = COF_ulPls2MMgain * 250;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-        //}
-		ulDelayCmpPg = (ULONG)pos_1MMtoPG((UDOUBLE)ulDelayCmpmm);	// GFC1test	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-		
+		udTmp = COF_ulPls2MMgain * 250;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		ulDelayCmpPg = (ULONG)(((UDOUBLE)ulDelayCmpmm * 65536 + (udTmp >> 1)) / udTmp);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 		if(DLC_ubDIR == DIR_UP){		
 			//樓層數目 遞增
 			if((DLC_btDznMd == 0 && DLC_btLU == 1 && DLC_btLUOld == 0)||
@@ -4107,32 +3737,31 @@ void WelTunProc(void){
 			  }
 			  else{
 			  	
-					if(DLC_ubLevCur == 2)
-					{
+					if(DLC_ubLevCur == 2){
 						// learn board length
-				    	if(DLC_btDZN == 1 && DLC_btDZNOld == 0){     //Dzn enter
-					    	DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
-					    	DLC_uwWelTra = 0x0b;
-				    	}
-				    	else if(DLC_btDZN == 0 && DLC_btDZNOld == 1){ //Dzn leave
-					    	DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
-					    	DLC_uwWelTra = 0x0c;
+				    if(DLC_btDZN == 1 && DLC_btDZNOld == 0){     //Dzn enter
+					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg;
+					    DLC_uwWelTra = 0x0b;
+				    }
+				    else if(DLC_btDZN == 0 && DLC_btDZNOld == 1){ //Dzn leave
+					    DLC_ulPgBrd = DLC_ulPgCnt - ulDelayCmpPg - DLC_ulPgBrd;
+					    DLC_uwWelTra = 0x0c;
 
-				      		// fix 1F, 2F pos
-					  		//DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-						  DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-						  //DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-						  DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
-					    }
-					}			  	
+				      // fix 1F, 2F pos
+					  //DLC_ulPgLev[1] = DLC_ulPgLev[1]-(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					  DLC_ulPgLev[1] = DLC_ulPgLev[1]-((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+					  //DLC_ulPgLev[2] = DLC_ulPgLev[2]+(DLC_ulPgBrd>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					  DLC_ulPgLev[2] = DLC_ulPgLev[2]+((DLC_ulPgBrd+1)>>1);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new			  
+				    }
+				  }			  	
 			  	
-			  		// record each level pos
+			  	// record each level pos
 					if(DLC_btDZN == 1 && DLC_btDZNOld == 0){
 						if(DLC_ubLevCur == 2)   // 2F時, DLC_ulPgBrd尚未得到
-					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
-					  	else
-					    	//DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-					    	DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt-ulDelayCmpPg;
+					  else
+					    //DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+(DLC_ulPgBrd>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+					    DLC_ulPgLev[DLC_ubLevCur] = DLC_ulPgCnt+((DLC_ulPgBrd+1)>>1)-ulDelayCmpPg;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 					}
 			  }
 			}
@@ -4163,70 +3792,6 @@ void WelTunProc(void){
 		}
 	}
 }
-
-void WelTunProcAPS(void){
-	ULONG ulTmp, ulVal;
-	UBYTE i, j, k, ErrFlag=0;
-	ULONG ulDelayCmpmm, ulDelayCmpPg;
-	UDOUBLE	udTmp;
-	
-	// Reset PG Pulse Matrix
-	if(DLC_btWelRst == 1){	
-		DLC_uwWelTra = 0x11;
-		WelTunReset();
-	}
-	// PG Pulse Record
-	else if(DLC_btWelRec == 1){
-		DLC_uwWelTra = 0x12;
-		DLC_uwEeprom = 1;
-		
-		DLC_ulPgUL = DLC_ulPgCnt;
-		DLC_ubLevMax = DLC_ubLevCur;
-		pr[MAX_FLOOR] = DLC_ubLevMax;
-		write_ep(0,MAX_FLOOR,pr[MAX_FLOOR]);
-	
-	}
-	// DIR_UP and do the well-tune
-	else{	
-        if(DLC_ubDIR == DIR_UP){	
-			DLC_uwWelTra = 0x15;
-    		//樓層數目 遞增
-    		//if((ulDLC_PDO_RX_APS_ClipPuOld == 0) && (ulDLC_PDO_RX_APS_ClipPu != 0) )
-    		if((ulDLC_PDO_RX_APS_ClipPuOld == 0) && (ulDLC_PDO_RX_APS_ClipPu != 0)
-						&& (ulDLC_PDO_RX_APS_ClipPu != DLC_ulPgLev[DLC_ubLevCur]))	// GFC1test 防止APS跳動
-            {
-            	
-                //if(!DLC_btDD1)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
-                    DLC_ubLevCur = (DLC_ubLevCur < 0x4B) ? DLC_ubLevCur + 1 : 0x4B;
-                
-                DLC_ulPgLev[DLC_ubLevCur] = ulDLC_PDO_RX_APS_ClipPu;
-				DLC_uwWelTra = 0x14;
-            }	
-		}
-		else
-        {
-            DLC_uwWelTra = 0x13;
-        }      
-
-			
-		if(DLC_ubDIR == DIR_UP){
-			//DIR_UP, leave DDS
-			if((DLC_btDD1Old == 1)&&(DLC_btDD1 == 0))
-            {
-                DLC_ulPgDD1 = ulDLC_PDO_RX_APS_Pu;
-            }
-            
-			//DIP_UP, into UDS
-			if((DLC_btUD1Old == 0)&&(DLC_btUD1 == 1))
-            {
-            	DLC_ulPgUD1 = ulDLC_PDO_RX_APS_Pu;
-            }         
-
-		}
-	}
-    ulDLC_PDO_RX_APS_ClipPuOld = ulDLC_PDO_RX_APS_ClipPu;
-}
-
 
 void WelTunReset(void){
 	UWORD i, j;
@@ -4277,78 +3842,37 @@ void WelTun_eeprom(void){
 	UWORD i, j; //[for loop die because UBYTE,Lyabryan,2020/09/09]
 	UWORD uwUD1_Vlim, uwDD1_Vlim, uwUD2_Vlim, uwDD2_Vlim,uwUD3_Vlim, uwDD3_Vlim,uwUD4_Vlim, uwDD4_Vlim;
 
+	// pg pulse to mm
+	for(i = 1; i <= 0x4B; i ++){
+		//單位轉換-PULSE to mm
+		//DLC_ulPosLev[i] = U32xU32divU32((DLC_ulPgLev[i]>>2), COF_ulPls2MMgain, 65536);		// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+		//DLC_ulPosLev[i] = DLC_ulPosLev[i]/10;	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+		DLC_ulPosLev[i] = (ULONG)(((UDOUBLE)DLC_ulPgLev[i] * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
+		
+		j = i - 1;
+		DLCxx[j<<1] = DLC_ulPosLev[i]/1000; //m
+		DLCxx[((j<<1)+1)] = DLC_ulPosLev[i]%1000; //mm
+		
+	}
 
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-    {
-        // APS to mm
-          for(i = 1; i <= 0x4B; i ++){
-
-              DLC_ulPosLev[i] = (DLC_ulPgLev[i] + 1 ) >> 1;
-              
-              j = i - 1;
-              DLCxx[j<<1] = DLC_ulPosLev[i]/1000; //m
-              DLCxx[((j<<1)+1)] = DLC_ulPosLev[i]%1000; //mm
-              
-          }
-          
-          DLC_ulPosDD1 = (DLC_ulPgDD1 + 1 ) >> 1;
-          DLC_ulPosDD2 = 0;
-          DLC_ulPosDD3 = 0;
-          DLC_ulPosDD4 = 0;
-
-          
-          DLC_ulPosUD1 = (DLC_ulPgUD1 + 1 ) >> 1;
-          DLC_ulPosUD2 = 0;
-          DLC_ulPosUD3 = 0;
-          DLC_ulPosUD4 = 0;
-          DLC_ulPosUL = 0;
-
-    }
-    else
-    {
-        // pg pulse to mm
-        for(i = 1; i <= 0x4B; i ++){
-            //單位轉換-PULSE to mm
-            //DLC_ulPosLev[i] = U32xU32divU32((DLC_ulPgLev[i]>>2), COF_ulPls2MMgain, 65536);        // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-            //DLC_ulPosLev[i] = DLC_ulPosLev[i]/10; // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-            //DLC_ulPosLev[i] = (ULONG)(((UDOUBLE)DLC_ulPgLev[i] * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440);// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-            DLC_ulPosLev[i] = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgLev[i]);	// GFC1test
-            j = i - 1;
-            DLCxx[j<<1] = DLC_ulPosLev[i]/1000; //m
-            DLCxx[((j<<1)+1)] = DLC_ulPosLev[i]%1000; //mm
-            
-        }
-        
-        //DLC_ulPosDD1 = U32xU32divU32((DLC_ulPgDD1>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosDD1 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosDD1 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgDD1);	// GFC1test
-        //DLC_ulPosDD2 = U32xU32divU32((DLC_ulPgDD2>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosDD2 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosDD2 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgDD2);
-        //DLC_ulPosDD3 = U32xU32divU32((DLC_ulPgDD3>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosDD3 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosDD3 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgDD3);
-        //DLC_ulPosDD4 = U32xU32divU32((DLC_ulPgDD4>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosDD4 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosDD4 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgDD4);
-        //DLC_ulPosUD1 = U32xU32divU32((DLC_ulPgUD1>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosUD1 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosUD1 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgUD1);
-        //DLC_ulPosUD2 = U32xU32divU32((DLC_ulPgUD2>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosUD2 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosUD2 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgUD2);
-        //DLC_ulPosUD3 = U32xU32divU32((DLC_ulPgUD3>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosUD3 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosUD3 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgUD3);
-        //DLC_ulPosUD4 = U32xU32divU32((DLC_ulPgUD4>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosUD4 /= 10; // decel sw position modify, Henry, 2017/05/25
-        DLC_ulPosUD4 = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgUD4);
-        //DLC_ulPosUL = U32xU32divU32((DLC_ulPgUL>>2),COF_ulPls2MMgain,65536);
-        //DLC_ulPosUL /= 10;
-		DLC_ulPosUL = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgUL);
-    }
-
+	DLC_ulPosDD1 = U32xU32divU32((DLC_ulPgDD1>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosDD1 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosDD2 = U32xU32divU32((DLC_ulPgDD2>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosDD2 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosDD3 = U32xU32divU32((DLC_ulPgDD3>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosDD3 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosDD4 = U32xU32divU32((DLC_ulPgDD4>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosDD4 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosUD1 = U32xU32divU32((DLC_ulPgUD1>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosUD1 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosUD2 = U32xU32divU32((DLC_ulPgUD2>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosUD2 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosUD3 = U32xU32divU32((DLC_ulPgUD3>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosUD3 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosUD4 = U32xU32divU32((DLC_ulPgUD4>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosUD4 /= 10; // decel sw position modify, Henry, 2017/05/25
+	DLC_ulPosUL = U32xU32divU32((DLC_ulPgUL>>2),COF_ulPls2MMgain,65536);
+	DLC_ulPosUL /= 10;
 
 
 	DLC_ulPosDD1 = DLC_ulPosDD1>3000000?0:DLC_ulPosDD1;
@@ -4426,16 +3950,8 @@ void WelTun_eeprom(void){
 	pr[SENSOR_L] = DLC_ulPgSen % 10000;
 	
 	//pr[LEV_LEN] = (U32xU32divU32((DLC_ulPgBrd>>2), COF_ulPls2MMgain, 65536))/10;// vrd length Aevin 7/6/2018	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
+	pr[LEV_LEN] = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 	
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-    //{
-    //    pr[LEV_LEN] = (DLC_ulPgBrd + 1) >> 1;
-    //}
-    //else
-    //{
-    //    pr[LEV_LEN] = (ULONG)(((UDOUBLE)DLC_ulPgBrd * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-    //}
-	pr[LEV_LEN] = (ULONG)pos_PGto1MM((UDOUBLE)DLC_ulPgBrd);	// GFC1test
 	//Artemis speed limit, James, 20200220
 	if((DLC_ulPosDD1>DLC_ulPosLev[DLC_ubLevMin])&&(DLC_ulPosDD1 != 0))
 		uwDD1_Vlim = uw_Sqrt32c((DLC_ulPosDD1-DLC_ulPosLev[DLC_ubLevMin]) * pr[DECEL1]*2/10)*1.1;
@@ -4546,16 +4062,7 @@ void Update_C40xx(void){
 	
     //ultmp = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);	// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
 	//ultmp = ultmp/10;											// Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 source
-
-    //if(DLC_PDO_DLC_Mode == DLC_MODE_APS) // GFC APS Jerry.Sk.Tseng 2022/12/23
-    //{
-    //    ultmp = (PGBS + 1 ) >> 1;
-    //}
-    //else
-    //{
-    //    ultmp = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
-    //}
-	ultmp = (ULONG)pos_PGto1MM((UDOUBLE)PGBS);	// GFC1test
+	ultmp = (ULONG)(((UDOUBLE)PGBS * (UDOUBLE)COF_ulPls2MMgain + 1310720) / 2621440); // Issue 277400 高速梯有拖尾速及平層不準的問題 // Mitong 20220902 new
 
 	// DLC position offset, Henry
 	for(i = 1; i <= 0x4B; i ++){
@@ -4871,125 +4378,6 @@ void Sensor817_Protect(void)
 		}
 	}
 }
-
-
-/*
-COF_ubMPolePair = COF_uwPole >> 1;
-//----------------------------------------------------------------------------------------
-ulTmp = (SpDt_ulPG1Npulse>>2) * pr[FMAX];
-COF_ulPls2MMgain = U32xU32divU32((pr[Lift_SPD]*COF_ubMPolePair), 655360000, ulTmp);
-
-COF_ulPls2MMgain = (pr[Lift_SPD] * COF_ubMPolePair * 655360000) / ulTmp;
-COF_ulPls2MMgain = (pr[Lift_SPD] * COF_ubMPolePair * 655360000 * 4) / (SpDt_ulPG1Npulse * pr[FMAX]);
-//------------------------------------------------------------------------------------------
-DLC_ulOffset = U32xU32divU32((PGBS>>2), COF_ulPls2MMgain, 65536);
-DLC_ulOffset = DLC_ulOffset/10;
-
-DLC_ulOffset = (PGBS * COF_ulPls2MMgain) / (4 * 65536 * 10);
-DLC_ulOffset = (PGBS * pr[Lift_SPD] * COF_ubMPolePair * 655360000 * 4) / (4 * 65536 * 10 * SpDt_ulPG1Npulse * pr[FMAX]);
-DLC_ulOffset = (PGBS * pr[Lift_SPD] * COF_ubMPolePair * 1000) / (SpDt_ulPG1Npulse * pr[FMAX]);
-DLC_ulOffset = (PGBS * pr[Lift_SPD] * COF_uwPole * 500) / (SpDt_ulPG1Npulse * pr[FMAX]);
-//-----------------------------------------------------------------------------------------
-PGBS = (DLC_ulOffset * SpDt_ulPG1Npulse * pr[FMAX]) / (pr[Lift_SPD] * COF_uwPole * 500);
-*/
-
-// Function : PG_Val transfer to 0.1mm
-UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val)	// GFC1test
-{
-	UDOUBLE len , udtmp;
-	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		len = pg_val * 5;
-	}
-	else
-	{	
-		udtmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];
-		if(udtmp == 0)
-		{	
-			len = 0 ; 
-		}
-		else
-		{	
-			len = ((pg_val * (UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_uwPole * 5000) + (udtmp >> 1)) / udtmp;
-		}
-	}	
-	return len;
-}
-
-// Function : PG_Val transfer to 1mm
-UDOUBLE pos_PGto1MM(UDOUBLE pg_val)	// GFC1test
-{
-	UDOUBLE len , udtmp;
-	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		len = (pg_val + 1) >> 1;
-	}
-	else
-	{	
-		udtmp = (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX];
-		if(udtmp == 0)
-		{	
-			len = 0 ; 
-		}
-		else
-		{		
-			len = ((pg_val * (UDOUBLE)pr[Lift_SPD] * (UDOUBLE)COF_uwPole * 500) + (udtmp >> 1)) / udtmp;
-		}
-	}	
-	return len;
-}
-
-
-// Function : 0.1mm transfer to PG_Val
-UDOUBLE pos_0d1MMtoPG(UDOUBLE len)	// GFC1test
-{
-	UDOUBLE pg_val , udtmp;	
-	//if(DLC_PDO_DLC_Mode == DLC_MODE_APS)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		pg_val = (len + 2) / 5;
-	}	
-	else
-	{
-		udtmp = (UDOUBLE)pr[Lift_SPD] * 5000 * (UDOUBLE)COF_uwPole;
-		if(udtmp == 0)
-		{	
-			pg_val = 0 ;
-		}
-		else
-		{	
-			pg_val = ((len * (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX]) + (udtmp >> 1)) / udtmp;
-		}
-	}
-	return pg_val;
-}
-	
-// Function : 0.1mm transfer to PG_Val
-UDOUBLE pos_1MMtoPG(UDOUBLE len)	// GFC1test
-{
-	UDOUBLE pg_val , udtmp; 
-	//if((DLC_PDO_DLC_Mode == DLC_MODE_APS) && 0)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 source
-	if(DLC_btAPS_Mode)	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 new
-	{
-		pg_val = len << 1;
-	}	
-	else
-	{
-		if(len == 0)
-		{	
-			pg_val = 0 ;
-		}
-		else
-		{	
-			udtmp = (UDOUBLE)pr[Lift_SPD] * 500 * (UDOUBLE)COF_uwPole;
-			pg_val = ((len * (UDOUBLE)SpDt_ulPG1Npulse * (UDOUBLE)pr[FMAX]) + (udtmp >> 1)) / udtmp;
-		}
-	}
-	return pg_val;
-}
-
 
 #ifndef _DLC_C
 	#undef _DLC_C
