@@ -36,6 +36,7 @@ static  uint8_t ubCFFxx_read( uint32_t  addr, uint32_t  count, uint8_t  *ptr );/
 static  uint8_t ubCFFxx_write( uint32_t  addr, uint32_t  count, uint8_t  *ptr );//7/6/2015
 static  uint8_t ubC_MEMADDR_read( uint32_t  addr, uint32_t  count, uint8_t  *ptr );//7/6/2015
 
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //mdb_dev_struct detail:
 //	uint16_t  type;
@@ -1146,7 +1147,7 @@ static  uint8_t ubParDesc_write( uint32_t  addr, uint32_t  count, uint8_t  *ptr 
             ax = (UWORD)prtab[addrHi] + addrLo;     // pr index //---Aevin modi  7/2/2015
         }
 
-        //  TxCntTemp = Rx2CNT;
+      //  TxCntTemp = Rx2CNT;
         rxdata.ub.hi =  *(ptr + (i<<1))/*RxBuf_2[4]*/;
         rxdata.ub.low = *(ptr + (i<<1)+ 1) /*RxBuf_2[5]*/;
                 
@@ -1177,8 +1178,7 @@ static  uint8_t ubParDesc_write( uint32_t  addr, uint32_t  count, uint8_t  *ptr 
                 //SCOTTY ADD 08/31/2007
                 KEYEND = ERR;    	        //SCOTTY ADD 08/31/2007
             }
-        }
-
+        }                
         if (KEYEND==ERR)
         {
             COM2Err = PC_CE02;

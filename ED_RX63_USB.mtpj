@@ -2418,7 +2418,11 @@ USBC_DEBUGLCD_PP
 </LinkOptionCommandLine-DefaultValue>
       <LinkOptionSplitVect-DefaultValue>False</LinkOptionSplitVect-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
+<<<<<<< HEAD
       <TimeTagModified--0>-8585070382976405138</TimeTagModified--0>
+=======
+      <TimeTagModified--0>-8585094496766399204</TimeTagModified--0>
+>>>>>>> 982f587f262b184c18585523e0acc091c7cfe36c
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionForm-0>Absolute</LinkOptionForm-0>
       <LinkOptionFormConvert-0>Binary</LinkOptionFormConvert-0>
@@ -2567,7 +2571,11 @@ D_sdram=R_sdram
       <LinkOptionS9-DefaultValue>False</LinkOptionS9-DefaultValue>
       <HexOptionCreateUnfilledArea-DefaultValue>False</HexOptionCreateUnfilledArea-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
+<<<<<<< HEAD
       <TimeTagModified--0>-8585070382976405138</TimeTagModified--0>
+=======
+      <TimeTagModified--0>-8585094496766399204</TimeTagModified--0>
+>>>>>>> 982f587f262b184c18585523e0acc091c7cfe36c
       <HexOptionForm-0>Binary</HexOptionForm-0>
       <HexOptionOutput-0>True</HexOptionOutput-0>
       <HexOptionSameLinkMessage-0>True</HexOptionSameLinkMessage-0>
