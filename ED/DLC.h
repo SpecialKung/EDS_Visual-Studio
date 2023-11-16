@@ -89,6 +89,8 @@ DLC_EXT ULONG Spd_Linear(UWORD uwTarSpd, UWORD uwAcc, UWORD uwDec);
 DLC_EXT	ULONG Spd_FSD(UWORD uwPrFSD, UWORD uwDecTmr);
 
 DLC_EXT	void WelTunProc(void);
+
+DLC_EXT	void WelTunProcAPS(void);
 DLC_EXT void WelTunReset(void);
 DLC_EXT void WelTun_eeprom(void);
 
@@ -101,9 +103,18 @@ DLC_EXT UBYTE DLC_LULD_Protect(Bool LU, Bool LUOld, Bool LD, Bool LDOld);//#1597
 DLC_EXT void Sensor817_Protect(void);	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 DLC_EXT void Sensor818_Protect(void);	//[Artemis Add Sensor819 Function/Special/2022/06/06]
 
+DLC_EXT UDOUBLE pos_PGto0d1MM(UDOUBLE pg_val);		// GFC1test
+DLC_EXT UDOUBLE pos_PGto1MM(UDOUBLE pg_val);		// GFC1test
+DLC_EXT UDOUBLE pos_0d1MMtoPG(UDOUBLE len);			// GFC1test
+DLC_EXT UDOUBLE pos_1MMtoPG(UDOUBLE len);			// GFC1test
+
+
 // DLC position offset 2, Henry
 DLC_EXT void Update_C40xx(void);
-//---------------------------------------------//											
+//---------------------------------------------//	
+DLC_EXT	UDOUBLE				DLC_udEncCnt,
+							DLC_udApsCnt;
+
 DLC_EXT	ULONG	            DLC_ulDacc,
 							DLC_ulD2,
 							DLC_ulDcon,
@@ -152,7 +163,9 @@ DLC_EXT	ULONG		        ultest1,
                             ultest2,
                             ultest3,
                             ultest4,
-                            DLC_ulCurSpd;
+                            DLC_ulCurSpd,
+							DLC_ulSpd0p1mm_Old,	// GFC1test
+							DLC_ulDisTar_Old;	// GFC1test
 
 DLC_EXT	UWORD	            PR_S4ACC1,
                             PR_S4ACC2,
@@ -240,6 +253,8 @@ DLC_EXT	UWORD	DLC_uwTra3,
 							DLC_uwPeriodCnt,
 							DLC_uwDCICnt,
 							DLC_uwSfbk;
+
+
 DLC_EXT	SWORD				swRopeCmp;
 
 DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
@@ -260,7 +275,9 @@ DLC_EXT	UBYTE	DLC_ubSubtra,	 //Subtra addr, H=tra, L=Subtra
 							DLC_ubLuLdError,//#15977, LULD detect, James, 2021/04/01
 							DLC_ubLuLdProtectState,//#15977, LULD detect, James, 2021/04/01
 							DLC_ubDec0SModeTmr,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
-							DLC_ubDec0SMode;	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							DLC_ubDec0SMode,	// Task 268638 直接停靠-多段速加減速及S曲線 Mitong 20220616 add
+							//DLC_ubWelEndTmr,	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+							DLC_ubWelExcTmr;	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
 
 DLC_EXT	UBYTE	DLC_EPS_Source,//1:MI, 2:CAN
 				DLC_uwAutoTar;
@@ -345,6 +362,14 @@ DLC_EXT	UWORD_UNION	DLC_uwCAN;	 //09-10 factory function
 #define	DLC_btWelExc    DLC_uwCAN.bit.b2	// FHM execute
 #define	DLC_btWelRec    DLC_uwCAN.bit.b3	// PG Pulse Record
 #define	DLC_btWelRst    DLC_uwCAN.bit.b4	// PG Pulse Reset
+#define	DLC_btWelExcOld	DLC_uwCAN.bit.b5	// PG Pulse Record Aux
+#define	DLC_btWelEnd	DLC_uwCAN.bit.b6
+#define	DLC_btWelExcAux		DLC_uwCAN.bit.b7	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btWelDoneAux	DLC_uwCAN.bit.b8	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btWelUpOld		DLC_uwCAN.bit.b9	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+#define	DLC_btAPS_Mode		DLC_uwCAN.bit.b10	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 add
+
+
 
 DLC_EXT UWORD_UNION DLC_0436;
 #define DLC_btADCO      DLC_0436.bit.b0
@@ -374,3 +399,7 @@ DLC_EXT UWORD_UNION DLC_Word1;
 //#define DLC_bt      		DLC_Word1.bit.b13
 //#define DLC_bt      		DLC_Word1.bit.b14
 //#define DLC_bt      		DLC_Word1.bit.b15
+
+//#define DLC_MODE_NORMAL     0	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+//#define DLC_MODE_APS        1	//Task 361568 崇友PU586測試APS功能 井道學習成功後無法正常運轉 //mitong 20230824 del
+
