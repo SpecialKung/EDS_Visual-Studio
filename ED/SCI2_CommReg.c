@@ -730,6 +730,11 @@ void Update2116(void)
             C21xx[0x17] |= 0x0200;  //dot = 2;
             C21xx[0x16] = Hz2Metric(abs(slMotorHz));
             break;
+		case 41:     //[TUV_STOCRC]												//[TUV_STO Checksum,  Special.Kung]
+			C21xx[0x17] = 'C';													//[TUV_STO Checksum,  Special.Kung]
+		    C21xx[0x17] |= 0x4000;  //Hex display								//[TUV_STO Checksum,  Special.Kung]
+			C21xx[0x16] = uwTUV_STOCRC;											//[TUV_STO Checksum,  Special.Kung]
+			break;																//[TUV_STO Checksum,  Special.Kung]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
 	    case 38:     //[Velocity m/s or ft/s, Bernie, 2017/06/20]
 	        C21xx[0x17]  = 'v';

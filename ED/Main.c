@@ -4521,6 +4521,7 @@ void FanControl(void)
 
 }
 
+
 void ErrorResetInit(void)
 {
     uwRetryCnt = pr[RESETCNT];     //[Add auto restart after fault, Bernie, 06/06/12]
@@ -4529,6 +4530,56 @@ void ErrorResetInit(void)
 
 
 }
+
+void CRC_Init(void)                                                                     //[TUV_STO Checksum,  Special.Kung]
+{                                                                                       //[TUV_STO Checksum,  Special.Kung]
+	/*Enable CRC module*/                                                               //[TUV_STO Checksum,  Special.Kung]
+	//SYSTEM.MSTPCRB.BIT.MSTPB23 = 0;                                                   //[TUV_STO Checksum,  Special.Kung]
+	MSTP(CRC) = 0;                                                                      //[TUV_STO Checksum,  Special.Kung]
+	/*Configure CRC Control Register:                                                   //[TUV_STO Checksum,  Special.Kung]
+	1.Set Polynomial to CRC-CCITT XModem (h'1021)                                       //[TUV_STO Checksum,  Special.Kung]
+		(p(x) = x ** 16 + x ** 12 + x ** 5 + 1)                                         //[TUV_STO Checksum,  Special.Kung]
+	2.Set MSB First. (This makes result agree with online CRC calculators.)             //[TUV_STO Checksum,  Special.Kung]
+	3.Clear CRCDOR register*/	                                                        //[TUV_STO Checksum,  Special.Kung]
+	CRC.CRCCR.BYTE = 0x47;                                                              //[TUV_STO Checksum,  Special.Kung]
+    CRC.CRCCR.BIT.DORCLR = 1;  /*Clear any previous result.*/	                        //[TUV_STO Checksum,  Special.Kung]
+	CRC.CRCDOR = 0xFFFF;       /*Initial value */                                       //[TUV_STO Checksum,  Special.Kung]
+}                                                                                       //[TUV_STO Checksum,  Special.Kung]
+
+void CRC_AddRange(const UBYTE* pui8_Data, ULONG ui32_Length)                            //[TUV_STO Checksum,  Special.Kung]
+{                                                                                       //[TUV_STO Checksum,  Special.Kung]
+	/*Write the data a byte at a time to the CRC Data Input register.*/                 //[TUV_STO Checksum,  Special.Kung]
+	while(0 != ui32_Length)                                                             //[TUV_STO Checksum,  Special.Kung]
+	{	                                                                                //[TUV_STO Checksum,  Special.Kung]
+		CRC.CRCDIR = *pui8_Data;                                                        //[TUV_STO Checksum,  Special.Kung]
+		/*Onto the next byte*/                                                          //[TUV_STO Checksum,  Special.Kung]
+		pui8_Data++;                                                                    //[TUV_STO Checksum,  Special.Kung]
+		ui32_Length--;                                                                  //[TUV_STO Checksum,  Special.Kung]
+	}                                                                                   //[TUV_STO Checksum,  Special.Kung]
+}                                                                                       //[TUV_STO Checksum,  Special.Kung]
+
+UWORD CRC_Result(void)                                                                  //[TUV_STO Checksum,  Special.Kung]
+{                                                                                       //[TUV_STO Checksum,  Special.Kung]
+	/*Return the CRC result.                                                            //[TUV_STO Checksum,  Special.Kung]
+	This is as read from CRC Data Ouput register and bit inversed*/                     //[TUV_STO Checksum,  Special.Kung]
+	return (UWORD)~CRC.CRCDOR;                                                          //[TUV_STO Checksum,  Special.Kung]
+}                                                                                       //[TUV_STO Checksum,  Special.Kung]
+
+UWORD STO_CRC_CAL(void)                                                                 //[TUV_STO Checksum,  Special.Kung]
+{                                                                                       //[TUV_STO Checksum,  Special.Kung]
+    UWORD uwCRC_Value;                                                                  //[TUV_STO Checksum,  Special.Kung]
+    ULONG ulCRC_Start, ulCRC_End;                                                       //[TUV_STO Checksum,  Special.Kung]
+    
+    CRC_Init();                                                                         //[TUV_STO Checksum,  Special.Kung]
+ 
+    ulCRC_Start = (ULONG)__sectop("TUV_STO");                                           //[TUV_STO Checksum,  Special.Kung]
+    ulCRC_End   = (ULONG)__secend("TUV_STO")-1;                                         //[TUV_STO Checksum,  Special.Kung]
+        
+    CRC_AddRange(ulCRC_Start, 1+(ulCRC_End-ulCRC_Start));                               //[TUV_STO Checksum,  Special.Kung]
+    uwCRC_Value = CRC_Result();                                                         //[TUV_STO Checksum,  Special.Kung]
+    
+    return uwCRC_Value;                                                                 //[TUV_STO Checksum,  Special.Kung]
+}                                                                                       //[TUV_STO Checksum,  Special.Kung]
 
 
 void main(void)
@@ -4963,6 +5014,8 @@ void main(void)
     CAN_UWEST_STATUS = pr[EST_STATUS];
 
     FIRST_FLAG = 1;     //[PG quality function, Bernie, 2017/06/20]
+
+    uwTUV_STOCRC = STO_CRC_CAL();           //[STO TUV Checksum,  Special.Kung]
 
     while(1)
     {    

@@ -2131,43 +2131,49 @@ void Update_LEDKeyDisp(void)	// called by 40ms time base
                          showdata.ul = Hz2Metric(abs(slMotorHz));
                          LED_DecBcd(showdata.ul, unit);
                          break;
+					case 41:      //[TUV_STOCRC]								//[TUV_STO Checksum,  Special.Kung]
+						LED4NOTE = 1;											//[TUV_STO Checksum,  Special.Kung]
+						unit = _C|_DOT;											//[TUV_STO Checksum,  Special.Kung]
+						showdata.ul = uwTUV_STOCRC;								//[TUV_STO Checksum,  Special.Kung]
+						LED_HexBcd(showdata.ul, unit);							//[TUV_STO Checksum,  Special.Kung]
+						break;													//[TUV_STO Checksum,  Special.Kung]
 #if SIBO_ENABLE //[Sibocom Function,Lyabryan,2020/6/15]
-				  case 38:	 // Velocity cmd  //[Sibocom, Jason, 2019/11/26]
-					  LED4NOTE=1;
-					  unit = _v;  // 0x01 is decimal point
+					case 38:	 // Velocity cmd  //[Sibocom, Jason, 2019/11/26]
+						LED4NOTE=1;
+						unit = _v;  // 0x01 is decimal point
 
-					  if (pr[UNITSEL] == 1){  // Hz->m/s
-						  uwFkey = flHz2Metric(fkey.uw.hi);
-					  }
-					  else if(pr[UNITSEL] == 2){  // Hz->ft/s
-						  uwFkey = Hz2Ft(fkey.uw.hi);
-					  }
-					  else{
-						  uwFkey = fkey.uw.hi;
-					  }
-					  
-					  showdata.ul = uwFkey;
-					  dot = 2;
-					  LED_DecBcd(showdata.ul, unit);
-					  break;
-				  case 39:	  // Velocity fdb  //[Sibocom, Jason, 2019/11/26]
-					  LED4NOTE=1;
-					  unit = _h;  // 0x01 is decimal point
-					  
-					  if (pr[UNITSEL] == 1){  // Hz->m/s
-						  uwFout = Hz2Metric(fout.uw.hi);
-					  }
-					  else if(pr[UNITSEL] == 2){  // Hz->ft/s
-						  uwFout = Hz2Ft(fout.uw.hi);
-					  }
-					  else{
-						  uwFout = fout.uw.hi;
-					  }
-					  
-					  showdata.ul = uwFout;
-					  dot = 2;
-					  LED_DecBcd(showdata.ul, unit);
-					  break;
+						if (pr[UNITSEL] == 1){  // Hz->m/s
+							uwFkey = flHz2Metric(fkey.uw.hi);
+						}
+						else if(pr[UNITSEL] == 2){  // Hz->ft/s
+							uwFkey = Hz2Ft(fkey.uw.hi);
+						}
+						else{
+							uwFkey = fkey.uw.hi;
+						}
+						
+						showdata.ul = uwFkey;
+						dot = 2;
+						LED_DecBcd(showdata.ul, unit);
+						break;
+					case 39:	  // Velocity fdb  //[Sibocom, Jason, 2019/11/26]
+						LED4NOTE=1;
+						unit = _h;  // 0x01 is decimal point
+						
+						if (pr[UNITSEL] == 1){  // Hz->m/s
+							uwFout = Hz2Metric(fout.uw.hi);
+						}
+						else if(pr[UNITSEL] == 2){  // Hz->ft/s
+							uwFout = Hz2Ft(fout.uw.hi);
+						}
+						else{
+							uwFout = fout.uw.hi;
+						}
+						
+						showdata.ul = uwFout;
+						dot = 2;
+						LED_DecBcd(showdata.ul, unit);
+						break;
 #endif
           		}  // end of special display
 				break; // end of case 3 [ multi-function display ]

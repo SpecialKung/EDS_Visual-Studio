@@ -972,6 +972,12 @@ void Update_KeypadDisp(void)
       				KC23xx[0x06]  = pr[STATE_REC];
       				break;
 
+				case 41:      //[TUV_STOCRC]								//[TUV_STO Checksum,  Special.Kung]
+					KC23xx[0x08] |= '1';									//[TUV_STO Checksum,  Special.Kung]
+					KC23xx[0x08] |= 0x1000;  // hex							//[TUV_STO Checksum,  Special.Kung]
+					KC23xx[0x06] = uwTUV_STOCRC;							//[TUV_STO Checksum,  Special.Kung]
+					break;													//[TUV_STO Checksum,  Special.Kung]
+
     			default:
       				KC23xx[0x06]  = 0;
     				break;	
@@ -1785,7 +1791,7 @@ void run(void)
                 }
             }
             
-            //-¹w¤O¯x
+            //-ï¿½wï¿½Oï¿½x
             // [ Delete by DINO, 06/17/2009
             /*
             if (pr[CTRLM] == FOCPM){

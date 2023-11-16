@@ -5153,6 +5153,9 @@ void SIBO_STO_Safty(void){
     
 }
 #endif
+
+#pragma section P TUV_STO               //[STO TUV Checksum,  Special.Kung]
+
 void TB3_STO_Safty(void){
 
     UWORD uwSTO_CNT, mfi_status_temp, uwSTOShortTime;
@@ -5610,14 +5613,7 @@ void TB3_STO_Safty(void){
 	else
 	{;}
 }
-void Pgz_Disconnect_Init(void){ //[Zphase broken, Lyabryan, 2015/09/17]
-    
-    Zphase_countAB_flag = 0;
-    Zphase_countAB_count = 0;
-    Zphase_error_zero = 0;
-    Zphase_tune_count = 0;
 
-}
 
 void STO_Truth_Table(void){
 
@@ -5901,6 +5897,17 @@ void STO_Truth_Table(void){
     }
     }
 #endif
+}
+
+#pragma section                 //[STO TUV Checksum,  Special.Kung]
+
+void Pgz_Disconnect_Init(void){ //[Zphase broken, Lyabryan, 2015/09/17]
+    
+    Zphase_countAB_flag = 0;
+    Zphase_countAB_count = 0;
+    Zphase_error_zero = 0;
+    Zphase_tune_count = 0;
+
 }
 
 void ErrorAutoReset(void){ //[Add auto restart after fault, Bernie, 06/06/12]

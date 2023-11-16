@@ -106,7 +106,7 @@ Main_EXT void TorqDetect_Init(void);        	//[JES Torq Detect Function, Specia
 
 Main_EXT UWORD    checkValue,
                   uwFkeypad,
-                  uwFcan,    //[CAN Control, Sampo, 09/15/2010]
+                  uwFcan,                 //[CAN Control, Sampo, 09/15/2010]
                   Fkeypad_Buf,
                   Fcmd,
                   fbase,
@@ -120,10 +120,10 @@ Main_EXT UWORD    checkValue,
                   Power_RAT,
                   PF_ANGLE,
                   IrmsRe,
-                  IrmsRe1,    //ADDED BY SCOTTY 03/01/2007  TEST
+                  IrmsRe1,                //ADDED BY SCOTTY 03/01/2007  TEST
                   stall4ad,
                   dcbrk4ad,
-                  dcbrk4ad2,// [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]   
+                  dcbrk4ad2,              // [DCBRK_BAND function for adjustable reset level, James, 2019/12/05  ]   
                   dcbrkband4ad,
                   OVS4ad,
                   OVR4ad,
@@ -145,6 +145,7 @@ Main_EXT UWORD    checkValue,
                   err_uwMFO,
                   err_uwState;
                     // ]
+
 Main_EXT UWORD    rec_uwFfbk,
                   rec_uwFcmd,
                   rec_uwVout,
@@ -222,7 +223,7 @@ Main_EXT UWORD    rec_uwMFO,
                   RSP_uwRecent_prinfo;
 
 Main_EXT UWORD    uwPGThetaE_COM,    		// [IED 1387 static Tune, 2011/07/06]
-			  	  uwPGThetaE_COM2;   		// [IED 1387 static Tune, 2011/07/06]
+			  	      uwPGThetaE_COM2;   		// [IED 1387 static Tune, 2011/07/06]
 
 Main_EXT SWORD    n_period,
                   experiod,
@@ -237,7 +238,7 @@ Main_EXT SWORD    n_period,
 //                  swACICalib,   // Move to A_Monitor.h, 11/04/2008
 //                  swAUICalib,   // Move to A_Monitor.h, 11/04/2008
                   PTCInValue,
-                  TorqueOut,       		 	//6a16j
+                  TorqueOut,       		 	 //6a16j
                   HS_Temp,
                   IGBT_Temp,
                   st_swSINmean,
@@ -246,9 +247,9 @@ Main_EXT SWORD    n_period,
                   st_swCOSnew,
                   st_swXout,
                   st_swYout,
-                  zcal_swThetaErr,  		// Electrical Theta of Z pulse calibration
+                  zcal_swThetaErr,  		 // Electrical Theta of Z pulse calibration
                   uwAbsMotorHz,
-                  zcal_uwPulseDiff, 		// DINO, 08/11/2010
+                  zcal_uwPulseDiff, 		 // DINO, 08/11/2010
                   BTTx_swDelatPGPosition; 
 
 Main_EXT UBYTE    Delay4oc,
@@ -256,19 +257,19 @@ Main_EXT UBYTE    Delay4oc,
                   z0_cnt,
                   z1_cnt,
                   z2_cnt,
-                  GROUPTmp,     			// CalUBYTE: 6 UBYTE
+                  GROUPTmp,     			     // CalUBYTE: 6 UBYTE
                   ubPGData,
                   Speed_check,
                   BTTx_ubTorqDetectRst,     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
                   BTTx_ubTestCase;          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
-Main_EXT UWORD    TUNEPMLSLOW_V,  			//ADDED BY SCOTTY 01/29/2007
-                  st_uwInterval,  			// StandStill falling counts, Added by dino, 04/03/2007
+Main_EXT UWORD    TUNEPMLSLOW_V,  			  //ADDED BY SCOTTY 01/29/2007
+                  st_uwInterval,  			  // StandStill falling counts, Added by dino, 04/03/2007
                   ol_uwDeraCnt,
                   uwEPS_SpdLimt,            //[User can change speed when used EPS function, Bernie, 2013/04/16]
-				  AFE_uwMOCNT,    			//[AFE Error Handle/Lyabryan/2022/03/24]
-				  BTTx_uwFMI0Temp,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-				  BTTx_uwTestTorq,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				      AFE_uwMOCNT,    			  //[AFE Error Handle/Lyabryan/2022/03/24]
+				      BTTx_uwFMI0Temp,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				      BTTx_uwTestTorq,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
                   BTTx_uwTestStep,          //[JES Torq Detect Function, Special.Kung, 2022/09/01]
                   BTTx_uwPGPositionNow,     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
                   BTTx_uwPGPositionOrg;     //[JES Torq Detect Function, Special.Kung, 2022/09/01]
@@ -284,7 +285,7 @@ Main_EXT SLONG    SpdMaxPu,
                   
 Main_EXT ULONG    IR_ulTcount,              //[Running Dir Count,Special,2018/08/17]
                   BTTx_ulClearbttnCount,    //[JES Torq Detect Function, Special.Kung, 2022/09/01]
-				  BTTx_ulTestCount;         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
+				      BTTx_ulTestCount;         //[JES Torq Detect Function, Special.Kung, 2022/09/01]
 
 Main_EXT UBYTE    CPUError,
                   Error,
@@ -347,7 +348,7 @@ Main_EXT UBYTE_UNION    mfi0_status,
                         Time_srquence,      //[DIN time sequence, Bernie, 2013/03/07]
                         SPD_PG_quality,     //[PG quality function, Bernie, 2017/06/20]
                         BTTx_status,
-						AFE_Handle_Flag;
+						      AFE_Handle_Flag;
                         
 Main_EXT UWORD          st_uwAbsAngleTune,  //[Fix state tune problem, Bernie, 2014/09/02 ]
                         hsd_uwAbsAngle,     //[PGHSD-1 abs angle,Lyabryan,2017/07/17]
@@ -389,8 +390,10 @@ Main_EXT CalLine        AD2DcB1, AD2DcB2,  // AD to DC Bus Line 1[(x1,y1),(x2,y2
                         DcB2AD1, DcB2AD2;  // DC Bus to AD Line 1[(x1,y1),(x2,y2)], Line 2[(x2,y2),(x3,y3)]
 
 Main_EXT UWORD 			uwVfd_Explorer_Count;	//for count is in VFD Explorer?---------------7/2/2015
-Main_EXT UWORD 			uwVfd_Explorer_Flag;	// 1=in explorer mode ; 0 = in normal mode----7/2/2015
-Main_EXT UBYTE 			ubNew_VfdExplorerFlag;// 1: use new vfd explorer ; 0; use old vfd explorer--4/7/2016
+Main_EXT UWORD 			uwVfd_Explorer_Flag;	   // 1=in explorer mode ; 0 = in normal mode----7/2/2015
+Main_EXT UBYTE 			ubNew_VfdExplorerFlag;  // 1: use new vfd explorer ; 0; use old vfd explorer--4/7/2016
+
+Main_EXT UWORD          uwTUV_STOCRC;           //[STO TUV Checksum,  Special.Kung]
 
 /************************************************************************
  Copyright (c) 2005 EMBU DELTA
