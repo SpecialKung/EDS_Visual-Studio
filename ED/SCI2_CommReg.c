@@ -194,31 +194,26 @@ void PCRemote2001H(UWORD datac)
 {
     UWORD ax, uwParData;
 
-	if (pr[CTRLM]!=TQCPG)
-	{    
-        if (pr[U_SET]==0)
-		{    
+	if (pr[CTRLM]!=TQCPG){    
+        if (pr[U_SET]==0){    
+
 			// [ Change Velocity Data, Add by DINO, 05/25/2009
-			if (pr[UNITSEL] == 1)		// m/s
-			{	
+		if (pr[UNITSEL] == 1){	// m/s
 				uwParData = flMetric2Hz(datac);
 			}
-			else if(pr[UNITSEL] == 2)	// ft/s
-			{	
+			else if(pr[UNITSEL] == 2){	// ft/s
 				uwParData = Ft2Hz(datac);
 			}
             //else if(pr[UNITSEL] == 3){	// ft/s
 				//uwParData = Ft2Hz(datac);
 			//}
-			else
-			{
+			else{
 				uwParData = datac;
 			}
 			// ]
-            //[Gfc DLC modify,Henry,2018/05/23]
+           //[Gfc DLC modify,Henry,2018/05/23]
             //if (((pr[SOFC]<=1)||(pr[SOFC]==4))&&(uwParData<=pr[FMAX])&&(speed==0)){ //Source of operation control
-			if (((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5))&&(uwParData<=pr[FMAX])&&(speed==0))	//Source of operation control
-			{ 
+				    if (((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5))&&(uwParData<=pr[FMAX])&&(speed==0)){ //Source of operation control
 				// [ Change Velocity Data, Add by DINO, 05/25/2009
                 C20xx[0x01] = uwParData;
 	            uwFkeypad = uwParData;
@@ -227,12 +222,10 @@ void PCRemote2001H(UWORD datac)
             
 	        }
 	    }
-	    else
-		{
+	    else{
 	    	    //[Gfc DLC modify,Henry,2018/05/23]
             //if (((pr[SOFC]<=1)||(pr[SOFC]==4))&&(datac<=KPDmax)&&(speed==0)){ //Source of operation control
-            if (((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5))&&(datac<=KPDmax)&&(speed==0))	//Source of operation control
-			{ 
+            if (((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5))&&(datac<=KPDmax)&&(speed==0)){ //Source of operation control
 	            KPDset = datac;
 	            ax = U16xU16divU16(datac, pr[FMAX], KPDmax);
 	            uwFkeypad = ax;
@@ -241,33 +234,28 @@ void PCRemote2001H(UWORD datac)
 	        }
 	    }
 	}
-	else	//6a23j** Torque mode Speed limit by keypad
-	{  
-		if (pr[SPLIMIT_SL]==1)
-		{		    
+	else{  //6a23j** Torque mode Speed limit by keypad
+		if (pr[SPLIMIT_SL]==1){		    
             //[Gfc DLC modify,Henry,2018/05/23]
             //if ((pr[SOFC]<=1)||(pr[SOFC]==4)){
-            if ((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5))
-			{ 
+            if ((pr[SOFC]<=1)||(pr[SOFC]==4)||(pr[SOFC]==5)){ 
                 C20xx[0x01] = datac;
-   			    if (pr[U_SET]==0)
-				{
+   			    if (pr[U_SET]==0){
     	            uwFkeypad = datac;
     	            fkey.uw.hi = uwFkeypad;
     	        }
-    	        else
-				{
+    	        else{
     	            KPDset = datac;
     	            ax = U16xU16divU16(datac, pr[FMAX], KPDmax);
     	            uwFkeypad = ax;
     	            fkey.uw.hi = ax;
     	        }
-    	    }  
+    	    }
+    	    
 		}
 		else
-		{
             fkey.ul = 0;
-		}
+		
 	}//6a23j&& Torque mode Speed limit by keypad
 }
 
